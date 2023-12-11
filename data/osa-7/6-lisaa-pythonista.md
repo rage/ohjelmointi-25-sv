@@ -278,5 +278,5 @@ print(tulos)
 
 Vastaa kurssin lopuksi loppukyselyyn. Kyselyn tuloksia käytetään kurssimateriaalin kehittämiseen.
 
-<quiz id="edb3d4c4-6ceb-5ef6-8f03-370aa11fa4bb"></quiz>
+<quiz id="e5513330-0599-5fa0-bfd0-a2d40a89773e"></quiz>
 

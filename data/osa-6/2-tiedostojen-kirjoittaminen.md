@@ -601,4 +601,4 @@ Huomaa, että paikallisten TMC-testien ajaminen voi tyhjentää sanakirja-tiedos
 
 </programming-exercise>
 
-<quiz id="a4414b90-5cf5-520c-8c9e-2f18fed17fd5"></quiz>
+<quiz id="58b92c76-559a-588f-8662-6c430d212bc2"></quiz>

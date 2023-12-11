@@ -508,4 +508,4 @@ Voit olettaa, että käyttäjän antama luku on 2 tai suurempi.
 </in-browser-programming-exercise>
 
 
-<quiz id="2b66a88b-973a-5cec-b9ef-0926e5ecc2c5"></quiz>
+<quiz id="742577d3-7a6c-5249-a0b8-10bbcaeea044"></quiz>

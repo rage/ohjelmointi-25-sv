@@ -406,8 +406,8 @@ DDDDDDD
 
 </programming-exercise>
 
-<quiz id="80966e29-402a-55c4-a555-49ec9f14d65c"></quiz>
+<quiz id="8342aecc-48cd-5e26-a8ad-6272ba1df02a"></quiz>
 
 Vastaa lopuksi osion loppukyselyyn:
 
-<quiz id="115efd0a-e1c3-52ea-a81a-b020d1863707"></quiz>
+<quiz id="7c3732cd-b37b-5524-9747-0fcf49c917bb"></quiz>

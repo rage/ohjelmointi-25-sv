@@ -220,8 +220,8 @@ Tämä on testi katsotaan miten käy11
 
 </programming-exercise>
 
-<quiz id="17a3c8a1-ea6d-5225-9d7f-3fc699067be2"></quiz>
+<quiz id="caf731dc-cf22-5dfc-ad4d-a3224b2df020"></quiz>
 
 Vastaa lopuksi osion loppukyselyyn:
 
-<quiz id="3d4fe376-f6d3-5628-92ca-4d5096764f4f"></quiz>
+<quiz id="7794fe8b-1641-5a54-94d5-16d900a14d13"></quiz>

@@ -297,5 +297,5 @@ Keskim. minuutteja: 156.0
 
 </programming-exercise>
 
-<quiz id="5602ad2e-213e-5d65-a2ae-56283d90b57d"></quiz>
+<quiz id="272963db-2dee-56c0-8be6-258e68a3e166"></quiz>
 
