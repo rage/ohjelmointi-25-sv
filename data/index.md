@@ -7,7 +7,7 @@ banner: true
 sidebar_priority: 5000
 ---
 
-**Kurssi alkaa 16.1.2023**
+**Kurssi alkaa 15.1.2024**
 
 Nämä ovat Ohjelmoinnin perusteiden (TKT10002, 5 op) ja Ohjelmoinnin jatkokurssin (TKT10003, 5 op) kurssisivut.
 
@@ -34,19 +34,15 @@ Käytä ensisijaisesti viestintävälineenä Discordia. Kurssin opettajiin voit 
 
 ## Aikataulu
 
-Kurssi on auki vuoden 2023 loppuun asti. Tehtäviä voi tehdä omaan tahtiin siihen asti.
+Kurssi on auki vuoden 2024 loppuun asti. Tehtäviä voi tehdä omaan tahtiin siihen asti.
 
 ## Luennot
 
-Liveluentoja voi seurata maanantaisin klo 14.15 4.9.2023 alkaen [Zoomin kautta](https://helsinki.zoom.us/j/69849285795?pwd=WHIvOTJ2UmNLVG1ocTYvREx5THZPQT09) (Huom! Päivitetty jatkokurssin linkki!)
-
-Huomaa, että maanantaina 6.11.2023 ei ole luentoa - korvaava luento pidetään perjantaina 3.11. klo 14.15 samassa Zoom-osoitteessa.
-
-Luentotallenteet päivitetään alla olevaan taulukkoon sitä mukaa kun luentoja pidetään. Muille osille löytyy vanhempi tallenne.
+Kurssilla järjestetään liveluennot syksyllä. Alta voit katsoa tallenteet syksyn 2023 luennoista.
 
 ## Luentotallenteet
 
-Vuoden 2022 tallenteiden asiasisältö on tätä kurssia vastaava, mutta tallenteilta mahdollisesti löytyvät huomautukset esimerkiksi tenttipäivämääriin tms. liittyen _eivät välttämättä pidä paikkaansa_!
+Vuoden 2023 tallenteiden asiasisältö on tätä kurssia vastaava, mutta tallenteilta mahdollisesti löytyvät huomautukset esimerkiksi tenttipäivämääriin tms. liittyen _eivät välttämättä pidä paikkaansa_!
 Tallenteet päivitetään uusiin sitä mukaa, kun liveluentoja pidetään.
 
 Osa    | Luentotallenne
