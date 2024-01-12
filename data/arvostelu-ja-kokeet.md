@@ -38,7 +38,7 @@ Tarkemmat ohjeet julkaistaan näillä sivuilla ennen koepäivää.
 
 ## 1 + 1 pisteen lisäosiot
 
-Jos olet aikaisemmin suorittanut kurssin Java-versiot hyväksytysti, voit suorittaa 1 + 1 opintopisteen lisäosat. Lisäosien suorittaminen edellyttää kurssin hyväksyttyä suoritusta (tehtäväpisteet ja tentti), mutta arviointi tehdään asteikolla hyväksytty / hylätty. Lisäosan voit suorittaa osallistumalla normaalisti kokeeseen ja täyttämällä kokeen alussa olevan lomakkeen.
+Jos olet aikaisemmin suorittanut kurssin Java-versiot hyväksytysti, voit suorittaa 1 + 1 opintopisteen lisäosat. Lisäosien suorittaminen edellyttää kurssin hyväksyttyä suoritusta (tehtäväpisteet ja tentti), mutta arviointi tehdään asteikolla hyväksytty / hylätty. Lisäosan voit suorittaa osallistumalla normaalisti kokeeseen ja täyttämällä kokeen alussa olevan lomakkeen. Lisäsosan rekisteröimiseksi vaaditaan *Helsingin yliopiston tai avoimen yliopiston opiskelijanumero*. Jos et tiedä opiskelijanumeroasi, voit tiedustella sitä avoimesta yliopistosta. Tee tämä hyvissä ajoin ennen koepäivää.
 
 ## Kurssin pisteytys
 
