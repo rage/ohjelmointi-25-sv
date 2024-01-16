@@ -8,7 +8,7 @@ sidebar_priority: 4000
 
 Kurssit suoritetaan ratkomalla tehtäviä ja osallistumalla lopuksi kokeeseen.
 
-### Ohjelmoinnin perusteet koepäivät 2023
+### Ohjelmoinnin perusteet koepäivät 2024
 
 * Lauantai 09.03.2024
 * Lauantai 04.05.2024
@@ -18,7 +18,7 @@ Kurssit suoritetaan ratkomalla tehtäviä ja osallistumalla lopuksi kokeeseen.
 * Lauantai 19.10.2024
 * Lauantai 23.11.2024
 
-### Ohjelmoinnin jatkokurssi koepäivät 2023
+### Ohjelmoinnin jatkokurssi koepäivät 2024
 
 * Lauantai 11.03.2024
 * Lauantai 11.05.2024
