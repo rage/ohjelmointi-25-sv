@@ -15,7 +15,7 @@ Efter den här delen
 
 </text-box>
 
-Hittills har vi tänkt att en variabel är en slags ”låda” som innehåller variabelns värde. Från teknisk synvinkel stämmer detta inte i Python – variabler innehåller inte ett värde, utan en referens till ett objekt, som en siffra, sträng eller en lista.
+Hittills har vi tänkt att en variabel är en slags "låda" som innehåller variabelns värde. Från teknisk synvinkel stämmer detta inte i Python – variabler innehåller inte ett värde, utan en referens till ett objekt, som en siffra, sträng eller en lista.
 
 I praktiken innebär det att man inte lagrar ett värde i en variabel, utan ett ställe varifrån variabelns värde hittas från.
 
@@ -41,7 +41,7 @@ print(id(b))
 
 Referensen, alltså variabelns id är ett heltal. Man kan tänka att talet är adressen för variabelns värde i datorns minne. Observera att om du kör koden ovan på din dator, kommer resultatet sannolikt vara olikt eftersom variablerna har olika referenser.
 
-Som vi redan såg i förra delens exempel, visar Python Tutors visualiseringsverktyg referenser som ”pilar” till det riktiga innehållet. Verktyget ”lurar” ändå när det kommer till strängar, och visar dem som att strängens innehåll skulle vara lagrat i själva variabeln:
+Som vi redan såg i förra delens exempel, visar Python Tutors visualiseringsverktyg referenser som "pilar" till det riktiga innehållet. Verktyget "lurar" ändå när det kommer till strängar, och visar dem som att strängens innehåll skulle vara lagrat i själva variabeln:
 
 <img src="5_2_1a.png">
 
@@ -86,7 +86,7 @@ print(id(a))
 
 I början refererar variabeln `luku` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `luku` när dess värde var `1`.
 
-Det verkar som att Python har lagrat siffran 1 till adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i ”datorns minne”.
+Det verkar som att Python har lagrat siffran 1 till adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i "datorns minne".
 
 Även om de grundläggande datatyperna `int`, `float` och `bool` är referenser behöver man som programmerare inte egentligen fundera på det.
 
@@ -631,7 +631,7 @@ print(luvut)
 
 </sample-output>
 
-Funktionen `sorted` returnerar en ny ordnad kopia av listan, så vi behöver inte mera ”sabotera” den ursprungliga listan när vi söker efter det näst minsta värdet.
+Funktionen `sorted` returnerar en ny ordnad kopia av listan, så vi behöver inte mera "sabotera" den ursprungliga listan när vi söker efter det näst minsta värdet.
 
 Det är en bra vana att undvika sidoeffekter i funktioner. Sidoeffekter kan göra det svårare att säkerställa att programmet fungerar som det ska i alla situationer.
 

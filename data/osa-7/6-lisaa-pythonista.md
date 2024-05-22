@@ -46,7 +46,7 @@ Eller så kan du göra det hela med en rad kod:
 y = y + 1 if x%2 == 0 else 0
 ```
 
-## Ett ”tomt” block
+## Ett "tomt" block
 
 Du minns kanske att block inte kan vara tomma i Python. Om du behöver ett block som inte gör någonting – till exempel då du testar någon annan funktionalitet – kan du använda `pass`-kommandot. Du kan till exempel skapa en funktion som inte gör någonting:
 

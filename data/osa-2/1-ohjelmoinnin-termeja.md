@@ -20,7 +20,7 @@ Under den första modulen fokuserade vi inte så mycket på terminologi. Nu är 
 
 En sats (statement) är en del av ett program som kör någonting. En sats syftar ofta, men inte alltid, till ett enstaka kommando.
 
-Till exempel `print(”Hej”)` är en sats som skriver ut en rad text. På samma sätt är `nummer = 2` en sats som lagrar ett värde i en variabel.
+Till exempel `print("Hej")` är en sats som skriver ut en rad text. På samma sätt är `nummer = 2` en sats som lagrar ett värde i en variabel.
 
 En sats kan också vara mera invecklad. Den kan till exempel bestå av flera satser. Följande sats består av tre rader:
 
@@ -88,7 +88,7 @@ y = 3 * x + x**2
 
 En funktion kör någon slags funktionalitet. Funktioner kan också ta emot en eller flera parametrar, alltså data som funktionen tar emot och behandlar.
 
-En funktion körs då den anropas – det vill säga då funktionen och dess möjliga parametrar nämns i koden. Följande sats anropar `print`-funktionen med parametern `”det här är en parameter”`:
+En funktion körs då den anropas – det vill säga då funktionen och dess möjliga parametrar nämns i koden. Följande sats anropar `print`-funktionen med parametern `"det här är en parameter"`:
 
 ```python
 print("tämä on parametri")
@@ -278,7 +278,7 @@ Palkka 276.0 euroa
 
 </sample-output>
 
-Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att ”Söndag” i Boolean-uttrycket är skrivet med en stor bokstav medan det i indatat inte är det. Vi korrigerar det – både i if-satsen och `print`-kommandot:
+Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "Söndag" i Boolean-uttrycket är skrivet med en stor bokstav medan det i indatat inte är det. Vi korrigerar det – både i if-satsen och `print`-kommandot:
 
 ```python
 # ...

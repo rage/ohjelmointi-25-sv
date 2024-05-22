@@ -101,7 +101,7 @@ Anna luku 4: **1**
 
 </sample-output>
 
-I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre ”delvillkor” är sanna.
+I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre "delvillkor" är sanna.
 
 <in-browser-programming-exercise name="Iän tarkistus" tmcname="osa02-08_ian_tarkistus">
 

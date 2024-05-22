@@ -48,7 +48,7 @@ HeiErkkiikäsi on39vuotta
 </sample-output>
 
 
-Argumentet `sep=””` är ett namngivet argument. Det specificerar att alla argument ska avgränsas med en tom sträng. Du kan använda vilken som helst sträng som avgränsare. Till exempel om du vill ha varje argument på en skild rad kan du använda avgränsaren `”\n”` som är en radbrytning.
+Argumentet `sep=""` är ett namngivet argument. Det specificerar att alla argument ska avgränsas med en tom sträng. Du kan använda vilken som helst sträng som avgränsare. Till exempel om du vill ha varje argument på en skild rad kan du använda avgränsaren `"\n"` som är en radbrytning.
 
 ```python
 print("Hei", nimi, "ikäsi on", ika, "vuotta", sep="\n")
@@ -144,7 +144,7 @@ Hei Pekka, olet 59-vuotias, asuinpaikkasi on Lappeenranta
 
 </sample-output>
 
-Du kan tänka att f-strängen är en slags funktion som skapar en normal sträng baserat på ”argumenten” mellan klammerparenteserna.
+Du kan tänka att f-strängen är en slags funktion som skapar en normal sträng baserat på "argumenten" mellan klammerparenteserna.
 
 <programming-exercise name='Lukulistasta merkkijonolistaksi' tmcname='osa04-20_lukulistasta_merkkijonolistaksi'>
 

@@ -78,7 +78,7 @@ def moikkaa():
 
 Det här beror på att koden i `halsa`-funktionen endast körs då funktionen anropas.
 
-”Huvudprogrammet” nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudfunktionen, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
+"Huvudprogrammet" nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudfunktionen, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
 
 ```python
 def moikkaa():
@@ -180,7 +180,7 @@ nimi = "Antti"
 tervehdi(nimi)
 ```
 
-…resulterar i att variabeln `sak` får värdet `”Alice”`.
+…resulterar i att variabeln `sak` får värdet `"Alice"`.
 
 Namnet på en funktion ges enligt samma principer som variabelnamn. De ska vara beskrivande, i regel innehålla små bokstäver och understreck. Undantag finns igen, men vi ignorerar dem tills vidare.
 
@@ -219,7 +219,7 @@ n
 
 Då du testar på funktioner som tar emot ett eller fler argument, kan det vara till nytta att testa den med olika argument.
 
-Håll koll på möjliga ”speciella fall”. Hur kommer funktionen att fungera om argumentet till exempel är noll eller negativt? Eller ett flyttal istället för ett heltal? Vad händer om argumentet är en tom sträng?
+Håll koll på möjliga "speciella fall". Hur kommer funktionen att fungera om argumentet till exempel är noll eller negativt? Eller ett flyttal istället för ett heltal? Vad händer om argumentet är en tom sträng?
 
 Om en uppgift inte förutsätter att du anropar en funktion kan du ändå göra det. Använd då ett if-block enligt det som beskrevs tidigare. Testen kommer att ignorera koden inom det här blocket.
 
@@ -313,7 +313,7 @@ I exemplen ovan observerade vi att det är möjligt att tilldela nya variabler i
 
 Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
 
-Här är ett exempel på en funktion som använder en global variabel ”av misstag”:
+Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
 ```python
 # globaali muuttuja
@@ -334,7 +334,7 @@ Hei Emilia
 
 </sample-output>
 
-Oavsett vilka argument vi anropar funktionen med skrivs värdet ”Beatrice” från den globala variabeln ut.
+Oavsett vilka argument vi anropar funktionen med skrivs värdet "Beatrice" från den globala variabeln ut.
 
 <in-browser-programming-exercise name="Keskiarvo" tmcname="osa03-25_keskiarvo">
 

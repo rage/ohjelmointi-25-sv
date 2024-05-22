@@ -181,7 +181,7 @@ hississä
 
 </sample-output>
 
-I uppgifterna under den här kursen har du flera gånger ombetts att ha dina test under ett `if __name__ == ”__main__”` -block. Nu vet du varför.
+I uppgifterna under den här kursen har du flera gånger ombetts att ha dina test under ett `if __name__ == "__main__"` -block. Nu vet du varför.
 
 <programming-exercise name='Merkkiapuri' tmcname='osa07-17_merkkiapuri'>
 

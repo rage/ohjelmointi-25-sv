@@ -44,7 +44,7 @@ monkey
 
 </sample-output>
 
-Notationen `{}` skapar ett tomt lexikon dit vi kan lägga till element. Tre stycken nyckel-värdepar skapas: `”apina”` är knutet till `”apa”`, `”banaani”` till `”banan”` och `”cembalo`” till `”cembalo”`. Till slut skriver vi ut antalet nyckel-värdepar i lexikonet, lexikonets innehåll samt det värde som tillhör nyckeln `”apina”`.
+Notationen `{}` skapar ett tomt lexikon dit vi kan lägga till element. Tre stycken nyckel-värdepar skapas: `"apina"` är knutet till `"apa"`, `"banaani"` till `"banan"` och `"cembalo`" till `"cembalo"`. Till slut skriver vi ut antalet nyckel-värdepar i lexikonet, lexikonets innehåll samt det värde som tillhör nyckeln `"apina"`.
 
 Efter att vi har skapat ett lexikon kan vi också använda det med indata från användaren:
 
@@ -122,7 +122,7 @@ TypeError: unhashable type: 'list'
 
 <text-box variant="hint" name="Hashtabell">
 
-Märk ordet ”unhashable” i felmeddelandet ovan. Det här är en hänvisning till de inte strukturerna i ett lexikon. Python lagrar innehållet i ett lexikon i en hashtabell. Varje nyckel har ett hashvärde som indikerar var nyckeln finns lagrad i minnet. Felmeddelandet ovan indikerar att en lista inte kan förvandlas till ett hashvärde, och kan därmed inte användas som en nyckel i lexikonet.
+Märk ordet "unhashable" i felmeddelandet ovan. Det här är en hänvisning till de inte strukturerna i ett lexikon. Python lagrar innehållet i ett lexikon i en hashtabell. Varje nyckel har ett hashvärde som indikerar var nyckeln finns lagrad i minnet. Felmeddelandet ovan indikerar att en lista inte kan förvandlas till ett hashvärde, och kan därmed inte användas som en nyckel i lexikonet.
 
 Kursen Datastrukturer och algoritmer ger en större insikt i hashtabeller.
 

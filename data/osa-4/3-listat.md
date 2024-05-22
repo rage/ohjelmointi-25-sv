@@ -203,7 +203,7 @@ Anna luku 3: **34**
 
 ## Lägga till ett element på ett specifikt ställe
 
-Om du vill specificera på vilket ställe i en lista ett värde ska läggas till, kan du använda `insert`-metoden. Metoden lägger till ett element vid ett specifikt index. Alla element vid det här eller senare index flyttar ett index framåt, ”mot höger”:
+Om du vill specificera på vilket ställe i en lista ett värde ska läggas till, kan du använda `insert`-metoden. Metoden lägger till ett element vid ett specifikt index. Alla element vid det här eller senare index flyttar ett index framåt, "mot höger":
 
 <img src="4_2_2.png" alt = "Alkion lisäys listaan">
 

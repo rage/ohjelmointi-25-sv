@@ -42,7 +42,7 @@ När du är klar med debuggandet ska du minnas att ta bort `breakpoint`-kommando
 
 ## Använda moduler
 
-Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar längden på en sträng eller en lista) och `sum` (returnerar summan av element i en datastruktur). Dessa hjälper dock dig som programmerare bara till en viss del. Pythons standardbibliotek är en samling av standardiserade funktioner och objekt som kan utöka Pythons ”uttryckskraft”. Vi har redan använt en del av funktionerna i Pythons standardbibliotek i de tidigare övningarna – till exempel då vi räknade med kvadratrötter.
+Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar längden på en sträng eller en lista) och `sum` (returnerar summan av element i en datastruktur). Dessa hjälper dock dig som programmerare bara till en viss del. Pythons standardbibliotek är en samling av standardiserade funktioner och objekt som kan utöka Pythons "uttryckskraft". Vi har redan använt en del av funktionerna i Pythons standardbibliotek i de tidigare övningarna – till exempel då vi räknade med kvadratrötter.
 
 Standardbiblioteket består av moduler. De innehåller funktioner och klasser som är grupperade kring olika teman och funktionaliteter. I den här modulen kommer vi att bekanta oss med några nyttiga Python-moduler. Vi lär oss också att skapa egna moduler.
 

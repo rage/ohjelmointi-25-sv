@@ -80,7 +80,7 @@ Hur du får tolken igång beror eventuellt på den miljö där du kör Python i.
 
 <img src="4_1_1.png">
 
-Det är också möjligt att starta tolken i Visual Studio Code. Kör först ett program genom att klicka på triangeln. Nu borde en ”Terminal”-del öppnas på din skärm. Där kan du skriva `python3` (eller `python`):
+Det är också möjligt att starta tolken i Visual Studio Code. Kör först ett program genom att klicka på triangeln. Nu borde en "Terminal"-del öppnas på din skärm. Där kan du skriva `python3` (eller `python`):
 
 <img src="4_1_2.png">
 

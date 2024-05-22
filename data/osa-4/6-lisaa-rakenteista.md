@@ -424,7 +424,7 @@ print(tulos)
 
 När ett program innehåller flera funktioner uppstår en fråga: hur skickar jag data från en funktion till en annan?
 
-I följande exempel frågar man efter några heltal från användaren. Programmet skriver sedan ut dessa värden och utför en ”analys” på dem. Programmet är uppdelat i tre skilda funktioner:
+I följande exempel frågar man efter några heltal från användaren. Programmet skriver sedan ut dessa värden och utför en "analys" på dem. Programmet är uppdelat i tre skilda funktioner:
 
 ```python
 def lue_kayttajalta(maara: int):
@@ -473,7 +473,7 @@ Lukuja yhteensä 5, keskiarvo 11.6, pienin -53 ja suurin 99
 
 </sample-output>
 
-Idén är att huvudfunktionen ”lagrar” all data som behandlas av programmet. I det här fallet är det enda som vi behöver de värden som användaren gett, i variabeln `siffror`.
+Idén är att huvudfunktionen "lagrar" all data som behandlas av programmet. I det här fallet är det enda som vi behöver de värden som användaren gett, i variabeln `siffror`.
 
 Om det här behövs i en funktion ges det som ett argument. Det här sker med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen resulterar i data som behövs på annat håll i programmet, returnerar funktionen det. Det här sparas i en variabel i huvudfunktionen. Det här sker med funktionerna `indata_fran_anvandare` och `analysera`.
 

@@ -256,7 +256,7 @@ summa += int(input("Kolmas luku: "))
 print(f"Lukujen summa: {summa}")
 ```
 
-I praktiken beror antalet variabler som behövs på situationen. Om man behöver minnas enskilda värden som användaren anger, är det inte möjligt att ”återanvända” samma variabel för att läsa in olika värden. Här är ett exempel på en sådan situation:
+I praktiken beror antalet variabler som behövs på situationen. Om man behöver minnas enskilda värden som användaren anger, är det inte möjligt att "återanvända" samma variabel för att läsa in olika värden. Här är ett exempel på en sådan situation:
 
 ```python
 luku1 = int(input("Ensimmäinen luku: "))
@@ -275,7 +275,7 @@ Toinen luku: **3**
 
 Å andra sidan så har programmet inte en namngiven variabel där summan av de två angivna värdena skulle lagras.
 
-Att ”återanvända” en variabel lönar sig bara då när det finns ett tillfälligt behov att lagra värden av samma typ och orsak – till exempel då man summar ihop siffror.
+Att "återanvända" en variabel lönar sig bara då när det finns ett tillfälligt behov att lagra värden av samma typ och orsak – till exempel då man summar ihop siffror.
 
 I följande exempel används variabeln `data` för att lagra användarens namn och därefter dess ålder. Det finns absolut ingen logik i det!
 

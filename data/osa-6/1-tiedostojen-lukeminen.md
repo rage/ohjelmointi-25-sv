@@ -61,7 +61,7 @@ Viimeinen rivi.
 
 </sample-output>
 
-Variabeln `ny_fil` är en file handle (”filhandtag”). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
+Variabeln `ny_fil` är en file handle ("filhandtag"). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
 
 ```
 "Moi kaikki!\nEsimerkkitiedostomme on kolmerivinen.\nViimeinen rivi."
@@ -128,7 +128,7 @@ Huomaa, että tiedoston nimi on aina `luvut.txt` eikä funktiolle anneta paramet
 När du kör din kod är det möjligt att Visual Studio Code meddelar att filen – även efter att du kollat att filen finns och att namnet är korrekt skrivet. Att ändra på följande inställning kan lösa problemet:
 
 * öppna inställningarna från menyraden: File -> Preferences -> Settings
-* sök efter den inställning som ska ändras med sökordet ”executeinfile”
+* sök efter den inställning som ska ändras med sökordet "executeinfile"
 * välj fliken Workspace
 * bocka i valet under Python -> Terminal -> Execute in file dir.
 

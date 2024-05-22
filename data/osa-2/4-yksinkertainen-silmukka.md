@@ -14,7 +14,7 @@ Efter den här delen
 
 </text-box>
 
-Vi har nu undersökt if-satser. Ett annat viktigt koncept inom programmering är repetition. De här två koncepten är grundläggande strukturer som varje programmerare väntas kunna. De är kontrollstrukturer – de ger dig möjligheten att påverka vilka kodrader körs och när de körs. Medan if-satser låter dig välja mellan olika delar av kod, finns loopar till för att köra en del av koden på nytt. Programmet går alltså tillbaka till en viss rad i koden ett antal gånger. En iteration är en ”runda” av en loop – det vill säga den process då loopens kod körs från början till slutet.
+Vi har nu undersökt if-satser. Ett annat viktigt koncept inom programmering är repetition. De här två koncepten är grundläggande strukturer som varje programmerare väntas kunna. De är kontrollstrukturer – de ger dig möjligheten att påverka vilka kodrader körs och när de körs. Medan if-satser låter dig välja mellan olika delar av kod, finns loopar till för att köra en del av koden på nytt. Programmet går alltså tillbaka till en viss rad i koden ett antal gånger. En iteration är en "runda" av en loop – det vill säga den process då loopens kod körs från början till slutet.
 
 I den här delen presenterar vi en enkel while-loop. Dess struktur påminner om if-satsen. I nästa del dyker vi djupare in i det som loopar kan erbjuda oss.
 
@@ -453,7 +453,7 @@ while True:
     # ...
 ```
 
-Hjälpvariabeln kan tilldelas värdet `””` – det vill säga en tom sträng:
+Hjälpvariabeln kan tilldelas värdet `""` – det vill säga en tom sträng:
 
 ```python
 tunnukset = ""

@@ -389,7 +389,7 @@ Program som består av listor inom listor kan vara svåra att greppa om i börja
 
 Bilden ovan avslöjar att en 3 x 3 -matris tekniskt sett består av fyra listor. Den första listan representerar hela matrisen. De tre resterande listorna är element i den första listan, och de representerar rader i matrisen.
 
-Eftersom multidimensionella listor kan gås igenom med kapslade loopar skulle man kunna tänka sig att listorna är inuti varandra, men som bilden visar är detta inte sant. Istället hänvisar den ”stora listan” som representerar matrisen till skilda listor som alla representerar en rad i matrisen. Det här är en referens – något vi kommer att se mera på i följande del.
+Eftersom multidimensionella listor kan gås igenom med kapslade loopar skulle man kunna tänka sig att listorna är inuti varandra, men som bilden visar är detta inte sant. Istället hänvisar den "stora listan" som representerar matrisen till skilda listor som alla representerar en rad i matrisen. Det här är en referens – något vi kommer att se mera på i följande del.
 
 I bilden ovan har programmet hunnit till den andra raden i matrisen och det är den listan som variabeln `rad` hänvisar till för tillfället. Variabeln `element` innehåller det element där programmet är vid för tillfället. Värdet i den variabeln är det mellersta värdet i listan, dvs. 5.
 

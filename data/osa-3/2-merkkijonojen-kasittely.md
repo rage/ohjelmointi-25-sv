@@ -92,9 +92,9 @@ heippaheippaheippaheippa
 
 ## Längden på en sträng och dess index
 
-Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exempel `len(”hej”)` returnerar 3 eftersom det finns tre tecken i strängen `hej`.
+Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exempel `len("hej")` returnerar 3 eftersom det finns tre tecken i strängen `hej`.
 
-Följande program ber användaren att ge en sträng och skriver sedan ut ned med ”understrykning”. Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
+Följande program ber användaren att ge en sträng och skriver sedan ut ned med "understrykning". Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
 
 ```python
 mjono = input("Anna merkkijono: ")

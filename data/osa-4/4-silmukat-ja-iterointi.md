@@ -41,7 +41,7 @@ Det här fungerar helt bra, men det är ett komplicerat sätt att gå igenom en 
 
 När du vill gå igenom en färdig samling av element i Python, kan du använda dig av en `for`-loop. Loopen kan till exempel gå igenom alla element i en lista – från det första till det sista.
 
-När man använder en while-loop, vet programmet inte på förhand hur många iterationer (”varv”) loopen kommer att gå igenom. Loopen kommer att fortsätta tills villkoret inte längre är sant eller loopen avslutas på ett annat sätt. I en `for`-loop vet man antalet iterationer på förhand.
+När man använder en while-loop, vet programmet inte på förhand hur många iterationer ("varv") loopen kommer att gå igenom. Loopen kommer att fortsätta tills villkoret inte längre är sant eller loopen avslutas på ett annat sätt. I en `for`-loop vet man antalet iterationer på förhand.
 
 Idén är att `for`-loopen går igenom elementen i samlingen ett för ett och utför samma sak för varje element. Programmeraren behöver inte fundera på vilket element som behandlas och när det görs. Syntaxen för `for`-loopen är den följande:
 
@@ -262,9 +262,9 @@ if __name__ == "__main__":
     print(vika_sana(lause))
 ```
 
-Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == ”__main__”` -blocket. De automatiska testen kommer fortsättningsvis ändå att kräva att de används, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
+Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == "__main__"` -blocket. De automatiska testen kommer fortsättningsvis ändå att kräva att de används, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
 
-Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktionen du gjort. Den här koden bör inte läggas i `if __name__ == ”__main__”` -blocket. De automatiska testen kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
+Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktionen du gjort. Den här koden bör inte läggas i `if __name__ == "__main__"` -blocket. De automatiska testen kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
 
 <programming-exercise name='Tähdet' tmcname='osa04-12_tahdet'>
 
@@ -415,7 +415,7 @@ print(uniikit(lista)) # [1, 2, 3]
 
 ## Hitta det bästa eller sämsta värdet i en lista
 
-En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i en lista enligt något visst kriterium. En enkel lösning är att använda en hjälpvariabel för att komma ihåg vilket av elementen tills vidare är det mest ”optimala”. Det här mest ”optimala” jämförs med varje element och när loopen är klar kommer hjälpvariabeln att innehålla det värdet man söker efter.
+En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i en lista enligt något visst kriterium. En enkel lösning är att använda en hjälpvariabel för att komma ihåg vilket av elementen tills vidare är det mest "optimala". Det här mest "optimala" jämförs med varje element och när loopen är klar kommer hjälpvariabeln att innehålla det värdet man söker efter.
 
 Här är ett utkast som inte ännu fungerar:
 

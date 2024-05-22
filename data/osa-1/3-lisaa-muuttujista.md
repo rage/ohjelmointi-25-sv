@@ -180,7 +180,7 @@ Alla operatorer är inte tillgängliga för alla typer av variabler. Siffror kan
 
 ## Att kombinera värden i samband med utskrift
 
-Det följande kommer inte att fungera eftersom `”Resultatet är ”` och `resultat` är av olika typer:
+Det följande kommer inte att fungera eftersom `"Resultatet är "` och `resultat` är av olika typer:
 
 ```python
 tulos = 10 * 25
@@ -196,7 +196,7 @@ TypeError: unsupported operand type(s) for +: 'str' and 'int'
 
 </sample-output>
 
-I felet berättar Python att kombination av två olika typer av värden inte går så här enkelt. I den här situationen är `”Resultatet är ”` av typen sträng medan värdet i variabeln `resultat` är ett heltal.
+I felet berättar Python att kombination av två olika typer av värden inte går så här enkelt. I den här situationen är `"Resultatet är "` av typen sträng medan värdet i variabeln `resultat` är ett heltal.
 
 Om vi vill skriva ut en sträng och ett heltal i ett och samma kommando kan vi konvertera heltalet till en sträng med `str`-funktionen. Därefter kan de två strängarna kombineras normalt. Till exempel så här:
 

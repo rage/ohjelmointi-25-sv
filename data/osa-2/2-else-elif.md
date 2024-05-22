@@ -122,7 +122,7 @@ Olet täysi-ikäinen!
 
 Ofta finns det fler än två alternativ som ett program måste ta i beaktande. Till exempel resultatet av en fotbollsmatch kan se ut på tre sätt: hemmalaget vinner, bortalaget vinner eller oavgjort.
 
-En if-sats kan bestå av elif-grenar – ”else if”. Till den här grenen kommer man om villkoret i någon av de tidigare grenarna inte uppfylls.
+En if-sats kan bestå av elif-grenar – "else if". Till den här grenen kommer man om villkoret i någon av de tidigare grenarna inte uppfylls.
 
 <img src="2_2_2.png">
 

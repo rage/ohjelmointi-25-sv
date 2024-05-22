@@ -78,7 +78,7 @@ print(x)
 
 </sample-output>
 
-Här skapar funktionen `test` en ny lokal variabel `x`, som ”maskerar” den globala variabeln medan funktionen körs. Variabeln har värdet 5, men det är en annan variabel än den som tilldelats i huvudfunktionen.
+Här skapar funktionen `test` en ny lokal variabel `x`, som "maskerar" den globala variabeln medan funktionen körs. Variabeln har värdet 5, men det är en annan variabel än den som tilldelats i huvudfunktionen.
 
 Vad skulle den här kodsnutten då göra?
 
@@ -147,7 +147,7 @@ print(tulos)
 
 Fördelen med det senare tillvägagångssättet är att funktionen är en självständig helhet. Den har specifika, fördefinierade parametrar och den returnerar ett resultat. Den har inga sidoeffekter, så den kan testas och ändras utan att man behöver bry sig om andra delar av programmet.
 
-Globala variabler är nyttiga i situationer där vi behöver någon gemensam information på ”högre nivå”, och den här informationen ska vara tillgänglig för alla funktioner i programmet. Det här är ett exempel på en sådan situation:
+Globala variabler är nyttiga i situationer där vi behöver någon gemensam information på "högre nivå", och den här informationen ska vara tillgänglig för alla funktioner i programmet. Det här är ett exempel på en sådan situation:
 
 ```python
 def laske_summa(a, b):
@@ -235,7 +235,7 @@ lukuja yhteensä 5, keskikarvo 11.6, pienin- 53 ja suurin 99
 
 </sample-output>
 
-Basidén är att huvudfunktionen ”lagrar” den data som behandlas av programmet. I det här fallet innebär det att sifforna som användaren anger lagras i variabeln `siffor`.
+Basidén är att huvudfunktionen "lagrar" den data som behandlas av programmet. I det här fallet innebär det att sifforna som användaren anger lagras i variabeln `siffor`.
 
 Om siffrorna behövs i någon funktion, ger vi variabeln som argument, vilket vi ser med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen ger upphov till ett resultat som behövs på ett annat ställe i programmet, returneras det – så som i funktionerna `indata_fran_anvandare` och `analysera`.
 

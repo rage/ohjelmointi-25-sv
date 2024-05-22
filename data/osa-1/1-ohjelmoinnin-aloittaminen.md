@@ -18,7 +18,7 @@ Datorprogram består av kommandon. Varje kommando instruerar datorn att göra en
 
 Låt oss börja programmera genom att bekanta oss med `print`-kommandot som skriver ut (print) text. I praktiken betyder det att programmet visar någon text på skärmen.
 
-Det följande programmet skriver ut texten ”Hej!”:
+Det följande programmet skriver ut texten "Hej!":
 
 ```python
 print("Moi kaikki!")
@@ -38,7 +38,7 @@ Programmet fungerar inte om koden inte skrivs exakt som den är ovan. Om man til
 print(Moi kaikki!)
 ```
 
-…så kommer texten ”Hej!” inte att skrivas ut. Istället får vi ett felmeddelande:
+…så kommer texten "Hej!" inte att skrivas ut. Istället får vi ett felmeddelande:
 
 <sample-output>
 

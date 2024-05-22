@@ -32,7 +32,7 @@ Flera fel som uppkommer då ett program körs beror på indata som är i fel for
 * negativa värden i fall där endast positiva värden är giltiga, till exempel -15 st. av en ingrediens i ett recept
 * filer som saknas eller som har skrivfel i sina namn
 * värden som är för stora eller för små, till exempel då vi arbetar med datum och klockslag
-* icke-giltiga index, till exempel om vi försöker komma åt index 3 i strängen ”hej”
+* icke-giltiga index, till exempel om vi försöker komma åt index 3 i strängen "hej"
 * värden av fel typ, till exempel en sträng då vi förväntar oss ett heltal.
 
 Till all lycka kan vi som programmerare förbereda oss för de flesta felen. Vi ser på ett program som frågar efter användarens ålder och kollar att siffran är giltig (mellan noll och 150):
@@ -194,7 +194,7 @@ Här är en samling av vanliga fel som du sannolikt kommer att stöta på. Vi ko
 
 **ValueError**
 
-Det här felet uppstår vanligtvis då ett argument som ges till en funktion på något sätt är ogiltigt. Till exempel anropet `float(”1,23”)` orsakar ett fel eftersom decimaler alltid skiljs åt med punkt i Python.
+Det här felet uppstår vanligtvis då ett argument som ges till en funktion på något sätt är ogiltigt. Till exempel anropet `float("1,23")` orsakar ett fel eftersom decimaler alltid skiljs åt med punkt i Python.
 
 **TypeError**
 
@@ -202,7 +202,7 @@ Det här felet uppstår då ett värde har fel typ. Om vi till exempel anropar `
 
 **IndexError**
 
-Det här felet uppstår då vi försöker hänvisa till ett index som inte finns. Till exempel uttrycket `”abc”[5]` orsakar ett fel eftersom strängen i fråga inte har indexet 5.
+Det här felet uppstår då vi försöker hänvisa till ett index som inte finns. Till exempel uttrycket `"abc"[5]` orsakar ett fel eftersom strängen i fråga inte har indexet 5.
 
 **ZeroDivisionError**
 

@@ -67,13 +67,13 @@ Parametrien summa on 5
 
 Terminologin kring data som ges till en funktion kan kännas förvirrande. För att göra situationen svårare, använder en del källor uttryck som formella och riktiga parametrar eller formella och riktiga argument. Pythons dokumentation nämner endast termerna argument och parameter. Därför använder vi också dessa termer.
 
-Vad händer det egentligen när funktionsanropet `halsa(”Emilia”)` körs?
+Vad händer det egentligen när funktionsanropet `halsa("Emilia")` körs?
 
 I funktionsdefinitionen `halsa(namn)` beter sig parametern namn som en normal variabel. Vi kan använda den inom funktionen på samma sätt som vi har använt variabler i huvudfunktionen i flera program hittills.
 
-I funktionsanropet `halsa(”Emilia”)` är argumentet `”Emilia”` som vilken som helst annan sträng vi stött på tidigare. Vi kan till exempel tilldela den till en variabel.
+I funktionsanropet `halsa("Emilia")` är argumentet `"Emilia"` som vilken som helst annan sträng vi stött på tidigare. Vi kan till exempel tilldela den till en variabel.
 
-Alltså, när funktionsanropet körs kommer värdet på argumentet – `”Emilia”` – att tilldelas till variabeln `namn`. Under den här körningen av funktionen kommer `namn = ”Emilia”`. När funktionen anropas med ett annat argument kommer värdet på namn att vara olikt.
+Alltså, när funktionsanropet körs kommer värdet på argumentet – `"Emilia"` – att tilldelas till variabeln `namn`. Under den här körningen av funktionen kommer `namn = "Emilia"`. När funktionen anropas med ett annat argument kommer värdet på namn att vara olikt.
 
 Terminologin kan kännas överflödig, men datavetenskapen strävar att vara så exakt vetenskap som möjligt. Att använda noga definierad terminologi hjälper.
 
@@ -676,7 +676,7 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 </sample-output>
 
-Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0) på den andra raden av funktionsdefinitionen. Det givna argumentet `”Emilia”` är en sträng och inte ett heltal. Strängar och heltal kan inte jämföras så här enkelt – därmed felmeddelandet.
+Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0) på den andra raden av funktionsdefinitionen. Det givna argumentet `"Emilia"` är en sträng och inte ett heltal. Strängar och heltal kan inte jämföras så här enkelt – därmed felmeddelandet.
 
 För att undvika problem som dessa kan du inkludera typledtrådar (type hints) när du definierar funktioner. Typledtråden berättar vilken typ av argument funktionen förväntar sig motta:
 
