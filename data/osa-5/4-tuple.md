@@ -6,27 +6,27 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, millainen tietorakenne on tuple
-- Osaat muodostaa tuplen erityyppisistä arvoista
-- Tiedät, mitä eroa on tuplella ja listalla
-- Tiedät esimerkkejä tyypillisistä tavoista käyttää tuplea
+* känner du till datatypen tuple
+* kan du skapa tupler av olika typer av värden
+* vet du vad skillnaden mellan en lista och tuple är
+* kan du nämna några vanliga användningsområden för tupler.
 
 </text-box>
 
-Tuple eli monikko on listan tapainen tietorakenne. Sen olennaiset erot listaan ovat:
+En tuple är en datastruktur som på flera sätt påminner listan. De största skillnaderna mellan dessa två är:
 
-* Tuple merkitään kaarisuluilla `(` ja `)`, lista merkitään hakasuluilla `[` ja `]`
-* Tuple on _muuttumaton_, kun taas listan sisältö voi muuttua
+* tupler är inom parenteser `()` medan listor är inom hakparenteser `[]`
+* tupler är oföränderliga, medan innehållet i en lista kan ändra.
 
-Esimerkiksi seuraava koodi luo tuplen, jossa on pisteen koordinaatit:
+Den följande kodsnutten skapar en tuple som innehåller koordinaterna för en punkt:
 
 ```python
 piste = (10, 20)
 ```
 
-Tuplen sisällä oleviin alkioihin viitataan samalla tavalla kuin listassa:
+Elementen lagrade i tupler kan kommas åt med index, på samma sätt som med listor:
 
 ```python
 piste = (10, 20)
@@ -41,7 +41,7 @@ y-koordinaatti: 20
 
 </sample-output>
 
-Tuplen määrittelyn jälkeen sen arvoa ei kuitenkaan voi muuttaa, eli seuraava koodi _ei_ toimi:
+Värden som lagrats i en tuple kan inte ändras efter att en tuple har skapats. Det följande kommer inte att fungera:
 
 ```python
 piste = (10, 20)
@@ -133,24 +133,23 @@ print(vanhemmat_henkilot)
 
 </programming-exercise>
 
-## Miksi tuple on olemassa?
+## Vad behöver man tupler för?
 
-Tuplen ideana on tallentaa jokin kiinteä kokoelma arvoja, jotka liittyvät toisiinsa. Esimerkiksi kun tallennamme pisteen, jossa on x- ja y-koordinaatti, tuple on luonteva valinta, koska pisteeseen kuuluu aina kaksi arvoa:
+Tupler är nyttiga i situationer där det finns en samling av värden som är på något sätt sammankopplade. Till exempel då man behandlar x- och y-koordinaterna hos en punkt, är tuplen ett naturligt val eftersom koordinater alltid består av två värden:
 
 ```python
 piste = (10, 20)
 ```
 
-Voisimme sinänsä tallentaa pisteen myös listana:
+Det är tekniskt möjligt att använda en lista för att lagra dessa:
 
 ```python
 piste = [10, 20]
 ```
 
-Tämä ei kuitenkaan tuntuisi yhtä hyvältä ratkaisulta, koska lista sisältää peräkkäisiä alkioita jossakin järjestyksessä ja sen koko voi muuttua. Kun tallennamme pisteen, haluamme tallentaa nimenomaan x- ja y-koordinaatin eikä listaa koordinaateista.
+En lista är en samling av element i en viss ordning. Listans storlek kan också ändra. Eftersom vi lagrar koordinaterna för en punkt, vill vi lagra x- och y-koordinaterna specifikt – inte en godtycklig lista med dessa värden.
 
-Koska tuple on muuttumaton, sitä voidaan käyttää sanakirjan avaimena (toisin kuin listaa).
-Esimerkiksi seuraava ohjelma luo sanakirjan, jonka avaimet ovat pisteitä:
+Eftersom tupler är oföränderliga – till skillnad från listor – kan de användas som nycklar i lexikon. Det följande kodexemplet skapar ett lexikon där koordinater används som nycklar:
 
 ```python
 pisteet = {}
@@ -164,7 +163,7 @@ print(pisteet[(3, 5)])
 apina
 </sample-output>
 
-Vastaava koodi _ei_ toimisi, jos käyttäisimme listoja:
+Det är inte möjligt att skapa ett liknande lexikon med hjälp av listor:
 
 ```python
 pisteet = {}
@@ -180,9 +179,9 @@ TypeError: unhashable type: 'list'
 
 </sample-output>
 
-## Tuple ilman sulkuja
+## Tupler utan parenteser
 
-Tuplen määrittelyssä ei ole pakko antaa sulkuja. Esimerkiksi seuraavat koodit toimivat samalla tavalla:
+Parenteser är inte obligatoriska då man skapar tupler. Följande variabeltilldelningar ger likadana resultat:
 
 ```python
 luvut = (1, 2, 3)
@@ -192,7 +191,7 @@ luvut = (1, 2, 3)
 luvut = 1, 2, 3
 ```
 
-Tämän ansiosta voimme tehdä luontevasti funktion, joka palauttaa useita arvoja tuplena. Tarkastellaan seuraavaa esimerkkiä:
+Det innebär att vi enkelt kan returnera flera värden med hjälp av tupler. Ta en titt på följande exempel:
 
 ```python
 def minmax(lista):
@@ -210,19 +209,19 @@ Pienin luku on 5 ja suurin on 312
 
 </sample-output>
 
-Tämä funktio palauttaa kaksi arvoa tuplena, ja funktion paluuarvo vastaanotetaan "yhtä aikaa" kahteen muuttujaan:
+Funktionen returnerar två värden i en tuple. Return-värdet kan tilldelas till två variabler samtidigt:
 
 ```python
 pienin, suurin = minmax(lista)
 ```
 
-Tässä tapauksessa sijoitusoperaation vasemmalla puolella on tuple, jonka sisällä oleviin muuttujiin asetetaan funktion palauttaman tuplen sisältämät arvot:
+Att använda parenteser kan göra notationen tydligare. Till vänster av tilldelningssatsen har vi också en tuple som består av två variabelnamn. Värdena som finns i tuplen som funktionen returnerar tilldelas till dessa två variabler.
 
 ```python
 (pienin, suurin) = minmax(lista)
 ```
 
-Sanakirjojen yhteydessä esiteltiin `items`-metodiin perustuvaa tapaa käydä läpi sanakirjan kaikki avaimet ja arvot:
+Du kanske minns metoden `items` från den förra delen. Vi använde den för att komma åt nycklarna och värdena som lagrats i ett lexikon:
 
 ```python
 sanakirja = {}
@@ -236,15 +235,15 @@ for avain, arvo in sanakirja.items():
     print("arvo:", arvo)
 ```
 
-Tässäkin Python käyttää taustalla tupleja: `sanakirja.items()` palauttaa yksi kerrallaan avain-arvo-parit tuplena, jonka ensimmäinen alkio on avain ja toinen arvo.
+Tupler finns i bakgrunden här också. Metoden `mitt_lexikon.items()` returnerar varje nyckel-värdepar som en tuple, där det första elementet innehåller nyckeln och det andra värdet.
 
-Vielä yksi tuplen käyttötarkoitus on kahden muuttujan arvon vaihtaminen keskenään:
+Ett annat användningsområde för tupler är att byta värden sinsemellan två variabler:
 
 ```python
 luku1, luku2 = luku2, luku1
 ```
 
-Yllä oleva koodi vaihtaa keskenään muuttujien `luku1` ja `luku2` arvot, eli koodi toimii samoin kuin seuraava, apumuuttujaa käyttävä koodi:
+Tilldelningssatsen ovan svänger på värdena lagrade i variablerna `siffra1` och `siffra2`. Resultatet är detsamma som vi skulle uppnå med hjälp av en hjälpvariabel:
 
 ```python
 apu = luku1
@@ -408,6 +407,6 @@ DDDDDDD
 
 <quiz id="8342aecc-48cd-5e26-a8ad-6272ba1df02a"></quiz>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en kort enkät gällande materialet för den här veckan.
 
 <quiz id="7c3732cd-b37b-5524-9747-0fcf49c917bb"></quiz>

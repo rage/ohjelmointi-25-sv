@@ -1,24 +1,24 @@
 ---
 path: '/osa-3/3-lisaa-silmukoista'
-title: 'Lisää silmukoista'
+title: 'Mera om loopar'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Ymmärrät milloin `break`-komentoa tarvitaan silmukan keskeyttämiseen 
-- Osaat siirtyä silmukan seuraavalle kierrokselle `continue`-komennolla
-- Ymmärrät sisäkkäisen silmukan toiminnan
+* vet du när `break`-kommandot behövs för att avsluta en loop
+* kan du använda `continue`-kommandot för att fortsätta till nästa iteration
+* förstår du hur kapslade loopar fungerar.
 
 </text-box>
 
-## break-komento
+## `break`-kommandot
 
-Aiemmin silmukoiden yhteydessä tutustuttiin `break`-komentoon. Komennolla voidaan katkaista silmukan suoritus välittömästi. Tyypillinen esimerkki komennon käytöstä on silmukka, jossa kysytään käyttäjältä syötteitä, ja suoritus päättyy, kun käyttäjä antaa tietyn syötteen.
+Du har redan bekantat dig med `break`-kommandot. Det kan användas för att direkt avsluta en loop. Ett exempel på ett användningsområde för `break`-kommandot är då man ber användaren om någon information och loopen ska avslutas när ett visst värde ges.
 
-Vastaavaan toiminnallisuuteen päästään myös ilman `break`-komentoa sopivan ehdon avulla. Alla olevat esimerkit toteuttavat molemmat ohjelman, joka laskee käyttäjän syötteiden summan kunnes käyttäjä syöttää luvun -1:
+Samma funktionalitet kan skapas utan `break`-kommandot med ett passligt villkor. De här två programmen ber användaren ge siffor som adderas ihop tills användaren skriver siffran -1.
 
 ```python
 # 1. versio break-komennon avulla
@@ -48,7 +48,7 @@ while luku != -1:
 print (f"Summa on {summa}")
 ```
 
-Molempien ohjelmien esimerkkisuoritus voisi näyttää seuraavalta:
+Båda programmen skriver ut samma saker med samma indata, exempelvis:
 
 <sample-output>
 
@@ -61,9 +61,11 @@ Summa on 14
 
 </sample-output>
 
-Molemmat versiot ovat toiminnallisuudeltaan siis käytännössä samanlaisia. Ensimmäinen tapa on kuitenkin usein helpompi, koska ehto `luku == -1` riittää kirjoittaa vain kerran eikä muuttujaa `luku` tarvitse alustaa silmukan ulkopuolella.
+Båda programmen är alltså identiska till deras funktion men den första metoden är ofta enklare eftersom villkoret `nummer == 1` endast finns på ett ställe och variabeln `nummer` behöver inte initieras utanför loopen.
 
-Komentoa `break` voidaan käyttää myös silloin, kun silmukassa on annettu jokin muu ehto kuin pelkkä totuusarvo `True`. Esimerkiksi seuraava silmukka jatkuu niin kauan, kuin annettujen lukujen summa on enintään 100. Kuitenkin silmukka katkeaa myös, jos käyttäjä antaa luvun -1.
+`break`-kommandot kan kombineras med ett passligt villkor. Till exempel följande loop upprepas så länge summan av siffrorna är högst 100, men avslutas också då man ger siffran -1.
+
+Så här kan det se ut när programmet körs:
 
 ```python
 summa = 0
@@ -100,9 +102,9 @@ Summa on 106
 
 </sample-output>
 
-Ensimmäisessä tapauksessa silmukka päättyy, koska käyttäjä antaa luvun -1. Toisessa tapauksessa silmukka päättyy, koska lukujen summa on yli 100.
+I det första exemplet avslutas loopen eftersom användaren ger siffran -1. I det andra exemplet avslutas loopen eftersom summan blir större än 100.
 
-Toisaalta voisimme toteuttaa vastaavasti toimivan silmukan myös näin:
+Som alltid inom programmering finns det flera sätt att uppnå samma resultat. Följande program fungerar på identiskt sätt jämfört med de två exemplen ovan:
 
 ```python
 summa = 0
@@ -117,13 +119,13 @@ while True:
 
 print (f"Summa on {summa}")
 ```
-## continue-komento
+## `continue`-kommandot
 
-Komento `continue` on toinen tapa vaikuttaa silmukan suoritukseen. Kun silmukan sisällä tulee vastaan komento `continue`, hyppää suoritus välittömästi silmukan alkuun riville, jossa on silmukan ehto. Tämän jälkeen silmukan suoritus jatkuu normaalisti ehdon tarkastamisella:
+Ett annat sätt att påverka hur en loop körs är `continue`-kommandot. Det får loopen att hoppa till början, där villkoret för loopen finns. Loopen fortsätter köra normalt därifrån börjandes från att kolla villkoret:
 
 <img src="3_3.png">
 
-Esimerkiksi seuraava ohjelma laskee summaan mukaan vain luvut, jotka ovat pienempiä kuin 10. Jos luku on 10 tai suurempi, suoritus palaa silmukan alkuun eikä lukua lisätä summaan.
+Till exempel följande program adderar siffor som användaren ger, men bara då den givna siffran är mindre än tio. Om siffran är tio eller större, hoppar man till början av loopen utan att addera siffran.
 
 ```python
 summa = 0
@@ -150,9 +152,9 @@ Summa on 16
 
 </sample-output>
 
-## Sisäkkäiset silmukat
+## Kapslade loopar
 
-Silmukoita voidaan kirjoittaa toisten silmukoiden sisään. Esimerkiksi seuraava ohjelma kysyy käyttäjältä silmukassa luvun ja tulostaa sen avulla lukujonon toisen silmukan avulla:
+Precis som med if-satser kan loopar placeras inom andra loopar. Till exempel följande program använder sig av en loop för att fråga efter en siffra från användaren. Inom den här loopen finns en annan loop som räknar ner från det givna talet till ett:
 
 ```python
 while True:
@@ -186,7 +188,7 @@ Anna luku: **-1**
 
 </Sample-output>
 
-Huomaa, että kun silmukoita on sisäkkäin, komennot `break` ja `continue` vaikuttavat vain sisimpään silmukkaan. Esimerkiksi voisimme toteuttaa äskeisen ohjelman vähän eri tavalla myös näin:
+I kapslade loopar är det bra att märka att `break` och `continue` endast påverkar den innersta loopen de är i. Föregående exemplet skulle kunna skrivas så här:
 
 ```python
 while True:
@@ -200,11 +202,11 @@ while True:
         luku -= 1
 ```
 
-Nyt jälkimmäinen `break`-komento keskeyttää vain sisimmän silmukan, joka tulostaa lukuja, jos ehto `luku <= 0` pätee.
+Här avslutar det andra `break`-kommandot endast den inre loopen som används för att skriva ut siffrorna.
 
-## Silmukoiden apumuuttujat
+## Hjälpvariabler med loopar
 
-Olemme jo monesti käyttäneet silmukoissa apu- tai indeksimuuttujaa, jonka arvo kasvaa tai laskee jokaisella silmukan lohkon suorituskerralla. Esimerkiksi seuraava ohjelma tulostaa parilliset luvut käyttäjän haluamaan lukuun asti:
+Vi har redan använt oss av hjälpvariabler – som ökar eller minskar för varje iteration av en loop – flera gånger, så följande program borde till sin struktur se ganska bekant ut. Programmet skriver ut alla jämna tal från noll fram till det tal som användaren angett:
 
 ```python
 raja = int(input("Anna luku: "))
@@ -224,9 +226,9 @@ Anna luku: **8**
 
 </sample-output>
 
-Apumuuttujan `i` arvo on silmukkaan ensimmäistä kertaa mentäessä 0 ja se kasvaa jokaisella silmukan suorituskerralla kahdella.
+Hjälpvariabeln `i` har tilldelats värdet 0 före loopen, som ökar på talet med två för varje iteration.
 
-Sisäkkäisten silmukoiden tapauksessa on tilanteita, joissa sisempi silmukka tarvitsee oman indeksimuuttujansa. Seuraava ohjelma tulostaa käyttäjän antamaan lukuun perustuvan "lukupyramidin":
+När man använder kapslade loopar kan det uppstå ett behov för en ny hjälpvariabel för den inre loopen. Följande program skriver ut en ”sifferpyramid” baserat på den siffra som användaren angett:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -250,11 +252,13 @@ Anna luku: **5**
 
 </sample-output>
 
-Nyt sisemmässä silmukassa on käytössä apumuuttuja `i`, jonka arvo on aina sisempään silmukkaan mentäessä 0. Muuttujan `i` arvo kasvaa yhden välein, kunnes se on yhtä suuri kuin muuttujan `luku` nykyinen arvo, joka taas vähenee ulomman silmukan vuoksi kohti nollaa.
+I programmet använder den yttre loopen hjälpvariabeln `nummer` som minskar med ett tills det når till noll. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
 
-Sisempi silmukka tulostaa apumuuttujan `i` arvot välilyönnillä eroteltuna samalle riville. Kun sisempi silmukka päättyy, tulostetaan aina rivinvaihto komennolla `print`.
+Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `nummer`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-kommandot i den yttre loopen en ny rad.
 
-Jos et ole täysin varma, että ymmärrät esimerkkikoodin toiminnan, kokeile kopioida koodi Python Tutorin [visualisaattoriin](http://www.pythontutor.com/visualize.html#mode=edit) ja tarkastele, mitä ohjelma tulostaa ja miten muuttujien arvot vaihtuvat koodin edetessä.
+I och med att värdet på nummer minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar ”pyramiden”.
+
+Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors visualiseringsverktyg för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
 
 <in-browser-programming-exercise name="Kertotaulut" tmcname="osa03-15b_kertotaulut">
 

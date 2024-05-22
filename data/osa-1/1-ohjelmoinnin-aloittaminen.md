@@ -1,30 +1,30 @@
 ---
 path: '/osa-1/1-ohjelmoinnin-aloittaminen'
-title: 'Ohjelmoinnin aloittaminen'
+title: 'Introduktion'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Olet kirjoittanut ja suorittanut ensimmäisen Python-ohjelmasi
-- Osaat käyttää print-komentoa viestien tulostamiseen
-- Osaat laskea laskuja ohjelmoimalla
+* har du skrivit och kört ditt första Python-program
+* vet du hur man använder print-kommandot
+* kan du utföra räkneoperationer genom att programmera.
 
 </text-box>
 
-Tietokoneohjelmat koostuvat _komennoista_ eli yksinkertaisista toimintaohjeista, joita kone suorittaa yksi kerrallaan. Komennot voivat esimerkiksi suorittaa laskutoimituksia, vertailla koneen muistissa olevia tietoja, aiheuttaa muutoksen ohjelman toimintaan tai viestiä käyttäjän kanssa.
+Datorprogram består av kommandon. Varje kommando instruerar datorn att göra en viss sak. Datorn utför varje kommando ett för ett. Kommandona kan till exempel användas för att utföra räkneoperationer, jämföra saker i datorns minne, göra ändringar i hur programmet fungerar, förmedla meddelanden eller fråga något av programmets användare.
 
-Aloitetaan ohjelmointiin tutustuminen yksinkertaisesta komennosta `print`, joka _tulostaa_ tekstiä. Tulostaminen tarkoittaa käytännössä sitä, että ohjelma näyttää tekstiä ruudulla.
+Låt oss börja programmera genom att bekanta oss med `print`-kommandot som skriver ut (print) text. I praktiken betyder det att programmet visar någon text på skärmen.
 
-Esimerkiksi seuraava ohjelma tulostaa rivin "Moi kaikki!":
+Det följande programmet skriver ut texten ”Hej!”:
 
 ```python
 print("Moi kaikki!")
 ```
 
-Kun suoritamme ohjelman, se tuottaa seuraavan tuloksen:
+När programmet körs, blir resultatet det följande:
 
 <sample-output>
 
@@ -32,13 +32,13 @@ Moi kaikki!
 
 </sample-output>
 
-Huomaa, että ohjelman koodi tulee kirjoittaa tarkalleen yllä olevalla tavalla, jotta se toimii. Esimerkiksi jos yritämme tulostaa rivin käyttämättä lainausmerkkejä
+Programmet fungerar inte om koden inte skrivs exakt som den är ovan. Om man till exempel kör programmet utan citattecken, på följande sätt…
 
 ```python
 print(Moi kaikki!)
 ```
 
-ohjelma ei toimi, ja seurauksena on seuraava virheilmoitus:
+…så kommer texten ”Hej!” inte att skrivas ut. Istället får vi ett felmeddelande:
 
 <sample-output>
 
@@ -51,7 +51,7 @@ SyntaxError: invalid syntax
 
 </sample-output>
 
-Python ei siis osaa tulkita tulostettavaa tekstiä oikein, jos se ei ole lainausmerkeissä.
+Sammanfattningsvis: För att skriva ut text, måste den vara inom citattecken för att Python ska kunna tolka den korrekt.
 
 <in-browser-programming-exercise name="Hymiö" tmcname="osa01-01_hymio" height="300px">
 
@@ -59,18 +59,16 @@ Kirjoita ohjelma, joka tulostaa ruudulle hymiön: :-)
 
 </in-browser-programming-exercise>
 
-## Ohjelman eteneminen
+## Ett program med flera kommandon
 
-Kun kirjoitamme useita komentoja peräkkäin,
-ne suoritetaan järjestyksessä ylhäältä alas.
-Esimerkiksi ohjelma
+Flera kommandon som skrivs efter varandra körs i ordning från det första till det sista. Till exempel följande program…
 
 ```python
 print("Tervetuloa opettelemaan ohjelmointia!")
 print("Aluksi harjoitellaan print-komennon käyttöä.")
 print("Tämä ohjelma tulostaa ruudulle kolme riviä tekstiä.")
 ```
-tulostaa ruudulle seuraavat rivit:
+…skriver ut dessa textrader på skärmen:
 
 <sample-output>
 
@@ -113,16 +111,16 @@ Ukko Nooa, Ukko Nooa oli kunnon mies.
 </in-browser-programming-exercise>
 
 
-## Laskutoimitukset
+## Räkneoperationer
 
-Jos laitamme `print`-komennon sisälle laskutoimituksen, tulostuu ruudulle laskutoimituksen tulos. Esimerkiksi ohjelma
+Du kan också utföra räkneoperationer i `print`-kommandot. När kommandot körs, kommer resultatet av operationen att skrivas ut på skärmen. Till exempel detta program…
 
 ```python
 print(2 + 5)
 print(3 * 3)
 print(2 + 2 * 10)
 ```
-tulostaa ruudulle seuraavat rivit:
+…skriver ut följande textrader:
 
 <sample-output>
 
@@ -132,14 +130,14 @@ tulostaa ruudulle seuraavat rivit:
 
 </sample-output>
 
-Huomaa, että laskutoimituksen ympärille ei kirjoiteta lainausmerkkejä. Lainausmerkeillä merkitään _merkkijono_, joka tulostetaan ruudulle sellaisenaan. Huomaa siis seuraavien komentojen ero:
+Observera att citattecknen fattas från kommandona med räkneoperationer. Citattecknen används för att markera strängar. Inom programmering är strängar en serie bestående av tecken. Strängar kan innehålla bokstäver, siffror och alla andra typer av tecken – till exempel skiljetecken. Strängar är inte nödvändigtvis bara ord utan kan vara flera meningar långa. Strängar skrivs vanligtvis ut exakt så som de är skrivna. Därmed ger dessa två kommandon mycket olika resultat:
 
 ```python
 print(2 + 2 * 10)
 print("2 + 2 * 10")
 ```
 
-Ohjelman tulostus on:
+Programmet skriver ut:
 
 <sample-output>
 
@@ -148,14 +146,13 @@ Ohjelman tulostus on:
 
 </sample-output>
 
-Jälkimmäisessä tapauksessa Python ei laske laskutoimitusta, vaan tulostaa sen ruudulle.
-Merkkijonot siis tulostetaan ruudulle sellaisenaan riippumatta niiden sisällöstä.
+I kommandot på den andra raden utför Python inte några räkneoperationer utan skriver ut operationen som sådan, en sträng. Strängar skrivs alltså ut som sådana oavsett deras innehåll.
 
-## Kommentit
+## Kommentarer
 
-Jos rivin alussa on merkki `#`, rivi on kommentti, jolloin rivillä oleva teksti ei vaikuta ohjelman toimintaan.
+Om en rad börjar med tecknet `#`, tolkas raden som en kommentar. Det innebär att en rad som börjar med `#` inte påverkar programmets funktion på något sätt – Python ignorerar helt enkelt hela raden.
 
-Kommenttien avulla ohjelmoija voi selostaa itselleen ja muille ohjelmoijille, miten ohjelma toimii. Esimerkiksi seuraavassa ohjelmassa kommentit selittävät käytettyä laskukaavaa:
+Kommentarer kan användas för att beskriva hur ett program fungerar – både för programmeraren och för andra personer som läser koden. I det här programmet finns en kommentar som beskriver räkneoperationen som utförs:
 
 ```python
 print("Tuntien määrä vuodessa:")
@@ -163,7 +160,7 @@ print("Tuntien määrä vuodessa:")
 print(365*24)
 ```
 
-Kun ohjelma suoritetaan, kommenteissa oleva teksti ei näy mitenkään ohjelman käyttäjälle:
+När programmet körs, kommer kommentaren inte att synas för användaren:
 
 <sample-output>
 
@@ -172,7 +169,7 @@ Tuntien määrä vuodessa:
 
 </sample-output>
 
-Lyhyempi kommentti voi olla myös rivin lopussa:
+Korta kommentarer kan också skrivas i slutet på en rad, på följande sätt:
 
 ```python
 print("Tuntien määrä vuodessa:")

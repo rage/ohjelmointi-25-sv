@@ -1,28 +1,28 @@
 ---
 path: '/osa-5/3-dictionary'
-title: 'Sanakirja'
+title: 'Lexikon'
 hidden: false
 ---
 
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, millainen tietorakenne on sanakirja
-- Osaat käyttää sanakirjaa erityyppisten avainten ja arvojen kanssa
-- Osaat käydä läpi sanakirjan sisällön
-- Tunnet joitakin sanakirjan käyttötarkoituksia ohjelmoinnissa
+* känner du till datatypen lexikon
+* kan du använda lexikon med olika typer av nycklar och värden
+* vet du hur man går igenom värden i ett lexikon
+* har du koll på olika användningsområden för lexikon.
 
 </text-box>
 
-Lista on kätevä tietorakenne, mutta sen rajoituksena on, että alkiot ovat indekseissä 0, 1, 2, jne. Tämä hankaloittaa alkioiden etsimistä listalta: jotta löydämme tietyn alkion, on pahimmassa tapauksessa käytävä läpi koko lista.
+Listor kan vara händiga i flera situationer, men deras svaga punkt är att elementen hämtas med hjälp av index (0, 1, 2 o.s.v.). Om du vill hitta ett element i en lista måste du alltså veta dess index, eller alternativt gå igenom hela listan.
 
-Tutustumme seuraavaksi _sanakirjaan_, (englanniksi _dictionary_) joka on listan lisäksi toinen Pythonin perustietorakenne. Sanakirjassa jokainen alkio koostuu _avaimesta_ ja _arvosta_, ja voimme etsiä ja muuttaa tietoa avaimen perusteella.
+En ytterligare central datastruktur i Python är lexikon, som vi nu ska se på. I lexikon är elementen indexerade enligt nycklar. Varje nyckel har ett värde. Värden som lagrats i ett lexikon kan hämtas och ändras med hjälp av dess nyckel.
 
-## Sanakirjan käyttäminen
+## Att använda lexikon
 
-Seuraava ohjelma näyttää esimerkin sanakirjan käyttämisestä:
+Det följande visar hur datastrukturen hos lexikon fungerar. Här är ett enkelt lexikon som innehåller översättningar från finska till svenska:
 
 ```python
 sanakirja = {}
@@ -44,9 +44,9 @@ monkey
 
 </sample-output>
 
-Merkintä `{}` luo tyhjän sanakirjan, minkä jälkeen voimme lisätä sanakirjaan sisältöä. Tässä tapauksessa lisäämme kolme avainta `"apina"`, `"banaani"` ja `"cembalo"`, joita vastaavat arvot `"monkey"`, `"banana"` ja `"harpsichord"`. Lopuksi tulostamme koko sanakirjan sisällön ja sitten avaimen `"apina"` arvon.
+Notationen `{}` skapar ett tomt lexikon dit vi kan lägga till element. Tre stycken nyckel-värdepar skapas: `”apina”` är knutet till `”apa”`, `”banaani”` till `”banan”` och `”cembalo`” till `”cembalo”`. Till slut skriver vi ut antalet nyckel-värdepar i lexikonet, lexikonets innehåll samt det värde som tillhör nyckeln `”apina”`.
 
-Voisimme käyttää tätä sanakirjaa vaikka seuraavasti:
+Efter att vi har skapat ett lexikon kan vi också använda det med indata från användaren:
 
 ```python
 sana = input("Anna sana: ")
@@ -56,7 +56,7 @@ else:
     print("Sanaa ei löytynyt")
 ```
 
-Tässä käytössä on `in`-operaattori, joka sanakirjan tapauksessa tarkastaa, onko siinä tiettyä avainta. Mahdollisia ohjelman tulostuksia:
+Märk hur vi använder `in`-operatorn ovan. När vi använder operatorn för variabler med typen lexikon, kollar operatorn om den första operanden finns bland nycklarna i lexikonet. Så här kan det se ut när programmet körs:
 
 <sample-output>
 
@@ -72,9 +72,9 @@ Sanaa ei löytynyt
 
 </sample-output>
 
-## Mitä sanakirjassa voi olla?
+## Vad kan lagras i ett lexikon?
 
-Vaikka tietorakenteen nimi on sanakirja, siinä ei ole usein sanakirjaa vaan jotain muuta tietoa. Esimerkiksi seuraavassa sanakirjassa avaimet ovat merkkijonoja ja arvot ovat kokonaislukuja:
+Datatypen kallas lexikon, men det innebär inte att man bara skulle kunna lagra strängar där. I det här exemplet är nycklarna strängar men värdena är heltal:
 
 ```python
 tulokset = {}
@@ -83,7 +83,7 @@ tulokset["Liisa"] = 5
 tulokset["Kalle"] = 2
 ```
 
-Seuraavassa sanakirjassa puolestaan avaimet ovat kokonaislukuja ja arvot ovat listoja:
+Här är nycklarna heltal medan värdena är listor:
 
 ```python
 listat = {}
@@ -92,9 +92,9 @@ listat[42] = [5, 4, 5, 4, 5]
 listat[100] = [5, 2, 3]
 ```
 
-## Avaimista ja arvoista
+## Hur nycklar och värden fungerar
 
-Tietty avain voi esiintyä sanakirjassa enintään kerran. Jos asetamme samalle avaimelle uuden arvon, korvaa uusi arvo vanhan arvon:
+Varje nyckel kan endast förekomma en gång i ett lexikon. Om du lägger till ett nytt värde med en nyckel som redan finns i lexikonet, kommer det ursprungliga värdet kopplat till nyckeln att ersättas med det nya värdet:
 
 ```python
 sanakirja["suuri"] = "big"
@@ -108,7 +108,7 @@ large
 
 </sample-output>
 
-Sanakirjan avaimen vaatimuksena on, että sen tulee olla muuttumaton. Tämän vuoksi emme voi käyttää listaa avaimena, koska lista voi muuttua. Esimerkiksi seuraava koodi ei toimi:
+Alla nycklar i ett lexikon måste vara oföränderliga. Det betyder att en lista inte kan vara en nyckel, eftersom listor kan ändras på. Den här koden ger till exempel ett fel:
 
 ```python
 sanakirja[[1, 2, 3]] = 5
@@ -120,15 +120,15 @@ TypeError: unhashable type: 'list'
 
 </sample-output>
 
-<text-box variant="hint" name="Hajautustaulu">
+<text-box variant="hint" name="Hashtabell">
 
-Python tallentaa sanakirjan sisällön sisäisesti tietorakenteena nimeltä _hajautustaulu_ (_hash table_). Ideana on laskea avaimelle _hajautusarvo_ (_hash value_), jonka avulla määräytyy avaimen paikka muistissa. Yllä oleva virheilmoitus ilmaisee, että listalle ei voida laskea hajautusarvoa, joten se ei kelpaa sanakirjan avaimeksi.
+Märk ordet ”unhashable” i felmeddelandet ovan. Det här är en hänvisning till de inte strukturerna i ett lexikon. Python lagrar innehållet i ett lexikon i en hashtabell. Varje nyckel har ett hashvärde som indikerar var nyckeln finns lagrad i minnet. Felmeddelandet ovan indikerar att en lista inte kan förvandlas till ett hashvärde, och kan därmed inte användas som en nyckel i lexikonet.
 
-Kurssilla _Tietorakenteet ja algoritmit_ tutustutaan tarkemmin hajautustauluihin, eli sanakirjojen pellin alla olevaan mekanismiin.
+Kursen Datastrukturer och algoritmer ger en större insikt i hashtabeller.
 
 </text-box>
 
-Huomaa, että sanakirjassa olevaa avainta vastaavan arvon ei tarvitse olla muuttumaton, vaan voimme tallentaa mitä tahansa tietoa arvoiksi. Sama arvo voi myös esiintyä samassa hakemistossa enemmän kuin yhden kerran.
+Till skillnad från nycklar, kan värden i ett lexikon ändra och därmed kan vilken som helst typ av data lagras som ett värde. Ett och samma värde kan också vara kopplat till flera nycklar i samma lexikon.
 
 <programming-exercise name='Kertaa kymmenen' tmcname='osa05-10b_kertaa_kymmenen'>
 
@@ -176,9 +176,9 @@ print(k[5])
 
 </programming-exercise>
 
-## Sanakirjan läpikäynti
+## Gå igenom ett lexikon
 
-Sanakirjan läpikäyntiin voidaan käyttää tuttuun tapaan `for`-silmukkaa. Rakenne `for avain in sanakirja` käy läpi kaikki sanakirjan avaimet yksi kerrallaan. Esimerkiksi seuraava koodi tulostaa kaikki sanakirjan avaimet ja niiden arvot:
+Den bekanta `for element in samling` -loopen kan också användas för att gå igenom ett lexikon. När det används direkt hos ett lexikon kommer loopen att en för en gå igenom nycklarna i lexikonet. I följande exempel skrivs varje nyckel och respektive värde:
 
 ```python
 sanakirja = {}
@@ -203,7 +203,7 @@ arvo: harpsichord
 
 </sample-output>
 
-Python tarjoaa myös mahdollisuuden käydä läpi samaan aikaan sekä avaimet että vastaavat arvot. Tämä onnistuu käyttämällä `items`-metodia, joka palauttaa kaikki avaimet ja arvot yksi kerrallaan:
+Ibland behöver du gå igenom allt innehåll i ett lexikon. Då kan du använda metoden `items` som returnerar alla nycklar och värden, ett par i sänder:
 
 ```python
 
@@ -212,11 +212,11 @@ for avain, arvo in sanakirja.items():
     print("arvo:", arvo)
 ```
 
-Huomaa, että läpikäynnissä avaimet tulevat samassa järjestyksessä kuin ne on lisätty sanakirjaan. Sanakirjan avainten järjestyksellä ei kuitenkaan yleensä ole merkitystä sovelluksissa.
+I exemplen ovan märkte du kanske att nycklar behandlas i den ordning som de lagts till i lexikonet. Eftersom nycklarna behandlas enligt deras hashvärden, borde ordningen inte ha någon skillnad i programmen. I flera äldre versioner av Python är det dessutom inte garanterat att ordningen är den samma som nycklarna lagts till.
 
-## Sanakirjan edistyneempi käyttö
+## Några mer avancerade sätt att använda lexikon
 
-Tarkastellaan tilannetta, jossa listassa on joukko sanoja:
+Låt oss kika på en lista med ord:
 
 ```python
 sanalista = [
@@ -226,9 +226,9 @@ sanalista = [
 ]
 ```
 
-Haluamme analysoida sanalistaa eri tavoin, kuten selvittää, montako kertaa kukin sana listalla esiintyy.
+Vi skulle vilja analysera den här ordlistan på olika sätt. Vi är till exempel intresserade av hur många gånger de olika orden förekommer i listan.
 
-Sanakirja sopii tähän tilanteeseen hyvin. Ideana on käydä listan sanat läpi yksi kerrallaan ja ylläpitää sanakirjassa tietoa sanojen esiintymiskerroista:
+Ett lexikon fungera väl för att hålla reda på sådan här information. I exemplet nedan går vi igenom orden i listan. Vi använder sedan orden som nycklar i ett lexikon som vi skapat, så att värdet som är kopplat till varje nyckel indikerar hur många gånger det specifika ordet har förekommit:
 
 ```python
 def lukumaarat(lista):
@@ -245,7 +245,7 @@ def lukumaarat(lista):
 print(lukumaarat(sanalista))
 ```
 
-Ohjelman tulostus on seuraavassa:
+Programmet skriver ut det följande:
 
 <sample-output>
 
@@ -253,7 +253,7 @@ Ohjelman tulostus on seuraavassa:
 
 </sample-output>
 
-Tehdään vielä toinen sanalistaa käsittelevä metodi, joka jaottelee listalla olevat sanat niiden alkukirjaimen mukaan:
+Om vi då skulle vela ordna orden enligt den första bokstaven i varje ord? Här kunde vi också kunna använda lexikon:
 
 ```python
 def alkukirjaimen_mukaan(lista):
@@ -275,9 +275,7 @@ for avain, arvo in ryhmat.items():
         print(sana)
 ```
 
-Funktio toimii pitkälti saman periaatteen mukaan kuin edellisen esimerkin funktio. Tällä kertaa kuitenkin sanakirjassa avaimiin (eli alkukirjaimiin) liittyvät arvot ovat listoja.
-
-Ohjelman tulostus on seuraavassa:
+Funktionens struktur liknar mycket den som finns i det tidigare exemplet, men den här gången är värden lagrade i form av listor. Programmet skriver ut det följande:
 
 <sample-output>
 
@@ -416,9 +414,9 @@ lopetetaan...
 
 </programming-exercise>
 
-## Avaimien poistaminen sanakirjasta
+## Att ta bort nycklar och värden från ett lexikon
 
-Sanakirjasta on mahdollista myös poistaa avain-arvo-pareja. Menetelmiä tähän on kaksi. Ensimmäinen näistä on komento `del`:
+Det är naturligtvis möjligt att ta bort nyckel-värdepar från ett lexikon. Det finns två sätt att göra det här. Det första sättet är att använda kommandot `del`:
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "Lehtori"}
@@ -432,7 +430,7 @@ print(henkilokunta)
 
 </sample-output>
 
-Jos komentoa `del` kutsutaan avaimille, joita sanakirjassa ei ole, seurauksena on virhe:
+Om du försöker använda `del`-kommandot för att ta bort en nyckel som inte finns i listan, kommer ett fel att uppstå:
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
@@ -450,7 +448,7 @@ KeyError: 'Jukka'
 
 </sample-output>
 
-Ennen poistoa on siis syytä tarkistaa, että poistettava avain löytyy sanakirjasta:
+Därmed lönar det sig att kolla om en nyckel existerar före du försöker avlägsna den från listan:
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
@@ -461,7 +459,7 @@ else:
   print("Poistettavaa henkilöä ei löytynyt henkilökunnasta")
 ```
 
-Toinen vaihtoehto alkion poistamiseen on metodi `pop`:
+Ett annat sätt att ta bort element från listan är att använda metoden `pop`:
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
@@ -477,9 +475,9 @@ Poistettiin lehtori
 
 </sample-output>
 
-Metodi `pop` siis myös palauttaa poistettua avainta vastaavan arvon.
+Metoden `pop` returnerar också värdet på elementet som togs bort.
 
-Oletusarvoisesti myös `pop` aiheuttaa virheen, jos sanakirjasta yritetään poistaa avain, jota siellä ei ole. Metodille on kuitenkin mahdollista antaa toisena parametrina _oletusarvoinen paluuarvo_, joka palautetaan siinä tilanteessa, kun poistettavaa ei löydy. Esimerkiksi arvo `None`, joka tarkoittaa "ei mitään", sopii hyvin tälläisiin tilanteisiin:
+Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som ett andra argument ge till funktionen ett return-värde som funktionen kan returnera då en nyckel saknas. Värdet `None` kan till exempel användas här:
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
@@ -496,7 +494,7 @@ Poistettavaa henkilöä ei löytynyt henkilökunnasta
 
 </sample-output>
 
-Kannattaa huomata, että jos on tarvetta poistaa koko sanakirjan sisältö:
+Obs! Om du vill tömma ett lexikon och försöker göra det med en for-loop…
 
 ```python
 henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
@@ -504,7 +502,7 @@ for avain in henkilokunta:
   del henkilokunta[avain]
 ```
 
-seurauksena on virheilmoitus
+…kommer du att få ett felmeddelande:
 
 <sample-output>
 
@@ -512,9 +510,9 @@ RuntimeError: dictionary changed size during iteration
 
 </sample-output>
 
-Syynä on se, että käytäessä läpi rakennetta `for`-lauseella, ei sen sisältöä saa muuttaa.
+När man går igenom en samling med en for-loop, kan man inte ändra på samlingens innehåll så länge for-loopen är igång.
 
-Koko sanakirjan tyhjennys onnistuu komennolla:
+Lyckligtvis har lexikon en inbyggd metod som kan användas istället:
 
 ```python
 henkilokunta.clear()
@@ -571,16 +569,16 @@ HUOM! Älä muodosta jokaista lukusanaa yksitellen, vaan mieti, miten voisit hy�
 
 </programming-exercise>
 
-## Sanakirja tiedon ryhmittelyssä
+## Använda lexikon för strukturerade data
 
-Voimme käyttää sanakirjaa myös tiedon ryhmittelyssä. Esimerkiksi seuraava koodi luo sanakirjan, jossa on tietoa henkilöstä:
+Lexikon fungerar bra för att strukturera data. Följande kodsnutt skapar ett lexikon som innehåller information om en person:
 
 ```python
 henkilo = {"nimi": "Pirjo Python", "pituus": 154, "paino": 61, "ikä:" 44}
 ```
 
-Tämä tarkoittaa, että henkilön nimi on Pirjo Python, pituus on 154, paino on 61 ja ikä on 44.
-Huomaa, että olisimme voineet tallentaa tiedot myös näin muuttujiin:
+Här har vi alltså en person som heter Peppa Python. Hennes längd är 154, vikt 61 och ålder 44. Samma information kunde också lagras i skilda variabler:
+
 
 ```python
 nimi = "Pirjo Python"
@@ -589,15 +587,15 @@ paino = 61
 ika = 44
 ```
 
-Sanakirjan etuna on kuitenkin, että se kokoaa kaikki samaan asiaan liittyvät tiedot yhteisen nimen alle, jonka kautta voimme viitata tietoihin. Periaatteessa lista tarjoaa saman edun:
+Fördelen med lexikon är att det är en samling. Det samlar relaterade data under en variabel och det är enkelt att komma åt den information man är ute efter. Samma funktionalitet erbjuds också av listor:
 
 ```python
 henkilo = ["Pirjo Python", 153, 61, 44]
 ```
 
-Listan huono puoli on kuitenkin, että ohjelmoijan on muistettava, mihin kohtaan listaa mikäkin arvo tallennetaan. Pitää siis muistaa esimerkiksi, että `henkilo[2]` tarkoittaa painoa ja `henkilo[3]` ikää. Sanakirjassa tätä ongelmaa ei ole, sillä kaikki sanakirjassa olevat erilliset tiedot on tallennettu selkeästi nimetyn avaimen taakse.
+Men med listor måste programmeraren minnas vilket index används för vilken information. Det finns inget som indikerar att `person[2]` innehåller vikten och `person[3]` åldern hos en person. När man använder lexikon, undviker man det här problemet eftersom all information finns lagrad under namngivna nycklar.
 
-Esimerkiksi voimme käsitellä henkilöitä näin:
+Om vi antar att det finns flera personer som definierats i samma format, kan vi komma åt deras information på följande sätt:
 
 ```python
 henkilo1 = {"nimi": "Pirjo Python", "pituus": 154, "paino": 61, "ikä": 44}

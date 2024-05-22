@@ -1,27 +1,23 @@
 ---
 path: '/osa-2/3-ehtojen-yhdistäminen'
-title: 'Ehtojen yhdistäminen'
+title: 'Kombinera villkor'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää `and`-, `or`- ja `not`-operaattoreita ehdoissa
-- Osaat kirjoittaa sisäkkäisiä ehtolauseita
+* vet du hur man använder operatorerna `and`, `or` och `not` i villkor
+* kan du skriva kapslade if-satser.
 
 </text-box>
 
-## Loogiset operaattorit
+## Logiska operatorer
 
-Ehtojen yhdistämisessä voidaan käyttää loogisia operaattoreita `and` ja `or`.
-Operaattori `and` vaatii, että useampi ehto pätee samaan aikaan,
-ja operaattori `or` vaatii, että yksi tai useampi ehdoista pätee.
+Du kan kombinera villkor med de logiska operatorerna `and` och `or`. Operatorn `and` innebär att alla villkor måste vara sanna samtidigt. Operatorn `or` kräver att minst ett av villkoren ska vara sant.
 
-Esimerkiksi ehto `luku >= 5 and luku <= 8` vaatii,
-että luku on samaan aikaan ainakin 5 ja enintään 8.
-Toisin sanoen luvun tulee olla välillä 5..8.
+Till exempel villkoret `nummer >= 5 and nummer <= 8` bestämmer att nummer måste samtidigt vara minst fem och högst åtta – alltså mellan fem och åtta.
 
 ```python
 luku = int(input("Anna luku: "))
@@ -29,9 +25,7 @@ if luku >= 5 and luku <= 8:
     print("Luku on välillä 5..8")
 ```
 
-Ehto `luku < 5 or luku > 8` puolestaan vaatii,
-että luku on alle 5 tai yli 8.
-Toisin sanoen luku ei saa olla välillä 5..8.
+Villkoret `nummer < 5 or nummer > 8` bestämmer att nummer måste vara mindre än fem eller större än åtta – alltså inte mellan fem till åtta.
 
 ```python
 luku = int(input("Anna luku: "))
@@ -39,24 +33,24 @@ if luku < 5 or luku > 8:
     print("Luku ei ole välillä 5..8")
 ```
 
-Seuraava taulukko näyttää operaattoreiden toiminnan eri tilanteissa:
+Den här sanningstabellen beskriver hur operatorerna fungerar i olika situationer:
 
-a   | b   | a and b | a or b |
-:--:|:---:|:-------:|:------:|
-False | False | False | False |
-True | False | False | True |
-False | True | False | True |
-True | True | True | True |
+a     | b     | a and b | a or b |
+:----:|:-----:|:-------:|:------:|
+False | False | False   | False  |
+True  | False | False   | True   |
+False | True  | False   | True   |
+True  | True  | True    | True   |
 
-Voimme käyttää ehdoissa myös operaattoria `not`, joka muuttaa totuusarvon
-käänteiseksi:
+Ibland kan det vara händigt att veta om något värde inte är sant. Operatorn `not` byter värdet på ett villkor till det motsatta:
 
-a   | not a
-:--:|:----:
+
+a     | not a
+:----:|:-----:
 True  | False
 False | True
 
-Esimerkiksi voisimme toteuttaa äskeisen koodin myös näin:
+Det ovanstående exemplet med talen 5–8 borträknade kan också skrivas så här:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -64,23 +58,20 @@ if not (luku >= 5 and luku <= 8):
     print("Luku ei ole välillä 5..8")
 ```
 
-<text-box variant='hint' name='Ehtojen ketjuttaminen'>
+Framför allt inom programmering kallas logiska operatorer Boolean-operatorer.
 
-Ehto `x >= a and x <= b` on tavallinen tapa testata,
-onko luku `x` välillä `a`..`b`.
-Tällainen ehto toimii samalla tavalla eri ohjelmointikielissä.
 
-Python-kielen erikoisuutena on, että myös lyhyempi ehto
-`a <= x <= b` toimii, eli ehtoja on mahdollista ketjuttaa.
-Tällaisia ehtoja käytetään kuitenkin melko harvoin,
-ehkä tottumuksesta muihin ohjelmointikieliin.
+<text-box variant='hint' name='Kombinerade villkor – förenklat'>
+
+Villkoret `x >= a and x <= b` är ett mycket vanligt sätt att bestämma om talet `x` är i intervallet `a` till `b`. Den här strukturen fungerar i flera programmeringsspråk.
+
+Python ger också oss möjligheten att använda oss av ett förenklat uttryckssätt för att kombinera villkor: `a <= x <= b` ger samma resultat som den längre versionen med `and`. Den här notationen är kanske bekant från matematikens värld men den används inte så ofta i Python – kanske för att många andra programmeringsspråk saknar liknande syntax.
 
 </text-box>
 
-## Lisää ehtoja
+## Kombinera och kedja villkor
 
-Seuraava ohjelma kysyy käyttäjältä neljä lukua ja selvittää sitten
-luvuista suurimman ehtojen avulla:
+Det här programmet ber användaren att ge fyra siffror. Sedan kollar programmet vilken siffra som är störst med hjälp av några villkor:
 
 ```python
 n1 = int(input("Anna luku 1: "))
@@ -110,7 +101,7 @@ Anna luku 4: **1**
 
 </sample-output>
 
-Esimerkissä ensimmäinen ehto `n1 > n2 and n1 > n3 and n1 > n4` on tosi vain, mikäli kaikki kolme ehtoa ovat tosia.
+I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre ”delvillkor” är sanna.
 
 <in-browser-programming-exercise name="Iän tarkistus" tmcname="osa02-08_ian_tarkistus">
 
@@ -249,9 +240,9 @@ FizzBuzz
 
 </in-browser-programming-exercise>
 
-## Sisäkkäiset ehtolauseet
+## Kapslade if-satser
 
-Ehtolauseita voidaan kirjoittaa toistensa sisään. Esimerkiksi seuraava ohjelma tunnistaa positiivisista luvuista parittomat ja parilliset:
+If-satser kan kapslas inom andra if-satser. Till exempel följande program kollar först om en siffra är noll före det kollar om talet är jämnt eller inte.
 
 ```python
 luku = int(input("Anna luku: "))
@@ -265,7 +256,7 @@ else:
     print("Luku on negatiivinen")
 ```
 
-Esimerkkitulostus kolmella eri syötteellä:
+Så här kan programmet fungera:
 
 <sample-output>
 
@@ -280,9 +271,9 @@ Luku on negatiivinen
 
 </sample-output>
 
-Sisäkkäisiä ehtolauseita käytettäessä on tärkeää muistaa oikeat sisennykset. Esimerkiksi `else`-haara yhdistetään oikeaan `if`-lauseeseen juuri saman sisennyksen perusteella.
+När man kapslar if-satser är det kritiskt att indenteringen blir rätt. Indenteringen bestämmer vilka grenar som är länkade ihop. Till exempel en if-gren och en else-gren med samma inledande mellanrum tolkas som grenar av en och samma if-sats.
 
-Huomaa, että monissa tapauksissa voidaan käyttää joko sisäkkäisiä ehtolauseita tai loogisia operaattoreita. Seuraava esimerkki on toiminnallisesti sama kuin edellinen esimerkki, eli se tulostaa tiedon siitä, onko positiivinen kokonaisluku parillinen vai pariton.
+Ofta kan likadana resultat åstadkommas både med logiska operatorer och kapslade if-satser. Det följande exemplet fungerar helt på samma sätt som det tidigare exemplet:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -295,8 +286,7 @@ else:
     print("Luku on negatiivinen.")
 ```
 
-Tilanteesta riippuu, kumpaa tapaa kannattaa käyttää. Tässä esimerkissä ensimmäinen vaihtoehto tuntuu useimpien mielestä paremmalta.
-
+Man kan inte på rak arm säga vilkendera lösning är bättre. Situationen bestämmer ofta hur det lönar sig att bygga upp if-satsen på ett logiskt sätt. I det här exemplet tycker flera personer att versionen med kapsling är mera intuitiv.
 
 <in-browser-programming-exercise name="Karkausvuosi" tmcname="osa02-12_karkausvuosi">
 

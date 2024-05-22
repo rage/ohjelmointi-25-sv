@@ -1,20 +1,20 @@
 ---
 path: '/osa-4/6-lisaa-rakenteista'
-title: 'Lisää merkkijonoista ja listoista'
+title: 'Mera strängar och listor'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tunnet lisää tapoja erottaa osia merkkijonosta tai listasta
-- Ymmärrät, mitä tarkoittaa merkkijonon muuttumattomuus
-- Osaat käyttää metodeita `count` ja `replace`
+* kommer du att vara bekant med flera metoder för att extrahera delar av strängar och listor
+* förstår du vad oföränderlighet hos strängar innebär
+* kan du använda dig av metoderna `count` och `replace`.
 
 </text-box>
 
-Olemme käyttäneet aiemmin `[]`-syntaksia merkkijonon osajonon erottamiseen:
+Du är redan bekant med syntaxen `[]` för att ta fram en delsträng:
 
 ```python
 mjono = "esimerkki"
@@ -27,7 +27,7 @@ merk
 
 </sample-output>
 
-Sama syntaksi toimii myös listoissa, ja voimme erottaa sen avulla listan osan:
+Samma syntax fungerar med listor. Dellistor kan extraheras på samma sätt som delsträngar:
 
 ```python
 lista = [3,4,2,4,6,1,2,4,2]
@@ -40,9 +40,9 @@ print(lista[3:7])
 
 </sample-output>
 
-## Lisää erottamisesta
+## Mera extrahering
 
-Itse asiassa `[]`-syntaksi toimii hyvin samalla periaatteella kuin `range`-funktio, eli voimme antaa sille myös askeleen:
+Syntaxen `[]` fungerar faktiskt mycket lika som `range`-funktionen, vilket innebär att vi också kan ge den ett steg:
 
 ```python
 mjono = "esimerkki"
@@ -58,7 +58,7 @@ eiek
 
 </sample-output>
 
-Jos emme anna jotain arvoa, oletuksena koko sisältö valitaan mukaan. Tämän avulla voimme tehdä seuraavan lyhyen ohjelman, joka kääntää merkkijonon:
+Om vi lämnar bort något av indexen kommer operatorn att inkludera alla element. Tack vare detta kan vi till exempel skriva ett mycket kort program som vänder om en sträng:
 
 ```python
 mjono = input("Kirjoita merkkijono: ")
@@ -155,16 +155,16 @@ print(lista2)
 
 </programming-exercise>
 
-## Merkkijonoa ei voi muuttaa
+## Strängar är oföränderliga
 
-Merkkijonoilla ja listoilla on paljon yhteistä, ja useimmat operaatiot toimivat samalla tavalla sekä merkkijonoille että listoille. Kuitenkin erona on, että merkkijonoa _ei voi muuttaa_. Esimerkiksi seuraava koodi ei toimi tarkoitetulla tavalla:
+Strängar och listor har en hel del likheter, framför allt då det kommer till hur de fungerar med olika operatorer. En nyckelskillnad är att strängar är oföränderliga. Det betyder att de inte kan ändras.
 
 ```python
 mjono = "esimerkki"
 mjono[0] = "a"
 ```
 
-Koska merkkijonoa ei voi muuttaa, ohjelman suoritus aiheuttaa virheen:
+Strängar kan inte ändras på, så det här programmet kommer att ge ett felmeddelande:
 
 <sample-output>
 
@@ -172,11 +172,11 @@ TypeError: 'str' object does not support item assignment
 
 </sample-output>
 
-Samankaltainen virhe seuraa, jos yritetään esimerkiksi järjestää merkkijonoa järjestykseen `sort`-metodilla.
+Ett liknande fel uppstår om du försöker ordna en sträng med `sort`-metoden.
 
-Vaikka merkkijonoa ei voi muuttaa, voimme silti sijoittaa merkkijonon paikalle toisen merkkijonon.
+Strängar är oföränderliga, men variablerna som lagrar dem är inte det. En sträng kan ersättas med en annan sträng.
 
-Onkin tärkeää huomata ero seuraavien esimerkkien välillä:
+De följande exemplen är alltså till sin grund olika:
 
 ```python
 lista = [1,2,3]
@@ -192,13 +192,13 @@ mjono = mjono + "!"
 
 <img src="4_4_2.png">
 
-Ensimmäisessä esimerkissä listan sisältö muuttuu. Toisessa esimerkissä alkuperäinen merkkijono korvataan toisella merkkijonolla. Alkuperäinen merkkijono jää muistiin, mutta siihen ei enää ole viittausta, joten sitä ei voi enää käyttää ohjelmassa.
+Det första exemplet ändrar på innehållet i den lista som man hänvisar till. I det andra exemplet ersätts hänvisningen till den ursprungliga strängen med en hänvisning till en ny sträng. Den ursprungliga strängen finns fortfarande någonstans i datorns minne, men det saknas en referens till strängen så den kan inte längre användas i programmet.
 
-Tähän palataan tarkemmin ensi viikolla, kun viittauksia listoihin käsitellään tarkemmin.
+Vi återkommer till det här ämnet senare. Då utforskar vi hänvisningar till listor närmare.
 
-## Lisää metodeita
+## Mera metoder hos listor och strängar
 
-Metodin `count` avulla voidaan laskea osajonon esiintymien määrä. Metodi toimii samaan tapaan sekä merkkijonon että listan kanssa. Esimerkiksi näin:
+Metoden `count` räknar antalet gånger ett element eller en delsträng finns i en lista eller sträng:
 
 ```python
 mjono = "Vesihiisi sihisi hississä"
@@ -215,9 +215,9 @@ print(lista.count(1))
 
 </sample-output>
 
-Huomaa, että metodi `count` ei laske päällekkäisiä esiintymiä. Esimerkiksi metodin mukaan merkkijonossa `aaaa` esiintyy kaksi kertaa osajono `aa`, vaikka oikeastaan esiintymiä olisi kolme, jos päällekkäiset esiintymät sallitaan.
+Metoden räknar inte överlappande förekomster. Till exempel i strängen `aaaa` räknar metoden upp till två förekomster av delsträngen `aa`, även om det finns tre stycken om överlappande förekomster skulle tillåtas.
 
-Metodin `replace` avulla voidaan muodostaa uusi merkkijono, jossa tietty merkkijono on korvattu toisella merkkijonolla. Esimerkiksi:
+Metoden `replace` skapar en ny sträng där en specifik delsträng har ersatts med en annan sträng:
 
 ```python
 mjono = "Moi kaikki"
@@ -231,7 +231,7 @@ Hei kaikki
 
 </sample-output>
 
-Metodi korvaa kaikki merkkijonon esiintymät:
+Metoden påverkar alla delsträngar som hittas:
 
 ```python
 lause = "hei heilan löysin minä heinikosta hei"
@@ -244,7 +244,7 @@ HEI HEIlan löysin minä HEInikosta HEI
 
 </sample-output>
 
-Tyypillinen virhe `replace`-metodia käytettäessä on unohtaa, että merkkijonot ovat muuttumattomia:
+När `replace`-metoden används, är ett vanligt misstag att man glömmer att strängar är oföränderliga:
 
 ```python
 mjono = "Python on kivaa"
@@ -260,7 +260,7 @@ Python on kivaa
 
 </sample-output>
 
-Jos vanhaa jonoa ei tarvita, voidaan uusi jono sijoittaa samaan muuttujaan:
+Om den gamla strängen inte längre behövs kan man tilldela den nya strängen till samma variabel:
 
 ```python
 mjono = "Python on kivaa"
@@ -384,13 +384,13 @@ print(pisin_naapurijono(lista))
 
 </programming-exercise>
 
-## Laajemman ohjelman tekeminen
+## Skapa ett större programmeringsprojekt
 
-Tämän osan huipentaa ensimmäinen hieman laajempi ohjelma, jota tehdessäsi pääset soveltamaan kaikkea tähän asti opeteltua.
+Den här fjärde modulen avslutas med ett lite större programmeringsprojekt där du får utnyttja det du lärt dig hittills.
 
-Sääntö numero yksi isompaa tai oikeastaan mitä tahansa ohjelmaa tehdessä on se, että ei kannata yrittää ratkaista kaikkia ongelmia yhtä aikaa. Ohjelma kannattaa rakentaa pienistä paloista kuten sopivista apufunktioista, ja kunkin palan toimivuus kannattaa varmistaa ennen kun alkaa rakentaa seuraavaa palaa. Jos näin ei tee, on aika varmaa että edessä on suuri kaaos.
+Den viktigaste regeln när man börjar med ett programmeringsprojekt är att man inte ska försöka lösa alla problem samtidigt. Programmet ska bestå av mindre delar, till exempel hjälpfunktioner. Du ska testa att varje del fungerar före du fortsätter framåt. Om du försöker göra för mycket samtidigt kommer du högst antagligen hamna i en situation som präglas av kaos och mera kaos.
 
-Isompaa ohjelmaa rakentaessa on järkevää testailla ohjelman funktioita aluksi erillään pääohjelmasta. Yksi helppo tapa on tehdä myös pääohjelmasta oma funktio, esimerkiksi nimeltään `main`, jonka ohjelman funktioiden ulkopuoleinen osa käynnistää. Esimerkiksi seuraavaa tehtävää voitaisiin ruveta lähestymään näin:
+Du kommer att behöva ett sätt att testa dina funktioner utanför huvudfunktionen. Du kan uppnå det här genom att definiera en skild huvudfunktion som du anropar utanför alla andra funktioner i programmet. Det är enkelt att tillfälligt kommentera bort ett funktionsanrop när man testar programmet. De första stegen i utförandet av programmeringsprojektet skulle kunna se ut så här:
 
 ```python
 def main():
@@ -400,7 +400,7 @@ def main():
 main()
 ```
 
-Näin ohjelman apufunktioita on mahdollista testata ilman pääohjelman suorittamista:
+Nu kan hjälpfunktionerna köras utan att huvudfunktionen körs:
 
 ```python
 # apufunktio, joka laskee arvosanan pisteiden perusteella
@@ -420,11 +420,11 @@ tulos = arvosana(pistemaara)
 print(tulos)
 ```
 
-## Tiedon välittäminen funktiosta toiseen
+## Skicka data från en funktion till en annan
 
-Jos ohjelma koostuu useista funktioista, nousee esiin kysymys, miten tietoa siirretään funktiosta toiseen.
+När ett program innehåller flera funktioner uppstår en fråga: hur skickar jag data från en funktion till en annan?
 
-Seuraavassa on esimerkki ohjelmasta, joka lukee käyttäjältä joukon kokonaislukuarvoja. Sen jälkeen ohjelma tulostaa arvot ja tekee niille vielä "analyysin". Ohjelma on jaettu kolmeen erilliseen funktioon:
+I följande exempel frågar man efter några heltal från användaren. Programmet skriver sedan ut dessa värden och utför en ”analys” på dem. Programmet är uppdelat i tre skilda funktioner:
 
 ```python
 def lue_kayttajalta(maara: int):
@@ -453,7 +453,7 @@ analyysin_tulos = analysoi(syotteet)
 print(analyysin_tulos)
 ```
 
-Esimerkkisuoritus:
+När programmet körs, skulle det kunna se ut så här:
 
 <sample-output>
 
@@ -473,15 +473,15 @@ Lukuja yhteensä 5, keskiarvo 11.6, pienin -53 ja suurin 99
 
 </sample-output>
 
-Perusperiaatteena ohjelmassa on se, että pääohjelma "tallentaa" ohjelman käsittelemän tiedon eli tässä tapauksessa käyttäjän syöttämät luvut muuttujassa `syotteet`.
+Idén är att huvudfunktionen ”lagrar” all data som behandlas av programmet. I det här fallet är det enda som vi behöver de värden som användaren gett, i variabeln `siffror`.
 
-Jos lukuja on tarve käsitellä jossain funktiossa, ne välitetään sinne parametrina. Näin tapahtuu funktioissa `tulosta` ja `analysoi`. Jos taas funktio tuottaa tietoa, jota muut ohjelman osat tarvitsevat, palauttaa funktio datan `return`-komennolla. Näin tekevät käyttäjän syötteen lukeva funktio `lue_kayttajalta` sekä analyysin tekevä funktio `analysoi`.
+Om det här behövs i en funktion ges det som ett argument. Det här sker med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen resulterar i data som behövs på annat håll i programmet, returnerar funktionen det. Det här sparas i en variabel i huvudfunktionen. Det här sker med funktionerna `indata_fran_anvandare` och `analysera`.
 
-Olisi periaatteessa mahdollista, että funktiot käyttäisivät suoraan "pääohjelman" globaalia muuttujaa `syotteet`. Se [ei kuitenkaan ole järkevää](https://softwareengineering.stackexchange.com/questions/148108/why-is-global-state-so-evil), sillä jos funktiot pystyvät muuttamaan globaalia muuttujaa, voi ohjelmassa alkaa tapahtua jotain hallitsematonta, varsinkin kun funktioiden määrä kasvaa.
+Du kunde använda den globala variabeln siffror från huvudfunktionen direkt i hjälpfunktionerna. Vi har redan gått igenom varför det är en dålig idé, men här följer ännu en annan förklaring. Om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
 
-Tiedon välitys funktioihin ja niistä ulos on siis järkevintä hoitaa parametrien ja paluuarvojen avulla.
+Att skicka data ut och in från funktioner gör man alltså helst med hjälp av argument och return-värden.
 
-Jos haluaisimme tehdä edellisen esimerkin ohjelman siten, että sen pääohjelma eriytettäisiin omaan funktioon `main`, siirrettäisiin ohjelman käsittelemä data pääohjelmaa edustavan funktion sisäiseksi muuttujaksi:
+Du kunde också göra huvudfunktionen till sin egen funktion. Då skulle variabeln siffor inte längre vara en global variabel, utan en lokal variabel i `main`-funktionen:
 
 ```python
 # pääohjelmaa edustava funktio
@@ -592,6 +592,6 @@ Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
 
 <quiz id="00a23e8f-ecc1-59b7-bd22-a78c4c3e2d4b"></quiz>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en kort enkät om den här veckans material.
 
 <quiz id="a0b1296c-99b2-5bed-accc-2872ad2f59b6"></quiz>

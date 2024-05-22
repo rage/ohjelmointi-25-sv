@@ -1,16 +1,16 @@
 ---
 path: '/osa-6/1-tiedostojen-lukeminen'
-title: 'Tiedostojen lukeminen'
+title: 'Läsa filer'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten tiedoston sisällön voi lukea Pythonissa
-- Tiedät, mitä ovat tekstitiedosto ja CSV-tiedosto
-- Osaat purkaa ja käsitellä CSV-tiedoston sisällön ohjelmassa
+* kan du läsa en fil med Python
+* vet du vad en textfil och en CSV-fil är
+* kan du behandla innehållet i en CSV-fil i dina program.
 
 </text-box>
 
@@ -27,13 +27,13 @@ Lohdutuksen sanana todettakoon, että tällä viikolla mahdottomalta vaikuttava 
 
 </text-box>
 
-Yksi tavallinen ohjelmoinnin käyttötarkoitus on käsitellä tiedostoissa olevaa tietoa. Ohjelmat voivat lukea tietoa tiedostoista ja tallentaa tuloksia tiedostoihin. Tiedostojen avulla voimme käsitellä suuriakin aineistoja helposti automaattisesti.
+När man programmerar kan det uppstå ett behov att behandla data som finns lagrad i filer. Datorprogram kan läsa data från filer och skriva data till filer. Också stora mängder data i filer kan enkelt behandlas automatiskt.
 
-Oletamme tällä kurssilla, että käsiteltävät tiedostot ovat _tekstitiedostoja_ eli ne muodostuvat riveistä, joilla on tekstiä. Esimerkiksi kurssilla käytetty Visual Studio Code -editori käsittelee tekstitiedostoja. Huomaa, että esimerkiksi Word-dokumentti ei ole tekstitiedosto, vaan siinä on tekstin lisäksi muotoilutietoja ja sen käsittely ohjelmallisesti olisi vaikeaa.
+Under den här kursen kommer vi endast att arbeta med textfiler. De här filerna består av rader med text. Till exempel kodeditorn Visual Studio Code är kompatibel med textfiler. Obs! Även om ordbehandlingsprogram som Microsoft Word ofta används med filer som innehåller text, är Word-dokument inte textfiler. Dokumenten innehåller också annan information om till exempel textformat, vilket gör det mer komplicerat att behandla filerna i ett program.
 
-## Tiedostosta lukeminen
+## Att läsa data från en fil
 
-Käytetään esimerkkinä tiedostoa `esimerkki.txt`, jonka sisältönä on:
+Vi börjar att arbeta med filen `exempel.txt` som innehållet det följande:
 
 <sample-data>
 
@@ -43,9 +43,9 @@ Viimeinen rivi.
 
 </sample-data>
 
-Hyvä tapa käsitellä tiedostoja Pythonissa on käyttää `with`-lausetta, jonka alkurivi avaa tiedoston. Tämän jälkeen tulee lohko, jonka sisällä tiedostoa voi käsitellä. Lohkon jälkeen tiedosto sulkeutuu automaattisesti, eikä sitä voi enää käsitellä.
+Ett enkelt sätt att använda filer i Python är med `with`-satsen. Den inledande raden öppnar filen och blocket där vi kan komma åt filen följer. Efter blocket stängs filen automatiskt och då kan den inte mera behandlas.
 
-Esimerkiksi seuraava koodi lukee ja tulostaa tiedoston sisällön:
+Den här koden öppnar alltså filen, läser dess innehåll och skriver det ut, och till slut stängs filen:
 
 ```python
 with open("esimerkki.txt") as tiedosto:
@@ -61,19 +61,19 @@ Viimeinen rivi.
 
 </sample-output>
 
-Koodissa muuttuja `tiedosto` on _tiedostokahva_, jonka kautta tiedostoa voi käsitellä avaamisen jälkeen. Tässä tapauksessa käytämme metodia `read`, joka palauttaa koko tiedoston sisällön yhtenä merkkijonona. Tässä tapauksessa palautettu merkkijono on seuraava:
+Variabeln `ny_fil` är en file handle (”filhandtag”). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
 
 ```
 "Moi kaikki!\nEsimerkkitiedostomme on kolmerivinen.\nViimeinen rivi."
 ```
 
-## Tiedoston sisällön läpikäynti
+## Gå igenom innehållet i en fil
 
-Metodi `read` on näppärä, jos halutaan esimerkiksi tulostaa tiedoston sisältö kokonaisuudessaan ruudulle. Usein haluamme kuitenkin käsitellä tiedostoa rivi kerrallaan.
+Metoden `read` fungerar väl för att skriva ut hela innehållet i en fil, men ofta vill vi gå igenom innehållet rad för rad.
 
-Voimme käyttää tiedoston sisällön lukemiseen `for`-silmukkaa, joka käy läpi tiedoston rivit yksi kerrallaan – siis samaan tapaan kuin esimerkiksi listan läpikäynnissä.
+Man kan tänka att textfiler är som listor med strängar, där varje sträng finns på sin egen rad i filen. Vi kan gå igenom listan med en for-loop.
 
-Seuraava esimerkki lukee saman tiedoston nyt käyttäen `for`-silmukkaa, poistaa joka rivin perästä rivinvaihdon ja laskee rivien yhteispituuden:
+Följande exempel läser in vår exempelfil med hjälp av en for-loop, tar bort radbrytningarna, räknar antalet rader och skriver ut varje rad med sitt radnummer. Programmet håller också koll på radernas längder:
 
 ```python
 with open("esimerkki.txt") as tiedosto:
@@ -99,7 +99,7 @@ Rivien yhteispituus: 63
 
 </sample-output>
 
-Huomaa, että rivien läpikäynnissä jokaisen rivin perässä on rivinvaihto `\n`. Yllä oleva koodi kuitenkin poistaa rivinvaihdot `replace`-funktiolla, joka korvaa rivinvaihdot tyhjillä merkkijonoilla. Tämän ansiosta tulostukseen ei tule ylimääräisiä rivivaihtoja ja ohjelma laskee oikein tiedoston rivien yhteispituuden.
+Det finns en radbrytning `\n` i slutet av varje rad i filen, men `print`-funktionen lägger också automatiskt till en rad i slutet av utskriften. Det finns inga extra radbyten i utskriften ovan eftersom radbrytningarna avlägsnats med hjälp av `replace`-metoden. Metoden ersätter alla radbrytningstecken med en tom sträng. I och med detta räknas radernas längder också korrekt.
 
 <programming-exercise name='Suurin luku' tmcname='osa06-01_suurin_luku'>
 
@@ -123,46 +123,46 @@ Huomaa, että tiedoston nimi on aina `luvut.txt` eikä funktiolle anneta paramet
 
 </programming-exercise>
 
-## Mitä jos VS code ei löydä tiedostoja koodia suoritettaessa?
+## Om Visual Studio Code inte hittar min fil?
 
-Jos VS Code ei löydä tiedostoa suorittaessasi koodia (vihreää nappia painamalla) vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit kokeilla seuraavaa:
+När du kör din kod är det möjligt att Visual Studio Code meddelar att filen – även efter att du kollat att filen finns och att namnet är korrekt skrivet. Att ändra på följande inställning kan lösa problemet:
 
-* Mene asetuksiin valikosta _File_ -> _Preferences_ -> _Settings_
-* Etsi muutettava kohta hakusanalla "executeinfile"
-* Valitse välilehti _Workspace_
-* Laita raksi kohtaan _Python_ -> _Terminal_ -> _Execute In File Dir_
+* öppna inställningarna från menyraden: File -> Preferences -> Settings
+* sök efter den inställning som ska ändras med sökordet ”executeinfile”
+* välj fliken Workspace
+* bocka i valet under Python -> Terminal -> Execute in file dir.
 
-Oikein tehtynä asetus näyttää suunilleen seuraavalta:
+Inställningsfönstret borde ungefär se ut så här:
 
 <img src="6_1_1.png">
 
-Jos edellinenkään ei toimi, voit kopioida kansiossa _src_ olevan testaukseen käytetyn tiedoston sisällön
+Om det här inte fungerar kan du kopiera filen i src-mappen…
 
 <img src="6_1_2.png">
 
-suoraan tehtäväkansion alle
+…direkt till roten av uppgiftsmappen:
 
 <img src="6_1_3.png">
 
-## Tiedostoja lukevan koodin debuggaus
+## Att debugga kod som behandlar filer
 
-Jos yrität käyttää VS Coden [debuggeria](/osa-4/1-vscode#debuggeri) tiedostoja lukevan koodin suorittamiseen, törmäät ikävään virheilmoitukseen:
+När man använder Visual Studio Codes debuggare med program som behandlar filer, kan man stöta på följande felmeddelande:
 
 <img src="6_1_4.png">
 
-Syynä tälle on se, että debuggeri etsii tiedostoja tehtäväkansion juuresta eikä edes _Execute In File Dir_ -asetus ei asiaa muuta. Helpoin ratkaisu ongelmaan on edellisessä luvussa kuvattu testaukseen käytetyn tiedoston kopioiminen  tehtävähakemiston juureen.
+Orsaken är att debuggaren alltid söker efter filer i roten av uppgiftsmappen. Inställningen Execute in file dir som nämndes ovan har ingen påverkan här. Den enklaste lösningen är att kopiera filen till rotmappen.
 
-Kun olet kopioinut tiedostot tehtävähakemiston juureen, joudut ehkä vielä käynnistämään visual studio coden uudelleen jotta kaikki toimisi.
+Du behöver kanske också starta om Visual Studio Code efter att du har kopierat alla filer som behövs.
 
-## CSV-tiedoston lukeminen
+## Läsa CSV-filer
 
-CSV-tiedosto (_Comma Separated Values_) on tekstitiedosto, jonka jokaisella rivillä on tietyllä välimerkillä erotettua tietoa. Välimerkkinä on usein pilkku `,` tai puolipiste `;`, mutta mikä tahansa muukin merkki on periaatteessa mahdollinen.
+En CSV-fil (kommaseparerade värden) är en textfil som innehåller data som separerats med ett visst tecken. Det här tecknet är vanligtvis komma (`,`) eller semikolon (`;`), men vilket som helst tecken är i princip möjligt.
 
-CSV-tiedostoja käytetään usein erilaisten aineistojen esittämiseen. Myös Excelin ja muiden vastaavien ohjelmien taulukot voidaan tallentaa CSV-muodossa, jolloin niitä on helppo käsitellä muilla ohjelmilla.
+CSV-filer är ett vanligt sätt att lagra olika typer av data. Flera databaser och kalkylprogram – exempelvis Excel – kan importera och exportera data i CSV-format. Det här möjliggör enkel dataöverföring mellan olika system.
 
-Voimme lukea CSV-tiedoston rivit `for`-silmukalla, mutta miten erottaa rivillä olevat tiedot toisistaan? Helppo tapa on käyttää merkkijonojen `split`-metodia: metodille annetaan haluttu välimerkki, ja se palauttaa tiedot välimerkin mukaan eroteltuna listana merkkijonoja.
+Vi har redan bekantat oss med hur man kan gå igenom rader i en fil med en for-loop, men hur kan vi separera fält på en och samma rad? Python har en strängmetod `split`, som kan användas för detta. Metoden tar separatortecknet eller -tecknen som ett strängargument och returnerar innehållet i den ursprungliga strängen som en lista av strängar – separerade vid separatortecknen.
 
-Esimerkki metodin käytöstä:
+Här finns ett exempel för att tydliggöra det här:
 
 ```python
 teksti = "apina,banaani,cembalo"
@@ -179,7 +179,7 @@ cembalo
 
 </sample-output>
 
-Tarkastellaan esimerkkinä tiedostoa `arvosanat.csv`, joka sisältää jokaisella rivillä aluksi opiskelijan nimen ja sen jälkeen tämän eri kursseista saamat arvosanat. Tiedot on erotettu toisistaan puolipisteillä.
+Låt oss säga att vi har filen `vitsord.csv`, som innehåller namn på elever samt vitsord de fått av olika kurser. Varje rad har data som tillhör en studerande och data separeras med semikolon.
 
 <sample-data>
 
@@ -189,7 +189,7 @@ Pirjo;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
-Seuraava ohjelma käy läpi tiedoston rivit, jakaa jokaisen rivin osiin ja näyttää opiskelijan nimen sekä arvosanat.
+Följande program går igenom filen rad för rad, delar upp raderna i delar och skriver ut namnen på eleverna samt deras vitsord:
 
 ```python
 with open("arvosanat.csv") as tiedosto:
@@ -261,9 +261,9 @@ Vinkki: Voit kirjoittaa ohjelmaan myös muita funktioita – kannattaa siis miet
 
 </programming-exercise>
 
-## Saman tiedoston lukeminen moneen kertaan
+## Läsa samma fil flera gånger
 
-Joissain tilanteissa ohjelman on tarvetta lukea sama tiedosto useampaan kertaan. Tarkastellaan esimerkkinä seuraavaa ohjelmaa, joka käsittelee henkilötietoja sisältävää tiedostoa:
+Ibland kan man behöva läsa innehållet i en fil flera gånger i samma program. Vi tittar på ett program som behandlar data om några personer i en CSV-fil:
 
 <sample-data>
 Pekka;40;Helsinki
@@ -292,7 +292,7 @@ with open("henkilot.csv") as tiedosto:
     print("vanhin on", vanhin)
 ```
 
-Ohjelma aiheuttaa erikoisen virheilmoituksen:
+När vi kör programmet får vi det här felmeddelandet:
 
 ```python
 Traceback (most recent call last):
@@ -300,9 +300,9 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 'vanhin' referenced before assignment
 ```
 
-Syynä virheelle on se, että jälkimmäistä for-silmukkaa ei suoriteta ollenkaan, sillä tiedoston voi lukea vain kerran. Tämän jälkeen ollaan päästy "tiedoston loppuun", ja vaikka yritetään lukea tiedostosta lisää jälkimmäisessä silmukassa, tietoon ei päästä enää käsiksi.
+Orsaken till at det här sker är att den andra for-loopen aldrig körs. Detta eftersom filen endast kan behandlas en gång. När den sista raden har lästs stannar file handlen i slutet av filen och data i filen kan inte längre kommas åt.
 
-Tiedosto onkin avattava uudelleen komennolla `open` toista lukukertaa varten:
+Om vi vill komma åt innehållet i filen i den andra for-loopen, måste vi öppna filen på nytt:
 
 ```python
 with open("henkilot.csv") as tiedosto:
@@ -324,7 +324,7 @@ with open("henkilot.csv") as tiedosto:
     print("vanhin on", vanhin)
 ```
 
-Yleensä aina on kuitenkin parasta lukea tiedosto vain kerran ja tallentaa se muotoon, jota ohjelman toiminnallisuudet pystyvät hyödyntämään:
+Även om den ovanstående koden fungerar, innehåller den onödig upprepning. Det lönar sig vanligtvis att läsa filen bara en gång, och spara dess innehåll i ett passligt format för fortsatt behandling:
 
 ```python
 henkilot = []
@@ -349,9 +349,9 @@ for henkilo in henkilot:
 print("vanhin on", vanhin)
 ```
 
-## Lisää CSV-tiedoston käsittelyä
+## Mera om att behandla CSV-filer
 
-Jatketaan opiskelijoiden arvosanoja sisältävän tiedoston `arvosanat.csv` käsittelyä. Tiedosto näyttää siis seuraavalta:
+Vi fortsätter behandla filen `vitsord.csv`, som innehåller det följande:
 
 <sample-data>
 
@@ -361,7 +361,7 @@ Pirjo;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
-Seuraava ohjelma luo tiedoston perusteella sanakirjan `arvosanat`, jossa jokainen avain on opiskelijan nimi ja vastaava arvo on lista arvosanoista. Ohjelma muuttaa arvosanat kokonaisluvuiksi, jotta niitä on mukavampaa käsitellä myöhemmin.
+Följande program skapar lexikonet `vitsord` baserat på innehållet i filen. Nycklarna är elevernas namn och värdet som är kopplat till nycklarna innehåller elevens vitsord. Programmet konverterar vitsorden till heltal så att de kan behandlas enklare.
 
 ```python
 arvosanat = {}
@@ -383,7 +383,7 @@ print(arvosanat)
 
 </sample-output>
 
-Tämän jälkeen voimme vaikkapa tulostaa analyysin arvosanoista käymällä läpi sanakirjan `arvosanat` perusteella:
+Nu kan vi skriva ut statistik om varje studerande, baserat på värdena i lexikonet:
 
 ```python
 for nimi, lista in arvosanat.items():
@@ -400,11 +400,11 @@ Pirjo: paras arvosana 5, keskiarvo 4.50
 
 </sample-output>
 
-Kannattaa tutustua huolella esimerkkikoodiin. Se voi ensisilmäyksellä vaikuttaa monimutkaiselta, mutta ratkaisu on helposti sovellettavissa monenlaisiin datatiedostoihin.
+Ta en titt på programmet i exemplet ovan. Det kan verka något komplicerat på en första titt, men tekniken kan användas med flera olika typer av data.
 
-## Eroon turhista riveistä, välilyönneistä ja rivinvaihdoista
+## Ta bort överflödiga rader, mellanslag och radbrytningar
 
-Olemme tallentaneet Excelistä nimiä taulukon CSV-muodossa:
+Låt oss säga att vi har en CSV-fil med namn, exporterat från Excel:
 
 ```sh
 etunimi; sukunimi
@@ -413,9 +413,9 @@ Jaana; Java
 Heikki; Haskell
 ```
 
-Kuten tyypillistä, Excel on lisännyt sarakkeiden väliin erottimena toimivan puolipisteen lisäksi myös välilyönnin.
+Excel är ökänt för att lägga till extra mellanrum lite här och där. Här har vi ett extra mellanrum mellan elementen, efter varje semikolon.
 
-Haluamme tulostaa listalla olevat sukunimet. Koska ensimmäinen rivi kertoo sarakkeiden otsikot, ohitamme sen:
+Vi skulle vilja skriva ut efternamnet på varje person som finns i listan. Den första raden i filen innehåller information om den data som följer och kan skippas:
 
 ```python
 sukunimet = []
@@ -430,7 +430,7 @@ with open("henkilot.csv") as tiedosto:
 print(sukunimet)
 ```
 
-Tulostus näyttää seuraavalta:
+När koden körs får vi den här utskriften:
 
 <sample-output>
 
@@ -438,11 +438,9 @@ Tulostus näyttää seuraavalta:
 
 </sample-output>
 
-Kaikkiin paitsi viimeiseen rivin sukunimeen on jäänyt mukaan rivinvaihtomerkki, ja jokaisen sukunimen alkuun on jäänyt ikävä välilyönti.
+De två första elementen har ett radbrytningstecken i slutet och alla tre element har ett mellanslag i början. Vi har redan använt `replace`-metoden för att ta bort onödigt mellanrum, men ett bättre sätt är `strip`-metoden hos strängar. Den här metoden tar bort mellanrum från början och slutet av en sträng. Metoden tar bort mellanrum, radbrytningar, samt tabb- och andra tecken som normalt inte skulle skrivas ut.
 
-Pääsisimme näistä eroon aiempien esimerkkien tapaan käyttämällä metodia `replace`, mutta parempi vaihtoehto tässä tilanteessa on käyttää metodia `strip`, joka poistaa merkkijonon alusta ja lopusta ns. whitespace-merkit, eli välilyönnit, rivinvaihdot ja muut normaalina merkkinä tulostumattomat merkit.
-
-Kokeillaan metodin toimintaa konsolissa:
+Vi kan testa på metoden i Python-terminalen:
 
 ```python
 >>> " koe ".strip()
@@ -452,7 +450,7 @@ Kokeillaan metodin toimintaa konsolissa:
 >>>
 ```
 
-Tarvittava muutos ohjelmaan on helppo:
+Att ta bort de onödiga tecknen kräver bara en liten ändring i programmet:
 
 ```python
 sukunimet = []
@@ -465,7 +463,7 @@ with open("henkilot.csv") as tiedosto:
 print(sukunimet)
 ```
 
-Tämän jälkeen tulostus on halutunlainen:
+Nu har får vi den önskade utskriften:
 
 <sample-output>
 
@@ -473,7 +471,7 @@ Tämän jälkeen tulostus on halutunlainen:
 
 </sample-output>
 
-Merkkijonoilla on myös metodit `lstrip` ja `rstrip`, jotka poistavat ainoastaan merkkijonon vasemmalla tai oikealla puolella olevia merkkejä.
+Strängmetoderna `lstrip` och `rstrip` fungerar lika som metoden `strip`, men gör det då bara för antingen vänstra (l) eller högra (r) kanten av strängen:
 
 ```python
 >>> " testimerkkijono  ".rstrip()
@@ -482,9 +480,9 @@ Merkkijonoilla on myös metodit `lstrip` ja `rstrip`, jotka poistavat ainoastaan
 'testimerkkijono  '
 ```
 
-## Eri tiedostoissa olevien tietojen yhdistely
+## Kombinera data från olika filer
 
-On hyvin yleistä, että ohjelmassa tarvittava data on talletettu useaan erilliseen tiedostoon. Tarkastellaan esimerkkinä tilannetta, jossa yrityksen henkilöstön tiedot ovat omassa tiedostossaan `tyontekijat.csv`:
+Det är mycket vanligt att data som behandlas av ett program finns utspritt i flera filer. Vi tar en titt på ett exempel där personalens information i ett företag finns i filen `personal.csv`:
 
 ```csv
 hetu;nimi;osoite;kaupunki
@@ -494,7 +492,7 @@ hetu;nimi;osoite;kaupunki
 010499-345K;Leevi Hellas;Tapiolantie 11 B;02000 Espoo
 ```
 
-Työntekijöiden palkat taas ovat talletettu omaan tiedostoonsa `palkat.csv`
+Löneuppgifterna finns i en skild fil, `lon.csv`:
 
 ```csv
 hetu;palkka;bonus
@@ -503,7 +501,7 @@ hetu;palkka;bonus
 010479-007Z;1300;1200
 ```
 
-Molempien tiedostojen riveillä on ensin _henkilötunnus_, joka kertoo kenen tiedoista on kyse. Käyttämällä henkilötunnusta yhdistävänä tekijänä, on helppo yhdistää henkilöiden nimet ja palkat toisiinsa, ja tehdä esimerkiksi ohjelma, joka tulostaa seuraavanlaisen näkymän henkilöiden ansioihin:
+Alla rader i båda filerna innehåller en personlig id-kod (pic) som identifierar vems data vi arbetar med. När vi använder det här id:t som gemensam faktor, är det lätt att koppla en arbetstagares namn med hennes lön. Vi kan till exempel skriva ut en lista över de månatliga inkomsterna:
 
 <sample-output>
 
@@ -516,7 +514,7 @@ Arto Vihavainen  2500 euroa
 
 </sample-output>
 
-Ohjelma käyttää aputietorakenteena kahta saankirjaa `nimet` ja `palkat`, joissa molemmissa avaimena toimii henkilötunnus:
+Programmet använder två lexikon som hjälpdatastrukturer: `namn` och `loner`. Båda använder pic som nyckel:
 
 ```python
 nimet = {}
@@ -547,7 +545,7 @@ for hetu, nimi in nimet.items():
         print(f"{nimi:16} 0 euroa")
 ```
 
-Ohjelma siis muodostaa ensin sanakirjat `nimet` ja `palkat`, joiden sisältö näyttää seuraavilta:
+Först skapar programmet lexikonen `namn` och `loner`. De har dessa innehåll:
 
 ```sh
 {
@@ -564,11 +562,11 @@ Ohjelma siis muodostaa ensin sanakirjat `nimet` ja `palkat`, joiden sisältö n�
 }
 ```
 
-Lopun for-silmukka yhdistää henkilöiden nimet ja niitä vastaavat palkat sanakirjojen avulla.
+For-loopen i slutet av programmet kombinerar namnen på arbetstagarna med deras löner.
 
-Ohjelma huomioi myös tilanteen, jossa henkilön palkkatietoja ei ole olemassa.
+Programmet kan också ta i beaktande situationer där pic saknas för en arbetstagare.
 
-Huomaa, että koska ohjelma käyttää aputietorakenteena sanakirjaa, ei henkilöitä vastaavien rivien järjestyksellä ole merkitystä.
+Kom ihåg att ordningen som elementen är lagrade i lexikon inte har någon skillnad, eftersom nycklarna behandlas med hjälp av hashvärden.
 
 <programming-exercise name='Kurssin tulokset, osa 1' tmcname='osa06-04_kurssin_tulokset_osa1'>
 
@@ -982,4 +980,3 @@ Laivasillankatu Hietalahdentori 1.478708873076181
 
 
 <quiz id="cdac5075-c9cf-56f5-9ea3-eda73a48df4e"></quiz>
-

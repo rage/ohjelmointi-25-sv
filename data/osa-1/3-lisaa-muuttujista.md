@@ -1,34 +1,34 @@
 ---
 path: "/osa-1/3-lisaa-muuttujista"
-title: "Lisää muuttujista"
+title: "Mer om variabler"
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää muuttujia eri yhteyksissä
-- Tiedät, millaista tietoa muuttujiin voidaan tallentaa
-- Ymmärrät merkkijonojen sekä kokonais- ja liukulukujen eron
+* kan du använda variabler i olika situationer
+* vet du vilken typ av data som kan lagras i variabler
+* känner du till skillnaderna mellan strängar, heltal och flyttal.
 
 </text-box>
 
-Vastaa seuraavaan kyselyyn ennen osion aloittamista. Saat vastaamisesta yhden tehtäväpisteen.
+Vänligen fyll i den här enkäten före du börjar med den här delen. Du får ett poäng efter att du har fyllt i enkäten.
 
 <quiz id="696ae8ca-e032-58a1-9f55-76f59a01b3a7"></quiz>
 
 
 
-Muuttujia tarvitaan ohjelmissa moniin tarkoituksiin. Voimme tallentaa muuttujiin mitä tahansa sellaista tietoa, jota tarvitaan ohjelmassa myöhemmin.
+Variabler har olika användningsområden inom programmering. Du kan använda variabler för att lagra vilken som helst typ av information som kan behövas senare medan ett program körs.
 
-Muuttuja luodaan Pythonissa seuraavasti:
+I Python skapas variabler på följande sätt:
 
 `muuttujan_nimi = ...`
 
-Tässä `...` tarkoittaa arvoa, joka tallennetaan muuttujaan.
+`...` ovan syftar till värdet som sparas i variabeln.
 
-Esimerkiksi kun luemme `input`-komennolla merkkijonon käyttäjältä, sijoitamme merkkijonon muuttujaan, jotta voimme käyttää sitä myöhemmin ohjelmassa:
+Till exempel när du använde kommandot `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
 
 ```python
 nimi = input("Anna nimesi: ")
@@ -42,7 +42,7 @@ Moi, Kummitus
 
 </sample-output>
 
-Muuttujille voidaan antaa arvoja myös esimerkiksi näin:
+Värdet som lagras i variabeln kan också definieras med hjälp av andra variabler:
 
 ```python
 etunimi = "Pekka"
@@ -59,13 +59,13 @@ Pekka Pythonen
 
 </sample-output>
 
-Tässä tapauksessa muuttujan arvo ei tule käyttäjältä vaan se on sama ohjelman jokaisella suorituskerralla.
+Värdena som lagras i variablerna ovan kommer inte från användaren. De förblir de samma varje gång programmet körs. Det här kallas att hårdkoda data i programmet.
 
-## Muuttujan arvon muuttaminen
+## Att ändra på värdet av en variabel
 
-Muuttujan arvo voi nimensä mukaisesti muuttua. Niin kuin edellisessä osassa todettiin, uusi arvo ylikirjoittaa vanhan arvon.
+Som namnet möjligtvis avslöjar, kan värdet på en _variabel_ ändra. I den förra delen observerade vi att ett nytt värde ersätter det tidigare värdet.
 
-Esimerkiksi seuraavassa ohjelmassa muuttuja `sana` saa kolme eri arvoa:
+Medan vi kör följande program, kommer variabeln `ord` att ha tre olika värden:
 
 ```python
 sana = input("Anna sana: ")
@@ -88,9 +88,9 @@ kolmas
 
 </sample-output>
 
-Muuttujan sisältö siis vaihtuu jokaisen sijoituksen yhteydessä.
+Värdet som är lagrat i variabeln ändrar varje gång vi tilldelar variabeln ett nytt värde.
 
-Muuttujan uusi arvo voi myös perustua sen vanhaan arvoon. Esimerkiksi seuraavassa muuttuja `sana` saa ensin arvoksi käyttäjän syötteen. Tämän jälkeen muuttuja saa arvoksi vanhan arvonsa, jonka perään on lisätty kolme huutomerkkiä:
+Det nya värdet på en variabel kan basera sig på det föregående värdet. I följande exempel tilldelas variabeln `ord` först ett värde på basis av indata från användaren. Därefter tilldelas variabeln ett nytt värde – som består av det gamla värdet och tre utropstecken i slutet.
 
 ```python
 sana = input("Anna sana: ")
@@ -108,31 +108,27 @@ testi!!!
 
 </sample-output>
 
-<text-box variant="hint" name="Lisää muuttujan nimen valinnasta">
+<text-box variant="hint" name="Att välja ett bra namn för en variabel">
 
-* Muuttujat kannattaa nimetä niiden käyttötarkoituksen mukaan.
-  Esimerkiksi jos muuttujassa on sana, nimi `sana` on parempi kuin `a`.
-
-* Python ei rajoita muuttujien nimien pituutta, mutta eräitä muita sääntöjä muuttujien nimiin liittyy. Nimen täytyy alkaa kirjaimella ja se saa sisältää vain kirjaimia, numeroita ja alaviivoja &#95;.
-
-* Huomaa myös, että pienet ja isot kirjaimet ovat eri merkkejä. Muuttuja `nimi` on siis eri muuttuja kuin `Nimi` tai `NIMI`.
-
-* Pythonissa muuttujien nimet on tapana kirjoittaa pienillä kirjaimilla. Jos nimessä on useita sanoja, niiden välissä on alaviiva.
+* Det är vanligtvis en bra idé att namnge variabler enligt deras funktion. Exempelvis om en variabel innehåller ett ord, så är namnet `ord` ett mycket bättre namn än `a`.
+* Det finns ingen begränsning på längden av ett namn på en variabel i Python, men det finns några andra begränsningar. Variabelns namn ska börja med en bokstav och det kan endast innehålla bokstäver, siffror och understreck (\_).
+* Stora och små bokstäver är olika tecken. Variablerna `namn`, `Namn` och `NAMN` är alla olika variabler. Även om den här regeln har några undantag, så kommer vi att ignorera dem tills vidare.
+* Det är ett vanligt tillvägagångssätt att i Python endast använda små bokstäver i variabelnamn. Om namnet består av flera ord använder man understreck mellan orden. Även om den här regeln också har några undantag, så kommer vi att ignorera dem tills vidare.
 
 </text-box>
 
-## Kokonaisluvut
+## Heltal
 
-Tähän mennessä olemme tallentaneet muuttujiin vain merkkijonoja. Usein ohjelmissa halutaan kuitenkin tallentaa myös muun tyyppistä tietoa. Tarkastellaan aluksi kokonaislukuja.
+Hittills har vi enbart lagrat strängar i variabler, men det finns också flera andra datatyper som vi kommer att vilja lagra och använda senare. Vi tar en titt på heltal för att börja med. Heltal är tal utan en decimal- eller bråkdel. Exempelvis -15, 0 och 1.
 
-Seuraava ohjelma luo muuttujan `ika`, jonka sisältönä on kokonaisluku.
+Det följande programmet skapar variabeln `alder`, som är ett heltal:
 
 ```python
 ika = 24
 print(ika)
 ```
 
-Ohjelman tulostus on seuraava:
+Utskriften ser helt enkelt ut så här:
 
 <sample-output>
 
@@ -140,9 +136,9 @@ Ohjelman tulostus on seuraava:
 
 </sample-output>
 
-Kokonaisluvun ympärille ei kirjoiteta lainausmerkkejä. Itse asiassa luvun ympärille kirjoitettavat lainausmerkit tarkoittavat, että kyseessä ei ole luku vaan merkkijono (joka tosin saattaa sisältää numeroita).
+Märk att citattecknen fattas. Om vi skulle lägga till citattecken runt siffran skulle det inte längre vara ett heltal, utan en sträng. En sträng kan innehålla siffror, men strängar behandlas på ett annat sätt.
 
-Mitä eroa muuttujan tyypeillä siis on, kun seuraava ohjelma tulostaa samat arvot?
+Varför ska variabler då ha en typ när programmets utskrift ändå ser ut lika, oavsett?
 
 ```python
 luku1 = 100
@@ -159,8 +155,7 @@ print(luku2)
 
 </sample-output>
 
-Tyypeillä on merkitystä, koska
-erilaiset operaatiot vaikuttavat eri tavalla erityyppisiin muuttujiin. Tarkastellaan seuraavaa esimerkkiä:
+Variabeltyper har skillnad eftersom olika operationer påverkar olika typer av variabler på olika sätt. Ta en titt på följande exempel:
 
 ```python
 luku1 = 100
@@ -170,7 +165,7 @@ print(luku1 + luku1)
 print(luku2 + luku2)
 ```
 
-Ohjelman tulostus on seuraava:
+Koden skriver ut det följande:
 
 <sample-output>
 
@@ -179,11 +174,13 @@ Ohjelman tulostus on seuraava:
 
 </sample-output>
 
-Kahdelle lukuarvolle `+`-operaattori siis merkitsee yhteenlaskua, merkkijonoille taas yhdistämistä peräkkäin.
+För heltal betyder operatorn `+` addition, medan den för strängar innebär kombination av två strängar.
 
-## Arvojen yhdistäminen tulostettaessa
+Alla operatorer är inte tillgängliga för alla typer av variabler. Siffror kan divideras med operatorn /, men en sträng kan inte divideras. Försök av det senare orsakar ett felmeddelande:
 
-Seuraava ohjelma ei toimi, koska `"Tulos on "` ja `tulos` ovat erityypisiä:
+## Att kombinera värden i samband med utskrift
+
+Det följande kommer inte att fungera eftersom `”Resultatet är ”` och `resultat` är av olika typer:
 
 ```python
 tulos = 10 * 25
@@ -191,7 +188,7 @@ tulos = 10 * 25
 print("Tulos on " + tulos)
 ```
 
-Ohjelma ei tulosta mitään, vaan antaa virheen
+Programmet skriver inte ut någonting – istället får vi ett fel:
 
 <sample-output>
 
@@ -199,9 +196,9 @@ TypeError: unsupported operand type(s) for +: 'str' and 'int'
 
 </sample-output>
 
-Python kertoo, ettei kahden erityyppisen arvon yhdistäminen toimi. Tässä tapauksessa arvon `"Tulos on"` tyyppi on merkkijono ja arvon `tulos` tyyppi on kokonaisluku.
+I felet berättar Python att kombination av två olika typer av värden inte går så här enkelt. I den här situationen är `”Resultatet är ”` av typen sträng medan värdet i variabeln `resultat` är ett heltal.
 
-Jos haluamme tulostaa yhdellä komennolla merkkijonon ja luvun, yhdistäminen onnistuu kuitenkin muuttamalla luku merkkijonoksi `str`-funktiolla. Esimerkiksi
+Om vi vill skriva ut en sträng och ett heltal i ett och samma kommando kan vi konvertera heltalet till en sträng med `str`-funktionen. Därefter kan de två strängarna kombineras normalt. Till exempel så här:
 
 ```python
 tulos = 10 * 25
@@ -214,7 +211,7 @@ Tulos on 250
 
 </sample-output>
 
-Toinen mahdollisuus on käyttää pilkkua `print`-komennossa. Tällöin komento tulostaa kaikki pilkuilla erotetut arvot riippumatta niiden tyypistä:
+`print`-kommandot har också inbyggd funktionalitet som stödjer kombination av olika typer av värden. Det enklaste sättet är att lägga in ett komma mellan värdena. Alla värden kommer då att skrivas ut – oavsett typ:
 
 ```python
 tulos = 10 * 25
@@ -227,20 +224,20 @@ Tulos on 250
 
 </sample-output>
 
-Huomaa, että tässä tapauksessa arvojen väliin ilmestyy automaattisesti yksi välilyönti tulostuksessa.
+Observera att det i detta fall automatiskt läggs till ett mellanslag mellan värdena.
 
-## Tulostaminen f-merkkijonojen avulla
+## Utskrift med f-strängar
 
-Niin sanotut _f-merkkijonot_ tarjoavat kolmannen edellisiä joustavamman ja jopa helppokäyttöisemmän tavan tulostuksen muotoiluun.
+Hur kan vi gå till väga om vi önskar oss mera flexibilitet och kontroll över det som skrivs ut? F-strängar är ett annat sätt som vi kan använda oss för att påverka formatet på en utskrift i Python. Syntaxen kan till att börja med verka en aning konstig, men f-strängar är ändå ofta det enklaste sättet att påverka formatet på en text.
 
-Aiempi tekstin ja kokonaisluvun tulostava esimerkki tehtäisiin f-merkkijonojen avulla seuraavasti:
+Med f-strängar skulle det föregående exemplet se ut så här:
 
 ```python
 tulos = 10 * 25
 print(f"Tulos on {tulos}")
 ```
 
-Tulostettavan merkkijonon alussa on kirjain _f_, joka tarkoittaa, että kyseessä on f-merkkijono. Merkkijonon sisälle on sijoitettu aaltosuluissa muuttuja `tulos`, jonka arvo tulee tulostuvan merkkijonon osaksi. Tulostus on täsmälleen sama kuin aiemmissa esimerkeissä eli
+Låt oss se hur ovanstående exempel fungerar, del för del. Helt i början av strängen som vi håller på att skriva ut finns bokstaven f. Den här bokstaven berättar för Python att följande sträng är en f-sträng. Inom strängen finns variabelnamnet `resultat`, omringat av klammerparenteser. Värdet på variabeln kommer på det sättet att bli en del av strängen som skrivs ut. Utskriften ser helt likadan ut som i de föregående exemplen:
 
 <sample-output>
 
@@ -248,7 +245,7 @@ Tulos on 250
 
 </sample-output>
 
-Yksittäisen f-merkkijonon sisälle on mahdollista laittaa useampiakin muuttujia. Esimerkiksi koodi
+En och samma f-sträng kan innehålla flera variabler. Den här koden…
 
 ```python
 nimi = "Arto"
@@ -257,7 +254,7 @@ kaupunki = "Espoo"
 print(f"Hei {nimi}, olet {ika}-vuotias. Asuinpaikkasi on {kaupunki}.")
 ```
 
-tuottaa seuraavan tuloksen:
+…skriver ut det följande:
 
 <sample-output>
 
@@ -265,7 +262,7 @@ Hei Arto, olet 39-vuotias. Asuinpaikkasi on Espoo.
 
 </sample-output>
 
-Huomaa, että täsmälleen tämän esimerkin kaltaista tulostusta on mahdotonta saada aikaan käyttämällä `print`-komennossa pilkkua:
+Det är svårt att åstadkomma en likadan utskrift med hjälp av kommanotationen i `print`-kommandot. Exempelvis programmet…
 
 ```python
 nimi = "Arto"
@@ -274,7 +271,7 @@ kaupunki = "Espoo"
 print("Hei", nimi, ", olet", ika, "-vuotias. Asuinpaikkasi on", kaupunki, ".")
 ```
 
-Tulostus on seuraava:
+…skriver ut det följande:
 
 <sample-output>
 
@@ -282,9 +279,9 @@ Hei Arto , olet 39 -vuotias. Asuinpaikkasi on Espoo .
 
 </sample-output>
 
-Tulostuksessa on nyt välilyönti jokaisen erillisen osan välissä ja muutamassa kohdassa se aiheuttaa ongelman.
+Observera mellanslagen som automatiskt har lagts till mellan varje kommaseparerade del i kommandot. Det är tekniskt sett möjligt att förhindra `print`-kommandot från att lägga till mellanslag, men det är inte värt det eftersom vi kan använda oss av f-strängar.
 
-Vaikka pilkullinen muoto `print`-komennosta on joskus kätevä, se aiheuttaa välillä harmaita hiuksia ja silloin on parempi käyttää f-merkkijonoja. Osassa 4 opimme lisää f-merkkijonojen käteviä ominaisuuksia tulosteen muotoilussa.
+Kommanotationen kan vara till nytta ibland, men ofta orsakar den mera problem än vad den löser. F-strängar är i flera fall en pålitligare metod. I modul fyra kommer du att lära dig mera om nyttiga egenskaper som f-strängar har – de kan användas för att påverka den utskrivna textens format på flera sätt.
 
 <in-browser-programming-exercise name="Välilyönnillä vai ilman" tmcname="osa01-10b_valilyonnilla_vai_ilman" height=400px>
 
@@ -339,11 +336,11 @@ Muista olla tarkkana tulostusten muodon suhteen jatkossakin kurssin tehtävissä
 
 </in-browser-programming-exercise>
 
-## Liukuluvut
+## Flyttal
 
-`Liukuluku` on ohjelmoinnissa esiintyvä termi, joka tarkoittaa käytännössä desimaalilukua. Liukulukuja voidaan käyttää melko samalla tavalla kuin kokonaislukuja. Huomaa, että desimaalierottimena käytetään pistettä kuten englannissa yleensä.
+Flyttal är en term som du ofta kommer att stöta på i programmering. Det hänvisar till tal med decimaltecken. Flyttal kan användas mycket lika som heltal.
 
-Esimerkiksi seuraava ohjelma laskee kolmen liukuluvun keskiarvon:
+Följande program räknar medeltalet av tre flyttal:
 
 ```python
 luku1 = 2.5

@@ -1,29 +1,29 @@
 ---
 path: '/osa-5/2-viittaukset'
-title: 'Viittaukset'
+title: 'Referenser'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä tarkoitetaan viittaustyyppisellä muuttujalla
-- Tiedät, että samaan olioon voi olla useampia viittauksia
-- Osaat käyttää listoja funktioiden parametreina
-- Tiedät, mitä tarkoitetaan funktion sivuvaikutuksella
+* vet du vad som menas med en referens till en variabel
+* vet du att det kan finnas flera referenser till ett och samma objekt
+* kan du använda listor som parameter i funktioner
+* förstår du vad som menas med sidoeffekt hos en funktion.
 
 </text-box>
 
-Olemme tähän asti ajatelleet, että muuttuja on eräänlainen "laatikko", joka sisältää muuttujan arvon. Teknisesti ottaen tämä ei pidä paikkaansa Pythonissa: muuttujat eivät sisällä arvoa vaan ne _viittaavat_ arvona olevaan _olioon_, kuten lukuun, merkkijonoon tai listaan.
+Hittills har vi tänkt att en variabel är en slags ”låda” som innehåller variabelns värde. Från teknisk synvinkel stämmer detta inte i Python – variabler innehåller inte ett värde, utan en referens till ett objekt, som en siffra, sträng eller en lista.
 
-Käytännössä tämä tarkoittaa, että muuttujaan _ei tallenneta_ arvoa, vaan tieto siitä paikasta, mistä muuttujan arvo löytyy.
+I praktiken innebär det att man inte lagrar ett värde i en variabel, utan ett ställe varifrån variabelns värde hittas från.
 
-Viittausta voidaan kuvata nuolena muuttujasta sen varsinaiseen arvoon:
+En referens kan beskrivas som en pil från variabeln till dess riktiga värde:
 
 <img src="5_2_1.png">
 
-Viittaus siis kertoo, mistä varsinainen arvo löytyy. Funktio `id` kertoo, mihin muuttuja viittaa:
+Referensen berättar alltså var det riktiga värdet finns. Funktionen `id` berättar vart en variabel refererar:
 
 ```python
 a = [1, 2, 3]
@@ -39,23 +39,23 @@ print(id(b))
 
 </sample-output>
 
-Viittaus eli muuttujan id on kokonaisluku, jonka voi ajatella olevan muuttujan arvon sijainnin osoite tietokoneen muistissa. Huomaa, että jos suoritat yllä olevan koodin omalla koneellasi, tulos on luultavasti erilainen, koska muuttujilla on eri viitteet.
+Referensen, alltså variabelns id är ett heltal. Man kan tänka att talet är adressen för variabelns värde i datorns minne. Observera att om du kör koden ovan på din dator, kommer resultatet sannolikt vara olikt eftersom variablerna har olika referenser.
 
-Kuten jo [edellisen osan](/osa-5/1-lisaa-listoja#sisakkaisia-listoja-kayttavan-koodin-visualisointi) esimerkistä näimme, Python Tutorin visualisaattori näyttää viitteet "nuolina" varsinaiseen sisältöön. Visualisaattori kuitenkin "huijaa" merkkijonojen tapauksessa ja näyttää ne ikään kuin merkkijonon sisältö olisi tallennettu muuttujan sisälle:
+Som vi redan såg i förra delens exempel, visar Python Tutors visualiseringsverktyg referenser som ”pilar” till det riktiga innehållet. Verktyget ”lurar” ändå när det kommer till strängar, och visar dem som att strängens innehåll skulle vara lagrat i själva variabeln:
 
 <img src="5_2_1a.png">
 
-Näin ei kuitaan ole todellisuudessa, vaan merkkijonotkin käsitellään Pythonin sisäisissä rakenteissa samaan tapaan kuin listat.
+Så är det ändå inte i verkligheten – strängar behandlas också internt av Python på samma sätt som listor.
 
-Monet Pythonin sisäänrakennetut tyypit, kuten `str`, ovat _muuttumattomia_. Tämä tarkoittaa, että olion arvo ei voi koskaan muuttua. Sen sijaan arvo voidaan korvata uudella arvolla:
+Flera av Pythons inbyggda datatyper – som `str` – är oföränderliga. Det betyder att värdet på objektet aldrig kan ändras. Däremot kan ett värde ersättas med ett nytt värde.
 
 <img src="5_2_2.png">
 
-Pythonissa on myös tyyppejä, jotka ovat muuttuvia. Esimerkiksi listan sisältö voi muuttua ilman, että tarvitsee luoda kokonaan uusi lista:
+I Python finns också datatyper som är föränderliga. Till exempel innehållet på en lista kan förändras utan att man behöver skapa en ny lista:
 
 <img src="5_2_3.png">
 
-Hieman yllättäen myös lukuja ja totuusarvoja edustavat perustietotyypit `int`, `float` ja `bool` ovat muuttumattomia. Tarkastellaan esimerkkinä seuraavaa koodia:
+Något förvånande är att också grundläggande datatyper för lagring av siffor och sanningsvärden, `int`, `float` och `bool`, är oföränderliga. Låt oss använda följande kod som exempel:
 
 ```python
 luku = 1
@@ -63,9 +63,9 @@ luku = 2
 luku += 10
 ```
 
-Vaikka vaikuttaa siltä, että koodi muuttaa lukua, teknisesti ottaen ei näin ole, vaan jokainen komento luo uuden luvun.
+Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är det inte så. Istället skapar varje kommando en ny siffra.
 
-Seuraavan ohjelman tulostus on mielenkiintoinen:
+Utskriften från det här programmet är intressant:
 
 ```python
 luku = 1
@@ -84,15 +84,15 @@ print(id(a))
 
 </sample-output>
 
-Aluksi muuttuja `luku` viittaa paikkaan 4535856912, ja kun muuttujan arvo muuttuu, se alkaa viitata paikkaan 4535856944. Kun muuttujaan `a` sijoitetaan arvo 1, se alkaa viitata samaan paikkaan kuin mihin `luku` viittasi, kun sen arvo oli 1.
+I början refererar variabeln `luku` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `luku` när dess värde var `1`.
 
-Vaikuttaakin siltä, että Python on tallentanut luvun 1 paikkaan 4535856912 ja aina kun jonkin muuttujan arvona on 1, muuttuja _viittaa_ tuohon paikkaan "tietokoneen muistissa".
+Det verkar som att Python har lagrat siffran 1 till adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i ”datorns minne”.
 
-Vaikka perustietotyypit `int`, `float` ja `bool` ovat viittauksia, ohjelmoijan ei oikeastaan tarvitse välittää asiasta.
+Även om de grundläggande datatyperna `int`, `float` och `bool` är referenser behöver man som programmerare inte egentligen fundera på det.
 
-## Useampi viittaus samaan listaan
+## Flera referenser till en och samma lista
 
-Tarkastellaan esimerkkinä listamuuttujan arvon kopiointia:
+Vi undersöker som ett exempel att kopiera värdet på en variabel med en lista:
 
 ```python
 a = [1, 2, 3]
@@ -100,13 +100,13 @@ b = a
 b[0] = 10
 ```
 
-Sijoitus `b = a` kopioi muuttujan `a` arvon muuttujaan `b`. On tärkeä kuitenkin huomata, että muuttujan arvona _ei ole lista_ vaan _viittaus listaan_.
+Deklarationen `b = a` kopierar variabeln `a`:s värde till variabeln `b`. Det är ändå viktigt att observera att variabelns värde inte är en lista utan en referens till listan.
 
-Sijoitus `b = a` siis kopioi viittauksen, minkä seurauksena kopioinnin jälkeen samaan listaan on kaksi viittausta:
+Deklarationen `b = a` kopierar alltså referensen, varpå det efter kopieringen finns två referenser till samma lista.
 
 <img src="5_2_4.png">
 
-Listaa voidaan käsitellä kumman tahansa viittauksen avulla:
+Listan kan behandlas med båda referenserna:
 
 ```python
 lista = [1, 2, 3, 4]
@@ -126,15 +126,15 @@ print(lista2)
 
 </sample-output>
 
-Mikäli samaan listaan on useampia viittauksia, sitä voidaan käsitellä minkä tahansa viittauksen kautta samalla tavalla. Toisaalta yhden viittauksen kautta tehtävä muutos heijastuu myös muihin viittauksiin.
+Om en och samma lista har flera referenser kan den behandlas på samma sätt med vilken som helst av referenserna. Däremot återspeglas en förändring via en referens också till alla andra referenser.
 
-Visualisaattori näyttää jälleen selkeästi mitä ohjelmassa tapahtuu:
+Visualiseringsverktyget klargör igen vad som sker i programmet:
 
 <img src="5_2_4a.png">
 
-## Listan kopiointi
+## Att kopiera en lista
 
-Jos haluamme tehdä listasta erillisen kopion, voimme luoda uuden listan ja lisätä siihen jokaisen aluperäisen listan alkion:
+Om du vill skapa en verklig kopia av en lista kan du skapa en ny lista och lägga till alla element från den ursprungliga listan till den nya listan:
 
 ```python
 lista = [1, 2, 3, 3, 5]
@@ -156,13 +156,13 @@ kopio [10, 2, 3, 3, 5, 6]
 
 </sample-output>
 
-Visualisaattorilla tarkastellen kopiointi näyttää seuraavalta:
+Så ser det ut från visualiseringsverktyget:
 
 <img src="5_2_4b.png">
 
-Muuttuja `kopio` siis viittaa nyt eri listaan kuin muuttuja `lista`.
+Variabeln `ny_lista` refererar till en annan lista än `min_lista`.
 
-Helpompi tapa listan kopioimiseen on hyödyntää `[]`-operaattoria, johon tutustuimme aiemmin kurssilla. Merkintä `[:]` tarkoittaa, että listalta valitaan kaikki alkiot, ja tämän sivuvaikutuksena syntyy kopio listasta:
+Ett enklare sätt att kopiera en lista är att använda hakparenteser `[]`, som vi använt tidigare för att extrahera innehåll från strängar och listor. Notationen `[:]` väljer alla element i en samling. Därmed skapar det en kopia av en lista:
 
 ```python
 lista = [1,2,3,4]
@@ -182,11 +182,11 @@ print(kopio)
 
 </sample-output>
 
-## Lista funktion parametrina
+## En lista som parameter i en funktion
 
-Kun lista välitetään parametrina funktiolle, välitetään viittaus listaan. Tämä tarkoittaa, että funktio voi muuttaa parametrinaan saamaansa listaa.
+När en lista ges som parameter till en funktion, förmedlas referensen till listan. Det här innebär att funktionen kan ändra på listan som getts som parameter.
 
-Esimerkiksi seuraava funktio lisää uuden alkion parametrinaan saamaansa listaan:
+Till exempel följande funktion lägger till ett nytt element i en lista som getts som funktionens parameter:
 
 ```python
 def lisaa_alkio(lista: list):
@@ -204,15 +204,13 @@ print(lista)
 [1, 2, 3, 10]
 </sample-output>
 
-Huomaa, että funktio `lisaa_alkio` ei palauta mitään, vaan muuttaa parametrinaan saamaansa listaa.
-
-Visualisaattori havainnollistaa tilanteen seuraavasti:
+Märk att funktionen `lisaa_alkio` inte returnerar något, utan ändrar på den lista som getts som funktionens parameter. Visualiseringsverktyget presenterar situationen så här:
 
 <img src="5_2_4c.png">
 
-_Global frame_ tarkoittaa pääohjelman muuttujia ja sinisellä oleva laatikko *lisaa_alkio* taas funktion parametreja ja muuttujia. Kuten visualisaatio havainnollistaa, funktio viittaa samaan listaan mihin pääohjelmakin viittaa, eli funktiossa listalle tehtävät muutokset näkyvät pääohjelmaan.
+Global frame syftar på huvudprogrammets variabler, och den blå lådan `lisaa_alkio` på funktionens parametrar och variabler. Som visualiseringen visar, refererar funktionen till samma lista som huvudprogrammet, vilket betyder att ändringar som görs i listan inom funktionen också syns i huvudprogrammet.
 
-Toinen tapa olisi luoda uusi lista ja palauttaa se:
+Ett annat sätt är att skapa en ny lista och returnera den:
 
 ```python
 def lisaa_alkio(lista: list) -> list:
@@ -235,11 +233,11 @@ Uusi lista: [1, 2, 3, 10]
 
 </sample-output>
 
-Jos et ole 100% varma mitä koodissa tapahtuu, käy sen toiminta läpi visualisaattorilla!
+Om du inte är helt säker på vad som händer i en kodsnutt, kan det löna sig att utnyttja visualiseringsverktyget.
 
-## Parametrina olevan listan muokkaaminen
+## Ändra på en lista som getts som argument
 
-Seuraavassa on yritys tehdä funktio, joka kasvattaa parametrina saamansa listan jokaista alkiota kymmenellä:
+Det följande är ett försök på att skapa en funktion som ökar på varje element med tio:
 
 ```python
 def kasvata_kaikkia(lista: list):
@@ -262,21 +260,19 @@ funktion jälkeen: [1, 2, 3]
 </sample-output>
 
 
-Jostain syystä funktio ei kuitenkaan näytä toimivan. Mistä on kyse?
+Av någon orsak fungerar funktionen inte. Varför så?
 
-Funktiolle on välitetty parametrina _viite_ muutettavaan listaan. Sijoitus `lista = uusilista` saa aikaan sen, että parametriin talletettu viite muuttaa arvoaan funktion sisällä eli se alkaa viitata funktion sisällä luotuun uuteen listaan. Sijoitus ei kuitenkaan vaikuta funktion ulkopuolelle, siellä viitataan edelleen alkuperäiseen listaan.
-
-Seuraava kuvasarja havainnollistaa, mihin eri muuttujat viittaavat ohjelman suorituksen aikana:
+Funktionen tar emot en referens till en lista som argument. Det här är lagrat i variabeln `min_lista`. Tilldelningen `min_lista = ny_lista` tilldelar ett nytt värde till den samma variabeln. Variabeln `min_lista` hänvisar nu till den nya listan som skapades i funktionen, vilket betyder att referensen till den ursprungliga listan inte mera är tillgänglig inom funktionen. Tilldelningen har inte dock någon påverkan utanför funktionen.
 
 <img src="5_2_6.png" width="400">
 
-Funktion sisällä muutettu lista siis "kadotetaan" kun funktiosta palataan, ja muuttuja `luvut` viittaa koko ajan alkuperäiseen listaan.
+Dessutom innehåller variabeln `ny_lista` nu de nya värdena, men de är inte tillgängliga utanför funktionen. Variabeln försvinner alltså när funktionen körts och programmet fortsätter tillbaka till huvudfunktionen. Variabeln siffror i huvudfunktionen hänvisar alltid till den ursprungliga listan.
 
-Visualisaattori on tässäkin tapauksessa ystävä: se näyttää selkeästi, miten funktio ei koske alkuperäiseen listaan ollenkaan vaan luo uuden listan, johon muutokset tehdään:
+Visualiseringsverktyget hjälper igen. När du går igenom stegen utförligt märker du att den ursprungliga listan inte påverkas på något sätt av funktionen:
 
 <img src="5_2_4d.png">
 
-Yksi tapa korjata ongelma on kopioida uuden listan kaikki alkiot takaisin vanhaan listaan:
+Ett enkelt sätt att korrigera problemet är att kopiera över alla element från den nya listan till den gamla:
 
 ```python
 def kasvata_kaikkia(lista: list):
@@ -289,7 +285,7 @@ def kasvata_kaikkia(lista: list):
         lista[i] = uusilista[i]
 ```
 
-Pythonissa on olemassa myös ovela tapa sijoittaa monta alkiota kerrallaan listaan:
+Eller lite enklare tack vare Python:
 
 ```python
 >>> lista = [1, 2, 3, 4]
@@ -298,9 +294,9 @@ Pythonissa on olemassa myös ovela tapa sijoittaa monta alkiota kerrallaan lista
 [1, 10, 20, 4]
 ```
 
-Esimerkissä siis sijoitetaan "osalistaan" eli listan kohtiin 1 ja 2 taulukollinen alkioita.
+I exemplet ovan ersätts en del av en lista med värden från en annan samling.
 
-Osalistaksi voidaan myös valita koko lista:
+Som vi vet, kan vi också göra detta för en hel samling:
 
 ```python
 >>> lista = [1, 2, 3, 4]
@@ -309,7 +305,7 @@ Osalistaksi voidaan myös valita koko lista:
 [100, 99, 98, 97]
 ```
 
-Eli näin tulee korvatuksi koko vanhan listan sisältö. Siispä eräs toimiva versio funktiosta näyttää seuraavalta:
+Allt innehåll i den gamla listan ersätts. Inspirerat av det här har vi nu skapat en fungerande version av funktionen som ökar på elementens värden:
 
 ```python
 def kasvata_kaikkia(lista: list):
@@ -320,7 +316,7 @@ def kasvata_kaikkia(lista: list):
     lista[:] = uusilista
 ```
 
-...tai ilman listan kopiontia yksinkertaisesti sijoittamalla uudet arvot heti vanhaan listaan:
+Egentligen finns det ingen orsak att skapa en ny lista inom funktionen. Vi kan helt enkelt tilldela värdena direkt till den ursprungliga listan:
 
 ```python
 def kasvata_kaikkia(lista: list):
@@ -592,11 +588,11 @@ Funktio ei palauta mitään, vaan muokkaa parametrinaan saamaansa matriisia.
 
 </programming-exercise>
 
-## Funktioiden sivuvaikutukset
+## Sidoeffekter hos funktioner
 
-Koska funktio saa parametrinaan viittauksen listaan, se voi muuttaa tätä listaa. Jos funktion varsinaisena tarkoituksena ei ole muuttaa listaa, muutokset voivat aiheuttaa ongelmia toisaalla ohjelmassa.
+Om en funktion tar emot en referens till en lista som argument, kan funktionen ändra på listan. Om programmeraren inte har tagit i beaktande att listan kan ändras på direkt, kan ändringar i listan förorsaka problem på andra håll i programmet.
 
-Tarkastellaan esimerkkinä funktiota, jonka tarkoituksena on etsiä listan toiseksi pienin alkio:
+Låt oss ta en titt på en funktion som borde hitta det näst minsta värdet i en lista:
 
 ```python
 def toiseksi_pienin(lista: list) -> int:
@@ -614,9 +610,9 @@ print(luvut)
 [1, 2, 3, 4, 4, 5, 6, 7]
 </sample-output>
 
-Funktio kyllä etsii ja löytää toiseksi pienimmän alkion, mutta sen lisäksi se muuttaa listan alkioiden järjestyksen. Jos järjestyksellä on merkitystä muualla ohjelmassa, funktion kutsuminen voi aiheuttaa virheitä. Esimerkin kaltaista muutosta viittauksena saatuun olioon kutsutaan funktion _sivuvaikutukseksi_.
+Funktionen hittar det näst minsta värdet, men dessutom ordnar funktionen listan. Om ordningen av elementen har betydelse på andra håll i programmet kommer det här funktionsanropet eventuellt att orsaka fel. Oplanerade modifikationer som görs hos objekt som ges som referens till en funktion kallas sidoeffekt.
 
-Voimme toteuttaa funktion ilman sivuvaikutuksia näin:
+Vi kan förhindra den här sidoeffekten genom att göra en liten ändring i funktionen:
 
 ```python
 def toiseksi_pienin(lista: list) -> int:
@@ -635,10 +631,10 @@ print(luvut)
 
 </sample-output>
 
-Koska funktio `sorted` palauttaa uuden järjestetyn listan, toiseksi pienimmän alkion etsiminen ei enää sotke listan alkuperäistä järjestystä.
+Funktionen `sorted` returnerar en ny ordnad kopia av listan, så vi behöver inte mera ”sabotera” den ursprungliga listan när vi söker efter det näst minsta värdet.
 
-Usein pidetään hyvänä asiana, että funktiot eivät aiheuta sivuvaikutuksia, sillä sivuvaikutukset voivat hankaloittaa ohjelmien toimivuuden varmistamista.
+Det är en bra vana att undvika sidoeffekter i funktioner. Sidoeffekter kan göra det svårare att säkerställa att programmet fungerar som det ska i alla situationer.
 
-Sivuvaikutuksettomia funktioita kutsutaan myös _puhtaiksi funktioiksi_ ja erityisesti funktionaalista ohjelmointityyliä käytettäessä funktiot pyritään rakentamaan näin. Palaamme aiheeseen tarkemmin _Ohjelmoinnin jatkokurssilla_.
+Funktioner som saknar sidoeffekter kallas rena funktioner. Då man arbetar med funktionell programmering är rena funktioner speciellt viktiga. Vi dyker djupare i det här under fortsättningskursen i programmering.
 
 <quiz id="c978cb03-cb95-52a3-b122-2cc9ddf8a552"></quiz>

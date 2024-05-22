@@ -1,21 +1,21 @@
 ---
 path: '/osa-2/2-else-elif'
-title: 'Lisää ehtolauseita'
+title: 'Mera om if-satser'
 hidden: false
 ---
 
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda vaihtoehtoisia haaroja toistolauseisiin
-- Ymmärrät `if`-, `elif`- ja `else`-lauseiden merkityksen ehtolauseessa
-- Osaat soveltaa jakojäännöstä `%` ehdoissa
+* kan du skapa grenar inom if-satser
+* förstår du skillnaden mellan `if`, `elif` och `else`
+* kan du använda restoperatorn `%` i Boolean-uttryck.
 
 </text-box>
 
-Tarkastellaan ohjelmaa, joka tulostaa tiedon siitä, onko käyttäjän syöte negatiivinen vai positiivinen tai nolla:
+Vi tar nu en titt på ett program som ber användaren att ge en siffra och därefter skriver ut ett meddelande vars innehåll beror på om siffran är negativ, positiv eller lika med noll:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -27,11 +27,11 @@ if luku >= 0:
     print("Luku on positiivinen tai nolla")
 ```
 
-Ohjelma on hiukan kömpelö. Jokaisen mahdollisen syötteen kohdalla halutaan suorittaa vain toinen lohkoista, koska aina pätee joko `luku < 0` tai `luku >= 0`. Ensimmäinen vertailu sisältää tavallaan kaiken olennaisen: jos tulos on tosi, luku on negatiivinen, ja jos se on epätosi, luku on positiivinen tai nolla.
+Det här verkar något klumpigt och det finns en del upprepning. Vi vill ju bara köra ett av if-blocken eftersom numret alltid är antingen under noll, eller noll eller över. Det vill säga bara ett av villkoren `nummer < 0` och `nummer >= 0` är samtidigt sant. Därför är den fösta if-satsen den enda som behövs – om villkoret är sant är siffran negativ, annars är siffran noll eller över.
 
-Toisen vertailun sijasta onkin usein näppärämpää luoda vaihtoehtoinen haara, joka suoritetaan, _jos ehto on epätosi_. Tätä tarkoitusta varten käytetään `else`-lausetta.
+I stället för att skapa två if-satser kan vi skapa en gren som körs då alla villkor är osanna. Det här kallas else-sats.
 
-Edellinen esimerkki kirjoitettuna uudestaan:
+Så här kan vi skriva om det föregående exemplet:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -42,13 +42,13 @@ else:
     print("Luku on positiivinen tai nolla")
 ```
 
-Kun käytetään if-else-rakennetta, suoritetaan vaihtoehtoisista lohkoista aina jompikumpi. Seuraava kuva havainnollistaa asiaa:
+När vi bygger upp en if-else-sats kommer exakt en av grenarna att köras. Se följande bild:
 
 <img src="2_2_1.png">
 
-Huomaa, että else-haaraa ei voi olla olemassa ilman edeltävää if-haaraa. Koko if-else-rakenne lohkoineen muodostaa yhden _ehtolauseen_.
+Obs! Det kan aldrig finnas en else-gren före en if-gren. En if-gren och en else-gren bildar en if-else-sats.
 
-Seuraava esimerkki tutkii, onko käyttäjän syöttämä luku parillinen vai ei. Parillisuuden selvittämiseen käytetään jakojäännösoperaattoria `%`. Jakojäännöksellä on kätevä testata luvun parillisuutta: jos luvun jakojäännös kahdella on nolla, luku on parillinen, ja muuten pariton.
+Följande exempel kollar om den siffra användaren anger är jämnt eller inte. Det här kan restoperatorn `%` användas för. Restoperatorn anger resten när två heltal divideras. När ett tal divideras med två är det jämnt då resten är noll. Annars är talet inte jämnt.
 
 ```python
 luku = int(input("Anna luku: "))
@@ -66,7 +66,7 @@ Luku on pariton
 
 </sample-output>
 
-Kolmas esimerkki, jossa vertaillaan merkkijonojen samuutta:
+Ett annat exempel där strängar jämförs:
 
 ```python
 oikea = "kissa"
@@ -78,7 +78,7 @@ else:
     print("Pääsy kielletty")
 ```
 
-Kaksi esimerkkisuoritusta eri syötteillä:
+Så här kan det se ut när koden körs:
 
 <sample-output>
 
@@ -118,15 +118,15 @@ Olet täysi-ikäinen!
 
 </in-browser-programming-exercise>
 
-## Vaihtoehtoiset haarat elif-lauseella
+## Flera grenar med elif-satser
 
-Usein vaihtoehtoja on kuitenkin enemmän kuin kaksi. Esimerkiksi jalkapallo-ottelun lopputulosta käsitellessä olisi hyvä varautua kolmeen vaihtoehtoiseen lopputulokseen kotijoukkueen kannalta: voitto, häviö tai tasapeli.
+Ofta finns det fler än två alternativ som ett program måste ta i beaktande. Till exempel resultatet av en fotbollsmatch kan se ut på tre sätt: hemmalaget vinner, bortalaget vinner eller oavgjort.
 
-Ehtolausetta voidaan laajentaa `elif`-haaralla. Se on lyhenne sanoista "else if", ja tarkoittaa nimensä mukaisesti vaihtoehtoa alkuperäiselle ehdolle.
+En if-sats kan bestå av elif-grenar – ”else if”. Till den här grenen kommer man om villkoret i någon av de tidigare grenarna inte uppfylls.
 
 <img src="2_2_2.png">
 
-Tarkastellaan esimerkkiä, jossa selvitetään ottelun voittaja:
+Vi kollar på ett program som bestämmer vem som vunnit en match:
 
 ```python
 maalit_koti = int(input("Kotijoukkueen maalimäärä: "))
@@ -140,7 +140,7 @@ else:
     print("Tasapeli!")
 ```
 
-Kolme esimerkkitulosta eri syötteillä:
+Programmet kan ge tre olika resultat baserat på de värden som ges:
 
 <sample-output>
 
@@ -166,9 +166,9 @@ Tasapeli!
 
 </sample-output>
 
-Esimerkissä ehtolauseessa on siis kolme vaihtoehtoista haaraa, joista suoritetaan aina yksi. Ehtolauseessa `elif`-haaroja voi olla useampia, eikä `else`-haara ole pakollinen.
+I exemplet ovan finns tre grenar varav exakt en körs. En if-sats kan dock bestå av fler än en elif-gren. Dessutom är en else-gren inte obligatorisk.
 
-Esimerkiksi:
+Det här är också en helt korrekt if-sats:
 
 ```python
 print("Joulukalenteri")
@@ -193,7 +193,7 @@ Kiitos ja hei.
 
 </sample-output>
 
-Huomaa, että ehtolauseessa ei edellisessä esimerkissä ole ollenkaan else-haaraa. Jos käyttäjä syöttää jonkin sellaisen päivämäärän, joka ei täytä ehtoa jossain `if`- tai `elif`-lauseessa, ohjelmassa ei suoriteta mitään ehtolauseen kolmesta lohkosta.
+Märk att det föregående exemplet saknar else-gren. Om användaren ger ett datum som inte uppfyller villkoret på någon av if- eller elif-grenarna, kommer ingen av grenarna att köras.
 
 <sample-output>
 

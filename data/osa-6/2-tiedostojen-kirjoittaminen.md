@@ -1,42 +1,42 @@
 ---
 path: '/osa-6/2-tiedostojen-kirjoittaminen'
-title: 'Tiedostojen kirjoittaminen'
+title: 'Skriva filer'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda itse tiedoston Pythonilla
-- Osaat kirjoittaa tekstimuotoista tietoa tiedostoon
-- Osaat kirjoittaa CSV-muotoisen tiedoston omasta datastasi
+* kan du skapa filer med Python
+* kan du skriva textdata till en fil
+* vet du hur man skapar en CSV-fil.
 
 </text-box>
 
-Tiedoston lukemisen lisäksi voimme luonnollisesti myös kirjoittaa tiedostoon tietoa. Tyypillinen esimerkki on ohjelman tulosten tallentaminen tiedostoon, jotta niitä voidaan käyttää myös myöhemmin tai muokata edelleen jollain toisella ohjelmalla.
+Nu har vi sett hur man kan läsa data från filer, men det är naturligtvis också möjligt att skriva data till filer. I en vanlig situation behandlar programmet någon data och skriver det i en fil, så att det kan senare användas eller behandlas vidare av något annat program.
 
-Tiedoston kirjoittamisessa voimme joko luoda uuden tiedoston tai lisätä tietoa olemassa olevan tiedoston vanhan tiedon perään. Molemmissa tapauksissa käytetään edellisestä osasta tuttua `open`-funktiota, mutta kirjoittamista varten funktiolle annetaan toinen parametri.
+Vi kan skapa en ny fil varje gång vi vill skriva data, men vi kan också lägga till data i en fil som redan finns. I båda fallen använder vi `open`-funktionen som vi bekantade oss med i den förra delen. För att skriva filer måste vi ge funktionen ett andra argument.
 
-## Uuden tiedoston luominen
+## Skapa en fil
 
-Uusi tiedosto luodaan antamalla `open`-funktiolle tiedoston nimen lisäksi avaustilaksi `w` (tulee sanasta "write"). Esimerkiksi
+Om du vill skapa en ny fil ska du anropa funktionen `open` med `w` som andra argument. Det här indikerar att filen ska öppnas i skrivläge. Funktionsanropet skulle då kunna se ut så här:
 
 ```python
 with open("uusi_tiedosto.txt", "w") as tiedosto:
     # tiedostoon kirjoittaminen
 ```
 
-Huomaa, että **mikäli tiedosto on jo olemassa, kaikki sen sisältö ylikirjoitetaan**. Ole siis erittäin huolellinen uusia tiedostoja luodessasi.
+Obs! Om filen redan finns, kommer allt innehåll att skrivas över. Man ska vara väldigt försiktig när man skapar nya filer.
 
-Kun tiedosto on avattu, sinne voidaan kirjoittaa tietoa. Kirjoittaminen tapahtuu metodilla `write`, joka saa parametrikseen kirjoitettavan merkkijonon.
+När filen är öppen, kan du skriva data i den. Du kan använda metoden `write`, som tar strängen som ska skrivas som sitt argument:
 
 ```python
 with open("uusi_tiedosto.txt", "w") as tiedosto:
     tiedosto.write("Moi kaikki!")
 ```
 
-Ohjelman suorittamisen jälkeen samaan hakemistoon ilmestyy tiedosto `uusi_tiedosto.txt`, jonka sisältö näyttää tältä:
+När du kör programmet, dyker en ny fil med namnet `ny_fil.txt` upp i mappen. Innehållet borde se ut så här:
 
 <sample-data>
 
@@ -44,7 +44,7 @@ Moi kaikki!
 
 </sample-data>
 
-Huomaa, että jos tiedostoon halutaan rivinvaihtoja, ne täytyy lisätä tekstiin itse. Esimerkiksi ohjelma
+Om du vill ha radbyten i filen, måste du lägga till dem för hand. Funktionen `write` fungerar inte som print-funktionen, även om de har likheter. Följande program…
 
 ```python
 with open("uusi_tiedosto.txt", "w") as tiedosto:
@@ -53,7 +53,7 @@ with open("uusi_tiedosto.txt", "w") as tiedosto:
     tiedosto.write("Viimeinen rivi")
 ```
 
-tuottaa seuraavanlaisen tiedoston:
+…skulle resultera i en fil som denna:
 
 <sample-data>
 
@@ -61,7 +61,7 @@ Moi kaikki!Toinen riviViimeinen rivi
 
 </sample-data>
 
-Tulostukset saadaan omille riveilleen lisäämällä rivien loppuun rivivaihtomerkki `\n`:
+Radbrytningar får man till stånd med att inkludera `\n` i strängarna som ges som argument till `write`-funktionen:
 
 ```python
 with open("uusi_tiedosto.txt", "w") as tiedosto:
@@ -70,7 +70,7 @@ with open("uusi_tiedosto.txt", "w") as tiedosto:
     tiedosto.write("Viimeinen rivi\n")
 ```
 
-Nyt tiedosto `uusi_tiedosto.txt` näyttää tältä:
+Nu borde innehållet i `ny_fil.txt` se ut så här:
 
 <sample-data>
 
@@ -105,13 +105,13 @@ Hei Arto, toivomme viihtyisiä hetkiä python-kurssimateriaalin parissa! Terveis
 
 </programming-exercise>
 
-## Tiedon lisääminen olemassaolevaan tiedostoon
+## Lägga till data i en befintlig fil
 
-Jos haluamme lisätä tietoa olemassa olevaan tiedostoon, voimme avata tiedoston tilassa `a` (lyhenne sanasta "append"). Tällöin tiedoston nykyistä sisältöä ei pyyhitä, vaan uusi tieto kirjoitetaan tiedoston loppuun.
+Om du vill lägga till data i slutet av en fil istället för att skriva över en hel fil, kan du använda argumentet `a` istället för `w`.
 
-Jos tiedostoa ei ole olemassa, tila `a` toimii samalla tavalla kuin tila `w`.
+Om filen inte ännu finns, fungerar det här läget på samma sätt som skrivläget.
 
-Seuraava ohjelma avaa edellisen esimerkin tuottaman tiedoston `uusi_tiedosto.txt` ja lisää sen perään pari riviä tekstiä:
+Följande program öppnar filen `ny_fil.txt` och lägger till några rader text i slutet:
 
 ```python
 with open("uusi_tiedosto.txt", "a") as tiedosto:
@@ -119,7 +119,7 @@ with open("uusi_tiedosto.txt", "a") as tiedosto:
     tiedosto.write("Ja taas yksi.\n")
 ```
 
-Ohjelman suorituksen jälkeen tiedosto näyttää tältä:
+När programmet körs, borde innehållet i filen se ut på följande sätt:
 
 <sample-output>
 
@@ -131,9 +131,9 @@ Ja taas yksi.
 
 </sample-output>
 
-Tiedon lisääminen tiedostoon on kuitenkin suhteellisen harvoin tarvittava operaatio.
+I praktiken är det inte så vanligt att man lägger till innehåll i en befintlig fil.
 
-Tiedostoon lisäämisen sijaan on usein yksinkertaisinta kirjoittaa tiedosto kokonaan uudelleen. Näin joudutaan useimmiten tekemään jos esimerkiksi tiedoston sisältö muuttuu keskeltä tiedostoa.
+Oftare läser man en fil, behandlar man data och till sist skrivs filen över med nya data. Till exempel om man vill ändra på innehållet i mitten av en fil, är det vanligtvis enklast att skriva över hela filen.
 
 <programming-exercise name='Päiväkirja' tmcname='osa06-11_paivakirja'>
 
@@ -191,9 +191,9 @@ Heippa!
 
 </programming-exercise>
 
-## CSV-tiedoston kirjoittaminen
+## Skriva CSV-filer
 
-CSV-tiedoston voi kirjoittaa rivi riviltä `write`-metodilla. Esimerkiksi seuraava esimerkki luo tiedoston `koodarit.csv`, jonka jokaisella rivillä on koodarin nimi, työympäristö, lempikieli ja kokemus vuosissa. Tiedot on erotettu puolipisteillä.
+CSV-filer kan skrivas rad för rad med `write`-metoden, precis som med vilken som helst annan fil. Det följande exemplet skapar filen `programmerare.csv` som innehåller namnet, programmeringsmiljön, favoritprogrammeringsspråket och antalet år arbetserfarenhet hos en programmerare. Fälten skiljs åt med semikolon.
 
 ```python
 with open("koodarit.csv", "w") as tiedosto:
@@ -203,7 +203,7 @@ with open("koodarit.csv", "w") as tiedosto:
     tiedosto.write("Emilia;Mac;Cobol;9\n")
 ```
 
-Tämän tuloksena on seuraava tiedosto:
+När programmet körs får vi följande fil:
 
 <sample-output>
 
@@ -214,7 +214,7 @@ Emilia;Mac;Cobol;9
 
 </sample-output>
 
-Tarkastellaan sitten tilannetta, jossa tiedostoon kirjoitettavat tiedot ovatkin muistissa listoina:
+Hur är det om data som ska skrivas finns i en lista i datorns minne?
 
 ```python
 koodarit = []
@@ -224,7 +224,7 @@ koodarit.append(["Antti", "Linux", "Java", 17])
 koodarit.append(["Emilia", "Mac", "Cobol", 9])
 ```
 
-Nyt voimme kirjoittaa koodarien tiedot CSV-tiedostoon näin:
+Vi kan konstruera den sträng som vi vill skriva som en f-sträng, och skriva den klara raden i filen:
 
 ```python
 with open("koodarit.csv", "w") as tiedosto:
@@ -233,7 +233,7 @@ with open("koodarit.csv", "w") as tiedosto:
         tiedosto.write(rivi+"\n")
 ```
 
-Jos koodaria kuvaavissa listoissa olisi suuri määrä alkioita, olisi csv-tiedostoon kirjoitetavien rivien muodostaminen yllä olevalla tekniikalla työläähköä, ja rivit kannattaisikin koota silmukan avulla:
+Om varje lista skulle vara väldigt lång, skulle det vara arbetsdrygt att konstruera strängen för hand och då skulle vi istället kunna använda en for-loop:
 
 ```python
 with open("koodarit.csv", "w") as tiedosto:
@@ -245,26 +245,26 @@ with open("koodarit.csv", "w") as tiedosto:
         tiedosto.write(rivi+"\n")
 ```
 
-## Tiedoston tyhjentäminen ja poisto
+## Tömma innehållet i en fil och ta bort en fil
 
-Joissain tilanteissa ohjelmassa on tarvetta tyhjentää olemassaolevan tiedoston sisältö. Tämä onnistuu avaamalla tiedosto kirjoitustilassa "w" ja sulkemalla tiedosto välittömästi:
+Ibland behöver vi tömma innehållet i en fil. Då kan vi helt enkelt öppna filen i skrivläge och därefter stänga filen:
 
 ```python
 with open("tyhjennettava_tiedosto.txt", "w") as tiedosto:
     pass
 ```
 
-Nyt `with`-lohkossa on ainoastaan komento `pass`, joka ei tee mitään. Komento tarvitaan, sillä Python ei salli sellaisia lohkoja missä ei ole mitään komentoja.
+Observera att `with`-blocket nu bara innehåller kommandot `pass`, som inte gör något. Python tillåter inte tomma block, så därför använder vi det här kommandot här.
 
-Tiedoston tyhjennys on mahdollista tehdä myös ilman `with`-lohkokon käyttöä:
+Det är också möjligt att undvika `with`-blocket och istället använda följande kommando:
 
 ```python
 open('tyhjennettava_tiedosto.txt', 'w').close()
 ```
 
-<text-box variant='hint' name='Tiedoston poistaminen'>
+<text-box variant='hint' name='Ta bort filer'>
 
-Tiedosto voidaan myös poistaa kokonaan. Poisto tapahtuu seuraavasti:
+Du kan också helt och hållet avlägsna en fil. Vi måste be operativsystemet om hjälp för att uppnå detta:
 
 ```python
 # poisto-komento tuodaan koodin käyttöön import-lauseella
@@ -273,7 +273,7 @@ import os
 os.remove("tarpeeton_tiedosto.csv")
 ```
 
-Tämä ei kuitenkaan teknisten rajoitteiden takia toimi palvelimella suoritettavissa testeissä, joten käytä ylläolevia tapoja jos joudut tehtävissä tyhjentämään tiedoston.
+Obs! Det här fungerar inte i testmiljön som används för de automatiska testen. Om du ombeds tömma innehållet i en fil, ska du använda någon av metoderna som beskrevs ovan.
 
 </text-box>
 
@@ -348,11 +348,11 @@ eli yhden henkilön tiedot tulevat yhdelle riville. Jos funktiota esim. kutsutta
 
 </programming-exercise>
 
-## Tiedon käsittely CSV:nä
+## Behandla data i CSV-format
 
-Tehdään vielä lopuksi ohjelma, joka lukee CSV-tiedostosta opiskelijoiden viikoittaiset kurssipistemäärät ja laskee näiden avulla kurssin arvosanan. Lopuksi ohjelma luo CSV-tiedoston, josta selviää opiskelijan yhteispistemäärä sekä arvosana
+Låt oss skapa ett program som utvärderar elevernas framgång under en kurs. Programmet läser en CSV-fil som innehåller de veckovisa poängen som den studerande fått under kursens lopp. Programmet räknar ihop poängen och utvärderar därefter vilket vitsord de räcker till. Till slut skapar programmet en CSV-fil som innehåller poängsumman och vitsordet för varje elev.
 
-Ohjelman lukema CSV-tiedosto näyttää seuraavalta:
+CSV-filen som vi har tillgång till när vi börjar ser ut så här:
 
 <sample-data>
 
@@ -363,7 +363,9 @@ Emilia;6;6;5;5;0;4;8
 
 </sample-data>
 
-Ohjelman logiikka on jaettu kolmeen funktioon. Tiedoston lukeminen tapahtuu samaan tapaan kuin edellisessä aliluvussa: tiedot talletetaan sanakirjaan, jossa avaimena on opiskelijan nimi ja arvona lista viikkopisteistä:
+Programmets logik är uppdelad i tre funktioner: läsande av filen och behandlande av innehållet, vitsordsberäkning och skrivande av en ny fil.
+
+Filens inläsning sker enligt det vi lärt oss i den förra delen. Data lagras i ett lexikon där nyckeln är elevens namn och värdet är en lista på poängen som eleven i fråga har fått, i heltalsform:
 
 ```python
 def lue_viikkopisteet(tiedostonimi):
@@ -379,7 +381,7 @@ def lue_viikkopisteet(tiedostonimi):
     return viikkopisteet
 ```
 
-Arvosanojen laskemista varten on tehty oma funktionsa, jota tiedostoon kirjoittava funktio hyödyntää:
+Den andra funktionen beräknar vilket vitsord ett visst antal poäng räcker till. Funktionen används av den tredje funktionen, som skriver resultaten i en fil:
 
 ```python
 def arvosana(pisteet):
@@ -403,14 +405,14 @@ def tallenna_tulokset(tiedostonimi, viikkopisteet):
             tiedosto.write(f"{nimi};{summa};{arvosana(summa)}\n")
 ```
 
-Itse "pääohjelma" on nyt hyvin yksinkertainen. Huomaa, että luettavan ja kirjoitettavan tiedoston nimet annetaan funktioille parametrina:
+Strukturen tillåter oss skapa en mycket enkel huvudfunktion. Observera att filnamnen ges som argument i huvudfunktionen:
 
 ```python
 viikkopisteet = lue_viikkopisteet("viikkopisteet.csv")
 tallenna_tulokset("tulokset.csv", viikkopisteet)
 ```
 
-Suorituksen tuloksena oleva CSV-tiedosto näyttää seuraavalta:
+När huvudfunktionen körs, skapas filen `resultat.csv` med följande innehåll:
 
 <sample-data>
 
@@ -421,9 +423,9 @@ Emilia;41;5
 
 </sample-data>
 
-Huomaa, miten ohjelma on koostettu suhteellisen yksinkertaisista, vain yhteen asiaan keskittyvistä funktioista. Tämä on yleisesti ottaen suositeltava tapa ohjelmoinnissa, se helpottaa ohjelman toiminnallisuuden varmistamista sekä myöhemmin ohjelmaan tehtävien muutosten sekä laajennusten tekemistä.
+Notera att alla funktioner ovan är relativt enkla till sin funktionalitet – de har en uppgift var. Det här är ett vanligt och rekommenderat sätt att skapa större helheter när man programmerar. När en funktion har en uppgift är det enklare att säkerställa att den fungerar på önskat sätt. Det här gör det också enklare att senare ändra på programmet och lägga till ny funktionalitet.
 
-Jos esimerkiksi haluaisimme ohjelmaan toiminnallisuuden, joka tulostaa yhden opiskelijan arvosanan, olisi toiminnallisuus helppo koostaa käyttäen apuna jo valmiina olevaa arvosanan laskevaa funktiota:
+Om vi till exempel vill ha en funktion för att skriva ut vitsordet för enskild studerande, kan vi skapa en ny funktion som använder sig av en befintlig funktion i koden:
 
 ```python
 def hae_arvosana(haettava, viikkopisteet):
@@ -443,7 +445,7 @@ print(hae_arvosana("Paula", viikkopisteet))
 
 </sample-data>
 
-Jos ohjelmasta halutaan muuttaa tai korjata "yhtä asiaa", esimerkiksi arvosanojen pisterajoja, kohdistuu muokkaus hyvin rakennetussa ohjelmassa ainoastaan yhteen tai muutamaan funktioon. Jos sama logiikka, esimerkiksi arvosanan laskeminen, olisi kopioitu useaan paikkaan, kasvaisi riski, että muutoksia ei muistettaisi tehdä kaikkiin oikeisiin paikkoihin.
+Om vi märker att någon funktionalitet i programmet kräver åtgärdande, kommer ändringar inte att orsaka följder överallt i koden. Om vi till exempel vill ändra på vitsordsgränserna, behöver vi bara ändra på funktionen som räknar ut vitsordet – alla andra funktioner som använder den här funktionen skulle fortfarande fungera, med de nya gränserna. Om koden för den här funktionaliteten skulle vara splittrad, finns det en risk att vi glömmer att uppdatera koden på något ställe. Det här skulle antagligen orsaka problem.
 
 <programming-exercise name='Kurssin tulokset, osa 4' tmcname='osa06-14_kurssin_tulokset_osa4'>
 

@@ -1,23 +1,25 @@
 ---
 path: '/osa-4/1-vscode'
-title: 'Visual Studio Code -editori, Python-tulkki ja debuggeri'
+title: 'Editorn Visual Studio Code, Pythontolken och det inbyggda debuggningsverktyget'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää Visual studio Code -editoria kurssin tehtävien tekemiseen
-- Osaat suorittaa koodia interaktiivisen Python-tulkin avulla
+* kommer du att vara förberedd på att använda Visual Studio Code för att göra den här kursens övningar
+* kommer du att vara bekant med den interaktiva Pythontolken, som du kan använda för att köra kod.
 
 </text-box>
 
-Olemme tähän mennessä ohjelmoineet kaikki tehtävät kurssisivuille upotettuihin editori-ikkunoihin. Selaineditorissa tapahtuva ohjelmointi sopii hyvin kurssin alkuun, mutta siirrymme nyt käyttämään erillistä ohjelmointiin tarkoitettua editoria.
+Hittills har alla övningar i den här kursen gjorts direkt på kurssidorna i de inbäddade kodeditorerna. Att programmera i webbläddraren fungerar bra när man börjar lära sig att programmering. Nu är det ändå dags att börja använda en separat kodeditor som är anpassad just för att redigera kod.
 
-Erilaisia ohjelmointiin sopivia editoreja on kymmeniä. Käytämme kurssilla viime vuosina suureen suosioon noussutta [Visual Studio Code](https://code.visualstudio.com/) -editoria.
+Det finns en hel del olika editorer som är skräddarsydda för programmering. På den här kursen kommer vi att använda Visual Studio Code – en editor som under de senaste åren fått allt större fotfäste på marknaden.
 
-Asenna nyt Visual Studio Code ja kurssin tehtävien testien suorittamiseen käytettävä TMC-plugin [tämän ohjeen](https://www.mooc.fi/fi/installation/vscode) avulla. Valitse TMC-pluginissa organisaatioksi **MOOC** ja kurssiksi **Ohjelmoinnin MOOC 2024**.
+Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hända att du också måste installera Python och Python-tillägget (plugin) i Visual Studio Code. Du behöver också TMC-tillägget som tar hand om att köra de tester som finns i samband med övningarna. I TMC:s inställningar ska du välja MOOC som organisation och Python-programmering 2024 som kurs.
+
+Här hittar du en guide som berättar hur du kan installera allt som nämnts ovan. Läs instruktionerna och gör sedan uppgiften nedan:
 
 <programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_hello_visualstudio_code'>
 
@@ -66,29 +68,29 @@ if "visual studio code" == mjono.lower():
 
 </programming-exercise>
 
-## Koodin suorittaminen
+## Köra kod
 
-Visual Studio Codessa koodi suoritetaan painamalla vihreää kolmiota. Joskus koodisi suoritus voi jäädä kesken, esimerkiksi odottamaan käyttäjän syötettä tai ikuiseen silmukkaan, vaikka siirryt jo seuraavaan tehtävään. Kun yrität suorittaa seuraavan tehtävän koodia, esille tuleekin edellisen tehtävän kesken ollut suoritus. Näissä tilanteissa voit joutua sammuttamaan edellisen suorituksen painamalla yhtä aikaa näppäimiä _Control_+_C_, jotta saat suoritetuksi uuden tehtävän koodin.
+I Visual Studio Code är det enklaste sättet att köra kod att klicka på triangeln uppe i hörnet till höger. Ibland kan det hända att något program blir och köra i bakgrunden – det kanske väntar på att användaren ger någon data eller är fast i en oändlig loop – utan att du märker det. Du märker det eventuellt först när du försöker köra nästa program som helt enkelt inte kommer att köra eftersom det föregående programmet tar upp alla resurser. En snabb lösning på det här är att trycka på tangenterna Control + C samtidigt. Det här avslutar den pågående processen. Nästa program borde nu kunna köra normalt.
 
-## Interaktiivinen Python-tulkki
+## Den interaktiva Pythontolken
 
-Emme ole toistaiseksi puhuneet kurssilla sanallakaan eräästä Python-ohjelmoinnin tärkeimmästä työkalusta, interaktiivisesta komentotulkista.
+Ett av de viktigaste verktygen för en Python-programmerare är den interaktiva Python-tolken.
 
-Komentotulkki käynnistyy antamalla komentoriviltä komento `python3` (joissain tapauksissa, esim. Windowsilla, komento saattaa olla `python`). Esim. Macilla komentotulkin avaaminen näyttää seuraavalta:
+Hur du får tolken igång beror eventuellt på den miljö där du kör Python i. På Linux och Mac kan du skriva `python3` i terminalen. På Windows kan kommandot heta `python`. Så här ser tolken ut på Mac:
 
 <img src="4_1_1.png">
 
-Komentotulkki on myös mahdollista avata Visual Studio Coden sisälle, ensin suorittamalla jokin ohjelma "vihreällä kolmiolla" ja sen jälkeen kirjoittamalla avautuvaan _Terminal_-näkymään `python3` (tai `python`)
+Det är också möjligt att starta tolken i Visual Studio Code. Kör först ett program genom att klicka på triangeln. Nu borde en ”Terminal”-del öppnas på din skärm. Där kan du skriva `python3` (eller `python`):
 
 <img src="4_1_2.png">
 
-On olemassa myös selaimessa toimivia interaktiivisia tulkkeja, kuten <https://www.python.org/shell/>.
+Du kan också testa på en webbaserad Pythontolk, till exempel: <https://www.python.org/shell/>.
 
-Komentotulkki tarjoaa interaktiivisen tavan suorittaa Python-koodia rivi riviltä sitä mukaa kuin käyttäjä kirjoittaa koodia. Ideana on, että kun käyttäjä kirjoittaa rivin koodia, Python suorittaa rivin välittömästi ja näyttää rivin operaation tuloksen:
+Med hjälp av tolken kan du köra Python-kod rad för rad, i realtid. När du skriver en rad kod och trycker på Enter, kommer tolken att köra den omedelbart och visa dess resultat:
 
 <img src="4_1_3.png">
 
-Komentotulkkiin on mahdollista kirjoittaa mitä tahansa Pythonia, muuttujien ja metodienkin määrittely on mahdollista:
+All Python-kod som skrivs i en fil kan också skrivas i tolken. Du kan till och med tilldela variabler och definiera metoder:
 
 ```python
 >>> t = [1,2,3,4,5]
@@ -118,7 +120,7 @@ NameError: name 'luku' is not defined
 >>>
 ```
 
-Parhaimmillaan komentotulkki on pienten tarkistusten tekemiseen, esim. miten tietty metodi toimii tai onko metodia ylipäätään olemassa:
+Tolken kan framför allt användas för att göra små kontroller. Du kan till exempel testa funktioner eller metoder – eller kolla om de existerar över huvud taget:
 
 ```python
 >>> "TekstIä".toupper()
@@ -130,7 +132,7 @@ AttributeError: 'str' object has no attribute 'toupper'
 >>>
 ```
 
-Jos muistaa melkein jonkin metodin nimen, googlaamisen sijaan voi olla nopeampi käyttää komentotulkkia ja kysyä funktiolla `dir`, mitä metodeja tietyllä oliolla on:
+Om det finns en metod som du behöver, och du minns ungefär vad dess namn är, kan det ibland vara snabbare att skippa Google och istället använda `dir`-funktionen i tolken. Funktionen berättar vilka metoder kan användas hos ett specifikt objekt:
 
 ```python
 >>> dir("teksti")
@@ -146,9 +148,9 @@ Jos muistaa melkein jonkin metodin nimen, googlaamisen sijaan voi olla nopeampi 
 'title', 'translate', 'upper', 'zfill']
 ```
 
-Kuten näemme, merkkijonoilla on suuri määrä metodeja. Kurssin tässä vaiheessa ei kannata välittää alaviivoja sisältävistä metodeista, mutta muut voivat olla käyttökelpoisia. Osa metodien toiminnasta voi selvitä kokeilemalla, osan toiminta selviää googlaamalla.
+Som du ser ovan, har strängar i Python har en hel del metoder. För tillfället lönar det sig att ignorera metoder som har understreck i sina namn, men andra metoder kan visa sig vara nyttiga. Vissa får du kanske att fungera på egen hand, andra kan du söka mera information om på nätet.
 
-Listojen metodeista käy ilmi seuraavaa:
+Listor i Python verkar inte ha så många metoder:
 
 ```python
 >>> dir([])
@@ -162,7 +164,7 @@ Listojen metodeista käy ilmi seuraavaa:
 >>>
 ```
 
-Tarjolla näyttää siis olevan mm. metodit `reverse` ja `clear`. Kokeillaan niitä:
+Vi testar på några av dem – `reverse` och `clear` verkar lovande:
 
 ```python
 >>> luvut = [1,2,3,4,5]
@@ -174,42 +176,44 @@ Tarjolla näyttää siis olevan mm. metodit `reverse` ja `clear`. Kokeillaan nii
 []
 ```
 
-Metodit siis tekevät aika lailla sen, mitä nimen perusteella voi olettaa.
+Som du kan notera, gör dessa metoder just det man skulle kunna anta.
 
-Huomaa, että komentotulkki ei näytä mitään tulosta, kun kutsutaan esim. metodia `lista.reverse()`. Mistä tämä johtuu? Komentotulkki tekee komentojen suorituksen yhteydessä tulostuksen vain, jos suoritetulla koodirivillä on jokin arvo. Edellisessä esimerkissä saatiin tulostettua listan `luvut` arvo kirjoittamalla komentotulkkiin pelkkä muuttujan nimi. Komentotulkissa ei siis useinkaan ole tarvetta kirjottaa erikseen `print`-komentoja.
+Märk att tolken inte skriver ut någonting när du kör kommandot `siffror.reverse()`. Detta beror på att tolken endast skriver ut något då kodraden har ett värde. Metoden `reverse()` här returnerar inget värde.
 
-Tärkeä komento on `exit()`, joka sulkee komentotulkin. Erityisesti jos käytät komentotulkkia Visual Studio Codessa, se tulee muistaa sulkea, ennen kuin suoritat jonkin ohjelman uudelleen "vihreällä kolmiolla". Jos tämä unohtuu, on seurauksena hieman erikoinen virheilmoitus:
+I det ovanstående exemplet skrev vi ut värdet på listan `siffor` med att skriva namnet på variabeln. I tolken behöver man sällan använda sig av `print`-kommandon. Det är däremot inte förbjudet att använda dem.
+
+Kom ihåg att stänga tolken när du är klar. Kommandona `quit()` och `exit()` fungerar bra för det här ändamålet. Även tangentkombinationerna Control + D (Linux/Mac) och Control + Z (Windows) har samma funktion. Speciellt i Visual Studio Code är det här viktigt. Om du nämligen försöker köra ett annat Python-program medan tolken är igång, kommer du att få ett ganska konstigt felmeddelande:
 
 <img src="4_1_4.png">
 
-## Debuggeri
+## Det inbyggda debuggningsverktyget
 
-Muutamassa edellisessä osassa on jo korostettu debuggaustaitojen tärkeyttä ja demonstroitu tulostamalla tapahtuvaa debuggausta. Visual Studio Code sisältää debuggausta varten _visuaalisen debuggerin_.
+Vi har redan övat en hel del på att debugga – främst med hjälp av print-satser. Visual Studio Code erbjuder dig ett ytterligare verktyg för ändamålet: en inbyggd visuell debuggare.
 
-Debuggaus aloitetaan määrittelemällä koodiin _breakpoint_ eli kohta, johon debuggeri pysäyttää koodin suorituksen. Breakpoint asetetaan klikkaamalla hiirellä halutun koodirivin vasemmalta puolelta.
+För att börja debugga måste du lägga till en breakpoint – ett ställe där debuggaren stannar körandet av koden. Du kan lägga till en breakpoint genom att klicka på det vänstra hörnet av vilken som helst kodrad i ditt program.
 
-Seuraavassa esimerkissä breakpoint on asetettu [edellisen osan](/osa-3/1-ehdot-silmukoissa) tehtävän _Peräkkäisten summa_ hieman virheellisen ratkaisun riville 5:
+Det följande exemplet innehåller en icke-fungerande lösning på övningen Summan av på varandra följande tal från den förra modulen. På rad fem finns en breakpoint:
 
 <img src="4_1_5.png">
 
-Breakpointin asetuksen jälkeen valitaan valikosta _Run_ kohta _Start debugging_. Tämä avaa valintanäkymän, josta valitaan _Python File_:
+När breakpointen har skapats ska du välja Start debugging från Run-menyn. Det här öppnar en lista med alternativ av vilka du bör välja Python File:
 
 <img src="4_1_6.png">
 
-Debuggeri käynnistyy ja alkaa suorittaa koodia normaaliin tapaan, kunnes se törmää breakpointiin ja pysähtyy:
+Det här startar debuggaren som kör din kod normalt tills man när breakpointen: här stannar körandet upp. Om koden ber om indata ska du minnas att skriva det in i terminalen:
 
 <img src="4_1_7.png">
 
-Vasempaan reunaan on avautunut näkymä _Variables_, joka kertoo senhetkisten muuttujien arvot. Koodia voidaan suorittaa rivi riviltä painelemalla alaspäin osoittavaa nuolta (_Step into_).
+Till vänster finns nu en Variables-vy som innehåller de nuvarande värdena på alla aktiva variabler i koden. Du kan fortsätta att köra koden rad för rad genom att klicka på pilen som riktar neråt – Step into.
 
-Seuraavassa tilanteessa silmukkaa on suoritettu muutamia kertoja:
+I den följande bilden har loopen i koden upprepat några gånger:
 
 <img src="4_1_8.png">
 
-Debuggerin välilehti _Debug console_ mahdollistaa myös lausekkeiden arvojen näyttämisen debuggaushetken muuttujien arvoilla. Voidaan esimerkiksi kokeilla, mikä silmukan lopetusehdon arvo on:
+Debuggaren har en Debug console -flik som låter dig köra uttryck med de nuvarande variabelvärdena. Du kan till exempel kolla värdet på Boolean-uttrycket som finns i loopens villkor:
 
 <img src="4_1_9.png">
 
-Ohjelmassa voi olla myös useita breakpointeja. Pysähtymisen jälkeen koodi voidaan taas käynnistää sinisellä kolmiolla (_Continue_) ja suoritus jatkuu, kunnes ohjelma törmää seuraavaan breakpointiin.
+Du kan ha flera breakpoints i din kod. När körandet av koden har stannat upp kan du starta det genom att klicka på den blå triangeln. Körandet fortsätter tills nästa breakpoint nås.
 
-Visuaalinen debuggeri on vaihtoehto debug-tulostuksille, mutta on mieltymyksistä kiinni, mitä debuggaustekniikoita kukin ohjelmoija käyttää. On hyvä kokeilla erilaisia tapoja ja valita itselle sopiva tapa.
+Den inbyggda visuella debuggaren är ett bra alternativ till debuggning med print-satser. Det är upp till dig själv vilken metod du använder dig av i fortsättningen. Alla programmerare har sina egna preferenser, men det är alltid en bra idé att testa på olika alternativ förrän man bestämmer sig för att göra på ett visst sätt.

@@ -1,35 +1,35 @@
 ---
 path: '/osa-4/2-lisaa-funktioista'
-title: 'Lisää funktioista'
+title: 'Mer om funktioner'
 hidden: false
 ---
 
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät lisää funktion parametrien käyttämisestä
-- Osaat palauttaa arvon funktiosta ja käyttää sitä kutsukohdassa
-- Osaat merkitä tyyppivihjeet parametreille ja paluuarvolle
+* vet du mera om argument och parametrar hos funktioner
+* kan du returnera värden från funktioner och använda dessa värden i koden
+* kan du ge typledtrådar för parametrar och värden som returneras.
 
 </text-box>
 
-Funktioiden määrittely tapahtuu avainsanan `def` avulla:
+Nu är det dags för en snabbrepetition av funktioner i Python. Funktioner definieras med nyckelordet `def`:
 
 ```python
 def viesti():
     print("Tämä tulee funktiosta")
 ```
 
-Näin määriteltyä funktiota nimeltä `viesti` kutsutaan seuraavasti:
+Funktionen kan anropas i koden på följande sätt:
 
 
 ```python
 viesti()
 ```
 
-Tällöin ohjelman tulostus on seuraava:
+I det här fallet skulle programmet skriva ut följande:
 
 <sample-output>
 
@@ -37,11 +37,11 @@ Tämä tulee funktiosta
 
 </sample-output>
 
-## Funktion parametrit
+## Parametrar och argument hos en funktion
 
-Funktiolla voi olla yksi tai useampi parametri. Parametrit määritellään suluissa funktion nimen jälkeen.
+En funktion kan motta en eller flera argument. När funktionen anropas tilldelas argumenten till variabler som är definierade i funktionsdefinitionen. Dessa variabler kallas parametrar och de listas inom parenteserna som följer funktionens namn.
 
-Esimerkiksi seuraavassa koodissa funktiolla `tervehdi` on yksi parametri ja funktiolla `summa` on kaksi parametria.
+I den följande koden har funktionen `halsa` en definierad parameter, medan funktionen `summa` har två:
 
 ```python
 def tervehdi(nimi):
@@ -63,43 +63,41 @@ Parametrien summa on 5
 
 </sample-output>
 
-<text-box variant='hint' name='Muodollinen ja todellinen parametri'>
+<text-box variant='hint' name='Formell och riktig, parameter och argument'>
 
-Mitä oikeastaan tapahtuu, kun suoritetaan funktiokutsu `tervehdi("Emilia")`?
+Terminologin kring data som ges till en funktion kan kännas förvirrande. För att göra situationen svårare, använder en del källor uttryck som formella och riktiga parametrar eller formella och riktiga argument. Pythons dokumentation nämner endast termerna argument och parameter. Därför använder vi också dessa termer.
 
-Funktion määrittelyssä `tervehdi(nimi)` oleva `nimi` on funktion
-_muodollinen parametri_. Parametrin nimi on annettu funktion alussa,
-ja sitä voidaan käyttää funktiossa muuttujan tavoin.
+Vad händer det egentligen när funktionsanropet `halsa(”Emilia”)` körs?
 
-Funktion kutsussa `tervehdi("Emilia")` oleva `"Emilia"` on funktion
-_todellinen parametri_. Kun funktiota kutsutaan, todellinen parametri
-sijoitetaan muodollisen parametrin arvoksi.
+I funktionsdefinitionen `halsa(namn)` beter sig parametern namn som en normal variabel. Vi kan använda den inom funktionen på samma sätt som vi har använt variabler i huvudfunktionen i flera program hittills.
 
-Joskus termillä _parametri_ viitataan muodolliseen parametriin ja
-termillä _argumentti_ viitataan todelliseen parametriin,
-mutta monet myös käyttävät termejä sekaisin.
+I funktionsanropet `halsa(”Emilia”)` är argumentet `”Emilia”` som vilken som helst annan sträng vi stött på tidigare. Vi kan till exempel tilldela den till en variabel.
+
+Alltså, när funktionsanropet körs kommer värdet på argumentet – `”Emilia”` – att tilldelas till variabeln `namn`. Under den här körningen av funktionen kommer `namn = ”Emilia”`. När funktionen anropas med ett annat argument kommer värdet på namn att vara olikt.
+
+Terminologin kan kännas överflödig, men datavetenskapen strävar att vara så exakt vetenskap som möjligt. Att använda noga definierad terminologi hjälper.
 
 </text-box>
 
-## Testien virheilmoitukset
+## Felmeddelanden som uppstår i testen
 
-Jos ohjelmasi ei toimi oikein, antavat testit enemmän tai vähemmän hyvän virheilmoituksen. Virheilmoitus kannattaa ehdottomasti lukea huolellisesti.
+De flesta uppgifter under den här kursen inkluderar automatiska test. Om programmet inte fungerar på det sätt som förutsätts av uppgiften, kommer testet att visa ett felmeddelande. Det här meddelandet kan vara till nytta – eller sen inte. Det kan vara värt att läsa meddelandet noga.
 
-Joissain tilanteissa virheilmoitus ei kerro tarkemmin, mistä on kyse. Esimerkiksi seuraavassa tehtävässä saatat törmätä seuraavaan virheeseen:
+I vissa fall berättar felmeddelandet inte egentligen så mycket. I nästa övning kan du stöta på det här felmeddelandet:
 
 <img src="4_2_0a.png">
 
-Virhe kertoo, että tehtävän funktiota `viiva` pitäisi pystyä kutsumaan seuraavasti:
+Meddelandet berättar att man borde kunna köra funktionen `rad` med de specificerade argumenten:
 
 ```python
 viiva(5, "")
 ```
 
-Varsinainen ongelma paljastuu, kun kokeillaan, mitä funktiokutsu tekee, eli kopioidaan virheilmoituksen kertoma funktiokutsu koodiin ja painetaan vihreää kolmiota:
+Det riktiga problemet får vi reda på när vi kör det funktionsanrop som stod i felmeddelandet. Du kan göra det genom att kopiera funktionsanropet till ditt program och klicka på triangeln:
 
 <img src="4_2_0b.png">
 
-Koodin suorituksen viimeiset rivit kertovat, mikä on vikana: koodin rivi 4 aiheuttaa virheen _IndexError: string index out of range_. Kuten [edellisessä osassa](/osa-3/2-merkkijonojen-kasittely) mainittiin, syy tälle on se, että koodissa yritetään indeksoida merkkijonon ulkopuolelle. Tällä kertaa syynä on se, että yritetään hakea nollan pituisen merkkijonon ensimmäistä merkkiä.
+De sista raderna som uppstår när programmet körs (markerade i bilden ovan) berättar att rad fyra i koden orsakar felet `IndexError`. I den förra modulen fanns det ett liknande exempel, där vi försökte använda ett index som inte var en del av en sträng. Den här gången orsakas problemet av att vi försöker hämta den första bokstaven hos en tom sträng – dvs. en sträng med längden noll.
 
 <programming-exercise name='Viiva' tmcname='osa04-02_viiva'>
 
@@ -125,10 +123,9 @@ LLLLLLLLLL
 
 </programming-exercise>
 
-## Sisäkkäiset kutsut
+## Funktionsanrop inom funktionsanrop
 
-Voimme kutsua funktiota myös toisen funktion sisältä. Esimerkiksi seuraavassa ohjelmassa funktio
-`tervehdi_monesti` kutsuu funktiota `tervehdi` halutun määrän kertoja:
+Du kan anropa en funktion från en annan funktion. Vi har faktiskt gjort det här flera gånger – vi har anropat `print`-funktionen inom våra egna funktioner i den förra modulen. Våra egna funktioner fungerar på samma sätt. I det följande exemplet anropar funktionen `halsa_flera_ganger` funktionen `halsa` så många gånger som specificerats i argumentet ganger:
 
 ```python
 def tervehdi(nimi):
@@ -367,25 +364,25 @@ joulukuusi!
 
 </programming-exercise>
 
-## Funktion paluuarvo
+## Return-värdet hos en funktion
 
-Funktiot voivat myös palauttaa arvoja. Esimerkiksi Pythonin valmis funktio `input` _palauttaa_ käyttäjän antaman syötteen. Funktion palauttama arvo voidaan esimerkiksi sijoittaa muuttujaan:
+Funktioner kan också returnera värden. Till exempel Pythons inbyggda funktion `input` returnerar en sträng som användaren angett. Värdet som returneras av en funktion kan lagras i en variabel:
 
 ```python
 sana = input("Anna sana: ")
 ```
 
-Myös kokonaislukujen lukemisessa yhdessä funktion `input` kanssa käytettävä funktio `int` palauttaa arvon:
+När du vill ha ett heltalsvärde från användaren måste indatat från användaren konverteras till ett heltal. För det använder vi `int`-funktionen som också returnerar ett värde:
 
 ```python
 luku = int(input("Anna kokonaisluku: "))
 ```
 
-Funktio `int` saa parametrinaan funktion `input` palauttaman merkkijonon ja palauttaa sen kokonaislukutyyppisenä.
+Funktionen `int` tar den sträng som returneras av `input`-funktionen som argument och returnerar värdet i heltalsform om möjligt.
 
-## Funktion arvon palauttaminen return-komennolla
+## `return`-satsen
 
-Myös itse määrittelemämme funktiot voivat palauttaa arvoja käyttämällä komentoa `return`. Esimerkiksi seuraava funktio `summa` palauttaa annettujen lukujen summan:
+Funktioner som du själv definierar kan också returnera värden. För det här ändamålet behöver du `return`-satsen. Till exempel funktionen `min_summa` nedan returnerar summan av dess parametrar:
 
 ```python
 def summa(a, b):
@@ -402,7 +399,7 @@ Summa: 5
 
 </sample-output>
 
-Seuraavassa on vielä toinen esimerkki, jossa funktio kysyy käyttäjän nimen ja palauttaa sen:
+Här är ett annat exempel på ett returnerat värde. Funktionen ber om användarens namn och returnerar den sträng som användaren anger:
 
 ```python
 def kysy_nimi():
@@ -420,7 +417,7 @@ Moikka, Anna
 
 </sample-output>
 
-Kannattaa huomata, että komento `return` lopettaa funktion suorituksen saman tien. Niinpä voimme tehdä seuraavan funktion:
+`return`-satsen avslutar körandet av funktionen genast. Det här är ett sätt att göra en jämförelsefunktion:
 
 ```python
 def pienin(a,b):
@@ -432,7 +429,7 @@ print(pienin(3, 7))
 print(pienin(5, 2))
 ```
 
-Tässä ideana on, että jos `a` on pienempi kuin `b`, niin funktio palauttaa arvon `a` ja päättyy. Muuten funktion suoritus jatkuu eteenpäin, jolloin se palauttaa arvon `b`.
+Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` och avslutas direkt. Annars fortsätter man till nästa rad som returnerar värdet `b`. En return-sats kan inte köras flera gånger i samma funktion under samma funktionsanrop.
 
 <sample-output>
 
@@ -441,7 +438,7 @@ Tässä ideana on, että jos `a` on pienempi kuin `b`, niin funktio palauttaa ar
 
 </sample-output>
 
-Voimme myös käyttää `return`-komentoa siihen, että poistumme funktiosta palauttamatta mitään:
+Du kan använda dig av `return`-satsen även om funktionen inte returnerar något värde. Då är dess uppgift helt enkelt att avsluta körandet av funktionen:
 
 ```python
 def tervehdi(nimi):
@@ -455,7 +452,7 @@ tervehdi("")
 tervehdi("Matti")
 ```
 
-Jos `nimi` on tyhjä merkkijono, niin funktio tulostaa `???` ja päättyy.
+Om argumentet som sparas i variabeln `namn` är en tom sträng, kommer texten `???` att skrivas ut och funktionen avslutas:
 
 <sample-output>
 
@@ -465,9 +462,9 @@ Moikka, Matti
 
 </sample-output>
 
-## Funktion paluuarvojen käyttö
+## Att använda return-värden från funktioner
 
-Kuten olemme jo nähneet, funktioiden paluuarvoja on mahdollista sijoittaa muuttujiin:
+Vi känner redan till att värden som returneras från funktioner kan lagras i variabler:
 
 ```python
 def summa(a, b):
@@ -483,13 +480,13 @@ Summa on 10
 
 </sample-output>
 
-Koska funktion paluuarvo käyttäytyy kuten mikä tahansa arvo, ei apumuuttuja ole tarpeen ja paluuarvoa on mahdollista käyttää suoraan komennon `print` parametrina:
+Return-värdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-kommandot:
 
 ```python
 print("Summa on", summa(4, 6))
 ```
 
-Voimme myös antaa funktion palauttaman arvon toiselle funktiolle:
+Return-värdet hos en funktion kan vara ett argument för en funktion:
 
 ```python
 def summa(a, b):
@@ -508,15 +505,15 @@ Vastaus on 2
 
 </sample-output>
 
-Tässä tapauksessa suoritetaan ensin sisemmät funktiokutsut `summa(5, 2)` ja `summa(2, 3)`, joiden  palauttamat arvot 7 ja 5 käytetään ulomman funktiokutsun parametreina.
+I det här fallet körs de inre funktionsanropen `min_summa(5, 2)` och `min_summa(2, 3)` först. Värdena som returneras (sju och fem) används som argument för det yttre funktionsanropet.
 
-Ulompi funktiokutsu `erotus(7, 5)` palauttaa arvon 2, joka sijoitetaan muuttujan `tulos` arvoksi ja tulostetaan ruudulle.
+Det yttre funktionsanropet `differens(7, 5)` returnerar värdet 2, som lagras i variabeln `resultat` och skrivs ut.
 
-Funktioiden palauttamat arvot toimivat täysin samalla tavalla kuin mitkä tahansa arvot Pythonissa. Niitä voidaan tulostaa, sijoittaa muuttujaan, käyttää osana lausekkeita tai käyttää parametreina muissa funktiokutsuissa.
+För att sammanfatta: värden som returneras av funktioner fungerar som alla andra värden i Python. De kan skrivas ut, lagras i variabler och användas i uttryck och som argument i funktionsanrop.
 
-## Arvon palauttaminen, return ja print
+## Skillnaden mellan `return` och `print`
 
-Joskus aloittelija hämmentyy funktioiden paluuarvon ja funktiossa tapahtuvan tulostuksen välistä eroa. Tarkastellaan kahta versiota funktiosta, joka selvittää kahden parametrinsa maksimiarvon:
+Ibland kan skillnaden mellan att använda `return` och `print` inom en funktion vara oklara. Vi undersöker två olika sätt att göra en funktion som berättar vilket av två värden är större:
 
 ```python
 def maksimi1(a, b):
@@ -544,26 +541,26 @@ maksimi2(7, 2)
 
 </sample-output>
 
-Molemmat funktiot näyttävät toimivan hyvin, kumpikin selvittää maksimiarvon. Funktioissa on kuitenkin eräs ratkaiseva ero. Funktioista ensimmäinen `maksimi1` _palauttaa_ selvittämänsä arvon. Se ei itse tulosta mitään, eli jos suoritetaan koodi
+Båda versionerna verkar fungera i och med att det större av värdena skrivs ut korrekt. Det finns ändå en central skillnad mellan dessa två funktioner. Den första, `max1`, skriver inte ut något. Den använder sig istället av `return`-satsen. Om vi kör den följande kodraden…
 
 ```python
 maksimi1(3, 5)
 ```
 
-ei näytä tapahtuvan mitään. Funktion paluuarvo on siis otettava talteen muuttujaan, jos se halutaan tulostaa:
+…verkar ingenting hända. Funktionens return-värde måste användas på något sätt i den kod som anropar funktionen. Det kan till exempel lagras i en variabel och skrivas ut:
 
 ```python
 vastaus = maksimi1(3, 5)
 print(vastaus)
 ```
 
-Funktioista toinen `maksimi2` taas tulostaa itse `print`-komentoa käyttäen lukujen maksimin, eli riittää kutsua
+Den andra versionen, `max2`, använder sig av `print`-kommandot inom funktionen. Om vi vill se värdet, kan vi helt enkelt anropa funktionen…
 
 ```python
 maksimi2(7, 5)
 ```
 
-ja maksimi tulostuu ruudulle. Tämän funktion huono puoli on kuitenkin se, että funktion selvittämää arvoa ei ole mahdollista saada funktion ulkopuolelle muun ohjelman käsiteltäväksi. Tämän takia arvon palauttava funktio on useimmiten parempi vaihtoehto.
+…och det större värdet kommer att skrivas ut. Det dåliga med den här funktionen är att värdet som funktionen räknar ut inte kan användas av själva programmet. Därför är funktioner som returnerar ett värde ofta ett bättre alternativ.
 
 <programming-exercise name='Luvuista suurin' tmcname='osa04-05_luvuista_suurin'>
 
@@ -631,20 +628,18 @@ print(vika_sana(lause)) # kerran
 
 </programming-exercise>
 
-## Parametrin tyyppi
+## Typen av ett argument
 
-Kerrataan vielä tähän mennessä läpikäydyt tyypit:
+Här är en kort repetition av de datatyper vi bekantat oss med hittills:
 
-Tyyppi | Pythonissa | Esimerkki
-:------|:----------:|-----------
-Kokonaisluku | `int` | `23`
-Liukuluku | `float` | `-0.45`
-Merkkijono | `str` | `"Pekka Python"`
-Totuusarvo | `bool` | `True`
+Tyyppi        | I Python | Exempel
+:-------------|:--------:|-----------
+Heltal        | `int`    | `23`
+Flyttal       | `float`  | `-0.45`
+Sträng        | `str`    | `"Petra Python"`
+Sanningsvärde | `bool`   | `True`
 
-Kun kutsumme funktiota, funktio toimii oikein vain,
-jos annamme sille sopivan tyyppiset parametrit.
-Tarkastellaan esimerkkinä seuraavaa funktiota:
+När du anropar en funktion, kommer den bara att fungera korrekt då argumenten du ger åt den är av korrekt typ. Ta en titt på det här exemplet:
 
 ```python
 def tulosta_monesti(viesti, kerrat):
@@ -653,7 +648,7 @@ def tulosta_monesti(viesti, kerrat):
         kerrat -= 1
 ```
 
-Funktio toimii mainiosti, jos kutsumme sitä näin:
+Funktionen fungerar korrekt om vi anropar den på följande sätt:
 
 ```python
 tulosta_monesti("Moikka", 5)
@@ -669,7 +664,7 @@ Moikka
 
 </sample-output>
 
-Kuitenkaan funktio ei toimi, jos annamme sille väärän tyyppisen parametrin:
+Om vi däremot ger funktionen ett argument av fel typ så kommer funktionen inte att fungera:
 
 ```python
 tulosta_monesti("Moikka", "Emilia")
@@ -681,9 +676,9 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 </sample-output>
 
-Tässä ongelmaksi tulee, että funktion jälkimmäistä parametria `kerrat` vertaillaan kokonaislukuun 0. Kun parametri on `"Emilia"` eikä kokonaisluku, tämä aiheuttaa virheen.
+Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0) på den andra raden av funktionsdefinitionen. Det givna argumentet `”Emilia”` är en sträng och inte ett heltal. Strängar och heltal kan inte jämföras så här enkelt – därmed felmeddelandet.
 
-Voimme antaa funktion määrittelyssä _tyyppivihjeen_, joka ilmaisee, millaista tietoa parametreihin on tarkoitus sijoittaa:
+För att undvika problem som dessa kan du inkludera typledtrådar (type hints) när du definierar funktioner. Typledtråden berättar vilken typ av argument funktionen förväntar sig motta:
 
 ```python
 def tulosta_monesti(viesti : str, kerrat : int):
@@ -692,9 +687,9 @@ def tulosta_monesti(viesti : str, kerrat : int):
         kerrat -= 1
 ```
 
-Tämä kertoo funktion käyttäjälle, että parametrin `viesti` on tarkoitus olla merkkijono, kun taas parametrin `kerrat` on tarkoitus olla kokonaisluku.
+Det här berättar för alla användare av funktionen att argumentet som lagras i `meddelande` ska vara en sträng medan argumentet som lagras i `ganger` ska vara ett heltal.
 
-Vastaavasti funktion paluuarvon tyypin voi vihjata funktion määrittelyssä:
+Också typen av return-värdet kan specificeras när funktionen definieras:
 
 ```python
 def kysy_nimi() -> str:
@@ -702,8 +697,8 @@ def kysy_nimi() -> str:
     return nimi
  ```
 
-Tämä kertoo funktion käyttäjälle, että funktion on tarkoitus palauttaa merkkijono.
+Det här berättar för användaren att funktionen borde returnera en sträng.
 
-Huomaa kuitenkin, että tyyppivihje ainoastaan neuvoo, mikä tyypin tulisi olla, mutta ei valvo sitä. Jos funktiolle annetaan väärän tyyppinen parametri tai se palauttaa väärän tyyppisen arvon, funktio suoritetaan kuitenkin, mutta se toimii mahdollisesti väärin.
+Obs! Typledtrådar är bokstavligen ledtrådar. Det är inte en garanti och kan inte säkerställa att felaktiga datatyper inte ges till eller returneras av en funktion. Om det här sker kommer funktionen ändå att köras, men den fungerar inte nödvändigtvis korrekt.
 
 <quiz id="8e93e885-fda8-5930-8232-80dd3dc01642"></quiz>

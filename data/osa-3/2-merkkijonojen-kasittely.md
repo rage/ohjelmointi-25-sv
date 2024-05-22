@@ -1,23 +1,23 @@
 ---
 path: '/osa-3/2-merkkijonojen-kasittely'
-title: 'Merkkijonojen käsittely'
+title: 'Behandla strängar'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää operaattoreita `+` ja `*` merkkijonojen kanssa
-- Osaat laskea merkkijonon pituuden
-- Tiedät, mitä tarkoittaa merkkijonon indeksointi
-- Osaat etsiä osajonoja merkkijonosta
+* kan du använda operatorerna `+` och `*` med strängar
+* vet du hur man tar reda på längden hos en sträng
+* vet du vad strängindexering betyder
+* kan du hitta en delsträng i en sträng.
 
 </text-box>
 
-## Merkkijono-operaatiot
+## Strängoperationer
 
-Merkkijonojen yhdistäminen tapahtuu `+`-operaattorin avulla:
+Strängar kan kombineras med `+`-operatorn:
 
 ```python
 alku = "esi"
@@ -32,7 +32,7 @@ esimerkki
 
 </sample-output>
 
-Myös `*`-operaattoria voidaan käyttää merkkijonojen yhteydessä. Jos toinen operandi kertolaskussa on merkkijono ja toinen kokonaisluku, saadaan merkkijonoa monistettua annettu määrä. Esimerkiksi:
+Operatorn `*` kan också användas med strängar då den andra operanden är ett heltal. Strängoperanden kommer då att upprepas det antal gånger som specificeras av heltalet. Till exempel följande skulle fungera:
 
 ```python
 sana = "apina"
@@ -45,7 +45,7 @@ apinaapinaapina
 
 </sample-output>
 
-Silmukan ja merkkijono-operaatioiden avulla voimme tehdä ohjelman, joka piirtää pyramidin:
+Med hjälp av att kombinera strängoperationer med en loop kan vi skriva ett program som ritar en pyramid:
 
 ```python
 n = 10 # pyramidin kerrosten määrä
@@ -57,7 +57,7 @@ while n > 0:
     n -= 1
 ```
 
-Ohjelman tulostus on seuraava:
+Så här ser utskriften ut:
 
 ```x
           *
@@ -72,7 +72,7 @@ Ohjelman tulostus on seuraava:
  *******************
 ```
 
-Silmukassa oleva `print`-komento tulostaa rivin, jonka alussa on `n` välilyöntiä ja sitten muuttujan `rivi` sisältö. Tämän jälkeen muuttujan `rivi` loppuun lisätään kaksi tähteä ja muuttujan `n` arvo vähenee yhdellä.
+Kommandot `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde subtraheras med ett.
 
 <in-browser-programming-exercise name="Monta jonoa" tmcname="osa03-05a_monistetut_jonot">
 
@@ -90,11 +90,11 @@ heippaheippaheippaheippa
 
 </in-browser-programming-exercise>
 
-## Merkkijonon pituus ja indeksointi
+## Längden på en sträng och dess index
 
-Funktio `len` palauttaa kokonaisluvun, joka on merkkijonon pituus merkkeinä. Esimerkiksi `len("moi")` palauttaa 3, koska merkkijonossa `moi` on 3 merkkiä.
+Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exempel `len(”hej”)` returnerar 3 eftersom det finns tre tecken i strängen `hej`.
 
-Seuraava ohjelma tulostaa käyttäjän syöttämän merkkijonon "alleviivattuna" monistamalla merkkiä `-` syötteen pituuden mukaisen määrän:
+Följande program ber användaren att ge en sträng och skriver sedan ut ned med ”understrykning”. Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -113,7 +113,7 @@ Moi kaikki!
 
 </sample-output>
 
-Pituuteen lasketaan mukaan kaikki merkkijonossa olevat merkit, mukaan lukien välilyönnit. Esimerkiksi merkkijonon `moi moi` pituus on 7.
+Strängens längd innehåller alla tecken i strängen – också mellanslag. Till exempel längden på strängen `hej igen` är 8.
 
 <in-browser-programming-exercise name="Pidempi jono" tmcname="osa03-05b_pidempi_jono">
 
@@ -147,13 +147,13 @@ Jonot ovat yhtä pitkät
 
 </in-browser-programming-exercise>
 
-Yksittäinen merkkijonon merkki voidaan hakea operaattorin `[]` avulla. Operaattori kirjoitetaan merkkijonon perään, ja hakasulkeiden väliin kirjoitetaan halutun merkin _indeksi_ eli kohta merkkijonossa.
+Eftersom strängar i grunden är sekvenser av tecken kan också vilken som helst specifik bokstav i en sträng hämtas. Operatorn `[]` hittar tecknet vid ett specifikt index som ges mellan parenteserna.
 
-Huomaa, että merkkien indeksointi alkaa nollasta: ensimmäinen merkki on indeksin 0 kohdalla, toinen indeksin 1 kohdalla jne.
+Indexet syftar till ett ställe i strängen och börjar från talet noll. Det första tecknet i en sträng har indexet 0 medan nästa tecken har indexet 1 och så vidare.
 
 <img src="3_2_1.png">
 
-Esimerkiksi:
+Det här programmet…
 
 ```python
 
@@ -164,7 +164,7 @@ print(mjono[3])
 
 ```
 
-Ohjelma tulostaa:
+…skulle skriva ut följande:
 
 <sample-output>
 
@@ -175,7 +175,7 @@ n
 
 </sample-output>
 
-Koska merkkijonon ensimmäinen merkki on indeksin 0 kohdalla, on viimeinen merkki vastaavasti indeksin _pituus_ – 1 kohdalla. Esimerkiksi seuraava ohjelma tulostaa merkkijonon ensimmäisen ja viimeisen merkin:
+Eftersom det första tecknet i en sträng har indexet noll, har det sista tecknet indexet längd (`len`) - 1. Följande program skriver ut det första och sista tecknet i en sträng:
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -191,7 +191,7 @@ Viimeinen: i
 
 </sample-output>
 
-Seuraava ohjelma puolestaan käy läpi kaikki merkkijonon merkit vasemmalta oikealle silmukan avulla:
+Det här programmet går igenom varje tecken i en sträng – från det första till det sista:
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -212,11 +212,13 @@ i
 
 </sample-output>
 
-Pythonissa merkkeihin voi viitata myös alkaen merkkijonon lopusta käyttämällä negatiivisia indeksejä. Merkkijonon viimeinen merkki on indeksin -1 kohdalla, toiseksi viimeinen indeksin -2 kohdalla jne. Onkin kätevämpi kirjoittaa `mjono[-1]` kuin `mjono[len(mjono) - 1]`.
+Man kan också använda negativa index för att komma åt tecknen i en sträng från börjande från det sista tecknet.
+
+Det sista tecknet i en sträng har alltså indexet -1, det näst sista indexet -2 och så vidare. Du kan tänka att `str[-1]` är en genväg för `str[len(str) – 1]`.
 
 <img src="3_2_2.png">
 
-Tämän avulla aiempi ohjelma voidaan toteuttaa paremmin näin:
+Ovanstående exempel kan förenklas med negativ indexering.
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -234,7 +236,7 @@ Viimeinen: i
 
 ## IndexError: string index out of range
 
-Merkkijonon käsittelyssä tulee olla tarkkana indeksien kanssa. Jos viitataan merkkijonon ulkopuolelle, on seurauksena virheilmoitus _IndexError: string index out of range_:
+Om du har testat på exemplen ovan har du kanske stött på felmeddelandet `IndexError`. Det här felet uppstår då du försöker använda ett index som inte finns i en sträng.
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -258,16 +260,16 @@ IndexError: string index out of range
 
 </sample-output>
 
-Joskus virhetilanne johtuu ohjelmointivirheestä. Esimerkiksi merkkijonon viimeistä merkkiä tarkasteltaessa on yleistä indeksoida vahingossa yhtä liian pitkälle:
+Ibland orsakas indexeringsfel av en bugg i koden. Det är till exempel relativt vanligt att man försöker indexera för långt då man försöker komma åt det sista tecknet i en sträng:
 
 ```python
 mjono = input("Anna merkkijono: ")
 print("Viimeinen merkki: " + mjono[len(mjono)])
 ```
 
-Koska merkkijonojen indeksit alkavat nollasta, niin viimeinen merkki on indeksissä `len(mjono) - 1` eikä `len(mjono)`.
+Eftersom strängindexeringen börjar med noll kommer det sista tecknet att ha indexet `len(str) - 1`.
 
-On myös tilanteita, joissa ohjelman on syytä varautua siihen, että virheen lähde on käyttäjän antama syöte:
+Det finns situationer där programmet borde förbereda sig för fel orsakade av indata från användaren:
 
 ```python
 mjono = input("Anna merkkijono: ")
@@ -277,7 +279,7 @@ else:
     print("Merkkijono on tyhjä eli ensimmäistä merkkiä ei ole")
 ```
 
-Tässä koodissa tyhjä syöte (käyttäjä painaa ainoastaan Enter) aiheuttaisi virheen, ellei koodari olisi lisännyt tarkastusta tilanteen varalta.
+I exemplet ovan skulle en sträng med längden noll ha orsakat problem om programmeraren inte skulle ha lagt till en längdkontroll i koden. En sträng med längden noll är en tom sträng. I det här fallet kan vi orsaka en sådan med att helt enkelt trycka på tangenten Enter utan att skriva något annat.
 
 <in-browser-programming-exercise name="Lopusta alkuun" tmcname="osa03-05c_lopusta_alkuun">
 
@@ -454,15 +456,15 @@ Sana: **python**
 </in-browser-programming-exercise>
 
 
-## Osajonot
+## Delsträngar
 
-Merkkijonon _osajono_ muodostuu peräkkäisistä merkeistä, jotka ovat merkkijonon osana. Esimerkiksi merkkijonon `esimerkki` osajonoja ovat `esi`, `imer` ja `merkki`.
+En delsträng av en sträng är en sekvens av tecken som formar en del av den ursprungliga delen. Till exempel strängen `exempel` innehåller delsträngarna `exem`, `mpe`, `el` med flera. I Python kallas extrahering av delsträngar slicing.
 
-Voimme erottaa halutussa kohdassa olevan osajonon syntaksilla `[a:b]`, mikä tarkoittaa, että osajono alkaa kohdasta `a` ja päättyy juuri ennen kohtaa `b`. Voimme ajatella alku- ja loppukohdan merkkien vasemmalle puolelle piirretyiksi viivoiksi alla olevan kuvan mukaisesti:
+Om du vet vad det inledande och avslutande indexet för en delsträng är, kan du extrahera (slice) delsträngen med notationen `[a:b]`. Då kommer delsträngen att börja vid index `a` och ta slut vid det sista tecknet före indexet `b` – det vill säga inklusive den första bokstaven men exklusive den sista. Du kan tänka att indexen är streck ritade på den vänstra sidan av det indexerade tecknet – som vi illustrerar nedan:
 
 <img src="3_2_3.png">
 
-Seuraava esimerkki esittelee osajonojen hakemista:
+Låt oss kika lite mer på extraherade (sliced) strängar:
 
 ```python
 mjono = "saippuakauppias"
@@ -486,17 +488,13 @@ puakauppias
 
 </sample-output>
 
-<text-box variant='hint' name='Puoliavoimet välit'>
+<text-box variant='hint' name='Halvöppna intervall'>
 
-Merkkijonojen käsittelyssä väli `[a:b]` on _puoliavoin_ eli alkukohta `a`
-kuuluu väliin mutta loppukohta `b` ei kuulu väliin. Miksi näin?
+I Python är intervallet `[a:b]` i halvöppet då vi behandlar strängar. Det här innebär att tecknet i det inledande indexet `a` inkluderas i intervallet medan tecknet i det avslutande indexet `b` lämnas bort. Varför så?
 
-Tähän ei ole syvällistä syytä, vaan kyseessä on käytäntö, joka esiintyy
-monessa ohjelmointikielessä.
+Det finns ingen tydlig orsak till detta. Det är helt enkelt en vana som har sitt ursprung i andra programmeringsspråk.
 
-Yksi etu tästä on, että osajonon pituus saadaan helposti laskettua kaavalla `b-a`.
-Toisaalta täytyy aina muistaa, että kohdassa `b` oleva merkki
-ei tule mukaan osajonoon.
+Halvöppna intervall kan kännas jobbiga men i praktiken har de sina nyttiga sidor. Du kan till exempel enkelt räkna längden på en delsträng med `b - a`. Å andra sidan måste du komma ihåg att tecknet i slutet vid indexet `b` inte kommer att inkluderas i delsträngen.
 
 </text-box>
 
@@ -538,12 +536,11 @@ testi
 
 </in-browser-programming-exercise>
 
-## Osajonon etsiminen
+## Söka efter delsträngar
 
-Voimme tutkia `in`-operaattorin avulla, onko merkkijonossa tiettyä osajonoa.
-Lauseke `a in b` on tosi, jos merkkijonossa `b` on osajono `a`.
+Operatorn `in` berättar oss om en sträng innehåller en specifik delsträng. Boolean-uttrycket `a in b` är sant om `b` innehåller delsträngen `a`.
 
-Esimerkiksi
+Till exempel den här kodsnutten…
 
 ```python
 mjono = "testi"
@@ -554,6 +551,8 @@ print("est" in mjono)
 print("ets" in mjono)
 ```
 
+…skriver ut följande:
+
 <sample-output>
 
 True
@@ -563,7 +562,7 @@ False
 
 </sample-output>
 
-Seuraava ohjelma antaa käyttäjän etsiä merkkijonon osajonoja:
+Programmet nedan låter användaren söka efter delsträngar i en sträng som är hårdkodad i programmet:
 
 ```python
 mjono = "saippuakauppias"
@@ -617,13 +616,13 @@ o löytyy
 
 </in-browser-programming-exercise>
 
-Operaattori `in` palauttaa tiedon osajonon esiintymisestä, muttei tietoa siitä, _mistä_ se löytyy. Tätä varten löytyy Pythonin merkkijonojen _metodi_ `find`, joka saa parametrikseen etsittävän osajonon ja palauttaa joko ensimmäisen indeksin, josta osajono löytyy, tai `-1`, jos osajonoa ei löydy merkkijonosta.
+Operatorn `in` returnerar ett Boolean-värde. Det berättar oss alltså bara att en delsträng existerar i en sträng, men baserat på den informationen vet vi inte var delsträngen befinner sig. Däremot kan metoden `find` hos strängar användas för det här syftet. Som argument ger man delsträngen som söks efter. Tillbaka får vi ett värde som indikerar det första indexet där delsträngen hittades – eller `-1` om delsträngen inte hittas i strängen.
 
-Metodia käytetään seuraavasti:
+Så här fungerar det:
 
 <img src="3_2_4.png">
 
-Esimerkkejä metodin käyttämisestä:
+Några exempel där vi använder `find`:
 
 ```python
 mjono = "testi"
@@ -643,7 +642,7 @@ print(mjono.find("ets"))
 
 </sample-output>
 
-Voimme myös laajentaa hakuohjelmaa näin:
+Ovanstående delsträngsexempel gjort med `find`:
 
 ```python
 mjono = "saippuakauppias"
@@ -669,9 +668,9 @@ Löytyi kohdasta 2
 
 </sample-output>
 
-<text-box variant='hint' name='Metodi'>
+<text-box variant='hint' name='Metoder'>
 
-Merkkijonon sisältä merkkijonoa etsivä `find` on siis _metodi_. Metodit ovat sukua jo meille tutuille asioille eli _funktioille_. Metodit ovatkin eräänlaisia funktioita, mutta niiden suorittama operaatio kohdistuu siihen _olioon_, jonka kautta metodia kutsutaan, eli joka esiintyy metodikutsun alussa ennen metodin nimeä. Metodin `find` tapauksessa oliona on merkkijono, jonka osajonoa etsitään.
+Vi använde ovan metoden `find` hos strängar. Metoder fungerar ganska lika jämfört med funktioner som vi såg på i den föregående modulen. Skillnaden mellan dem är att metoder alltid är kopplade till det objekt som de kallas på. Objektet är den entitet som namnges före metoden som kallas. I det här fallet är objektet strängen där metoden söker efter delsträngen som ges som argument till metoden.
 
 </text-box>
 

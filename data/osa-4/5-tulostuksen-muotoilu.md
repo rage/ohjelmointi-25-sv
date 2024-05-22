@@ -1,21 +1,21 @@
 ---
 path: '/osa-4/5-tulostuksen-muotoilu'
-title: Tulostuksen muotoilu
+title: 'Formatera utskrift'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten `print`-komennon tulostusta saa muokattua parametrien avulla
-- Osaat käyttää f-merkkijonoja tulosteen muotoilussa
+* kan du använda argument för att påverka formatet på `print`-kommandots resultat
+* kan du använda dig av f-strängar för att formatera utskrift.
 
 </text-box>
 
-Olemme tähän mennessä yhdistelleet tulostettavaa tietoa `print`-komennossa kolmella eri tavalla.
+Vi har redan lärt oss tre metoder för att ge argument till `print`-kommandot.
 
-Ensimmäinen tapa on käyttää merkkijonojen `+`-operaattoria ja muodostaa näin yksittäinen merkkijono, jonka print saa parametrikseen:
+Det första är `+`-operatorn för strängar. Den tillåter enkel kombination av strängar:
 
 ```python
 nimi = "Erkki"
@@ -23,23 +23,23 @@ ika = 39
 print("Hei " + nimi + " ikäsi on " + str(ika) + " vuotta" )
 ```
 
-Tämä tapa edellyttää, että kaikki yhdistettävät osat ovat merkkijonoja. Koska muuttuja `ika` on tyypiltään kokonaisluku, se on muutettu yhdistämistä varten merkkijonoksi funktiolla `str`.
+Den här metoden fungerar inte då något av segmenten inte är strängar. I exemplet ovan har variabeln `alder` konverterats till en sträng med funktionen `str`, i och med att variabeln är ett heltal.
 
-Toinen käyttämämme tapa on eritellä tulostuksen osat pilkulla:
+Den andra metoden är att ge alla delar av strängen som skilda argument, skiljandes dem med komma:
 
 ```python
 print("Hei", nimi, "ikäsi on", ika, "vuotta" )
 ```
 
-Tämän koodin lopputulos on sama kuin edellisen esimerkin. Näin käytettynä `print` tulostaa kaikki parametrinsa välilyönnillä eroteltuna. Etuna tässä tavassa on, että tulostettavat osat voivat olla eri tyyppisiä eli tyyppimuunnosta merkkijonoksi ei tarvita.
+Den här koden ger likadant resultat som den föregående versionen. `print`-kommandot lägger vanligtvis ett mellanslag mellan varje argument. Det positiva är att olika segment kan ha olika datatyper, så man behöver inte konvertera någonting till en sträng.
 
-Automaattisesta välilyönnistä pilkulla eriteltyjen osien välillä on mahdollista päästä eroon antamalla funktiolle parametri `sep`:
+Om du vill avlägsna mellanslagen som läggs till automatiskt, kan du ge ett argument med namnet `sep`:
 
 ```python
 print("Hei", nimi, "ikäsi on", ika, "vuotta", sep="")
 ```
 
-Tulostus on nyt seuraava:
+Det här skriver ut:
 
 <sample-output>
 
@@ -48,7 +48,7 @@ HeiErkkiikäsi on39vuotta
 </sample-output>
 
 
-Parametri `sep=""` on _nimetty parametri_, joka määrittelee, että pilkulla eroteltujen osien väliin laitetaan ainoastaan tyhjä merkkijono. Voisimme myös saada jokaisen osan tulostumaan omalle rivilleen määrittelemällä erottimeksi `"\n"` eli rivinvaihtoa kuvaavan merkin:
+Argumentet `sep=””` är ett namngivet argument. Det specificerar att alla argument ska avgränsas med en tom sträng. Du kan använda vilken som helst sträng som avgränsare. Till exempel om du vill ha varje argument på en skild rad kan du använda avgränsaren `”\n”` som är en radbrytning.
 
 ```python
 print("Hei", nimi, "ikäsi on", ika, "vuotta", sep="\n")
@@ -64,7 +64,7 @@ vuotta
 
 </sample-output>
 
-Oletusarvoisesti print-komento päättyy rivinvaihtoon, mutta tätä voidaan muokata parametrin `end` avulla. Esim. jos `end` saa arvoksi tyhjän merkkijonon, `print`-komento ei aiheuta automaattista rivinvaihtoa:
+Vanligtvis avslutas `print`-kommandot med en radbrytning, men du kan också ändra på det här. Det namngivna argumentet `end` bestämmer vad som ska finnas i slutet av en rad. Om end är en tom sträng, kommer ingen radbrytning att skrivas ut i slutet av utskriften:
 
 ```python
 print("Moi ", end="")
@@ -77,9 +77,9 @@ Moi kaikki!
 
 </sample-output>
 
-## f-merkkijonot
+## F-strängar
 
-Kolmas käyttämämme tapa on f-merkkijonot. Aiempi nimen ja iän tulostava esimerkki tehtäisiin f-merkkijonojen avulla seuraavasti:
+Det tredje sättet att förbereda strängar för utskrift är f-strängar. Det föregående exemplet med namnet och åldern skulle se så här ut med f-strängar:
 
 ```python
 nimi = "Erkki"
@@ -87,7 +87,7 @@ ika = 39
 print(f"Hei {nimi} ikäsi on {ika} vuotta")
 ```
 
-Olemme toistaiseksi käyttäneet f-merkkijonoja vain niiden yksinkertaisimmassa muodossa. F-merkkijonot tarjoavat kuitenkin monia muitakin mahdollisuuksia tulostuksen muotoiluun. Yksi tavallinen käyttötapa on antaa liukuluvun tulostuksessa näytettävien desimaalien määrä. Oletusarvoisesti tulostuu jokin määrä desimaaleja:
+Hittills har vi bara använt oss av enkla f-strängar, men de är väldigt flexibla när det kommer till formatering av innehållet i strängen. Ett vanligt användningsområde är att specificera antalet decimaler hos ett flyttal. Normalt är antalet ganska stort:
 
 ```python
 luku = 1/3
@@ -100,7 +100,7 @@ Luku on 0.333333333333333
 
 </sample-output>
 
-Saamme määriteltyä tulostuvien desimaalien määrän f-merkkijonon avulla. Tulostuksen muoto määritellään lisäämällä aaltosulkeiden sisään tulostettavan muuttujan jälkeen kaksoispiste ja _muotoiluohje_:
+Vi kan ändra på detta med hjälp av att inom klammerparenteser ge variabelnamnet och formateringsinstruktioner:
 
 ```python
 luku = 1/3
@@ -111,9 +111,9 @@ print(f"Luku on {luku:.2f}")
 Luku on 0.33
 ```
 
-Muotoiluohje `.2f` siis määrittelee, että desimaaliluku tulostetaan _kahden desimaalin_ tarkkuudella. Kirjain _f_ luvun 2 jälkeen tarkoittaa, että muotoiluohje koskee desimaalilukua eli `float`-tyyppistä arvoa!
+Instruktionen `.2f` berättar att vi vill visa två decimaler. Bokstaven f betyder att vi vill visa variabeln som ett flyttal.
 
-Tässä on vielä toisenlainen esimerkki, jossa tulostetaan nimiä 15 merkin levyiseen tekstialueeseen, ensin vasemmalle sisennettynä ja sen jälkeen oikealle sisennettynä:
+Här är ett annat exempel där vi ger ett visst mellanrum som är reserverat för en specifik variabel i utskriften. I båda fallen inkluderas variabeln namn i den resulterande strängen, med 15 tecken reserverat utrymme. Först är namnen vänsterjusterade, sedan högerjusterade:
 
 ```python
 nimet =  [ "Antti", "Emilia", "Juha-Pekka", "Maya" ]
@@ -128,7 +128,7 @@ Juha-Pekka      keskellä      Juha-Pekka
 Maya            keskellä            Maya
 ```
 
-F-merkkijonoja voi käyttää muuallakin kuin tulostuskomennossa. Niitä voi esimerkiksi sijoittaa muuttujiin ja sekä yhdistellä normaaleihin merkkijonoihin:
+Man kan också använda f-strängar utanför print-kommandon. De kan tilldelas till variabler och kombineras med andra strängar:
 
 ```python
 nimi = "Pekka"
@@ -144,7 +144,7 @@ Hei Pekka, olet 59-vuotias, asuinpaikkasi on Lappeenranta
 
 </sample-output>
 
-F-merkkijonon voi ajatella olevan eräänlainen funktio, joka tuottaa normaalin merkkijonon aaltosuluissa olevien "parametrien" perusteella.
+Du kan tänka att f-strängen är en slags funktion som skapar en normal sträng baserat på ”argumenten” mellan klammerparenteserna.
 
 <programming-exercise name='Lukulistasta merkkijonolistaksi' tmcname='osa04-20_lukulistasta_merkkijonolistaksi'>
 

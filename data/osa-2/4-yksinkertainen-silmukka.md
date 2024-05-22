@@ -1,24 +1,24 @@
 ---
 path: '/osa-2/4-yksinkertainen-silmukka'
-title: 'Yksinkertainen silmukka'
+title: 'Enkla loopar'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä silmukka tarkoittaa ohjelmoinnissa
-- Osaat käyttää `while True` -silmukkaa osana ohjelmaasi
-- Tiedät, miten toisto voidaan katkaista `break`-komennolla
+* vet du vad en loop betyder i programmeringssammanhang
+* kan du använda dig av en `while True` -loop i dina program
+* kommer du att kunna använda dig av `break`-kommandot för att avbryta loopen.
 
 </text-box>
 
-Silmukka eli toistolause on ehtolauseen lisäksi keskeinen ohjausrakenne ohjelmoinnissa. Aloitetaan toistamiseen tutustuminen tarkastelemalla Pythonin `while`-silmukkaa yksinkertaisten esimerkkien kautta. Ensi viikolla tutustutaan sitten monipuolisemmin sen mahdollisuuksiin.
+Vi har nu undersökt if-satser. Ett annat viktigt koncept inom programmering är repetition. De här två koncepten är grundläggande strukturer som varje programmerare väntas kunna. De är kontrollstrukturer – de ger dig möjligheten att påverka vilka kodrader körs och när de körs. Medan if-satser låter dig välja mellan olika delar av kod, finns loopar till för att köra en del av koden på nytt. Programmet går alltså tillbaka till en viss rad i koden ett antal gånger. En iteration är en ”runda” av en loop – det vill säga den process då loopens kod körs från början till slutet.
 
-Periaatteessa silmukka muistuttaa ehtolausetta. Ideana kuitenkin on, että sen avulla voidaan toistaa samaa koodia useamman kerran.
+I den här delen presenterar vi en enkel while-loop. Dess struktur påminner om if-satsen. I nästa del dyker vi djupare in i det som loopar kan erbjuda oss.
 
-Tarkastellaan esimerkkiä, jossa ohjelma laskee käyttäjän syöttämien lukujen neliöitä, kunnes käyttäjä syöttää luvun -1:
+Vi tar en titt på ett program som ber användaren att ge en siffra som skrivs upp upphöjt med två. Programmet körs tills användaren ger siffran -1:
 
 ```python
 while True:
@@ -32,7 +32,7 @@ while True:
 print("Kiitos ja moi!")
 ```
 
-Ohjelman esimerkkisuoritus:
+Så här kan det se ut när programmet körs:
 
 <sample-output>
 
@@ -47,9 +47,9 @@ Kiitos ja moi!
 
 </sample-output>
 
-Kuten esimerkistä huomataan, ohjelma kysyy `while`-lauseen ansiosta käyttäjältä useita lukuja. Sitten kun käyttäjän syöte on -1, suoritetaan `break`-komento, jolloin suoritus hyppää ensimmäiselle lohkon jälkeiselle riville.
+Som du ser ovan, frågar programmet om ett nummer flera gånger. Detta tack vare while-satsen. När användaren anger siffran -1 kommer `break`-kommandot att köras. Loopen avbryts och programmet fortsätter efter while-blocket.
 
-Silmukoita käytettäessä on oltava tarkkana, että ei jouduta tilanteeseen, missä silmukan suoritus ei koskaan lopu. Muutetaan edellistä esimerkkiä seuraavasti
+När man arbetar med loopar är det viktigt att loopen avslutas vid något skede. Om man inte tar det här i beaktande kan loopen fortsätta för evigt. Vi ändrar lite på ovanstående exempel för att åstadkomma en sådan här situation:
 
 ```python
 luku = int(input("Anna luku, -1 lopettaa: "))
@@ -62,7 +62,7 @@ while True:
 print("Kiitos ja moi!")
 ```
 
-Nyt siis lukua kysytään _silmukan ulkopuolella_. Jos käyttäjä antaa minkä tahansa muun luvun kuin -1:n, ei silmukasta tulla koskaan pois, eli syntyy _ikuinen silmukka_. Tällöin silmukassa olevaa lohkoa suoritetaan ikuisesti:
+I den här versionen frågar programmet användaren efter siffran utanför loopen. Om användaren ger någon annan siffra än -1 kommer loopen aldrig att avslutas. Vi har en oändlig loop vilket i princip betyder att koden körs oavbrutet, för evigt:
 
 <sample-output>
 
@@ -79,7 +79,7 @@ Anna luku, -1 lopettaa: **2**
 
 </sample-output>
 
-Seuraavassa esimerkkinä ohjelma, joka antaa käyttäjän jatkaa eteenpäin vasta sen jälkeen, kun käyttäjä on syöttänyt oikean PIN-koodin _1234_:
+Följande program har en mycket liknande struktur jämfört med exemplet ovan, men för användaren ser det ganska annorlunda ut. Det här programmet låter användaren fortsätta endast då den korrekta pin-koden 1234 anges:
 
 ```python
 while True:
@@ -214,11 +214,11 @@ Käyttäjätunnus luotu!
 
 </in-browser-programming-exercise>
 
-## Silmukka ja apumuuttujat
+## Loopar och hjälpvariabler
 
-Tehdään vielä PIN-koodin tarkastavasta ohjelmasta monimutkaisempi versio, joka antaa käyttäjälle vain kolme mahdollisuutta yrittää PIN-koodin syöttämistä.
+Vi gör föregående exemplet en aning mer realistiskt. Det här exemplet tillåter användaren endast tre försök att ge korrekt pin-kod.
 
-Ohjelma käyttää nyt kahta apumuuttujaa. Muuttuja `yritykset` pitää kirjaa siitä, montako kertaa käyttäjä on syöttänyt koodin.  Muuttuja `onnistui` saa arvokseen joko `True` tai `False` riippuen siitä, onnistuuko kirjautuminen.
+Programmet består av två hjälpvariabler: `forsok` håller reda på hur många gånger användaren angett en pin-kod och `lyckades` är antingen `True` eller `False` beroende på om användaren ger den korrekta koden eller inte.
 
 ```python
 yritykset = 0
@@ -264,13 +264,13 @@ Liian monta yritystä...
 
 </sample-output>
 
-Silmukasta tullaan siis ulos, jos käyttäjä syöttää oikean PIN-koodin _tai_ jos yrityksiä tehdään liian monta. Silmukan jälkeinen if-lause tarkastaa muuttujan `onnistui` arvon perusteella, onko kirjautuminen onnistunut vai ei.
+Loopen avslutas antingen om pin-koden är korrekt eller då maxantalet försök har uppnåtts. Efterföljande if-sats kollar variabeln `lyckades` värde och skriver ut ett meddelande baserat på värdet.
 
-## Debug-tulostus silmukassa
+## Print-satser för debuggning i loopar
 
-Kun ohjelma sisältää silmukoita, kasvavat mahdolliset bugienkin lähteet uudelle tasolle, ja tämän osan [ensimmäisessä luvussa](/osa-2/1-ohjelmoinnin-termeja) mainittujen debug-tulostusten tekeminen muuttuu entistäkin tärkeämmäksi.
+Att introducera loopar i ett program ökar på möjligheten för buggar. Därför är det viktigt att senast nu utnyttja print-satser i debuggningssyfte – dem såg vi på i den första delen av den pågående modulen.
 
-Tarkastellaan esimerkkiä, jossa edellinen ohjelma on koodattu hieman väärin:
+Vi kikar på ett nästan identiskt program som i det föregående exemplet. Dock finns det en märkbar skillnad:
 
 ```python
 yritykset = 0
@@ -295,7 +295,7 @@ else:
     print("Liian monta yritystä...")
 ```
 
-Ohjelma toimii kummallisesti: se antaa yrittää PIN-koodia kolmesti mutta valittaa, että yrityksiä on liian monta, vaikka lopussa syötettiin oikea koodi:
+Den här versionen fungerar konstigt när användaren anger den korrekta koden på det tredje försöket:
 
 <sample-output>
 
@@ -308,7 +308,7 @@ Liian monta yritystä...
 
 </sample-output>
 
-Bugin syy selviää lisäämällä sopivia debug-tulostuksia:
+Nu borde vi alltså reda ut det här problemet. Några `print`-satser borde hjälpa oss att debugga – så låt oss lägga till sådana i loopen:
 
 ```python
 while True:
@@ -355,7 +355,7 @@ Liian monta yritystä...
 
 </sample-output>
 
-Tulostuksista huomataan, että kolmannella silmukan kierroksella ensimmäisen `if`-komennon ehto on tosi ja silmukasta poistutaan, ennen kuin ehditään tarkastaa, oliko juuri syötetty salasana oikein:
+Från utskriften ovan märker vi att under den tredje iterationen kommer villkoret i den första if-satsen att vara sant och därmed hinner vi aldrig fram till den andra if-satsen i och med att loopen avslutas. Därmed kontrolleras koden aldrig:
 
 ```python
   while True:
@@ -371,6 +371,8 @@ Tulostuksista huomataan, että kolmannella silmukan kierroksella ensimmäisen `i
         onnistui = True
         break
 ```
+
+Ordningen på if-satser eller grenar inom if-satser är vanliga orsaker till buggar – framför allt inom loopar. Debuggning med hjälp av print-satser hjälper förvånansvärt ofta.
 
 <in-browser-programming-exercise name="PIN ja yritysten määrä" tmcname="osa02-19_pin_ja_yritysten_maara">
 
@@ -423,9 +425,9 @@ Vuotta 2020 seuraava karkausvuosi on 2024
 
 </in-browser-programming-exercise>
 
-## Merkkijonon kokoaminen plus-operaattorilla
+## Kombinera strängar med `+`-operatorn
 
-PIN-koodin tarkastavassa esimerkissä käytimme apumuuttujaa `yritykset` pitämään kirjaa siitä, montako kertaa PIN-koodi on syötetty:
+Exemplet ovan använde hjälpvariabeln `forsok` för att hålla koll på hur många gånger användaren försökt skriva in en kod:
 
 ```python
 yritykset = 0
@@ -436,9 +438,9 @@ while True:
     # ...
 ```
 
-Muuttuja saa arvon nolla silmukan ulkopuolella, ja jokainen silmukan suoritus kasvattaa sen arvoa yhdellä.
+Variabeln tilldelas värdet noll utanför loopen och varje iteration ökar på siffran med ett.
 
-Vastaava idea toimii myös merkkijonoille. Voisimme laajentaa ohjelmaa siten, että se kokoaa yhteen merkkijonoon kaikki käyttäjän syöttämät PIN-koodit:
+Något liknande kan man också göra med strängar. Programmet kan till exempel hålla koll på de pin-koder användaren angett:
 
 ```python
 tunnukset = ""
@@ -451,20 +453,20 @@ while True:
     # ...
 ```
 
-Apumuuttuja saa aluksi arvokseen _tyhjän merkkijonon_ eli merkkijonon, jossa ei ole yhtään merkkiä:
+Hjälpvariabeln kan tilldelas värdet `””` – det vill säga en tom sträng:
 
 ```python
 tunnukset = ""
 ```
 
-Silmukan sisällä merkkijonoa kasvatetaan lisäämällä siihen aina silmukassa syötetty tunnus ja pilkku:
+För varje iteration blir strängen längre i och med att koden användaren angett läggs till i slutet av strängen tillsammans med ett komma och ett mellanslag.
 
 ```python
     tunnus = input("Anna PIN-koodi: ")
     tunnukset += tunnus + ", "
 ```
 
-Jos käyttäjä syöttäisi tunnukset _1111 2222 1234_ olisi muuttujan `tunnukset` arvo lopulta
+Om användaren anger koderna 1111 2222 1234 kommer värdet på `koder` till slut att vara:
 
 <sample-output>
 
@@ -584,6 +586,6 @@ Negatiivisia 1
 
 <quiz id="4ba8f15f-2ddd-5630-b244-9b83ca0f0cb6"></quiz>
 
-Vastaa lopuksi koko toista osaa koskevaan loppukyselyyn:
+Vänligen svara på en kort enkät som behandlar den här veckans material.
 
 <quiz id="38336a14-1f2f-59fb-8cc6-5afb36381005"></quiz>

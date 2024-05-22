@@ -1,27 +1,27 @@
 ---
 path: '/osa-6/4-paikalliset-muuttujat'
-title: 'Paikalliset ja globaalit muuttujat'
+title: 'Lokala och globala variabler'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetaan paikallisella muuttujalla
-- Tiedät, miten muuttujan näkyvyysalue vaikuttaa sen käyttöön
-- Tiedät, mitä Pythonissa tekee avainsana `global`
-- Osaat käyttää paikallisia ja globaaleja muuttujia oikein
+* vet du vad en lokal variabel är
+* känner du till hur definitionsområdet för en variabel påverkar dess användning
+* vet du vad nyckelordet global betyder i Python
+* kan du använda lokala och globala variabler korrekt.
 
 </text-box>
 
-Muuttujan _näkyvyysalue_ (_scope_) tarkoittaa, missä ohjelman osissa muuttujaa voi käyttää. _Paikallinen_ muuttuja on muuttuja, joka on näkyvissä vain tietyn rajatun alueen sisällä ohjelmassa. _Globaali_ muuttuja on puolestaan käytettävissä missä tahansa ohjelman osassa.
+Definitionsområdet för en variabel hänvisar till de områden i ett program där en specifik variabel är tillgänglig. En lokal variabel är endast tillgänglig på vissa ställen i ett program medan en global variabel kan användas överallt i programmet.
 
-## Paikalliset muuttujat
+## Lokala variabler
 
-Pythonissa funktion sisällä määritellyt muuttujat ovat funktion paikallisia muuttujia. Tämä koskee sekä parametreja että funktion lohkon sisällä esiteltyjä muuttujia. Paikallisuus tarkoittaa, että muuttuja _ei ole olemassa funktion ulkopuolella_.
+Variabler som tilldelas i Python är lokala variabler. De är endast tillgängliga i den funktion där de tilldelats. Det här gäller både funktionsparametrar och andra variabler som tilldelats inom funktionsdefinitionen. En variabel som är lokal existerar inte utanför funktionen.
 
-Esimerkiksi seuraavassa ohjelmassa yritys viitata muuttujaan `x` pääohjelmassa antaa virheen:
+I det följande exemplet försöker vi komma åt variabeln `x` i huvudfunktionen, men det orsakar ett fel:
 
 ```python
 def testi():
@@ -39,11 +39,11 @@ NameError: name 'x' is not defined
 
 </sample-output>
 
-Ohjelmassa muuttuja `x` on siis olemassa vain funktion `testi` suorituksen ajan eikä siihen pääse käsiksi muista funktioista tai pääohjelmasta.
+Variabeln `x` existerar endast då funktionen `test` körs. Andra funktioner – också huvudfunktionen – kan inte komma åt variabeln.
 
-## Globaalit muuttujat
+## Globala variabler
 
-Pääohjelmassa eli kaikkien funktioiden ulkopuolella määritellyt muuttujat ovat globaaleja muuttujia. Globaalin muuttujan arvo voidaan lukea funktiossa. Esimerkiksi seuraava toimii:
+Variabler som tilldelas i huvudfunktionen är globala variabler. Vi har tidigare definierat att huvudfunktionen är de delar av koden i Python som inte tillhör någon annan funktion. Ett värde som lagrats i en global variabel kan användas i vilken som helst funktion i programmet. Därmed fungerar den här koden utan problem:
 
 ```python
 def testi():
@@ -59,7 +59,7 @@ testi()
 
 </sample-output>
 
-Kuitenkaan globaalia muuttujaa ei voi muuttaa suoraan. Esimerkiksi seuraava funktio _ei vaikuta_ globaaliin muuttujaan:
+En global variabel kan inte ändras på direkt via en annan funktion. Den här funktionen har ingen påverkan på den globala variabeln:
 
 ```python
 def testi():
@@ -78,9 +78,9 @@ print(x)
 
 </sample-output>
 
-Tässä tapauksessa funktio `testi` luo paikallisen muuttujan `x`, joka saa arvon 5. Tämä on kuitenkin eri muuttuja kuin pääohjelmassa oleva muuttuja `x`.
+Här skapar funktionen `test` en ny lokal variabel `x`, som ”maskerar” den globala variabeln medan funktionen körs. Variabeln har värdet 5, men det är en annan variabel än den som tilldelats i huvudfunktionen.
 
-Entä miten toimii seuraava koodi?
+Vad skulle den här kodsnutten då göra?
 
 ```python
 def testi():
@@ -98,9 +98,9 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 </sample-output>
 
-Funktiossa `testi` annetaan arvo muuttujalle `x`, jolloin Python päättelee, että `x` on funktion paikallinen muuttuja (eikä globaali muuttuja). Koska muuttujaan yritetään viitata ennen arvon asettamista, tapahtuu virhe.
+Funktionen `test` tilldelar ett värde till variabeln `x`, så Python antar att `x` är en lokal variabel istället för en global variabel med samma namn. Funktionen försöker komma åt variabeln före den skapats, vilket orsakar ett fel.
 
-Jos kuitenkin haluamme muuttaa funktiossa globaalia muuttujaa, tämä onnistuu avainsanan `global` avulla:
+Om vi vill ändra på en global variabel inom en funktion behöver vi Pythons nyckelord `global`:
 
 ```python
 def testi():
@@ -120,11 +120,11 @@ print(x)
 
 </sample-output>
 
-Nyt funktiossa tehty muutos `x = 3` vaikuttaa myös pääohjelmaan, eli kaikissa ohjelman kohdissa `x` viittaa samaan muuttujaan.
+Nu påverkar tilldelningen `x = 3` inom funktionen också i huvudfunktionen. Alla delar av programmet använder den samma globala variabeln `x`.
 
-## Milloin käyttää globaalia muuttujaa?
+## När borde man använda globala variabler?
 
-Globaalien muuttujien tarkoituksena ei ole korvata funktion parametreja tai paluuarvoa. Esimerkiksi on sinänsä mahdollista tehdä seuraava funktio, joka tallentaa laskun tuloksen globaaliin muuttujaan:
+Globala variabler är inte ett sätt att undvika parametrar eller return-värden hos funktioner. De ska inte användas för det ändamålet. Det är dock möjligt att skriva en funktion som lagrar sina resultat direkt i en global variabel:
 
 ```python
 def laske_summa(a, b):
@@ -135,7 +135,7 @@ laske_summa(2, 3)
 print(tulos)
 ```
 
-Parempi tapa on kuitenkin toteuttaa funktio kuten ennenkin:
+Men det är bättre att göra en funktion som returnerar ett värde, så som vi har vant oss med:
 
 ```python
 def laske_summa(a, b):
@@ -145,9 +145,9 @@ tulos = laske_summa(2, 3)
 print(tulos)
 ```
 
-Jälkimmäisen tavan etuna on, että funktio on _itsenäinen_ kokonaisuus, jolle annetaan tietyt parametrit ja joka palauttaa tietyn tuloksen. Funktiolla ei ole sivuvaikutuksia, minkä ansiosta sitä voi testata muusta koodista riippumattomasti.
+Fördelen med det senare tillvägagångssättet är att funktionen är en självständig helhet. Den har specifika, fördefinierade parametrar och den returnerar ett resultat. Den har inga sidoeffekter, så den kan testas och ändras utan att man behöver bry sig om andra delar av programmet.
 
-Kuitenkin globaali muuttuja voi olla hyödyllinen, jos halutaan pitää yllä jotain funktioille yhteistä "ylemmän tason" tietoa. Tässä on yksi esimerkki asiasta:
+Globala variabler är nyttiga i situationer där vi behöver någon gemensam information på ”högre nivå”, och den här informationen ska vara tillgänglig för alla funktioner i programmet. Det här är ett exempel på en sådan situation:
 
 ```python
 def laske_summa(a, b):
@@ -178,13 +178,13 @@ Funktioita kutsuttiin 4 kertaa
 
 </sample-output>
 
-Tässä haluamme pitää ohjelman suorituksen aikana kirjaa siitä, montako kertaa funktioita on kutsuttu ohjelman eri kohdista. Nyt globaali muuttuja `laskuri` on kätevä, koska voimme kasvattaa sen arvoa jokaisella funktion kutsukerralla ja katsoa globaalista muuttujasta, montako kertaa funktiota on kutsuttu.
+I det här fallet vill vi hålla koll på hur många gånger någondera av funktionerna har anropats medan programmet körts. Den globala variabeln `antal` är nyttig i den här situationen, eftersom vi kan öka på siffran inom funktionerna när de körs samtidigt som värdet också är tillgängligt via huvudfunktionen.
 
-## Tiedon välittäminen funktiosta toiseen revisited
+## Förmedla data från funktion till funktion – en andra titt
 
-Jos ohjelma koostuu useista funktioista, nousee esiin kysymys miten tietoa siirretään funktiosta toiseen.
+Om ett program består av flera funktioner, dyker ofta frågan om att förmedla data från en funktion till en annan upp.
 
-Seuraavassa on jo pari osaa sitten nähty esimerkki ohjelmasta, joka lukee käyttäjältä joukon kokonaislukuarvoja. Sen jälkeen ohjelma tulostaa arvot ja tekee niille vielä "analyysin". Ohjelma on jaettu kolmeen erilliseen funktioon:
+När vi såg på den här frågan senast, hade vi ett program som frågar användaren efter några heltal, skriver dem ut och analyserar sifforna. Programmet var uppdelat i tre funktioner:
 
 ```python
 def lue_kayttajalta(maara: int):
@@ -215,7 +215,7 @@ analyysin_tulos = analysoi(syotteet)
 print(analyysin_tulos)
 ```
 
-Esimerkkisuoritus
+Exempel på hur det ser ut när programmet körs:
 
 <sample-output>
 
@@ -235,16 +235,15 @@ lukuja yhteensä 5, keskikarvo 11.6, pienin- 53 ja suurin 99
 
 </sample-output>
 
-Perusperiaatteena ohjelmassa on se, että pääohjelma "tallettaa" ohjelman käsittelemän tiedon, eli tässä tapauksessa käyttäjän syöttämät luvut muuttujassa `syotteet`.
+Basidén är att huvudfunktionen ”lagrar” den data som behandlas av programmet. I det här fallet innebär det att sifforna som användaren anger lagras i variabeln `siffor`.
 
-Jos lukuja on tarve käsitellä jossain funktiossa, ne välitetään sinne parametrina. Näin tapahtuu funktioissa `tulosta` ja `analysoi`.
-Jos taas funktio tuottaa tietoa, jota muut ohjelman osat tarvitsevat, palauttaa funktio datan returnilla. Näin tekevät käyttäjän syötteen lukeva funktio `lue_kayttajalta` sekä analyysin tekevä funktio `analysoi`.
+Om siffrorna behövs i någon funktion, ger vi variabeln som argument, vilket vi ser med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen ger upphov till ett resultat som behövs på ett annat ställe i programmet, returneras det – så som i funktionerna `indata_fran_anvandare` och `analysera`.
 
-Olisi periaatteessa mahdollista, että funktiot käyttäisivät avainsanaa `global` hyväksikäyttäen suoraan "pääohjelman" globaalia muuttujaa `syotteet`. Se [ei kuitenkaan ole ollenkaan järkevää](https://softwareengineering.stackexchange.com/questions/148108/why-is-global-state-so-evil), sillä jos usea funktio pääsee sorkkimaan globaalia muuttujaa, voi ohjelmassa alkaa tapahtua jotain hallitsematonta, varsinkin kun funktioiden määrä kasvaa.
+Som alltid när man programmerar, finns det flera sätt att uppnå likadan funktionalitet. Det skulle vara möjligt att använda nyckelordet `global` och låta funktionerna direkt komma åt variabeln `siffror` som tilldelats i huvudfunktionen. Det finns bra orsaker till att det här inte är en god idé. Om flera funktioner kan komma åt och möjligtvis ändra på en variabel, blir det snabbt svårt att hålla koll på programmets status och programmet blir oförutsägbart. Det här märks speciellt då antalet funktioner ökar, vilket det gör oundvikligen i större programmeringsprojekt.
 
-Tiedon välitys funktioihin ja niistä ulos on siis järkevintä hoitaa parametrien ja paluuarvojen avulla.
+Sammanfattningsvis kan man konstatera att det är bäst att använda argument och returnera värden när man arbetar med funktioner.
 
-Jos haluaisimme tehdä edellisen esimerkin ohjelman siten, että sen "pääohjelma" eriytettäisiin omaan funktioon `main`, siirrettäisiin ohjelman käsittelemä data pääohjelmaa edustavan funktion sisäiseksi muuttujaksi:
+Du kan också ha en skild `main`-funktion. I det fallet skulle variabeln siffror inte längre vara global, utan en lokal variabel under `main`-funktionen:
 
 ```python
 def lue_kayttajalta(maara: int):
@@ -282,6 +281,6 @@ main()
 
 <quiz id="940683ab-207c-5bd8-8fb4-eb40f65a33f4"></quiz>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en kort enkät gällande materialet för den här veckan.
 
 <quiz id="cc370bd2-a6b7-5d00-bddc-f0aa5f1c1237"></quiz>

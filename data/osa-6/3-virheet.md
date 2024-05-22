@@ -1,41 +1,41 @@
 ---
 path: '/osa-6/3-virheet'
-title: 'Virhetilanteisiin varautuminen'
+title: 'Förbered dig på fel'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten virheellisiä syötteitä voidaan käsitellä
-- Tiedät, mitä tarkoitetaan poikkeuksella ohjelmoinnissa
-- Tunnistat tyypillisiä poikkeuksia Pythonissa
-- Osaat käsitellä poikkeuksia omissa ohjelmissa
+* vet du hur du kan behandla icke-valida indata
+* vet du vad som menas med undantag i programmeringskontext
+* känner du till de vanligaste typerna av undantag i Python
+* kan du behandla undantag i dina egna program.
 
 </text-box>
 
-Ohjelmointiin liittyvät virheet voidaan jakaa kahteen ryhmään:
+Det finns två grundläggande kategorier av fel som uppkommer i program
 
-1. Syntaksivirheet, jotka estävät ohjelman suorittamisen kokonaan
-2. Suorituksen aikaiset virheet, jotka keskeyttävät ohjelman suorituksen
+* fel i syntax, som förhindrar körandet av ett program
+* fel som sker medan programmet körs, och stoppar programmet
 
-Ryhmän 1 virheet on yleensä helppoa korjata, koska Python-tulkki huomauttaa niistä, kun ohjelmaa yritetään suorittaa. Tällaisia virheitä ovat esimerkiksi puuttuva kaksoispiste silmukan alussa tai puuttuva lainausmerkki merkkijonon lopussa.
+Fel i den första kategorin är vanligtvis enkla att korrigera eftersom Pythontolken berättar var felet ligger när man försöker köra programmet. Vanliga syntaxfel beror på kolon som fattas på någon inledande rad eller ett citattecken som fattas i slutet av en sträng.
 
-Ryhmän 2 virheet voivat olla hankalampia havaita, koska virhe voi tapahtua jossain vaiheessa ohjelman suorituksen aikana ja vain tietyissä tilanteissa. Ohjelma saattaa toimia yleensä hyvin mutta keskeytyä virheen takia jossain reunatapauksessa. Keskitymme seuraavaksi tällaisten virheiden käsittelyyn.
+Fel i den andra kategorin är ibland svårare att hitta, eftersom de endast sker vid något visst ställe i programmet i vissa situationer. Programmet kanske fungerar helt bra i de flesta situationer, men så finns det någon marginell situation då programmet stannar upp på grund av ett fel. Nu ska vi se hur vi kan behandla de här felen.
 
-## Syötteiden tarkastaminen
+## Validering av indata
 
-Usein virhetilanteet ohjelmien suorituksen aikana liittyvät jotenkin virheelliseen syötteeseen. Esimerkkejä virheellisistä syötteistä ovat
+Flera fel som uppkommer då ett program körs beror på indata som är i fel format på något sätt. Här är några exempel:
 
-* puuttuvat tai tyhjät arvot: esimerkiksi pituus nolla tai tyhjä merkkijono nimenä
-* negatiiviset arvot: esimerkiksi –15 reseptin aineosan painona
-* puuttuva tai väärän niminen tiedosto
-* liian pienet tai liian suuret arvot
-* väärä indeksi (esim. viittaaminen indeksiin 3 merkkijonossa "moi")
-* väärän tyyppiset arvot, esimerkiksi merkkijono luvun sijasta
+* obligatoriska fält som fattas eller är tomma, till exempel tomma strängar i fall där strängens längd har betydelse
+* negativa värden i fall där endast positiva värden är giltiga, till exempel -15 st. av en ingrediens i ett recept
+* filer som saknas eller som har skrivfel i sina namn
+* värden som är för stora eller för små, till exempel då vi arbetar med datum och klockslag
+* icke-giltiga index, till exempel om vi försöker komma åt index 3 i strängen ”hej”
+* värden av fel typ, till exempel en sträng då vi förväntar oss ett heltal.
 
-Useimpiin virheistä voidaan onneksi varautua ohjelmallisesti. Tarkastellaan esimerkkinä ohjelmaa, joka lukee käyttäjältä syötteenä tämän iän ja testaa, että se on sallituissa rajoissa (vähintään 0 ja korkeintaan 150):
+Till all lycka kan vi som programmerare förbereda oss för de flesta felen. Vi ser på ett program som frågar efter användarens ålder och kollar att siffran är giltig (mellan noll och 150):
 
 ```python
 ika = int(input("Anna ikäsi: "))
@@ -59,7 +59,7 @@ Virheellinen ikä
 
 </sample-output>
 
-Syötteen tarkastamisessa (eli _validoinnissa_) ilmenee kuitenkin puutteita, jos syötteeksi annetaan esimerkiksi merkkijono:
+Så länge användaren ger ett heltal verkar valideringen fungera som den ska. Men om användaren ger en sträng?
 
 <sample-output>
 
@@ -68,15 +68,15 @@ ValueError: invalid literal for int() with base 10: 'kakskytkolme'
 
 </sample-output>
 
-Virhe johtuu siitä, että funktio `int` ei pysty muuttamaan merkkijonoa `kakskytkolme` kokonaisluvuksi. Tämän seurauksena ohjelman suoritus keskeytyy yllä olevaan virheilmoitukseen.
+Funktionen `int` kan inte behandla strängen `tjugotre` som ett heltal. Programmet stoppas och ett felmeddelande skrivs ut.
 
-## Poikkeukset
+## Undantag
 
-Ohjelman suorituksen aikaisia virheitä kutsutaan _poikkeuksiksi_ (exception). Ohjelman koodissa on mahdollista varautua poikkeuksiin ja käsitellä ne ilman, että ohjelman suoritus keskeytyy.
+Fel som sker när programmet redan körs kallas undantag (exception). Det är möjligt att förbereda sig för undantag, så att programmet fortsätter köra även om undantag sker.
 
-Pythonissa poikkeukset käsitellään `try`- ja `except`-lauseilla. Ideana on, että mikäli `try`-lohkossa tapahtuu jokin poikkeus, Python tarkistaa, onko tälle poikkeukselle määritelty `except`-lohkoa. Mikäli on, suoritetaan tämä lohko ja suoritus jatkuu sen jälkeen normaalisti.
+Undantag behandlas i Python med satserna `try` och `except`. Idén är att om något inom `try`-blocket orsakar ett undantag, kommer Python söka efter ett motsvarande `except`-block och köra koden under det blocket – och så fortsätter programmet att köra som normalt.
 
-Muutetaan edellä esitettyä esimerkkiä siten, että ohjelma varautuu poikkeukseen `ValueError`:
+Låt oss ändra på exemplet ovan så att programmet är förberett för undantag av typen `ValueError`:
 
 ```python
 try:
@@ -97,11 +97,11 @@ Virheellinen ikä
 
 </sample-output>
 
-Ohjelmassa voidaan siis `try`-lauseella ilmoittaa, että seuraavan lohkon sisällä tapahtuva toiminta voi aiheuttaa virheen. Välittömästi `try`-lohkoa seuraavassa `except`-lauseessa ilmoitetaan, mihin virheeseen varaudutaan. Edellisessä esimerkissä varauduttiin ainoastaan virheeseen `ValueError` - jokin muu virhe olisi edelleen katkaissut ohjelman suorituksen.
+Vi kan använda `try`-blocket för att markera att koden inom blocket möjligtvis kan orsaka ett fel. I `except`-satsen som direkt följer blocket nämns det felet vi kan förvänta oss. I exemplet ovan nämnde vi bara `ValueError`-undantaget. Om något annat fel skulle ha uppstått, skulle programmet ändå ha avslutats oavsett `try`- och `except`-blocken.
 
-Tässä tapauksessa virhetilanteessa muuttuja `ika` saa arvon -1, jolloin ohjelma tunnistaa oikein virheellisen iän, koska ehtona on, että ikä on vähintään 0.
+I exemplet ovan, om ett fel sker, tilldelas `alder` värdet `-1`. Det här är ett icke-giltigt värde som programmet redan sedan tidigare kan reagera på, eftersom programmet förväntar sig ett värde mellan noll och 150.
 
-Seuraava funktio `lue_kokonaisluku` lukee käyttäjältä kokonaisluvun varautuen siihen, että käyttäjä antaa virheellisen syötteen. Funktio kysyy lukua uudestaan niin kauan, kunnes käyttäjä lopulta antaa kelvollisen luvun.
+I det följande exemplet har vi funktionen `las_heltal` som ber användaren att ge ett heltal. Funktionen är också redo för icke-giltiga värden och fortsätter att fråga efter ett heltal tills ett giltigt värde har angetts.
 
 ```python
 def lue_kokonaisluku():
@@ -129,9 +129,9 @@ Kiitos!
 
 </sample-output>
 
-Joissain tilanteissa saattaa olla tarvetta varautua poikkeukseen, mutta poikkeuksen tapahtuessa riittää "ignoorata" se, eli jättää koko asia huomiomatta `except`-lohkossa.
+Ibland räcker det med att fånga undantag med en try-except-struktur utan att göra något speciellt därtill. Vi kan alltså ignorera situationen i `except`-blocket.
 
-Jos muuttaisimme edellistä esimerkkiä siten, että funktio hyväksyisi ainoastaan lukua 100 pienemmät kokonaisluvut, voisimme muuttaa toteutusta seuraavasti:
+Om vi ändrar på exemplet ovan så att vi endast accepterar heltal som är under 100, skulle det kunna se ut så här:
 
 ```python
 def lue_pieni_kokonaisluku():
@@ -162,7 +162,7 @@ Kiitos!
 
 </sample-output>
 
-Nyt siis poikkeuksen käsittelevässä lohkossa on ainoastaan komento `pass`, joka ei tee mitään. Komento tarvitaan, sillä Python ei salli tyhjiä lohkoja.
+Nu innehåller except-blocket endast kommandot `pass`, som inte gör något. Python tillåter inte tomma block, så kommandot är nödvändigt.
 
 <programming-exercise name='Syötteen luku' tmcname='osa06-17_syotteen_luku'>
 
@@ -188,33 +188,33 @@ syötit luvun: 8
 
 </programming-exercise>
 
-## Tyypillisiä virheitä
+## Vanliga fel
 
-Seuraavassa on listattu joitakin yleisiä virheitä ja syitä niiden ilmenemiselle:
+Här är en samling av vanliga fel som du sannolikt kommer att stöta på. Vi kollar också i hurdana situationer dessa kan uppstå.
 
 **ValueError**
 
-Tämä poikkeus voi johtua siitä, että funktion parametri on vääränlainen. Esimerkiksi kutsu `float("1,23")` tuottaa tämän poikkeuksen, koska Pythonissa desimaalierottimen tulee olla piste eikä pilkku.
+Det här felet uppstår vanligtvis då ett argument som ges till en funktion på något sätt är ogiltigt. Till exempel anropet `float(”1,23”)` orsakar ett fel eftersom decimaler alltid skiljs åt med punkt i Python.
 
 **TypeError**
 
-Tämä poikkeus tapahtuu, kun arvo on väärän tyyppinen. Esimerkiksi kutsu `len(10)` saa aikaan tämän poikkeuksen, koska funktio `len` haluaa parametrin, jolle voidaan laskea pituus (kuten merkkijonon tai listan).
+Det här felet uppstår då ett värde har fel typ. Om vi till exempel anropar `len(10)` får vi ett fel, eftersom funktionen `len` kräver ett värde vars längd kan räknas – till exempel en sträng eller lista.
 
 **IndexError**
 
-Tämä poikkeus tapahtuu, jos yritetään viitata indeksiin, jota ei ole olemassa. Esimerkiksi `"abc"[5]` aiheuttaa tämän poikkeuksen, koska merkkijonossa ei ole indeksiä 5.
+Det här felet uppstår då vi försöker hänvisa till ett index som inte finns. Till exempel uttrycket `”abc”[5]` orsakar ett fel eftersom strängen i fråga inte har indexet 5.
 
 **ZeroDivisionError**
 
-Tämä poikkeus tapahtuu, jos yritetään jakaa nollalla. Yksi esimerkki on tilanne, jossa yritetään laskea listan arvojen keskiarvo kaavalla `sum(lista) / len(lista)`, mutta listan pituus on nolla.
+Det här felet uppstår då man försöker dividera med noll. Om vi till exempel försöker ta reda på medeltalet av värden i en lista med uttrycket `sum(min_lista) / len(min_lista)` och listans längd är noll, kommer vi att få ett fel.
 
-**Tiedostojen poikkeukset**
+**Undantag när filer behandlas**
 
-Tiedostojen käsittelyssä voi tulla vastaan esimerkiksi poikkeukset **FileNotFoundError** (koetetaan lukea tiedostoa, jota ei ole olemassa), **io.UnsupportedOperation** (tiedosto on avattu tilassa, joka ei salli operaatiota) tai **PermissionError** (ohjelmalla ei ole oikeutta käsitellä tiedostoa).
+Några vanliga undantag som kan uppstå när filer behandlas är `FileNotFoundError` (filen som man försöker komma åt finns inte), `io.UnsupportedOperation` (man försöker göra något åt filen som inte tillåts i det läge filen öppnats i) och `PermissionError` (programmet har inte åtkomst till filen).
 
-## Useamman poikkeuksen käsittely
+## Behandla flera undantag samtidigt
 
-Yhtä `try`-lohkoa kohti voi olla useampia `except`-lauseita. Esimerkiksi seuraavassa ohjelmassa varaudutaan sekä poikkeukseen `FileNotFoundException` että `PermissionError`:
+Ett `try`-block kan följas av flera `except`-block. Det här programmet kan exempelvis behandla situationer där `FileNotFoundException`- och `PermissionError`-undantagen uppkommer:
 
 ```python
 try:
@@ -227,7 +227,7 @@ except PermissionError:
     print("Ei oikeutta avata tiedostoa esimerkki.txt")
 ```
 
-Aina ei ole tarpeen eritellä tapahtuneita virheitä. Esimerkiksi juuri tiedostoa avatessa saattaa riittää, että tiedetään virheen tapahtuneen, muttei ole niin tärkeää tietää, miksi virhe tapahtui. Kaikki mahdolliset virheet voi käsitellä käyttämällä `except`-lausetta määrittelemättä poikkeuksen tyyppiä:
+Ibland är det inte nödvändigt att specificera det fel som programmet förbereder sig för. Speciellt då man arbetar med filer, räcker det med att veta att något fel har skett och därmed avsluta programmet på ett säkert sätt. Man behöver inte alltid veta varför ett fel har uppstått. Om vi vill vara förberedda på alla möjliga undantag kan vi använda `except`-blocket utan att specificera felet:
 
 ```python
 
@@ -240,9 +240,9 @@ except:
 
 ```
 
-Huomaa, että tällaisessa tapauksessa `except`-lause käsittelee kaikki mahdolliset virheet, myös ohjelmoijan tekemät virheet lukuun ottamatta syntaksivirheitä, jotka estävät ohjelman suorittamisen.
+Obs! Den här `except`-satsen körs nu i alla möjliga felsituationer – det här gäller också misstag som programmeraren gjort. Endast syntaxfel kommer att orsaka fel som förhindrar programmet från att köras – detta eftersom den här typen av fel inte låter koden köras över huvud taget.
 
-Esimerkiksi seuraava ohjelma heittää aina poikkeuksen, koska muuttujan `tiedosto` nimi on kirjoitettu toisessa kohdassa väärin `tiedotso`.
+Till exempel det här programmet kommer alltid att ge ett fel, eftersom variabelnamnet `mitt_namn` har skrivits i formen mittnamn på den tredje raden:
 
 ```python
 try:
@@ -253,13 +253,13 @@ except:
     print("Tapahtui virhe tiedoston lukemisessa.")
 ```
 
-Tästä näkee, että `except` voi peittää varsinaisen virheen: tässä tapauksessa virheen syynä ei ole tiedoston käsittely vaan väärin kirjoitettu muuttuja.
+Ett `except`-block kan gömma bakomliggande fel. Problemet här berodde inte på hur filer behandlades utan på en variabel med inkorrekt namn. Utan ett `except`-block skulle vi kunna se vilket fel som orsakats och kunde därmed hitta källan till felet enklare. Därför lönar det sig att endast använda `except`-blocket för fördefinierade specifika typer av fel.
 
-## Poikkeusten välittyminen
+## Förmedling av undantag
 
-Jos funktion sisällä tapahtuu poikkeus, jota ei käsitellä, poikkeus välitetään funktion kutsujalle. Tätä jatketaan, kunnes ollaan pääohjelman tasolla. Jos poikkeusta ei tässäkään käsitellä sopivalla `except`-lauseella, ohjelman suoritus katkeaa ja poikkeus yleensä tulostetaan ruudulle.
+Om körandet av en funktion orsakar ett undantag som inte behandlas kommer undantaget att förmedlas till koden som anropat koden och fortsätta kliva upp till huvudfunktionen. Om felet inte här heller behandlas, kommer programmet att stoppas och undantaget skrivs ut för användaren att se.
 
-Esimerkiksi seuraavassa ohjelmassa funktiossa `testi` tapahtuva poikkeus käsitellään vasta pääohjelmassa:
+I det följande exemplet har vi funktionen `test`. Om den orsakar ett undantag, kommer det inte att behandlas inne i funktionen utan i huvudfunktionen:
 
 ```python
 def testi(x):
@@ -279,13 +279,13 @@ Jotain meni pieleen
 
 </sample-output>
 
-## Poikkeusten tuottaminen
+## Åstadkomma undantag
 
-Voimme myös tarvittaessa tuottaa poikkeuksen itse komennolla `raise`. Vaikka virheiden tuottaminen varta vasten voi aluksi tuntua oudolta ajatukselta, mekanismi on itse asiassa hyvinkin hyödyllinen.
+Du kan åstadkomma undantag med kommandot `raise`. Det kan verka som en konstig idé att själv åstadkomma fel i ditt program, men det kan vara nyttigt i olika situationer.
 
-Esimerkiksi jos teemme funktion, jolle annetaan virheellinen parametri, voimme ilmaista tämän poikkeuksen avulla. Tämä voi olla parempi tapa kuin esimerkiksi palauttaa jokin virhearvo tai tulostaa viesti ruudulle, koska funktion käyttäjä ei välttämättä huomaisi asiaa.
+Det kan till exempel löna sig att åstadkomma ett fel när man märker icke-valida parametrar. Hittills har vi skrivit ut meddelanden när vi har validerat indata, men om vi gör en funktion som ska köras från något annat ställe så kan det hända att en utskrift inte noteras när funktionen anropas. Att åstadkomma ett fel kan göra debuggande enklare.
 
-Seuraavassa esimerkissä funktio `kertoma` laskee parametrina annetun luvun kertoman (esimerkiksi luvun 5 kertoma on 1 * 2 * 3 * 4 * 5). Kuitenkin jos annettu luku on negatiivinen, funktio tuottaa poikkeuksen.
+I det följande exempel har vi en funktion som räknar ut fakulteten av en siffra (t.ex. för siffran fem är fakulteten 1 * 2 * 3 * 4 * 5). Om argumentet som ges till funktionen är negativt, kommer ett fel att åstadkommas:
 
 ```python
 def kertoma(n):

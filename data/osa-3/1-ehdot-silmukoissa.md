@@ -1,16 +1,16 @@
 ---
 path: '/osa-3/1-ehdot-silmukoissa'
-title: 'Ehdot silmukoissa'
+title: 'Loopar med villkor'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat tehdä while-silmukan, jonka alkurivillä on ehto
-- Tiedät, mikä merkitys alustuksella, ehdolla ja muutoksella on silmukassa
-- Osaat käyttää erilaisia ehtoja silmukoissa
+* kan du skapa en loop med ett villkor
+* vet du vad vilka roller initiering, villkoret och att uppdatering av variabler har i en loop
+* kan du skapa loopar med olika typer av villkor.
 
 </text-box>
 
@@ -24,19 +24,19 @@ Kyselyyn ei ole pakko antaa henkilötietoja (esimerkiksi nimeä), vaikka niitä 
 
 
 <!--vastaava teksti löytyy osioista 3-1, 5-1 ja 6-1, tsekkaa kaikki jos muokkaat tätä-->
-<text-box variant='hint' name='Kurssin tehtävien tekemisestä'>
+<text-box variant='hint' name='Om uppgifterna i den här kursen'>
 
-Ohjelmointitaidon kehittyminen edellyttää vahvaa rutiinia ja myös omaa soveltavaa oivaltamista. Tämän takia kurssilla on paljon tehtäviä. Osa tehtävistä on kohtuullisen suoraviivaisesti materiaalia hyödyntäviä ja osa taas aivan tarkoituksella haastavampia soveltavia tehtäviä.
+Att bli en skicklig programmerare kräver mycket övning. Man måste utveckla en problemlösningsförmåga och ha en förmåga att intuition komma fram till korrekta lösningar. Därför finns det massor av övningar av olika typer i den här kursen. Vissa övningar är enklare och baserar sig mera eller mindre direkt på materialet medan andra uppgifter är svårare och kräver tillämpande av kunskaper som man lärt sig under kursen.
 
-Ei kannata huolestua, vaikka osa kurssin tehtävistä tuntuisikin ensiyrittämällä liian vaikealta. Kaikkia tehtäviä ei ole pakko tehdä, kuten [arvosteluperusteet](/arvostelu-ja-kokeet) toteavat, _kurssin läpipääsyyn vaaditaan vähintään 25 % jokaisen osan ohjelmointitehtävien pisteistä._
+En del uppgifter kan kännas svåra, men det är inte något att oroa sig över. Ingen av uppgifterna är obligatorisk och du behöver bara 25 % av poängen från varje modul för att klara den här kursen. Du kan läsa mera på kursens bedömningssida.
 
-**Kurssin osien tehtävät eivät etene vaikeusjärjestyksessä.** Jokaisessa aliosassa esitellään yleensä muutama uusi konsepti, joita harjoitellaan sekä helpommilla että soveltavimmilla tehtävillä. **Jos törmäät liian haastavan tuntuiseen tehtävään, hyppää seuraavaan**. Voit palata vaikeimpiin tehtäviin osan lopuksi, jos aikaa vielä jää.
+Uppgifterna är inte i svårighetsordning. Varje del introducerar vanligtvis några nya saker inom programmering och i samband finns relaterade uppgifter – både enklare och svårare. Om du stöter på en uppgift som känns oöverkomlig ska du fortsätta till nästa uppgift. Du kan alltid senare återkomma till tidigare uppgifter.
 
-Lohdutuksen sanana todettakoon, että tällä viikolla mahdottomalta vaikuttava tehtävä näyttää melko varmasti neljän viikon päästä melko helpolta.
+En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel om en månad.
 
 </text-box>
 
-Edellisen osan lopussa opimme käyttämään `while True` -silmukkaa koodin toistamiseen. Tässä tapauksessa silmukan ehtona on `True`, joka on aina tosi. Esimerkiksi
+I den förra delen bekantade vi oss med `while True` -loopen som ett medel att upprepa delar av kod. Så som loopen är uppbyggd är villkoret alltid `True`, alltså sant. Vi måste då avsluta loopen manuellt vid något skede för att undvika en oändlig loop. Exempelvis:
 
 ```python
 # Tulosta lukuja kunnes muuttujan a arvo on 5
@@ -57,18 +57,18 @@ while True:
 
 </sample-output>
 
-Silmukan toimintaa voidaan monipuolistaa käyttämällä ehtoa `while`-määrittelyssä. Yleisemmin voimme siis käyttää silmukkaa näin:
+Men förstås behöver villkoret inte alltid vara True, utan det kan vara vilket som helst Boolean-uttryck. while-satsens struktur ser ut så här:
 
 ```python
 while <ehtolauseke>:
     <lohko>
 ```
 
-Ideana on, että silmukka vuorotellen tarkastaa ehdon ja suorittaa lohkossa olevan koodin, jos ehto on tosi. Sitten kun ehto on epätosi, ohjelman suoritus jatkuu silmukan jälkeiseltä riviltä.
+Idén är att koden körs om och om igen – villkoret kollas för varje iteration. Om villkoret vid något skede inte är sant kommer programmet att fortsätta med koden som kommer efter while-blocket.
 
 <img src="3_1_1.png">
 
-Esimerkiksi seuraavassa silmukassa ehtona on `luku < 10` eli silmukan koodi suoritetaan, jos luku on alle 10.
+I den följande loopen har vi villkoret `nummer < 10`. Blocket inom loopen kommer bara att köras då variabeln nummer är mindre än tio.
 
 ```python
 luku = int(input("Anna luku: "))
@@ -80,7 +80,7 @@ while luku < 10:
 print("Suoritus valmis.")
 ```
 
-Ohjelman tulostus voi olla seuraava:
+Utskriften skulle kunna se ut så här:
 
 <sample-output>
 
@@ -95,7 +95,7 @@ Suoritus valmis.
 
 </sample-output>
 
-Koska ehto tarkastetaan aina ennen silmukan koodin suoritusta, on mahdollista, ettei koodia suoriteta kertaakaan. Esimerkiksi:
+Med den här strukturen kommer villkoret att kollas före blocket inom loopen körs. Det är möjligt att det här blocket inte kommer att köras en enda gång. Så här till exempel:
 
 <sample-output>
 
@@ -104,17 +104,17 @@ Suoritus valmis.
 
 </sample-output>
 
-Koska 12 ei ole pienempi kuin 10, ohjelma ei tulosta yhtään lukua.
+Tolv är inte mindre än tio, så programmet skriver inte ut någon siffra.
 
-## Alustus, testaus ja muutos
+## Initialisering, villkor och uppdatering
 
-Monessa silmukassa on kolme osaa: alustus, ehto ja muutos.
+För att skapa en loop behövs ofta tre olika steg: initialisering, ett villkor och uppdatering av variabler.
 
-_Alustus_ tarkoittaa silmukassa käytettävän muuttujan tai muuttujien alkuarvojen antamista. Tämä vaihe tehdään ennen silmukkaa. _Ehto_ kirjoitetaan silmukan alkuun, ja se määrittelee, kuinka kauan silmukkaa suoritetaan. Joka kierroksella tapahtuva _muutos_ vie silmukan askeleen lähemmäs sen loppumista. Esimerkiksi:
+Initialisering syftar till att ge startvärden till de variabler som används i loopens villkor. Det här görs före man kommer till loopen. Villkoret bestämmer hur länge loopen körs. Det skrivs i början av loopen. För varje iteration ska variablerna som används i villkoret uppdateras, så att loopen steg för steg närmar sitt slut. Här presenterar vi stegen i ett exempel:
 
 <img src="3_1_2.png">
 
-Jos jokin kolmesta osasta puuttuu, silmukka ei toimi oikein. Yksi tyypillinen virhe on muutoksen unohtaminen:
+Om någon av de här tre komponenterna fattas kommer loopen antagligen inte att fungera korrekt. Ett vanligt misstag är att låta bli att uppdatera variabler:
 
 ```python
 luku = 1
@@ -125,7 +125,7 @@ while luku < 10:
 print("Suoritus valmis.")
 ```
 
-Koska muuttujan `luku` arvo ei koskaan muutu, jää ohjelma suoritettaessa ikuiseen silmukkaan eli toistaa samaa koodia, kunnes käyttäjä katkaisee ohjelman suorituksen (esimerkiksi painamalla `Control` + `C`):
+Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fast i en oändlig loop. Samma kod upprepas tills användaren avslutar programmet, till exempel med tangentkombinationen Control + C:
 
 <sample-output>
 
@@ -187,9 +187,9 @@ Nyt!
 
 </in-browser-programming-exercise>
 
-## Ehdoista tarkemmin
+## Skriva villkor
 
-Silmukan ehtona voidaan käyttää mitä tahansa ehtolauseketta. Esimerkiksi seuraava ohjelma tulostaa lukuja kolmen välein niin kauan kuin luku on pienempi kuin 100 eikä se ole jaollinen 5:llä:
+Alla Boolean-uttryck och kombinationer av dem kan användas som villkor i en loop. Till exempel följande program skriver ut var tredje nummer förutsatt att det är mindre än 100 och inte dividerbart med fem:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -199,7 +199,7 @@ while luku < 100 and luku % 5 != 0:
     luku += 3
 ```
 
-Kaksi esimerkkitulostusta eri syötteillä:
+Här följer två exempel på utskriften från programmet:
 
 <sample-output>
 
@@ -219,9 +219,9 @@ Anna luku: **96**
 
 </sample-output>
 
-Luvun 28 kohdalla silmukka päättyy lukuun 37, koska seuraava luku 40 on jaollinen 5:llä. Luvun 96 kohdalla silmukka päättyy lukuun 99, koska seuraava luku 102 ei ole alle 100.
+När man ger programmet värdet 28 kommer loopen att avslutas med numret 37, eftersom nästa siffra är 40 – och är dividerbart med fem. När man ger värdet 96 kommer loopen att avsluta med numret 99 eftersom nästa siffra är 102 – som inte är mindre än 100.
 
-Silmukan ehtoa kirjoittaessa on tärkeä varmistua siitä, että silmukan suoritus päättyy. Esimerkiksi seuraava ohjelma on joko päättyvä tai ei-päättyvä riippuen alkuarvosta:
+När du skriver en loop är det viktigt att se till att loopen alltid kommer att avslutas vid något skede. Det här programmet avslutas – eller inte – beroende på det värde som ges:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -231,7 +231,7 @@ while luku != 10:
     luku += 2
 ```
 
-Jos syötteenä on parillinen luku, joka on enintään 10, silmukan suoritus päättyy:
+Om man ger ett jämnt tal som är lika med tio eller mindre, kommer loopen att avslutas:
 
 <sample-output>
 
@@ -242,7 +242,7 @@ Anna luku: **4**
 
 </sample-output>
 
-Muissa tapauksissa silmukka on kuitenkin ikuinen, koska muuttuja ei koskaan saavuta arvoa 10. Tällaisia syötteitä ovat esimerkiksi 3 ja 12.
+I övriga fall kommer loopen att fortsätta oändligt eftersom det inte då finns något sätt för variabeln att vara lika med tio. Till exempel tre och tolv är värden som skulle förorsaka en oändlig loop.
 
 <in-browser-programming-exercise name="Luvut" tmcname="osa03-02_luvut">
 
@@ -262,9 +262,9 @@ Mihin asti: **5**
 
 </in-browser-programming-exercise>
 
-## Lisää debuggauksesta
+## Tips för debuggning
 
-Hieman haastavampaa ohjelmaa, esim. seuraavaksi vuorossa olevaa tehtävää _Kahden potenssit_, koodatessa voitaisiin lähteä liikkeelle seuraavasti:
+Föreställ att du håller på att skapa ett lite mera komplicerat program, som det i den följande uppgiften – _Potenser av två_. Så här skulle man kunna starta:
 
 ```python
 asti = int(input("Mihin asti"))
@@ -273,13 +273,13 @@ while luku == asti:
    # koodia
 ```
 
-Tässä on aloitettu syötteen lukemisesta, minkä jälkeen ruvetaan miettimään silmukan lopetusehtoa sekä silmukan toimintaa.
+Nu börjar programmet med att läsa in den data användaren ger och fortsätter till en loop med ett villkor.
 
-Todennäköisesti ohjelma ei ensimmäisillä kokeilukerroilla toimi halutulla tavalla ja koodia on testailtava kymmeniä tai jopa satoja kertoja ennen kuin se alkaa toimia.
+Det är sannolikt att koden inte kommer att fungera på önskat sätt från början. Den kan behöva testas tio- eller till och med hundratals gånger före den fungerar korrekt.
 
-Koska koodi lukee syötteitä käyttäjältä, sen toiminnan kokeileminen on hidasta ja vaivalloista, koska jokaisella testauskerralla on ohjelmalle annettava näppäimistöltä käsin sen haluamat syötteet.
+Den här kodsnutten frågar alltid efter indata från användaren vilket gör testandet långsamt och arbetsdrygt. Varje gång programmet testas måste ett värde anges.
 
-Yksi tapa toimia on "kovakoodata" syöte aluksi:
+Ett sätt att bli av med problemet är att hårdkoda ett värde i koden medan den testas:
 
 ```python
 # kovakoodataan syötteen arvo aluksi
@@ -289,9 +289,9 @@ while luku == asti:
    # koodia
 ```
 
-Kun ohjelma toimii yhdellä syötteellä, sitä on helppo kokeilla muilla kovakoodatuilla syötteillä ja lopulta lukemalla syöte käyttäjältä.
+När programmet fungerar med det hårdkodade värdet, kan man enkelt testa med andra hårdkodade värden. När allt fungerar korrekt kan man testa på programmet så att användaren anger värdet.
 
-Vastaava kikka toimii myös kurssien tehtäviin liittyvien testien ongelmatilanteita selvitellessä. Jos testi kertoo, että ohjelmasi toimii väärin, kun syöte on vaikkapa 42, niin kovakoodataan se syötteeksi bugin etsinnän ajaksi:
+Det här tricket fungerar väl med flera av de tester som används i betygsättningen av den här kursens uppgifter. Om testet berättar att något är fel med till exempel värdet 42 så kan värdet tillfälligt hårdkodas i programmet medan du letar efter buggen:
 
 ```python
 # testi ilmoitti että koodi toimii väärin kun syöte on 42
@@ -301,23 +301,23 @@ while luku == asti:
    # koodia
 ```
 
-Kurssin [edellisessä osassa](/osa-2) oli jo pariinkin otteeseen puhetta tulostuskomennon avulla tapahtuvasta debuggaamisesta. Kurssin aikana vastaan tulevat ohjelmat muuttuvat koko ajan haastavammiksi ja debuggauksen tarve tulee kasvamaan entisestään. Esimerkiksi silmukoiden lopetusehtojen saaminen toimimaan kaikissa tapauksissa voi olla haastavaa.
+Debuggning med hjälp av `print`-satsen nämndes några gånger under förra modulen i den här kursen. De program som du skapar kommer att bli mer invecklade i och med att kursen framskrider. Då kommer mängden debuggning som du behöver göra också antagligen att öka i samma proportion. Vanliga orsaker till buggar finns ofta i de villkor som avslutar loopar – de fungerar eventuellt korrekt för vissa värden, medan andra värden orsakar problem. Alltid är det inte heller lätt att observera det här.
 
-Tulostuskomentoihin perustuva debuggaus kannattaa ottaa omaan työkalupakkiin viimeistään nyt. Kertaa tarvittaessa edellisen osan [ensimmäisessä ](/osa-2/1-ohjelmoinnin-termeja) ja [neljännessä](/osa-2/4-yksinkertainen-silmukka) luvussa olleet debuggausohjeet.
+Därför är det nu dags att använda dig av `print`-satser för att debugga – om du inte redan har gjort det. Du hittar instruktioner i den första och fjärde delen av den föregående modulen.
 
-Tulostamisen lisäksi on olemassa muitakin debuggaukseen sopivia työkaluja. Eräs tälläinen on sivuston [Python Tutor](http://www.pythontutor.com/) tarjoama [visualisointityökalu](http://www.pythontutor.com/visualize.html#mode=edit), jonka avulla oman ohjelman koodia on mahdollista suorittaa komento komennolta havainnoiden samalla, mitä arvoja ohjelman muuttujat saavat.
+Vid sidan om `print`-satser finns även andra verktyg som kan använda för debuggning. Ett av dem är visualiseringsverktyget på Python Tutor -webbsidan. Verktyget låter dig köra din kod rad för rad och visar också de värden som är lagrade i variabler vid varje steg.
 
-Seuraavassa kuvassa Python Tutorilla visualisoidaan [edellisen osan](/osa-2/4-yksinkertainen-silmukka) debuggausmateriaalissa olevan hieman rikkinäisen koodin toimintaa:
+Koden – med några problem – från den förra delen visualiseras med Python Tutor i följande bild:
 
 <img src="3_1_0.png">
 
-Punainen nuoli kertoo, missä kohtaa ohjelman suoritus on menossa. Visualisaattori näyttää, mitä ohjelma on tulostanut ruudulle ja mitkä ovat ohjelman muuttujien arvot kullakin suorituksen hetkellä. Koodin suoritus etenee komento komennolta painiketta _Next>_ painellessa.
+Den röda pilen visar var programmet körs för tillfället. Verktyget visar vad som har skrivits ut fram till pilen och visar också vilka värden varje variabel har i varje steg.
 
-Visualisaattorin käyttö on erittäin helppoa, koska riittää että tarkasteltava koodi kopioidaan [koodi-ikkunaan](http://www.pythontutor.com/visualize.html#mode=edit). Huomaa, että visualisaattori ei saalli ääkkösten käyttämistä muuttujien eikä funktioiden nimissä.
+Det enda du behöver för att köra visualiseringsverktyget är att kopiera och klistra in din kod i verktygets kodfönster. Verktyget har en del begränsningar jämfört med den Python-version som används under den här kursen. Om du stöter på konstiga felmeddelanden kan det löna sig att använda någon annan metod för att debugga.
 
-Kokeneemmat ohjelmoijat tuskin käyttävät visualisaattoria koskaan, mutta aloittelijalle se voi olla oiva apuväline. Ohjelmointi ei nimittäin voi perustua tuuriin tai sattumaan. Ohjelmoijan on koko ajan tiedettävä tarkalleen, mitä muuttujien arvot ohjelman suorituksen aikana ovat. Jos muuttujien arvot eivät vastaakaan ohjelmoijan olettamaa, on tuloksena mitä suurimmalla todennäköisyydellä bugi.
+De som har sysslat med programmering en längre tid använder sällan visualiseringsverktyg men för en nybörjare kan verktyget verkligen vara till hjälp. Det är osannolikt att man av en slump får något program att fungera. Det är nödvändigt att man som programmerare förstår vilka värden ens programkod skapar vid ett visst skede medan programmet körs. Om de värden som lagras i variabler inte är sådana som man förväntar sig, finns det högst sannolikt en bugg i programmet.
 
-Visualisaattori ja debuggaustulostukset ovat erinomainen väline siihen, että ohjelmoija voi omin silmin varmistaa, että ohjelma todellakin toimii kuten sen olettaa toimivan.
+Visualiseringsverktyget och `print`-satser är båda bra sätt för en programmerare att med egna ögon se att programmet gör exakt det som det ska göra.
 
 <in-browser-programming-exercise name="Kahden potenssit" tmcname="osa03-03_kahden_potenssit">
 
@@ -427,9 +427,9 @@ Voit olettaa, että käyttäjän antama luku on 2 tai suurempi.
 
 </in-browser-programming-exercise>
 
-## Merkkijonon rakentaminen paloista
+## Bilda strängar
 
-Jo kurssin [ensimetreillä](/osa-1/2-tietoa-kayttajalta) opimme, että merkkijono on mahdollista "rakentaa" useammasta pienemmästä merkkijonosta +-operaattorin avulla. Esimerkiksi
+Under kursens första vecka lärde vi oss att det är möjligt att bilda strängar av kortare strängar med hjälp av `+`-operatorn. Till exempel detta är valid Python-kod:
 
 ```python
 sanat = "suo"
@@ -445,7 +445,7 @@ suo, kuokka ja python
 
 </sample-output>
 
-Huomaa, että edellinen on mahdollista kirjoittaa hieman tiiviimmin operaattorin += avulla:
+`+=`-operatorn låter oss skriva ovanstående lite mer kompakt:
 
 ```python
 sanat = "suo"
@@ -455,7 +455,7 @@ sanat += " ja python"
 print(sanat)
 ```
 
-Yhdistettävä merkkijonon pätkä voi olla myös f-merkkijono. Tämä saattaa olla kätevää, jos rakennettavaan merkkijonoon lisätään muuttujissa olevia arvoja. Voimme siis tehdä esim. seuraavasti:
+Det här gäller också f-strängar som kan vara nyttiga då värden lagrade i strängar behövs som delar av en resulterande sträng. Det här skulle till exempel fungera:
 
 ```python
 kurssi = "Ohjelmoinnin perusteet"
@@ -474,9 +474,9 @@ Olet saanut kurssilta Ohjelmoinnin perusteet arvosanan 4
 
 </sample-output>
 
-Edellisessä tehtävässä laskettiin lukujen summaa kasvattamalla sen arvoa silmukan sisällä.
+I det förra exemplet räknade du summan av varandra påföljande siffror genom att alltid öka på värdet i loopen.
 
-Täsmälleen samalla idealla on mahdollista rakentaa myös merkkijonoa siten, että siihen lisätään yksi osa kerrallaan silmukassa...
+Samma fungerar också för strängar – du kan lägga till nya delar i en sträng inom en loop. Den här tekniken kan vara till nytta i följande uppgift.
 
 <in-browser-programming-exercise name="Peräkkäisten summa, versio 2" tmcname="osa03-05_perakkaisten_summa">
 

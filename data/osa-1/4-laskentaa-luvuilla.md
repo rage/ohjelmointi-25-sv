@@ -1,41 +1,41 @@
 ---
 path: "/osa-1/4-laskentaa-luvuilla"
-title: "Laskentaa luvuilla"
+title: "Räkneoperationer"
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää muuttujia laskutoimitusten kanssa
-- Osaat käsitellä käyttäjän antamia lukuarvoja
-- Osaat muuntaa arvoja eri perustyyppien välillä
+* kan du använda dig av variabler i olika slags räkneoperationer
+* kan du hantera siffor i indata från användare
+* kan du konvertera värden till olika grundläggande datatyper.
 
 </text-box>
 
-Aiemmissa osissa nähtiin esimerkkejä peruslaskutoimituksista. Seuraavaan taulukkoon on koottu Pythonin yleisimmät laskuoperaattorit esimerkkeineen:
+I de tidigare delarna har du sett exempel med enkla räkneoperationer. Följande tabell listar de mest allmänna operatorerna som kan användas för att räkna i Python:
 
-| Operaattori   | Merkitys      | Esimerkki    | Tulos |
-|:-------------:|---------------|--------------|-------|
-| `+`           | Yhteenlasku   | `2 + 4`      |`6`    |
-| `-`           | Vähennyslasku | `10 - 2.5`   |`7.5`  |
-| `*`           | Kertolasku    | `-2 * 123`   |`-246` |
-| `/`           | Jakolasku (liukuluku)    | `9 / 2`     |`4.5`  |
-| `//`           | Jakolasku (kokonaisluku)    | `9 // 2`     |`4`  |
-| `%`           | Jakojäännös    | `9 % 2`     |`1`  |
-| `**`          | Potenssi      | `2 ** 3`     |`8`    |
+| Operator | Betydelse                       | Exempel    | Resultat |
+|:--------:|---------------------------------|------------|----------|
+| `+`      | Addition                        | `2 + 4`    |`6`       |
+| `-`      | Subtraktion                     | `10 - 2.5` |`7.5`     |
+| `*`      | Multiplikation                  | `-2 * 123` |`-246`    |
+| `/`      | Division (resultat som flyttal) | `9 / 2`    |`4.5`     |
+| `//`     | Division (resultat som heltal)  | `9 // 2`   |`4`       |
+| `%`      | Rest                            | `9 % 2`    |`1`       |
+| `**`     | Potens                          | `2 ** 3`   |`8`       |
 
-Laskujärjestys noudattaa matematiikasta tuttuja sääntöjä: aluksi lasketaan potenssilaskut, sitten kerto- ja jakolaskut ja lopuksi yhteen- ja vähennyslaskut. Järjestystä voidaan muuttaa sulkujen avulla.
+Ordningen för operationerna är bekant från matematiken: potensuttryck räknas först, sedan multiplikation och division, till sist addition och subtraktion. Ordningen kan ändras genom att använda parenteser.
 
-Esimerkki:
+Till exempel denna kodsnutt…
 
 ```python
 print(2 + 3 * 3)
 print((2 + 3) * 3)
 ```
 
-Ohjelma tulostaa
+…resulterar i följande utskrift:
 
 <sample-output>
 
@@ -44,17 +44,17 @@ Ohjelma tulostaa
 
 </sample-output>
 
-## Operandit, operaattorit ja tyypit
+## Operand, operator och datatyper
 
-Laskutoimituksen osana on yleensä *operandeja* ja *operaattoreita*:
+En räkneoperation består oftast av operander och operatorer:
 
 <img src="1_5.png">
 
-Yleensä operandien tyyppi ratkaisee lopputuloksen tyypin: jos lasketaan yhteen kaksi kokonaislukua, myös tulos on kokonaisluku. Jos taas vähennetään liukuluku toisesta liukuluvusta, myös tulos on liukuluku. Itse asiassa tulos on liukuluku, jos edes yksi operandeista lausekkeessa on liukuluku.
+Datatypen hos en operand bestämmer i regel datatypen hos resultatet: om två heltal adderas är resultatet också ett heltal. Om ett flyttal subtraheras från ett annat flyttal är resultatet ett flyttal. Vidare kan man notera att om en av operanderna är ett flyttal, kommer resultatet att vara ett flyttal oavsett de andra operanderna.
 
-Jakolasku `/` muodostaa Pythonissa poikkeuksen sääntöön: sen tulos on liukuluku, vaikka operandit olisivatkin kokonaislukuja (esim. `1 / 5` tuottaa liukuluvun `0.2`).
+Division med operatorn `/` är ett undantag. Dess resultat är ett flyttal även om operanderna är heltal. Till exempel kommer operationen `1 / 5` att ge flyttalet `0.2`. Observera att Python använder punkt som decimaltecken, inte decimalkomma som vanligtvis används på svenska.
 
-Esimerkki:
+Exempel:
 
 ```python
 pituus = 172.5
@@ -67,7 +67,7 @@ bmi = paino / (pituus / 100) ** 2
 print(f"Painoindeksi on {bmi}")
 ```
 
-Ohjelman tulostus on seuraava:
+Programmets utskrift ser ut så här:
 
 <sample-output>
 
@@ -75,7 +75,7 @@ Painoindeksi on 23.037177063642087
 
 </sample-output>
 
-Huomaa, että Pythonissa on myös kokonaislukujakolaskuoperaattori `//`, joka tuottaa kokonaisluvun, jos sen operandit ovat kokonaislukuja. Vastaus pyöristetään alaspäin kokonaisluvuksi, eli esim.
+Märk att Python också har operatorn `//`, för division med heltal som resultat. Om operanderna är heltal, kommer resultatet också att vara ett heltal. Resultatet rundas ner till närmaste heltal. Exempelvis detta program…
 
 ```python
 x = 3
@@ -85,7 +85,7 @@ print(f"/-operaattori {x/y}")
 print(f"//-operaattori {x//y}")
 ```
 
-tulostaa
+…skriver ut följande:
 
 <sample-output>
 
@@ -94,11 +94,11 @@ tulostaa
 
 </sample-output>
 
-## Lukuarvojen lukeminen
+## Nummer som indata
 
-Aikaisemmin käytettiin `input`-komentoa lukemaan käyttäjältä merkkijonoja. Samaa funktiota voidaan käyttää myös lukuarvojen lukemiseen. Tällaisessa tapauksessa muunnos merkkijonosta lukutyyppiin on kuitenkin tehtävä itse. Logiikka on samanlainen kuin edellisessä osassa opitussa `str`-funktiossa, vain funktion nimi vaihtuu.
+Vi har redan använt oss av `input`-funktionen för att läsa in strängar som användaren matat in. Samma funktion kan också användas för att läsa in nummer, men då måste strängen som funktionen returnerar först konverteras till någon av de datatyper som representerar ett nummer i programkoden. I den förra delen konverterade vi heltal till strängar med `str`-funktionen. Nu gäller samma princip, men vi ska använda en annan funktion eftersom vi gör konverteringen åt motsatt håll.
 
-Esimerkiksi voimme muuttaa merkkijonon kokonaisluvuksi funktiolla `int`. Seuraava ohjelma lukee käyttäjältä syntymävuoden muuttujaan `syote` ja luo sitten toisen muuttujan `vuosi`, jossa on vuosi kokonaisluvuksi muutettuna. Tämän jälkeen voimme suorittaa laskun `2020-vuosi`, jossa on mukana käyttäjän antama vuosi.
+En sträng kan konverteras till ett heltal med funktionen `int`. Det följande programmet frågar användarens födelseår och sparar det i variabeln `indata_strang`. Programmet skapar därefter variabeln `ar` som innehåller året konverterat till heltal. Efter det går det att räkna `2021 - ar`, med hjälp av det värde användaren angett.
 
 ```python
 syote = input("Minä vuonna olet syntynyt? ")
@@ -112,14 +112,14 @@ Ikäsi vuoden 2020 lopussa: 25
 
 </sample-output>
 
-Yleensä ei kannata luoda kahta muuttujaa (tässä `syote` ja `vuosi`) lukuarvon lukemista varten, vaan voimme samalla kertaa lukea merkkijonon `input`-funktiolla ja muuttaa sen kokonaisluvuksi `int`-funktiolla:
+Allt som oftast behöver man inte skapa två separata variabler (som ovan) för att läsa en siffra från användaren. Istället kan användarens text läsas in och konverteras till heltal samtidigt:
 
 ```python
 vuosi = int(input("Minä vuonna olet syntynyt? "))
 print(f"Ikäsi vuoden 2020 lopussa: {2020 - vuosi}" )
 ```
 
-Vastaavasti voimme muuttaa merkkijonon liukuluvuksi funktiolla `float`. Seuraava ohjelma kysyy käyttäjän painon ja pituuden ja laskee näiden tietojen avulla painoindeksin:
+En sträng kan också konverteras till flyttal. Det sker med funktionen `float`. Det här programmet frågar användaren om hennes eller hans längd och vikt, och använder svaren för att räkna ut BMI:
 
 ```python
 pituus = float(input("Anna pituus: "))
@@ -131,7 +131,7 @@ bmi = paino / pituus ** 2
 print(f"Painoindeksi on {bmi}")
 ```
 
-Ohjelman tulostus voisi näyttää vaikka seuraavalta:
+Här är ett exempel på en utskrift från programmet:
 
 <sample-output>
 
@@ -170,9 +170,9 @@ Moi Keijo Keksitty, olet 30 vuotta vanha vuoden 2020 lopussa
 
 </in-browser-programming-exercise>
 
-## Muuttujien käyttöä
+## Att använda variabler
 
-Tarkastellaan ohjelmaa, joka laskee kolmen käyttäjän syöttämän luvun summan:
+Låt oss kika på ett program som räknar summan av tre siffror som användaren anger:
 
 ```python
 luku1 = int(input("Ensimmäinen luku: "))
@@ -183,7 +183,7 @@ summa = luku1 + luku2 + luku3
 print(f"Lukujen summa: {summa}")
 ```
 
-Ohjelman esimerkkisuoritus:
+Här har vi ett exempel på när vi kör programmet:
 
 <sample-output>
 
@@ -194,7 +194,7 @@ Lukujen summa: 33
 
 </sample-output>
 
-Ohjelma käyttää nyt neljää muuttujaa. Tässä tilanteessa tultaisiin toimeen myös vähemmällä:
+Programmet använder fyra variabler, men i det här fallet skulle det faktiskt räcka med två variabler:
 
 ```python
 summa = 0
@@ -211,23 +211,23 @@ summa = summa + luku
 print(f"Lukujen summa: {summa}")
 ```
 
-Nyt kaikki käyttäjän syötteet luetaan muuttujaan `luku`, jonka arvolla _kasvatetaan_ muuttujan `summa` arvoa joka kerta sen jälkeen kun käyttäjältä on saatu uusi syöte.
+Nu läses alla siffor som användaren ges in i en och samma variabel, `nummer`. Värdet på variabeln `summa` ökas med värdet på variabeln nummer varje gång användaren skriver in ett nytt nummer.
 
-Seuraava komento siis _kasvattaa_ muuttujassa `summa` olevaa arvoa muuttujan `luku` arvolla:
+Vi tar en lite närmare titt på kommandot:
 
 ```python
 summa = summa + luku
 ```
 
-Eli esimerkiksi jos ennen komentoa `summa` on 3 ja `luku` on 2, niin komennon suorittamisen jälkeen muuttujan `summa` arvona on 5.
+Här adderas värdena i variablerna `summa` och `nummer` ihop – för att lagras i variabeln summa. Till exempel om värdet på `summa` är `3` och värdet på `nummer` är `2`, kommer värdet på summa att vara `5` efter att kommandot körts.
 
-Koska muuttujan arvon kasvattaminen on usein tarvittava toiminto, voimme kirjoittaa sen myös lyhyemmin näin:
+Att öka på värdet hos en variabel är en vanlig operation. Därför finns det en liten genväg till förfogande. Den här notationen fungerar i praktiken som kommandot ovan:
 
 ```python
 summa += luku
 ```
 
-Tämän avulla saamme kirjoitettua ohjelman koodin tiiviimmin:
+Det här tillåter oss skriva programmet lite mer koncist:
 
 ```python
 summa = 0
@@ -244,7 +244,7 @@ summa += luku
 print(f"Lukujen summa: {summa}")
 ```
 
-Itse asiassa apumuuttujaa `luku` ei välttämättä tarvita ollenkaan. Käyttäjän antamat syötteet voitaisiin lisätä yksi kerrallaan muuttujaan `summa` myös seuraavasti:
+Egentligen behöver vi inte alls variabeln `nummer`. Vi kan också behandla siffrorna som användaren anger på följande sätt:
 
 ```python
 summa = 0
@@ -256,7 +256,7 @@ summa += int(input("Kolmas luku: "))
 print(f"Lukujen summa: {summa}")
 ```
 
-Riippuu toki tilanteesta, montako muuttujaa ohjelmassa tarvitaan. Jos käyttäjän kaikkien syötteiden arvo tulee muistaa, ei ole mahdollista "uusiokäyttää" samaa apumuuttujaa kaikkien syötteiden lukemiseen. Näin on seuraavassa esimerkissä:
+I praktiken beror antalet variabler som behövs på situationen. Om man behöver minnas enskilda värden som användaren anger, är det inte möjligt att ”återanvända” samma variabel för att läsa in olika värden. Här är ett exempel på en sådan situation:
 
 ```python
 luku1 = int(input("Ensimmäinen luku: "))
@@ -273,11 +273,11 @@ Toinen luku: **3**
 
 </sample-output>
 
-Toisaalta tässä ohjelmassa ei ole omaa muuttujaa summan arvon tallettamiseen.
+Å andra sidan så har programmet inte en namngiven variabel där summan av de två angivna värdena skulle lagras.
 
-Kannattaa kuitenkin huomata, että yhtä muuttujaa ei kannata "uusiokäyttää" kuin samankaltaisiin asioihin, esim. summattavien lukujen tilapäiseen tallentamiseen.
+Att ”återanvända” en variabel lönar sig bara då när det finns ett tillfälligt behov att lagra värden av samma typ och orsak – till exempel då man summar ihop siffror.
 
-Esimerkiksi seuraavassa on uusiokäytetty muuttujaa `tieto` nimen ja iän tallentamiseen ja tämä ei ole missään nimessä järkevää:
+I följande exempel används variabeln `data` för att lagra användarens namn och därefter dess ålder. Det finns absolut ingen logik i det!
 
 ```python
 tieto = input("Mikä on nimesi? ")
@@ -287,7 +287,7 @@ tieto = int(input("Mikä on ikäsi? "))
 # ohjelma jatkuu...
 ```
 
-On parempi käyttää näitä kahta eri tarkoitusta varten omia _kuvaavasti nimettyjä_ muuttujia:
+En bättre idé vore att använda skilda variabler med namn som tydligt beskriver deras funktion:
 
 ```python
 nimi = input("Mikä on nimesi? ")

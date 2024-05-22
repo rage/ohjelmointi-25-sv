@@ -1,43 +1,43 @@
 ---
 path: '/osa-4/3-listat'
-title: 'Listat'
+title: 'Listor'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä lista tarkoittaa ohjelmoinnissa
-- Osaat viitata listan yksittäisiin alkioihin
-- Osaat lisätä ja poistaa listan alkioita
-- Osaat hyödyntää valmiita funktioita ja metodeita listojen käsittelyyn
+* vet du vad listor är i Python
+* vet du hur du kommer åt ett visst element i en lista
+* kan du lägga till och avlägsna ett element från en lista
+* känner du till inbyggda funktioner och metoder för listor.
 
 </text-box>
 
-Tähän asti olemme tallentaneet ohjelmissa käytettävää tietoa muuttujien avulla. Yksittäisillä muuttujilla on kuitenkin rajoituksensa. Jos ohjelman käsittelemä tiedon määrä on vaihteleva ja saattaa olla suuri, olisi vaivalloista määritellä jokaiselle arvolle erillinen muuttuja.
+Tills nu har vi lagrat data med variabler i våra program, så att varje sak har lagrats i sin egen variabel. Det här har sina begränsningar – det kan bli arbetsdrygt att tilldela variabler för allt då det finns mycket data att behandla.
 
-_Lista_ on kokoelma tietoa, johon viitataan yhteisen nimen kautta. Listan sisältö kirjoitetaan hakasulkeiden sisään, ja jokaista listalla olevaa arvoa kutsutaan _alkioksi_.
+I Python är en lista en samling av värden som finns lagrade under samma variabelnamn. Listans element skrivs mellan hakparenteser. Listans värden kallas element.
 
-Esimerkiksi seuraava koodi luo uuden tyhjän listan:
+Följande kommando skapar en ny tom lista…
 
 ```python
 lista = []
 ```
 
-Seuraava koodi puolestaan luo listan, jossa on valmiina viisi alkiota:
+…medan det här kommandot skapar en lista med fem element:
 
 ```python
 lista = [7, 2, 2, 5, 2]
 ```
 
-## Listan alkioihin viittaaminen
+## Komma åt element i en lista
 
-Listan alkiot on indeksoitu samalla tavalla kuin merkkijonon yksittäiset merkit. Tässäkin tapauksessa indeksointi alkaa nollasta:
+Elementen i en lista är indexerade på samma sätt som tecken i en sträng. Indexeringen börjar från noll och det sista indexet är listans längd minus ett:
 
 <img src="4_2_1.png" alt="Lista indeksoidaan nollasta alkaen">
 
-Yksittäiseen listan alkioon voidaan viitata samalla tavalla kuin merkkijonon yksittäisiin merkkeihin hakasulkujen avulla. Esimerkiksi:
+Ett specifikt element kan kommas åt på samma sätt som ett specifikt tecken i en sträng, med hakparenteser:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -58,7 +58,7 @@ Kahden ekan summa: 9
 
 </sample-output>
 
-Voimme tulostaa listan koko sisällön näin:
+Hela listans innehåll kan också skrivas ut:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -71,7 +71,7 @@ print(lista)
 
 </sample-output>
 
-Listan alkioita voidaan myös muuttaa. Alkion arvon muuttaminen tapahtuu sijoittamalla uusi arvo vanhan paikalle – siis samalla tavalla kuin muuttujia käytettäessä:
+Till skillnad från strängar är listor föränderliga, vilket betyder att deras innehåll kan ändra. Du kan tilldela ett nytt värde till ett element i en lista på samma sätt som du kan tilldela ett nytt värde till en variabel:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -87,7 +87,7 @@ print(lista)
 
 </sample-output>
 
-Funktio `len` antaa listan alkioiden määrän:
+Funktionen `len` berättar antalet element i en lista:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -127,9 +127,9 @@ Anna indeksi: **-1**
 
 </programming-exercise>
 
-## Alkioiden lisääminen ja poistaminen
+## Lägga till element i en lista
 
-Listan loppuun voidaan lisätä uusia alkioita `append`-metodin avulla. Metodia käytetään seuraavasti:
+Metoden `append` lägger till element i slutet av en lista. Metoden fungerar så här:
 
 ```python
 luvut = []
@@ -145,7 +145,7 @@ print(luvut)
 
 </sample-output>
 
-Seuraavassa esimerkissä ohjelman käytössä on kaksi erillistä listaa:
+Följande exempel använder sig av två listor:
 
 ```python
 luvut = []
@@ -167,7 +167,7 @@ print("Kengännumerot:")
 print(kengannumerot)
 ```
 
-Lisäys menee siis siihen listaan, mihin metodikutsu kohdistetaan:
+Elementet läggs till i slutet av den lista som metoden anropas på:
 
 <sample-output>
 
@@ -201,11 +201,13 @@ Anna luku 3: **34**
 
 </programming-exercise>
 
-Mikäli halutaan lisätä alkio johonkin muualle kuin listan loppuun, voidaan käyttää `insert`-metodia. Metodi lisää alkion halutun indeksin paikalle. Kaikkia listalla valmiina olevia alkioita lisäyspaikasta alkaen siirretään yhdellä askeleella eteenpäin:
+## Lägga till ett element på ett specifikt ställe
+
+Om du vill specificera på vilket ställe i en lista ett värde ska läggas till, kan du använda `insert`-metoden. Metoden lägger till ett element vid ett specifikt index. Alla element vid det här eller senare index flyttar ett index framåt, ”mot höger”:
 
 <img src="4_2_2.png" alt = "Alkion lisäys listaan">
 
-Esimerkiksi
+Till exempel det här programmet…
 
 ```python
 luvut = [1, 2, 3, 4, 5, 6]
@@ -215,6 +217,8 @@ luvut.insert(2, 20)
 print(luvut)
 ```
 
+…skriver ut följande:
+
 <sample-output>
 
 [10, 1, 2, 3, 4, 5, 6]
@@ -222,12 +226,14 @@ print(luvut)
 
 </sample-output>
 
-Alkioita voidaan poistaa listasta kahden eri lähtökohdan mukaisesti:
+## Ta bort element från en lista
 
-* Jos tiedetään, _missä_ poistettava alkio sijaitsee, voidaan käyttää metodia `pop`.
-* Jos tiedetään, _mikä_ poistettavan alkion arvo on, käytetään metodia `remove`.
+Det finns två sätt för att ta bort ett element från en lista:
 
-Metodille `pop` annetaan poistettavan alkion indeksi. Esimerkiksi seuraava koodi poistaa listalta alkiot kohdista 2 ja 3. Huomaa, että alkioiden indeksit muuttuvat poiston jälkeen.
+* om man vet indexet för elementet kan man använda `pop`-metoden
+* om man vet innehållet i elementet kan man använda `remove`-metoden.
+
+`pop`-metoden tar indexet för elementet som ska avlägsnas som argument. Följande program tar bort elementen vid indexen 2 och 3 i listan. Märk hur indexen för de resterande elementen ändrar när ett element avlägsnas:
 
 ```python
 lista = [1, 2, 3, 4, 5, 6]
@@ -245,7 +251,7 @@ print(lista)
 
 </sample-output>
 
-Metodi `pop` myös _palauttaa_ poistetun listan alkion:
+Det är bra att minnas att `pop`-metoden också returnerar det avlägsnade elementet:
 
 ```python
 lista = [4, 2, 7, 2, 5]
@@ -262,7 +268,7 @@ print(lista)
 
 </sample-output>
 
-Metodille `remove` annetaan indeksin sijasta poistettavan alkion arvo. Esimerkiksi:
+`remove`-metoden tar värdet för det element som ska avlägsnas som argument. Till exempel följande program…
 
 ```python
 lista = [1, 2, 3, 4, 5, 6]
@@ -273,6 +279,8 @@ lista.remove(5)
 print(lista)
 ```
 
+…skriver ut detta:
+
 <sample-output>
 
 [1, 3, 4, 5, 6]
@@ -280,7 +288,7 @@ print(lista)
 
 </sample-output>
 
-Huomaa, että metodi poistaa listalta _ensimmäisen_ alkion, jolla on annettu arvo:
+Metoden tar bort det första värdet som motsvarar det givna argumentet från listan – på samma sätt som funktionen find hos strängar returnerar den första delsträngen:
 
 ```python
 lista = [1, 2, 1, 2]
@@ -329,7 +337,7 @@ Voit olettaa, että listalta ei yritetä poistaa alkioita, jos lista on tyhjä.
 
 </programming-exercise>
 
-Jos listalla ei ole poistettavaa alkiota, seuraa virhe. Merkkijonoista tutulla tavalla alkion olemassaolon listalla voi testata `in`-operaattorin avulla:
+Om det givna elementet inte hittas i listan, kommer remove-funktionen att ge ett fel. På samma sätt som med strängar kan vi kolla om ett element finns i en lista med hjälp av `in`-operatorn:
 
 ```python
 lista = [1, 3, 4]
@@ -367,9 +375,9 @@ Annoit 4 eri sanaa
 
 </programming-exercise>
 
-## Listan järjestäminen
+## Ordna listor
 
-Listan alkiot voidaan _järjestää_ pienimmästä suurimpaan metodin `sort` avulla:
+Elementen i en lista kan ordnas från minsta till största med metoden `sort`.
 
 ```python
 lista = [2,5,1,2,4]
@@ -383,7 +391,7 @@ print(lista)
 
 </sample-output>
 
-Toinen tapa on käyttää funktiota `sorted`, joka _palauttaa_ järjestetyn listan:
+Notera att den här metoden modifierar själva listan. Alltid vill vi inte ändra på den ursprungliga listan, och då kan vi istället använda funktionen `sorted`. Den returnerar en ordnad lista:
 
 ```python
 lista = [2,5,1,2,4]
@@ -396,7 +404,7 @@ print(sorted(lista))
 
 </sample-output>
 
-Huomaa ero näissä tavoissa: `sort` muuttaa listan sisällön järjestetyksi, kun taas `sorted` luo uuden järjestetyn listan. Jälkimmäisessä tavassa voimme säilyttää myös listan alkuperäisen järjestyksen:
+Kom ihåg skillnaden mellan dessa: `sort` ändrar på ordningen i den ursprungliga listan medan `sorted` skapar en ny, ordnad kopia av listan. Med `sorted` kan vi behålla den ursprungliga ordningen hos listan:
 
 ```python
 alkuperainen = [2, 5, 1, 2, 4]
@@ -446,10 +454,9 @@ Moi!
 
 </programming-exercise>
 
-## Suurin, pienin ja summa
+## Maximi- och minimivärde samt summa
 
-Funktiot `max` ja `min` antavat listan suurimman ja pienimmän alkion.
-Funktio `sum` puolestaan laskee listan alkioiden summan.
+Funktionerna `max` och `min` returnerar det största respektive minsta värdet i en lista. Funktionen `sum` returnerar summan av listans värden.
 
 ```python
 lista = [5, 2, 3, 1, 4]
@@ -471,11 +478,9 @@ Summa: 15
 
 </sample-output>
 
-## Metodit vs. funktiot
+## Metoder och funktioner
 
-Pythonissa on ehkä hieman hämmentävästi käytössä kaksi eri tapaa listojen käsittelyyn.
-
-Suurin osa käsittelystä tapahtuu _metodien_ avulla. Esimerkiksi `append` ja `sort` ovat metodeja, joita kutsutaan listamuuttujan kautta pistenotaatiolla:
+Det finns två sätt att behandla listor i Python, och det här kan ibland orsaka huvudbry. För det mesta kommer du att använda metoder hos listor – till exempel `append` och `sort`. De används med punktoperatorn hos listvariabeln:
 
 ```python
 lista = []
@@ -490,7 +495,7 @@ lista.append(2)
 lista.sort()
 ```
 
-Sen sijaan esimerkiksi `max`,  `min`, `len` ja `sorted` ovat _funktioita_, joille lista annetaan parametrina:
+En del funktioner kan ta emot listor som argument. De nyss presenterade funktionerna `max`, `min`, `len` och `sorted` är goda exempel:
 
 ```python
 lista = [3, 2, 7, 1]
@@ -518,9 +523,9 @@ Listan pituus: 4
 
 </sample-output>
 
-## Lista funktion parametrina ja paluuarvona
+## Lista som argument eller return-värde
 
-Itse tekemiemme funktioiden parametreina voi olla myös listoja. Seuraavassa on funktio, joka selvittää parametrina listan _mediaanin_ eli keskimmäisen alkion järjestetyssä listassa:
+Som de inbyggda funktionerna ovan kan också våra egna funktioner ta listor som argument och returnera listor. Den följande funktionen tar reda på det mellersta – median – värdet i en ordnad lista:
 
 ```python
 def mediaani(lista: list):
@@ -529,9 +534,9 @@ def mediaani(lista: list):
     return jarjestetty[keskikohta]
 ```
 
-Funktio selvittää mediaanin tekemällä parametrinaan saamasta listasta järjestetyn version ja palauttamalla sen keskimmäisen alkion. Huomaa, että käytössä on kokonaislukujakolasku `//`, koska listan indeksin tulee olla kokonaisluku.
+Funktionen skapar en ordnad version av listan som gavs som argument och returnerar elementet i mitten. Märk heltalsdivisionsoperatorn `//` som används. Indexet i en lista måste vara ett heltal.
 
-Seuraavassa on esimerkki funktion käytöstä:
+Funktionen fungerar på följande sätt:
 
 ```python
 kengannumerot = [45, 44, 36, 39, 40]
@@ -548,7 +553,7 @@ Ikien mediaani on 22
 
 </sample-output>
 
-Funktio voi myös palauttaa listan. Seuraavassa on funktio, joka palauttaa listan käyttäjän syöttämiä kokonaislukuja:
+En funktion kan också returnera en lista. Den följande funktionen ber användaren ge heltal, som sedan returneras som en lista:
 
 ```python
 def lue_luvut():
@@ -561,9 +566,9 @@ def lue_luvut():
     return luvut
 ```
 
-Funktio käyttää lista-tyyppistä apumuuttujaa `luvut`, johon se lisää kaikki käyttäjän antamat luvut. Silmukan jälkeen funktio palauttaa `return`-komennon avulla listan `luvut`.
+Funktionen använder sig av hjälpvariabeln `siffror`, som är en lista. Alla siffror som användaren skriver läggs till i listan. När loopen avslutas returnerar funktionen listan med satsen `return siffror`.
 
-Funktiota käytetään seuraavasti:
+När funktionen anropas så här…
 
 ```python
 luvut = lue_luvut()
@@ -571,6 +576,8 @@ luvut = lue_luvut()
 print("Suurin luku on", max(luvut))
 print("Lukujen mediaani on", mediaani(luvut))
 ```
+
+…kan utskriften se ut på följande sätt:
 
 <sample-output>
 
@@ -585,9 +592,9 @@ Lukujen mediaani on 4
 
 </sample-output>
 
-Pieni esimerkkiohjelmamme demonstroi jo yhtä funktioiden tärkeimmistä käyttötarkoituksista: niiden avulla ohjelma saadaan jaettua loogisiin selkeästi ymmärrettäviin kokonaisuuksiin.
+Det här lilla exemplet demonstrerar ett av de viktigaste användningsområdena för funktioner: de hjälper dig att dela din kod i mindre helheter som enkelt kan förstås.
 
-Sinänsä sama ohjelma olisi voitu tehdä myös ilman funktiota:
+Samma funktionalitet kan förstås fås till stånd utan några som helst egna funktioner:
 
 ```python
 luvut = []
@@ -605,11 +612,11 @@ print("Suurin luku on", max(luvut))
 print("Lukujen mediaani on", mediaani)
 ```
 
-Nyt kuitenkin ohjelman logiikan seuraaminen on vaikeampaa, koska ei ole enää yhtä selvää, mitkä komennot liittyvät minkäkin kokonaisuuden (syötteiden lukeminen, mediaanin laskeminen, ohjelman muu toiminta) toteuttamiseen.
+I den här versionen är det svårare att uppfatta logiken bakom programmet, eftersom det inte mera är enkelt att se vilka kommandon som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, räkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
 
-Jako funktioiksi siis selkeyttää koodin rakennetta ja tuo esille loogisia kokonaisuuksia. Tämän ansiosta on myös helpompaa varmistaa, että ohjelma toimii halutulla tavalla, koska voimme testata erikseen tiettyä funktiota (esim. toimiiko funktio `mediaani` oikein).
+Att dela din kod i flera funktioner kommer att förbättra läsbarheten av koden och hjälper att uppfatta logiska helheter. Det här är till nytta när du ska verifiera att programmet fungerar som det ska, eftersom varje funktion kan testas separat.
 
-Ohjelman rakenteen loogisen jakamisen lisäksi funktioiden toinen käyttötarkoitus on koodin _uusiokäyttö_. Jos ohjelmassa on tarvetta tehdä samankaltainen operaatio useaan kertaan, kannattaa sitä varten luoda oma selkeästi nimetty funktio:
+En annan viktig orsak till att använda funktioner är återanvändbarhet av koden. Om du behöver samma funktionalitet på flera ställen i ditt program är det en bra idé att skapa en funktion och namnge den väl:
 
 ```python
 print("Kengännumerot:")
@@ -684,6 +691,6 @@ vastaus 4
 
 ## Lisää listan käsittelystä
 
-Pythonissa on paljon muitakin mahdollisuuksia listan käsittelyyn. Voit tutustua niihin Pythonin [dokumentaation](https://docs.python.org/3/tutorial/datastructures.html) kautta.
+Det finns flera sätt till att använda listor i Python. Om du vill läsa mera är Pythons dokumentation ett bra ställe att börja med.
 
 <quiz id="3974e1bb-cd83-52b3-85d2-a16223773ce7"></quiz>

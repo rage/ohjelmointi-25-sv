@@ -1,22 +1,22 @@
 ---
 path: '/osa-7/6-lisaa-pythonista'
-title: 'Lisää Pythonista'
+title: 'Flera funktionaliteter i Python'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät lisää Pythonin ominaisuuksia
+* har du bekantat dig med några fler funktionaliteter i Python.
 
 </text-box>
 
-Tähän lukuun on koottu vielä joukko erinäisiä hyödyllisiä Pythoniin liittyviä ominaisuuksia.
+För att knyta ihop den här kursen, ska du ännu få en lista av nyttiga funktionaliteter som Python har att erbjuda.
 
-## Yhden rivin ehto
+## If-satser på en rad
 
-Seuraavat koodit toimivat samalla tavalla:
+Följande satser ger samma resultat:
 
 ```python
 if x%2 == 0:
@@ -29,9 +29,9 @@ else:
 print("parillinen" if x%2 == 0 else "pariton")
 ```
 
-Jälkimmäisessä koodissa on yhden rivin ehto muotoa `a if [ehto] else b`. Tällaisen lausekkeen arvo on `a`, jos ehto pätee, ja muuten `b`.
+I det senare exemplet har vi en if-sats i enradsformat: `a if [villkor] else b`. Värdet för uttrycket blir `a` då villkoret är sant och `b` i övriga fall. På engelska kallas detta ternary operator.
 
-Sama rakenne on joskus hyödyllinen kun tehdään ehdollinen sijoituslause. Esimerkiksi jos haluaisimme joko kasvattaa muuttujaa `y` tai nollata sen riippuen muuttujan `x` arvon parillisuudesta, sen sijaan että kirjoittaisimme
+If-satser kan användas då man vill tilldela något värde baserat på ett villkor. Till exempel om du har variablerna `x` och `y` och vill antingen öka eller ändra på `y`:s värde baserat på `x` paritet (jämnt/udda tal), kan du använda en normal if-else-sats:
 
 ```python
 if x%2 == 0:
@@ -40,32 +40,32 @@ else:
     y = 0
 ```
 
-sama voitaisiin tehdä yhden rivin ehdolla seuraavasti
+Eller så kan du göra det hela med en rad kod:
 
 ```python
 y = y + 1 if x%2 == 0 else 0
 ```
 
-## Tyhjä komento
+## Ett ”tomt” block
 
-Komento `pass` ei tee mitään. Voimme tehdä sen avulla esimerkiksi funktion `testi`, joka ei tee mitään:
+Du minns kanske att block inte kan vara tomma i Python. Om du behöver ett block som inte gör någonting – till exempel då du testar någon annan funktionalitet – kan du använda `pass`-kommandot. Du kan till exempel skapa en funktion som inte gör någonting:
 
 ```python
 def testi():
     pass
 ```
 
-Huomaa, että lohko ei voi olla tyhjä eli seuraava koodi ei toimisi:
+Funktionen kommer att returnera direkt. Om `pass`-kommandot lämnas bort, kommer koden att ge ett fel, eftersom block inte kan vara tomma.
 
 ```python
 def testi():
 ```
 
-## Silmukan else-osa
+## Loopar med else-block
 
-Kiinnostava Pythonin ominaisuus on, että ehtolauseen lisäksi myös silmukassa voi olla else-osa. Tämä osa suoritetaan, jos silmukka pääsee loppuun.
+I Python kan loopar också ett `else`-block. Koden inom det här blocket körs då loopen avslutas normalt.
 
-Esimerkiksi seuraava koodi etsii listalta parillista lukua. Jos sellainen löytyy, koodi tulostaa luvun ja silmukka päättyy. Kuitenkin jos lukua ei löytynyt, tästä tulee ilmoitus lopuksi.
+Till exempel här går vi igenom en lista med siffror. Om det finns ett jämnt tal i listan, kommer ett meddelande att skrivas ut och loopen avslutas. Om det inte finns några jämna tal, kommer loopen att avslutas vanligt, men ett annat meddelande skrivs ut:
 
 ```python
 lista = [3,5,2,8,1]
@@ -77,7 +77,7 @@ else:
     print("ei löytynyt parillista")
 ```
 
-Perinteinen tapa tehdä tällainen silmukka olisi käyttää apumuuttujaa, joka muistaa, löytyikö haluttua asiaa silmukan aikana:
+Ett mera traditionellt sätt att göra det här är att använda en hjälpvariabel som minns om en viss typ av element har hittats:
 
 ```python
 lista = [3,5,2,8,1]
@@ -91,11 +91,11 @@ if not loytyi:
     print("ei löytynyt parillista")
 ```
 
-Kuitenkin silmukan else-osan avulla vältymme muuttujan tekemiseltä.
+Att använda en for-else-sats sparar oss den tid som skulle krävas för att skapa en hjälpvariabel och logiken kring den.
 
-## Funktion oletusparametri
+## Standardvärde för en parameter
 
-Funktion parametrilla voi olla oletusarvo, joka tulee käyttöön silloin, jos parametria ei anneta. Näin on esimerkiksi seuraavassa funktiossa:
+I Python kan funktioners parametrar ha ett standardvärde. Det används då ett argument inte ges till en funktion då den anropas. Se följande exempel:
 
 ```python
 def tervehdi(nimi="Emilia"):
@@ -114,11 +114,13 @@ Moikka, Matti
 
 </sample-output>
 
-## Muuttuva määrä parametreja
+Obs! En tom sträng är fortfarande en sträng. Standardvärdet kommer inte att användas om en tom sträng ges som argument till en funktion.
 
-Funktiolla voi olla myös muuttuva määrä parametreja, mikä merkitään laittamalla tähti parametrin eteen. Tällöin kaikki loput parametrit kasautuvat listaksi tähän parametriin.
+## Ändrande antal parametrar
 
-Esimerkiksi seuraava funktio kertoo parametrien määrän ja summan:
+Du kan också definiera att en funktion har ett ändrande antal parametrar, genom att lägga till en asterisk för parameternamnet. Alla argument som ges till funktionen lagras i en tuple som kan kommas åt genom den namngivna parametern.
+
+Följande funktion räknar antalet argument som getts samt summan av dem:
 
 ```python
 def testi(*lista):
@@ -276,7 +278,6 @@ print(tulos)
 
 </programming-exercise>
 
-Vastaa kurssin lopuksi loppukyselyyn. Kyselyn tuloksia käytetään kurssimateriaalin kehittämiseen.
+Vänligen svara på kursfeedbacksenkäten här nedan. Enkätens resultat hjälper oss att utveckla och förbättra den här kursen.
 
 <quiz id="e5513330-0599-5fa0-bfd0-a2d40a89773e"></quiz>
-

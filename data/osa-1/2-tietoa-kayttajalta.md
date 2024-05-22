@@ -1,30 +1,29 @@
 ---
 path: '/osa-1/2-tietoa-kayttajalta'
-title: 'Tietoa käyttäjältä'
+title: 'Information från användaren'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat kirjoittaa ohjelman, joka lukee tietoa käyttäjältä
-- Osaat käyttää muuttujaa syötteen lukemisessa ja tulostamisessa
-- Osaat yhdistää merkkijonoja toisiinsa
+* vet du hur man skriver ett program som använder sig av information som användaren ger
+* vet du hur man använder variabler för att lagra indata och skriva ut den
+* kan du kombinera strängar.
 
 </text-box>
 
-_Syöte_ tarkoittaa tietoa, jonka ohjelman käyttäjä antaa ohjelmalle. Pythonissa voimme lukea rivin käyttäjän antamaa syötettä `input`-komennolla. Komento näyttää samalla viestin käyttäjälle, jossa voi pyytää syötettä.
+Indata (input) syftar till information som en användare ger till ett program. I Python används kommandot `input` för att läsa in en rad text skriven av användaren. Kommandot kan också användas för att skriva ut ett meddelande till användaren för att be om någon specifik information.
 
-Esimerkiksi seuraava ohjelma lukee käyttäjän nimen `input`-komennolla ja
-tulostaa ruudulle tervehdyksen `print`-komennolla:
+Det här programmet läser in användarens namn med hjälp av `input`-kommandot. Därefter skriver programmet ut namnet med `print`-kommandot:
 
 ```python
 nimi = input("Anna nimesi: ")
 print("Moi vaan, " + nimi)
 ```
 
-Ohjelman suoritus voisi näyttää esimerkiksi seuraavalta (käyttäjän kirjoittama syöte on merkitty punaisella):
+När programmet körs, kan det se ut så här (indata från användaren markerat med rött):
 
 <sample-output>
 
@@ -33,7 +32,7 @@ Moi vaan, Pekka Python
 
 </sample-output>
 
-Ohjelman tulostama teksti riippuu siis osittain käyttäjän syötteestä. Niinpä ohjelman suoritus voisi näyttää myös tältä:
+Det programmet skriver ut beror delvis på den information som användaren ger. Därmed kan det också till exempel se ut så här när programmet körs:
 
 <sample-output>
 
@@ -42,14 +41,13 @@ Moi vaan, Outi Ohjelmoija
 
 </sample-output>
 
-Ohjelmassa esiintyvä sana `nimi` on _muuttuja_. Muuttujalla tarkoitetaan ohjelmoinnissa paikkaa, johon voidaan tallentaa jokin _arvo_ kuten merkkijono tai lukuarvo. Tämä arvo voidaan myöhemmin lukea tai sitä voidaan muuttaa.
+Ordet `namn` i programmet är en variabel. Inom programmering är en variabel ett ställe för att lagra ett värde – till exempel en sträng eller ett nummer. Värdet kan användas senare och det kan också ändras på.
 
-<text-box variant="hint" name="Muuttujan nimen valinta">
+<text-box variant="hint" name="Att namnge variabler">
 
-Muuttujat voi periaatteessa ohjelmissa nimetä vapaasti, tiettyjä Python-kielen asettamia rajoituksia noudattaen.
+I princip kan variabler namnges relativt fritt, men Python har några begränsningar som måste tas i beaktande.
 
-Tällä kurssilla muuttujat ja muut vastaavat ohjelmien osat nimetään suomeksi.
-Ohjelmoinnissa käytetään kuitenkin yleisesti kielenä englantia – jos etsit Googlen avulla ohjelmointiesimerkkejä, kielenä on usein englanti.
+Det är ett allmänt tillvägagångssätt att namnge variabler på engelska, men du kan stöta på variabler som namngetts på andra språk – till exempel på programmerarens eget modersmål. Variabelns namn påverkar inte dess värde, så det har inte en direkt påverkan på programmets funktion. Däremot kan variabler namngivna på engelska förtydliga kodens funktion för en läsare – förutsatt att variablerna har logiska namn.
 
 </text-box>
 
@@ -69,9 +67,9 @@ Pekka
 
 </in-browser-programming-exercise>
 
-## Muuttujaan viittaaminen
+## Hänvisa till en variabel
 
-Muuttujaan voidaan viitata ohjelmassa useasti:
+En viss variabel kan hänvisas till flera gånger i ett program:
 
 ```python
 nimi = input("Anna nimesi: ")
@@ -80,7 +78,7 @@ print("Moi, " + nimi + "!")
 print(nimi + " on aika kiva nimi.")
 ```
 
-Esimerkkitulostus, kun käyttäjä antaa nimen `Pauli Python`:
+Om användaren ger namnet `Paulus Python`, skriver programmet ut följande rader:
 
 <sample-output>
 
@@ -90,10 +88,10 @@ Pauli Python on aika kiva nimi.
 
 </sample-output>
 
-Tarkastellaanpa tulostuskomentoja vähän tarkemmin: `print`-komennolle annetaan merkkijono, johon on yhdistetty valmista tekstiä ja käyttäjän syöte. Nämä on yhdistetty toisiinsa `+`-operaattorilla,
-joka yhdistää kaksi merkkijonoa yhdeksi uudeksi merkkijonoksi.
+Låt oss undersöka närmare hur `print`-kommandot används ovan. Mellan parenteserna i kommandot finns det både text inom citattecken och namn på variabler, som hänvisar till indata från användaren. De har kombinerats med `+`-operatorn, som kombinerar två strängar till en sträng.
 
-Merkkijonoja voidaan yhdistää muuttujien arvoihin vapaasti:
+
+Strängar och variabler kan kombineras ganska fritt:
 
 ```python
 nimi = input("Anna nimesi: ")
@@ -101,7 +99,7 @@ nimi = input("Anna nimesi: ")
 print("Moi " + nimi + "! Varmistan vielä: nimesi on siis " + nimi + "?")
 ```
 
-Esimerkkitulostus, kun käyttäjä antaa nimen `Erkki Esimerkki`:
+Om användaren ger namnet `Ellen Exempel`, skrivs följande ut:
 
 <sample-output>
 
@@ -125,9 +123,9 @@ Anna nimesi: **Pekka**
 
 </in-browser-programming-exercise>
 
-## Useampi kuin yksi syöte
+## Samla mera data
 
-Ohjelmassa voi lukea useamman eri syötteen. Huomaa, että jokainen `input`-komennon kysymä merkkijono tallennetaan eri muuttujaan:
+Ett program kan be användaren att ge data flera gånger. Observera att `input`-kommandot lagrar varje givet värde i en skild variabel.
 
 ```python
 nimi = input("Anna nimesi: ")
@@ -140,7 +138,7 @@ print("Sähköpostiosoitteesi: " + sposti)
 print("Lempinimesi: " + lempinimi)
 ```
 
-Esimerkki ohjelman suorituksesta:
+Programmet kunde till exempel fungera så här när det körs:
 
 <sample-output>
 
@@ -154,7 +152,7 @@ Lempinimesi: Keke
 
 </sample-output>
 
-Jos samaan muuttujaan luetaan syöte useamman kerran, uusi arvo ylikirjoittaa aina edellisen. Esimerkiksi:
+Om en och samma variabel används för att lagra indata flera gånger kommer det nyaste värdet alltid att ersätta det föregående värdet. Till exempel:
 
 ```python
 osoite = input("Mikä on osoitteesi? ")
@@ -164,7 +162,7 @@ osoite = input("Anna uusi osoite: ")
 print("Osoite on nyt " + osoite)
 ```
 
-Esimerkkisuoritus:
+Så här kan det se ut när programmet körs:
 
 <sample-output>
 
@@ -175,7 +173,7 @@ Osoite on nyt Uusikatu 999
 
 </sample-output>
 
-Jos samaan muuttujaan luetaan kaksi syötettä peräkkäin, ei ensimmäisenä syötettyyn arvoon siis pääse enää käsiksi:
+Det här betyder att om samma variabel används för att lagra indata två gånger i rad så kommer det första värdet inte längre att vara tillgängligt efter att det har ersatts:
 
 ```python
 osoite = input("Mikä on osoitteesi? ")
@@ -184,7 +182,7 @@ osoite = input("Anna uusi osoite: ")
 print("Osoite on nyt " + osoite)
 ```
 
-Esimerkkisuoritus:
+Så här kan det se ut när programmet körs:
 
 <sample-output>
 

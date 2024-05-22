@@ -1,17 +1,17 @@
 ---
 path: '/osa-5/1-lisaa-listoja'
-title: 'Lisää listoista'
+title: 'Mer om listor'
 hidden: false
 ---
 
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda listoja, joissa on erityyppistä tietoa
-- Tiedät, miten listoja voi käyttää tiedon ryhmittelyyn
-- Osaat tallentaa matriisin kaksiulotteisena listana
+* kan du skapa listor med element av olika typer
+* vet du hur man kan använda listor för att organisera data
+* kan du lagra en matris som en tvådimensionell lista.
 
 </text-box>
 
@@ -28,9 +28,9 @@ Lohdutuksen sanana todettakoon, että tällä viikolla mahdottomalta vaikuttava 
 
 </text-box>
 
-## Lisää listoista
+## Listor med olika typer av data
 
-Viime kerralla käsiteltiin lähes yksinomaan listoja, joissa alkiot ovat kokonaislukuja. Listoihin voi kuitenkin tallentaa minkä tahansa tyyppisiä arvoja. Esimerkiksi voimme tallentaa listaan merkkijonoja:
+I den förra modulen fokuserade vi främst på listor med element av heltalstyp, men listor kan innehålla vilka typer av data som helst. En lista bestående av strängar kunde exempelvis kunna se ut så här:
 
 ```python
 nimet = ["Maija", "Liisa", "Pekka"]
@@ -58,7 +58,7 @@ Pekka
 
 </sample-output>
 
-Samalla tavalla listalle voidaan tallentaa liukulukuja:
+Flyttal kan också lagras i listor:
 
 ```python
 mittaukset = [-2.5, 1.1, 7.5, 14.6, 21.0, 19.2]
@@ -146,9 +146,9 @@ Nyt myös globaalin muuttujan määrittely on siirtynyt `if`-lohkoon.
 
 TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa koodia ei huomioida. Tämän takia funktio ei voi edes teoriassa toimia, sillä se viittaa muuttujaan `nimilista` mitä ei testejä suoritettaessa ole ollenkaan olemassa.
 
-## Varoitus: parametrin ylikirjoittaminen ja liian aikainen return
+## Varning: att skriva över en parameter och returnera för tidigt
 
-Ennen tämän osan tehtäviin menemistä on syytä kiinnittää huomiota pariin potentiaaliseen ongelmalähteeseen. Tarkastellaan funktiota, joka kertoo löytyykö parametrina oleva luku listalta:
+Det finns ett par nya källor till buggar som vi borde ta en titt på före vi börjar med övningarna i den här modulen. Låt oss kika på en funktion som berättar om ett heltal hittas i en lista. Båda är definierade som parametrar i funktionen:
 
 ```python
 def luku_listalla(luvut: list, luku: int):
@@ -159,9 +159,9 @@ def luku_listalla(luvut: list, luku: int):
             return False
 ```
 
-Funktio palauttaa jostain syystä aina `True`. Syynä tälle on se, että for-silmukka ylikirjoittaa parametrin `luku` arvon, ja tämän takia if-lauseen ehto on aina tosi.
+Den här funktionen verkar alltid returnera värdet `True`. Orsaken till det är att for-loopen skriver över värdet som är lagrat i parametern `nummer`. Därför är villkoret i if-satsen alltid sant.
 
-Ongelmasta päästään eroon nimeämällä parametri uudelleen:
+Att ändra på parameterns namn löser problemet:
 
 ```python
 def luku_listalla(luvut: list, etsittava_luku: int):
@@ -172,14 +172,14 @@ def luku_listalla(luvut: list, etsittava_luku: int):
             return False
 ```
 
-Nyt if-lauseen ehto on kunnossa. Funktiossa on kuitenkin uusi ongelma, se ei näytä edelleenkään toimivan. Esim. seuraava kokeilu tuo esiin bugin:
+Nu verkar villkoret i if-satsen vara i bättre skick. Men det finns ett nytt problem, eftersom funktionen inte ännu heller fungerar som den ska. Om vi testar följande, märker vi en bugg:
 
 ```python
 on = luku_listalla([1, 2, 3, 4], 3)
 print(on)  # tulostuu False
 ```
 
-Vika on nyt siinä että funktiosta poistutaan liian aikaisin. Funktio tarkistaa ainoastaan ensimmäisen luvun ja riippuen sen arvosta palauttaa heti joko arvon `True` tai `False`. Lopullista tuomiota, eli tietoa siitä että luku _ei ole listalla_ ei voi kuitenkaan antaa ennen kuin kaikki luvut on tarkastettu. Komento `return False` pitääkin siirtää silmukan ulkopuolelle:
+Problemet här är att funktionen returnerar ett värde för tidigt, utan att kolla igenom alla siffror i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att en siffra inte finns i listan förrän vi har gått igenom hela listan. Kommandot `return False` måste alltså placeras utanför for-loopen:
 
 ```python
 def luku_listalla(luvut: list, etsittava_luku: int):
@@ -190,7 +190,7 @@ def luku_listalla(luvut: list, etsittava_luku: int):
     return False
 ```
 
-Tarkastellaan vielä yhtä virheellistä esimerkkiä:
+Låt oss ta en titt på en annan funktion som inte fungerar korrekt:
 
 ```python
 def luvut_erisuuret(luvut: list):
@@ -208,9 +208,9 @@ on = luvut_erisuuret([1, 2, 2])
 print(on)  # tulostuu True
 ```
 
-Funktio siis yrittää testata ovatko kaikki listan alkiot erisuuria. Se kuitenkin palauttaa aina arvon `True`.
+Funktionen borde kolla om alla siffor i en lista är olika, men värdet som returneras är alltid `True`.
 
-Ongelmana on jälleen se, että funktio vahingossa ylikirjottaa parametrinsa arvon. Funktio yrittää käyttää muuttujaa `luvut` pitämään kirjaa jo vastaan tulleista luvuista ja tämä ylikirjoittaa parametrin. Lääke ongelmaan on muuttujan uudelleennimeäminen:
+I det här fallet skriver funktionen igen över värdet som är lagrat i dess parameter. Funktionen försöker använda variabeln `nummer` för att lagra de siffror som redan har kontrollerats, men det här skriver över det ursprungliga argumentet. Att namnge hjälpvariabeln på nytt löser vårt problem:
 
 ```python
 def luvut_erisuuret(luvut: list):
@@ -228,7 +228,7 @@ on = luvut_erisuuret([1, 2, 2])
 print(on)  # tulostuu False
 ```
 
-Nämä kuten oikeastaan kaikki koodia vaivaavat ongelmat selviävät debuggerilla tai [visualisaattorilla](http://www.pythontutor.com/visualize.html#mode=edit), jonka käytön tärkeyttä ei voi olla korostamatta liikaa.
+Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller visualiseringsverktyget. Det lönar sig verkligen att lära sig använda dessa effektivt.
 
 <programming-exercise name='Pisin merkkijono' tmcname='osa05-01a_pisin_merkkijono'>
 
@@ -254,9 +254,9 @@ hellurei
 
 </programming-exercise>
 
-## Sisäkkäiset listat
+## Listor inom listor
 
-Listan alkiot voivat olla myös listoja:
+Ett element i en lista kan vara en lista:
 
 ```python
 lista = [[5, 2, 3], [4, 1], [2, 2, 5, 1]]
@@ -272,15 +272,15 @@ print(lista[1][0])
 
 </sample-output>
 
-Mihin voimme käyttää listoja jonka sisällä on listoja?
+I hurdana fall skulle det här kunna vara nyttigt?
 
-Voisimme esimerkiksi esittää henkilön tiedot listana, jossa ensimmäisenä alkiona on henkilön nimi, toisena ikä ja kolmantena kengännumero:
+Kom ihåg att listor kan innehålla element av olika typer. Du kan till exempel lagra information om en person i en lista. Det första elementet kan till exempel vara personens namn, det andra dess ålder och det tredje dess höjd:
 
 ```python
 ["Anu", 10, 26]
 ```
 
-Vastaavasti joukko henkilöitä on lista, joka sisältää yksittäisiä henkilöä kuvaavia listoja:
+En databas bestående av flera personer skulle då kunna vara en lista, vars element skulle vara listor som innehåller information om en person:
 
 ```python
 henkilot = [["Anu", 10, 26], ["Petteri", 7, 22], ["Emilia", 32, 37], ["Antti", 39, 44]]
@@ -301,25 +301,25 @@ Antti: ikä 39 vuotta, kengännumero 44
 
 </sample-output>
 
-Huomaa, miten `for`-lause käy läpi henkilöt yksitellen, eli toiston lohko-osassa muuttuja  `henkilo` saa yksi kerrallaan arvokseen kutakin henkilöä esittävän listan.
+For-loopen går igenom elementen i den yttre listan en för en. Varje lista som innehåller info om en person tilldelas en för en till variabeln `person`.
 
-Lista ei ole välttämättä paras Pythonin tietorakenne henkilön tietojen esittämiseen. Tutustumme pian _sanakirjaan_, joka on usein luontevampi tapa hoitaa vastaava tilanne.
+Listor är inte alltid det bästa sättet att presentera data som information om en person. Vi kommer snart att se på lexikon (dictionary) i Python. Den är bättre anpassad för situationer som den ovan nämnda.
 
-## Matriisit
+## Matriser
 
-Sisäkkäisten listojen avulla voidaan myös esittää _matriisi_ eli kaksiulotteinen taulukko.
+En tvådimensionell tabell – matris – är ett annat användningsområde för listor inom listor.
 
-Esimerkiksi matriisi
+Till exempel följande matris…
 
 <img src="5_1_0.png">
 
-voitaisiin mallintaa kaksiulotteisena listana näin:
+…kan presenteras som en tvådimensionell lista i Python på följande sätt:
 
 ```python
 matriisi = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
 ```
 
-Koska matriisi on lista listoja, matriisin alkioihin viitataan käyttämällä peräkkäisiä hakasulkuja. Ensimmäinen indeksi viittaa riviin ja toinen sarakkeeseen. Niinpä esimerkiksi `m[0][1]` tarkoittaa ensimmäisen rivin toista alkiota (kun muistetaan, että indeksointi alkaa nollasta).
+Eftersom en matris är en lista som innehåller listor kan enskilda element inom matrisen kommas åt med hjälp av varandra påföljande hakparenteser. Det första indexet hänvisar till raden, medan den andra hänvisar till kolumnen. Indexeringen startar från noll så `min_matris[0][1]` hänvisar till det andra elementet på den första raden.
 
 ```python
 matriisi = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
@@ -336,7 +336,7 @@ print(matriisi)
 
 </sample-output>
 
-Voimme käydä läpi matriisin rivit `for`-silmukalla. Esimerkiksi seuraava koodi tulostaa matriisin rivit allekkain:
+Som med vilken som helst lista, kan raderna i matrisen gås igenom med en for-loop. Den följande koden skriver ut varje rad i matrisen på en skild rad:
 
 ```python
 matriisi = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -353,7 +353,7 @@ for rivi in matriisi:
 
 </sample-output>
 
-Seuraava koodi puolestaan tulostaa matriisin alkiot yksitellen kahden `for`-silmukan avulla:
+På samma sätt kan kapslade loopar användas för att komma åt enskilda element inom matrisen. Följande kodsnutten skriver ut varje element i matrisen på en skild rad med hjälp av två for-loopar:
 
 ```python
 matriisi = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -381,21 +381,21 @@ uusi rivi
 
 </sample-output>
 
-## Sisäkkäisiä listoja käyttävän koodin visualisointi
+## Visualisering av kod som innehåller listor inom listor
 
-Jos sisäkkäisiä listoja käsittelevät ohjelmat tuntuvat hankalalta ymmärtää, kannattaa ehdottomasti havainnollistaa niitä Python Tutorin [visualisaattorilla](http://www.pythontutor.com/visualize.html). Seuraavassa kuva edellisen esimerkin visualisoinnista:
+Program som består av listor inom listor kan vara svåra att greppa om i början. Visualiseringsverktyget av Python Tutor är ett bra sätt att bekanta sig med hur de fungerar. Det följande är en visualisering av exemplet ovan:
 
 <img src="5_1_0a.png">
 
-Kuten kuva paljastaa, 3x3-matriisi koostuu teknisesti ottaen neljästä listasta. Ensimmäinen lista edustaa koko matriisia ja sen alkioina on erillisiä rivejä edustavat listat.
+Bilden ovan avslöjar att en 3 x 3 -matris tekniskt sett består av fyra listor. Den första listan representerar hela matrisen. De tre resterande listorna är element i den första listan, och de representerar rader i matrisen.
 
-Kuva havainnollistaa jo sitä seikkaa, josta puhumme tarkemmin [seuraavassa osassa](/osa-5/2-viittaukset): moniulotteisessa listassa listat eivät ole todellisuudessa sisäkkäin, vaan matriisia edustava lista "viittaa" jokaista riviä edustavaan listaan.
+Eftersom multidimensionella listor kan gås igenom med kapslade loopar skulle man kunna tänka sig att listorna är inuti varandra, men som bilden visar är detta inte sant. Istället hänvisar den ”stora listan” som representerar matrisen till skilda listor som alla representerar en rad i matrisen. Det här är en referens – något vi kommer att se mera på i följande del.
 
-Kuvassa tulostus on edennyt matriisin toiselle riville, johon muuttuja `rivi` parhaillaan viittaa. Muuttuja `alkio` kertoo sen alkion, jonka kohdalla tulostus on menossa. Muuttujan arvo on nyt keskimmäisen rivin keskimmäinen eli 5.
+I bilden ovan har programmet hunnit till den andra raden i matrisen och det är den listan som variabeln `rad` hänvisar till för tillfället. Variabeln `element` innehåller det element där programmet är vid för tillfället. Värdet i den variabeln är det mellersta värdet i listan, dvs. 5.
 
-## Lisää matriisin käsittelyä
+## Komma åt element i en matris
 
-Matriisin yksittäisten rivien käsittely on helppoa, riittää että valitaan haluttu rivi. Esimerkiksi seuraava funktio laskee halutun rivin alkioiden summan:
+Att komma åt en viss rad i en matris är enkelt. Det är bara att välja den raden. Följande funktion räknar summan av elementen på en viss rad:
 
 ```python
 def rivin_alkioiden_summa(matriisi, rivi_nro: int):
@@ -413,7 +413,7 @@ summa = rivin_alkioiden_summa(m, 1)
 print(summa) # tulostuu 33 (saadaan laskemalla 9 + 1 + 12 + 11)
 ```
 
-Jos taas haluttaisiin laskea tietyn sarakkeen eli "pystyrivin" alkioiden summa, tilanne olisi jo monimutkaisempi:
+Att arbeta med kolumner i en matris är lite mera komplicerat eftersom matrisen är lagrad som rader:
 
 ```python
 def sarakkeen_alkioiden_summa(matriisi, sarake_nro: int):
@@ -430,11 +430,11 @@ summa = sarakkeen_alkioiden_summa(m, 2)
 print(summa) # tulostuu 39 (saadaan laskemalla 3 + 12 + 9 + 15)
 ```
 
-Tarkasteltava sarake siis koostuu _jokaisen rivin_ paikassa 2 olevasta alkiosta.
+Kolumnen som söks här består av elementen vid index 2 på varje rad.
 
-Näidenkin ohjelmien toiminta kannattaa ehdottomasti käydä läpi [visualisaattorilla](http://www.pythontutor.com/visualize.html)!
+Visualiseringsverktyget rekommenderas varmt för att bättre förstå hur de här funktionerna fungerar.
 
-Matriisissa olevan yksittäisen arvon vaihtaminen on helppoa. Riittää että valitaan matriisin sisältä oikea rivi ja sen sisältä sarake:
+Att ändra på ett värde hos ett specifikt element inom en matris är enkelt. Välj en rad i matrisen och sedan en kolumn inom raden:
 
 ```python
 def vaihda_arvoon(matriisi, rivi_nro: int, sarake_nro: int, arvo: int):
@@ -457,9 +457,9 @@ print(m)
 
 </sample-output>
 
-Mikäli halutaan muuttaa matriisin sisältöä silmukan sisällä, ei ole mahdollista käyttää "normaalia" for-silmukkaa, sillä muutettaessa sisältöä on pakko tietää muutettavien alkioiden indeksit.
+Observera att vi ovan använde indexen för raden och kolumnen för att komma åt det element vi ville ändra på. Om vi vill ändra på innehållet i en matris måste vi komma åt elementen md hjälp av deras index. Vi kan inte bara använda oss av en `for element in lista` -loop för att gå igenom matrisen då vi vill ändra på innehållet i en matris.
 
-Tämä taas onnistuu `while`-silmukalla tai `for`-silmukalla hyödyntämällä `range`-funktiota iteroinnissa. Esimerkiksi seuraava koodi kasvattaa jokaista matriisin alkiota yhdellä:
+Istället behöver vi hålla reda på indexen hos elementen: till exempel med en while-loop eller en for-loop med `range`-funktionen. Följande kod ökar på värdet hos varje element i en matris med ett:
 
 
 ```python
@@ -478,7 +478,7 @@ print(m)
 
 </sample-output>
 
-Ulompi silmukka käy `range`-funktion avulla läpi arvot nollasta matriisin pituuteen (eli matriisin rivien määrään) ja sisempi silmukka jokaisen rivin alkiot nollasta rivin pituuteen.
+Den yttre loopen går igenom indexen från noll till matrisens längd, alltså antalet rader i matrisen. Den inre loopen går igenom indexen från noll till radernas längd.
 
 
 <programming-exercise name='Alkioiden määrä' tmcname='osa05-01_alkoiden_maara'>
@@ -502,13 +502,13 @@ print(laske_alkiot(m, 1))
 
 </programming-exercise>
 
-## Kaksiulotteinen taulukko pelin tietorakenteena
+## En tvådimensionell tabell som datastruktur i ett spel
 
-Matriisi sopii hyvin monien pelien tietorakenteeksi. Esim. sudokun ruudukko
+En matris kan fungera väl som datastruktur i flera olika spel. Till exempel rutorna i ett sudokuspel…
 
 <img src="5_1_1.png">
 
-voitaisiin esittää seuraavana matriisina:
+…kan representeras i en matris på följande sätt:
 
 ```python
 sudoku = [
@@ -524,9 +524,9 @@ sudoku = [
 ]
 ```
 
-Arvolla nolla siis kuvataan tilanne, jossa ruutu on vielä tyhjä.
+Nu representerar noll en tom ruta, eftersom noll inte är ett värde som kan användas i sudoku.
 
-Seuraavassa vielä yksinkertainen versio sudokun tulostavasta metodista:
+Här är en enkel funktion som skriver ut sudokurutor:
 
 ```python
 def tulosta(sudoku):
@@ -541,7 +541,7 @@ def tulosta(sudoku):
 tulosta(sudoku)
 ```
 
-Tulostus näyttää seuraavalta:
+Utskriften borde se ut så här:
 
 ```x
 
@@ -557,7 +557,7 @@ Tulostus näyttää seuraavalta:
 
 ```
 
-Vastaavalla tavalla on mahdollista kuvata moni tuttu peli (esim. shakki, miinaharava, laivan upotus, mastermind, ...) matriisina. Pelistä riippuu, mikä on sopiva tapa "koodata" pelin tilanne matriisiin.
+Flera andra spel kan också representeras på liknande sätt: till exempel schack, minröj, sänka skepp och Mastermind. I sudoku fungerar siffor väl för att representera spelets läge, medan för andra spel kan andra metoder vara bättre.
 
 <programming-exercise name='Go' tmcname='osa05-02_go'>
 
@@ -734,5 +734,3 @@ True
 </programming-exercise>
 
 <quiz id="646c91c8-cc9a-57c0-b502-ef939f5f4d45"></quiz>
-
-

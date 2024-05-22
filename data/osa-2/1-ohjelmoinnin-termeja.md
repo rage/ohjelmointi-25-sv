@@ -1,30 +1,28 @@
 ---
 path: '/osa-2/1-ohjelmoinnin-termeja'
-title: 'Ohjelmoinnin termejä'
+title: 'Programmeringsterminologi'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tunnet keskeistä ohjelmoinnin termistöä
-- Tiedät lauseen ja lausekkeen eron
-- Osaat selvittää lausekkeen arvon tyypin
-- Opit etsimään virheitä debuggauksen avulla
+* känner du till de väsentligaste termerna inom programmering
+* vet du vad skillnaden mellan en sats och ett uttryck är
+* kan du ta reda på datatypen på värdet av ett uttryck
+* har du lärt dig hur du genom att debugga hittar fel i din kod.
 
 </text-box>
 
-Emme vielä kurssin ensimmäisessä osassa kiinnittäneet kovin tarkasti huomiota ohjelmoinnin terminologiaan. Nyt on hyvä hetki tutustua joihinkin käsitteisiin.
+Under den första modulen fokuserade vi inte så mycket på terminologi. Nu är det dags att ta en titt på några centrala begrepp inom programmering.
 
-## Lause
+## Sats
 
-_Lause_ (engl. _statement_) tarkoittaa ohjelman osaa, joka suorittaa jonkin toiminnon. Usein lause viittaa yksittäiseen komentoon.
+En sats (statement) är en del av ett program som kör någonting. En sats syftar ofta, men inte alltid, till ett enstaka kommando.
 
-Esimerkiksi `print("Moi!")` on lause, joka tulostaa rivin tekstiä,
-ja `luku = 2` on lause, joka asettaa muuttujalle arvon.
+Till exempel `print(”Hej”)` är en sats som skriver ut en rad text. På samma sätt är `nummer = 2` en sats som lagrar ett värde i en variabel.
 
-Lause voi olla myös monimutkaisempi, ja sen sisällä voi olla muita lauseita.
-Esimerkiksi seuraava ehtolause muodostuu kolmesta rivistä:
+En sats kan också vara mera invecklad. Den kan till exempel bestå av flera satser. Följande sats består av tre rader:
 
 ```python
 if nimi == "Anna":
@@ -32,11 +30,11 @@ if nimi == "Anna":
     luku = 2
 ```
 
-Tässä tapauksessa ehtolauseen sisällä on kaksi lausetta.
+Ovan finns två satser (print-sats och tilldelningssats) inom en if-sats.
 
-## Lohko
+## Block
 
-_Lohko_ (engl. _block_) on joukko peräkkäin sijoitettuja lauseita, jotka ovat samalla tasolla ohjelman rakenteessa. Esimerkiksi ehtolauseessa lohkossa ovat lauseet, jotka suoritetaan ehdon ollessa tosi.
+Ett block är en grupp av efter varandra följande satser som är på samma nivå i programmets struktur. Till exempel if-satsens block innehåller de satser som körs då villkoret är sant.
 
 ```python
 if ika > 17:
@@ -49,9 +47,9 @@ if ika > 17:
 print("tämä on eri lohkossa")
 ```
 
-Pythonissa lohko ilmaistaan sisentämällä lohkon koodi eli lauseet samalle tasolle.
+I Python markeras block genom att indentera all kod i blocket med samma antal mellanrum.
 
-Kannattaa huomata, että Python-ohjelman "päälohkon" on oltava sisennetty tiedoston vasempaan reunaan:
+Obs! Pythons huvudblock ska aldrig indenteras, utan ska alltid vara så långt till vänster som möjligt i filen:
 
 ```python
 # tämä ohjelma ei toimi sillä koodia ei ole sisennetty vasempaan reunaan
@@ -59,61 +57,61 @@ Kannattaa huomata, että Python-ohjelman "päälohkon" on oltava sisennetty tied
   print("huono ohjelma...")
 ```
 
-## Lauseke
+## Uttryck
 
-_Lauseke_ (engl. _expression_) on koodin osa, jolla on jokin tyyppi. Ohjelman suorituksen aikana lauseke saa arvon, jota voidaan käyttää ohjelmassa.
+Ett uttryck (expression) är en kodsnutt som resulterar i en viss datatyp. När programmet körs, får uttrycket ett värde som kan användas i programmet.
 
-Tarkastellaan muutamaa esimerkkiä lausekkeista:
+Här följder några exempel på uttryck:
 
-| Lauseke | Arvo | Tyyppi | Tyyppi Pythonissa |
-|---------|------|--------------|-------------------|
-|`2 + 4 + 3` | `9` | kokonaisluku | `int` |
-|`"abc" + "de"` | `"abcde"` | merkkijono | `str`|
-|`11 / 2` | `5.5` | liukuluku | `float` |
-|`2 * 5 > 9` | `True` | totuusarvo | `bool`|
+| Uttryck          | Värde     | Datatyp       | Datatyp i Python |
+|------------------|-----------|---------------|------------------|
+| `2 + 4 + 3`      | `9`       | heltal        | `int`            |
+| `"abc" + "de"`   | `"abcde"` | sträng        | `str`            |
+| `11 / 2`         | `5.5`     | flyttal       | `float`          |
+| `2 * 5 > 9`      | `True`    | sanningsvärde | `bool`           |
 
-Koska lausekkeella on arvo, voi sen sijoittaa muuttujaan:
+Eftersom alla uttryck har en datatyp, kan de tilldelas till en variabel:
 
 ```python
 # muuttuja x saa arvoksi lausekkeen 1 + 2 arvon
 x = 1 + 2
 ```
 
-Yksinkertaisesta lausekkeesta saa muodostettua monimutkaisempia lausekkeita esim. laskuoperaattorien avulla:
+Enkla uttryck kan kombineras för att få ett mera komplicerat uttryck till stånd. Så här kan man till exempel utföra räkneoperationer:
 
 ```python
 # muuttuja y saa arvoksi lausekkeen '3 kertaa x plus x toiseen' arvon
 y = 3 * x + x**2
 ```
 
-## Funktio
+## Funktion
 
-_Funktio_ (engl. _function_) suorittaa jonkin toiminnon. Funktiolla voi olla yksi tai useampi _parametri_ (engl. _parameter_), jotka ilmaisevat, mitä funktion tulee tehdä tarkalleen.
+En funktion kör någon slags funktionalitet. Funktioner kan också ta emot en eller flera parametrar, alltså data som funktionen tar emot och behandlar.
 
-Funktio suoritetaan, kun sitä _kutsutaan_ eli koodissa on funktion nimi ja funktiolle annettavat parametrit suluissa. Esimerkiksi seuraava koodi kutsuu `print`-funktiota parametrilla `"tämä on parametri"`:
+En funktion körs då den anropas – det vill säga då funktionen och dess möjliga parametrar nämns i koden. Följande sats anropar `print`-funktionen med parametern `”det här är en parameter”`:
 
 ```python
 print("tämä on parametri")
 ```
 
-Myös käyttäjältä syötteitä lukeva `input` on funktio. Parametrina funktio saa käyttäjälle näytettävän viestin:
+En annan funktion du redan känner till väl är `input`, som används för att ta emot data från användaren. Parametern i funktionen är det meddelande som ska visas till användaren:
 
 ```python
 nimi = input("Kerro nimesi: ")
 ```
 
-Tässä tapauksessa funktio _palauttaa_ arvon, mikä tarkoittaa, että funktion kutsukohtaan ilmestyy arvo funktion suorituksen jälkeen. Funktion `input` palauttama arvo on käyttäjän syöttämä teksti merkkijonona. Funktion palauttama arvo sijoitetaan usein muuttujan arvoksi, jotta arvoa voidaan hyödyntää ohjelmassa.
+I det här fallet returnerar funktionen också ett värde. När funktionen har körts ersätts den del i koden där funktionen anropades med det värde som funktionen returnerar – det är nu ett uttryck med ett värde. `input`-funktionen returnerar en sträng som innehåller den text som användaren gett programmet. Värdet som en funktion returnerar lagras ofta i en variabel för att programmet ska kunna använda det senare.
 
-## Tyyppi
+## Datatyp
 
-_Tyyppi_ (engl. _type_) tarkoittaa, millainen jokin koodissa esiintyvä arvo on. Esimerkiksi seuraavassa koodissa muuttujan `nimi` tyyppi on merkkijono ja muuttujan `tulos` tyyppi on kokonaisluku:
+Datatyp syftar till de egenskaper ett värde har i ett program. I följande kodexempel är datatyperna sträng (`str`) för variabeln `namn` och heltal (`int`) för variabeln `resultat`:
 
 ```python
 nimi = "Anna"
 tulos = 100
 ```
 
-Funktio `type` kertoo annetun lausekkeen tyypin. Esimerkiksi:
+Med hjälp av funktionen `type` kan man ta reda på datatypen hos ett uttryck. Så här kan du använda funktionen:
 
 ```python
 print(type("Anna"))
@@ -127,18 +125,18 @@ print(type(100))
 
 </sample-output>
 
-## Syntaksi
+## Syntax
 
-_Syntaksi_ (engl. _syntax_) määrittää, miten ohjelman koodi tulee kirjoittaa. Jokaisella ohjelmointikielellä on omanlainen syntaksinsa.
+På samma sätt som vanliga språk har regler för hur man skriver har även programmeringsspråk en syntax – det vill säga ett regelverk för hur koden ska skrivas. Den skiljer sig för varje programmeringsspråk.
 
-Esimerkiksi Python-kielen syntaksiin kuuluu, että `if`-lauseen aloitusrivin lopussa on kaksoispiste ja ehtoon kuuluva koodi on sisennetty:
+Pythons syntax bestämmer bland annat att första raden i en if-sats ska sluta med ett kolon och att därefter följande block ska indenteras:
 
 ```python
 if nimi == "Anna":
     print("Moi!")
 ```
 
-Jos ohjelmointikielen syntaksia ei noudateta, seurauksena on virheilmoitus:
+Följer man inte dessa regler, kommer ett fel att uppstå:
 
 ```python
 if nimi == "Anna"
@@ -157,11 +155,11 @@ SyntaxError: invalid syntax
 
 </sample-output>
 
-## Debuggaaminen
+## Att debugga
 
-Kun ohjelman syntaksi on kunnossa mutta ohjelma ei toimi halutulla tavalla, ohjelmassa on _bugi_.
+När syntaxen i ett program är korrekt men programmet inte ändå fungerar på önskat sätt, finns det en bugg i programmet.
 
-Bugit ilmenevät eri tavoin. Jotkin bugit aiheuttavat suoritusaikaisen virheen. Esim. ohjelma
+Buggar dyker upp i olika slags situationer. Vissa kan orsaka felmeddelanden medan programmet körs. Ta det här programmet som exempel:
 
 ```python
 x = 10
@@ -171,7 +169,7 @@ tulos = x / y
 print(f"{x} jaettuna {y} on {tulos}")
 ```
 
-aiheuttaa seuraavan virheen:
+Nu får vi felet:
 
 <sample-output>
 
@@ -181,17 +179,17 @@ ZeroDivisionError: integer division or modulo by zero on line 3
 
 </sample-output>
 
-Ongelma on siis siinä, että nollalla jakaminen ei ole sallittua ja se keskeyttää ohjelman suorituksen.
+Det här felet har med matematik att göra – det går inte att dividera med noll, och det här stoppar programmet medan det körs.
 
-Suoritusaikaiseen virheeseen johtavat bugit ovat usein helpohkoja korjata, sillä virheen aiheuttava rivi selviää virheilmoituksesta. Tosin virheen varsinainen syy eli bugi on usein muualla kuin virheilmoituksen aiheuttaneessa rivissä.
+Fel som uppstår medan programmet körs är relativt lätta att korrigera. Felmeddelandet berättar på vilken rad i koden det uppstod problem. Det är förstås möjligt att felet ligger på något annat ställe i koden än just den här specifika raden.
 
-Joskus bugi taas ilmenee siten, että koodin tuottama tulos on virheellinen. Tälläisten bugien havaitseminen ja niiden syyn paikallistaminen voi olla haastavaa. Kurssin tehtävissä testit paljastavat usein juuri tämän kategorian bugeja. Ennen kuin ongelma päästään korjaamaan, on bugi paikallistettava.
+Ibland märker man en bugg eftersom det resultat som koden ger är fel. Att observera och hitta en sådan här bugg kan vara svårt. I programmeringsuppgifterna under den här kursen finns det olika tester som ska hjälpa med att hitta sådana här fel. Före en bugg kan korrigeras måste man ta reda på var felet uppstår.
 
-Koodarijargonissa bugien syiden selvittämistä kutsutaan _debuggaamiseksi_. Debuggaaminen on äärimmäisen keskeinen taito, ja ammatikseen ohjelmoivat käyttävät usein enemmän aikaa debuggaamiseen kuin varsinaiseen ohjelmointiin.
+Programmerare använder ofta termen debugga – att söka efter orsaker till fel som uppstår i koden. Det här är ett ytterst viktigt verktyg i en programmerares verktygslåda. I yrkeslivet använder programmerare ofta mera tid till att debugga än för att skriva ny kod.
 
-Yksinkertainen mutta tehokas debuggauskeino on lisätä ohjelmaan debug-tulostuksia eli `print`-komentoja, joiden avulla varmistetaan, että koodissa tapahtuu ohjelmoijan olettamia asioita.
+Ett enkelt – men desto nyttigare – sätt att debugga sitt program är att lägga till `print`-satser i sin kod. Att verifiera vad som sker i koden med hjälp av print-kommandon ger en bekräftelse att programmet gör det som du vill.
 
-Seuraavassa on ratkaisuyritys yhteen [edellisen osan](/osa-1/5-ehtorakenne) tehtävään:
+Det här är ett exempel på ett försök att lösa en av föregående modulens uppgifter:
 
 ```python
 tuntipalkka = float(input("Tuntipalkka: "))
@@ -205,7 +203,7 @@ if paiva == "sunnnuntai":
 print(f"Palkka {palkka} euroa")
 ```
 
-Ohjelma ei näytä toimivan oikein ja testien suoritus kertoo seuraavaa:
+Det här programmet fungerar inte helt korrekt. När testen körs får vi följande resultat:
 
 <sample-output>
 
@@ -217,7 +215,7 @@ Syötteellä 23.0, 12, sunnuntai oikeaa palkkaa 552.0 ei löydy tulosteestasi Pa
 
 </sample-output>
 
-Ensimmäinen askel debuggaamisessa on useimmiten kokeilla ohjelmaa ongelmallisella syötteellä. Kokeilu varmistaa, että tulos ei ole haluttu:
+När vi debuggar den här kursens uppgifter är det första steget ofta att testa hur programmet fungerar när man ger det den data som orsakade ett fel i testet. Nu kan vi se att programmet faktiskt ger ett inkorrekt resultat:
 
 <sample-output>
 
@@ -225,7 +223,7 @@ Palkka 276.0 euroa
 
 </sample-output>
 
-Debugattaessa ohjelman toimintaa kokeillaan usein. Voikin olla hyödyllisä "kovakoodata" ongelman aiheuttavat syötteet suoraan koodiin sen sijaan, että ne kysyttäisiin joka kerta käyttäjältä. Tämä onnistuu esimerkiksi muuttamalla koodia tilapäisesti seuraavalla tavalla:
+Att debugga innebär vanligtvis att vi kör programmet flera gånger. Det kan vara händigt att tillfälligt hårdkoda det problematiska värdet istället för att alltid fråga efter värdet från användaren. Så här kunde det se ut i vårt exempel:
 
 ```python
 # tuntipalkka = float(input("Tuntipalkka: "))
@@ -242,7 +240,7 @@ if paiva == "sunnnuntai":
 print(f"Palkka {palkka} euroa")
 ```
 
-Seuraava askel on lisäillä koodiin _debug-tulostuksia_. Koska nimenomaan sunnuntain palkka lasketaan väärin, laitetaan sen hoitavaan osaan tulostukset korotusta ennen ja sen jälkeen:
+Nästa steg kan vara att lägga till `print`-satser för att debugga. Problemet i den här koden uppstår i den delen där söndagar behandlas. Låt oss lägga till ett par print-satser: en före lönen ska fördubblas och en efter det:
 
 ```python
 # ...
@@ -256,7 +254,7 @@ if paiva == "sunnnuntai":
 print(f"Palkka {palkka} euroa")
 ```
 
-Kun ohjelma nyt suoritetaan, ei debug-tulostuksia jostain syystä näy ollenkaan. Vaikuttaa siltä, että ohjelman suoritus ei edes mene if-haaraan. Komennon ehdossa täytyy siis olla jokin ongelma. Myös ehdon arvo voidaan tulostaa:
+När vi kör koden märker vi att programmet inte alls skriver ut något på basis av de `print`-satser vi lagt till i koden. Det verkar som att innehållet i `if`-blocket aldrig körs. Det finns visst ett problem med if-satsen. Låt oss skriva ut Boolean-uttryckets värde:
 
 ```python
 # ...
@@ -271,7 +269,7 @@ if paiva == "sunnnuntai":
 print(f"Palkka {palkka} euroa")
 ```
 
-Ja tosiaan, kun koodi suoritetaan, ehdon arvo on `False` eli koodi hyppää if-lohkon ohi:
+Värdet är `False`, alltså kommer `if`-blockets kod aldrig att köras:
 
 <sample-output>
 
@@ -280,7 +278,7 @@ Palkka 276.0 euroa
 
 </sample-output>
 
-Vian täytyy siis olla if-komennon ehdossa, ja kun sitä katsotaan tarkemmin, huomataan, että _sunnuntai_ on vahingossa kirjoitettu väärin. Korjataan typo:
+Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att ”Söndag” i Boolean-uttrycket är skrivet med en stor bokstav medan det i indatat inte är det. Vi korrigerar det – både i if-satsen och `print`-kommandot:
 
 ```python
 # ...
@@ -295,7 +293,7 @@ if paiva == "sunnuntai":
 print(f"Palkka {palkka} euroa")
 ```
 
-Koodin suoritus aiheuttaa nyt seuraavan tulostuksen:
+Nu får vi följande utskrift när programmet körs:
 
 <sample-output>
 
@@ -306,19 +304,19 @@ Palkka 276.0 euroa
 
 </sample-output>
 
-Koska `tuntipalkka = 23.0` ja `tunnit = 12`, vaikuttaa muuttujassa `palkka` olevan oikea arvo aluksi, mutta kasvatuskomento ei kuitenkaan kasvata muuttujan arvoa. Komento on siis mitä ilmeisimmin virheellinen. Ja toden totta, komento
+Det verkar som att värdet lagrat i `dagslon` är korrekt i början: `timlon = 20.0` och `timmar = 12`, 20,0 * 6 = 120,0. Kommandot som ska multiplicera det här med två fungerar dock inte. Det måste alltså vara ett problem med det kommandot:
 
 ```python
 palkka * 2
 ```
 
-ainoastaan laskee tuplapalkan mutta ei tee tulokselle mitään. Korjataan komento muotoon, joka tallentaa korotetun palkan muuttujaan `palkka`:
+Kommandot multiplicerar nog värdet, men resultatet lagras ingenstans. Vi ändrar på det:
 
 ```python
 palkka *= 2
 ```
 
-Kun ohjelma suoritetaan nyt, huomataan että lopputuloskin on oikea:
+När vi nu kör programmet, märker vi att resultatet är korrekt:
 
 <sample-output>
 
@@ -329,11 +327,11 @@ Palkka 552.0 euroa
 
 </sample-output>
 
-Kun ohjelma on kunnossa, tulee debuggaustulosteet ja muu debuggauksen takia kirjoitettu ylimääräinen koodi poistaa.
+När programmet fungerar som det ska, är det viktigt att ta bort `print`-satser och annan kod som använts för att debugga.
 
-Esimerkki oli yksinkertainen ja näin lyhyessä ohjelmassa oleva bugi selviäisi varmasti myös koodia lukemalla. Monesti kuitenkin debug-tulostuksilla pääsee huomattavasti nopeammin jyvälle siitä, missä vika piilee. Tulostamalla voidaan usein varmistua siitä, mitkä osat ohjelmasta toimivat "varmuudella" oikein, ja bugien jäljitys voidaan nopeasti kohdistaa niihin koodiriveihin, joissa ongelma todennäköisesti piileskelee.
+Det här var ett ganska enkelt exempel och i fall som det här kan man eventuellt hitta buggar genom att läsa igenom koden med omtanke. Att använda `print`-satser för att debugga är ändå ofta ett snabbt sätt att få en ledtråd för var problemet kan ligga. `print`-satser kan också användas för att fastställa vilka delar av koden som fungerar korrekt. Då kan man fokusera på andra ställen där buggar med större sannolikhet gömmer sig.
 
-Debuggaukseen on olemassa muitakin keinoja kuin debug-tulostusten tekeminen. Palaamme asiaan myöhemmin kurssilla. Sinun kannattaa tästä lähtien kurssilla käyttää debug-tulostamista virheiden etsimiseen. Ohjelmoinnin ammattilaiset eivät selviä työstään ilman debug-tulostuksia, joten on vaikea kuvitella, ettei aloittelijoidenkin kannattaisi laajentaa työkalupakkiaan tältä osin.
+`print`-satser är bara ett sätt att debugga program. Vi återkommer till det här ämnet senare under kursen. Nu ska du bli van vid att debugga, med hjälp av `print`-kommandon, för att hitta problematiska delar i din kod. Proffs klarar sig inte utan `print`-satser i debuggningssyfte – det är alltså en viktig resurs redan som nybörjare.
 
 <in-browser-programming-exercise name="Korjaa virheet" tmcname="osa02-01_korjaa_virheet" height="400px">
 

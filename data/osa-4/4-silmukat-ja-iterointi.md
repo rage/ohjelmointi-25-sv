@@ -1,20 +1,20 @@
 ---
 path: '/osa-4/4-silmukat-ja-iterointi'
-title: 'Silmukat ja iterointi'
+title: 'Iteration'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä tarkoitetaan iteroinnilla
-- Tiedät, miten `for`-silmukka toimii
-- Osaat käyttää `for`-silmukkaa listojen ja merkkijonojen läpikäyntiin
+* vet du vad som menas med iteration
+* vet du hur `for`-loopen i Python fungerar
+* kan du använda dig av en `for`-loop för att gå igenom listor och strängar.
 
 </text-box>
 
-Voimme käydä listan alkiot läpi `while`-silmukalla samaan tapaan kuin olemme aiemmin käyneet läpi merkkijonon merkkejä. Esimerkiksi seuraava ohjelma tulostaa kaikki listan alkiot omille riveilleen:
+Du kan använda en while-loop för att gå igenom elementen i en lista på samma sätt som vi använde oss av while-loopar för att gå igenom strängar. Det följande programmet skriver ut elementen i en lista på varsin rad:
 
 ```python
 lista = [3, 2, 4, 5, 2]
@@ -35,24 +35,26 @@ while kohta < len(lista):
 
 </sample-output>
 
-Tämä on kuitenkin melko vaivalloinen tapa, sillä joudumme käyttämään indeksimuuttujaa `kohta`, joka "muistaa", missä kohtaa listaa ollaan menossa. Nyt on aika opetella parempi tapa listan, merkkijonon tai muun vastaavan rakenteen läpikäyntiin.
+Det här fungerar helt bra, men det är ett komplicerat sätt att gå igenom en lista eftersom att det krävs en hjälpvariabel, `index`, för att minnas vid vilket element man är vid. Till all lycka erbjuder Python ett enklare sätt att gå igenom listor, strängar och liknande strukturer.
 
-## for-silmukka
+## `for`-loopen
 
-Pythonin `for`-silmukka käy läpi annetun rakenteen sisällön. Esimerkiksi voimme käydä läpi kaikki listalla olevat alkiot vasemmalta oikealle. Ohjelmoinnissa tällaista läpikäyntiä kutsutaan myös nimellä _iterointi_.
+När du vill gå igenom en färdig samling av element i Python, kan du använda dig av en `for`-loop. Loopen kan till exempel gå igenom alla element i en lista – från det första till det sista.
 
-Ideana on, että `for`-silmukka poimii yksi kerrallaan kunkin alkion ja suorittaa kaikille saman operaation. Näin ohjelmoijan ei tarvitse itse huolehtia, mistä kohdasta alkio haetaan missäkin vaiheessa. Silmukan syntaksi on seuraava:
+När man använder en while-loop, vet programmet inte på förhand hur många iterationer (”varv”) loopen kommer att gå igenom. Loopen kommer att fortsätta tills villkoret inte längre är sant eller loopen avslutas på ett annat sätt. I en `for`-loop vet man antalet iterationer på förhand.
+
+Idén är att `for`-loopen går igenom elementen i samlingen ett för ett och utför samma sak för varje element. Programmeraren behöver inte fundera på vilket element som behandlas och när det görs. Syntaxen för `for`-loopen är den följande:
 
 ```python
 for <muuttuja> in <rakenne>:
     <lohko>
 ```
 
-Kun `for`-silmukka käy listan läpi, se poimii vuorollaan kunkin alkion, sijoittaa sen muuttujaan ja suorittaa lohkon. Kun silmukka on käynyt kaikki alkiot läpi, ohjelman suoritus jatkuu silmukan jälkeiseltä riviltä.
+`for`-loopen tar ett element i samlingen, tilldelar det till en variabel, kör kodblocket och fortsätter till nästa element. När alla element har behandlats kommer programmet att fortsätta köras från och med kodraden som följer loopen.
 
 <img src="4_3_1.png" alt="Listan iterointi">
 
-Seuraava ohjelma tulostaa listan kaikki alkiot `for`-silmukan avulla:
+Följande program skriver ut alla element i en lista med hjälp av en `for`-loop:
 
 ```python
 lista = [3, 2, 4, 5, 2]
@@ -71,9 +73,9 @@ for alkio in lista:
 
 </sample-output>
 
-Jos verrataan tätä edelliseen esimerkkiin, huomataan, että `for`-silmukka selkeyttää suoraviivaista listan alkioiden läpikäyntiä huomattavasti.
+Jämfört med exemplet i början av den här delen är strukturen mycket enklare att förstå. En `for`-loop gör det enkelt att gå igenom elementen i en samling från början till slut.
 
-Voimme käydä samalla idealla läpi myös merkkijonon merkit:
+Samma princip gäller också för strängar:
 
 ```python
 nimi = input("Anna nimesi: ")
@@ -124,11 +126,11 @@ n
 
 </programming-exercise>
 
-## Funktio `range`
+## Funktionen `range`
 
-Silmukkaa tarvitaan usein myös siihen, että haluamme toistaa jonkin asian tietyn määrän kertoja tai käydä läpi tietyn lukuvälin (esimerkiksi kaikki luvut väliltä 1–100). Myös tämä onnistuu kätevästi `for`-silmukalla funktion `range` avulla.
+Man vet ofta hur många gånger man vill upprepa en viss kodsnutt. Det kan till exempel hända att du vill gå igenom siffrorna ett till hundra. Funktionen `range` kan användas i samband med en `for`-loop för att uppnå detta.
 
-Voimme kutsua `range`-funktiota monella tavalla. Yksinkertaisin tapa on `range(n)`, jolloin silmukka käy läpi kokonaisluvut 0:sta lukuun `n`–1:
+Det finns några olika sätt att använda `range`-funktionen. Det enklaste sättet är att använda ett argument, som då hänvisar till slutpunkten. Själva slutpunkten inkluderas inte, likt extrahering av delsträngar (slice). Det betyder alltså att anropet `range(n)` ger oss en loop som går igenom siffrorna `0` till `n - 1`:
 
 ```python
 for i in range(5):
@@ -145,7 +147,7 @@ for i in range(5):
 
 </sample-output>
 
-Kun annamme kaksi parametria, `range(a, b)` aloittaa luvusta `a` ja lopettaa lukuun `b`–1:
+Med två argument kommer funktionen att returnera ett intervall mellan två siffror. Funktionen `range(a, b)` kommer att ge ett intervall som startar med `a` och slutar med `b - 1`.
 
 ```python
 for i in range(3, 7):
@@ -161,7 +163,7 @@ for i in range(3, 7):
 
 </sample-output>
 
-Kun annamme kolme parametria, `range(a, b, c)` aloittaa luvusta `a`, lopettaa lukuun `b`–1 ja muuttaa lukua `c`:llä joka askeleella:
+Till sist: vi kan ge ett tredje argument som specificerar avståndet mellan värdena. Anropet `range(a, b, c)` kommer att ge ett intervall som börjar med `a` och slutar vid `b - 1`, och ökar med `c` för varje steg.
 
 ```python
 for i in range(1, 9, 2):
@@ -177,7 +179,7 @@ for i in range(1, 9, 2):
 
 </sample-output>
 
-Voimme myös antaa negatiivisen askeleen, jolloin luvut käydään läpi käänteisesti:
+Avståndet eller steget kan också vara negativt. Då kommer intervallet att vara ordnat i fallande ordning. Observera att de två första argumenten har bytt plats här:
 
 ```python
 for i in range(6, 2, -1):
@@ -218,9 +220,9 @@ Anna luku: **4**
 
 </programming-exercise>
 
-## Lukuväli listaksi
+## Från intervall till lista
 
-Funktio `range` palauttaa lukuvälin, joka voidaan käydä läpi listan kaltaisesti mutta joka ei kuitenkaan ole lista. Tämän näkee siitä, että jos tulostamme funktion palauttaman arvon, näemme vain kuvauksen lukuvälistä:
+Funktionen `range` returnerar ett `range`-objekt som på flera sätt fungerar som en lista, men i verkligheten inte är det. Om du försöker skriva ut värdet som funktionen returnerar kommer du bara att se en beskrivning av `range`-objektet:
 
 ```python
 luvut = range(2, 7)
@@ -233,7 +235,7 @@ range(2, 7)
 
 </sample-output>
 
-Tutustumme asiaan tarkemmin Ohjelmoinnin jatkokurssilla, mutta on hyvä tietää, että voimme muuttaa lukuvälin listaksi funktiolla `list`. Tällöin listaan tulevat kaikki lukuväliin kuuluvat arvot:
+Funktionen `list` konverterar ett intervall till en lista. Listan kommer att innehålla de värden som finns i intervallet. I fortsättningskursen i Python som följer den här kursen kommer vi att gå djupare in på det här.
 
 ```python
 luvut = list(range(2, 7))
@@ -246,9 +248,9 @@ print(luvut)
 
 </sample-output>
 
-## Muistutus tehtävien funktioita testaavasta omasta koodista
+## En påminnelse om de automatiska testen
 
-Funktiotehtävien tehtäväpohjat ovat tähän asti näyttäneet seuraavilta:
+Tills nu har de övningar som krävt att du skriver en funktion haft färdiga mallar som sett ut på följande sätt:
 
 ```python
 # tee ratkaisu tänne
@@ -260,9 +262,9 @@ if __name__ == "__main__":
     print(vika_sana(lause))
 ```
 
-Tästä eteenpäin muistutusta siitä, että testikoodi on sijoitettava `if __name__ == "__main__"` -lohkoon, jota ei tehtäväpohjissa enää ole. Testit kuitenkin vaativat lohkon edelleen, eli joudut lisäämään sen itse.
+Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == ”__main__”` -blocket. De automatiska testen kommer fortsättningsvis ändå att kräva att de används, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
 
-**Huomaa kuitenkin**, että jotkut tehtävät, esim. hetken kuluttua vuorossa oleva _Palindromit_, edellyttävät funktioiden lisäksi myös funktiota kutsuvaa koodia. Tätä koodia _ei tule_ sijoittaa  `if __name__ == "__main__"` -lohkon sisälle. Testit eivät nimittäin suorita mitään kyseisen lohkon koodista.
+Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktionen du gjort. Den här koden bör inte läggas i `if __name__ == ”__main__”` -blocket. De automatiska testen kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
 
 <programming-exercise name='Tähdet' tmcname='osa04-12_tahdet'>
 
@@ -358,7 +360,7 @@ vastaus 9
 
 </programming-exercise>
 
-Kertaa nyt tarvittaessa [edellisen osion](/osa-4/3-listat) luku _Lista funktion parametrina ja paluuarvona_!
+I dessa uppgifter kommer vi att använda listor som argument och return-värden. Det här såg vi på i den förra delen.
 
 <programming-exercise name='Parilliset' tmcname='osa04-16_parilliset'>
 
@@ -411,11 +413,11 @@ print(uniikit(lista)) # [1, 2, 3]
 
 </programming-exercise>
 
-## Parhaan tai huonoimman etsiminen listalta
+## Hitta det bästa eller sämsta värdet i en lista
 
-Ohjelmoinnissa tulee usein esiin tilanne, missä listalta on löydettävä jonkin kriteerin mukaan paras tai huonoin alkio. Ratkaisu onnistuu käyttämällä sopivaa apumuuttujaa, jonka avulla voidaan "muistaa" läpikäynnin aikana siihen mennessä löytynyt paras alkio. Tätä muistettavaa alkiota verrataan sitten yksi kerrallaan jokaiseen vastaantulevaan alkioon, ja lopulta on tiedossa koko listan paras.
+En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i en lista enligt något visst kriterium. En enkel lösning är att använda en hjälpvariabel för att komma ihåg vilket av elementen tills vidare är det mest ”optimala”. Det här mest ”optimala” jämförs med varje element och när loopen är klar kommer hjälpvariabeln att innehålla det värdet man söker efter.
 
-Algoritmin "luonnos" on seuraavassa:
+Här är ett utkast som inte ännu fungerar:
 
 ```python
 paras = alkuarvo # sopiva alkuarvo riippuu tilanteesta
@@ -426,9 +428,9 @@ for alkio in lista:
 # paras on nyt tiedossa!
 ```
 
-Koodin yksityiskohdat riippuvat siitä minkä tyyppisiä alkioita listalla on ja mikä parhauden/huonouden vertailukriteeri on käytössä. Joissain tilanteissa myös apumuuttujia saatetaan tarvita useampia.
+Detaljerna kring den slutliga koden beror på typen av elementen i listan och kriteriet för väljandet av det bästa (eller sämsta) elementet. Ibland kan du behöva fler än en hjälpvariabel.
 
-Harjoitellaan hieman tämän ratkaisumenetelmän käyttöä.
+Låt oss öva på den här metoden.
 
 <programming-exercise name='Listan pisimmän pituus' tmcname='osa04-18a_listan_pimman_pituus'>
 

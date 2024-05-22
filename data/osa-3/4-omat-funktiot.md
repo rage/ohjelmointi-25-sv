@@ -1,35 +1,35 @@
 ---
 path: '/osa-3/4-omat-funktiot'
-title: 'Omat funktiot'
+title: 'Definiera funktioner'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda oman funktion ja kutsua sitä
-- Ymmärrät, mikä on funktion parametri
-- Osaat käyttää parametreja omissa funktioissa
+* kan du skriva och kalla på dina egna funktioner
+* förstår du vad ett argument och en parameter hos en funktion är
+* kan du definiera parametrar i dina egna funktioner.
 
 </text-box>
 
-Aikaisemmissa osissa on käytetty esimerkiksi funktioita `len`, `print` ja `input` eri tarkoituksiin. Nämä ovat Pythonin sisäänrakennettuja funktioita, mutta voimme myös määritellä omia funktioita.
+Vi har redan använt funktioner som `len`, `print` och `input` i våra program. Dessa är funktioner som är inbyggda i Python och de är därmed alltid tillgängliga. Det är dessutom möjligt att definiera egna funktioner.
 
-## Funktion määrittely
+## Definiera en funktion
 
-Oma funktio määritellään avainsanalla `def` (lyhenne sanasta define). Funktiolle annetaan jokin _nimi_, jonka jälkeen on alku- ja loppusulku. Tämän jälkeen annetaan lohkossa funktioon kuuluva koodi.
+Före en funktion kan användas måste den definieras. Man börjar definieringen av en funktion med nyckelordet `def` (define). Därefter följer namnet på funktionen, följt av parentes och kolon. Efter det här följer funktionens innehåll – indenterat precis som med while- och if-blocken.
 
-Esimerkiksi seuraava koodi määrittelee funktion `viesti`:
+Den här kodsnutten definierar till exempel funktionen `meddelande`:
 
 ```python
 def viesti():
     print("Tämä on oma funktio!")
 ```
 
-Jos yllä oleva ohjelma suoritetaan, se ei näytä tekevän mitään. Tämä johtuu siitä, että funktion sisältämä koodi suoritetaan vasta silloin, kun funktiota _kutsutaan_.
+Om programmet körs, verkar det som att inget händer. Det beror på att funktionens innehåll endast körs då funktionen anropas.
 
-Funktion kutsuminen tapahtuu funktion nimellä. Esimerkiksi seuraava koodi kutsuu funktiota:
+Man kan anropa en funktion enkelt – genom att nämna dess namn i koden. Så här kan vi utveckla det föregående exemplet:
 
 ```python
 def viesti():
@@ -37,6 +37,8 @@ def viesti():
 
 viesti()
 ```
+
+Här är resultatet:
 
 <sample-output>
 
@@ -44,7 +46,7 @@ Tämä on oma funktio!
 
 </sample-output>
 
-Samaa funktiota voidaan määrittelyn jälkeen kutsua useita kertoja.
+När en funktion har definierats kan den kallas flera gånger.
 
 ```python
 def viesti():
@@ -63,20 +65,20 @@ Tämä on oma funktio!
 
 </sample-output>
 
-<text-box variant='hint' name='Omien funktioiden testaaminen'>
+<text-box variant='hint' name='Testa dina egna funktioner'>
 
-Huom! Tästä eteenpäin valtaosassa kurssin tehtäviä pyydetään kirjoittamaan oma funktio (tai funktioita).
+Obs! Från och med nu kommer de flesta av kursens uppgifter förutsätta att du definierar dina egna funktioner.
 
-Kun ohjelma koostuu pelkästään funktiosta, ei sen suorittaminen näytä tekevän mitään. Esimerkiksi seuraava ohjelma ei tulosta mitään:
+När ett program består bara av funktioner verkar ingenting hända då programmet körs. Följande kod skriver inte ut någonting, även om den innehåller en `print`-sats:
 
 ```python
 def moikkaa():
     print("Moi!")
 ```
 
-Funktion `moikkaa` sisällä oleva koodi suoritetaan vasta, kun funktiota kutsutaan.
+Det här beror på att koden i `halsa`-funktionen endast körs då funktionen anropas.
 
-Funktion alla olevaan "pääohjelmaan" kannattaa siis kirjoittaa sopivia funktiokutsuja ohjelman testaamiseksi, esimerkiksi:
+”Huvudprogrammet” nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudfunktionen, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
 
 ```python
 def moikkaa():
@@ -88,7 +90,7 @@ def moikkaa():
 moikkaa()
 ```
 
-**Tärkeä huomio**: kurssin tehtävien testit edellyttävät, että funktioita testaava pääohjelma tulee kirjoittaa seuraavasti määriteltyyn `if`-lohkoon:
+Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudfunktion är tom. Inga kommandon bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
 
 ```python
 def moikkaa():
@@ -125,9 +127,9 @@ Tuomas
 
 </in-browser-programming-exercise>
 
-## Funktion parametri
+## Argument hos funktioner
 
-Usein funktiolla on yksi tai useampi _parametri_, jolla sen toimintaan voi vaikuttaa. Esimerkiksi Pythonin valmiissa funktioissa `print` ja `input` parametrin avulla annetaan näytettävä teksti:
+Funktioner tar ofta emot ett eller fler argument som kan påverka på vad funktionen gör. Till exempel de inbyggda `print`- och `input`-funktionerna i Python tar emot texten som ska visas som argument:
 
 ```python
 print("Hei!")                     # parametrina merkkijono "Hei!"
@@ -135,21 +137,25 @@ nimi = input("Kerro nimesi: ")    # parametrina merkkijono "Kerro nimesi: "
 print(nimi)                       # parametrina muuttujan nimi arvo
 ```
 
-Voimme määritellä parametreja myös omille funktioillemme. Parametrit määritellään funktion nimen jälkeen olevien sulkujen sisällä:
+Det har tidigare nämnts att termerna argument och parameter ofta syftar till samma sak. Skillnaden är att argument används för den data som ges till funktionen vid ett anrop, medan dessa inom funktionen tilldelas till variabler som kallas parametrar. Vi ger alltså argument till en funktion då vi anropar den. När vi definierar en funktion talar vi istället om parametrar.
+
+Det här kan kännas som en meningslös skillnad, och dessutom följer inte alla källor den här definitionen. Vi strävar att göra den här skillnaden tydlig under den här kursen. Med korrekt terminologi är det lättare att förstå andra material förutom det som den här kursen erbjuder.
+
+Låt oss definiera några funktioner som tar emot argument. I funktionsdefinitionen följer parametrarna funktionens namn, inom parenteserna:
 
 ```python
 def tervehdi(kohde):
     print("Hei", kohde)
 ```
 
-Jos funktiota kutsutaan kaksi kertaa
+När funktionen anropas två gånger…
 
 ```python
 tervehdi("Emilia")
 tervehdi("maailma!")
 ```
 
-tulostaa se kaksi erilaista tervehdystä:
+…får vi två hälsningar:
 
 <sample-output>
 
@@ -158,25 +164,25 @@ Hei maailma!
 
 </sample-output>
 
-Katsotaan funktion määrittelyä vielä tarkemmin:
+Vi tar ännu en titt på funktionsdefinitionen:
 
 ```python
 def tervehdi(kohde):
     print("Hei", kohde)
 ```
 
-Määrittelimme ensimmäisellä rivillä, että funktion parametri on nimeltään `kohde`. Toisella rivillä `print`-komento käyttää parametrissa `kohde` olevaa arvoa.
+På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till en variabel med namnet `sak`. Inom funktionen använder `print`-kommandot det värde som finns lagrat i variabeln `sak`.
 
-Kun funktiota kutsutaan, saa parametri _funktiokutsussa_ annettavan arvon. Esimerkiksi kun kutsutaan
+När funktionen anropas får parametern sak det värde som getts som argument i funktionsanropet. Till exempel följande funktionsanrop…
 
 ```python
 nimi = "Antti"
 tervehdi(nimi)
 ```
 
-niin parametrin `kohde` arvo funktiossa on merkkijono `Antti`.
+…resulterar i att variabeln `sak` får värdet `”Alice”`.
 
-Funktioiden ja parametrien nimeämistä koskevat samat periaatteet kuin mitä olemme jo aiemmin käsitelleet, eli nimien kannattaa olla kuvaavia ja käytössä ovat ensisijaisesti pienet kirjaimet sekä alaviiva.
+Namnet på en funktion ges enligt samma principer som variabelnamn. De ska vara beskrivande, i regel innehålla små bokstäver och understreck. Undantag finns igen, men vi ignorerar dem tills vidare.
 
 <in-browser-programming-exercise name="Ensimmäinen merkki" tmcname="osa03-22_ensimmainen_merkki">
 
@@ -209,19 +215,19 @@ n
 
 </in-browser-programming-exercise>
 
-<text-box variant='hint' name='Omien funktioiden testaaminen: parametrit'>
+<text-box variant='hint' name='Testa funktioner med argument'>
 
-Kun omassa funktiossa on määritelty yksi tai useampia parametreja, kannattaa funktiota testata usealla erilaisella parametrilla.
+Då du testar på funktioner som tar emot ett eller fler argument, kan det vara till nytta att testa den med olika argument.
 
-Kannattaa erityisesti miettiä, toimivatko myös "erikoistapaukset": mitä funktio esimerkiksi tekee, jos sille annetaan negatiivinen luku tai liukuluku kokonaisluvun sijasta.
+Håll koll på möjliga ”speciella fall”. Hur kommer funktionen att fungera om argumentet till exempel är noll eller negativt? Eller ett flyttal istället för ett heltal? Vad händer om argumentet är en tom sträng?
 
-Jos tehtävänannossa ei ole erityisesti käsketty kirjoittamaan tiettyjä funktiokutsuja, voit vapaasti lisätä omia kutsujasi pääohjelmaan ja testit jättävät nämä huomiotta.
+Om en uppgift inte förutsätter att du anropar en funktion kan du ändå göra det. Använd då ett if-block enligt det som beskrevs tidigare. Testen kommer att ignorera koden inom det här blocket.
 
 </text-box>
 
-## Lisää esimerkkejä
+## Fler exempel
 
-Katsotaan vielä pari muuta esimerkkiä parametrien käyttämisestä. Seuraavassa funktiossa parametri on luku:
+Vi tar en titt på fler exempelfunktioner som tar emot argument. Här är parametern en siffra:
 
 ```python
 def nelio(x):
@@ -238,7 +244,7 @@ Luvun 5 neliö on 25
 
 </sample-output>
 
-Seuraavassa esimerkissä funktion sisällä on ehtorakenne:
+Här har vi en if-sats inom en funktion:
 
 ```python
 def tervehdi(nimi):
@@ -258,7 +264,7 @@ Moikka, Matti
 
 </sample-output>
 
-Seuraavassa funktiossa puolestaan on kaksi parametria:
+Den här funktionen tar emot två argument:
 
 ```python
 def summa(x, y):
@@ -276,9 +282,9 @@ Parametrien 5 ja 24 summa on 29
 
 </sample-output>
 
-Funktio myös määrittelee "apumuuttujan" _tulos_, mihin se sijoittaa parametriensa summan.
+Funktionen har också en hjälpvariabel, `resultat`, som används för att lagra summan av argumentens värden.
 
-Huomaa, että parametrien nimillä ei ole mitään tekemistä funktion ulkopuolella olevien muuttujien kanssa. Esimerkiksi jos kutsumme äskeistä funktiota
+Märk att namnen på parametrarna i funktionsdefinitionen inte har några kopplingar till andra variabler utanför definitionen. Vi kan anropa ovanstående funktion på följande sätt:
 
 ```python
 x = 100
@@ -287,7 +293,7 @@ summa(1, 2)
 summa(x + y, 10)
 ```
 
-niin tuloksena on:
+Det här skriver ut:
 
 <sample-output>
 
@@ -296,18 +302,18 @@ Parametrien 130 ja 10 summa on 140
 
 </sample-output>
 
-Ensimmäisessä kutsussa parametrien arvot funktion sisällä ovat `x = 1` ja `y = 2`, ja toisessa kutsussa arvot ovat `x = 130` ja `y = 10`.
+I det första funktionsanropet får parametrarna värdena `x = 1` och `y = 2`. I det andra anropet får de värdena `x = 130` och `y = 10`. Det här oavsett att vi i anropet använder variabler med samma namn.
 
-Palaamme funktioihin ja parametrien määrittelyyn tarkemmin seuraavan osan alussa.
+I nästa modul återkommer vi till funktionsdefinitioner.
 
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat tätä-->
-## Varoitus: globaalin muuttujan käyttö funktion sisällä
+## Varning: globala variabler inom funktioner
 
-Kuten olemme nähneet, funktioiden sisällä on mahdollista määritellä muuttujia. Kannattaa myös huomata se, että funktio näkee sen ulkopuolella eli pääohjelmassa määritellyt muuttujat. Tälläisia muuttujia sanotaan _globaaleiksi_ muuttujiksi.
+I exemplen ovan observerade vi att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Globaalien muuttujien käyttämistä funktioista käsin ei useimmiten pidetä hyvänä asiana muun muassa siksi, että ne saattavat johtaa ikäviin bugeihin.
+Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
 
-Seuraavassa on esimerkki funktiosta, joka käyttää "vahingossa" globaalia muuttujaa:
+Här är ett exempel på en funktion som använder en global variabel ”av misstag”:
 
 ```python
 # globaali muuttuja
@@ -328,7 +334,7 @@ Hei Emilia
 
 </sample-output>
 
-Vaikka funktiota kutsutaan oikein, se tulostaa aina globaalissa muuttujassa olevan nimen _Emilia_.
+Oavsett vilka argument vi anropar funktionen med skrivs värdet ”Beatrice” från den globala variabeln ut.
 
 <in-browser-programming-exercise name="Keskiarvo" tmcname="osa03-25_keskiarvo">
 
@@ -465,6 +471,6 @@ uayba
 
 <quiz id="ecfc4b08-6ee4-514c-a830-a2d846364928"></quiz>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en kort enkät gällande den här veckans material.
 
 <quiz id="3f7c6a3f-40a6-5e2b-ba4a-5acddee4b9b7"></quiz>

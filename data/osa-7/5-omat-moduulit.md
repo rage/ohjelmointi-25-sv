@@ -1,19 +1,19 @@
 ---
 path: '/osa-7/5-omat-moduulit'
-title: 'Oman moduulin tekeminen'
+title: 'Skapa dina egna moduler'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda oman moduulin
-- Tiedät, mitä Pythonin muuttuja `__name__` ja sen arvo `__main__` merkitsevät
+* kan du skapa dina egna moduler
+* vet du vad Python-variabeln `__name__` och värdet `__main__` har för betydelse.
 
 </text-box>
 
-Omien moduulien tekeminen on helppoa Pythonissa, koska mikä tahansa Python-koodia sisältävä tiedosto voi toimia moduulina. Tarkastellaan esimerkkinä seuraavaa tiedostoa `sanat.py`:
+Att skapa dina egna Python-moduler är enkelt. Vilken som helst fil som innehåller valid Python-kod kan importeras som en modul. Låt oss säga att vi har filen `ord.py`, med följande innehåll:
 
 ```python
 def eka_sana(mjono: str):
@@ -29,7 +29,7 @@ def sanojen_maara(mjono: str):
     return len(osat)
 ```
 
-Voimme käyttää tässä tiedostossa olevia funktioita toisessa tiedostossa seuraavasti:
+Funktionerna som definierats i filen kan kommas åt genom att importera filen:
 
 ```python
 import sanat
@@ -49,9 +49,9 @@ hississä
 
 </sample-output>
 
-Huomaa, että moduulin kooditiedoston pitää sijaita joko samassa hakemistossa ohjelman kanssa tai jossakin Pythonin oletushakemistossa, jotta sen voi ottaa käyttöön `import`-komennolla.
+Obs! Filen som innehåller Python-modulen måste befinna sig i samma mapp där programmet som importerar modulen finns i. Alternativt kan filen med modulen vara i någon av de andra mappar där Python söker moduler ifrån. I övriga fall kommer Pythontolken inte att hitta modulen när `import`-satsen körs.
 
-Voimme käyttää omaa moduulia samalla periaatteella kuin standardikirjaston moduuleja. Esimerkiksi näin:
+Vi kan använda våra moduler exakt på samma sätt som moduler i Pythons standardbibliotek:
 
 ```python
 from sanat import eka_sana, vika_sana
@@ -70,19 +70,19 @@ Viimeinen sana oli: ohjelmointikieli
 
 </sample-output>
 
-## Hyötyä tyyppivihjeistä
+## Använda typledtrådar
 
-Moduulissa on hyödyllistä, että funktioissa käytetään tyyppivihjeitä. Kun joku muu käyttää moduulia editorilla, joka ymmärtää tyyppivihjeitä, ne helpottavat moduulin käyttämistä.
+När vi använder moduler är typledtrådar speciellt till nytta. Om du använder en kodeditor som stödjer typledtrådar, kommer användandet av moduler att bli mycket enklare.
 
-Esimerkiksi Visual Studio Code näyttää funktion tyypit näin koodia kirjoittaessa:
+Till exempel Visual Studio Code visar typledtrådar medan du skriver kod:
 
 <img src="7_vihje.png">
 
-## Moduulin päätason koodi
+## Kod i modulens huvudfunktion
 
-Jos moduulissa on päätason koodia, joka ei ole funktion sisällä, koodi suoritetaan automaattisesti, kun moduuli otetaan mukaan `import`-komennolla toisessa tiedostossa.
+Om en modul innehåller kod som inte finns inom en funktionsdefinition (dvs. kod i huvudfunktionen), kommer den här koden att köras automatiskt då modulen importeras.
 
-Oletetaan, että `sanat.py`-tiedostoon on kirjoitettu muutama testitapaus:
+Låt oss se på en situation där `ord.py` innehåller några testutskrifter:
 
 ```python
 def eka_sana(mjono: str):
@@ -102,7 +102,7 @@ print(vika_sana("Tämä on testeistä toinen"))
 print(sanojen_maara("Yks kaks kolme neljä viisi"))
 ```
 
-Kun moduuli otetaan nyt käyttöön `import`-lauseella, suoritetaan automaattisesti myös moduulissa funktioiden ulkopuolella oleva koodi:
+Om vi nu importerar modulen med en `import`-sats, kommer all kod utanför de definierade funktionerna att köras:
 
 ```python
 import sanat
@@ -125,11 +125,11 @@ hississä
 
 </sample-output>
 
-Tämä ei ole hyvä, koska moduulin käyttäjän ohjelmaa sotkee moduulissa oleva testitulostus.
+Som du ser, är det här inte en riktigt bra sak i vår situation, eftersom vår utskrift nu blandas med testutskrifter från modulen.
 
-Pythonista löytyy onneksi ratkaisu pulmaan. Ohjelmassa on mahdollista testata, suoritetaanko ohjelmaa itseään vai onko ohjelma otettu käyttöön moduulina `import`-lauseella. Tämä onnistuu muuttujan `__name__` avulla. Python tallentaa muuttujaan tiedon suoritettavasta ohjelmasta: jos ohjelmaa suoritetaan sellaisenaan, muuttujan arvo on merkkijono `__main__`. Jos ohjelma on tuotu osaksi jotain toista ohjelmaa, muuttujan arvona on suoritettavan ohjelman nimi (eli tässä tapauksessa `sanat`).
+Till all lycka finns en lösning, och den är bekant sedan tidigare. Vi måste helt enkelt testa om programmet körs självständigt eller om koden har importerats med en `import`-sats. Python har en inbyggd variabel `__name__` som innehåller namnet på programmet som körs. Om programmet körs självständigt är värdet på den nyss nämnda variabeln `__main__`. Om programmet däremot har importerats är värdet på variabeln namnet på modulen som importerats (i vårt fall `ord`).
 
-Moduuliin voidaan siis lisätä edellistä tietoa hyödyntäen ehtolause, jonka avulla testikoodi suoritetaan ainoastaan silloin, kun ohjelma ajetaan omana itsenään eikä toisen ohjelman osaksi tuotuna:
+Nu när vi vet det här kan vi lägga till en if-sats som låter oss köra våra test endast då programmet körs självständigt. Som du ser nedan, är strukturen bekant:
 
 ```python
 def eka_sana(mjono: str) -> str:
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     print(sanojen_lkm("Yks kaks kolme neljä viisi"))
 ```
 
-Nyt moduulin itsensä suorittaminen suorittaa testikutsut:
+Om du kör modulen självständigt, skrivs testutskrifterna ut:
 
 <sample-output>
 
@@ -161,7 +161,7 @@ toinen
 
 </sample-output>
 
-Kun moduuli sen sijaan tuodaan osaksi jotain muuta ohjelmaa, testejä ei suoriteta:
+När modulen importeras i ett program, kommer testutskrifterna inte att göras:
 
 ```python
 import sanat
@@ -180,6 +180,8 @@ hississä
 3
 
 </sample-output>
+
+I uppgifterna under den här kursen har du flera gånger ombetts att ha dina test under ett `if __name__ == ”__main__”` -block. Nu vet du varför.
 
 <programming-exercise name='Merkkiapuri' tmcname='osa07-17_merkkiapuri'>
 
@@ -222,6 +224,6 @@ Tämä on testi katsotaan miten käy11
 
 <quiz id="caf731dc-cf22-5dfc-ad4d-a3224b2df020"></quiz>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en kort enkät om materialet för den här veckan.
 
 <quiz id="7794fe8b-1641-5a54-94d5-16d900a14d13"></quiz>

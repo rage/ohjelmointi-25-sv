@@ -1,22 +1,22 @@
 ---
 path: '/osa-7/4-datan-kasittely'
-title: 'Datan käsittely'
+title: 'Behandla data'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen:
+Efter den här delen
 
-- Osaat käyttää moduulia CSV-tiedoston käsittelyyn
-- Osaat käyttää moduulia JSON-tiedoston käsittelyyn
-- Osaat hakea netissä olevan tiedoston sisällön
+* kan du använda en modul för att behandla CSV-filer
+* kan du använda en modul för att behandla JSON-filer
+* kan du komma åt filer från internet och läsa dem.
 
 </text-box>
 
-## CSV-tiedoston lukeminen
+## Läsa CSV-filer
 
-Olemme tähän mennessä käsitelleet CSV-tiedostoja omalla koodilla, mutta tähän on myös valmis moduuli [csv](https://docs.python.org/3/library/csv.html), jota voi käyttää näin:
+CSV är ett så enkelt format att vi tills vidare har behandlat dessa filer med självskriven kod. Det finns däremot en färdig modul för CSV-filer i Pythons standardbibliotek: `csv`. Modulen fungerar så här:
 
 ```python
 import csv
@@ -26,7 +26,7 @@ with open("testi.csv") as tiedosto:
         print(rivi)
 ```
 
-Yllä oleva koodi lukee rivit CSV-tiedostosta `testi.csv`, jossa erotinmerkki on `;`. Esimerkiksi jos tiedoston sisältö on
+Koden ovan läser alla rader i CSV-filen `test.csv`, skiljer innehåller på varje rad med separatorn `;` och skriver ut varje lista. Om innehållet i filen är det följande…
 
 ```x
 012121212;5
@@ -34,7 +34,7 @@ Yllä oleva koodi lukee rivit CSV-tiedostosta `testi.csv`, jossa erotinmerkki on
 015151515;4
 ```
 
-niin koodi antaa seuraavan tuloksen:
+…borde koden skriva ut det här:
 
 <sample-output>
 
@@ -44,13 +44,13 @@ niin koodi antaa seuraavan tuloksen:
 
 </sample-output>
 
-Mitä hyötyä on käyttää moduulia sen sijaan, että toteuttaa lukemisen itse `split`-funktiolla? Yksi hyöty on, että moduulin toteutus toimii myös silloin, kun arvona on merkkijono, jonka sisällä on erotinmerkki. Esimerkiksi jos tiedoston sisältö on
+Eftersom CSV-formatet är så enkelt, kan vi fråga oss vad nyttan med en skild modul är då vi bara kunde använda `split`-funktionen. Det finns några bra orsaker. En orsak är att `csv`-modulen klarar av strängar som innehåller skiljetecknet:
 
 ```x
 "aaa;bbb";"ccc;ddd"
 ```
 
-niin koodin tulos on:
+Koden ovan skulle då ge följande resultat:
 
 <sample-output>
 
@@ -58,13 +58,13 @@ niin koodin tulos on:
 
 </sample-output>
 
-Jos vain jakaisimme rivin osiin `;`-merkkien kohdista, lukeminen ei toimisi oikein, koska myös merkkijonot jakaantuisivat.
+Om vi skulle använda `split`-funktionen, skulle själva strängarna också delas i två, vilket skulle förstöra den data som ska behandlas och antagligen orsaka problem i programmet.
 
-## JSON-tiedoston lukeminen
+## Läsa JSON-filer
 
-CSV-muodon lisäksi on olemassa muitakin koneluettavia tiedostomuotoja. Eräs näistä on erityisesti tietojen siirrossa yleisesti käytetty [JSON](https://www.json.org/json-en.html).
+CSV är bara ett maskinläsbart dataformat. JSON är ett annat sådant format och det används ofta när data överförs mellan olika program.
 
-JSON-tiedostot ovat tekstitiedostoja, joilla on tietty tarkka muoto. Seuraavassa esimerkkinä JSON-tiedosto `kurssit.json`, jossa on tietoa kursseista:
+JSON-filer är textfiler som följer en strikt syntax, som eventuellt är lite mindre människovänligt än CSV-formatet. Följande exempel använder filen `kurser.json`, som innehåller information om några kurser:
 
 ```x
 [
@@ -87,9 +87,9 @@ JSON-tiedostot ovat tekstitiedostoja, joilla on tietty tarkka muoto. Seuraavassa
 ```
 
 
-JSON-tiedostot näyttävät kohtuullisen tutulta Pythonin käyttäjille. Itse asiassa tiedoston sisältö vastaa Pythonin listaa, jonka sisällä on kolme sanakirjaa.
+Strukturen hos en JSON-fil kanske ser bekant ut. JSON-filen ser ut som en Python-lista som innehåller tre Python-lexikon.
 
-Standardikirjastossa on JSON-tiedostojen käsittelyyn moduuli [json](https://docs.python.org/3/library/json.html). Siinä oleva funktio `loads` muuttaa merkkijonona annetun JSON-datan Pythonin tietorakenteiksi. Esimerkiksi koodin
+Standardbiblioteket innehåller `json`-modulen som kan användas för att behandla JSON-filer. Funktionen `loads` tar emot ett argument som innehåller data i JSON-format och konverterar den till Pythons egen datastruktur. När vi använder `kurser.json` i koden nedan…
 
 ```python
 import json
@@ -100,7 +100,7 @@ kurssit = json.loads(data)
 print(kurssit)
 ```
 
-tulos on seuraava:
+…får vi följande utskrift:
 
 <sample-output>
 
@@ -108,7 +108,7 @@ tulos on seuraava:
 
 </sample-output>
 
-Koodia voisi jatkaa vaikka seuraavasti, jolloin koodi tulostaa jokaisen kurssin nimen:
+Om vi vill skriva ut namnet på varje kurs kan vi använda en for-loop:
 
 ```python
 for kurssi in kurssit:
@@ -162,12 +162,11 @@ Harrastukset tulee luetella samassa järjestyksessä kuin ne on annettu JSON-tie
 
 </programming-exercise>
 
-## Netissä olevan tiedoston hakeminen
+## Hämta en fil från internet
 
-Pythonin standardikirjaston funktion [urllib.request.urlopen](
-https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen) avulla on helppo hakea internetistä sisältöä ohjelmista käsin.
+Standardbiblioteket i Python innehåller också moduler som kan användas för att hantera innehåll på internet. En nyttig funktion är `urllib.request.urlopen`. Det lönar sig att bekanta sig med modulen som helhet, men följande exempel borde räcka till för att få en insikt i hur funktionen fungerar. Den kan användas för att hämta data från internet, för vidare behandling i ditt program.
 
-Esim. seuraava koodi tulostaa Helsingin yliopiston etusivun sisällön:
+Följande kodstunn skriver ut innehållet från huvudsidan för Helsingfors universitet:
 
 ```python
 import urllib.request
@@ -176,7 +175,7 @@ pyynto = urllib.request.urlopen("https://helsinki.fi")
 print(pyynto.read())
 ```
 
-Ihmisille tarkoitetut sivut tosin eivät tulostu kovin selkeinä, mutta internetissä on myös runsaasti koneluettavaa dataa, joka on usein JSON-muodossa.
+Sidor som är skräddarsydda för människoögon ser inte vanligtvis trevliga ut när deras kod skrivs ut. I de kommande exemplen kommer vi däremot att läsa in data i maskinformat från internet. En stor del maskinläsbara data på internet är i JSON-format.
 
 <programming-exercise name='Kurssien tilastot' tmcname='osa07-13_kurssistatistiikka'>
 
@@ -337,13 +336,13 @@ Vinkki: sisäkkäiset sanakirjat (dict) ovat mainio työkalua tallennettaessa er
 
 </programming-exercise>
 
-## Moduulien etsiminen
+## Hitta moduler
 
-Pythonin dokumentaatiosta löytyy tietoa kaikista standardikirjaston moduuleista:
+Pythons officiella dokumentation innehåller information om alla moduler som är tillgängliga i standardbiblioteket:
 
 * https://docs.python.org/3/library/
 
-Standardikirjaston lisäksi verkosta löytyy lukuisia vapaasti käytettäviä kirjastoja eri tarpeisiin. Joitakin yleisesti käytettyjä moduuleja on täällä:
+Förutom standardbiblioteket är internet fullproppat med andra Python-moduler för olika ändamål. Några vanliga moduler listas på den här sidan:
 
 * https://wiki.python.org/moin/UsefulModules
 

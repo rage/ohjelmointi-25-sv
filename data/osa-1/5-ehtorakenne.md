@@ -1,23 +1,22 @@
 ---
 path: "/osa-1/5-ehtorakenne"
-title: "Ehtorakenne"
+title: "If-satser"
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat käyttää yksinkertaista ehtorakennetta ohjelmoinnissa
-- Tiedät, mitä tarkoitetaan totuusarvoilla
-- Osaat muodostaa ehtoja vertailuoperaattoreiden avulla
+* kan du använda dig av en enkel if-sats när du programmerar
+* vet du vad ett Boolean-värde är
+* kan du uttrycka villkor med hjälp av jämförelseoperatorer.
 
 </text-box>
 
-Tähän mennessä kaikissa ohjelmissamme on suoritettu samat rivit samassa järjestyksessä.
-Usein on kuitenkin tarpeen määritellä ohjelmaan osia, jotka suoritetaan vain tietyissä tilanteissa.
+Hittills har vi skapat program där koden körts rad för rad från början till slut. Istället för att köra varje kodrad när programmet är igång är det ofta nyttigt att ha delar i programmet som endast körs i vissa situationer.
 
-Esimerkiksi seuraava koodi tarkastaa, onko henkilö täysi-ikäinen:
+Till exempel följande program verifierar att användaren är tillräckligt gammal:
 
 ```python
 ika = int(input("Kuinka vanha olet? "))
@@ -29,7 +28,7 @@ if ika > 17:
 print("Seuraava asiakas, kiitos!")
 ```
 
-Ohjelman suoritus näyttää tältä, kun ikä on suurempi kuin 17:
+När användaren är över 17 år, borde det se ut så här när programmet körs:
 
 <sample-output>
 
@@ -40,7 +39,7 @@ Seuraava asiakas, kiitos!
 
 </sample-output>
 
-Jos kuitenkaan ikä ei ole suurempi kuin 17, käy näin:
+Däremot, om användaren är 17 eller yngre, ser utskriften ut så här:
 
 <sample-output>
 
@@ -49,13 +48,13 @@ Seuraava asiakas, kiitos!
 
 </sample-output>
 
-Esimerkkejä tarkastelemalla huomataan, että syötteenä annettu arvo vaikuttaa nyt siihen, mitkä osat ohjelmasta suoritetaan. Ohjelmassa on käytössä _ehtorakenne_, jonka sisällä oleva koodi suoritetaan vain, kun annettu ehto on tosi.
+Dessa exempel visar hur ett värde som getts till programmet påverkar vilka delar av koden som körs. Programmet innehåller en if-sats med kod som körs enbart då ett definierat villkor uppfylls.
 
 <img src="1_6.png">
 
-Ehtorakenteessa avainsanaa `if` seuraa jokin _ehto_, kuten kahden arvon vertailu. Tämän jälkeen tuleva koodi suoritetaan vain, jos ehto pitää paikkansa.
+I en if-sats följs nyckelordet `if` med ett villkor som till exempel kan vara en jämförelse av två värden. Koden som följer körs endast då villkoret uppfylls.
 
-Huomaa, että ehtorakenteen ensimmäisen rivin lopussa on kaksoispiste. Seuraavassa koodissa kaksoispiste on unohtunut:
+Notera kolontecknet. Om det saknas…
 
 ```python
 ika = 10
@@ -65,7 +64,7 @@ if ika > 17
     print("Olet täysi-ikäinen.")
 ```
 
-Tämän seurauksena koodi antaa virheen:
+…orsakas ett fel när programmet körs:
 
 <sample-output>
 <pre>
@@ -76,20 +75,20 @@ SyntaxError: invalid syntax
 </pre>
 </sample-output>
 
-## Vertailuoperaattorit
+## Jämförelseoperatorer
 
-Tyypillinen ehto on kahden arvon vertailu. Pythonin vertailuoperaattorit ovat:
+Det är vanligt att man vill jämföra två värden sinsemellan. Här följer en tabell över de vanligaste jämförelseoperatorerna i Python:
 
-| Operaattori | Merkitys       | Esimerkki    |
-|:-----------:|----------------|--------------|
-| `==` | Yhtä suuri    | `a == b` |
-| `!=` | Eri suuri | `a != b` |
-| `>` | Suurempi | `a > b` |
-| `>=` | Suurempi tai yhtä suuri | `a >= b` |
-| `<` | Pienempi | `a < b` |
-| `<=` | Pienempi tai yhtä suuri | `a <= b` |
+| Operator | Betydelse                | Exempel  |
+|:--------:|--------------------------|----------|
+| `==`     | Är lika med              | `a == b` |
+| `!=`     | Är inte lika             | `a != b` |
+| `>`      | Större än                | `a > b`  |
+| `>=`     | Större än eller lika med | `a >= b` |
+| `<`      | Mindre än                | `a < b`  |
+| `<=`     | Mindre än eller lika med | `a <= b` |
 
-Tarkastellaan esimerkkinä ohjelmaa, joka tulostaa tiedon siitä, onko käyttäjän syöttämä luku negatiivinen, positiivinen vai nolla:
+Vi tar nu en titt på ett program som skriver ut olika saker baserat på det värde som användaren anger. Här har vi if-satser som kan uppfyllas då värdet är negativt, positivt eller lika med noll:
 
 ```python
 luku = int(input("Anna luku: "))
@@ -104,7 +103,7 @@ if luku == 0:
     print("Luku on nolla.")
 ```
 
-Ohjelma suoritettuna kolme kertaa eri syötteillä:
+Här har vi tre exempel med olika indata:
 
 <sample-output>
 
@@ -127,11 +126,11 @@ Luku on nolla.
 
 </sample-output>
 
-## Sisentäminen
+## Indentering
 
-Python tunnistaa ehtorakenteen sisällä olevan koodin siitä, että jokainen rivi on _sisennetty_ samalla tavalla. Tämä tarkoittaa, että ehtorakenteen sisällä olevan koodin alussa on tyhjää tilaa. Jokaisella rivillä tulee olla yhtä paljon tyhjää tilaa.
+Python känner igen att en kodsnutt hör till en if-sats då varje rad är indenterad på samma sätt. Det här betyder att det finns mellanrum i början av varje kodrad som hör till if-satsen. Mellanrummet ska vara det samma för varje rad.
 
-Esimerkiksi:
+Exempelvis:
 
 ````python
 salasana = input("Anna salasana: ")
@@ -144,11 +143,11 @@ if salasana == "kissa":
 print("Ohjelman suoritus päättyi. Kiitos ja hei!")
 ````
 
-Tyhjä tila saadaan aikaan _tabulaattorilla_, jonka saat Tab-näppäimestä.
+Du kan använda Tab-tangenten för att lägga till mellanrum där det behövs.
 
 <img src="1_6_keyboard.png">
 
-Suurin osa editoreista osaa automaattisesti sisentää rivin, kun edellinen rivi päättyy kaksoispisteeseen. Voit lopettaa sisentämisen editorissa painamalla rivin alussa `Backspace`-näppäintä.
+Dessutom kan flera texteditorer automatiskt indentera den följande raden när Enter-tangenten trycks efter ett kolon. Du får bort indenteringen genom att använda Backspace-tangenten i början av en rad.
 
 <img src="1_6_keyboard2.png">
 <small><center>
@@ -270,13 +269,15 @@ Kiitos!
 </in-browser-programming-exercise>
 
 
-## Totuusarvot
+## Boolean-värden och -uttryck
 
-Ehtorakenteessa käytettävä ehto saa totuusarvon `True` (tosi) tai `False` (epätosi). Esimerkiksi ehto `a < 5` on tosi jos `a` on alle 5 ja epätosi jos `a` on 5 tai suurempi.
+Alla villkor i en if-sats resulterar i ett sanningsvärde, det vill säga sant eller falskt. Till exempel villkoret `a < 5` är sant då `a` är mindre än fem och falskt då `a` är fem eller större.
 
-Ohjelmoinnissa totuusarvoja kutsutaan usein boolean-arvoiksi matemaatikko George Boolen kehittämän algebrallisen rakenteen mukaan. Pythonissa totuusarvoja käsitellään `bool`-tietotyypin avulla, ja `bool`-tyyppisillä muuttujilla voi olla vain kaksi eri arvoa: `True` tai `False`. 
+Denna typ av värden kallas alltså Boolean-värden (efter matematikern George Boole). I Python representerar datatypen `bool` ett sanningsvärde. Variabler av typen `bool` kan endast ha ett av följande värden: `True` (sant) och `False` (falskt).
 
-Voimme asettaa ehdon tuloksen muuttujan arvoksi samaan tapaan kuin laskutoimituksen tuloksen:
+En kodsnutt som resulterar i något av de ovan nämnda värdena kallas Boolean-uttryck. Ett villkor i en if-sats är alltid ett Boolean-uttryck och kan i flera situationer användas som synonym för ordet villkor.
+
+Resultatet av ett Boolean-uttryck kan lagras i en variabel på samma sätt som vilken som helst annan numerisk räkneoperation:
 
 ```python
 a = 3
@@ -293,7 +294,7 @@ a on pienempi kuin 5
 
 </sample-output>
 
-Voimme käyttää koodissa myös sanoja `True` ja `False`. Esimerkiksi seuraava koodi suorittaa `print`-komennon aina, koska ehdon arvona on `True`:
+Pythons nyckelord `True` och `False` kan också användas direkt som sådana. I det följande exemplet körs `print`-kommandot alltid, eftersom värdet på villkoret är `True`:
 
 ```python
 ehto = True
@@ -307,7 +308,7 @@ Tänne tullaan aina
 
 </sample-output>
 
-Tällainen ohjelma ei ole sinänsä kovin hyödyllinen, mutta myöhemmin kurssilla näemme, mitä hyötyä on totuusarvoista muuttujissa.
+Man kan tycka att det inte i ovanstående exempel verkar vara en så nyttig funktion. Senare under kursens lopp ska vi se på situationer där vi kan ha mera nytta av Boolean-variabler.
 
 <in-browser-programming-exercise name="Laskin" tmcname="osa01-25_laskin">
 
@@ -520,6 +521,6 @@ Kertauskysely tämän osan asioihin liittyen:
 
 <quiz id="6a20ae0e-38b3-5fb3-93c4-ebd70162fbb6"></quiz>
 
-Vastaa lopuksi kyselyyn tämän viikon materiaaleista. Saat kyselyyn vastaamisesta yhden pisteen:
+Vänligen svara på en kort enkät om materialet i den här veckans modul. Du får ett poäng när du fyllt i enkäten.
 
 <quiz id="63e241aa-f451-5dd6-b06e-a363703cdc6c"></quiz>

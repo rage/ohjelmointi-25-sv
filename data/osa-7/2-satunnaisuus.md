@@ -1,25 +1,25 @@
 ---
 path: '/osa-7/2-satunnaisuus'
-title: 'Satunnaisuus'
+title: 'Slumpmässighet'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tunnet moduulin `random` funktioita
-- Osaat hyödyntää satunnaisuutta omissa ohjelmissasi
+* känner du till några av funktionerna i `random`-modulen
+* kan du använda dig av slumpmässiga tal i dina program.
 
 </text-box>
 
-Tässä luvussa tutustutaan standardikirjaston moduuliin [random](https://docs.python.org/3/library/random.html?highlight=random#module-random), joka tarjoaa välineistöä satunnaislukujen generointiin ja muuhun satunnaiseen toiminnallisuuteen.
+I den här delen ser vi på modulen `random` i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet med ett slumpmässigt element.
 
-Tässä ja seuraavissa luvuissa esiteltävien funktioiden yhteyteen on lisäilty linkkejä standardikirjaston [dokumentaatioon](https://docs.python.org/3/library/). Linkkejä kannattaa klikkailla ja pikkuhiljaa totutella siihen, miltä dokumentaatio näyttää.
+Delarna i den här modulen innehåller flera länkar till standardbibliotekets dokumentation. Vi rekommenderar att du följer länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
 
-## Luvun arpominen
+## Skapa ett slumpmässigt tal
 
-Funktio [randint(a, b)](https://docs.python.org/3/library/random.html?highlight=random#random.randint) antaa satunnaisen kokonaisluvun väliltä `a`...`b`. Esimerkiksi seuraava ohjelma simuloi nopan heittämistä:
+Funktionen `randint(a, b)` returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Till exempel det här programmet fungerar som en normal tärning:
 
 ```python
 from random import randint
@@ -27,7 +27,7 @@ from random import randint
 print("Noppa antaa:", randint(1, 6))
 ```
 
-Ohjelman tulos voisi olla vaikkapa:
+Så här kan utskriften se ut:
 
 <sample-output>
 
@@ -35,7 +35,7 @@ Noppa antaa: 4
 
 </sample-output>
 
-Seuraava ohjelma puolestaan heittää noppaa kymmenen kertaa:
+Det här programmet kastar en tärning tio gånger:
 
 ```python
 from random import randint
@@ -44,7 +44,7 @@ for i in range(10):
     print("Noppa antaa:", randint(1, 6))
 ```
 
-Ohjelman tulos voisi olla seuraava:
+Utskriften skulle kunna se ut så här:
 
 <sample-output>
 
@@ -61,11 +61,11 @@ Noppa antaa: 3
 
 </sample-output>
 
-Huomaa, että funktio `randint` toimii eri logiikalla kuin aiemmin käyttämämme funktio `range`, joka luo lukuvälin. Kun kutsumme funktiota `randint(1, 6)`, lukuväli on 1...6, mutta kun kutsumme funktiota `range(1, 6)`, lukuväli on 1...5.
+Obs! Det är värt att notera att funktionen `randint` fungerar lite olikt än till exempel extrahering (slicing) eller `range`-funktionen. Funktionsanropet `randint(1, 6)` resulterar i ett nummer mellan 1 och 6, medan anropet `range(1, 6)` resulterar i ett intervall från 1 till 5.
 
-## Lisää funktioita
+## Flera slumpmässighetsfunktioner
 
-Funktio [shuffle](https://docs.python.org/3/library/random.html?highlight=random#random.shuffle) sekoittaa sille annetun tietorakenteen. Esimerkiksi seuraava ohjelma sekoittaa listalla olevat sanat:
+Funktionen `shuffle` blandar elementen i den datastruktur som ges som argument. Till exempel följande program blandar en lista med ord:
 
 ```python
 from random import shuffle
@@ -81,7 +81,7 @@ print(sanat)
 
 </sample-output>
 
-Funktio `choice` puolestaan valitsee satunnaisen alkion tietorakenteesta:
+Funktionen `choice` returnerar ett slumpmässigt valt element från en datastruktur:
 
 ```python
 from random import choice
@@ -96,11 +96,11 @@ print(choice(sanat))
 
 </sample-output>
 
-## Lottorivin arvonta
+## Lottorad
 
-Tarkastellaan esimerkkinä tilannetta, jossa haluamme arpoa lottorivin. Lotossa on yhteensä 40 numeroa, joista arvotaan 7 numeroa riviin.
+Ett vanligt sätt att undersöka slumpmässighet är att se på lottorader. Låt oss lotta ut en vinnande rad. I Finland består lottoraden av sju siffror mellan 1 och 40.
 
-Yksinkertainen tapa koettaa arpoa lottorivi on seuraava:
+Så här kunde det se ut när vi försöker lotta ut en rad:
 
 ```python
 from random import randint
@@ -109,9 +109,9 @@ for i in range(7):
     print(randint(1, 40))
 ```
 
-Tämä ei ole kuitenkaan toimiva tapa, koska sama numero saattaa tulla useita kertoja riviin. Tarvitsemme jonkin menetelmän, joka varmistaa, että jokainen numero on eri numero.
+Det här skulle inte fungera i det långa loppet eftersom ett och samma nummer kan dyka upp flera gånger på samma lottorad. Vi måste se till att alla nummer är unika.
 
-Yksi mahdollisuus on tallentaa arvotut numerot listaan ja lisätä uusi numero listaan vain, jos sitä ei vielä ole siellä. Voimme jatkaa tätä, kunnes listassa on 7 numeroa:
+Ett sätt är att lagra de lottade siffrorna i en lista. Då lägger vi bara till en ny siffra om siffran inte redan finns i listan. Vi använder oss av en loop som fortsätter tills listans längd är sju:
 
 ```python
 from random import randint
@@ -125,7 +125,7 @@ while len(rivi) < 7:
 print(rivi)
 ```
 
-Voimme kuitenkin toteuttaa arvonnan myös lyhyemmin funktion `shuffle` avulla:
+Vi kan också spara lite utrymme genom att använda `shuffle`-funktionen:
 
 ```python
 from random import shuffle
@@ -136,9 +136,9 @@ rivi = kaikki[0:7]
 print(rivi)
 ```
 
-Tässä ideana on, että luomme ensin listan, jossa on kaikki numerot väliltä 1–40. Tämän jälkeen sekoitamme listan ja valitsemme sitten 7 ensimmäistä numeroa riviin. Tämän ansiosta meidän ei tarvitse tehdä silmukkaa.
+Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Listan blandas sedan, varefter de första sju siffrorna utgör veckans vinnande rad. Nu behöver vi ingen loop.
 
-Itse asiassa voimme toteuttaa arvonnan vielä helpommin, koska Pythonin standardikirjastossa on myös funktio [sample](https://docs.python.org/3/library/random.html?highlight=random#random.sample), joka valitsee annetusta tietorakenteesta halutun määrän alkioita:
+Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen `sample`. Den returnerar ett slumpmässigt val av en specifik storlek från en given datastruktur:
 
 ```python
 from random import sample
@@ -175,11 +175,11 @@ for numero in lottonumerot(7, 1, 40):
 
 </programming-exercise>
 
-## Mistä satunnaisluvut tulevat?
+## Varifrån kommer dessa slumpmässiga siffror från?
 
-Moduulin [random](https://docs.python.org/3/library/random.html) toiminta perustuu algoritmiin, joka tuottaa satunnaislukuja tietyn lähtöarvon ja matemaattisten operaatioiden avulla. Lähtöarvoa kutsutaan myös nimellä _siemenarvo_ (engl. _seed value_).
+Funktionaliteten i `random`-modulen är baserad på en algoritm som skapar slumpmässiga siffror på basis av ett specifikt startvärde och några matematiska operationer. Startvärdet kallas ofta seed value.
 
-Voimme halutessamme antaa siemenarvon itse funktiolla [seed](https://docs.python.org/3/library/random.html?highlight=random#random.seed):
+Vi kan själva ge ett sådant värde med `seed`-funktionen:
 
 ```python
 from random import randint, seed
@@ -189,13 +189,13 @@ seed(1337)
 print(randint(1, 100))
 ```
 
-Kun annamme siemenarvon itse, satunnaisuutta käyttävät funktiot antavat samat tulokset ohjelman jokaisella suorituskerralla. Tulokset voivat kuitenkin riippua käytetystä Pythonin versiosta.
+Om vi har funktioner som baserar sig på slumpmässighet och har valt ett seed-värde, kommer funktionen att ge samma resultat varje gång den körs. Resultatet kan skilja sig mellan olika Python-versioner, men i grunden kommer slumpmässigheten att försvinna då vi definierar seed-värdet. Funktionaliteten kan dock vara nyttig då vi exempelvis testar på vårt program.
 
-<text-box variant="info" name="Aito satunnaisuus">
+<text-box variant="info" name="Sann slumpmässighet">
 
-Jos tarkkoja ollaan, moduulin `random` muodostamat luvut eivät ole aitoja satunnaislukuja, vaan _pseudosatunnaislukuja_. Tietokoneen avulla on vaikea arpoa täysin satunnaisia lukuja, koska sen toiminta on kaikilta osin ennustettavissa. Monissa käyttötarkoituksissa luvut ovat kuitenkin tarpeeksi satunnaisia. Aitoja satunnaislukuja muodostettaessa lähteenä käytetään yleensä jotain tietokoneen ulkopuolista satunnaista ilmiötä, esimerkiksi radioaktiivista taustasäteilyä tai äänentasoa.
+För att vara korrekt, är de siffor som `random`-modulen ger inte i verkligheten slumpmässiga. Istället är de skenbart slumpmässiga (pseudorandom). Datorers funktionalitet är förutsebar och i en ideal situation kan man exakt bestämma hur de fungerar. Därmed är det mycket svårt att skapa sant slumpmässiga tal med en dator. I flera situationer räcket skenbart slumpmässiga tal. När sant slumpmässiga tal behövs skapas seed-värdet på basis av någon yttre källa som radioaktiv bakgrundsstrålning, ljudnivå eller lavalampor.
 
-Lisätietoa löydät esimerkiksi sivulta <a href="https://www.random.org/randomness/">random.org</a>.
+För ytterligare information om slumpmässighet, se random.org.
 
 </text-box>
 

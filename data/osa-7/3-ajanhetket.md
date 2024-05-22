@@ -1,22 +1,22 @@
 ---
 path: '/osa-7/3-aikojen-kasittely'
-title: 'Aikojen käsittely'
+title: 'Tid och datum'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät tavan käsitellä päivämääriä ja kellonaikoja Pythonissa
-- Osaat muodostaa ja käyttää `datetime`-olioita
-- Osaat vertailla päivämääriä ja kellonaikoja toisiinsa ja laskea niiden erotuksia
+* kan du behandla tid och datum med Python
+* kan du skapa och använda `datetime`-objekt
+* kan du jämföra och räkna skillnaden mellan två datum eller tidpunkter.
 
 </text-box>
 
-## Aikaolio
+## Objektet datetime
 
-Moduulin [datetime](https://docs.python.org/3/library/datetime.html?highlight=datetime#datetime.datetime) funktio [now](https://docs.python.org/3/library/datetime.html?highlight=datetime#datetime.datetime.now) antaa aikaolion, jossa on nykyinen päivämäärä ja kellonaika. Voimme esimerkiksi tulostaa nykyhetken päivämäärän ja kellonajan näin:
+Pythons `datetime`-modul innehåller funktionen `now`, som returnerar ett `datetime`-objekt med det nuvarande datumet och tidpunkten. Så här ser det normalt ut när man skriver ut ett `datetime`-objekt:
 
 ```python
 from datetime import datetime
@@ -31,7 +31,7 @@ print(aika)
 
 </sample-output>
 
-Toinen tapa muodostaa aikaolio on määrittää ajanhetki itse:
+Du kan också definiera objektet själv:
 
 ```python
 from datetime import datetime
@@ -46,9 +46,9 @@ print(aika)
 
 </sample-output>
 
-Kun emme antaneet kellonaikaa, oletuksena on, että kyseessä on keskiyö.
+Tidpunkten är vid midnatt om vi inte själv definierar den.
 
-Voimme hakea aikaoliosta ajan osia tähän tapaan:
+Olika element i `datetime`-objektet kan kommas åt på följande sätt:
 
 ```python
 from datetime import datetime
@@ -67,7 +67,7 @@ Vuosi: 1952
 
 </sample-output>
 
-Aikaoliolle voidaan antaa myös kellonaika halutulla tarkkuudella. Esimerkiksi:
+Tidpunkten under dagen kan också specificeras. Precisionen kan variera:
 
 ```python
 from datetime import datetime
@@ -76,9 +76,9 @@ pv1 = datetime(2020, 6, 30, 13, 00) # 30.6.2020 klo 13.00
 pv2 = datetime(2020, 6, 30, 18, 45) # 30.6.2020 klo 18.45
 ```
 
-## Aikojen vertailu ja ero
+## Jämföra tider och räkna skillnaden mellan dem
 
-Voimme vertailla aikoja samaan tapaan kuin lukuja käyttämällä tuttuja vertailuoperaattoreita:
+De bekanta jämförelseoperatorerna fungerar också för `datetime`-objekt:
 
 ```python
 from datetime import datetime
@@ -100,7 +100,7 @@ Juhannus on mennyt
 
 </sample-output>
 
-Voimme myös laskea kahden ajankohdan eron vähennyslaskuna:
+Skillnaden mellan två `datetime`-objekt kan enkelt räknas med subtraktionsoperatorn:
 
 ```python
 from datetime import datetime
@@ -118,9 +118,9 @@ Juhannukseen on vielä 37 päivää
 
 </sample-output>
 
-Huomaa, että vähennyslaskun tuloksena on [timedelta](https://docs.python.org/3/library/datetime.html?highlight=datetime#timedelta-objects)-olio, jolta voi kysyä vain rajoitetusti ajan yksikköjä. Voimme kysyä päivien määrän, mutta emme voi kysyä esimerkiksi vuosien määrää, koska vuoden pituus vaihtelee.
+Obs! Resultatet för en subtraktion med `datetime`-objekt är ett `timedelta`-objekt. Det är inte lika flexibelt som `datetime`-objektet. Du kan till exempel komma åt antalet dagar i ett `timedelta`-objekt, men inte antalet år, eftersom längden på ett år varierar. Ett `timedelta`-objekt innehåller attributen `days`, `seconds` och `microseconds`. Andra storheter kan ges som argument och de konverteras automatiskt till korrekt format.
 
-Timedelta-olion avulla on myös mahdollista selvittää, mikä ajanhetki saadaan kun tietty aika (viikkoina ja päivinä) lisätään johonkin ajanhetkeen:
+Addition med `datetime`- och `timedelta`-objekt är också möjligt. Resultatet är ett `datetime`-objekt där det specificerade antalet dagar (eller veckor, sekunder o.s.v.) är adderade:
 
 ```python
 from datetime import datetime, timedelta
@@ -143,7 +143,7 @@ Kun juhannuksesta kuluu 32 viikkoa ja 15 päivää on 2021-02-14 00:00:00
 
 </sample-output>
 
-Timedelta-olio toimii viikkojen ja päivien lisäksi tarkemmallakin tasolla:
+Vi kollar ännu hur det ser ut med högre precision:
 
 ```python
 nyt = datetime.now()
@@ -208,9 +208,9 @@ Oikeamuotoisia henkilötunnuksia testaamiseen ovat esimerkiksi seuraavat:
 
 </programming-exercise>
 
-## Aikojen muotoilu
+## Formatera tid och datum
 
-Voimme muotoilla ajanhetken haluamallamme tavalla [strftime](https://docs.python.org/3/library/datetime.html?highlight=datetime#datetime.date.strftime)-metodin avulla. Esimerkiksi seuraava koodi tulostaa nykyisen päivämäärän muodossa `pp.kk.vvvv`:
+Modulen `datetime` innehåller metoden `strftime` som kan användas för att formatera hur ett datum representeras som sträng. Till exempel följande kodsnutt kommer att skriva ut det nuvarande datumet i formatet `dd.mm.åååå` och därefter datumet och tiden i ett annat format:
 
 ```python
 from datetime import datetime
@@ -225,18 +225,20 @@ print(aika.strftime("%d.%m.%Y"))
 
 </sample-output>
 
-Ajan muotoilussa käytetään tiettyjä kirjainlyhenteitä. Seuraavassa listassa on joitakin mahdollisia lyhenteitä (täydellinen lista on Pythonin [dokumentaatiossa](https://docs.python.org/3/library/time.html#time.strftime)):
+Tidsformatering använder specifika tecken för att indikera ett visst format. Här är ett antal tecken (flera finns i Pythons dokumentation):
 
-Lyhenne | Merkitys
-:-------|:--------
-`%d` | päivä (01–31)
-`%m` | kuukausi (01–12)
-`%Y` | vuosi nelinumeroisena
-`%H` | tunnit 24 tunnin formaatissa
-`%M` | minuutit (00–59)
-`%S` | sekunnit (00–59)
+Förkortning | Betydelse
+:-----------|:---------
+`%d`        | dag (01–31)
+`%m`        | månad (01–12)
+`%Y`        | år (fyra siffor)
+`%H`        | timme (24 timmars format)
+`%M`        | minut (00–59)
+`%S`        | sekund (00–59)
 
-Voimme myös tehdä muotoilun toiseen suuntaan, jos esimerkiksi haluamme muuttaa käyttäjän antaman ajanhetken aikaolioksi. Tämä onnistuu metodilla [strptime](https://docs.python.org/3/library/datetime.html?highlight=datetime#datetime.datetime.strptime):
+Du kan också specificera vilket tecken som används för att skilja elementen i ett datum, så som du såg i exemplet ovan.
+
+Formatering för `datetime` fungerar också åt det andra hållet, det vill säga om du tar emot ett datum som en sträng från en användare och vill få det i `datetime`-format. Använd då metoden `strptime`:
 
 ```python
 from datetime import datetime
@@ -298,4 +300,3 @@ Keskim. minuutteja: 156.0
 </programming-exercise>
 
 <quiz id="272963db-2dee-56c0-8be6-258e68a3e166"></quiz>
-

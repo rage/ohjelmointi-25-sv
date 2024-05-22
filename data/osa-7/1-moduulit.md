@@ -1,52 +1,52 @@
 ---
 path: '/osa-7/1-moduulit'
-title: 'Moduulit'
+title: 'Moduler'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mikä on moduuli
-- Osaat ottaa käyttöön moduulin `import`-lauseella
-- Tiedät, miten moduulin sisällöstä voi etsiä tietoa
+* vet du vad en Python-modul är
+* vet du hur man inkluderar en modul i ett program med `import`-satsen
+* vet du hur man hittar mera information om innehållet i en modul.
 
 </text-box>
 
-## Debugging revisited
+## Lite mera om debuggande
 
-Kurssilla on jo moneen otteeseen puhuttu erilaisista debuggausmenetelmistä. [Visualisaattori](http://www.pythontutor.com/visualize.html#mode=edit) on jo monille tuttu ja vanha kunnon [debuggaustulostus](osa-2/1-ohjelmoinnin-termeja#debuggaaminen) toimii aina. Visual Studio Coden [debuggeriakin](/osa-4/1-vscode#debuggeri) monet ovat jo kokeilleet. Debuggerilla voi olla vaikeuksia selvitä tiedostoja käsittelevästä koodista, mutta siihenkin on olemassa [lääke](/osa-6/1-tiedostojen-lukeminen#tiedostoja-lukevan-koodin-debuggaus).
+Vi har redan bekantat oss med en hel del olika debuggningsmetoder under den här kursen. Visualiseringsverktyget och `print`-satser för debuggning är redan bekanta för dig. Du har kanske också testat på det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från den förra modulen.
 
-Pythonin versio 3.7 tarjoaa vielä yhden erittäin helppokäyttöisen tavan debuggaukseen, komennon [breakpoint()](https://docs.python.org/3/library/functions.html?highlight=breakpoint#breakpoint).
+Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: kommandot `breakpoint()`.
 
-Voit lisätä komennon mihin kohtaan tahansa ohjelmaasi, ja kun suoritat ohjelman, pysähtyy suoritus komennon kohdalle. Seuraavassa esimerkki viime viikon tehtävän debuggaamisesta:
+Du kan lägga till det här kommandot på valfritt ställe i din kod (kom dock ihåg att följa reglerna som gäller syntax). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-kommandot finns. Här är ett exempel där vi debuggar en uppgiftslösning från den förra modulen:
 
 <img src="7_1_1.png">
 
-Kun koodi pysähtyy breakpoint()-komentoon, avautuu samalla konsolinäkymä, johon on mahdollista kirjoittaa mitä tahansa koodia ja kokeilla miten se toimisi ohjelman kyseisessä kohdassa.
+När programmet stannar upp vid ett `breakpoint`-kommando kommer ett interaktivt terminalfönster att öppnas. Här kan du skriva kod på samma sätt som i en normal Pythonterminal. Du ser hur koden fungerar exakt vid den här punkten i ditt program.
 
-Komento on erityisen kätevä jos ohjelmasi jokin rivi aiheuttaa virheen, etkä ole ihan varma mistä virhe johtuu. Näissä tilanteissa kannattaa laittaa breakpoint-kutsu juuri ennen virheellistä riviä. Sen jälkeen on debuggerin konsolissa helppo kokeilla, mikä olisi oikea komento juuri siinä kohtaa suoritettavaksi.
+Kommandot `breakpoint` är speciellt nyttigt då du vet att någon kodrad orsakar ett fel, men du är osäker på orsaken till det. Lägg till en breakpoint just före den problematiska kodraden och kör ditt program. Nu kan du testa på olika saker i den interaktiva terminalen och lista ut vad som måste ändras på i ditt program.
 
-Koodin suoritusta on myös mahdollista jatkaa pysähtymisen jälkeen. Esimerkiksi konsoliin annettu komento _continue_ tai sen lyhennetty versio _c_ jatkaa suoritusta seuraavaan breakpointiin asti. Seuraavassa esimerkki siitä, kun silmukkaa käydään läpi muutamaan kertaan:
+Det är också möjligt att fortsätta körandet av programmet där det stannat upp. Kommandot `continue` (kort `c`) i terminalen får programmet att fortsätta tills nästa breakpoint nås. Den här bilden illustrerar en situation där en loop har upprepat några gånger:
 
 <img src="7_1_2.png">
 
-Muut debuggerikonsolin komennot selviävät [täältä](https://docs.python.org/3/library/pdb.html#debugger-commands) tai antamalla debuggerkonsolissa komento _help_:
+Det finns också några andra kommandon tillgängliga i debuggningsterminalen. Du kan hitta dem här eller så kan du skriva `help` i debuggningsterminalen:
 
 <img src="7_1_3.png">
 
-Komento _exit_ siis lopettaa ohjelman suorituksen.
+Kommandot `exit` avslutar programmet.
 
-Kun lopetat debuggaamisen, muista poistaa koodista komento `breakpoint()`!
+När du är klar med debuggandet ska du minnas att ta bort `breakpoint`-kommandona från din kod!
 
-## Moduulin käyttäminen
+## Använda moduler
 
-Python-kieli sisältää itsessään joukon valmiita funktioita, esimerkiksi merkkijonojen ja listojen pituuden kertovan funktion `len` sekä alkioiden summan laskevan funktion `sum`. Python-kielen _standardikirjasto_ on kokoelma monenlaisia hyödyllisiä funktioita ja olioita joiden avulla kielen "ilmaisuvoimaa" on helppo laajentaa. Olemme jo käyttäneet muutamassa tehtävässä standardikirjastosta eräitä matemaattisia operaatioita tarjoavia funktioita esim. neliöjuurten laskemisessa.
+Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar längden på en sträng eller en lista) och `sum` (returnerar summan av element i en datastruktur). Dessa hjälper dock dig som programmerare bara till en viss del. Pythons standardbibliotek är en samling av standardiserade funktioner och objekt som kan utöka Pythons ”uttryckskraft”. Vi har redan använt en del av funktionerna i Pythons standardbibliotek i de tidigare övningarna – till exempel då vi räknade med kvadratrötter.
 
-Standardikirjasto muodostuu _moduuleista_, joihin on ryhmitelty eri aiheisiin liittyviä funktioita ja luokkia. Tutustumme tässä osassa joihinkin hyödyllisiin moduuleihin ja opimme myös tekemään moduulin itse.
+Standardbiblioteket består av moduler. De innehåller funktioner och klasser som är grupperade kring olika teman och funktionaliteter. I den här modulen kommer vi att bekanta oss med några nyttiga Python-moduler. Vi lär oss också att skapa egna moduler.
 
-Komento `import` ottaa käyttöön halutun moduulin. Tarkastellaan esimerkkinä moduulia `math`, jossa on matemaattisia funktioita. Seuraava koodi laskee luvun neliöjuuren funktiolla `sqrt` ja logaritmin funktiolla `log`
+Kommandot `import` gör innehållet i en given modul tillgängligt i ett program. Vi tar en närmare titt på hur vi kan använda modulen `math`. Den innehåller matematiska funktioner som `sqrt` för kvadratrot och `log` för logaritm.
 
 ```python
 import math
@@ -64,11 +64,11 @@ print(math.log(8, 2))
 
 </sample-output>
 
-Koska funktiot ovat moduulissa `math`, niihin viitataan koodissa nimillä `math.sqrt` ja `math.log`.
+Funktionerna är definierade i modulen `math`, så de måste hänvisas till med notationerna `math.sqrt` och `math.log` i koden.
 
-## Moduulin osien valinta
+## Välja specifika delar från en modul
 
-Toinen tapa käyttää moduulia on valita sieltä mukaan `from`-komennolla tiettyjä osia, joita haluamme käyttää. Esimerkiksi seuraava koodi ottaa käyttöön funktiot `sqrt` ja `log` moduulista `math`:
+Ett annat sätt att använda moduler är att välja specifika delar av modulen med `from`-kommandot. Om vi endast vill använda funktionerna `sqrt` och `log` från modulen `math`, kan vi göra på följande sätt:
 
 ```python
 from math import sqrt, log
@@ -77,9 +77,9 @@ print(sqrt(5))
 print(log(5,2))
 ```
 
-Tämän tavan etuna on, että voimme käyttää funktioita suoraan ilman `math`-etuliitettä.
+Som du ser ovan, behöver vi inte `math`-prefixet då vi importerar och använder funktioner på det här sättet.
 
-Voimme myös ottaa suoraan käytettäväksi _kaiken_ moduulin sisällön tähden avulla:
+Vid behov kan man använda sig av en asterisk för att importera allt innehåll i en modul:
 
 ```python
 from math import *
@@ -88,7 +88,7 @@ print(sqrt(5))
 print(log(5,2))
 ```
 
-Tämä tapa voi olla kätevä testailussa ja pienissä ohjelmissa, mutta siinä on omat ongelmansa, kuten näemme myöhemmin.
+Det här sättet att importera moduler kan vara nyttigt då man testar på något eller arbetar med ett mindre projekt. Det kan däremot orsaka problem, vilket vi kommer att se lite senare.
 
 <programming-exercise name='Hypotenuusa' tmcname='osa07-01_hypotenuusa'>
 
@@ -106,13 +106,13 @@ print(hypotenuusa(1,1)) # 1.4142135623730951
 
 </programming-exercise>
 
-## Moduulin sisältö
+## Innehållet i en modul
 
-Pythonin dokumentaatio kertoo jokaisesta standardikirjaston moduulista, mitä moduuli sisältää ja kuinka sitä käytetään. Esimerkiksi moduulin `math` dokumentaatio on tässä:
+Pythons dokumentation inkluderar mycket information om alla moduler som är tillgängliga i standardbiblioteket. Dokumentationen berättar om funktioner och metoder som är definierade i en modul, och därtill får man veta hur modulen kan användas. Som ett exempel följer en länk till `math`-modulens dokumentation:
 
 * https://docs.python.org/3/library/math.html
 
-Voimme myös tutkia funktion `dir` avulla moduulin sisältöä:
+Vi kan också kolla på innehållet i en modul med funktionen `dir`:
 
 ```python
 import math
@@ -120,7 +120,7 @@ import math
 print(dir(math))
 ```
 
-Funktio antaa listan nimistä, jotka moduuli määrittelee:
+Den här funktionen returnerar en lista av namn definierade av modulen. Det kan vara namn på klasser, fixerade värden eller funktioner:
 
 <sample-output>
 
