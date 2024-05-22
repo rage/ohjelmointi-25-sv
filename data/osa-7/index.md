@@ -1,6 +1,6 @@
 ---
 path: '/osa-7'
-title: 'Osa 7'
+title: 'Modul 7'
 overview: true
 hidden: false
 separator_after: "Ohjelmoinnin jatkokurssi"

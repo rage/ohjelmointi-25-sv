@@ -1,6 +1,6 @@
 ---
 path: '/osa-3'
-title: 'Osa 3'
+title: 'Modul 3'
 overview: true
 hidden: false
 ---
