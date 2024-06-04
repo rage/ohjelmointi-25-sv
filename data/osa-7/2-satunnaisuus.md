@@ -4,7 +4,7 @@ title: 'Slumpmässighet'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Lärandemål'>
 
 Efter den här delen
 

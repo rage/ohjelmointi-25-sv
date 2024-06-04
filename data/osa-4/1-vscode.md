@@ -4,7 +4,7 @@ title: 'Editorn Visual Studio Code, Pythontolken och det inbyggda debuggningsver
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Lärandemål'>
 
 Efter den här delen
 

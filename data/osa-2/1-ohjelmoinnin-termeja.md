@@ -3,7 +3,7 @@ path: '/osa-2/1-ohjelmoinnin-termeja'
 title: 'Programmeringsterminologi'
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Lärandemål'>
 
 Efter den här delen
 
