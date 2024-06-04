@@ -16,35 +16,35 @@ Efter den här delen
 Att skapa dina egna Python-moduler är enkelt. Vilken som helst fil som innehåller valid Python-kod kan importeras som en modul. Låt oss säga att vi har filen `ord.py`, med följande innehåll:
 
 ```python
-def eka_sana(mjono: str):
-    osat = mjono.split(" ")
-    return osat[0]
+def ord_ett(strang: str):
+    delar = strang.split(" ")
+    return delar[0]
 
-def vika_sana(mjono: str):
-    osat = mjono.split(" ")
-    return osat[-1]
+def sista_ordet(strang: str):
+    delar = strang.split(" ")
+    return delar[-1]
 
-def sanojen_maara(mjono: str):
-    osat = mjono.split(" ")
-    return len(osat)
+def antal_ord(strang: str):
+    delar = strang.split(" ")
+    return len(delar)
 ```
 
 Funktionerna som definierats i filen kan kommas åt genom att importera filen:
 
 ```python
-import sanat
+import ord
 
-mjono = "Vesihiisi sihisi hississä"
+strang = "Polisstationen var full"
 
-print(sanat.eka_sana(mjono))
-print(sanat.vika_sana(mjono))
-print(sanat.sanojen_maara(mjono))
+print(ord.ord_ett(strang))
+print(ord.sista_ordet(strang))
+print(ord.antal_ord(strang))
 ```
 
 <sample-output>
 
-Vesihiisi
-hississä
+Polisstationen
+full
 3
 
 </sample-output>
@@ -54,19 +54,19 @@ Obs! Filen som innehåller Python-modulen måste befinna sig i samma mapp där p
 Vi kan använda våra moduler exakt på samma sätt som moduler i Pythons standardbibliotek:
 
 ```python
-from sanat import eka_sana, vika_sana
+from ord import ord_ett, sista_ordet
 
-lause = input("Anna lause: ")
+mening = input("Ange mening: ")
 
-print("Eka sana oli: " + eka_sana(lause))
-print("Viimeinen sana oli: " + vika_sana(lause))
+print("Första ordet var: " + ord_ett(mening))
+print("Sista ordet var: " + sista_ordet(mening))
 ```
 
 <sample-output>
 
-Anna lause: **Python on metka ohjelmointikieli**
-Eka sana oli: Python
-Viimeinen sana oli: ohjelmointikieli
+Ange mening: **Han höll på att svimma i den heta bussen**
+Första ordet var: Han
+Sista ordet var: bussen
 
 </sample-output>
 
@@ -85,42 +85,42 @@ Om en modul innehåller kod som inte finns inom en funktionsdefinition (dvs. kod
 Låt oss se på en situation där `ord.py` innehåller några testutskrifter:
 
 ```python
-def eka_sana(mjono: str):
-    osat = mjono.split(" ")
-    return osat[0]
+def ord_ett(strang: str):
+    delar = strang.split(" ")
+    return delar[0]
 
-def vika_sana(mjono: str):
-    osat = mjono.split(" ")
-    return osat[-1]
+def sista_ordet(strang: str):
+    delar = strang.split(" ")
+    return delar[-1]
 
-def sanojen_maara(mjono: str):
-    osat = mjono.split(" ")
-    return len(osat)
+def antal_ord(strang: str):
+    delar = strang.split(" ")
+    return len(delar)
 
-print(eka_sana("Tämä on testi"))
-print(vika_sana("Tämä on testeistä toinen"))
-print(sanojen_maara("Yks kaks kolme neljä viisi"))
+print(ord_ett("Det här är ett test"))
+print(sista_ordet("Ett annat test"))
+print(antal_ord("Postlådan var full med tidningar"))
 ```
 
 Om vi nu importerar modulen med en `import`-sats, kommer all kod utanför de definierade funktionerna att köras:
 
 ```python
-import sanat
+import ord
 
-mjono = "Vesihiisi sihisi hississä"
+strang = "Polisstationen var full"
 
-print(sanat.eka_sana(mjono))
-print(sanat.vika_sana(mjono))
-print(sanat.sanojen_maara(mjono))
+print(ord.ord_ett(strang))
+print(ord.sista_ordet(strang))
+print(ord.antal_ord(strang))
 ```
 
 <sample-output>
 
-Tämä
-toinen
+Det
+test
 5
-Vesihiisi
-hississä
+Polisstationen
+full
 3
 
 </sample-output>
@@ -132,31 +132,31 @@ Till all lycka finns en lösning, och den är bekant sedan tidigare. Vi måste h
 Nu när vi vet det här kan vi lägga till en if-sats som låter oss köra våra test endast då programmet körs självständigt. Som du ser nedan, är strukturen bekant:
 
 ```python
-def eka_sana(mjono: str) -> str:
-    osat = mjono.split(" ")
-    return osat[0]
+def ord_ett(strang: str) -> str:
+    delar = strang.split(" ")
+    return delar[0]
 
-def vika_sana(mjono: str) -> str:
-    osat = mjono.split(" ")
-    return osat[-1]
+def sista_ordet(strang: str) -> str:
+    delar = strang.split(" ")
+    return delar[-1]
 
-def sanojen_maara(mjono: str) -> int:
-    osat = mjono.split(" ")
-    return len(osat)
+def antal_ord(strang: str) -> int:
+    delar = strang.split(" ")
+    return len(delar)
 
 if __name__ == "__main__":
-    # Testataan funktioiden toimintaa
-    print(eka_sana("Tämä on testi"))
-    print(vika_sana("Tämä on testeistä toinen"))
-    print(sanojen_lkm("Yks kaks kolme neljä viisi"))
+    # testar funktionerna
+    print(ord_ett("Det här är ett test"))
+    print(sista_ordet("Ett annat test"))
+    print(sanojen_lkm("Postlådan var full med tidningar"))
 ```
 
 Om du kör modulen självständigt, skrivs testutskrifterna ut:
 
 <sample-output>
 
-Tämä
-toinen
+Det
+test
 5
 
 </sample-output>
@@ -164,19 +164,19 @@ toinen
 När modulen importeras i ett program, kommer testutskrifterna inte att göras:
 
 ```python
-import sanat
+import ord
 
-mjono = "Vesihiisi sihisi hississä"
+strang = "Polisstationen var full"
 
-print(sanat.eka_sana(mjono))
-print(sanat.vika_sana(mjono))
-print(sanat.sanojen_maara(mjono))
+print(ord.ord_ett(strang))
+print(ord.sista_ordet(strang))
+print(ord.antal_ord(strang))
 ```
 
 <sample-output>
 
-Vesihiisi
-hississä
+Polisstationen
+full
 3
 
 </sample-output>
@@ -185,38 +185,36 @@ I uppgifterna under den här kursen har du flera gånger ombetts att ha dina tes
 
 <programming-exercise name='Merkkiapuri' tmcname='osa07-17_merkkiapuri'>
 
-Tee moduuli `merkkiapuri`, joka sisältää seuraavat funktiot:
+Skapa modulen `teckenverktyg` som innehåller de följande funktionerna:
 
-Funktio `vaihda_koko(merkkijono: str)` saa parametrikseen merkkijonon. Funktio luo ja palauttaa uuden merkkijonon, jossa alkuperäisen merkkijonon pienet kirjaimet on muutettu isoiksi kirjaimiksi ja päinvastoin.
+* `byt_storlek(strang: str)`: returnerar den givna strängen så att versaler och gemener har konverterats till gemener respektive versaler
+* `halvera(strang: str)`: returnerar den givna strängen halverad i en tuple, vid behov är den första halvan kortare
+* `specialtecken_bort(stang: str)` returnerar den givna strängen så att andra tecken än a-ö, A-Ö, siffror och mellanslag är avlägsnade.
 
-Funktio `puolita(merkkijono: str)` palauttaa tuplessa parametrinaan saamansa merkkijonon ensimmäisen ja toisen puolikkaan. Jos merkkijonossa on pariton määrä kirjaimia, ensimmäinen puolikas on lyhyempi.
-
-Funktio `poista_erikoismerkit(merkkijono: str)` palauttaa merkkijonon, josta on poistettu kaikki muut merkit paitsi aakkoset [a...ö, A...Ö], numerot ja välilyönnit.
-
-Esimerkkejä moduulin toiminnasta:
+Exempel:
 
 ```python
-import merkkiapuri
+import teckenverktyg
 
-mjono = "Moi kaikki!"
+strang = "Hej alla!"
 
-print(merkkiapuri.vaihda_koko(mjono))
+print(teckenverktyg.byt_storlek(strang))
 
-p1, p2 = merkkiapuri.puolita(mjono)
+p1, p2 = teckenverktyg.halvera(strang)
 
 print(p1)
 print(p2)
 
-m2 = merkkiapuri.poista_erikoismerkit("Tämä on testi, katsotaan miten käy!!!11!")
+m2 = teckenverktyg.specialtecken_bort("Det här är ett test, men hur går det??00")
 print(m2)
 ```
 
 <sample-output>
 
-mOI KAIKKI!
-Moi k
-aikki!
-Tämä on testi katsotaan miten käy11
+hEJ ALLA!
+Hej
+alla!
+Det här är ett test men hur går det00
 
 </sample-output>
 

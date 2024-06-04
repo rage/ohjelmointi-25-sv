@@ -28,7 +28,7 @@ Referensen berättar alltså var det riktiga värdet finns. Funktionen `id` ber�
 ```python
 a = [1, 2, 3]
 print(id(a))
-b = "Tämäkin on viittaus"
+b = "Det här är också en referens"
 print(id(b))
 ```
 
@@ -58,9 +58,9 @@ I Python finns också datatyper som är föränderliga. Till exempel innehållet
 Något förvånande är att också grundläggande datatyper för lagring av siffor och sanningsvärden, `int`, `float` och `bool`, är oföränderliga. Låt oss använda följande kod som exempel:
 
 ```python
-luku = 1
-luku = 2
-luku += 10
+siffra = 1
+siffra = 2
+siffra += 10
 ```
 
 Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är det inte så. Istället skapar varje kommando en ny siffra.
@@ -68,10 +68,10 @@ Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är de
 Utskriften från det här programmet är intressant:
 
 ```python
-luku = 1
-print(id(luku))
-luku += 10
-print(id(luku))
+siffra = 1
+print(id(siffra))
+siffra += 10
+print(id(siffra))
 a = 1
 print(id(a))
 ```
@@ -84,7 +84,7 @@ print(id(a))
 
 </sample-output>
 
-I början refererar variabeln `luku` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `luku` när dess värde var `1`.
+I början refererar variabeln `siffra` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `siffra` när dess värde var `1`.
 
 Det verkar som att Python har lagrat siffran 1 till adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i "datorns minne".
 
@@ -139,20 +139,20 @@ Om du vill skapa en verklig kopia av en lista kan du skapa en ny lista och lägg
 ```python
 lista = [1, 2, 3, 3, 5]
 
-kopio = []
-for alkio in lista:
-    kopio.append(alkio)
+kopia = []
+for element in lista:
+    kopia.append(element)
 
-kopio[0] = 10
-kopio.append(6)
+kopia[0] = 10
+kopia.append(6)
 print("lista", lista)
-print("kopio", kopio)
+print("kopia", kopia)
 ```
 
 <sample-output>
 
 lista [1, 2, 3, 3, 5]
-kopio [10, 2, 3, 3, 5, 6]
+kopia [10, 2, 3, 3, 5, 6]
 
 </sample-output>
 
@@ -166,13 +166,13 @@ Ett enklare sätt att kopiera en lista är att använda hakparenteser `[]`, som 
 
 ```python
 lista = [1,2,3,4]
-kopio = lista[:]
+kopia = lista[:]
 
 lista[0] = 10
-kopio[1] = 20
+kopia[1] = 20
 
 print(lista)
-print(kopio)
+print(kopia)
 ```
 
 <sample-output>
@@ -189,13 +189,13 @@ När en lista ges som parameter till en funktion, förmedlas referensen till lis
 Till exempel följande funktion lägger till ett nytt element i en lista som getts som funktionens parameter:
 
 ```python
-def lisaa_alkio(lista: list):
-    uusi_alkio = 10
-    lista.append(uusi_alkio)
+def lagg_till_element(lista: list):
+    nytt_element = 10
+    lista.append(nytt_element)
 
 lista = [1,2,3]
 print(lista)
-lisaa_alkio(lista)
+lagg_till_element(lista)
 print(lista)
 ```
 
@@ -204,32 +204,32 @@ print(lista)
 [1, 2, 3, 10]
 </sample-output>
 
-Märk att funktionen `lisaa_alkio` inte returnerar något, utan ändrar på den lista som getts som funktionens parameter. Visualiseringsverktyget presenterar situationen så här:
+Märk att funktionen `lagg_till_element` inte returnerar något, utan ändrar på den lista som getts som funktionens parameter. Visualiseringsverktyget presenterar situationen så här:
 
 <img src="5_2_4c.png">
 
-Global frame syftar på huvudprogrammets variabler, och den blå lådan `lisaa_alkio` på funktionens parametrar och variabler. Som visualiseringen visar, refererar funktionen till samma lista som huvudprogrammet, vilket betyder att ändringar som görs i listan inom funktionen också syns i huvudprogrammet.
+Global frame syftar på huvudprogrammets variabler, och den blå lådan `lagg_till_element` på funktionens parametrar och variabler. Som visualiseringen visar, refererar funktionen till samma lista som huvudprogrammet, vilket betyder att ändringar som görs i listan inom funktionen också syns i huvudprogrammet.
 
 Ett annat sätt är att skapa en ny lista och returnera den:
 
 ```python
-def lisaa_alkio(lista: list) -> list:
-    uusi_alkio = 10
-    kopio = lista[:]
-    kopio.append(uusi_alkio)
-    return kopio
+def lagg_till_element(lista: list) -> list:
+    nytt_element = 10
+    kopia = lista[:]
+    kopia.append(nytt_element)
+    return kopia
 
-luvut = [1, 2, 3]
-luvut2 = lisaa_alkio(luvut)
+siffror = [1, 2, 3]
+siffror2 = lagg_till_element(siffror)
 
-print("Alkuperäinen lista:", luvut)
-print("Uusi lista:", luvut2)
+print("Ursprunglig lista:", siffror)
+print("Ny lista:", siffror2)
 ```
 
 <sample-output>
 
-Alkuperäinen lista: [1, 2, 3]
-Uusi lista: [1, 2, 3, 10]
+Ursprunglig lista: [1, 2, 3]
+Ny lista: [1, 2, 3, 10]
 
 </sample-output>
 
@@ -240,22 +240,22 @@ Om du inte är helt säker på vad som händer i en kodsnutt, kan det löna sig 
 Det följande är ett försök på att skapa en funktion som ökar på varje element med tio:
 
 ```python
-def kasvata_kaikkia(lista: list):
-    uusilista = []
-    for alkio in lista:
-        uusilista.append(alkio + 10)
-    lista = uusilista
+def oka_pa_alla(lista: list):
+    ny_lista = []
+    for element in lista:
+        ny_lista.append(element + 10)
+    lista = ny_lista
 
-luvut = [1, 2, 3]
-print("alussa ",luvut)
-kasvata_kaikkia(luvut)
-print("funktion jälkeen", luvut)
+siffror = [1, 2, 3]
+print("start:",siffror)
+oka_pa_alla(siffror)
+print("efter funktionen:", siffror)
 ```
 
 <sample-output>
 
-alussa: [1, 2, 3]
-funktion jälkeen: [1, 2, 3]
+start: [1, 2, 3]
+efter funktionen: [1, 2, 3]
 
 </sample-output>
 
@@ -275,14 +275,14 @@ Visualiseringsverktyget hjälper igen. När du går igenom stegen utförligt mä
 Ett enkelt sätt att korrigera problemet är att kopiera över alla element från den nya listan till den gamla:
 
 ```python
-def kasvata_kaikkia(lista: list):
-    uusilista = []
-    for alkio in lista:
-        uusilista.append(alkio + 10)
+def oka_pa_alla(lista: list):
+    ny_lista = []
+    for element in lista:
+        ny_lista.append(element + 10)
 
-    # kopioidaan vanhaan listaan uuden listan arvot
+    # vi kopierar de nya värdena till den gamla listan
     for i in range(len(lista)):
-        lista[i] = uusilista[i]
+        lista[i] = ny_lista[i]
 ```
 
 Eller lite enklare tack vare Python:
@@ -308,18 +308,18 @@ Som vi vet, kan vi också göra detta för en hel samling:
 Allt innehåll i den gamla listan ersätts. Inspirerat av det här har vi nu skapat en fungerande version av funktionen som ökar på elementens värden:
 
 ```python
-def kasvata_kaikkia(lista: list):
-    uusilista = []
-    for alkio in lista:
-        uusilista.append(alkio + 10)
+def oka_pa_alla(lista: list):
+    ny_lista = []
+    for element in lista:
+        ny_lista.append(element + 10)
 
-    lista[:] = uusilista
+    lista[:] = ny_lista
 ```
 
 Egentligen finns det ingen orsak att skapa en ny lista inom funktionen. Vi kan helt enkelt tilldela värdena direkt till den ursprungliga listan:
 
 ```python
-def kasvata_kaikkia(lista: list):
+def oka_pa_alla(lista: list):
     for i in range(len(lista)):
         lista[i] += 10
 
@@ -328,23 +328,23 @@ def kasvata_kaikkia(lista: list):
 
 <programming-exercise name='Alkiot tuplana' tmcname='osa05-06a_alkiot_tuplana'>
 
-Tee funktio `tuplaa_alkiot(luvut: list)`, joka saa parametrikseen lukuja sisältävän listan.
+Skapa funktionen `elementen_fordubblade(siffror: list)` som får som argument en lista med siffror.
 
-Funktio palauttaa uuden listan, jossa alkuperäisen listan alkiot on kerrottu kahdella. Funkto _ei_ saa muuttaa alkuperäistä listaa.
+Funktionen ska returnera en ny lista där alla siffror är multiplicerade med två. Funktionen får inte ändra på den ursprungliga listan.
 
-Esimerkki funktion kutsumisesta:
+Exempel:
 
 ```python
 if __name__ == "__main__":
-    luvut = [2, 4, 5, 3, 11, -4]
-    tuplaluvut = tuplaa_alkiot(luvut)
-    print("alkuperäinen:", luvut)
-    print("tuplattu:", tuplaluvut)
+    siffror = [2, 4, 5, 3, 11, -4]
+    fordubblade = elementen_fordubblade(siffror)
+    print("ursprunglig:", siffror)
+    print("fördubblade:", fordubblade)
 ```
 <sample-output>
 
-alkuperäinen: [2, 4, 5, 3, 11, -4]
-tuplattu: [4, 8, 10, 6, 22, -8]
+ursprunglig: [2, 4, 5, 3, 11, -4]
+fördubblade: [4, 8, 10, 6, 22, -8]
 
 </sample-output>
 
@@ -353,19 +353,19 @@ tuplattu: [4, 8, 10, 6, 22, -8]
 
 <programming-exercise name='Poista pienin' tmcname='osa05-06b_poista_pienin'>
 
-Tee funktio `poista_pienin(luvut: list)`, joka saa parametrikseen lukuja sisältävän listan.
+Skapa funktionen `avlagsna_minsta(siffror: list)` som får som argument en lista med siffror.
 
-Funktio etsii ja poistaa listasta pienimmän alkion. Voit olettaa, että pienin alkio esiintyy listassa vain kerran.
+Funktionen ska ta bort den minsta siffran från listan. Du kan anta att den minsta siffran endast förekommer en gång.
 
-Funktio ei siis palauta mitään, vaan muokkaa parametrinaan saamaansa listaa!
+Funktionen ska inte returnera något, den ska endast ändra på listan som getts som argument!
 
-Esimerkki funktion kutsumisesta:
+Exempel:
 
 ```python
 if __name__ == "__main__":
-    luvut = [2, 4, 6, 1, 3, 5]
-    poista_pienin(luvut)
-    print(luvut)
+    siffror = [2, 4, 6, 1, 3, 5]
+    avlagsna_minsta(siffror)
+    print(siffror)
 ```
 <sample-output>
 
@@ -378,11 +378,11 @@ if __name__ == "__main__":
 
 <programming-exercise name='Sudoku: ruudukon tulostus ja luvun lisäys' tmcname='osa05-07_sudoku_osa5'>
 
-Tässä tehtävässä toteutetaan vielä kaksi funktiota sudokua varten: `tulosta` ja `lisays`.
+I den här uppgiften skapar vi ännu två funktioner för ett sudoku: `skriv_ut` och `lagg_till`.
 
-Funktio `tulosta` saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen listan ja tulostaa sen alla olevan esimerkkitulostuksen mukaisessa muodossa.
+Funktionen `skriv_ut` får som argument en matris och skriver den ut enligt exemplet nedan.
 
-Funktio `lisays(sudoku: list, rivi_nro: int, sarake_nro: int, luku:int)` saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen listan, rivi- ja sarakenumerot sekä luvun väliltä 1–9. Funktio lisää luvun parametrien ilmoittamaan kohtaan sudokuruudukkoa.
+Funktionen `lagg_till(sudoku: list, radnummer: int, kolumnnummer: int, siffra: int)` tar emot som argument en matris, två siffror som indikerar positionen och ett tal (1-9) som ska lagras.
 
 ```python
 sudoku  = [
@@ -397,14 +397,14 @@ sudoku  = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-tulosta(sudoku)
-lisays(sudoku, 0, 0, 2)
-lisays(sudoku, 1, 2, 7)
-lisays(sudoku, 5, 7, 3)
+skriv_ut(sudoku)
+lagg_till(sudoku, 0, 0, 2)
+lagg_till(sudoku, 1, 2, 7)
+lagg_till(sudoku, 5, 7, 3)
 print()
-print("Kolme numeroa lisätty:")
+print("Tre siffror tillagda:")
 print()
-tulosta(sudoku)
+skriv_ut(sudoku)
 ```
 
 <sample-output>
@@ -422,7 +422,7 @@ _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 
-Kolme numeroa lisätty:
+Tre siffror tillagda:
 
 2 _ _  _ _ _  _ _ _
 _ _ 7  _ _ _  _ _ _
@@ -440,22 +440,20 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-**Vihje**
-
-Saatat tässä tehtävässä hyötyä siitä, että `print`-komentoa on mahdollista käyttää myös siten, että se ei aiheuta rivinvaihtoa:
+Tips: Du kan dra nytta av att `print`-kommandot kan användas så att radbyten inte görs:
 
 ```python
-print("merkkejä ", end="")
-print("ilman välejä", end="")
+print("tecken ", end="")
+print("utan mellanrum", end="")
 ```
 
 <sample-output>
 
-merkkejä ilman välejä
+tecken utan mellanrum
 
 </sample-output>
 
-Joskus taas tarvitaan pelkkää rivinvaihtoa, ja se onnistuu seuraavasti:
+En radbrytning kan åstadkommas så här:
 
 ```python
 print()
@@ -465,11 +463,11 @@ print()
 
 <programming-exercise name='Sudoku: luvun lisäys ruudukon kopioon' tmcname='osa05-08_sudoku_osa6'>
 
-Viimeisessä sudokua käsittelevässä tehtävässä toteutetaan hieman erilainen versio funktiosta, jonka avulla sudokuruudukkoon lisätään uusia lukuja.
+I den här uppgiften skapar vi en lite annorlunda version av funktionen som lägger till nya tal i ett sudoku.
 
-Funktio `kopioi_ja_lisaa(sudoku: list, rivi_nro: int, sarake_nro: int, luku:int)` saa parametreikseen sudokuruudukkoa esittävän kaksiulotteisen listan, rivinumeron, sarakenumeron sekä luvun väliltä 1–9. Funktio _palauttaa_ parametrina saadusta sudokuruudukosta _kopion_, johon on lisätty parametrina saatu luku parametrina saatuun sijaintiin sijoitettuna. Funktio _ei saa muuttaa_ parametrina annettua sudokuruudukkoa.
+Funktionen `kopiera_och_lagg_till(sudoku: list, radnummer: int, kolumnnummer: int, siffra: int)` får som argument en matris, två siffror som indikerar en position samt en siffra (1-9) som ska lagras. Funktionen ska returnera en kopia av matrisen som gavs som argument, med den angivna siffran lagrad på korrekt ställe. Funktionen får inte ändra på matrisen som getts som argument.
 
-Seuraavassa on edellisen tehtävän funktiota `tulosta` hyödyntävä käyttöesimerkki:
+Här utnyttjar vi funktionen `skriv_ut` från den föregående uppgiften:
 
 ```python
 sudoku  = [
@@ -484,18 +482,18 @@ sudoku  = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-kopio = kopioi_ja_lisaa(sudoku, 0, 0, 2)
-print("Alkuperäinen:")
-tulosta(sudoku)
+kopia = kopiera_och_lagg_till(sudoku, 0, 0, 2)
+print("Ursprunglig:")
+skriv_ut(sudoku)
 print()
-print("Kopio:")
-tulosta(kopio)
+print("Kopia:")
+skriv_ut(kopia)
 ```
 
 <sample-output>
 
 <pre>
-Alkuperäinen:
+Ursprunglig:
 _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
@@ -508,7 +506,7 @@ _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 
-Kopio:
+Kopia:
 2 _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
 _ _ _  _ _ _  _ _ _
@@ -525,32 +523,32 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-**Vihje** tässä tehtävässä pitää olla tarkkana mitä kaikkea tulee kopioida, ja mihin lisäys lopulta kohdistuu. Kuten yleensäkin, [visualisaattori](http://www.pythontutor.com/visualize.html#mode=edit) auttaa myös nyt. Sudokuruudukon koon takia näkymä tosin on hieman normaalia sekavampi.
+Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopieras och vart man slutligen lagrar värdet som getts till funktionen. Visualiseringsverktyget kan hjälpa. P.g.a. storleken av sudokut kan vyn dock vara mer råddig än vanligtvis.
 
 </programming-exercise>
 
 <programming-exercise name='Ristinolla' tmcname='osa05-09_ristinolla'>
 
-Ristinollaa pelataan 3 x 3 -kokoisella ruudukolla, johon pelaajat merkitsevät vuorotellen ristin tai nollan. Pelin voittaa se pelaaja, joka saa ensimmäisenä kolme merkkiä pystyyn, vaakaan tai kulmittain. Peli päättyy tasapeliin, jos kumpikaan pelaaja ei saa kolmen sarjaa.
+Tre i rad spelas med ett 3 x 3 -rutnät, där spelarna turvis markerar ett kryss eller en ring. Spelaren som får tre markeringar i rad, vågrätt, lodrätt eller diagonalt, vinner. Om ingendera av spelarna får det, är spelet oavgjort.
 
-Kirjoita funktio `pelaa_siirto(lauta: list, x: int, y: int, nappula: str)`, jossa sijoitetaan annettu pelinappula annettuihin koordinaatteihin pelilaudalla. Koordinaattien arvot ovat väliltä 0..2.
+Skapa funktionen `tur(brade: list, x: int, y: int, markering: str)` där den givna markeringen görs på stället som indikeras av koordinaterna (0-2).
 
-**Huomaa** että tässä tehtävässä parametrit ovat eri päin kuin sudokussa, ensin annetaan saraketta kuvaava `x` ja sen jälkeen riviä kuvaava `y`.
+Observera att `x` indikerar kolumn och `y` rad.
 
-Pelilauta koostuu merkkijonoista seuraavasti:
+Spelbrädet består av följande strängar:
 
-* `""`: tyhjä ruutu
-* `"X"`: pelaajan 1 merkki
-* `"O"`: pelaajan 2 merkki
+* `""`: tom ruta
+* `"X"`: markeing, spelare 1
+* `"O"`: markeing, spelare 2
 
-Funktio palauttaa arvon `True`, jos nappula saatiin sijoitettua laudalle (eli jos paikka oli tyhjä), ja arvon `False`, jos paikka oli varattu TAI jos koordinaatin arvo oli liian pieni tai suuri (eli ei väliltä 0..2).
+Funktionen returnerar `True` om markeringen lyckades (stället var tomt på brädet), och `False` om stället var reserverat eller koordinaterna inte var i intervallet 0-2.
 
-Esimerkiksi:
+Exempel:
 
 ```python
-lauta = [["", "", ""], ["", "", ""], ["", "", ""]]
-print(pelaa_siirto(lauta, 2, 0, "X"))
-print(lauta)
+brade = [["", "", ""], ["", "", ""], ["", "", ""]]
+print(tur(brade, 2, 0, "X"))
+print(brade)
 ```
 
 <sample-output>
@@ -564,11 +562,11 @@ True
 
 <programming-exercise name='Matriisin kääntö' tmcname='osa05-10_matriisin_kaanto'>
 
-Kirjoita funktio `transponoi(matriisi: list)`, joka saa parametrikseen kaksiulotteisen kokonaislukuja sisältävän taulukon eli matriisin. Funktio _transponoi_ matriisin eli muuntaa rivit sarakkeiksi ja päinvastoin.
+Skapa funktionen `transponera(matris: lista)` som får som argument en matris. Funktionen ska transponera matrisen, alltså byta om rader till kolumner och tvärtom.
 
-Voit olettaa, että matriisissa on yhtä monta riviä kuin sarakettakin (eli matriisi on _neliömatriisi_).
+Du kan anta att matrisen har lika många rader och kolumner.
 
-Esimerkiksi matriisista
+Den här matrisen...
 
 ```python
 1 2 3
@@ -576,7 +574,7 @@ Esimerkiksi matriisista
 7 8 9
 ```
 
-tulisi transponoinnin jälkeen tällainen:
+...skulle se ut så här efter transponeringen:
 
 ```python
 1 4 7
@@ -584,7 +582,7 @@ tulisi transponoinnin jälkeen tällainen:
 3 6 9
 ```
 
-Funktio ei palauta mitään, vaan muokkaa parametrinaan saamaansa matriisia.
+Funktionen ska inte returnera något. Den ska ändra på matrisen som den fått som argument.
 
 </programming-exercise>
 
@@ -595,14 +593,14 @@ Om en funktion tar emot en referens till en lista som argument, kan funktionen �
 Låt oss ta en titt på en funktion som borde hitta det näst minsta värdet i en lista:
 
 ```python
-def toiseksi_pienin(lista: list) -> int:
-    # järjestetyn listan toiseksi pienin alkio on kohdassa 1
+def nast_minst(lista: list) -> int:
+    # i en ordnad lista finns det näst minsta elementet vid index 1
     lista.sort()
     return lista[1]
 
-luvut = [1, 4, 2, 5, 3, 6, 4, 7]
-print(toiseksi_pienin(luvut))
-print(luvut)
+siffror = [1, 4, 2, 5, 3, 6, 4, 7]
+print(nast_minst(siffror))
+print(siffror)
 ```
 
 <sample-output>
@@ -615,13 +613,13 @@ Funktionen hittar det näst minsta värdet, men dessutom ordnar funktionen lista
 Vi kan förhindra den här sidoeffekten genom att göra en liten ändring i funktionen:
 
 ```python
-def toiseksi_pienin(lista: list) -> int:
-    kopio = sorted(lista)
-    return kopio[1]
+def nast_minst(lista: list) -> int:
+    kopia = sorted(lista)
+    return kopia[1]
 
-luvut = [1, 4, 2, 5, 3, 6, 4, 7]
-print(toiseksi_pienin(luvut))
-print(luvut)
+siffror = [1, 4, 2, 5, 3, 6, 4, 7]
+print(nast_minst(siffror))
+print(siffror)
 ```
 
 <sample-output>

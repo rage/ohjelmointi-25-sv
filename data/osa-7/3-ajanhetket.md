@@ -21,8 +21,8 @@ Pythons `datetime`-modul innehåller funktionen `now`, som returnerar ett `datet
 ```python
 from datetime import datetime
 
-aika = datetime.now()
-print(aika)
+tid = datetime.now()
+print(tid)
 ```
 
 <sample-output>
@@ -36,8 +36,8 @@ Du kan också definiera objektet själv:
 ```python
 from datetime import datetime
 
-aika = datetime(1952, 12, 24)
-print(aika)
+tid = datetime(1952, 12, 24)
+print(tid)
 ```
 
 <sample-output>
@@ -53,17 +53,17 @@ Olika element i `datetime`-objektet kan kommas åt på följande sätt:
 ```python
 from datetime import datetime
 
-aika = datetime(1952, 12, 24)
-print("Päivä:", aika.day)
-print("Kuukausi:", aika.month)
-print("Vuosi:", aika.year)
+tid = datetime(1952, 12, 24)
+print("Dag:", tid.day)
+print("Månad:", tid.month)
+print("År:", tid.year)
 ```
 
 <sample-output>
 
-Päivä: 24
-Kuukausi: 12
-Vuosi: 1952
+Dag: 24
+Månad: 12
+År: 1952
 
 </sample-output>
 
@@ -72,8 +72,8 @@ Tidpunkten under dagen kan också specificeras. Precisionen kan variera:
 ```python
 from datetime import datetime
 
-pv1 = datetime(2020, 6, 30, 13, 00) # 30.6.2020 klo 13.00
-pv2 = datetime(2020, 6, 30, 18, 45) # 30.6.2020 klo 18.45
+tid1 = datetime(2020, 6, 30, 13, 00) # 30/6 2020 kl 13:00
+tid2 = datetime(2020, 6, 30, 18, 45) # 30/6 2020 kl 18:45
 ```
 
 ## Jämföra tider och räkna skillnaden mellan dem
@@ -83,20 +83,20 @@ De bekanta jämförelseoperatorerna fungerar också för `datetime`-objekt:
 ```python
 from datetime import datetime
 
-nyt = datetime.now()
-juhannus = datetime(2020, 6, 20)
+nu = datetime.now()
+midsommar = datetime(2020, 6, 20)
 
-if nyt < juhannus:
-    print("Ei ole vielä juhannus")
-elif nyt == juhannus:
-    print("Hyvää juhannusta!")
-elif nyt > juhannus:
-    print("Juhannus on mennyt")
+if nu < midsommar:
+    print("Inte än midsommar")
+elif nu == midsommar:
+    print("Trevlig midsommar!")
+elif nu > midsommar:
+    print("Midsommaren kom och gick")
 ```
 
 <sample-output>
 
-Juhannus on mennyt
+Midsommaren kom och gick
 
 </sample-output>
 
@@ -105,16 +105,16 @@ Skillnaden mellan två `datetime`-objekt kan enkelt räknas med subtraktionsoper
 ```python
 from datetime import datetime
 
-nyt = datetime.now()
-juhannus = datetime(2020, 6, 20)
+nu = datetime.now()
+midsommar = datetime(2020, 6, 20)
 
-ero = juhannus - nyt
-print("Juhannukseen on vielä", ero.days, "päivää")
+skillnad = midsommar - nu
+print("Det är ännu", skillnad.days, "dagar till midsommar")
 ```
 
 <sample-output>
 
-Juhannukseen on vielä 37 päivää
+Det är ännu 37 dagar till midsommar
 
 </sample-output>
 
@@ -124,83 +124,85 @@ Addition med `datetime`- och `timedelta`-objekt är också möjligt. Resultatet 
 
 ```python
 from datetime import datetime, timedelta
-juhannus = datetime(2020, 6, 20)
+midsommar = datetime(2020, 6, 20)
 
-viikko = timedelta(days=7)
-viikon_paasta = juhannus + viikko
+vecka = timedelta(days=7)
+vecka_senare = midsommar + vecka
 
-print("Kun viikko juhannuksesta kuluu on", viikon_paasta)
+print("En vecka efter midsommar är", vecka_senare)
 
-pitka_aika = timedelta(weeks=32, days=15)
+lang_tid = timedelta(weeks=32, days=15)
 
-print("Kun juhannuksesta kuluu 32 viikkoa ja 15 päivää on", juhannus + pitka_aika)
+print("32 veckor och 15 dagar efter midsommar är", midsommar + lang_tid)
 ```
 
 <sample-output>
 
-Kun viikko juhannuksesta kuluu on 2020-06-27 00:00:00
-Kun juhannuksesta kuluu 32 viikkoa ja 15 päivää on 2021-02-14 00:00:00
+En vecka efter midsommar är 2020-06-27 00:00:00
+32 veckor och 15 dagar efter midsommar är 2021-02-14 00:00:00
 
 </sample-output>
 
 Vi kollar ännu hur det ser ut med högre precision:
 
 ```python
-nyt = datetime.now()
-keskiyo = datetime(2020, 6, 30)
-erotus = keskiyo-nyt
-print(f"keskiyöhön on vielä {erotus.seconds} sekuntia")
+nu = datetime.now()
+midnatt = datetime(2020, 6, 30)
+skillnad = midnatt-nu
+print(f"Det är ännu {skillnad.seconds} sekunder till midnatt")
 ```
 
 <sample-output>
 
-keskiyöhön on vielä 8188 sekuntia
+Det är ännu 8188 sekunder till midnatt
 
 </sample-output>
 
 <programming-exercise name='Kuinka vanha' tmcname='osa07-09_kuinka_vanha'>
 
-Tee ohjelma, joka kysyy käyttäjän syntymäajan (erikseen päivä, kuukausi ja vuosi) ja tulostaa, kuinka monta päivää vanha käyttäjä oli 31.12.1999 seuraavan esimerkin mukaisesti:
+Skapa ett program som frågar om användarens födelsetid och skriver därefter ut hur gammal hon var 31/12 1999.
+
+Exempel:
 
 <sample-output>
 
-Päivä: **10**
-Kuukausi: **9**
-Vuosi: **1979**
-Olit 7417 päivää vanha, kun vuosituhat vaihtui.
+Dag: **10**
+Månad: **9**
+År: **1979**
+Du var 7417 dagar gammal vid millennieskiftet.
 
 </sample-output>
 
 <sample-output>
 
-Päivä: **28**
-Kuukausi: **3**
-Vuosi: **2005**
-Et ollut syntynyt, kun vuosituhat vaihtui.
+Dag: **28**
+Månad: **3**
+År: **2005**
+Du var inte född vid millennieskiftet.
 
 </sample-output>
 
-Voit olettaa, että kaikki annetut päivä-kuukausi-vuosi-yhdistelmät ovat mahdollisia (eli käyttäjä ei siis anna esim. syötettä 31.2.1999).
+Du kan anta att användaren ger ett korrekt datum (inte t.ex. 31/2 1999).
 
 </programming-exercise>
 
 <programming-exercise name='Henkilötunnus oikein?' tmcname='osa07-10_henkilotunnus_oikein'>
 
-Tee funktio `onko_validi(hetu: str)`, joka palauttaa `True` tai `False` sen mukaan, onko annettu henkilötunnus oikea. Henkilötunnus on muotoa `ppkkvvXyyyz`, jossa `ppkkvv` kertoo syntymäajan (päivä/kuukausi/vuosi), `X` on syntymävuosisadasta riippuva välimerkki, `yyy` henkilökohtainen yksilönumero ja `z` tarkistemerkki.
+Skapa funktionen `valid(personbeteckning: str)` som returnerar `True` eller `False` beroende på om den givna personbeteckningen är korrekt. Formatet på beteckningen är `ddmmååxyyyz` där `ddmmåå` indikerar födelsetid, `x` är ett skiljetecken, `yyy` födelsenummer och `z` ett kontrolltecken.
 
-Ohjelman tulee tarkastaa, että
+Programmet ska kontrollera att
 
-* alkuosassa on ppkkvv-muodossa oleva päivämäärä, joka on olemassa oleva päivämäärä
-* välimerkki on `+` (1800-luku), `-` (1900-luku) tai `A` (2000-luku) ja
-* lopussa oleva tarkastusmerkki on oikein.
+* födelsetiden är ett datum som finns
+* skiljetecknet är `+` (1800-talet), `-` (1900-talet) eller `A` (2000-talet)
+* kontrolltecknet är korrekt.
 
-Tarkastusmerkki lasketaan jakamalla syntymäajasta ja yksilönumerosta muodostuva numerosarja 31:llä ja ottamalla tästä jakojäännös. Merkki valitaan sitten jakojäännöksen mukaisesta indeksistä merkkijonosta `0123456789ABCDEFHJKLMNPRSTUVWXY`. Esimerkiksi jos jakojäännös on 12, valitaan indeksissä 12 oleva merkki `C`.
+Kontrolltecknet får man genom att dividera den siffra som består av födelsetiden och -numret med 31. Resten av denna operationen indikerar från vilket index i strängen `0123456789ABCDEFHJKLMNPRSTUVWXY` kontrolltecknet tas ifrån. Om resten är t.ex. 12, är kontrolltecknet vid index 12, dvs. `C`.
 
-Lisätietoa laskemisesta löydät esimerkiksi [Digi- ja väestötietoviraston sivuilta](https://dvv.fi/henkilotunnus).
+Se mer på webbplatsen för Myndigheten för digitalisering och befolkningsdata.
 
-**HUOM!** Pidä huolta, ettet jaa omaa henkilötunnustasi esimerkiksi testikoodin mukana, jos kysyt neuvoja tehtävään kurssin keskustelualueella tai muualla.
+Obs! Se till att du inte delar din egen personbeteckning av misstag, t.ex. om du frågar om hjälp när du löser den här uppgiften.
 
-Oikeamuotoisia henkilötunnuksia testaamiseen ovat esimerkiksi seuraavat:
+För att underlätta testandet listas några valida personbeteckningar nedan:
 
 * 230827-906F
 * 120488+246L
@@ -215,8 +217,8 @@ Modulen `datetime` innehåller metoden `strftime` som kan användas för att for
 ```python
 from datetime import datetime
 
-aika = datetime.now()
-print(aika.strftime("%d.%m.%Y"))
+tid = datetime.now()
+print(tid.strftime("%d.%m.%Y"))
 ```
 
 <sample-output>
@@ -243,52 +245,52 @@ Formatering för `datetime` fungerar också åt det andra hållet, det vill säg
 ```python
 from datetime import datetime
 
-syote = input("Anna syntymäpäiväsi muodossa pv.kk.vvvv: ")
-aika = datetime.strptime(syote, "%d.%m.%Y")
+syote = input("Ange din födelsetid i formatet dd.mm.åååå: ")
+tid = datetime.strptime(syote, "%d.%m.%Y")
 
-if aika < datetime(2000, 1, 1):
-    print("Synnyit viime vuosituhannella")
+if tid < datetime(2000, 1, 1):
+    print("Du föddes på förra årtusendet")
 else:
-    print("Synnyit tällä vuosituhannella")
+    print("Du föddes på det här årtusendet")
 ```
 
 <sample-output>
 
-Anna syntymäpäiväsi muodossa pv.kk.vvvv: **5.11.1986**
-Synnyit viime vuosituhannella
+Ange din födelsetid i formatet dd.mm.åååå: **5.11.1986**
+Du föddes på förra årtusendet
 
 </sample-output>
 
 <programming-exercise name='Ruutuaika' tmcname='osa07-11_ruutuaika'>
 
-Ohjelmassa kirjoitetaan käyttäjän määrittelemään tiedostoon "ruutuaikoja", eli käyttäjän television, tietokoneen ja mobiililaitteen ääressä tiettyinä päivinä viettämää aikaa.
+I det här programmet antecknar vi användarens dagliga skärmtid (tv, dator, mobil) i en fil.
 
-Ohjelma toimii seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Tiedosto: **kesakuun_loppu.txt**
-Aloituspäivä: **24.6.2020**
-Montako päivää: **5**
-Anna ruutuajat kunakin päivänä minuutteina (TV tietokone mobiililaite):
-Ruutuaika 24.06.2020: **60 120 0**
-Ruutuaika 25.06.2020: **0 0 0**
-Ruutuaika 26.06.2020: **180 0 0**
-Ruutuaika 27.06.2020: **25 240 15**
-Ruutuaika 28.06.2020: **45 90 5**
-Tiedot tallennettu tiedostoon kesakuun_loppu.txt
+Fil: **juni.txt**
+Första dagen: **24.6.2020**
+Antal dagar: **5**
+Ange skärmtiden i minuter (tv dator mobil):
+Skärmtid 24.06.2020: **60 120 0**
+Skärmtid 25.06.2020: **0 0 0**
+Skärmtid 26.06.2020: **180 0 0**
+Skärmtid 27.06.2020: **25 240 15**
+Skärmtid 28.06.2020: **45 90 5**
+Infon lagrad i filen juni.txt
 
 </sample-output>
 
-Kunkin päivän riville on siis annettu välilyönnillä eroteltuna kolme minuuttimäärää.
+För varje dag anger man alltså tre minutvärden skilda med mellanslag.
 
-Ohjelma tallentaa tilaston ruutuajoista tiedostoon `kesakuun_loppu.txt`, joka näyttää yllä olevalla syötteellä seuraavalta:
+Programmet lagrar statistik i filen `juni.txt` som i vårt fall ser ut så här:
 
 <sample-data>
 
-Ajanjakso: 24.06.2020-28.06.2020
-Yht. minuutteja: 780
-Keskim. minuutteja: 156.0
+Tidsperiod: 24.06.2020-28.06.2020
+Minuter tillsammans: 780
+Minuter i genomsnitt: 156.0
 24.06.2020: 60/120/0
 25.06.2020: 0/0/0
 26.06.2020: 180/0/0

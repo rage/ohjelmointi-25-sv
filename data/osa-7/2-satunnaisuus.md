@@ -24,14 +24,14 @@ Funktionen `randint(a, b)` returnerar ett slumpmässigt heltal mellan `a` och `b
 ```python
 from random import randint
 
-print("Noppa antaa:", randint(1, 6))
+print("Tärningen ger:", randint(1, 6))
 ```
 
 Så här kan utskriften se ut:
 
 <sample-output>
 
-Noppa antaa: 4
+Tärningen ger: 4
 
 </sample-output>
 
@@ -41,23 +41,23 @@ Det här programmet kastar en tärning tio gånger:
 from random import randint
 
 for i in range(10):
-    print("Noppa antaa:", randint(1, 6))
+    print("Tärningen ger:", randint(1, 6))
 ```
 
 Utskriften skulle kunna se ut så här:
 
 <sample-output>
 
-Noppa antaa: 5
-Noppa antaa: 4
-Noppa antaa: 3
-Noppa antaa: 2
-Noppa antaa: 3
-Noppa antaa: 4
-Noppa antaa: 6
-Noppa antaa: 4
-Noppa antaa: 4
-Noppa antaa: 3
+Tärningen ger: 5
+Tärningen ger: 4
+Tärningen ger: 3
+Tärningen ger: 2
+Tärningen ger: 3
+Tärningen ger: 4
+Tärningen ger: 6
+Tärningen ger: 4
+Tärningen ger: 4
+Tärningen ger: 3
 
 </sample-output>
 
@@ -70,14 +70,14 @@ Funktionen `shuffle` blandar elementen i den datastruktur som ges som argument. 
 ```python
 from random import shuffle
 
-sanat = ["apina", "banaani", "cembalo"]
-shuffle(sanat)
-print(sanat)
+ord = ["apa", "banan", "cembalo"]
+shuffle(ord)
+print(ord)
 ```
 
 <sample-output>
 
-['banaani', 'apina', 'cembalo']
+['banan', 'apa', 'cembalo']
 
 </sample-output>
 
@@ -86,8 +86,8 @@ Funktionen `choice` returnerar ett slumpmässigt valt element från en datastruk
 ```python
 from random import choice
 
-sanat = ["apina", "banaani", "cembalo"]
-print(choice(sanat))
+ord = ["apa", "banan", "cembalo"]
+print(choice(ord))
 ```
 
 <sample-output>
@@ -116,13 +116,13 @@ Ett sätt är att lagra de lottade siffrorna i en lista. Då lägger vi bara til
 ```python
 from random import randint
 
-rivi = []
-while len(rivi) < 7:
-    uusi = randint(1, 40)
-    if uusi not in rivi:
-        rivi.append(uusi)
+rad = []
+while len(rad) < 7:
+    ny = randint(1, 40)
+    if ny not in rad:
+        rad.append(ny)
 
-print(rivi)
+print(rad)
 ```
 
 Vi kan också spara lite utrymme genom att använda `shuffle`-funktionen:
@@ -130,10 +130,10 @@ Vi kan också spara lite utrymme genom att använda `shuffle`-funktionen:
 ```python
 from random import shuffle
 
-kaikki = list(range(1, 41))
-shuffle(kaikki)
-rivi = kaikki[0:7]
-print(rivi)
+alla = list(range(1, 41))
+shuffle(alla)
+rad = alla[0:7]
+print(rad)
 ```
 
 Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Listan blandas sedan, varefter de första sju siffrorna utgör veckans vinnande rad. Nu behöver vi ingen loop.
@@ -143,22 +143,22 @@ Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lot
 ```python
 from random import sample
 
-kaikki_luvut = list(range(1, 41))
-rivi = sample(kaikki_luvut, 7)
-print(rivi)
+alla = list(range(1, 41))
+rad = sample(alla, 7)
+print(rad)
 ```
 
 <programming-exercise name='Lottonumerot' tmcname='osa07-04_lottonumerot'>
 
-Tee funktio `lottonumerot(maara: int, alaraja: int, ylaraja: int)`, joka arpoo annetun määrän satunnaislukuja väliltä `alaraja`...`ylaraja`, tallentaa ne listaan ja palauttaa listan. Lukujen tulee olla palautetussa listassa suuruusjärjestyksessä.
+Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en ordnad lista (börjandes med det minsta talet).
 
-Koska kyseessä ovat lottonumerot, sama numero ei saa esiintyä listassa kahta kertaa.
+Samma siffra får inte förekomma flera gånger.
 
-Esimerkki:
+Exempel:
 
 ```python
-for numero in lottonumerot(7, 1, 40):
-    print(numero)
+for siffra in lottorad(7, 1, 40):
+    print(siffra)
 ```
 
 <sample-output>
@@ -185,7 +185,7 @@ Vi kan själva ge ett sådant värde med `seed`-funktionen:
 from random import randint, seed
 
 seed(1337)
-# tästä tulee aina sama satunnaisluku
+# det här genererar alltid samma tal
 print(randint(1, 100))
 ```
 
@@ -201,13 +201,13 @@ För ytterligare information om slumpmässighet, se random.org.
 
 <programming-exercise name='Salasanan arpoja, osa 1' tmcname='osa07-05_salasanan_arpoja_1'>
 
-Tee funktio, jonka avulla on mahdollista luoda halutun pituisia satunnaisista pienistä kirjaimista (väliltä a-z) muodostettuja salasanoja.
+Skapa en funktion som genererar slumpmässiga lösenord, av vald längd, bestående av bokstäverna a-z.
 
 Esimerkki:
 
 ```python
 for i in range(10):
-    print(luo_salasana(8))
+    print(skapa_losenord(8))
 ```
 
 <sample-output>
@@ -229,18 +229,18 @@ rjkoacib
 
 <programming-exercise name='Salasanan arpoja, osa 2' tmcname='osa07-06_salasanan_arpoja_2'>
 
-Tee paranneltu versio edellisen tehtävän funktiosta. Funktio saa nyt kolme parametria:
+Förbättra förra uppgiftens funktion. Nu tar den emot tre argument:
 
-* jos toinen parametri on `True`, salasanassa on myös (yksi tai useampi) numero
-* jos kolmas parametri on `True`, salasanassa on myös (yksi tai useampi) erikoismerkki joukosta `!?=+-()#`
+2. om värdet är `True` ska lösenordet innehålla minst en siffra
+2. om värdet är `True` ska lösenordet innehålla minst ett av tecknen `!?=+-()#`
 
-Salasanassa täytyy olla parametreista riippumatta aina vähintään yksi kirjain. Voit olettaa, että funktiota kutsutaan aina parametreilla, joilla on mahdollista tuottaa halutunlaisia salasanoja.
+Lösenordet ska alltid innehålla minst en bokstav. Du kan anta att funktionen anropas med argument som möjliggör skapandet av önskat lösenord.
 
-Esimerkki:
+Exempel:
 
 ```python
 for i in range(10):
-    print(luo_hyva_salasana(8, True, True))
+    print(skapa_bra_losenord(8, True, True))
 ```
 
 <sample-output>
@@ -262,29 +262,31 @@ n?b0a7ey
 
 <programming-exercise name='Noppasimulaatio' tmcname='osa07-07_noppasimulaatio'>
 
-Tehdään tässä tehtävässä muutamia funktioita, joita on mahdollista käyttää nopanheittoon liittyvissä peleissä.
+Vi skapar nu några funktioner som vi kan använda i spel som kräver en tärning.
 
-Normaalin nopan sijaan tehtävässä käytetään ns. epätransitiivisia noppia, joista on lisää tietoa esim. [tässä artikkelissa](https://singingbanana.com/dice/article.htm) tai [tässä videossa](https://www.youtube.com/watch?v=LrIp6CKUlH8).
+Istället för en normal tärning använder vi icke-transitiva tärningar.
 
-Käytössä on kolme noppaa:
+Vi har tre tärningar:
 
-- Nopassa A on numerot 3, 3, 3, 3, 3, 6
-- Nopassa B on numerot 2, 2, 2, 5, 5, 5
-- Nopassa C on numerot 1, 4, 4, 4, 4, 4
+* tärning A med siffrorna 3, 3, 3, 3, 3, 6
+* tärning B med siffrorna 2, 2, 2, 5, 5, 5
+* tärning C med siffrorna 1, 4, 4, 4, 4, 4
 
 </pre>
 
-Tee funktio `heita(noppa: str)`, joka heittää parametrinsa kertomaa noppaa. Esimerkki:
+Skapa funktionen `kasta(tarning: str)` som kastar den valda tärningen.
+
+Exempel:
 
 ```python
 for i in range(20):
-    print(heita("A"), " ", end="")
+    print(kasta("A"), " ", end="")
 print()
 for i in range(20):
-    print(heita("B"), " ", end="")
+    print(kasta("B"), " ", end="")
 print()
 for i in range(20):
-    print(heita("C"), " ", end="")
+    print(kasta("C"), " ", end="")
 ```
 
 <sample-output>
@@ -295,13 +297,13 @@ for i in range(20):
 
 </sample-output>
 
-Tee vielä funktio `pelaa(noppa1: str, noppa2: str, kertaa: int)` joka heittää kokonaisluvun kertoman määrän parametreina olevia noppia. Funktio palauttaa tuplen, joka kertoo nopan 1 voittojen lukumäärän, nopan 2 voittojen lukumäärän ja tasapelien lukumäärän.
+Skapa ännu funktionen `spela(tarning1: str, tarning2: str, ganger: int)` som kastar de valda tärningarna angivna antalet gånger. Funktionen ska returnera en tuple som berättar antalet vinster med tärning ett respektive två samt antalet oavgjoda rundor.
 
 ```python
-tulos = pelaa("A", "C", 1000)
-print(tulos)
-tulos = pelaa("B", "B", 1000)
-print(tulos)
+resultat = spela("A", "C", 1000)
+print(resultat)
+resultat = spela("B", "B", 1000)
+print(resultat)
 ```
 
 <sample-output>
@@ -315,20 +317,20 @@ print(tulos)
 
 <programming-exercise name='Satunnaiset sanat' tmcname='osa07-08_satunnaiset_sanat'>
 
-Tehtäväpohjassa on annettu tiedosto `sanat.txt`, joka sisältää englannin kielen sanoja, yksi sana joka rivillä.
+I den här uppgiften har du filen `ord.txt` till ditt förfogande. Filen innehåller engelska ord, ett ord på varsin rad.
 
-Kirjoita funktio `sanat(n: int, alku: str)`, joka palauttaa listassa `n` kappaletta satunnaisia sanoja tiedostosta. Kaikkien palautettujen sanojen tulee alkaa annetulla merkkijonolla.
+Skapa funktionen `ord(n: int, borjar: str)` som returnerar `n` slumpmässigt valda ord som börjar med den valda strängen.
 
-Jos funktiota esim. kutsuttaisiin parametreilla `sanat(3, "ca")`, se voisi palauttaa listassa esim. sanat "cat", "car" ja "carbon". Sama sana ei saa esiintyä listassa kahdesti.
+Om funktionen anropas med argumenten `ord(3, "ca")` kan t.ex. orden cat, car och carbon returneras i listan. Samma ord får inte förekomma flera gånger.
 
-Jos annetulla merkkijonolla alkavia sanoja ei löydy tarpeeksi annetun kokoisen ryhmän muodostamiseen, funktio tuottaa poikkeuksen `ValueError`.
+Om tillräckligt många ord inte hittas ska undantaget `ValueError` åstadkommas.
 
-Esimerkki:
+Exempel:
 
 ```python
-lista = sanat(3, "ca")
-for sana in lista:
-    print(sana)
+lista = ord(3, "ca")
+for ord in lista:
+    print(ord)
 ```
 
 <sample-output>

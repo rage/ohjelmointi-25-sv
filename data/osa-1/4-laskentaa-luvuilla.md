@@ -57,21 +57,21 @@ Division med operatorn `/` är ett undantag. Dess resultat är ett flyttal även
 Exempel:
 
 ```python
-pituus = 172.5
-paino = 68.55
+langd = 172.5
+vikt = 68.55
 
-# painoindeksi lasketaan jakamalla paino pituuden neliöllä
-# pituus ilmoitetaan kaavassa metreinä
-bmi = paino / (pituus / 100) ** 2
+# viktindex beräknas genom att dividera vikten med kvadratroten av längden
+# längden anges i meter
+bmi = vikt / (langd / 100) ** 2
 
-print(f"Painoindeksi on {bmi}")
+print(f"Viktindexet är {bmi}")
 ```
 
 Programmets utskrift ser ut så här:
 
 <sample-output>
 
-Painoindeksi on 23.037177063642087
+Viktindexet är 23.037177063642087
 
 </sample-output>
 
@@ -81,16 +81,16 @@ Märk att Python också har operatorn `//`, för division med heltal som resulta
 x = 3
 y = 2
 
-print(f"/-operaattori {x/y}")
-print(f"//-operaattori {x//y}")
+print(f"/-operatorn {x/y}")
+print(f"//-operatorn {x//y}")
 ```
 
 …skriver ut följande:
 
 <sample-output>
 
-/-operaattori 1.5
-//-operaattori 1
+/-operatorn 1.5
+//-operatorn 1
 
 </sample-output>
 
@@ -101,56 +101,56 @@ Vi har redan använt oss av `input`-funktionen för att läsa in strängar som a
 En sträng kan konverteras till ett heltal med funktionen `int`. Det följande programmet frågar användarens födelseår och sparar det i variabeln `indata_strang`. Programmet skapar därefter variabeln `ar` som innehåller året konverterat till heltal. Efter det går det att räkna `2021 - ar`, med hjälp av det värde användaren angett.
 
 ```python
-syote = input("Minä vuonna olet syntynyt? ")
-vuosi = int(syote)
-print(f"Ikäsi vuoden 2020 lopussa: {2020 - vuosi}" )
+indata = input("Vilket är ditt födelseår? ")
+ar = int(indata)
+print(f"Din ålder i slutet av 2020: {2020 - ar}" )
 ```
 <sample-output>
 
-Minä vuonna olet syntynyt? **1995**
-Ikäsi vuoden 2020 lopussa: 25
+Vilket är ditt födelseår? **1995**
+Din ålder i slutet av 2020: 25
 
 </sample-output>
 
 Allt som oftast behöver man inte skapa två separata variabler (som ovan) för att läsa en siffra från användaren. Istället kan användarens text läsas in och konverteras till heltal samtidigt:
 
 ```python
-vuosi = int(input("Minä vuonna olet syntynyt? "))
-print(f"Ikäsi vuoden 2020 lopussa: {2020 - vuosi}" )
+ar = int(input("Vilket är ditt födelseår? "))
+print(f"Din ålder i slutet av 2020: {2020 - ar}" )
 ```
 
 En sträng kan också konverteras till flyttal. Det sker med funktionen `float`. Det här programmet frågar användaren om hennes eller hans längd och vikt, och använder svaren för att räkna ut BMI:
 
 ```python
-pituus = float(input("Anna pituus: "))
-paino = float(input("Anna paino: "))
+langd = float(input("Ange längd: "))
+vikt = float(input("Ange vikt: "))
 
-pituus = pituus / 100
-bmi = paino / pituus ** 2
+langd = langd / 100
+bmi = vikt / langd ** 2
 
-print(f"Painoindeksi on {bmi}")
+print(f"Viktindexet är {bmi}")
 ```
 
 Här är ett exempel på en utskrift från programmet:
 
 <sample-output>
 
-Anna pituus: **163**
-Anna paino: **74.45**
-Painoindeksi on 28.02137829801649
+Ange längd: **163**
+Ange vikt: **74.45**
+Viktindexet är 28.02137829801649
 
 </sample-output>
 
 <in-browser-programming-exercise name="Luku kertaa viisi" tmcname="osa01-13_kerrottuna_viidella">
 
-Tee ohjelma, joka kysyy käyttäjältä lukua. Ohjelma tulostaa luvun kerrottuna viidellä.
+Skapa ett program som frågar efter ett tal från användaren. Programmet ska skriva ut talet multiplicerat med fem.
 
-Ohjelman tulee toimia seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Anna luku: **3**
-Kun kerrotaan 3 luvulla 5, saadaan 15
+Ge ett tal: **3**
+När 3 multipliceras med 5, får vi 15
 
 </sample-output>
 
@@ -158,13 +158,13 @@ Kun kerrotaan 3 luvulla 5, saadaan 15
 
 <in-browser-programming-exercise name="Nimi ja ikä" tmcname="osa01-14_nimi_ja_ika">
 
-Tee ohjelma, joka kysyy käyttäjältä tämän nimen ja syntymävuoden. Ohjelma tulostaa sitten viestin seuraavan esimerkin mukaisesti:
+Skapa ett program som frågar efter användarens namn samt födelseår. Programmet ska därefter skriva ut ett meddelande enligt följande exempel:
 
 <sample-output>
 
-Anna nimi: **Keijo Keksitty**
-Anna syntymävuosi: **1990**
-Moi Keijo Keksitty, olet 30 vuotta vanha vuoden 2020 lopussa
+Ange namn: **Sandro Syntetisk**
+Ange födelseår: **1990**
+Hej Sandro Syntetisk, du är 30 år i slutet av 2020
 
 </sample-output>
 
@@ -175,22 +175,22 @@ Moi Keijo Keksitty, olet 30 vuotta vanha vuoden 2020 lopussa
 Låt oss kika på ett program som räknar summan av tre siffror som användaren anger:
 
 ```python
-luku1 = int(input("Ensimmäinen luku: "))
-luku2 = int(input("Toinen luku: "))
-luku3 = int(input("Kolmas luku: "))
+siffra1 = int(input("Siffra ett: "))
+siffra2 = int(input("Siffra två: "))
+siffra3 = int(input("Siffra tre: "))
 
-summa = luku1 + luku2 + luku3
-print(f"Lukujen summa: {summa}")
+summa = siffra1 + siffra2 + siffra3
+print(f"Summan av siffrorna: {summa}")
 ```
 
 Här har vi ett exempel på när vi kör programmet:
 
 <sample-output>
 
-Ensimmäinen luku: **5**
-Toinen luku: **21**
-Kolmas luku: **7**
-Lukujen summa: 33
+Siffra ett: **5**
+Siffra två: **21**
+Siffra tre: **7**
+Summan av siffrorna: 33
 
 </sample-output>
 
@@ -199,16 +199,16 @@ Programmet använder fyra variabler, men i det här fallet skulle det faktiskt r
 ```python
 summa = 0
 
-luku = int(input("Ensimmäinen luku: "))
-summa = summa + luku
+nummer = int(input("Siffra ett: "))
+summa = summa + nummer
 
-luku = int(input("Toinen luku: "))
-summa = summa + luku
+nummer = int(input("Siffra två: "))
+summa = summa + nummer
 
-luku = int(input("kolmas luku: "))
-summa = summa + luku
+nummer = int(input("Siffta tre: "))
+summa = summa + nummer
 
-print(f"Lukujen summa: {summa}")
+print(f"Summan av siffrorna: {summa}")
 ```
 
 Nu läses alla siffor som användaren ges in i en och samma variabel, `nummer`. Värdet på variabeln `summa` ökas med värdet på variabeln nummer varje gång användaren skriver in ett nytt nummer.
@@ -216,7 +216,7 @@ Nu läses alla siffor som användaren ges in i en och samma variabel, `nummer`. 
 Vi tar en lite närmare titt på kommandot:
 
 ```python
-summa = summa + luku
+summa = summa + nummer
 ```
 
 Här adderas värdena i variablerna `summa` och `nummer` ihop – för att lagras i variabeln summa. Till exempel om värdet på `summa` är `3` och värdet på `nummer` är `2`, kommer värdet på summa att vara `5` efter att kommandot körts.
@@ -224,7 +224,7 @@ Här adderas värdena i variablerna `summa` och `nummer` ihop – för att lagra
 Att öka på värdet hos en variabel är en vanlig operation. Därför finns det en liten genväg till förfogande. Den här notationen fungerar i praktiken som kommandot ovan:
 
 ```python
-summa += luku
+summa += nummer
 ```
 
 Det här tillåter oss skriva programmet lite mer koncist:
@@ -232,16 +232,16 @@ Det här tillåter oss skriva programmet lite mer koncist:
 ```python
 summa = 0
 
-luku = int(input("Ensimmäinen luku: "))
-summa += luku
+nummer = int(input("Siffra ett: "))
+summa += nummer
 
-luku = int(input("Toinen luku: "))
-summa += luku
+nummer = int(input("Siffra två: "))
+summa += nummer
 
-luku = int(input("kolmas luku: "))
-summa += luku
+nummer = int(input("Siffta tre: "))
+summa += nummer
 
-print(f"Lukujen summa: {summa}")
+print(f"Summan av siffrorna: {summa}")
 ```
 
 Egentligen behöver vi inte alls variabeln `nummer`. Vi kan också behandla siffrorna som användaren anger på följande sätt:
@@ -249,26 +249,26 @@ Egentligen behöver vi inte alls variabeln `nummer`. Vi kan också behandla siff
 ```python
 summa = 0
 
-summa += int(input("Ensimmäinen luku: "))
-summa += int(input("Toinen luku: "))
-summa += int(input("Kolmas luku: "))
+summa += int(input("Siffra ett: "))
+summa += int(input("Siffra två: "))
+summa += int(input("Siffra tre: "))
 
-print(f"Lukujen summa: {summa}")
+print(f"Summan av siffrorna: {summa}")
 ```
 
 I praktiken beror antalet variabler som behövs på situationen. Om man behöver minnas enskilda värden som användaren anger, är det inte möjligt att "återanvända" samma variabel för att läsa in olika värden. Här är ett exempel på en sådan situation:
 
 ```python
-luku1 = int(input("Ensimmäinen luku: "))
-luku2 = int(input("Toinen luku: "))
+siffra1 = int(input("Siffra ett: "))
+siffra2 = int(input("Siffra två: "))
 
-print(f"{luku1} + {luku2} = {luku1+luku2}")
+print(f"{siffra1} + {siffra2} = {siffra1+siffra2}")
 ```
 
 <sample-output>
 
-Ensimmäinen luku: **2**
-Toinen luku: **3**
+Siffra ett: **2**
+Siffra två: **3**
 2 + 3 = 5
 
 </sample-output>
@@ -280,41 +280,41 @@ Att "återanvända" en variabel lönar sig bara då när det finns ett tillfäll
 I följande exempel används variabeln `data` för att lagra användarens namn och därefter dess ålder. Det finns absolut ingen logik i det!
 
 ```python
-tieto = input("Mikä on nimesi? ")
-print("Hei " + tieto + "!")
+data = input("Vad är ditt namn? ")
+print("Hej " + data + "!")
 
-tieto = int(input("Mikä on ikäsi? "))
-# ohjelma jatkuu...
+data = int(input("Vad är din ålder? "))
+# programmet fortsätter...
 ```
 
 En bättre idé vore att använda skilda variabler med namn som tydligt beskriver deras funktion:
 
 ```python
-nimi = input("Mikä on nimesi? ")
-print("Hei " + nimi + "!")
+nimi = input("Vad är ditt namn? ")
+print("Hej " + nimi + "!")
 
-ika = int(input("Mikä on ikäsi? "))
-# ohjelma jatkuu...
+alder = int(input("Vad är din ålder? "))
+# programmet fortsätter...
 ```
 
 <in-browser-programming-exercise name="Vuorokaudet sekunteina" tmcname="osa01-15_sekunteja_vuorokaudessa">
 
-Tee ohjelma, joka kysyy käyttäjältä vuorokausien lukumäärän. Tämän jälkeen ohjelma tulostaa sekuntien määrän annetuissa vuorokausissa.
+Skapa ett program som frågar användaren om ett antal dagar. Programmet ska därefter räkna ut hur långa dessa dagar tillsammans är mätt i sekunder.
 
-Ohjelman tulee toimia seuraavasti:
+Programmet ska fungera så här:
 
 <sample-output>
 
-Kuinka monen vuorokauden sekunnit tulostetaan? **1**
+Hur många dygns längd ska räknas i sekunder? **1**
 86400
 
 </sample-output>
 
-Toinen esimerkki:
+Ett annat exempel:
 
 <sample-output>
 
-Kuinka monen vuorokauden sekunnit tulostetaan? **7**
+Hur många dygns längd ska räknas i sekunder? **7**
 604800
 
 </sample-output>
@@ -327,14 +327,16 @@ Kuinka monen vuorokauden sekunnit tulostetaan? **7**
 Oheinen ohjelma kysyy käyttäjältä kolme lukua ja tulostaa näiden tulon (eli luvut kerrottuna toisillaan).
 Ohjelmassa on kuitenkin virhe tai virheitä, joiden takia se ei toimi. Korjaa ohjelma sellaiseksi, että se toimii oikein.
 
-Ohjelman siis pitäisi toimia esimerkiksi näin:
+Det här programmet borde fråga efter tre tal från användaren och räkna talens produkt. Det finns dessvärre fel i programmet. Korrigera dem, så att programmet fungerar på önskat sätt.
+
+Här är ett exempel på hur programmet borde fungera:
 
 <sample-output>
 
-Anna luku 1: **2**
-Anna luku 2: **3**
-Anna luku 3: **5**
-Tulo on 30
+Ange tal 1: **2**
+Ange tal 2: **3**
+Ange tal 3: **5**
+Produkten av talen är 30
 
 </sample-output>
 
@@ -342,16 +344,16 @@ Tulo on 30
 
 <in-browser-programming-exercise name="Lukujen summa ja tulo" tmcname="osa01-16_lukujen_summa_ja_tulo">
 
-Tee ohjelma joka kysyy käyttäjältä kaksi lukua. Ohjelma tulostaa lukujen summan ja tulon.
+Skapa ett program som ber användaren att ge två siffror. Programmet ska räkna summan och produkten av dessa tal.
 
-Ohjelman tulee toimia seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Luku 1: **3**
-Luku 2: **7**
-Lukujen summa 10
-Lukujen tulo 21
+Siffra 1: **3**
+Siffra 2: **7**
+Siffrornas summa 10
+Produkten av siffrorna 21
 
 </sample-output>
 
@@ -360,17 +362,17 @@ Lukujen tulo 21
 
 <in-browser-programming-exercise name="Lukujen summa ja keskiarvo" tmcname="osa01-17_lukujen_summa_ja_keskiarvo">
 
-Tee ohjelma, joka lukee käyttäjältä neljä lukua ja tulostaa niiden summan ja keskiarvon
+Skapa ett program som ber användaren att ange fyra siffror. Programmet ska räkna summan och medeltalet av dessa siffror.
 
-Ohjelman tulee toimia seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Luku 1: **2**
-Luku 2: **1**
-Luku 3: **6**
-Luku 4: **7**
-Lukujen summa on 16 ja keskiarvo 4.0
+Siffra 1: **2**
+Siffra 2: **1**
+Siffra 3: **6**
+Siffra 4: **7**
+Summan av siffrorna är 16 ja medeltalet är 4.0
 
 </sample-output>
 
@@ -380,23 +382,23 @@ Lukujen summa on 16 ja keskiarvo 4.0
 
 <in-browser-programming-exercise name="Ruokailukustannukset" tmcname="osa01-19_ruokailukustannukset">
 
-Tee ohjelma, joka arvioi käyttäjän keskimääräisiä ruokailukustannuksia.
+Skapa ett program som uppskattar användarens genomsnittliga matkostnader.
 
-Ohjelma kysyy, kuinka monta kertaa viikossa käyttäjä käy Unicafessa ja Unicafe-lounaan hinnan sekä viikon muiden ruokaostosten hinnan.
+Programmet frågar hur många gånger i veckan användaren besöker Unicafe och vad hon betalar för sin lunch där. Dessutom frågas också övriga matkostnader på veckonivå.
 
-Näiden tietojen perusteella ohjelma laskee käyttäjän keskimääräiset ruokamenot sekä viikossa että yhtenä päivänä.
+Baserat på den här informationen räknar programmet de genomsnittliga matkostnaderna under en vecka samt en dag.
 
-Ohjelman tulee toimia seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Montako kertaa viikossa syöt Unicafessa? **4**
-Unicafe-lounaan hinta? **2.5**
-Paljonko käytät viikossa ruokaostoksiin? **28.5**
+Hur många gånger i veckan äter du på Unicafe? **4**
+Vad kostar Unicafe-lunchen? **2.5**
+Hur mycket spenderar då på övriga matinköp under veckan? **28.5**
 
-Kustannukset keskimäärin:
-Päivässä 5.5 euroa
-Viikossa 38.5 euroa
+Genomsnittliga matkostnader:
+Under en dag 5.5 euro
+Under en vecka 38.5 euro
 
 </sample-output>
 
@@ -404,27 +406,27 @@ Viikossa 38.5 euroa
 
 <in-browser-programming-exercise name="Opiskelijat ryhmiin" tmcname="osa01-18_opiskelijat_ryhmiin">
 
-Tee ohjelma, joka kysyy kurssin opiskelijoiden määrän ja ryhmän koon ja ilmoittaa, montako ryhmää opiskelijoista muodostuu. Jos jako ei mene tasan, yhdessä ryhmässä voi olla vähemmän opiskelijoita, mutta kaikissa muissa on oltava haluttu määrä.
+Gör ett program som frågar efter antalet studerande under en kurs samt storleken på en grupp. Programmet ska räkna hur många grupper bildas. En av grupperna kan vid behov ha färre medlemmar än den önskade gruppstorleken.
 
 <sample-output>
 
-Montako opiskelijaa? **8**
-Mikä on ryhmän koko? **4**
-Ryhmien määrä: 2
+Hur många studerande? **8**
+Vad är gruppstorleken? **4**
+Antalet grupper: 2
 
 </sample-output>
 
 <sample-output>
 
-Montako opiskelijaa? **11**
-Mikä on ryhmän koko? **3**
-Ryhmien määrä: 4
+Hur många studerande? **11**
+Vad är gruppstorleken? **3**
+Antalet grupper: 4
 
 </sample-output>
 
-Vihje: tehtävän tekeminen onnistuu kokonaislukujakolaskuoperaattorilla `//`
+Tips: Använd dig av operatorn för heltalsdivision `//`
 
-Vihje2: jos et keksi miten tehtävä ratkeaa, älä huolestu suotta vaan tutustu [seuraavassa luvussa](/osa-1/5-ehtorakenne) esiteltävään <i>ehtorakenteeseen</i>. Ehtorakenteen avulla tehtävä on huomattavasti helpompi ratkaista.
+Tips 2: Om du inte hittar på en lösning kan du bekanta dig med if-satser, som presenteras i nästa del. De förenklar uppgiften avsevärt.
 
 </in-browser-programming-exercise>
 

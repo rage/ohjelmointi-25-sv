@@ -38,24 +38,24 @@ Flera fel som uppkommer då ett program körs beror på indata som är i fel for
 Till all lycka kan vi som programmerare förbereda oss för de flesta felen. Vi ser på ett program som frågar efter användarens ålder och kollar att siffran är giltig (mellan noll och 150):
 
 ```python
-ika = int(input("Anna ikäsi: "))
-if ika >= 0 and ika <= 150:
-    print("Ikä kelpaa")
+alder = int(input("Ange din ålder: "))
+if alder >= 0 and alder <= 150:
+    print("Acceptabel ålder")
 else:
-    print("Virheellinen ikä")
+    print("Felaktig ålder")
 ```
 
 <sample-output>
 
-Anna ikäsi: **25**
-Ikä kelpaa
+Ange din ålder: **25**
+Acceptabel ålder
 
 </sample-output>
 
 <sample-output>
 
-Anna ikäsi: **-3**
-Virheellinen ikä
+Ange din ålder: **-3**
+Felaktig ålder
 
 </sample-output>
 
@@ -63,8 +63,8 @@ Så länge användaren ger ett heltal verkar valideringen fungera som den ska. M
 
 <sample-output>
 
-Anna ikäsi: **kakskytkolme**
-ValueError: invalid literal for int() with base 10: 'kakskytkolme'
+Ange din ålder: **tjugotre**
+ValueError: invalid literal for int() with base 10: 'tjugotre'
 
 </sample-output>
 
@@ -80,20 +80,20 @@ Låt oss ändra på exemplet ovan så att programmet är förberett för undanta
 
 ```python
 try:
-    ika = int(input("Anna ikäsi: "))
+    alder = int(input("Ange din ålder: "))
 except ValueError:
-    ika = -1
+    alder = -1
 
-if ika >= 0 and ika <= 150:
-    print("Ikä kelpaa")
+if alder >= 0 and alder <= 150:
+    print("Acceptabel ålder")
 else:
-    print("Virheellinen ikä")
+    print("Felaktig ålder")
 ```
 
 <sample-output>
 
-Anna ikäsi: **kakskytkolme**
-Virheellinen ikä
+Ange din ålder: **tjugotre**
+Felaktig ålder
 
 </sample-output>
 
@@ -104,28 +104,28 @@ I exemplet ovan, om ett fel sker, tilldelas `alder` värdet `-1`. Det här är e
 I det följande exemplet har vi funktionen `las_heltal` som ber användaren att ge ett heltal. Funktionen är också redo för icke-giltiga värden och fortsätter att fråga efter ett heltal tills ett giltigt värde har angetts.
 
 ```python
-def lue_kokonaisluku():
+def las_heltal():
     while True:
         try:
-            syote = input("Syötä kokonaisluku: ")
-            return int(syote)
+            indata = input("Ange heltal: ")
+            return int(indata)
         except ValueError:
-            print("Virheellinen syöte")
+            print("Felaktiga indata")
 
-luku = lue_kokonaisluku()
-print("Kiitos!")
-print(luku, "potenssiin kolme on", luku**3)
+siffra = las_heltal()
+print("Tack!")
+print(siffra, "upphöjt till tre är", siffra**3)
 ```
 
 <sample-output>
 
-Syötä kokonaisluku: **kolme**
-Virheellinen syöte
-Syötä kokonaisluku: **aybabtu**
-Virheellinen syöte
-Syötä kokonaisluku: **5**
-Kiitos!
-5 potenssiin kolme on 125
+Ange heltal: **kolme**
+Felaktiga indata
+Ange heltal: **aybabtu**
+Felaktiga indata
+Ange heltal: **5**
+Tack!
+5 upphöjt till tre är 125
 
 </sample-output>
 
@@ -134,31 +134,31 @@ Ibland räcker det med att fånga undantag med en try-except-struktur utan att g
 Om vi ändrar på exemplet ovan så att vi endast accepterar heltal som är under 100, skulle det kunna se ut så här:
 
 ```python
-def lue_pieni_kokonaisluku():
+def las_litet_heltal():
     while True:
         try:
-            syote = input("Syötä kokonaisluku: ")
-            luku = int(syote)
-            if luku < 100:
-                return luku
+            indata = input("Ange heltal: ")
+            siffra = int(indata)
+            if siffra < 100:
+                return siffra
         except ValueError:
-            pass # tämä komento ei tee mitään
+            pass # det här kommandot gör inget
 
-        print("Virheellinen syöte")
+        print("Felaktiga indata")
 
-luku = lue_pieni_kokonaisluku()
-print(luku, "potenssiin kolme on", luku**3)
+siffra = las_litet_heltal()
+print(siffra, "upphöjt till tre är", siffra**3)
 ```
 
 <sample-output>
 
-Syötä kokonaisluku: **kolme**
-Virheellinen syöte
-Syötä kokonaisluku: **1000**
-Virheellinen syöte
-Syötä kokonaisluku: **5**
-Kiitos!
-5 potenssiin kolme on 125
+Ange heltal: **kolme**
+Felaktiga indata
+Ange heltal: **1000**
+Felaktiga indata
+Ange heltal: **5**
+Tack!
+5 upphöjt till tre är 125
 
 </sample-output>
 
@@ -166,23 +166,23 @@ Nu innehåller except-blocket endast kommandot `pass`, som inte gör något. Pyt
 
 <programming-exercise name='Syötteen luku' tmcname='osa06-17_syotteen_luku'>
 
-Tee funktio `lue`, joka kysyy käyttäjältä syötettä, kunnes se on parametrien määrittelemällä välillä oleva kokonaisluku. Funktio palauttaa käyttäjän antaman syötteen.
+Skapa funktionen `las` som ber användaren ange ett tal, tills användaren anger ett tal som är inom intervallet som angivits. Funktionen ska returnera talet användaren gett.
 
-Funktio toimii seuraavasti:
+Exempel:
 
 ```python
-luku = lue("syötä luku: ", 5, 10)
-print("syötit luvun:", luku)
+siffra = las("Ange siffra: ", 5, 10)
+print("Du gav siffran:", siffra)
 ```
 
 <sample-output>
 
-syötä luku: **seitsemän**
-Syötteen on oltava kokonaisluku väliltä 5...10
-syötä luku: **-3**
-Syötteen on oltava kokonaisluku väliltä 5...10
-syötä luku: **8**
-syötit luvun: 8
+Ange siffra: **seitsemän**
+Siffran ska vara ett heltal i intervallet 5-10
+Ange siffra: **-3**
+Siffran ska vara ett heltal i intervallet 5-10
+Ange siffra: **8**
+Du gav siffran: 8
 
 </sample-output>
 
@@ -218,13 +218,13 @@ Ett `try`-block kan följas av flera `except`-block. Det här programmet kan exe
 
 ```python
 try:
-    with open("esimerkki.txt") as tiedosto:
-        for rivi in tiedosto:
-            print(rivi)
+    with open("exempel.txt") as fil:
+        for rad in fil:
+            print(rad)
 except FileNotFoundError:
-    print("Tiedostoa esimerkki.txt ei löytynyt")
+    print("Filen exempel.txt hittades ej")
 except PermissionError:
-    print("Ei oikeutta avata tiedostoa esimerkki.txt")
+    print("Har inte åtkomst till filen exempel.txt")
 ```
 
 Ibland är det inte nödvändigt att specificera det fel som programmet förbereder sig för. Speciellt då man arbetar med filer, räcker det med att veta att något fel har skett och därmed avsluta programmet på ett säkert sätt. Man behöver inte alltid veta varför ett fel har uppstått. Om vi vill vara förberedda på alla möjliga undantag kan vi använda `except`-blocket utan att specificera felet:
@@ -232,25 +232,25 @@ Ibland är det inte nödvändigt att specificera det fel som programmet förbere
 ```python
 
 try:
-    with open("esimerkki.txt") as tiedosto:
-        for rivi in tiedosto:
-            print(rivi)
+    with open("exempel.txt") as fil:
+        for rad in fil:
+            print(rad)
 except:
-    print("Tapahtui virhe tiedoston lukemisessa")
+    print("Fel i läsandet av filen")
 
 ```
 
 Obs! Den här `except`-satsen körs nu i alla möjliga felsituationer – det här gäller också misstag som programmeraren gjort. Endast syntaxfel kommer att orsaka fel som förhindrar programmet från att köras – detta eftersom den här typen av fel inte låter koden köras över huvud taget.
 
-Till exempel det här programmet kommer alltid att ge ett fel, eftersom variabelnamnet `mitt_namn` har skrivits i formen mittnamn på den tredje raden:
+Till exempel det här programmet kommer alltid att ge ett fel, eftersom variabelnamnet `fil` har skrivits fel på den tredje raden:
 
 ```python
 try:
-    with open("esimerkki.txt") as tiedosto:
-        for rivi in tiedotso:
-            print(rivi)
+    with open("exempel.txt") as fil:
+        for rad in fli:
+            print(rad)
 except:
-    print("Tapahtui virhe tiedoston lukemisessa.")
+    print("Fel i läsandet av filen")
 ```
 
 Ett `except`-block kan gömma bakomliggande fel. Problemet här berodde inte på hur filer behandlades utan på en variabel med inkorrekt namn. Utan ett `except`-block skulle vi kunna se vilket fel som orsakats och kunde därmed hitta källan till felet enklare. Därför lönar det sig att endast använda `except`-blocket för fördefinierade specifika typer av fel.
@@ -262,20 +262,20 @@ Om körandet av en funktion orsakar ett undantag som inte behandlas kommer undan
 I det följande exemplet har vi funktionen `test`. Om den orsakar ett undantag, kommer det inte att behandlas inne i funktionen utan i huvudfunktionen:
 
 ```python
-def testi(x):
+def test(x):
     print(int(x) + 1)
 
 try:
-    luku = input("Anna luku: ")
-    testi(luku)
+    siffra = input("Ange siffra: ")
+    test(siffra)
 except:
-    print("Jotain meni pieleen")
+    print("Något gick fel")
 ```
 
 <sample-output>
 
-Anna luku: **kolme**
-Jotain meni pieleen
+Ange siffra: **kolme**
+Något gick fel
 
 </sample-output>
 
@@ -288,17 +288,17 @@ Det kan till exempel löna sig att åstadkomma ett fel när man märker icke-val
 I det följande exempel har vi en funktion som räknar ut fakulteten av en siffra (t.ex. för siffran fem är fakulteten 1 * 2 * 3 * 4 * 5). Om argumentet som ges till funktionen är negativt, kommer ett fel att åstadkommas:
 
 ```python
-def kertoma(n):
+def fakultet(n):
     if n < 0:
-        raise ValueError("Negatiivinen syöte: " + str(n))
+        raise ValueError("Negativt värde: " + str(n))
     k = 1
     for i in range(2, n + 1):
         k *= i
     return k
 
-print(kertoma(3))
-print(kertoma(6))
-print(kertoma(-1))
+print(fakultet(3))
+print(fakultet(6))
+print(fakultet(-1))
 ```
 
 <sample-output>
@@ -307,87 +307,87 @@ print(kertoma(-1))
 720
 Traceback (most recent call last):
   File "testi.py", line 11, in <module>
-    print(kertoma(-1))
-  File "testi.py", line 3, in kertoma
-    raise ValueError("Negatiivinen syöte: " + str(n))
-ValueError: Negatiivinen syöte: -1
+    print(fakultet(-1))
+  File "testi.py", line 3, in fakultet
+    raise ValueError("Negativt värde: " + str(n))
+ValueError: Negativt värde: -1
 
 </sample-output>
 
 
 <programming-exercise name='Parametrien validointi ' tmcname='osa06-18_parametrien_validointi'>
 
-Kirjoita funktio `uusi_henkilo(nimi: str, ika: int)`, joka luo ja palauttaa uuden henkilö-tuplen. Tuplessa ensimmäinen alkio on nimi ja jälkimmäinen ikä.
+Skapa funktionen `ny_person(namn: str, alder: int)` som skapar och returnerar en tuple som representerar en person. Det första elementet är ett namn och det andra en ålder.
 
-Jos funktion parametrit ovat virheelliset, sen tulee tuplen palauttamisen sijasta tuottaa `ValueError`-poikkeus.
+Om de givna argumenten är felaktiga, ska funktionen orsaka ett `ValueError`-undantag.
 
-Virheellisiä parametreja tässä tapauksessa ovat:
+Felaktiga argument är:
 
-* nimi on tyhjä merkkijono
-* nimi ei koostu vähintään kahdesta sanasta
-* nimen pituus on yli 40 merkkiä
-* ikä on negatiivinen luku
-* ikä on suurempi kuin 150
+* tom sträng som namn
+* ett namn som inte består av minst två ord
+* ett namn som är längre än 40 tecken
+* en negativ ålder
+* en ålder som överstiger 150
 
 </programming-exercise>
 
 <programming-exercise name='Virheelliset lottonumerot' tmcname='osa06-19_virheelliset_lottonumerot'>
 
-Tiedostoon `lottonumerot.csv` on tallennettu lottonumeroita seuraavan esimerkin mukaisesti:
+I filen `lottorader.csv` har man lagrat lottorader enligt följande exempel:
 
 <sample-data>
 
-viikko 1;5,7,11,13,23,24,30
-viikko 2;9,13,14,24,34,35,37
-...jne...
+vecka 1;5,7,11,13,23,24,30
+vecka 2;9,13,14,24,34,35,37
+o.s.v. ...
 
 </sample-data>
 
-Aluksi pitäisi olla siis otsikko `viikko x`, ja sen jälkeen seitsemän numeroa väliltä 1...39.
+Först ska rubriken `vecka x` komma, följt av sju siffror i intervallet 1-39.
 
-Tiedosto on kuitenkin osittain korruptoitunut. Seuraavat rivit ovat esimerkkejä virheellisistä riveistä (huomaa, että tehtäväpohjassa olevassa tiedostossa ei ole juuri näitä virheitä):
+Filen är dock delvis skadad. Här följer exempel på felaktiga rader.
 
-Viikkonumero pielessä:
+Veckonummer felaktigt:
 
 <sample-data>
 
-viikko zzc;1,5,13,22,24,25,26
+vecka zzc;1,5,13,22,24,25,26
 
 </sample-data>
 
-Numero tai numeroita pielessä:
+Ett eller flera felaktiga nummer:
 
 <sample-data>
 
-viikko 22;1,**,5,6,13,2b,34
+vecka 22;1,**,5,6,13,2b,34
 
 </sample-data>
 
-Liian vähän numeroita:
+Fel antal nummer:
 
 <sample-data>
 
-viikko 13;4,6,17,19,24,33
+vecka 13;4,6,17,19,24,33
 
 </sample-data>
 
-Liian pieniä tai suuria numeroita:
+För små eller stora nummer:
 
 <sample-data>
 
-viikko 39;5,9,15,35,39,41,105
+vecka 39;5,9,15,35,39,41,105
 
 </sample-data>
 
-Rivissä esiintyy sama numero kahdesti:
+Samma nummer förekommer flera gånger på samma rad:
 
 <sample-data>
 
-viikko 41;5,12,3,35,12,14,36
+vecka 41;5,12,3,35,12,14,36
 
 </sample-data>
 
-Kirjoita funktio `suodata_virheelliset()`, joka luo tiedoston `korjatut_numerot.csv`. Tiedostoon on kopioitu kelvolliset rivit alkuperäisestä tiedostosta.
+Skapa funktionen `filtrera_felaktiga()` som skapar filen `korrigerade_rader.csv`. Filen ska innehålla de korrekta raderna från den ursprungliga filen.
 
 </programming-exercise>
 

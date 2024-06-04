@@ -18,22 +18,22 @@ Efter den här delen
 Nu är det dags för en snabbrepetition av funktioner i Python. Funktioner definieras med nyckelordet `def`:
 
 ```python
-def viesti():
-    print("Tämä tulee funktiosta")
+def meddelande():
+    print("Det här kommer från en funktion")
 ```
 
 Funktionen kan anropas i koden på följande sätt:
 
 
 ```python
-viesti()
+meddelande()
 ```
 
 I det här fallet skulle programmet skriva ut följande:
 
 <sample-output>
 
-Tämä tulee funktiosta
+Det här kommer från en funktion
 
 </sample-output>
 
@@ -44,22 +44,22 @@ En funktion kan motta en eller flera argument. När funktionen anropas tilldelas
 I den följande koden har funktionen `halsa` en definierad parameter, medan funktionen `summa` har två:
 
 ```python
-def tervehdi(nimi):
-    print("Moikka,", nimi)
+def halsa(namn):
+    print("Hej,", namn)
 
 def summa(a, b):
-    print("Parametrien summa on", a + b)
+    print("Summan av parametrarna är", a + b)
 ```
 
 ```python
-tervehdi("Emilia")
+halsa("Emilia")
 summa(2, 3)
 ```
 
 <sample-output>
 
-Moikka, Emilia
-Parametrien summa on 5
+Hej, Emilia
+Summan av parametrarna är 5
 
 </sample-output>
 
@@ -87,10 +87,10 @@ I vissa fall berättar felmeddelandet inte egentligen så mycket. I nästa övni
 
 <img src="4_2_0a.png">
 
-Meddelandet berättar att man borde kunna köra funktionen `rad` med de specificerade argumenten:
+Meddelandet berättar att man borde kunna köra funktionen `streck` med de specificerade argumenten:
 
 ```python
-viiva(5, "")
+streck(5, "")
 ```
 
 Det riktiga problemet får vi reda på när vi kör det funktionsanrop som stod i felmeddelandet. Du kan göra det genom att kopiera funktionsanropet till ditt program och klicka på triangeln:
@@ -101,14 +101,14 @@ De sista raderna som uppstår när programmet körs (markerade i bilden ovan) be
 
 <programming-exercise name='Viiva' tmcname='osa04-02_viiva'>
 
-Tee funktio `viiva`, joka saa kaksi parametria (leveys, merkkijono). Funktio tulostaa ensimmäisen parametrin määrittämän pituisen viivan käyttäen toisena parametrina olevan merkkijonon ensimmäistä merkkiä. Jos parametrina oleva merkkijono on tyhjä, tulostuu viiva tähtinä.
+Skapa funktionen `streck` som får två argument (bredd, sträng). Funktionen skapar ett steck genom att skriva ut det första tecknet i den angivna strängen så många gånger som angetts i den första parametern. Om den andra parametern är tom, används asterisker.
 
-Käyttöesimerkki:
+Exempel:
 
 ```python
-viiva(7, "%")
-viiva(10, "LOL")
-viiva(3, "")
+streck(7, "%")
+streck(10, "LOL")
+streck(3, "")
 ```
 
 <sample-output>
@@ -128,38 +128,38 @@ LLLLLLLLLL
 Du kan anropa en funktion från en annan funktion. Vi har faktiskt gjort det här flera gånger – vi har anropat `print`-funktionen inom våra egna funktioner i den förra modulen. Våra egna funktioner fungerar på samma sätt. I det följande exemplet anropar funktionen `halsa_flera_ganger` funktionen `halsa` så många gånger som specificerats i argumentet ganger:
 
 ```python
-def tervehdi(nimi):
-    print("Moikka,", nimi)
+def halsa(namn):
+    print("Hej,", namn)
 
-def tervehdi_monesti(nimi, kerrat):
-    while kerrat > 0:
-        tervehdi(nimi)
-        kerrat -= 1
+def halsa_flera_ganger(namn, ganger):
+    while ganger > 0:
+        halsa(namn)
+        ganger -= 1
 
-tervehdi_monesti("Emilia", 3)
+halsa_flera_ganger("Emilia", 3)
 ```
 
 <sample-output>
 
-Moikka, Emilia
-Moikka, Emilia
-Moikka, Emilia
+Hej, Emilia
+Hej, Emilia
+Hej, Emilia
 
 </sample-output>
 
 
 <programming-exercise name='Risulaatikko' tmcname='osa04-02a_risulaatikko'>
 
-Tee funktio `risulaatikko`, joka piirtää risuaitamerkkiä käyttäen parametrinsa korkuisen, kymmenen merkkiä leveän risulaatikon.
+Skapa funktionen `fyrkant` som skriver ut en tio tecken bred fyrkant med den höjd som getts som argument.
 
-Funktion tulee kutsua edellisen tehtävän funktiota `viiva` kaiken tulostuksen tekemiseen! Kopioi edellisen tehtävän funktion koodi tämän tehtävän funktion koodin yläpuolelle. Älä muuta funktiota mitenkään!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
 
-Pari käyttöesimerkkiä:
+Exempel:
 
 ```python
-risulaatikko(5)
+fyrkant(5)
 print()
-risulaatikko(2)
+fyrkant(2)
 ```
 
 <sample-output>
@@ -181,16 +181,16 @@ risulaatikko(2)
 
 <programming-exercise name='Risuneliö' tmcname='osa04-02b_risunelio'>
 
-Tee funktio `risunelio`, joka piirtää risuaitamerkkiä käyttäen parametrinsa kokoisen risuneliön.
+Skapa funktionen `kvadrat`, som skriver ut en kvadrat med den storlek som angetts som argument.
 
-Funktion tulee kutsua edellisen tehtävän funktiota `viiva` kaiken tulostuksen tekemiseen! Kopioi edellisen tehtävän funktion koodi tämän tehtävän funktion koodin yläpuolelle. Älä muuta funktiota mitenkaan!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
 
-Pari käyttöesimerkkiä:
+Exempel:
 
 ```python
-risunelio(5)
+kvadrat(5)
 print()
-risunelio(3)
+kvadrat(3)
 ```
 
 <sample-output>
@@ -213,16 +213,16 @@ risunelio(3)
 
 <programming-exercise name='Neliö' tmcname='osa04-02c_nelio'>
 
-Tee funktio `nelio`, joka saa kaksi parametria. Funktio tulostaa neliön jonka korkeuden ja leveyden kertoo ensimmäinen parametri.  Toinen parametri määrittelee mitä merkkiä käyttäen neliö piirretään.
+Skapa funktionen `speciell_kvadrat` som tar emot två argument – storleken samt det tecken som används för att rita kvadraten.
 
-Funktion tulee kutsua edellisen tehtävän funktiota `viiva` kaiken tulostuksen tekemiseen! Kopioi edellisen tehtävän funktion koodi tämän tehtävän funktion koodin yläpuolelle. Älä muuta funktiota mitenkaan!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
 
-Pari käyttöesimerkkiä:
+Exempel:
 
 ```python
-nelio(5, "*")
+speciell_kvadrat(5, "*")
 print()
-nelio(3, "o")
+speciell_kvadrat(3, "o")
 ```
 
 <sample-output>
@@ -245,16 +245,16 @@ ooo
 
 <programming-exercise name='Kolmio' tmcname='osa04-02d_kolmio'>
 
-Tee funktio `kolmio`, joka piirtää risuaitamerkkiä käyttäen parametrinsa korkuisen ja levyisen, risuaitakolmion.
+Skapa funktionen `triangel` som skriver ut en triangel med den höjd/bredd som angetts via argumentet.
 
-Funktion tulee kutsua edellisen tehtävän funktiota `viiva` kaiken tulostuksen tekemiseen! Kopioi edellisen tehtävän funktion koodi tämän tehtävän funktion koodin yläpuolelle. Älä muuta funktiota mitenkaan!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
 
-Pari käyttöesimerkkiä:
+Exempel:
 
 ```python
-kolmio(6)
+triangel(6)
 print()
-kolmio(3)
+triangel(3)
 ```
 
 <sample-output>
@@ -278,18 +278,18 @@ kolmio(3)
 
 <programming-exercise name='Kuvio' tmcname='osa04-03_kuvio'>
 
-Tee funktio `kuvio`, joka saa neljä parametria. Funktio tulostaa kuvion, jonka yläosana on kahden ensimmäisen parametrin määrittelemä kolmio ja alaosana ensimmäisen ja kahden jälkimmäisen parametrin määrittelemä suorakulmio.
+Skapa funktionen `figur` som tar emot fyra argument. Funktionen skapar en figur som består av en triangel och en fyrkant enligt de givna argumenten. Se exemplen.
 
-Funktion tulee kutsua edellisen tehtävän funktiota `viiva` kaiken tulostuksen tekemiseen! Kopioi edellisen tehtävän funktion koodi tämän tehtävän funktion koodin yläpuolelle.
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
 
-Pari käyttöesimerkkiä:
+Exempel:
 
 ```python
-kuvio(5, "X", 3, "*")
+figur(5, "X", 3, "*")
 print()
-kuvio(2, "o", 4, "+")
+figur(2, "o", 4, "+")
 print()
-kuvio(3, ".", 0, ",")
+figur(3, ".", 0, ",")
 ```
 
 <sample-output>
@@ -318,24 +318,20 @@ oo
 
 </sample-output>
 
-**Vihje**
-
-Älä yritä ratkaista tehtävässä "kaikkia asioita" yhtä aikaa. Keskity ensin esim. siihen että saat kuvion yläosan kolmion piirtymään oikein, ja vasta sen jälkeen jatka kuvion täydentämistä alaosan suorakulmiolla.
-
-Tämä on ylipäätänsäkin ohjelmoinnissa erittäin tärkeää: **keskity pieniin osiin kerrallaan**, varmista että ne toimivat ennen kuin laajennat ratkaisuasi.
+Tips: Försök inte lösa allt på en gång. Fokusera på en sak åt gången – börja t.ex. med att få triangeln utritad på korrekt sätt och fortsätt sedan med fyrkanten. Det här gäller vilket som helst problem inom programmering. Ta små steg och kolla att allt fungerar före du fortsätter.
 
 </programming-exercise>
 
 <programming-exercise name='Joulukuusi' tmcname='osa04-04_joulukuusi'>
 
-Tee funktio `joulukuusi`, joka saa yhden parametrin. Funktio tulostaa tekstin joulukuusi! ja parametrinsa kokoisen joulukuusen.
+Skapa funktionen `julgran` som tar emot ett argument. Funktionen ska skriva ut texten "julgran!" samt en julgran med den angivna höjden.
 
-Esim. kutsuttaessa `joulukuusi(3)` tulostuu
+Exempelvis `julgran(3)`:
 
 <sample-output>
 
 <pre>
-joulukuusi!
+julgran!
   *
  ***
 *****
@@ -344,12 +340,12 @@ joulukuusi!
 
 </sample-output>
 
-Esim. kutsuttaessa `joulukuusi(5)` tulostuu
+Eller till exempel `julgran(5)`:
 
 <sample-output>
 
 <pre>
-joulukuusi!
+julgran!
     *
    ***
   *****
@@ -360,7 +356,7 @@ joulukuusi!
 
 </sample-output>
 
-**Huomaa, että joulukuusen vasemmalla puolella pitää olla täsmälleen oikea määrä välilyöntejä**. Eli vaikka kuusen muoto olisi täysin oikea, mutta sen alin "neulastaso" ei lähde ruudun vasemmasta reunasta, ei vastaus kelpaa testeille.
+Observera att antalet mellanslag till vänster om granen ska vara exakt korrekt. Även om granens form är korrekt, accepteras granen inte om den nedersta "grenen" inte är helt fast i det vänstra hörnet.
 
 </programming-exercise>
 
@@ -369,28 +365,28 @@ joulukuusi!
 Funktioner kan också returnera värden. Till exempel Pythons inbyggda funktion `input` returnerar en sträng som användaren angett. Värdet som returneras av en funktion kan lagras i en variabel:
 
 ```python
-sana = input("Anna sana: ")
+ord = input("Ange ett ord: ")
 ```
 
 När du vill ha ett heltalsvärde från användaren måste indatat från användaren konverteras till ett heltal. För det använder vi `int`-funktionen som också returnerar ett värde:
 
 ```python
-luku = int(input("Anna kokonaisluku: "))
+siffra = int(input("Ange ett heltal: "))
 ```
 
 Funktionen `int` tar den sträng som returneras av `input`-funktionen som argument och returnerar värdet i heltalsform om möjligt.
 
 ## `return`-satsen
 
-Funktioner som du själv definierar kan också returnera värden. För det här ändamålet behöver du `return`-satsen. Till exempel funktionen `min_summa` nedan returnerar summan av dess parametrar:
+Funktioner som du själv definierar kan också returnera värden. För det här ändamålet behöver du `return`-satsen. Till exempel funktionen `summa` nedan returnerar summan av dess parametrar:
 
 ```python
 def summa(a, b):
     return a + b
 
-vastaus = summa(2, 3)
+svar = summa(2, 3)
 
-print("Summa:", vastaus)
+print("Summa:", svar)
 ```
 
 <sample-output>
@@ -402,31 +398,31 @@ Summa: 5
 Här är ett annat exempel på ett returnerat värde. Funktionen ber om användarens namn och returnerar den sträng som användaren anger:
 
 ```python
-def kysy_nimi():
-    nimi = input("Mikä on nimesi? ")
-    return nimi
+def fraga_namn():
+    namn = input("Vad är ditt namn? ")
+    return namn
 
-nimi = kysy_nimi()
-print("Moikka,", nimi)
+namn = fraga_namn()
+print("Hej,", namn)
 ```
 
 <sample-output>
 
-Mikä on nimesi? **Anna**
-Moikka, Anna
+Vad är ditt namn? **Anna**
+Hej, Anna
 
 </sample-output>
 
 `return`-satsen avslutar körandet av funktionen genast. Det här är ett sätt att göra en jämförelsefunktion:
 
 ```python
-def pienin(a,b):
+def minst(a,b):
     if a < b:
         return a
     return b
 
-print(pienin(3, 7))
-print(pienin(5, 2))
+print(minst(3, 7))
+print(minst(5, 2))
 ```
 
 Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` och avslutas direkt. Annars fortsätter man till nästa rad som returnerar värdet `b`. En return-sats kan inte köras flera gånger i samma funktion under samma funktionsanrop.
@@ -441,24 +437,24 @@ Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` 
 Du kan använda dig av `return`-satsen även om funktionen inte returnerar något värde. Då är dess uppgift helt enkelt att avsluta körandet av funktionen:
 
 ```python
-def tervehdi(nimi):
-    if nimi == "":
+def halsa(namn):
+    if namn == "":
         print("???")
         return
-    print("Moikka,", nimi)
+    print("Hej,", namn)
 
-tervehdi("Emilia")
-tervehdi("")
-tervehdi("Matti")
+halsa("Emilia")
+halsa("")
+halsa("Mårten")
 ```
 
 Om argumentet som sparas i variabeln `namn` är en tom sträng, kommer texten `???` att skrivas ut och funktionen avslutas:
 
 <sample-output>
 
-Moikka, Emilia
+Hej, Emilia
 ???
-Moikka, Matti
+Hej, Mårten
 
 </sample-output>
 
@@ -470,20 +466,20 @@ Vi känner redan till att värden som returneras från funktioner kan lagras i v
 def summa(a, b):
     return a + b
 
-tulos = summa(4, 6)
-print("Summa on", tulos)
+resultat = summa(4, 6)
+print("Summan är", resultat)
 ```
 
 <sample-output>
 
-Summa on 10
+Summan är 10
 
 </sample-output>
 
 Return-värdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-kommandot:
 
 ```python
-print("Summa on", summa(4, 6))
+print("Summan är", summa(4, 6))
 ```
 
 Return-värdet hos en funktion kan vara ett argument för en funktion:
@@ -492,20 +488,20 @@ Return-värdet hos en funktion kan vara ett argument för en funktion:
 def summa(a, b):
     return a+b
 
-def erotus(a, b):
+def differens(a, b):
     return a-b
 
-tulos = erotus(summa(5, 2), summa(2, 3))
-print("Vastaus on", tulos)
+resultat = differens(summa(5, 2), summa(2, 3))
+print("Svaret är", resultat)
 ```
 
 <sample-output>
 
-Vastaus on 2
+Svaret är 2
 
 </sample-output>
 
-I det här fallet körs de inre funktionsanropen `min_summa(5, 2)` och `min_summa(2, 3)` först. Värdena som returneras (sju och fem) används som argument för det yttre funktionsanropet.
+I det här fallet körs de inre funktionsanropen `summa(5, 2)` och `summa(2, 3)` först. Värdena som returneras (sju och fem) används som argument för det yttre funktionsanropet.
 
 Det yttre funktionsanropet `differens(7, 5)` returnerar värdet 2, som lagras i variabeln `resultat` och skrivs ut.
 
@@ -516,22 +512,22 @@ För att sammanfatta: värden som returneras av funktioner fungerar som alla and
 Ibland kan skillnaden mellan att använda `return` och `print` inom en funktion vara oklara. Vi undersöker två olika sätt att göra en funktion som berättar vilket av två värden är större:
 
 ```python
-def maksimi1(a, b):
+def max1(a, b):
     if a > b:
         return a
     else:
         return b
 
-def maksimi2(a, b):
+def max2(a, b):
     if a > b:
         print(a)
     else:
         print(b)
 
-vastaus = maksimi1(3, 5)
-print(vastaus)
+svar = max1(3, 5)
+print(svar)
 
-maksimi2(7, 2)
+max2(7, 2)
 ```
 
 <sample-output>
@@ -544,86 +540,86 @@ maksimi2(7, 2)
 Båda versionerna verkar fungera i och med att det större av värdena skrivs ut korrekt. Det finns ändå en central skillnad mellan dessa två funktioner. Den första, `max1`, skriver inte ut något. Den använder sig istället av `return`-satsen. Om vi kör den följande kodraden…
 
 ```python
-maksimi1(3, 5)
+max1(3, 5)
 ```
 
 …verkar ingenting hända. Funktionens return-värde måste användas på något sätt i den kod som anropar funktionen. Det kan till exempel lagras i en variabel och skrivas ut:
 
 ```python
-vastaus = maksimi1(3, 5)
-print(vastaus)
+svar = max1(3, 5)
+print(svar)
 ```
 
 Den andra versionen, `max2`, använder sig av `print`-kommandot inom funktionen. Om vi vill se värdet, kan vi helt enkelt anropa funktionen…
 
 ```python
-maksimi2(7, 5)
+max2(7, 5)
 ```
 
 …och det större värdet kommer att skrivas ut. Det dåliga med den här funktionen är att värdet som funktionen räknar ut inte kan användas av själva programmet. Därför är funktioner som returnerar ett värde ofta ett bättre alternativ.
 
 <programming-exercise name='Luvuista suurin' tmcname='osa04-05_luvuista_suurin'>
 
-Tee funktio  `luvuista_suurin`, joka saa parametriksi kolme kokonaislukua. Funktio palauttaa return-lausetta käyttäen luvuista suurimman.
+Skapa funktionen `storst` som returnerar den största siffran av de tre givna argumenten.
 
 Käyttöesimerkki
 
 ```python
-print(luvuista_suurin(3, 4, 1)) # 4
-print(luvuista_suurin(99, -4, 7)) # 99
-print(luvuista_suurin(0, 0, 0)) # 0
+print(storst(3, 4, 1)) # 4
+print(storst(99, -4, 7)) # 99
+print(storst(0, 0, 0)) # 0
 ```
 
 </programming-exercise>
 
 <programming-exercise name='Merkit samat' tmcname='osa04-06_merkit_samat'>
 
-Tee funktio `samat`, joka saa parametriksi merkkijonon ja kaksi merkkijonon indeksejä kuvaavaa kokonaislukua. Funktio palauttaa `return`-lausetta käyttäen tiedon (`True` tai `False`) siitä, ovatko merkkijonon parametreina olevien indeksien osoittamissa paikoissa olevat merkit samat. Jos jompikumpi indekseistä ei osu merkkijonon sisälle, palauttaa metodi `False`.
+Skapa funktionen `lika` som får som argument en sträng och två heltal som syftar till index. Funktionen ska returnera `True` eller `False` beroende på om tecknen vid dessa index i strängen är lika eller inte. Om något av indexen inte finns i strängen ska funktionen returnera `False`.
 
-Muutama esimerkki:
+Några exempel:
 
 ```python
-# samat merkit o ja o
-print(samat("koodari", 1, 2)) # True
+# e och e är lika
+print(lika("kodexpert", 3, 6)) # True
 
-# eri merkit k ja a
-print(samat("koodari", 0, 4)) # False
+# k och x är olika
+print(lika("kodexpert", 0, 4)) # False
 
-# toinen indeksi ei ole merkkijonon sisällä
-print(samat("koodari", 0, 10)) # False
+# det andra indexet finns inte i strängen
+print(lika("kodexpert", 0, 20)) # False
 ```
 
 </programming-exercise>
 
 <programming-exercise name='Eka, toka ja vika sana' tmcname='osa04-07_eka_toka_vika_sana'>
 
-Tee kolme funktiota: `eka_sana`, `toka_sana` ja `vika_sana`. Jokainen funktioista saa parametrikseen lauseen (eli merkkijonon).
+Skapa tre funktioner: `ord_ett`, `ord_tva` och `sista_ordet`. Alla funktioner får som argument en sträng som består av en mening.
 
-Funktiot palauttavat nimensä mukaisesti lauseen ensimmäisen, toisen tai viimeisen sanan.
+Funktionerna returnerar meningens första, andra eller sista ord.
 
-Voit olettaa jokaisessa tapauksessa, että merkkijono koostuu vähintään kahdesta sanasta, ja että sanojen välillä on aina täsmälleen yksi välilyönti, ja että merkkijonon alussa ja lopussa ei ole välilyöntejä.
+Du kan anta att strängen alltid innehåller minst två ord och exakt ett mellanslag mellan orden. Det finns inga mellanslag i början eller slutet av strängen.
 
 ```python
-lause = "olipa kerran kauan sitten ohjelmoija"
+mening = "jag gillar blåbärspaj så länge den inte innehåller ägg"
 
-print(eka_sana(lause)) # olipa
-print(toka_sana(lause)) # kerran
-print(vika_sana(lause)) # ohjelmoija
+print(ord_ett(mening)) # jag
+print(ord_tva(mening)) # gillar
+print(sista_ordet(mening)) # ägg
 ```
 
 <sample-output>
 
-olipa
-kerran
-ohjelmoija
+jag
+gillar
+ägg
 
 </sample-output>
 
 ```python
-lause = "olipa kerran"
+mening = "la-la gunilla"
 
-print(toka_sana(lause)) # kerran
-print(vika_sana(lause)) # kerran
+print(ord_tva(mening)) # gunilla
+print(sista_ordet(mening)) # gunilla
 ```
 
 </programming-exercise>
@@ -642,32 +638,32 @@ Sanningsvärde | `bool`   | `True`
 När du anropar en funktion, kommer den bara att fungera korrekt då argumenten du ger åt den är av korrekt typ. Ta en titt på det här exemplet:
 
 ```python
-def tulosta_monesti(viesti, kerrat):
-    while kerrat > 0:
-        print(viesti)
-        kerrat -= 1
+def skriv_ut_flera_ganger(meddelande, ganger):
+    while ganger > 0:
+        print(meddelande)
+        ganger -= 1
 ```
 
 Funktionen fungerar korrekt om vi anropar den på följande sätt:
 
 ```python
-tulosta_monesti("Moikka", 5)
+skriv_ut_flera_ganger("Hejsan", 5)
 ```
 
 <sample-output>
 
-Moikka
-Moikka
-Moikka
-Moikka
-Moikka
+Hejsan
+Hejsan
+Hejsan
+Hejsan
+Hejsan
 
 </sample-output>
 
 Om vi däremot ger funktionen ett argument av fel typ så kommer funktionen inte att fungera:
 
 ```python
-tulosta_monesti("Moikka", "Emilia")
+skriv_ut_flera_ganger("Hejsan", "Emilia")
 ```
 
 <sample-output>
@@ -681,10 +677,10 @@ Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0
 För att undvika problem som dessa kan du inkludera typledtrådar (type hints) när du definierar funktioner. Typledtråden berättar vilken typ av argument funktionen förväntar sig motta:
 
 ```python
-def tulosta_monesti(viesti : str, kerrat : int):
-    while kerrat > 0:
-        print(viesti)
-        kerrat -= 1
+def skriv_ut_flera_ganger(meddelande : str, ganger : int):
+    while ganger > 0:
+        print(meddelande)
+        ganger -= 1
 ```
 
 Det här berättar för alla användare av funktionen att argumentet som lagras i `meddelande` ska vara en sträng medan argumentet som lagras i `ganger` ska vara ett heltal.
@@ -692,9 +688,9 @@ Det här berättar för alla användare av funktionen att argumentet som lagras 
 Också typen av return-värdet kan specificeras när funktionen definieras:
 
 ```python
-def kysy_nimi() -> str:
-    nimi = input("Mikä on nimesi? ")
-    return nimi
+def fraga_namn() -> str:
+    namn = input("Vad är ditt namn? ")
+    return namn
  ```
 
 Det här berättar för användaren att funktionen borde returnera en sträng.

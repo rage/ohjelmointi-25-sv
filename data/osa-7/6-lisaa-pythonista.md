@@ -20,13 +20,13 @@ Följande satser ger samma resultat:
 
 ```python
 if x%2 == 0:
-    print("parillinen")
+    print("jämn")
 else:
-    print("pariton")
+    print("ojämn")
 ```
 
 ```python
-print("parillinen" if x%2 == 0 else "pariton")
+print("jämn" if x%2 == 0 else "ojämn")
 ```
 
 I det senare exemplet har vi en if-sats i enradsformat: `a if [villkor] else b`. Värdet för uttrycket blir `a` då villkoret är sant och `b` i övriga fall. På engelska kallas detta ternary operator.
@@ -51,14 +51,14 @@ y = y + 1 if x%2 == 0 else 0
 Du minns kanske att block inte kan vara tomma i Python. Om du behöver ett block som inte gör någonting – till exempel då du testar någon annan funktionalitet – kan du använda `pass`-kommandot. Du kan till exempel skapa en funktion som inte gör någonting:
 
 ```python
-def testi():
+def test():
     pass
 ```
 
 Funktionen kommer att returnera direkt. Om `pass`-kommandot lämnas bort, kommer koden att ge ett fel, eftersom block inte kan vara tomma.
 
 ```python
-def testi():
+def test():
 ```
 
 ## Loopar med else-block
@@ -71,24 +71,24 @@ Till exempel här går vi igenom en lista med siffror. Om det finns ett jämnt t
 lista = [3,5,2,8,1]
 for x in lista:
     if x%2 == 0:
-        print("löytyi parillinen", x)
+        print("hittade jämnt tal", x)
         break
 else:
-    print("ei löytynyt parillista")
+    print("hittade inte jämnt tal")
 ```
 
 Ett mera traditionellt sätt att göra det här är att använda en hjälpvariabel som minns om en viss typ av element har hittats:
 
 ```python
 lista = [3,5,2,8,1]
-loytyi = False
+hittades = False
 for x in lista:
     if x%2 == 0:
-        print("löytyi parillinen", x)
-        loytyi = True
+        print("hittade jämnt tal", x)
+        hittades = True
         break
-if not loytyi:
-    print("ei löytynyt parillista")
+if not hittades:
+    print("hittade inte jämnt tal")
 ```
 
 Att använda en for-else-sats sparar oss den tid som skulle krävas för att skapa en hjälpvariabel och logiken kring den.
@@ -99,18 +99,18 @@ I Python kan funktioners parametrar ha ett standardvärde. Det används då ett 
 
 ```python
 def tervehdi(nimi="Emilia"):
-    print("Moikka,", nimi)
+    print("Hej,", nimi)
 
 tervehdi()
-tervehdi("Erkki")
-tervehdi("Matti")
+tervehdi("Elin")
+tervehdi("Malin")
 ```
 
 <sample-output>
 
-Moikka, Emilia
-Moikka, Erkki
-Moikka, Matti
+Hej, Emilia
+Hej, Elin
+Hej, Malin
 
 </sample-output>
 
@@ -123,65 +123,65 @@ Du kan också definiera att en funktion har ett ändrande antal parametrar, geno
 Följande funktion räknar antalet argument som getts samt summan av dem:
 
 ```python
-def testi(*lista):
-    print("Annoit", len(lista), "parametria")
-    print("Niiden summa on", sum(lista))
+def test(*lista):
+    print("Du gav", len(lista), "argument")
+    print("Deras summa är", sum(lista))
 
-testi(1, 2, 3, 4, 5)
+test(1, 2, 3, 4, 5)
 ```
 
 <sample-output>
 
-Annoit 5 parametria
-Niiden summa on 15
+Du gav 5 argument
+Deras summa är 15
 
 </sample-output>
 
 <programming-exercise name='Oma ohjelmointikieli' tmcname='osa07-18_oma_ohjelmointikieli'>
 
-Tässä tehtävässä toteutetaan oman ohjelmointikielen suorittaja. Voit käyttää tehtävässä kaikkia kurssilla oppimiasi taitoja.
+I den här uppgifter skapar vi ett program som kan köra vårt eget programmeringsspråk. Du kan använda allt du lärt dig under den här kursen när du utför den här uppgiften.
 
-Ohjelma muodostuu riveistä, joista jokainen on yksi seuraavista:
+Programmen består av rader, som kan följa något av dessa format:
 
-* `PRINT [arvo]`: tulostaa annetun arvon
-* `MOV [muuttuja] [arvo]`: asettaa muuttujaan annetun arvon
-* `ADD [muuttuja] [arvo]`: lisää muuttujaan annetun arvon
-* `SUB [muuttuja] [arvo}`: vähentää muuttujasta annetun arvon
-* `MUL [muuttuja] [arvo]`: kertoo muuttujan annetulla arvolla
-* `[kohta]:`: määrittelee kohdan, johon voidaan hypätä muualta
-* `JUMP [kohta]`: hyppää annettuun kohtaan
-* `IF [ehto] JUMP [kohta]`: jos ehto pätee, hyppää annettuun kohtaan
-* `END`: lopettaa ohjelman
+* `PRINT [värde]`: skriver ut det givna värdet
+* `MOV [variabel] [värde]`: tilldelar variabeln det givna värdet
+* `ADD [variabel] [värde]`: adderar till den givna variabeln
+* `SUB [variabel] [värde]`: subtraherar från den givna variabeln
+* `MUL [variabel] [värde]`: multiplicerar den givna variabeln
+* `[ställe]:`: definierar ett ställe dit man senare kan förflyttas till
+* `JUMP [ställe]`: gå till specificerat ställe
+* `IF [villkor] JUMP [ställe]`: om villkoret är sant, gå till specificerat ställe
+* `END`: avslutar programmet
 
-Ohjelmaa suoritetaan rivi kerrallaan ensimmäisestä rivistä aloittaen. Ohjelma päättyy, kun vastaan tulee komento `END` tai suoritus menee ohjelman viimeisen rivin yli.
+Programmet körs rad för rad från och med den första raden. Programmet avslutas vid `END` eller då den sista raden passeras.
 
-Jokaisessa ohjelmassa on 26 muuttujaa, joiden nimet ovat `A`...`Z`. Jokaisen muuttujan arvo on 0 ohjelman alussa. Merkintä `[muuttuja]` viittaa tällaiseen muuttujaan.
+Programmet har 26 variabler (`[variabel]`) namngivna `A` till `Z`. Alla variabler är 0 då programmet startar.
 
-Kaikki ohjelman käsittelemät arvot ovat kokonaislukuja. Merkintä `[arvo]` viittaa joko muuttujaan tai kokonaislukuna annettuun arvoon.
+Alla värden som behandlas är helta. `[värde]` hänvisar till en variabel eller ett givet heltal.
 
-Merkintä `[kohta]` on mikä tahansa kohdan nimi, joka muodostuu pienistä kirjaimista `a`...`z` sekä numeroista `0`...`9`. Kahdella kohdalla ei saa olla samaa nimeä.
+Ett `[ställe]` består av bokstäverna `a` till `z` och siffrorna 0-9. Olika ställen kan inte ha samma namn.
 
-Merkintä `[ehto]` tarkoittaa ehtoa muotoa `[arvo] [vertailu] [arvo]`. Tässä `[vertailu]` on aina yksi seuraavista: `==`, `!=`, `<`, `<=`, `>` tai `>=`.
+`[villkor]` ges i formatet `[värde] [jämförelse] [värde]`. `[jämförelse]` är något av de följande: `==`, `!=`, `<`, `<=`, `>` eller `>=`.
 
-Tee funktio `suorita(ohjelma)`, jolle annetaan ohjelma listana. Jokainen listan alkio on yksi ohjelman rivi. Funktion tulee palauttaa listana kaikki `PRINT`-komentojen tulokset ohjelman suorituksen aikana.
+Skapa funktionen `kor(program)` som tar emot programmet som en lista. Ett element i listan representerar en rad kod. Funktionen ska returnera resultaten från alla `PRINT`-kommandon.
 
-Voit olettaa, että funktiolle annettu ohjelma on oikeanmuotoinen, eli funktion ei tarvitse toteuttaa virheenkäsittelyä.
+Du kan anta att det program som ges till funktionen har korrekt syntax. Funktionen behöver inte alltså kunna behandla sådana här fel.
 
-Tehtävästä on saatavilla kaksi pistettä: saat yhden pisteen, jos komennot `PRINT`, `MOV`, `ADD`, `SUB`, `MUL` ja `END` toimivat, ja vielä toisen pisteen, jos myös loput silmukoihin liittyvät komennot toimivat.
+Du kan få två poäng av den här uppgiften: ett poäng om kommandona `PRINT`, `MOV`, `ADD`, `SUB`, `MUL` och `END` fungerar, och ett poäng om resterande kommandon fungerar.
 
-Esimerkki 1:
+Exempel 1:
 
 ```python
-ohjelma1 = []
-ohjelma1.append("MOV A 1")
-ohjelma1.append("MOV B 2")
-ohjelma1.append("PRINT A")
-ohjelma1.append("PRINT B")
-ohjelma1.append("ADD A B")
-ohjelma1.append("PRINT A")
-ohjelma1.append("END")
-tulos = suorita(ohjelma1)
-print(tulos)
+program1 = []
+program1.append("MOV A 1")
+program1.append("MOV B 2")
+program1.append("PRINT A")
+program1.append("PRINT B")
+program1.append("ADD A B")
+program1.append("PRINT A")
+program1.append("END")
+resultat = kor(program1)
+print(resultat)
 ```
 
 <sample-output>
@@ -190,23 +190,23 @@ print(tulos)
 
 </sample-output>
 
-Esimerkki 2:
+Exempel 2:
 
 ```python
-ohjelma2 = []
-ohjelma2.append("MOV A 1")
-ohjelma2.append("MOV B 10")
-ohjelma2.append("alku:")
-ohjelma2.append("IF A >= B JUMP loppu")
-ohjelma2.append("PRINT A")
-ohjelma2.append("PRINT B")
-ohjelma2.append("ADD A 1")
-ohjelma2.append("SUB B 1")
-ohjelma2.append("JUMP alku")
-ohjelma2.append("loppu:")
-ohjelma2.append("END")
-tulos = suorita(ohjelma2)
-print(tulos)
+program2 = []
+program2.append("MOV A 1")
+program2.append("MOV B 10")
+program2.append("start:")
+program2.append("IF A >= B JUMP slut")
+program2.append("PRINT A")
+program2.append("PRINT B")
+program2.append("ADD A 1")
+program2.append("SUB B 1")
+program2.append("JUMP start")
+program2.append("slut:")
+program2.append("END")
+resultat = kor(program2)
+print(resultat)
 ```
 
 <sample-output>
@@ -215,20 +215,20 @@ print(tulos)
 
 </sample-output>
 
-Esimerkki 3 (kertoma):
+Exempel 3 (fakultet):
 
 ```python
-ohjelma3 = []
-ohjelma3.append("MOV A 1")
-ohjelma3.append("MOV B 1")
-ohjelma3.append("alku:")
-ohjelma3.append("PRINT A")
-ohjelma3.append("ADD B 1")
-ohjelma3.append("MUL A B")
-ohjelma3.append("IF B <= 10 JUMP alku")
-ohjelma3.append("END")
-tulos = suorita(ohjelma3)
-print(tulos)
+program3 = []
+program3.append("MOV A 1")
+program3.append("MOV B 1")
+program3.append("start:")
+program3.append("PRINT A")
+program3.append("ADD B 1")
+program3.append("MUL A B")
+program3.append("IF B <= 10 JUMP start")
+program3.append("END")
+resultat = kor(program3)
+print(resultat)
 ```
 
 <sample-output>
@@ -237,37 +237,37 @@ print(tulos)
 
 </sample-output>
 
-Esimerkki 4 (alkuluvut):
+Exempel 4 (primtal):
 
 ```python
-ohjelma4 = []
-ohjelma4.append("MOV N 50")
-ohjelma4.append("PRINT 2")
-ohjelma4.append("MOV A 3")
-ohjelma4.append("alku:")
-ohjelma4.append("MOV B 2")
-ohjelma4.append("MOV Z 0")
-ohjelma4.append("testi:")
-ohjelma4.append("MOV C B")
-ohjelma4.append("uusi:")
-ohjelma4.append("IF C == A JUMP virhe")
-ohjelma4.append("IF C > A JUMP ohi")
-ohjelma4.append("ADD C B")
-ohjelma4.append("JUMP uusi")
-ohjelma4.append("virhe:")
-ohjelma4.append("MOV Z 1")
-ohjelma4.append("JUMP ohi2")
-ohjelma4.append("ohi:")
-ohjelma4.append("ADD B 1")
-ohjelma4.append("IF B < A JUMP testi")
-ohjelma4.append("ohi2:")
-ohjelma4.append("IF Z == 1 JUMP ohi3")
-ohjelma4.append("PRINT A")
-ohjelma4.append("ohi3:")
-ohjelma4.append("ADD A 1")
-ohjelma4.append("IF A <= N JUMP alku")
-tulos = suorita(ohjelma4)
-print(tulos)
+program4 = []
+program4.append("MOV N 50")
+program4.append("PRINT 2")
+program4.append("MOV A 3")
+program4.append("start:")
+program4.append("MOV B 2")
+program4.append("MOV Z 0")
+program4.append("test:")
+program4.append("MOV C B")
+program4.append("nytt:")
+program4.append("IF C == A JUMP fel")
+program4.append("IF C > A JUMP skippa")
+program4.append("ADD C B")
+program4.append("JUMP nytt")
+program4.append("fel:")
+program4.append("MOV Z 1")
+program4.append("JUMP skippa2")
+program4.append("skippa:")
+program4.append("ADD B 1")
+program4.append("IF B < A JUMP test")
+program4.append("skippa2:")
+program4.append("IF Z == 1 JUMP skippa3")
+program4.append("PRINT A")
+program4.append("skippa3:")
+program4.append("ADD A 1")
+program4.append("IF A <= N JUMP start")
+resultat = kor(program4)
+print(resultat)
 ```
 
 <sample-output>

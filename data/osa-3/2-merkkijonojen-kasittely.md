@@ -20,40 +20,40 @@ Efter den här delen
 Strängar kan kombineras med `+`-operatorn:
 
 ```python
-alku = "esi"
-loppu = "merkki"
-sana = alku+loppu
-print(sana)
+start = "exe"
+slut = "mpel"
+ord = start+slut
+print(ord)
 ```
 
 <sample-output>
 
-esimerkki
+exempel
 
 </sample-output>
 
 Operatorn `*` kan också användas med strängar då den andra operanden är ett heltal. Strängoperanden kommer då att upprepas det antal gånger som specificeras av heltalet. Till exempel följande skulle fungera:
 
 ```python
-sana = "apina"
-print(sana*3)
+ord = "pegas"
+print(ord*3)
 ```
 
 <sample-output>
 
-apinaapinaapina
+pegaspegaspegas
 
 </sample-output>
 
 Med hjälp av att kombinera strängoperationer med en loop kan vi skriva ett program som ritar en pyramid:
 
 ```python
-n = 10 # pyramidin kerrosten määrä
-rivi = "*"
+n = 10 # våningar i pyramiden
+rad = "*"
 
 while n > 0:
-    print(" " * n + rivi)
-    rivi += "**"
+    print(" " * n + rad)
+    rad += "**"
     n -= 1
 ```
 
@@ -76,15 +76,13 @@ Kommandot `print` inom loopen skriver ut en rad som börjar med `n` mellanslag f
 
 <in-browser-programming-exercise name="Monta jonoa" tmcname="osa03-05a_monistetut_jonot">
 
-Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonon ja määrän ja tulostaa sitten annettua merkkijonoa annetun määrän. Tulostuksen tulee tapahtua yhdelle riville yhteen pötköön.
-
-Esimerkkisuoritus:
+Skapa ett program som ber användaren ange en sträng samt en siffra. Programmet ska sedan skriva ut strängen så många gången som siffran anger, enligt följande exempel:
 
 <sample-output>
 
-Anna merkkijono: **heippa**
-Anna määrä: **4**
-heippaheippaheippaheippa
+Ange sträng: **origami**
+Ange antal: **2**
+origamiorigami
 
 </sample-output>
 
@@ -97,18 +95,18 @@ Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exe
 Följande program ber användaren att ge en sträng och skriver sedan ut ned med "understrykning". Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
 
 ```python
-mjono = input("Anna merkkijono: ")
-print(mjono)
-print("-"*len(mjono))
+strang = input("Ange sträng: ")
+print(strang)
+print("-"*len(strang))
 ```
 
 <sample-output>
 
-Anna merkkijono: **Moi kaikki!**
+Ange sträng: **Hejsan svejsan!**
 
 <pre>
-Moi kaikki!
------------
+Hejsan svejsan!
+---------------
 </pre>
 
 </sample-output>
@@ -117,31 +115,31 @@ Strängens längd innehåller alla tecken i strängen – också mellanslag. Til
 
 <in-browser-programming-exercise name="Pidempi jono" tmcname="osa03-05b_pidempi_jono">
 
-Kirjoita ohjelma, joka kysyy käyttäjältä kaksi merkkijonoa ja tulostaa jonoista pidemmän (ts. sen, jossa on enemmän merkkejä). Jos jonot ovat yhtä pitkiä tulostetaan viesti "Jonot ovat yhtä pitkät"
+Skapa ett program som ber användaren ange två strängar. Programmet ska skriva ut den längre av de angivna strängarna. Om båda är lika långa skrivs meddelandet "Strängarna är lika långa" ut.
 
-Esimerkkisuorituksia:
+Exempel:
 
 <sample-output>
 
-Anna jono 1: **moi**
-Anna jono 2: **heippa**
-heippa on pidempi
+Ange sträng 1: **nja**
+Ange sträng 2: **betongsäck**
+betongsäck är längre
 
 </sample-output>
 
 <sample-output>
 
-Anna jono 1: **moikkelis koikkelis**
-Anna jono 2: **heipparallaa**
-moikkelis koikkelis on pidempi
+Ange sträng 1: **sommartider hej hej**
+Ange sträng 2: **sol, vind o vatten**
+sommartider hej hej är längre
 
 </sample-output>
 
 <sample-output>
 
-Anna jono 1: **moi**
-Anna jono 2: **hei**
-Jonot ovat yhtä pitkät
+Ange sträng 1: **glasgolv**
+Ange sträng 2: **vildsvin**
+Strängarna är lika långa
 
 </sample-output>
 
@@ -157,10 +155,10 @@ Det här programmet…
 
 ```python
 
-mjono = input("Anna merkkijono: ")
-print(mjono[0])
-print(mjono[1])
-print(mjono[3])
+strang = input("Ange sträng: ")
+print(strang[0])
+print(strang[1])
+print(strang[3])
 
 ```
 
@@ -168,47 +166,46 @@ print(mjono[3])
 
 <sample-output>
 
-Anna merkkijono: **apina**
-a
+Ange sträng: **pegas**
 p
-n
+e
+a
 
 </sample-output>
 
 Eftersom det första tecknet i en sträng har indexet noll, har det sista tecknet indexet längd (`len`) - 1. Följande program skriver ut det första och sista tecknet i en sträng:
 
 ```python
-mjono = input("Anna merkkijono: ")
-print("Ensimmäinen: " + mjono[0])
-print("Viimeinen: " + mjono[len(mjono) - 1])
+strang = input("Ange sträng: ")
+print("Första: " + strang[0])
+print("Sista: " + strang[len(strang) - 1])
 ```
 
 <sample-output>
 
-Anna merkkijono: **testi**
-Ensimmäinen: t
-Viimeinen: i
+Ange sträng: **test!**
+Första: t
+Sista: !
 
 </sample-output>
 
 Det här programmet går igenom varje tecken i en sträng – från det första till det sista:
 
 ```python
-mjono = input("Anna merkkijono: ")
-kohta = 0
-while kohta < len(mjono):
-    print(mjono[kohta])
-    kohta += 1
+strang = input("Ange sträng: ")
+plats = 0
+while plats < len(strang):
+    print(strang[plats])
+    plats += 1
 ```
 
 <sample-output>
 
-Anna merkkijono: **testi**
+Ange sträng: **test**
 t
 e
 s
 t
-i
 
 </sample-output>
 
@@ -221,16 +218,16 @@ Det sista tecknet i en sträng har alltså indexet -1, det näst sista indexet -
 Ovanstående exempel kan förenklas med negativ indexering.
 
 ```python
-mjono = input("Anna merkkijono: ")
-print("Ensimmäinen: " + mjono[0])
-print("Viimeinen: " + mjono[-1])
+strang = input("Ange sträng: ")
+print("Första: " + strang[0])
+print("Sista: " + strang[-1])
 ```
 
 <sample-output>
 
-Anna merkkijono: **testi**
-Ensimmäinen: t
-Viimeinen: i
+Ange sträng: **test!**
+Första: t
+Sista: !
 
 </sample-output>
 
@@ -239,20 +236,20 @@ Viimeinen: i
 Om du har testat på exemplen ovan har du kanske stött på felmeddelandet `IndexError`. Det här felet uppstår då du försöker använda ett index som inte finns i en sträng.
 
 ```python
-mjono = input("Anna merkkijono: ")
-print("Kymmenes merkki: " + mjono[9])
+strang = input("Ange sträng: ")
+print("Tionde tecknet: " + strang[9])
 ```
 
 <sample-output>
 
-Anna merkkijono: **ohjelmoinnin perusteet**
-Kymmenes merkki: n
+Ange sträng: **introkursen i programmering**
+Tionde tecknet: e
 
 </sample-output>
 
 <sample-output>
 
-Anna merkkijono: **python**
+Ange sträng: **python**
 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -263,8 +260,8 @@ IndexError: string index out of range
 Ibland orsakas indexeringsfel av en bugg i koden. Det är till exempel relativt vanligt att man försöker indexera för långt då man försöker komma åt det sista tecknet i en sträng:
 
 ```python
-mjono = input("Anna merkkijono: ")
-print("Viimeinen merkki: " + mjono[len(mjono)])
+strang = input("Ange sträng: ")
+print("Sista tecknet: " + strang[len(strang)])
 ```
 
 Eftersom strängindexeringen börjar med noll kommer det sista tecknet att ha indexet `len(str) - 1`.
@@ -272,30 +269,30 @@ Eftersom strängindexeringen börjar med noll kommer det sista tecknet att ha in
 Det finns situationer där programmet borde förbereda sig för fel orsakade av indata från användaren:
 
 ```python
-mjono = input("Anna merkkijono: ")
-if len(mjono) > 0:
-    print("Ensimmäinen merkki: " + mjono[0])
+strang = input("Ange sträng: ")
+if len(strang) > 0:
+    print("Första tecknet: " + strang[0])
 else:
-    print("Merkkijono on tyhjä eli ensimmäistä merkkiä ei ole")
+    print("Strängen är tom, alltså finns det inget första tecken")
 ```
 
 I exemplet ovan skulle en sträng med längden noll ha orsakat problem om programmeraren inte skulle ha lagt till en längdkontroll i koden. En sträng med längden noll är en tom sträng. I det här fallet kan vi orsaka en sådan med att helt enkelt trycka på tangenten Enter utan att skriva något annat.
 
 <in-browser-programming-exercise name="Lopusta alkuun" tmcname="osa03-05c_lopusta_alkuun">
 
-Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten merkkijonon merkit allekkain käänteisessä järjestyksessä lopusta alkuun.
+Skapa ett program som ber användaren ange en sträng. Programmet ska skriva ut tecknen i omvänd ordning på varsin rad.
 
-Esimerkkisuoritus:
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **heippa**
-a
-p
-p
+Ange sträng: **geting**
+g
+n
 i
+t
 e
-h
+g
 
 </sample-output>
 
@@ -303,20 +300,19 @@ h
 
 <in-browser-programming-exercise name="Toinen ja toiseksi viimeinen" tmcname="osa03-06_toinen_ja_toiseksi_viimeinen">
 
-
-Tee ohjelma, joka kysyy käyttäjältä sanan ja kertoo, ovatko sen toinen ja toiseksi viimeinen merkki samoja.
+Skapa ett program som ger användaren mata in ett ord. Programmet ska därefter berätta om ordets andra och nästa sista bokstäver är de samma.
 
 <sample-output>
 
-Anna sana: **python**
-Toinen ja toiseksi viimeinen kirjain eroavat
+Ange ett ord: **python**
+Den andra och den näst sista bokstaven skiljer sig från varandra
 
 </sample-output>
 
 <sample-output>
 
-Anna sana: **pascal**
-Toinen ja toiseksi viimeinen kirjain on a
+Ange ett ord: **pascal**
+Den andra och den näst sista bokstaven är a
 
 </sample-output>
 
@@ -324,11 +320,11 @@ Toinen ja toiseksi viimeinen kirjain on a
 
 <in-browser-programming-exercise name="Risuaitaviiva" tmcname="osa03-09_risuaitaviiva">
 
-Tee ohjelma, joka piirtää käyttäjän määräämän levyisen risuaitaviivan.
+Skapa ett program som ritar ut ett streck bestående så många nummertecken (`#`) som användaren anger.
 
 <sample-output>
 
-Leveys: **3**
+Bredd: **3**
 <pre>
 ###
 </pre>
@@ -337,7 +333,7 @@ Leveys: **3**
 
 <sample-output>
 
-Leveys: **8**
+Bredd: **8**
 <pre>
 ########
 </pre>
@@ -348,12 +344,12 @@ Leveys: **8**
 
 <in-browser-programming-exercise name="Risuaitasuorakulmio" tmcname="osa03-10_risuaitanelio">
 
-Laajenna edellistä niin, että käyttäjä syöttää myös piirrettävien rivien määrän
+Utveckla det föregående programmet så att användaren också kan definiera höjden på figuren.
 
 <sample-output>
 
-Leveys: **10**
-Korkeus: **3**
+Bredd: **10**
+Höjd: **3**
 ##########
 ##########
 ##########
@@ -364,26 +360,26 @@ Korkeus: **3**
 
 <in-browser-programming-exercise name="Alleviivaus" tmcname="osa03-11_alleviivaus">
 
-Tee ohjelma, joka pyytää käyttäjältä merkkijonoja ja tulostaa kunkin merkkijonon oheisen esimerkin mukaisesti alleviivattuna. Ohjelman suoritus päättyy, kun käyttäjä syöttää tyhjän merkkijonon, eli merkkijonon jonka pituus on 0.
+Skapa ett program som ber användaren om strängar. Programmet skriver ut strängarna med understrykning enligt exemplet. Programmet avslutas då användaren ger en tom sträng, dvs. en sträng med längden noll.
 
 <sample-output>
 
-Anna merkkijono: **Moi kaikki!**
+Ange sträng: **Hejsan svejsan!**
 <pre>
-Moi kaikki!
------------
+Hejsan svejsan!
+---------------
 </pre>
-Anna merkkijono: **Tämä on testijono**
+Ange sträng: **Clara steg upp på en tremetersstege**
 <pre>
-Tämä on testijono
------------------
+Clara steg upp på en tremetersstege
+-----------------------------------
 </pre>
-Anna merkkijono: **a**
+Ange sträng: **a**
 <pre>
 a
 -
 </pre>
-Anna merkkijono:
+Ange sträng:
 
 </sample-output>
 
@@ -391,13 +387,13 @@ Anna merkkijono:
 
 <in-browser-programming-exercise name="Tasaus oikeaan" tmcname="osa03-12_tasaus_oikeaan">
 
-Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sen niin, että tulostetuksi tulee tasan 20 merkkiä. Jos merkkijono on lyhyempi, alkuun tulee tarvittava määrä tähtiä `*`.
+Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att utskriften är exakt 20 tecken. Om strängen är kortare ska det finnas ett passligt antal asterisker (`*`) i början av strängen.
 
-Voit olettaa, että syötetyssä merkkijonossa on enintään 20 merkkiä.
+Du kan anta att strängen består av högst 20 tecken.
 
 <sample-output>
 
-Sana: **python**
+Ord: **python**
 <pre>
 **************python
 </pre>
@@ -406,18 +402,18 @@ Sana: **python**
 
 <sample-output>
 
-Sana: **pitkämerkkijono**
+Ord: **ganskalångsträng**
 <pre>
-*****pitkämerkkijono
+****ganskalångsträng
 </pre>
 
 </sample-output>
 
 <sample-output>
 
-Sana: **tosipitkämerkkijono**
+Ord: **sssuperlångstränggg**
 <pre>
-*tosipitkämerkkijono
+*sssuperlångstränggg
 </pre>
 
 </sample-output>
@@ -427,16 +423,18 @@ Sana: **tosipitkämerkkijono**
 
 <in-browser-programming-exercise name="Sanalaatikko" tmcname="osa03-13_sanalaatikko">
 
-Tee ohjelma, joka kysyy käyttäjältä sanaa ja tulostaa sanan tähtiraameihin, joissa sana on keskellä. Raamien leveys on 30 merkkiä, ja voit olettaa, että sana mahtuu raameihin.
+Skapa ett program som ber användaren ge ett ord. Programmet ska skriva ut ordet i mitten av en ram som består av asterisker. Bredden av ramen är 30 tecken. Du kan anta att ordet som anges ryms i ramen.
 
 Huom! Jos sanan pituus on pariton, voit tulostaa sanan kumpaan tahansa mahdollisista keskikohdista.
 
+Om ordets längd är ojämnt, kan du skriva ut det på valfritt mittställe.
+
 <sample-output>
 
-Sana: **koe**
+Ord: **aj!**
 <pre>
 ******************************
-*            koe             *
+*            aj!             *
 ******************************
 </pre>
 
@@ -444,7 +442,7 @@ Sana: **koe**
 
 <sample-output>
 
-Sana: **python**
+Ord: **python**
 <pre>
 ******************************
 *           python           *
@@ -467,24 +465,24 @@ Om du vet vad det inledande och avslutande indexet för en delsträng är, kan d
 Låt oss kika lite mer på extraherade (sliced) strängar:
 
 ```python
-mjono = "saippuakauppias"
+strang = "glassbil"
 
-print(mjono[0:3])
-print(mjono[4:10])
+print(strang[0:3])
+print(strang[4:7])
 
-# jos alkukohta puuttuu, se on oletuksena 0
-print(mjono[:3])
+# om inledande index fattas, är det 0
+print(strang[:3])
 
-# jos loppukohta puuttuu, se on oletuksena merkkijonon pituus
-print(mjono[4:])
+# om avslutande index fattas, är det lika med strängens längd
+print(strang[4:])
 ```
 
 <sample-output>
 
-sai
-puakau
-sai
-puakauppias
+gla
+sbi
+gla
+sbil
 
 </sample-output>
 
@@ -500,18 +498,17 @@ Halvöppna intervall kan kännas jobbiga men i praktiken har de sina nyttiga sid
 
 <in-browser-programming-exercise name="Osajonot 1" tmcname="osa03-07_osajonot1">
 
-Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten kaikki sen ensimmäisestä merkistä alkavat osajonot pituusjärjestyksessä.
+Skapa ett program som ber användaren ange en sträng. Därefter skriver programmet ut alla delsträngar börjande med det första tecket, i storleksordning.
 
-Esimerkkitulostus:
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **testi**
+Ange sträng: **test**
 t
 te
 tes
 test
-testi
 
 </sample-output>
 
@@ -521,16 +518,17 @@ testi
 
 Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten kaikki sen viimeiseen merkkiin päättyvät osajonot pituusjärjestyksessä.
 
-Esimerkkitulostus:
+Skapa ett program som ber användaren om en sträng. Därefter skriver man ut alla delsträngar som slutar med det sista tecknet, i storleksordning.
+
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **testi**
-i
-ti
-sti
-esti
-testi
+Ange sträng: **test**
+t
+st
+est
+test
 
 </sample-output>
 
@@ -543,12 +541,12 @@ Operatorn `in` berättar oss om en sträng innehåller en specifik delsträng. B
 Till exempel den här kodsnutten…
 
 ```python
-mjono = "testi"
+strang = "test"
 
-print("t" in mjono)
-print("x" in mjono)
-print("est" in mjono)
-print("ets" in mjono)
+print("t" in strang)
+print("x" in strang)
+print("est" in strang)
+print("ets" in strang)
 ```
 
 …skriver ut följande:
@@ -565,51 +563,51 @@ False
 Programmet nedan låter användaren söka efter delsträngar i en sträng som är hårdkodad i programmet:
 
 ```python
-mjono = "saippuakauppias"
+strang = "eu-val"
 
 while True:
-    osa = input("Mitä etsit? ")
-    if osa in mjono:
-        print("Löytyi")
+    delstrang = input("Vad söker du efter? ")
+    if delstrang in strang:
+        print("Hittades")
     else:
-        print("Ei löytynyt")
+        print("Hittades inte")
 ```
 
 <sample-output>
 
-Mitä etsit? **kaup**
-Löytyi
-Mitä etsit? **abc**
-Ei löytynyt
-Mitä etsit? **ippu**
-Löytyi
+Vad söker du efter? **eu**
+Hittades
+Vad söker du efter? **euval**
+Hittades inte
+Vad söker du efter? **u-v**
+Hittades
 ...
 
 </sample-output>
 
 <in-browser-programming-exercise name="Löytyvätkö vokaalit" tmcname="osa03-13b_loytyvatko_vokaalit">
 
-Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten tiedon löytyvätkö vokaalit a, e ja o merkkijonosta.
+Skapa ett program som ber användaren ange en sträng. Programmet ska därefter meddela om vokalerna a, e eller o hittas i strängen.
 
-Voit olettaa, että merkkijono on syötetty kokonaan pienillä kirjaimilla. Katso mallia esimerkkitulostuksesta.
+Du kan anta att strängen är angiven i gemener.
 
-Esimerkkitulostus:
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **heippa sulle**
-a löytyy
-e löytyy
-o ei löydy
+Ange sträng: **hej på dig**
+a hittas inte
+e hittas
+o hittas inte
 
 </sample-output>
 
 <sample-output>
 
-Anna merkkijono: **moi**
-a ei löydy
-e ei löydy
-o löytyy
+Ange sträng: **morjens**
+a hittas inte
+e hittas
+o hittas
 
 </sample-output>
 
@@ -625,12 +623,12 @@ Så här fungerar det:
 Några exempel där vi använder `find`:
 
 ```python
-mjono = "testi"
+strang = "test"
 
-print(mjono.find("t"))
-print(mjono.find("x"))
-print(mjono.find("est"))
-print(mjono.find("ets"))
+print(strang.find("t"))
+print(strang.find("x"))
+print(strang.find("est"))
+print(strang.find("ets"))
 ```
 
 <sample-output>
@@ -645,25 +643,25 @@ print(mjono.find("ets"))
 Ovanstående delsträngsexempel gjort med `find`:
 
 ```python
-mjono = "saippuakauppias"
+strang = "led-lampa"
 
 while True:
-    osa = input("Mitä etsit? ")
-    kohta = mjono.find(osa)
-    if kohta >= 0:
-        print(f"Löytyi kohdasta {kohta}")
+    delstrang = input("Vad söker du efter? ")
+    plats = strang.find(delstrang)
+    if plats >= 0:
+        print(f"Hittades på platsen {plats}")
     else:
-        print("Ei löytynyt")
+        print("Hittades inte")
 ```
 
 <sample-output>
 
-Mitä etsit? **kaup**
-Löytyi kohdasta 7
-Mitä etsit? **abc**
-Ei löytynyt
-Mitä etsit? **ippu**
-Löytyi kohdasta 2
+Vad söker du efter? **ed**
+Hittades på platsen 1
+Vad söker du efter? **abc**
+Hittades inte
+Vad söker du efter? **ampa**
+Hittades på platsen 5
 ...
 
 </sample-output>
@@ -676,35 +674,35 @@ Vi använde ovan metoden `find` hos strängar. Metoder fungerar ganska lika jäm
 
 <in-browser-programming-exercise name="Ensimmäisen osajonon haku" tmcname="osa03-13c_osajonon_haku">
 
-Tee ohjelma, joka kysyy käyttäjältä merkkijonoa ja yksittäistä merkkiä. Ohjelma tulostaa merkkijonosta löytyvän ensimmäisen kolmen merkin pituisen osajonon, jonka alkukirjain on käyttäjän syöttämä merkki. Voit olettaa, että merkkijono on vähintään kolmen merkin pituinen.
+Skapa ett program som ber användaren ange en sträng samt ett tecken. Programmet ska skriva ut den första delsträngen på tre tecken som börjar med det tecknet användaren angett. Du kan anta att strängen består av minst tre tecken.
 
 <sample-output>
 
-Sana: **apinatalo**
-Merkki: **a**
-api
+Ord: **algeriet**
+Tecken: **a**
+alg
 
 </sample-output>
 
 <sample-output>
 
-Sana: **banaani**
-Merkki: **n**
-naa
+Ord: **insändare**
+Tecken: **n**
+nsä
 
 </sample-output>
 
 <sample-output>
 
-Sana: **tomaatti**
-Merkki: **x**
+Ord: **vindpust**
+Tecken: **x**
 
 </sample-output>
 
 <sample-output>
 
-Sana: **python**
-Merkki: **n**
+Ord: **python**
+Tecken: **n**
 
 </sample-output>
 
@@ -712,45 +710,46 @@ Merkki: **n**
 
 <in-browser-programming-exercise name="Kaikkien osajonojen haku" tmcname="osa03-14_osajonojen_haku">
 
-Tee edellisestä ohjelmasta laajennettu versio, joka tulostaa _kaikki merkkijonon sisältämät kolmen merkin pituiset osajonot_, joiden alkukirjain on käyttäjän syöttämä merkki. Voit olettaa, että merkkijono on vähintään kolmen merkin pituinen.
+Utveckla ditt föregående program, så att programmet skriver ut varje delsträng på tre tecken och som börjar med det angivna tecknet. Du kan anta att den angivna strängen består av minst tre tecken.
 
 <sample-output>
 
-Sana: **apinatalo**
-Merkki: **a**
-api
-ata
-alo
+Ord: **ljudlös**
+Tecken: **l**
+lju
+lös
 
 </sample-output>
 
 <sample-output>
 
-Sana: **banaani**
-Merkki: **n**
-naa
+Ord: **nemi**
+Tecken: **n**
+nem
 
 </sample-output>
 
-**Vihje** seuraava esimerkki saattaa antaa jotain inspiraatiota eräästä tavasta miten tätä tehtävää voi lähestyä
+Tips: Följande exempel kan ge dig inspiration för uppgiften.
 
 ```python
-sana = input("Sana: ")
+ord = input("Ord: ")
 while True:
-    if len(sana) == 0:
+    if len(ord) == 0:
         break
-    print(sana)
-    sana = sana[2:]
+    print(ord)
+    ord = ord[2:]
 ```
 
 <sample-output>
 
-Sana: **apinatalo**
-apinatalo
-inatalo
-atalo
-alo
-o
+Ord: **solgass**
+solgass
+olgass
+lgass
+gass
+ass
+ss
+s
 
 </sample-output>
 
@@ -758,33 +757,33 @@ o
 
 <in-browser-programming-exercise name="Toinen esiintymä" tmcname="osa03-15_toinen_esiintyma">
 
-Tee ohjelma, joka etsii merkkijonosta osajonon toisen esiintymän. Jos toista (tai edes ensimmäistä) esiintymää ei löydy, ohjelma tulostaa tästä tiedon.
+Skapa ett program som söker efter det andra av en given delsträng i en sträng. Om delsträngen inte hittas två gånger eller ens en gång, ska programmet meddela om detta.
 
-Määritellään tässä yhteydessä, että esiintymät _eivät_ voi mennä päällekkäin, merkkijonossa `aaaa` osajonon `aa` toinen esiintymä löytyy siis indeksin 2 kohdalta.
+I den här kontexten kan delsträngar inte vara överlappande. I strängen `aaaa` hittas delsträngen `aa` för den andra gången vid index 2.
 
-Muutama esimerkkisuoritus:
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **abcabc**
-Anna osajono: **ab**
-Osajonon toinen esiintymä on kohdassa 3.
+Ange sträng: **abcabc**
+Ange delsträng: **ab**
+Delsträngens andra förekomst är vid index 3.
 
 </sample-output>
 
 <sample-output>
 
-Anna merkkijono: **saippuakauppias**
-Anna osajono: **a**
-Osajonon toinen esiintymä on kohdassa 6.
+Ange sträng: **laserpenna**
+Ange delsträng: **a**
+Delsträngens andra förekomst är vid index 9.
 
 </sample-output>
 
 <sample-output>
 
-Anna merkkijono: **aybabtu**
-Anna osajono: **ba**
-Osajono ei esiinny merkkijonossa kahdesti.
+Ange sträng: **dynga**
+Ange delsträng: **dy**
+Delsträngen förekommer inte två gånger.
 
 </sample-output>
 

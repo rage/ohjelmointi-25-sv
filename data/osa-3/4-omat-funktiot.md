@@ -23,8 +23,8 @@ Före en funktion kan användas måste den definieras. Man börjar definieringen
 Den här kodsnutten definierar till exempel funktionen `meddelande`:
 
 ```python
-def viesti():
-    print("Tämä on oma funktio!")
+def meddelande():
+    print("Det här är min funktion!")
 ```
 
 Om programmet körs, verkar det som att inget händer. Det beror på att funktionens innehåll endast körs då funktionen anropas.
@@ -32,36 +32,36 @@ Om programmet körs, verkar det som att inget händer. Det beror på att funktio
 Man kan anropa en funktion enkelt – genom att nämna dess namn i koden. Så här kan vi utveckla det föregående exemplet:
 
 ```python
-def viesti():
-    print("Tämä on oma funktio!")
+def meddelande():
+    print("Det här är min funktion!")
 
-viesti()
+meddelande()
 ```
 
 Här är resultatet:
 
 <sample-output>
 
-Tämä on oma funktio!
+Det här är min funktion!
 
 </sample-output>
 
 När en funktion har definierats kan den kallas flera gånger.
 
 ```python
-def viesti():
-    print("Tämä on oma funktio!")
+def meddelande():
+    print("Det här är min funktion!")
 
-viesti()
-viesti()
-viesti()
+meddelande()
+meddelande()
+meddelande()
 ```
 
 <sample-output>
 
-Tämä on oma funktio!
-Tämä on oma funktio!
-Tämä on oma funktio!
+Det här är min funktion!
+Det här är min funktion!
+Det här är min funktion!
 
 </sample-output>
 
@@ -72,8 +72,8 @@ Obs! Från och med nu kommer de flesta av kursens uppgifter förutsätta att du 
 När ett program består bara av funktioner verkar ingenting hända då programmet körs. Följande kod skriver inte ut någonting, även om den innehåller en `print`-sats:
 
 ```python
-def moikkaa():
-    print("Moi!")
+def halsa():
+    print("Hejps!")
 ```
 
 Det här beror på att koden i `halsa`-funktionen endast körs då funktionen anropas.
@@ -81,37 +81,37 @@ Det här beror på att koden i `halsa`-funktionen endast körs då funktionen an
 "Huvudprogrammet" nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudfunktionen, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
 
 ```python
-def moikkaa():
-    print("Moi!")
+def halsa():
+    print("Hejps!")
 
-# Pääohjelma on se ohjelman osa, joka ei ole minkään funktion sisällä
-# Kutsutaan omaa funktiota
+# huvudprogrammet är den del av programmet som inte är inom någon funktion
+# vi anropar vår funktion
 
-moikkaa()
+halsa()
 ```
 
 Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudfunktion är tom. Inga kommandon bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
 
 ```python
-def moikkaa():
-    print("Moi!")
+def halsa():
+    print("Hejps!")
 
-# Kirjoita pääohjelma aina seuraavanlaisen lohkon sisälle
+# vi skriver huvudprogrammet inom ett block som det här
 if __name__ == "__main__":
-    moikkaa()
+    halsa()
 ```
 
-Lohkon ulkopuolelle jätetty testikoodi aiheuttaa seuraavan virheilmoituksen:
+Kod utanför blocket orsakar ett felmeddelande som detta:
 
 <img src="3_4_1.png">
 
-Kannattaa myös huomata, että testit eivät suorita `if __name__ == "__main__"` -lohkon sisälle kirjoitettua koodia eikä sinne tule sijoittaa tehtävien edellyttämää koodia.
+Det lönar sig också att märka att testen inte kör kod i `if __name__ == "__main__"` -block. Dit ska man inte placera kod som behövs för uppgifterna.
 
 </text-box>
 
 <in-browser-programming-exercise name="Seitsemän veljestä" tmcname="osa03-21_seitseman_veljesta">
 
-Tee funktio `seitseman_veljesta` jonka kutsuminen tulostaa seitsemän veljeksen nimet aakkosjärjestyksessä:
+Skapa funktionen `sju_broder` som skriver ut namnet på sju bröder i alfabetisk ordning:
 
 <sample-output>
 
@@ -132,9 +132,9 @@ Tuomas
 Funktioner tar ofta emot ett eller fler argument som kan påverka på vad funktionen gör. Till exempel de inbyggda `print`- och `input`-funktionerna i Python tar emot texten som ska visas som argument:
 
 ```python
-print("Hei!")                     # parametrina merkkijono "Hei!"
-nimi = input("Kerro nimesi: ")    # parametrina merkkijono "Kerro nimesi: "
-print(nimi)                       # parametrina muuttujan nimi arvo
+print("Hejps!")                      # som parameter strängen "Hejps!"
+namn = input("Berätta ditt namn: ")  # som parameter strängen "Berätta ditt namn: "
+print(namn)                          # som parameter värdet på variabeln namn
 ```
 
 Det har tidigare nämnts att termerna argument och parameter ofta syftar till samma sak. Skillnaden är att argument används för den data som ges till funktionen vid ett anrop, medan dessa inom funktionen tilldelas till variabler som kallas parametrar. Vi ger alltså argument till en funktion då vi anropar den. När vi definierar en funktion talar vi istället om parametrar.
@@ -144,31 +144,31 @@ Det här kan kännas som en meningslös skillnad, och dessutom följer inte alla
 Låt oss definiera några funktioner som tar emot argument. I funktionsdefinitionen följer parametrarna funktionens namn, inom parenteserna:
 
 ```python
-def tervehdi(kohde):
-    print("Hei", kohde)
+def halsa(sak):
+    print("Hej", sak)
 ```
 
 När funktionen anropas två gånger…
 
 ```python
-tervehdi("Emilia")
-tervehdi("maailma!")
+halsa("Beatrice")
+halsa("världen!")
 ```
 
 …får vi två hälsningar:
 
 <sample-output>
 
-Hei Emilia
-Hei maailma!
+Hej Beatrice
+Hej världen!
 
 </sample-output>
 
 Vi tar ännu en titt på funktionsdefinitionen:
 
 ```python
-def tervehdi(kohde):
-    print("Hei", kohde)
+def halsa(sak):
+    print("Hej", sak)
 ```
 
 På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till en variabel med namnet `sak`. Inom funktionen använder `print`-kommandot det värde som finns lagrat i variabeln `sak`.
@@ -176,8 +176,8 @@ På den första raden har vi definierat att funktionen tar emot ett argument och
 När funktionen anropas får parametern sak det värde som getts som argument i funktionsanropet. Till exempel följande funktionsanrop…
 
 ```python
-nimi = "Antti"
-tervehdi(nimi)
+namn = "Alice"
+halsa(namn)
 ```
 
 …resulterar i att variabeln `sak` får värdet `"Alice"`.
@@ -186,20 +186,20 @@ Namnet på en funktion ges enligt samma principer som variabelnamn. De ska vara 
 
 <in-browser-programming-exercise name="Ensimmäinen merkki" tmcname="osa03-22_ensimmainen_merkki">
 
-Täydennä koodipohjassa oleva funktio `ensimmainen` siten, että se tulostaa parametrinaan saamansa merkkijonon ensimmäisen merkin.
+Gör så att funktionen `forsta` i den här uppgiften skriver ut det första tecknet i den sträng som ges som argument.
 
 ```python
-def ensimmainen(merkkijono):
-     # kirjoita koodia tähän
+def forsta(strang):
+     # skriv kod här
 
-# kokeillaan funktiota:
+# vi testar på funktionen
 if __name__ == "__main__":
-    ensimmainen('python')
-    ensimmainen('yhtälö')
-    ensimmainen('tieto')
-    ensimmainen('huominen')
-    ensimmainen('omena')
-    ensimmainen('nukkumaanmenoaika')
+    forsta('python')
+    forsta('yxa')
+    forsta('tapet')
+    forsta('himmel')
+    forsta('opera')
+    forsta('normal')
 ```
 
 <sample-output>
@@ -230,37 +230,37 @@ Om en uppgift inte förutsätter att du anropar en funktion kan du ändå göra 
 Vi tar en titt på fler exempelfunktioner som tar emot argument. Här är parametern en siffra:
 
 ```python
-def nelio(x):
-    print(f"Luvun {x} neliö on {x * x}")
+def kvadrat(x):
+    print(f"Kvadraten av {x} är {x * x}")
 
-nelio(2)
-nelio(5)
+kvadrat(2)
+kvadrat(5)
 ```
 
 <sample-output>
 
-Luvun 2 neliö on 4
-Luvun 5 neliö on 25
+Kvadraten av 2 är 4
+Kvadraten av 5 är 25
 
 </sample-output>
 
 Här har vi en if-sats inom en funktion:
 
 ```python
-def tervehdi(nimi):
-    if nimi == "Emilia":
-        print("Heippa,", nimi)
+def halsa(namn):
+    if namn == "Beatrice":
+        print("Hejps,", namn)
     else:
-        print("Moikka,", nimi)
+        print("God dag,", namn)
 
-tervehdi("Emilia")
-tervehdi("Matti")
+halsa("Beatrice")
+halsa("Mårten")
 ```
 
 <sample-output>
 
-Heippa, Emilia
-Moikka, Matti
+Hejps, Beatrice
+God dag, Mårten
 
 </sample-output>
 
@@ -268,8 +268,8 @@ Den här funktionen tar emot två argument:
 
 ```python
 def summa(x, y):
-    tulos = x + y
-    print(f"Parametrien {x} ja {y} summa on {tulos} ")
+    resultat = x + y
+    print(f"Summan av {x} och {y} är {resultat}")
 
 summa(1, 2)
 summa(5, 24)
@@ -277,8 +277,8 @@ summa(5, 24)
 
 <sample-output>
 
-Parametrien 1 ja 2 summa on 3
-Parametrien 5 ja 24 summa on 29
+Summan av 1 och 2 är 3
+Summan av 5 och 24 är 29
 
 </sample-output>
 
@@ -297,8 +297,8 @@ Det här skriver ut:
 
 <sample-output>
 
-Parametrien 1 ja 2 summa on 3
-Parametrien 130 ja 10 summa on 140
+Summan av 1 och 2 är 3
+Summan av 130 och 10 är 140
 
 </sample-output>
 
@@ -316,21 +316,21 @@ Att använda globala variabler från funktioner är oftast en dålig idé. Det k
 Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
 ```python
-# globaali muuttuja
-nimi = "Emilia"
+# global variabel
+namn = "Beatrice"
 
-def tervehdi(etunimi):
-    # tulostetaan vahingossa parametrin sijaan globaalin muuttujan arvo
-    print("Hei", nimi)
+def halsa(etunimi):
+    # vi skriver av misstag ut den globala variabelns värde istället för parametern
+    print("Hej", namn)
 
-tervehdi("Antti")
-tervehdi("Emilia")
+halsa("Alice")
+halsa("Beatrice")
 ```
 
 <sample-output>
 
-Hei Emilia
-Hei Emilia
+Hej Beatrice
+Hej Beatrice
 
 </sample-output>
 
@@ -338,11 +338,11 @@ Oavsett vilka argument vi anropar funktionen med skrivs värdet "Beatrice" från
 
 <in-browser-programming-exercise name="Keskiarvo" tmcname="osa03-25_keskiarvo">
 
-Tee funktio `keskiarvo`, joka saa parametrina kolme kokonaislukua. Funktio tulostaa parametriensa keskiarvon.
+Skapa funktionen `medeltal` som tar emot tre heltal som argument. Funktionen ska skriva ut medelvärdet av dessa tal.
 
 ```python
-keskiarvo(5, 3, 1)
-keskiarvo(10, 1, 1)
+medeltal(5, 3, 1)
+medeltal(10, 1, 1)
 ```
 
 <sample-output>
@@ -356,28 +356,28 @@ keskiarvo(10, 1, 1)
 
 <in-browser-programming-exercise name="Monta tulostusta" tmcname="osa03-24_monta_tulostusta">
 
-Tee funktio `tulosta_monesti(merkkijono, kertaa)`, joka saa parametriksi merkkijonon sekä kokonaisluvun, joka kertoo, montako kertaa funktion tulee tulostaa parametrina saamansa merkkijono:
+Skapa funktionen `skriv_ut_flera_ganger(strang, ganger)`, som får en sträng och ett heltal som argument. Strängen ska skrivas ut så många gånger som heltalet indikerar:
 
 ```python
-tulosta_monesti("hei", 5)
+skriv_ut_flera_ganger("hej!!", 5)
 
 print()
 
-merkkijono = "Alussa olivat suo, kuokka ja Python"
+merkkijono = "Allt började då grannbondens gamla traktor började ryka..."
 kertaa = 3
-tulosta_monesti(merkkijono, kertaa)
+skriv_ut_flera_ganger(merkkijono, kertaa)
 ```
 <sample-output>
 
-hei
-hei
-hei
-hei
-hei
+hej!!
+hej!!
+hej!!
+hej!!
+hej!!
 
-Alussa olivat suo, kuokka ja Python.
-Alussa olivat suo, kuokka ja Python.
-Alussa olivat suo, kuokka ja Python.
+Allt började då grannbondens gamla traktor började ryka....
+Allt började då grannbondens gamla traktor började ryka....
+Allt började då grannbondens gamla traktor började ryka....
 
 </sample-output>
 
@@ -385,12 +385,12 @@ Alussa olivat suo, kuokka ja Python.
 
 <in-browser-programming-exercise name="Risuneliö" tmcname="osa03-23_risunelio">
 
-Tee funktio `risunelio(pituus)` joka saa parametriksi kokonaisluvun, joka kertoo kuinka suuri risuneliö funktion pitää tulostaa:
+Skapa funktionen `fyrkant(langd)`, som får som argument ett heltal som indikerar hur stor fyrkant programmet ska skriva ut:
 
 ```python
-risunelio(3)
+fyrkant(3)
 print()
-risunelio(5)
+fyrkant(5)
 ```
 
 <sample-output>
@@ -413,12 +413,12 @@ risunelio(5)
 
 <in-browser-programming-exercise name="Shakkilauta" tmcname="osa03-26_shakkilauta">
 
-Tee funktio `shakkilauta`, joka tulostaa shakkilaudan numeroista 0 ja 1 alla olevien esimerkkien mukaisesti.
+Skapa funktionen `schackbrade` som skapar ett schackbräde av siffrorna noll och ett enligt exemplen nedan.
 
 ```python
-shakkilauta(3)
+schackbrade(3)
 print()
-shakkilauta(6)
+schackbrade(6)
 ```
 
 <sample-output>
@@ -443,12 +443,12 @@ shakkilauta(6)
 
 <in-browser-programming-exercise name="Sananeliö" tmcname="osa03-27_sananelio">
 
-Tee funktio `nelio`, joka tulostaa sananeliön alla olevien esimerkkien mukaisesti.
+Skapa funktionen `kvadrat` som skriver ut en "ordkvadrat" enligt exemplen nedan.
 
 ```python
-nelio("ab", 3)
+kvadrat("ab", 3)
 print()
-nelio("aybabtu", 5)
+kvadrat("aybabtu", 5)
 ```
 
 <sample-output>

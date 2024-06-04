@@ -20,17 +20,17 @@ Du kan kombinera villkor med de logiska operatorerna `and` och `or`. Operatorn `
 Till exempel villkoret `nummer >= 5 and nummer <= 8` bestämmer att nummer måste samtidigt vara minst fem och högst åtta – alltså mellan fem och åtta.
 
 ```python
-luku = int(input("Anna luku: "))
-if luku >= 5 and luku <= 8:
-    print("Luku on välillä 5..8")
+nummer = int(input("Ge en siffra: "))
+if nummer >= 5 and nummer <= 8:
+    print("Siffran är mellan 5 och 8")
 ```
 
 Villkoret `nummer < 5 or nummer > 8` bestämmer att nummer måste vara mindre än fem eller större än åtta – alltså inte mellan fem till åtta.
 
 ```python
-luku = int(input("Anna luku: "))
-if luku < 5 or luku > 8:
-    print("Luku ei ole välillä 5..8")
+nummer = int(input("Ge en siffra: "))
+if nummer < 5 or nummer > 8:
+    print("Siffran är inte mellan 5 och 8")
 ```
 
 Den här sanningstabellen beskriver hur operatorerna fungerar i olika situationer:
@@ -53,9 +53,9 @@ False | True
 Det ovanstående exemplet med talen 5–8 borträknade kan också skrivas så här:
 
 ```python
-luku = int(input("Anna luku: "))
-if not (luku >= 5 and luku <= 8):
-    print("Luku ei ole välillä 5..8")
+nummer = int(input("Ge en siffra: "))
+if not (nummer >= 5 and nummer <= 8):
+    print("Siffran är inte mellan 5 och 8")
 ```
 
 Framför allt inom programmering kallas logiska operatorer Boolean-operatorer.
@@ -74,30 +74,30 @@ Python ger också oss möjligheten att använda oss av ett förenklat uttryckss�
 Det här programmet ber användaren att ge fyra siffror. Sedan kollar programmet vilken siffra som är störst med hjälp av några villkor:
 
 ```python
-n1 = int(input("Anna luku 1: "))
-n2 = int(input("Anna luku 2: "))
-n3 = int(input("Anna luku 3: "))
-n4 = int(input("Anna luku 4: "))
+n1 = int(input("Ge siffra 1: "))
+n2 = int(input("Ge siffra 2: "))
+n3 = int(input("Ge siffra 3: "))
+n4 = int(input("Ge siffra 4: "))
 
 if n1 > n2 and n1 > n3 and n1 > n4:
-    suurin = n1
+    storst = n1
 elif n2 > n3 and n2 > n4:
-    suurin = n2
+    storst = n2
 elif n3 > n4:
-    suurin = n3
+    storst = n3
 else:
-    suurin = n4
+    storst = n4
 
-print(f" {suurin} on suurin luku.")
+print(f" {storst} är det största talet.")
 ```
 
 <sample-output>
 
-Anna luku 1: **2**
-Anna luku 2: **4**
-Anna luku 3: **1**
-Anna luku 4: **1**
-4 on suurin luku.
+Ge siffra 1: **2**
+Ge siffra 2: **4**
+Ge siffra 3: **1**
+Ge siffra 4: **1**
+4 är det största talet.
 
 </sample-output>
 
@@ -105,30 +105,28 @@ I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre "
 
 <in-browser-programming-exercise name="Iän tarkistus" tmcname="osa02-08_ian_tarkistus">
 
-Tee ohjelma, joka kysyy käyttäjän ikää. Jos ikä ei ole uskottava (se on alle 5 tai mahdoton luku iälle), antaa ohjelma siihen liittyvän kommentin.
+Skapa ett program som frågar om användarens ålder. Om åldern är under fem, ska programmet kommentera det här.
 
-Vinkki: tarkastele esimerkkisuorituksia löytääksesi oikean vastineen eri vaihtoehdoille.
-
-Esimerkkitulostuksia:
+Se exemplen nedan:
 
 <sample-output>
 
-Kerro ikäsi? **13**
-Ok, olet siis 13-vuotias
+Vad är din ålder? **13**
+Okej, du är alltså 13 år
 
 </sample-output>
 
 <sample-output>
 
-Kerro ikäsi? **2**
-En usko, että osaat kirjoittaa...
+Vad är din ålder? **2**
+Jag tror inte att du kan skriva...
 
 </sample-output>
 
 <sample-output>
 
-Kerro ikäsi? **-4**
-Taitaa olla virhe
+Vad är din ålder? **-4**
+Du måste ha skrivit fel.
 
 </sample-output>
 
@@ -136,30 +134,30 @@ Taitaa olla virhe
 
 <in-browser-programming-exercise name="Veljenpojat" tmcname="osa02-09_veljenpojat">
 
-Tee ohjelma, joka kysyy käyttäjän nimeä. Jos nimeksi syötetään Tupu, Hupu tai Lupu, ohjelma tunnistaa käyttäjän Aku Ankan veljenpojaksi.
+Skapa ett program som frågar efter användarens namn. Om namnet är Knatte, Fnatte eller Tjatte, antar programmet att användaren är Kalle Ankas brorson.
 
-Jos nimeksi annetaan Mortti tai Vertti, ohjelma vastaavasti tunnistaa käyttäjän Mikki Hiiren veljenpojaksi.
+Om namnet är Teddi eller Freddi, antar programmet att användaren är Musse Piggs brorson.
 
-Esimerkkitulostuksia:
+Exempel:
 
 <sample-output>
 
-Anna nimesi: **Mortti**
-Olet luultavasti Mikki Hiiren veljenpoika.
+Ange ditt namn: **Teddi**
+Du är antagligen Musse Piggs brorson.
 
 </sample-output>
 
 <sample-output>
 
-Anna nimesi: **Hupu**
-Olet luultavasti Aku Ankan veljenpoika.
+Ange ditt namn: **Fnatte**
+Du är antagligen Kalle Ankas brorson.
 
 </sample-output>
 
 <sample-output>
 
-Anna nimesi: **Keijo**
-Et ole kenenkään tuntemani hahmon veljenpoika.
+Ange ditt namn: **Kid**
+Jag vet inte vems brorson du är.
 
 </sample-output>
 
@@ -167,39 +165,39 @@ Et ole kenenkään tuntemani hahmon veljenpoika.
 
 <in-browser-programming-exercise name="Arvosana ja pisteet" tmcname="osa02-10_arvosana_ja_pisteet">
 
-Alla oleva taulukko kuvaa erään kurssin arvosanan muodostumista. Tee ohjelma, joka ilmoittaa kurssiarvosanan annetun taulukon mukaisesti.
+Följande tabell beskriver hur vitsordet på en kurs räknas. Skapa ett program som meddelar vitsordet på basis av den här tabellen.
 
-pistemäärä   | arvosana
-:--:|:----:
-< 0 |  mahdotonta!
-0-49 | hylätty
-50-59 | 1
-60-69 | 2
-70-79 | 3
-80-89| 4
+Poäng  | Vitsord
+:-----:|:------:
+< 0    | omöjligt!
+0-49   | underkänt
+50-59  | 1
+60-69  | 2
+70-79  | 3
+80-89  | 4
 90-100 | 5
-\> 100 |  mahdotonta!
+\> 100 | omöjligt!
 
-Esimerkkitulostuksia:
+Exempel på programmets funktion:
 
 <sample-output>
 
-Anna pisteet [0-100]: **37**
-Arvosana: hylätty
+Ge poäng [0-100]: **37**
+Vitsord: underkänt
 
 </sample-output>
 
 <sample-output>
 
-Anna pisteet [0-100]: **76**
-Arvosana: 3
+Ge poäng [0-100]: **76**
+Vitsord: 3
 
 </sample-output>
 
 <sample-output>
 
-Anna pisteet [0-100]: **-3**
-Arvosana: mahdotonta!
+Ge poäng [0-100]: **-3**
+Vitsord: omöjligt!
 
 </sample-output>
 
@@ -207,33 +205,33 @@ Arvosana: mahdotonta!
 
 <in-browser-programming-exercise name="FizzBuzz" tmcname="osa02-11_fizzbuzz">
 
-Ohjelma kysyy käyttäjältä lukua. Jos luku on jaollinen kolmella, tulostetaan Fizz. Jos luku on jaollinen viidellä, tulostetaan Buzz. Jos luku on jaollinen sekä kolmella, että viidellä, tulostetaan FizzBuzz
+Det här programmet ska be användaren att ge en siffra. Om siffran är delbar med tre, skriver man ut Fizz. Om talet är delbart med fem, skriver man ut Buzz. Om talet är delbart med de båda talen, skriver man ut FizzBuzz.
 
-Esimerkkitulostuksia:
+Exempel:
 
 <sample-output>
 
-Luku: **9**
+Tal: **9**
 Fizz
 
 </sample-output>
 
 <sample-output>
 
-Luku: **7**
+Tal: **7**
 
 </sample-output>
 
 <sample-output>
 
-Luku: **20**
+Tal: **20**
 Buzz
 
 </sample-output>
 
 <sample-output>
 
-Luku: **45**
+Tal: **45**
 FizzBuzz
 
 </sample-output>
@@ -245,29 +243,29 @@ FizzBuzz
 If-satser kan kapslas inom andra if-satser. Till exempel följande program kollar först om en siffra är noll före det kollar om talet är jämnt eller inte.
 
 ```python
-luku = int(input("Anna luku: "))
+nummer = int(input("Ge en siffra: "))
 
-if luku > 0:
-    if luku % 2 == 0:
-        print("Luku on parillinen")
+if nummer > 0:
+    if nummer % 2 == 0:
+        print("Talet är jämnt")
     else:
-        print("Luku on pariton")
+        print("Talet är ojämnt")
 else:
-    print("Luku on negatiivinen")
+    print("Talet är negativt")
 ```
 
 Så här kan programmet fungera:
 
 <sample-output>
 
-Anna luku: **3**
-Luku on pariton
+Ge en siffra: **3**
+Talet är ojämnt
 
-Anna luku: **18**
-Luku on parillinen
+Ge en siffra: **18**
+Talet är jämnt
 
-Anna luku: **-4**
-Luku on negatiivinen
+Ge en siffra: **-4**
+Talet är negativt
 
 </sample-output>
 
@@ -276,42 +274,42 @@ När man kapslar if-satser är det kritiskt att indenteringen blir rätt. Indent
 Ofta kan likadana resultat åstadkommas både med logiska operatorer och kapslade if-satser. Det följande exemplet fungerar helt på samma sätt som det tidigare exemplet:
 
 ```python
-luku = int(input("Anna luku: "))
+nummer = int(input("Ge en siffra: "))
 
-if luku > 0 and luku % 2 == 0:
-    print("Luku on parillinen")
-elif luku > 0 and luku % 2 != 0:
-    print("Luku on pariton")
+if nummer > 0 and nummer % 2 == 0:
+    print("Talet är jämnt")
+elif nummer > 0 and nummer % 2 != 0:
+    print("Talet är ojämnt")
 else:
-    print("Luku on negatiivinen.")
+    print("Talet är negativt")
 ```
 
 Man kan inte på rak arm säga vilkendera lösning är bättre. Situationen bestämmer ofta hur det lönar sig att bygga upp if-satsen på ett logiskt sätt. I det här exemplet tycker flera personer att versionen med kapsling är mera intuitiv.
 
 <in-browser-programming-exercise name="Karkausvuosi" tmcname="osa02-12_karkausvuosi">
 
-Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.
+Ett år är ett skottår om det är delbart med fyra. Om ett år är delbart med 100 är det ett skottår bara då det är delbart med 400.
 
-Tee ohjelma, joka lukee käyttäjältä vuosiluvun, ja tarkistaa, onko vuosi karkausvuosi.
+Skapa ett program som frågar användaren om ett årtal. Programmet meddelar om året är ett skottår eller inte.
 
 <sample-output>
 
-Anna vuosi: **2011**
-Vuosi ei ole karkausvuosi.
+Ange år: **2011**
+Året är inte ett skottår.
 
 </sample-output>
 
 <sample-output>
 
-Anna vuosi: **2020**
-Vuosi on karkausvuosi.
+Ange år: **2020**
+Året är ett skottår.
 
 </sample-output>
 
 <sample-output>
 
-Anna vuosi: **1800**
-Vuosi ei ole karkausvuosi.
+Ange år: **1800**
+Året är inte ett skottår.
 
 </sample-output>
 
@@ -319,27 +317,27 @@ Vuosi ei ole karkausvuosi.
 
 <in-browser-programming-exercise name="Aakkosjärjestyksessä keskimmäinen" tmcname="osa02-13_aakkosjarjestyksessa_keskimmainen">
 
-Tee ohjelma, joka kysyy käyttäjältä kolme kirjainta. Ohjelma tulostaa kirjaimista aakkosjärjestyksessä keskimmäisen.
+Skapa ett program som frågar användaren efter tre bokstäver. Programmet skriver ut bokstaven som är mellerst i alfabetisk ordning.
 
-Voit olettaa, että kirjaimet ovat joko kaikki isoja tai kaikki pieniä kirjaimia.
+Du kan anta att alla bokstäver är antingen gemener eller versaler (små/STORA).
 
-Esimerkkisuorituksia:
+Exempel:
 
 <sample-output>
 
-Anna 1. kirjain: x
-Anna 2. kirjain: c
-Anna 3. kirjain: p
-Keskimmäinen kirjain on p
+Ge bokstav 1: x
+Ge bokstav 2: c
+Ge bokstav 3: p
+Den mellersta bokstaven är p
 
 </sample-output>
 
 <sample-output>
 
-Anna 1. kirjain: C
-Anna 2. kirjain: B
-Anna 3. kirjain: A
-Keskimmäinen kirjain on B
+Ge bokstav 1: C
+Ge bokstav 2: B
+Ge bokstav 3: A
+Den mellersta bokstaven är B
 
 </sample-output>
 
@@ -348,40 +346,40 @@ Keskimmäinen kirjain on B
 
 <in-browser-programming-exercise name="Lahjaverolaskuri" tmcname="osa02-14_lahjaverolaskuri"  height="500px">
 
-[Verottajan mukaan](https://www.vero.fi/henkiloasiakkaat/omaisuus/lahja/) lahja tarkoittaa sitä, että omaisuus siirtyy toiselle henkilölle ilman korvausta. Lahjasta pitää maksaa lahjaveroa, jos samalta lahjanantajalta saatujen lahjojen arvo on kolmen vuoden aikana 5 000 euroa tai enemmän.
+Enligt skattemyndigheten är en gåva sådan egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
 
-Kun lahja tulee lähimmiltä sukulaisilta, lahjaveron määrä määräytyy seuraavan taulukon [mukaan](https://www.vero.fi/henkiloasiakkaat/omaisuus/lahja/lahjaverolaskuri/):
+När gåvan kommer från en nära släkting, räknas gåvoskatten enligt följande tabell:
 
-Lahja	| Vero alarajalla|	Veroprosentti ylimenevästä
-:--:|:----:|:----:
-5 000 — 25 000 |	100	|8
-25 000 — 55 000	| 1 700|	10
-55 000 — 200 000|	4 700	|12
-200 000 — 1 000 000	|22 100|	15
-1 000 000 —	|142 100|	17
+Gåvans värde        | Skatt vid nedre gränsen | Skatteprocent för överstigande andel
+:------------------:|:-----------------------:|:-----------------------------------:
+5 000 - 25 000      | 100	                  | 8
+25 000 - 55 000	    | 1 700                   | 10
+55 000 - 200 000    | 4 700	                  | 12
+200 000 - 1 000 000	| 22 100                  | 15
+1 000 000 -	        | 142 100                 | 17
 
-Esimerkiksi 6000 euron lahjasta tulee maksaa veroa 180 euroa (100 + (6000-5000) * 0.08) ja 75000 euron lahjasta tulee maksaa veroa 7100 euroa (4700 + (75000-55000) * 0.12).
+Till exempel för en gåva på 6 000 euro ska man betala 180 euro skatt (100 + (6000 - 5000) * 0,08). För en gåva på 75 000 euro betalar man 7 100 euro i beskattningen (4700 + (75000 - 55000) * 0,12).
 
-Tee ohjelma, joka laskee lahjaveron lähimpien sukulaisten antamalle lahjalle. Alla on muutama esimerkki ohjelman toiminnasta.
+Skapa ett program som räknar gåvoskatten för en gåva från en nära släkting. Nedan följer några exempel.
 
 <sample-output>
 
-Lahjan suuruus? **3500**
-Ei veroa!
+Gåvans värde? **3500**
+Ingen gåvoskatt!
 
 </sample-output>
 
 <sample-output>
 
-Lahjan suuruus? **5000**
-Vero: 100.0 euroa
+Gåvans värde? **5000**
+Gåvoskatt: 100.0 euro
 
 </sample-output>
 
 <sample-output>
 
-Lahjan suuruus? **27500**
-Vero: 1950.0 euroa
+Gåvans värde? **27500**
+Gåvoskatt: 1950.0 euro
 
 </sample-output>
 

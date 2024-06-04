@@ -33,42 +33,42 @@ Lohdutuksen sanana todettakoon, että tällä viikolla mahdottomalta vaikuttava 
 I den förra modulen fokuserade vi främst på listor med element av heltalstyp, men listor kan innehålla vilka typer av data som helst. En lista bestående av strängar kunde exempelvis kunna se ut så här:
 
 ```python
-nimet = ["Maija", "Liisa", "Pekka"]
-print(nimet)
-nimet.append("Kalle")
-print(nimet)
+namn = ["Maja", "Lotta", "Pontus"]
+print(namn)
+namn.append("Konrad")
+print(namn)
 
-print("Listalla nimiä:", len(nimet))
-print("Nimet aakkosjärjestyksessä:")
-nimet.sort()
-for nimi in nimet:
-  print(nimi)
+print("Antal namn:", len(namn))
+print("Namnen i alfabetisk ordning:")
+namn.sort()
+for person in namn:
+  print(person)
 ```
 
 <sample-output>
 
-['Maija', 'Liisa', 'Pekka']
-['Maija', 'Liisa', 'Pekka', 'Kalle']
-Listalla nimiä: 4
-Nimet aakkosjärjestyksessä:
-Kalle
-Liisa
-Maija
-Pekka
+['Maja', 'Lotta', 'Pontus']
+['Maja', 'Lotta', 'Pontus', 'Konrad']
+Antal namn: 4
+Namnen i alfabetisk ordning:
+Konrad
+Lotta
+Maja
+Pontus
 
 </sample-output>
 
 Flyttal kan också lagras i listor:
 
 ```python
-mittaukset = [-2.5, 1.1, 7.5, 14.6, 21.0, 19.2]
+matningar = [-2.5, 1.1, 7.5, 14.6, 21.0, 19.2]
 
-for mittaus in mittaukset:
-    print(mittaus)
+for matning in matningar:
+    print(matning)
 
-keskiarvo = sum(mittaukset) / len(mittaukset)
+medeltal = sum(matningar) / len(matningar)
 
-print("Keskiarvo:", keskiarvo)
+print("Medelvärde:", medeltal)
 ```
 
 <sample-output>
@@ -79,7 +79,7 @@ print("Keskiarvo:", keskiarvo)
 14.6
 21.0
 19.2
-Keskiarvo: 10.15
+Medelvärde: 10.15
 
 </sample-output>
 
@@ -93,7 +93,7 @@ Globalien muuttujien käyttämistä funktioista käsin ei useimmiten pidetä hyv
 Seuraavassa on esimerkki funktiosta, joka käyttää "vahingossa" globaalia muuttujaa:
 
 ```python
-def tulosta_vaarinpain(nimet: list):
+def tulosta_vaarinpain(namn: list):
     # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
     i = len(nimilista) - 1
     while i>=0:
@@ -101,7 +101,7 @@ def tulosta_vaarinpain(nimet: list):
         i -= 1
 
 # globaali muuttuja
-nimilista = ["Antti", "Emilia", "Erkki", "Margaret"]
+nimilista = ["August", "Emilia", "Erkki", "Margaret"]
 tulosta_vaarinpain(nimilista)
 print()
 tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
@@ -112,21 +112,21 @@ tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
 Margaret
 Erkki
 Emilia
-Antti
+August
 
 Margaret
 Erkki
 Emilia
-Antti
+August
 
 </sample-output>
 
-Vaikka funktiota kutsutaan oikein, se tulostaa aina globaalissa muuttujassa _nimilista_ olevat nimet.
+Vaikka funktiota kutsutaan oikein, se tulostaa aina globaalissa muuttujassa _nimilista_ olevat namn.
 
 Kuten olemme nähneet, kaikki funktioita testaava koodi on kirjoitettava erillisen lohkon sisälle, jotta TMC-testit hyväksyisivät koodin. Edellinen esimerkki siis tulisi toteuttaa seuraavasti:
 
 ```python
-def tulosta_vaarinpain(nimet: list):
+def tulosta_vaarinpain(namn: list):
     # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
     i = len(nimilista) - 1
     while i>=0:
@@ -136,7 +136,7 @@ def tulosta_vaarinpain(nimet: list):
 # kaikki funktiota testaava koodi tämän lohkon sisälle
 if __name__ == "__main__":
     # globaali muuttuja
-    nimilista = ["Antti", "Emilia", "Erkki", "Margaret"]
+    nimilista = ["August", "Emilia", "Erkki", "Margaret"]
     tulosta_vaarinpain(nimilista)
     print()
     tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
@@ -151,22 +151,22 @@ TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa k
 Det finns ett par nya källor till buggar som vi borde ta en titt på före vi börjar med övningarna i den här modulen. Låt oss kika på en funktion som berättar om ett heltal hittas i en lista. Båda är definierade som parametrar i funktionen:
 
 ```python
-def luku_listalla(luvut: list, luku: int):
-    for luku in luvut:
-        if luku == luku:
+def siffra_i_listan(siffror: list, siffra: int):
+    for siffra in siffror:
+        if siffra == siffra:
             return True
         else:
             return False
 ```
 
-Den här funktionen verkar alltid returnera värdet `True`. Orsaken till det är att for-loopen skriver över värdet som är lagrat i parametern `nummer`. Därför är villkoret i if-satsen alltid sant.
+Den här funktionen verkar alltid returnera värdet `True`. Orsaken till det är att for-loopen skriver över värdet som är lagrat i parametern `siffra`. Därför är villkoret i if-satsen alltid sant.
 
 Att ändra på parameterns namn löser problemet:
 
 ```python
-def luku_listalla(luvut: list, etsittava_luku: int):
-    for luku in luvut:
-        if luku == etsittava_luku:
+def siffra_i_listan(siffror: list, siffra_som_soks: int):
+    for siffra in siffror:
+        if siffra == siffra_som_soks:
             return True
         else:
             return False
@@ -175,16 +175,16 @@ def luku_listalla(luvut: list, etsittava_luku: int):
 Nu verkar villkoret i if-satsen vara i bättre skick. Men det finns ett nytt problem, eftersom funktionen inte ännu heller fungerar som den ska. Om vi testar följande, märker vi en bugg:
 
 ```python
-on = luku_listalla([1, 2, 3, 4], 3)
-print(on)  # tulostuu False
+resultat = siffra_i_listan([1, 2, 3, 4], 3)
+print(resultat) # False
 ```
 
 Problemet här är att funktionen returnerar ett värde för tidigt, utan att kolla igenom alla siffror i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att en siffra inte finns i listan förrän vi har gått igenom hela listan. Kommandot `return False` måste alltså placeras utanför for-loopen:
 
 ```python
-def luku_listalla(luvut: list, etsittava_luku: int):
-    for luku in luvut:
-        if luku == etsittava_luku:
+def siffra_i_listan(siffror: list, siffra_som_soks: int):
+    for siffra in siffror:
+        if siffra == siffra_som_soks:
             return True
 
     return False
@@ -193,39 +193,39 @@ def luku_listalla(luvut: list, etsittava_luku: int):
 Låt oss ta en titt på en annan funktion som inte fungerar korrekt:
 
 ```python
-def luvut_erisuuret(luvut: list):
-    # apumuuttuja, johon kerätään ne luvut jotka on jo tarkastettu
-    luvut = []
-    for luku in luvut:
-        # joko luku on nähty?
-        if luku in luvut:
+def siffrorna_olika(siffror: list):
+    # hjälpvariabel där vi lagrar de värden som kollats
+    siffror = []
+    for siffra in siffror:
+        # har siffran redan förekommit?
+        if siffra in siffror:
             return False
-        luvut.append(luku)
+        siffror.append(siffra)
 
     return True
 
-on = luvut_erisuuret([1, 2, 2])
-print(on)  # tulostuu True
+resultat = siffrorna_olika([1, 2, 2])
+print(resultat) # True
 ```
 
 Funktionen borde kolla om alla siffor i en lista är olika, men värdet som returneras är alltid `True`.
 
-I det här fallet skriver funktionen igen över värdet som är lagrat i dess parameter. Funktionen försöker använda variabeln `nummer` för att lagra de siffror som redan har kontrollerats, men det här skriver över det ursprungliga argumentet. Att namnge hjälpvariabeln på nytt löser vårt problem:
+I det här fallet skriver funktionen igen över värdet som är lagrat i dess parameter. Funktionen försöker använda variabeln `siffra` för att lagra de siffror som redan har kontrollerats, men det här skriver över det ursprungliga argumentet. Att namnge hjälpvariabeln på nytt löser vårt problem:
 
 ```python
-def luvut_erisuuret(luvut: list):
-    # apumuuttuja, johon kerätään ne luvut jotka on jo tarkastettu
-    havaitut_luvut = []
-    for luku in luvut:
-        # joko luku on nähty?
-        if luku in havaitut_luvut:
+def siffrorna_olika(siffror: list):
+    # hjälpvariabel där de siffror som kollats lagras
+    sedda_siffror = []
+    for siffra in siffror:
+        # har siffran redan förekommit?
+        if siffra in sedda_siffror:
             return False
-        havaitut_luvut.append(luku)
+        sedda_siffror.append(siffra)
 
     return True
 
-on = luvut_erisuuret([1, 2, 2])
-print(on)  # tulostuu False
+resultat = siffrorna_olika([1, 2, 2])
+print(resultat) # False
 ```
 
 Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller visualiseringsverktyget. Det lönar sig verkligen att lära sig använda dessa effektivt.
@@ -234,21 +234,21 @@ Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller visua
 
 **HUOM:** tämä ja seuraava tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
 
-Tee funktio `pisin(merkkijonot: list)`, joka saa parametrikseen listan merkkijonoja. Funktio etsii ja palauttaa listalta pisimmän merkkijonon. Voit olettaa, että vain yksi jonoista on pisin.
+Skapa funktionen `langst(strangar: list)` som får som argument en lista med strängar. Funktionen ska hitta och returnera den längsta strängen. Du kan anta att det bara finns en längsta sträng.
 
-Esimerkkikutsu:
+Exempel:
 
 ```python
 
 if __name__ == "__main__":
-    jonot = ["moi", "moikka", "heip", "hellurei", "terve"]
-    print(pisin(jonot))
+    lista = ["hej", "hejsan", "morjens", "tjolahoppsan", "tjenare"]
+    print(langst(lista))
 
 ```
 
 <sample-output>
 
-hellurei
+tjolahoppsan
 
 </sample-output>
 
@@ -277,27 +277,27 @@ I hurdana fall skulle det här kunna vara nyttigt?
 Kom ihåg att listor kan innehålla element av olika typer. Du kan till exempel lagra information om en person i en lista. Det första elementet kan till exempel vara personens namn, det andra dess ålder och det tredje dess höjd:
 
 ```python
-["Anu", 10, 26]
+["Nelly", 10, 26]
 ```
 
 En databas bestående av flera personer skulle då kunna vara en lista, vars element skulle vara listor som innehåller information om en person:
 
 ```python
-henkilot = [["Anu", 10, 26], ["Petteri", 7, 22], ["Emilia", 32, 37], ["Antti", 39, 44]]
+personer = [["Nelly", 10, 26], ["PO", 7, 22], ["Emilia", 32, 37], ["August", 39, 44]]
 
-for henkilo in henkilot:
-  nimi = henkilo[0]
-  ika = henkilo[1]
-  kenka = henkilo[2]
-  print(f"{nimi}: ikä {ika} vuotta, kengännumero {kenka}")
+for person in personer:
+  namn = person[0]
+  alder = person[1]
+  sko = person[2]
+  print(f"{namn}: {alder} år, skostorlek {sko}")
 ```
 
 <sample-output>
 
-Anu: ikä 10 vuotta, kengännumero 26
-Petteri: ikä  7 vuotta, kengännumero 22
-Emilia: ikä 32 vuotta, kengännumero 37
-Antti: ikä 39 vuotta, kengännumero 44
+Nelly: 10 år, skostorlek 26
+PO: 7 år, skostorlek 22
+Emilia: 32 år, skostorlek 37
+August: 39 år, skostorlek 44
 
 </sample-output>
 
@@ -316,17 +316,17 @@ Till exempel följande matris…
 …kan presenteras som en tvådimensionell lista i Python på följande sätt:
 
 ```python
-matriisi = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+matris = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
 ```
 
-Eftersom en matris är en lista som innehåller listor kan enskilda element inom matrisen kommas åt med hjälp av varandra påföljande hakparenteser. Det första indexet hänvisar till raden, medan den andra hänvisar till kolumnen. Indexeringen startar från noll så `min_matris[0][1]` hänvisar till det andra elementet på den första raden.
+Eftersom en matris är en lista som innehåller listor kan enskilda element inom matrisen kommas åt med hjälp av varandra påföljande hakparenteser. Det första indexet hänvisar till raden, medan den andra hänvisar till kolumnen. Indexeringen startar från noll så `matris[0][1]` hänvisar till det andra elementet på den första raden.
 
 ```python
-matriisi = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+matris = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
 
-print(matriisi[0][1])
-matriisi[1][0] = 10
-print(matriisi)
+print(matris[0][1])
+matris[1][0] = 10
+print(matris)
 ```
 
 <sample-output>
@@ -339,10 +339,10 @@ print(matriisi)
 Som med vilken som helst lista, kan raderna i matrisen gås igenom med en for-loop. Den följande koden skriver ut varje rad i matrisen på en skild rad:
 
 ```python
-matriisi = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+matris = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-for rivi in matriisi:
-    print(rivi)
+for rad in matris:
+    print(rad)
 ```
 
 <sample-output>
@@ -356,25 +356,25 @@ for rivi in matriisi:
 På samma sätt kan kapslade loopar användas för att komma åt enskilda element inom matrisen. Följande kodsnutten skriver ut varje element i matrisen på en skild rad med hjälp av två for-loopar:
 
 ```python
-matriisi = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+matris = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-for rivi in matriisi:
-    print("uusi rivi")
-    for alkio in rivi:
-        print(alkio)
+for rad in matris:
+    print("ny rad")
+    for element in rad:
+        print(element)
 ```
 
 <sample-output>
 
-uusi rivi
+ny rad
 1
 2
 3
-uusi rivi
+ny rad
 4
 5
 6
-uusi rivi
+ny rad
 7
 8
 9
@@ -398,36 +398,36 @@ I bilden ovan har programmet hunnit till den andra raden i matrisen och det är 
 Att komma åt en viss rad i en matris är enkelt. Det är bara att välja den raden. Följande funktion räknar summan av elementen på en viss rad:
 
 ```python
-def rivin_alkioiden_summa(matriisi, rivi_nro: int):
-    # tarkasteluun valitaan yksi rivi
-    rivi = matriisi[rivi_nro]
+def summan_av_radens_element(matris, radnummer: int):
+    # vi inspekterar bara en rad
+    rad = matris[radnummer]
     summa = 0
-    for alkio in rivi:
-        summa += alkio
+    for element in rad:
+        summa += element
 
     return summa
 
 m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
 
-summa = rivin_alkioiden_summa(m, 1)
-print(summa) # tulostuu 33 (saadaan laskemalla 9 + 1 + 12 + 11)
+summa = summan_av_radens_element(m, 1)
+print(summa) # 33 (dvs. 9 + 1 + 12 + 11)
 ```
 
 Att arbeta med kolumner i en matris är lite mera komplicerat eftersom matrisen är lagrad som rader:
 
 ```python
-def sarakkeen_alkioiden_summa(matriisi, sarake_nro: int):
-    # summaan lisätään kaikkien rivien halutussa kohdassa oleva alkio
+def summan_av_kolumnens_element(matris, kolumnnummer: int):
+    # till summan adderas för varje rad elementet på det önskade stället
     summa = 0
-    for rivi in matriisi:
-        summa += rivi[sarake_nro]
+    for rad in matris:
+        summa += rad[kolumnnummer]
 
     return summa
 
 m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
 
-summa = sarakkeen_alkioiden_summa(m, 2)
-print(summa) # tulostuu 39 (saadaan laskemalla 3 + 12 + 9 + 15)
+summa = summan_av_kolumnens_element(m, 2)
+print(summa) # 39 (dvs. 3 + 12 + 9 + 15)
 ```
 
 Kolumnen som söks här består av elementen vid index 2 på varje rad.
@@ -437,16 +437,16 @@ Visualiseringsverktyget rekommenderas varmt för att bättre förstå hur de hä
 Att ändra på ett värde hos ett specifikt element inom en matris är enkelt. Välj en rad i matrisen och sedan en kolumn inom raden:
 
 ```python
-def vaihda_arvoon(matriisi, rivi_nro: int, sarake_nro: int, arvo: int):
-    # haetaan oikea rivi
-    rivi = matriisi[rivi_nro]
-    # ja sen sisältä oikea kohta
-    rivi[sarake_nro] = arvo
+def byt_varde(matris, radnummer: int, kolumnnummer: int, varde: int):
+    # välj korrekt rad
+    rad = matris[radnummer]
+    # och korrekt ställe i raden
+    rad[kolumnnummer] = varde
 
 m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
 
 print(m)
-vaihda_arvoon(m, 2, 3, 1000)
+byt_varde(m, 2, 3, 1000)
 print(m)
 ```
 
@@ -485,13 +485,13 @@ Den yttre loopen går igenom indexen från noll till matrisens längd, alltså a
 
 **HUOM:** tämä ja edellinen tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
 
-Tee funktio `laske_alkiot(matriisi: list, alkio: int)`, joka saa parametrikseen kaksiulotteisen kokonaislukutaulukon. Funktio laskee, kuinka monta annetun alkion mukaista arvoa taulukosta löytyy.
+Skapa funktionen `rakna_element(matris: list, element: int)` som tar emot en matris samt ett heltal som argument. Funktionen ska returnera antalet gånger det valda elementet hittas i matrisen.
 
 Esimerkiksi
 
 ```python
 m = [[1, 2, 1], [0, 3, 4], [1, 0, 0]]
-print(laske_alkiot(m, 1))
+print(rakna_element(m, 1))
 ```
 
 <sample-output>
@@ -529,16 +529,16 @@ Nu representerar noll en tom ruta, eftersom noll inte är ett värde som kan anv
 Här är en enkel funktion som skriver ut sudokurutor:
 
 ```python
-def tulosta(sudoku):
-    for rivi in sudoku:
-        for ruutu in rivi:
-            if ruutu > 0:
-                print(f" {ruutu}", end="")
+def skriv_ut(sudoku):
+    for rad in sudoku:
+        for ruta in rad:
+            if ruta > 0:
+                print(f" {ruta}", end="")
             else:
                 print(" _", end="")
         print()
 
-tulosta(sudoku)
+skriv_ut(sudoku)
 ```
 
 Utskriften borde se ut så här:
@@ -561,23 +561,23 @@ Flera andra spel kan också representeras på liknande sätt: till exempel schac
 
 <programming-exercise name='Go' tmcname='osa05-02_go'>
 
-Go-pelissä lisätään vuorotellen mustia ja valkoisia kiviä pelilaudalle. Pelin voittaa se pelaaja, joka saa omilla kivillään rajattua enemmän aluetta pelilaudalta.
+I spelet Go plaerar man turvis svarta och vita stenar på spelbrädet. Den spelare som har flera stenar på brädet vinner spelet.
 
-Kirjoita funktio `kumpi_voitti(pelilauta: list)`, joka saa parametrikseen kaksiulotteisen taulukon, joka kuvaa pelilautaa. Taulukko koostuu kokonaisluvuista seuraavasti:
+Skapa funktionen `vem_vann(brade: list)` som får som argument en matris som representerar spelbrädet. Matrisen består av heltalsvärden:
 
-* 0: tyhjä ruutu
-* 1: pelaajan 1 nappula
-* 2: pelaajan 2 nappula
+* 0: tom ruta
+* 1: sten, spelare 1
+* 2: sten, spelare 2
 
-Esimerkissä pelilaudan koko voi olla mikä tahansa.
+Spelbrädet kan vara av vilken storlek som helst.
 
-Funktio palauttaa arvon 1, jos pelaaja 1 on voittanut pelin, ja arvon 2, jos pelaaja 2 on voittanut pelin. Jos molemmilla pelaajilla on yhtä paljon nappuloita laudalla, funktio palauttaa arvon 0.
+Funktionen ska returnera `1` om spelare ett har vunnit, `2` om spelare två har vunnit och `0` om båda spelarna har lika många stenar på brädet.
 
 </programming-exercise>
 
 <programming-exercise name='Sudoku: rivit oikein' tmcname='osa05-03_sudoku_osa1'>
 
-Tee funktio `rivi_oikein(sudoku: list, rivi_nro: int)`, joka saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen taulukon ja rivin numeron kertovan kokonaisluvun (rivit on numeroitu nollasta alkaen). Metodi palauttaa tiedon, onko rivi oikein täytetty eli onko siinä kukin luvuista 1–9 korkeintaan kerran.
+Skapa funktionen `rad_korrekt(sudoku: list, radnummer: int)` som får som argument en matris samt ett heltal. Radnumreringen börjar med noll. Funktionen ska returnera ett värde som beskriver om raden är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
 
 ```python
 sudoku = [
@@ -592,8 +592,8 @@ sudoku = [
   [3, 0, 0, 0, 0, 0, 0, 0, 2]
 ]
 
-print(rivi_oikein(sudoku, 0))
-print(rivi_oikein(sudoku, 1))
+print(rad_korrekt(sudoku, 0))
+print(rad_korrekt(sudoku, 1))
 ```
 
 <sample-output>
@@ -607,7 +607,8 @@ False
 
 <programming-exercise name='Sudoku: sarakkeet oikein' tmcname='osa05-04_sudoku_osa2'>
 
-Tee funktio `sarake_oikein(sudoku: list, sarake_nro: int)`, joka saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen taulukon ja sarakkeen (eli pystyrivin) numeron kertovan kokonaisluvun. Metodi palauttaa tiedon, onko sarake oikein täytetty eli onko siinä kukin luvuista 1–9 korkeintaan kerran.
+Skapa funktionen `kolumn_korrekt(sudoku: list, kolumnnummer: int)` som får som argument en matris samt ett heltal. Funktionen ska returnera ett värde som beskriver om kolumnen är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
+
 
 ```python
 sudoku = [
@@ -622,8 +623,8 @@ sudoku = [
   [3, 0, 0, 0, 0, 0, 0, 0, 2]
 ]
 
-print(sarake_oikein(sudoku, 0))
-print(sarake_oikein(sudoku, 1))
+print(kolumn_korrekt(sudoku, 0))
+print(kolumn_korrekt(sudoku, 1))
 ```
 
 <sample-output>
@@ -637,11 +638,11 @@ True
 
 <programming-exercise name='Sudoku: neliöt oikein' tmcname='osa05-05_sudoku_osa3'>
 
-Tee funktio `nelio_oikein(sudoku: list, rivi_nro: int, sarake_nro: int)`, joka saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen taulukon sekä yhden ruudun paikan kertovat rivi- ja sarakenumerot.
+Skapa funktionen `kvadrat_korrekt(sudoku: list, radnummer: int, kolumnnummer: int)` som får som argument en matris samt två heltal.
 
-Funktio kertoo onko parametrina saadusta rivi/sarakenumerosta alkava 3x3-kokoinen neliö oikein täytetty eli onko siinä kukin luvuista 1–9 korkeintaan kerran.
+Funktionen ska berätta om 3 x 3 -kvadraten vid positionen (radnummer, kolumnnummer) är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
 
-Huomaa, että tässä tehtävässä toteutettava funktio on hieman yleiskäyttöisempi kuin sudokussa oikeasti tarvitaan. Todellisuudessahan oikeassa sudokussa tarkastellaan ainoastaan kohdista (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) ja (6, 6) alkavia neliöitä.
+Det är värt att notera att i man vanligtvis i sudoku enbart ser på kvadraterna vid positionerna (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) och (6, 6). Den här funktionen kommer dock inte att beakta det här.
 
 ```python
 sudoku = [
@@ -656,8 +657,8 @@ sudoku = [
   [3, 0, 0, 0, 0, 0, 0, 0, 2]
 ]
 
-print(nelio_oikein(sudoku, 0, 0))
-print(nelio_oikein(sudoku, 1, 2))
+print(kvadrat_korrekt(sudoku, 0, 0))
+print(kvadrat_korrekt(sudoku, 1, 2))
 ```
 
 <sample-output>
@@ -667,7 +668,7 @@ True
 
 </sample-output>
 
-Ensimmäisen funktiokutsun tarkastelema kohdasta 0, 0 alkava neliö on
+Kvadraten vid (0, 0) i det första funktionsanropet:
 
 <pre>
 9 0 0
@@ -675,7 +676,7 @@ Ensimmäisen funktiokutsun tarkastelema kohdasta 0, 0 alkava neliö on
 0 2 0
 </pre>
 
-Toisen funktiokutsun tarkastelema kohdasta riviltä 1 ja sarakkeesta 2 alkava neliö on
+Kvadraten vid (1, 2) i det andra funktionsanropet:
 
 <pre>
 0 2 5
@@ -683,16 +684,15 @@ Toisen funktiokutsun tarkastelema kohdasta riviltä 1 ja sarakkeesta 2 alkava ne
 4 0 0
 </pre>
 
-Tämä neliö on siis sellainen, jota oikeassa sudokussa ei tarkasteltaisi.
+I ett riktigt sudokuspel skulle den här kvadraten inte alltså kollas.
 
 </programming-exercise>
 
 <programming-exercise name='Sudoku: ruudukko oikein' tmcname='osa05-06_sudoku_osa4'>
 
-Tee funktio `sudoku_oikein(sudoku: list)`, joka saa parametriksi sudokuruudukkoa esittävän kaksiulotteisen taulukon. Funktio kertoo käyttäen edellisen kolmen tehtävän funktioita (kopioi ne tämän tehtävän koodin joukkoon), onko parametrina saatu ruudukko täytetty oikein, eli sen jokainen rivi, jokainen sarake sekä kaikki erilliset 3x3-neliöt sisältävät korkeintaan kertaalleen jokaisen luvuista 1–9.
+Skapa funktionen `sudoku_korrekt(sudoku: list)` som får som argument en matris. Den här funktionen ska använda sig av de tre föregående uppgifternas funktioner (kopiera dem) för att säkerställa att varje rad, kolumn och 3 x 3 -kvadrat innehåller högst en av siffrorna 1-9.
 
-Huom: ylempänä olevaan sudokuruudukkoa esittävään kuvaan on merkitty ne 3x3-neliöt, joita sudokua ratkaistessa tulee tarkastella.
-Nämä ovat siis kohdista (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) ja (6, 6) alkavat yhdeksän neliöä.
+De 3 x 3 -kvadrater som ska kontrolleras nämndes ovan. De är alltså vid positionerna (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) och (6, 6).
 
 ```python
 sudoku1 = [
@@ -707,7 +707,7 @@ sudoku1 = [
   [3, 0, 0, 0, 0, 0, 0, 0, 2]
 ]
 
-print(sudoku_oikein(sudoku1))
+print(sudoku_korrekt(sudoku1))
 
 sudoku2 = [
   [2, 6, 7, 8, 3, 9, 5, 0, 4],
@@ -721,7 +721,7 @@ sudoku2 = [
   [7, 4, 5, 0, 0, 3, 9, 0, 1]
 ]
 
-print(sudoku_oikein(sudoku2))
+print(sudoku_korrekt(sudoku2))
 ```
 
 <sample-output>

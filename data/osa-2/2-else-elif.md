@@ -18,28 +18,28 @@ Efter den här delen
 Vi tar nu en titt på ett program som ber användaren att ge en siffra och därefter skriver ut ett meddelande vars innehåll beror på om siffran är negativ, positiv eller lika med noll:
 
 ```python
-luku = int(input("Anna luku: "))
+siffra = int(input("Ge ett tal: "))
 
-if luku < 0:
-    print("Luku on negatiivinen")
+if siffra < 0:
+    print("Talet är negativt")
 
-if luku >= 0:
-    print("Luku on positiivinen tai nolla")
+if siffra >= 0:
+    print("Talet är positivt eller noll")
 ```
 
-Det här verkar något klumpigt och det finns en del upprepning. Vi vill ju bara köra ett av if-blocken eftersom numret alltid är antingen under noll, eller noll eller över. Det vill säga bara ett av villkoren `nummer < 0` och `nummer >= 0` är samtidigt sant. Därför är den fösta if-satsen den enda som behövs – om villkoret är sant är siffran negativ, annars är siffran noll eller över.
+Det här verkar något klumpigt och det finns en del upprepning. Vi vill ju bara köra ett av if-blocken eftersom numret alltid är antingen under noll, eller noll eller över. Det vill säga bara ett av villkoren `siffra < 0` och `siffra >= 0` är samtidigt sant. Därför är den fösta if-satsen den enda som behövs – om villkoret är sant är siffran negativ, annars är siffran noll eller över.
 
 I stället för att skapa två if-satser kan vi skapa en gren som körs då alla villkor är osanna. Det här kallas else-sats.
 
 Så här kan vi skriva om det föregående exemplet:
 
 ```python
-luku = int(input("Anna luku: "))
+siffra = int(input("Ge ett tal: "))
 
-if luku < 0:
-    print("Luku on negatiivinen")
+if siffra < 0:
+    print("Talet är negativt")
 else:
-    print("Luku on positiivinen tai nolla")
+    print("Talet är positivt eller noll")
 ```
 
 När vi bygger upp en if-else-sats kommer exakt en av grenarna att köras. Se följande bild:
@@ -51,68 +51,68 @@ Obs! Det kan aldrig finnas en else-gren före en if-gren. En if-gren och en else
 Följande exempel kollar om den siffra användaren anger är jämnt eller inte. Det här kan restoperatorn `%` användas för. Restoperatorn anger resten när två heltal divideras. När ett tal divideras med två är det jämnt då resten är noll. Annars är talet inte jämnt.
 
 ```python
-luku = int(input("Anna luku: "))
+siffra = int(input("Ge ett tal: "))
 
-if luku % 2 == 0:
-    print("Luku on parillinen")
+if siffra % 2 == 0:
+    print("Talet är jämnt")
 else:
-    print("Luku on pariton")
+    print("Talet är ojämnt")
 ```
 
 <sample-output>
 
-Anna luku: **5**
-Luku on pariton
+Ge ett tal: **5**
+Talet är ojämnt
 
 </sample-output>
 
 Ett annat exempel där strängar jämförs:
 
 ```python
-oikea = "kissa"
-salasana = input("Anna salasana: ")
+korrekt = "katt"
+losenord = input("Ange lösenord: ")
 
-if salasana == oikea:
-    print("Tervetuloa")
+if losenord == korrekt:
+    print("Välkommen")
 else:
-    print("Pääsy kielletty")
+    print("Tillträde förbjudet")
 ```
 
 Så här kan det se ut när koden körs:
 
 <sample-output>
 
-Anna salasana: **kissa**
-Tervetuloa
+Ange lösenord: **katt**
+Välkommen
 
 </sample-output>
 
 <sample-output>
 
-Anna salasana: **apina**
-Pääsy kielletty
+Ange lösenord: **koltrast**
+Tillträde förbjudet
 
 </sample-output>
 
 
 <in-browser-programming-exercise name="Täysi-ikäisyys" tmcname="osa02-04_taysi_ikaisyys" height="400px">
 
-Tee ohjelma, joka kysyy käyttäjän ikää ja kertoo, onko tämä täysi-ikäinen (eli 18-vuotias tai vanhempi).
+Skapa ett program som ber användaren ge sin ålder. Programmet berättar om användaren är myndig (> 18 år) eller inte.
 
-Esimerkkitulostuksia:
+Exempel:
 
 <sample-output>
 
-Kuinka vanha olet? **12**
-Et ole täysi-ikäinen!
+Hur gammal är du? **12**
+Du är inte myndig!
 
 </sample-output>
 
 
 <sample-output>
 
-Kuinka vanha olet? **32**
-Olet täysi-ikäinen!
+Hur gammal är du? **32**
+Du är myndig!
 
 </sample-output>
 
@@ -129,40 +129,40 @@ En if-sats kan bestå av elif-grenar – "else if". Till den här grenen kommer 
 Vi kollar på ett program som bestämmer vem som vunnit en match:
 
 ```python
-maalit_koti = int(input("Kotijoukkueen maalimäärä: "))
-maalit_vieras = int(input("Vierasjoukkueen maalimäärä: "))
+mal_hem = int(input("Hemmalagets mål: "))
+mal_borta = int(input("Bortalagets mål: "))
 
-if maalit_koti > maalit_vieras:
-    print("Kotijoukkue voitti!")
-elif maalit_vieras > maalit_koti:
-    print("Vierasjoukkue voitti!")
+if mal_hem > mal_borta:
+    print("Hemmalaget vann!")
+elif mal_borta > mal_hem:
+    print("Bortalaget vann!")
 else:
-    print("Tasapeli!")
+    print("Oavgjort!")
 ```
 
 Programmet kan ge tre olika resultat baserat på de värden som ges:
 
 <sample-output>
 
-Kotijoukkueen maalimäärä: **4**
-Vierasjoukkueen maalimäärä: **2**
-Kotijoukkue voitti!
+Hemmalagets mål: **4**
+Bortalagets mål: **2**
+Hemmalaget vann!
 
 </sample-output>
 
 <sample-output>
 
-Kotijoukkueen maalimäärä: **0**
-Vierasjoukkueen maalimäärä: **6**
-Vierasjoukkue voitti!
+Hemmalagets mål: **0**
+Bortalagets mål: **6**
+Bortalaget vann!
 
 </sample-output>
 
 <sample-output>
 
-Kotijoukkueen maalimäärä: **3**
-Vierasjoukkueen maalimäärä: **3**
-Tasapeli!
+Hemmalagets mål: **3**
+Bortalagets mål: **3**
+Oavgjort!
 
 </sample-output>
 
@@ -171,25 +171,25 @@ I exemplet ovan finns tre grenar varav exakt en körs. En if-sats kan dock best�
 Det här är också en helt korrekt if-sats:
 
 ```python
-print("Joulukalenteri")
-pvm = input("Mikä päivä nyt on? ")
+print("Julkalender")
+datum = input("Vilken dag är det? ")
 
-if pvm == "24.12.":
-    print("Nyt on jouluaatto")
-elif pvm == "25.12.":
-    print("Nyt on joulupäivä")
-elif pvm == "26.12.":
-    print("Nyt on tapaninpäivä")
+if datum == "24/12":
+    print("Det är julafton")
+elif datum == "25/12":
+    print("Det är juldag")
+elif datum == "26/12":
+    print("Det är annandag jul")
 
-print("Kiitos ja hei.")
+print("Tack och hej.")
 ```
 
 <sample-output>
 
-Joulukalenteri
-Mikä päivä nyt on? **25.12.**
-Nyt on joulupäivä
-Kiitos ja hei.
+Julkalender
+Vilken dag är det? **25/12**
+Det är juldag
+Tack och hej.
 
 </sample-output>
 
@@ -197,39 +197,39 @@ Märk att det föregående exemplet saknar else-gren. Om användaren ger ett dat
 
 <sample-output>
 
-Joulukalenteri
-Mikä päivä nyt on? **1.1.**
-Kiitos ja hei.
+Julkalender
+Vilken dag är det? **1/1**
+Tack och hej.
 
 </sample-output>
 
 <in-browser-programming-exercise name=" Suurempi tai yhtäsuuri" tmcname="osa02-05_suurempi_tai_yhtasuuri"  height="400px">
 
-Tee ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja tulostaa niistä suuremman. Jos luvut ovat yhtä suuret, ohjelma huomaa myös tämän.
+Skapa ett program som ber användaren ge två heltal. Programmet ska skriva ut det större av de givna talen. Om talen är de samma, observerar programmet även det här.
 
-Esimerkkitulostuksia:
+Exempel:
 
 <sample-output>
 
-Anna ensimmäinen luku: **5**
-Anna toinen luku: **3**
-Suurempi luku: 5
+Ge tal ett: **5**
+Ge tal två: **3**
+Det större talet: 5
 
 </sample-output>
 
 <sample-output>
 
-Anna ensimmäinen luku: **5**
-Anna toinen luku: **8**
-Suurempi luku: 8
+Ge tal ett: **5**
+Ge tal två: **8**
+Det större talet: 8
 
 </sample-output>
 
 <sample-output>
 
-Anna ensimmäinen luku: **5**
-Anna toinen luku: **5**
-Luvut ovat yhtä suuret!
+Ge tal ett: **5**
+Ge tal två: **5**
+Talen är lika stora!
 
 </sample-output>
 
@@ -238,31 +238,31 @@ Luvut ovat yhtä suuret!
 
 <in-browser-programming-exercise name="Vanhempi" tmcname="osa02-06_vanhempi" height="550px">
 
-Tee ohjelma, joka kysyy kahden henkilön nimen ja iän ja tulostaa vanhemman henkilön nimen.
+Skapa ett program som frågar efter namnen och åldrarna hos två personer. Programmet ska skirva ut namnet på den äldre personen.
 
-Esimerkkisyötteitä
+Exempel:
 
 <sample-output>
 
-Henkilö 1:
-Nimi: **Teppo**
-Ikä: **26**
-Henkilö 2:
-Nimi: **Tiina**
-Ikä: **27**
-Vanhempi on Tiina
+Person 1:
+Namn: **Thomas**
+Ålder: **26**
+Person 2:
+Namn: **Tilde**
+Ålder: **27**
+Tilde är äldre
 
 </sample-output>
 
 <sample-output>
 
-Henkilö 1:
-Nimi: **Antti**
-Ikä: **1**
-Henkilö 2:
-Nimi: **Venla**
-Ikä: **1**
-Antti ja Venla ovat yhtä vanhoja
+Person 1:
+Namn: **Amadeus**
+Ålder: **1**
+Person 2:
+Namn: **Vilma**
+Ålder: **1**
+Amadeus och Vilma är lika gamla
 
 </sample-output>
 
@@ -270,38 +270,38 @@ Antti ja Venla ovat yhtä vanhoja
 
 <in-browser-programming-exercise name="Aakkosjärjestyksessä viimeinen" tmcname="osa02-07_aakkkosjarjestyksessa_viimeinen"  height="500px">
 
-Lukujen lisäksi Python osaa vertailla myös merkkijonojen suuruusjärjestystä. Merkkijono a on pienempi kuin merkkijono b, jos merkkijono a tulee aakkosjärjestyksessä ennen jonoa b.
-Huomaa kuitenkin, että tämä pätee varmasti vain kun
-- vertaillaan samankokoisia kirjaimia (eli ISOJA tai pieniä kirjaimia) keskenään ja
-- vertailtavissa sanoissa on vain englannin kielestä tuttuja kirjaimia (eli a-z tai A-Z).
+Förutom med siffror, kan man också jämföra storleken på strängar i Python. Strängen `a` är mindre än strängen `b` om strängen `a` kommer före i alfabetet än strängen `b`. Observera att det här gäller då
 
-Tee ohjelma, joka kysyy käyttäjältä kahta sanaa. Ohjelma tulostaa sanoista sen, joka on aakkosjärjestyksessä jälkimmäinen.
+* man jämför bokstäver med samma storlek (små/STORA)
+* strängarna innehåller enbart tecknen a-z eller A-Z.
 
-Voit olettaa, että sanat on syötetty kokonaan pienillä kirjaimilla.
+Skapa ett program som ber användaren ge två ord. Programmet skriver ut det av orden som kommer senare i alfabetet.
 
-Esimerkkisuorituksia eri syötteillä:
+Du kan anta att orden endast innehåller små bokstäver.
+
+Exempel:
 
 <sample-output>
 
-Anna 1. sana: **auto**
-Anna 2. sana: **mopo**
-mopo on aakkosjärjestyksessä viimeinen.
+Ge ord 1: **antik**
+Ge ord 2: **kusudama**
+kusudama kommer senare i alfabetet
 
 </sample-output>
 
 <sample-output>
 
-Anna 1. sana: **zorro**
-Anna 2. sana: **batman**
-zorro on aakkosjärjestyksessä viimeinen.
+Ge ord 1: **vhs**
+Ge ord 2: **dvd**
+vhs kommer senare i alfabetet
 
 </sample-output>
 
 <sample-output>
 
-Anna 1. sana: **python**
-Anna 2. sana: **python**
-Annoit saman sanan kahdesti.
+Ge ord 1: **python**
+Ge ord 2: **python**
+Du gav samma ord två gånger.
 
 </sample-output>
 

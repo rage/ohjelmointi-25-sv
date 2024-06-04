@@ -37,9 +37,9 @@ Vi börjar att arbeta med filen `exempel.txt` som innehållet det följande:
 
 <sample-data>
 
-Moi kaikki!
-Esimerkkitiedostomme on kolmerivinen.
-Viimeinen rivi.
+Hej alla!
+Vår exempelfil består av tre rader.
+Det här är den sista raden.
 
 </sample-data>
 
@@ -48,23 +48,23 @@ Ett enkelt sätt att använda filer i Python är med `with`-satsen. Den inledand
 Den här koden öppnar alltså filen, läser dess innehåll och skriver det ut, och till slut stängs filen:
 
 ```python
-with open("esimerkki.txt") as tiedosto:
-    sisalto = tiedosto.read()
-    print(sisalto)
+with open("exempel.txt") as fil:
+    innehall = fil.read()
+    print(innehall)
 ```
 
 <sample-output>
 
-Moi kaikki!
-Esimerkkitiedostomme on kolmerivinen.
-Viimeinen rivi.
+Hej alla!
+Vår exempelfil består av tre rader.
+Det här är den sista raden.
 
 </sample-output>
 
-Variabeln `ny_fil` är en file handle ("filhandtag"). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
+Variabeln `fil` är en file handle ("filhandtag"). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
 
 ```
-"Moi kaikki!\nEsimerkkitiedostomme on kolmerivinen.\nViimeinen rivi."
+"Hej alla!\nVår exempelfil består av tre rader.\nDet här är den sista raden."
 ```
 
 ## Gå igenom innehållet i en fil
@@ -76,26 +76,26 @@ Man kan tänka att textfiler är som listor med strängar, där varje sträng fi
 Följande exempel läser in vår exempelfil med hjälp av en for-loop, tar bort radbrytningarna, räknar antalet rader och skriver ut varje rad med sitt radnummer. Programmet håller också koll på radernas längder:
 
 ```python
-with open("esimerkki.txt") as tiedosto:
-    laskuri = 0
-    yhteispituus = 0
+with open("exempel.txt") as fil:
+    raknare = 0
+    totallangd = 0
 
-    for rivi in tiedosto:
-        rivi = rivi.replace("\n", "")
-        laskuri += 1
-        print("Rivi", laskuri, rivi)
-        pituus = len(rivi)
-        yhteispituus += pituus
+    for rad in fil:
+        rad = rad.replace("\n", "")
+        raknare += 1
+        print("Rad", raknare, rad)
+        langd = len(rad)
+        totallangd += langd
 
-print("Rivien yhteispituus:", yhteispituus)
+print("Radernas totallängd:", totallangd)
 ```
 
 <sample-output>
 
-Rivi 1 Moi kaikki!
-Rivi 2 Esimerkkitiedostomme on kolmerivinen.
-Rivi 3 Viimeinen rivi.
-Rivien yhteispituus: 63
+Rad 1 Hej alla!
+Rad 2 Vår exempelfil består av tre rader.
+Rad 3 Det här är den sista raden.
+Radernas totallängd: 63
 
 </sample-output>
 
@@ -103,7 +103,7 @@ Det finns en radbrytning `\n` i slutet av varje rad i filen, men `print`-funktio
 
 <programming-exercise name='Suurin luku' tmcname='osa06-01_suurin_luku'>
 
-Tiedostoon `luvut.txt` on tallennettu lukuja, yksi luku per rivi seuraavan esimerkin mukaisesti:
+I filen `siffror.txt` finns siffror listade på olika rader enligt exemplet nedan:
 
 ```sh
 2
@@ -112,14 +112,14 @@ Tiedostoon `luvut.txt` on tallennettu lukuja, yksi luku per rivi seuraavan esime
 3
 -10
 1100
-...jne...
+o.s.v. ...
 ```
 
-Kirjoita funktio `suurin`, joka lukee tiedoston ja palauttaa suurimman tiedostosta löytyvän luvun.
+Skapa funktionen `storst` som ska läsa filen och returnera den största siffran som hittas.
 
-Huomaa, että tiedoston nimi on aina `luvut.txt` eikä funktiolle anneta parametria.
+Observera att filnamnet alltid är `siffror.txt` och att funktionen inte har några parametrar.
 
-**Huom!** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit kokeilla seuraavaa heti tehtävän jälkeen olevaa ohjetta.
+Obs! Om Visual Studio Code inte hitta din fil även om namnet är korrekt skrivet ska du följa instruktionerna nedan.
 
 </programming-exercise>
 
@@ -165,16 +165,16 @@ Vi har redan bekantat oss med hur man kan gå igenom rader i en fil med en for-l
 Här finns ett exempel för att tydliggöra det här:
 
 ```python
-teksti = "apina,banaani,cembalo"
-sanat = teksti.split(",")
-for sana in sanat:
-    print(sana)
+text = "apa,banan,cembalo"
+ordlista = text.split(",")
+for ord in ordlista:
+    print(ord)
 ```
 
 <sample-output>
 
-apina
-banaani
+apa
+banan
 cembalo
 
 </sample-output>
@@ -183,81 +183,83 @@ Låt oss säga att vi har filen `vitsord.csv`, som innehåller namn på elever s
 
 <sample-data>
 
-Pekka;5;4;5;3;4;5;5;4;2;4
-Paula;3;4;2;4;4;2;3;1;3;3
-Pirjo;4;5;5;4;5;5;4;5;4;4
+Peter;5;4;5;3;4;5;5;4;2;4
+Pauline;3;4;2;4;4;2;3;1;3;3
+Pia;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
 Följande program går igenom filen rad för rad, delar upp raderna i delar och skriver ut namnen på eleverna samt deras vitsord:
 
 ```python
-with open("arvosanat.csv") as tiedosto:
-    for rivi in tiedosto:
-        rivi = rivi.replace("\n", "")
-        osat = rivi.split(";")
-        nimi = osat[0]
-        arvosanat = osat[1:]
-        print("Nimi:", nimi)
-        print("Arvosanat:", arvosanat)
+with open("vitsord.csv") as fil:
+    for rad in fil:
+        rad = rad.replace("\n", "")
+        delar = rad.split(";")
+        namn = delar[0]
+        vitsord = delar[1:]
+        print("Namn:", namn)
+        print("Vitsord:", vitsord)
 ```
 
 <sample-output>
 
-Nimi: Pekka
-Arvosanat: ['5', '4', '5', '3', '4', '5', '5', '4', '2', '4']
-Nimi: Paula
-Arvosanat: ['3', '4', '2', '4', '4', '2', '3', '1', '3', '3']
-Nimi: Pirjo
-Arvosanat: ['4', '5', '5', '4', '5', '5', '4', '5', '4', '4']
+Namn: Peter
+Vitsord: ['5', '4', '5', '3', '4', '5', '5', '4', '2', '4']
+Namn: Pauline
+Vitsord: ['3', '4', '2', '4', '4', '2', '3', '1', '3', '3']
+Namn: Pia
+Vitsord: ['4', '5', '5', '4', '5', '5', '4', '5', '4', '4']
 
 </sample-output>
 
 <programming-exercise name='Hedelmäkauppa' tmcname='osa06-02_hedelmakauppa'>
 
-Tiedostossa `hedelmat.csv` on hedelmiä hintoineen seuraavan esimerkin mukaisesti:
+I filen `frukter.csv` finns frukter med deras pris enligt exemplet nedan:
 
 ```sh
-banaani;6.50
-omena;4.95
-appelsiini;8.0
-...jne...
+banan;6.50
+äpple;4.95
+apelsin;8.0
+o.s.v. ...
 ```
 
-Kirjoita funktio `lue_hedelmat`, joka lukee hedelmätiedoston ja muodostaa siitä sanakirjan, jossa hedelmän nimi on avain ja hinta arvo. Hinnan tulee olla `float`-arvona sanakirjassa.
+Skapa funktionen `las_frukter` som ska läsa filen och skapa ett lexikon där nyckeln är fruktens namn och värdet fruktens pris. Priset ska vara av typen `float`.
 
-Huomaa, että tiedoston nimi on aina `hedelmat.csv` eikä funktiolle anneta parametria.
+Observera att filnamnet alltid är `frukter.csv` och funktionen har inga parametrar.
 
-Lopuksi funktio palauttaa tämän sanakirjan.
+Funktionen ska till slut returnera lexikonet.
 
-**Huom!** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit kokeilla [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) olevaa ohjetta.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
 </programming-exercise>
 
 <programming-exercise name='Matriisi' tmcname='osa06-03_matriisi'>
 
-Tiedostossa `matriisi.txt` on seuraavan esimerkin kaltainen matriisi:
+I filen `matris.txt` finns en matris enligt exemplet nedan:
 
 ```sh
 1,0,2,8,2,1,3,2,5,2,2,2
 9,2,4,5,2,4,2,4,1,10,4,2
-...jne...
+o.s.v. ...
 ```
 
-Kirjoita funktiot `summa` ja `maksimi`, jotka lukevat ja palauttavat nimensä mukaisesti matriisin kaikkien alkioiden summan ja suurimman alkion.
+Skapa funktionerna `summa` och `maximum` som returnerar summan av elementen i matrisen respektive det största elementet.
 
-Kirjoita lisäksi funktio `rivisummat`, joka palauttaa listassa kaikkien matriisin rivien summat. Esimerkiksi matriisille
+Skapa också funktionen `radsummor` som returnerar som en lista summorna av matrisens rader. Till exempel för matrisen...
 
 ```sh
 1,2,3
 2,3,4
 ```
 
-funktio palauttaisi listan `[6, 9]`.
+...returnerar funktionen `[6, 9]`.
 
-Vinkki: Voit kirjoittaa ohjelmaan myös muita funktioita – kannattaa siis miettiä, mitä kaikkia yhteisiä toimintoja kolmea funktiota varten vaaditaan. Huomaa, että tiedoston nimi on aina `matriisi.txt` eikä tehtävänannossa määritellyille funktioille anneta parametreja. Itse lisäämäsi funktiot voivat hyödyntää myös parametreja.
+Tips: Du kan också implementera andra funktioner i programmet. Fundera vilka gemensamma funktioner de ovan nämnda funktionerna kan behöva.
 
-**Huom!** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit kokeilla [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) olevaa ohjetta.
+Observera att filen alltid heter `matris.txt` och funktionerna inte har parametrar. Ytterligare funktioner du eventuellt skapar kan ha parametrar.
+
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
 </programming-exercise>
 
@@ -266,38 +268,38 @@ Vinkki: Voit kirjoittaa ohjelmaan myös muita funktioita – kannattaa siis miet
 Ibland kan man behöva läsa innehållet i en fil flera gånger i samma program. Vi tittar på ett program som behandlar data om några personer i en CSV-fil:
 
 <sample-data>
-Pekka;40;Helsinki
-Emilia;34;Espoo
-Erkki;42;Turku
-Antti;100;Helsinki
-Liisa;58;Suonenjoki
+Peter;40;Helsingfors
+Emilia;34;Esbo
+Erik;42;Åbo
+Antonia;100;Helsingfors
+Lisa;58;Suonenjoki
 </sample-data>
 
 ```python
-with open("henkilot.csv") as tiedosto:
-    # tulostetaan nimet
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        print("Nimi:", osat[0])
+with open("personer.csv") as fil:
+    # skriver ut namn
+    for rad in fil:
+        delar = rad.split(";")
+        print("Namn:", delar[0])
 
-    # etsitään vanhin
-    vanhimman_ika = -1
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        nimi = osat[0]
-        ika = int(osat[1])
-        if ika > vanhimman_ika:
-            vanhimman_ika = ika
-            vanhin = nimi
-    print("vanhin on", vanhin)
+    # söker efter den äldsta personen
+    hogsta_aldern = -1
+    for rad in fil:
+        delar = rad.split(";")
+        namn = delar[0]
+        alder = int(delar[1])
+        if alder > hogsta_aldern:
+            hogsta_aldern = alder
+            aldst = namn
+    print("Den äldsta är", aldst)
 ```
 
 När vi kör programmet får vi det här felmeddelandet:
 
 ```python
 Traceback (most recent call last):
-    print("vanhin on"; vanhin)
-UnboundLocalError: local variable 'vanhin' referenced before assignment
+    print("Den äldsta är"; aldst)
+UnboundLocalError: local variable 'aldst' referenced before assignment
 ```
 
 Orsaken till at det här sker är att den andra for-loopen aldrig körs. Detta eftersom filen endast kan behandlas en gång. När den sista raden har lästs stannar file handlen i slutet av filen och data i filen kan inte längre kommas åt.
@@ -305,48 +307,48 @@ Orsaken till at det här sker är att den andra for-loopen aldrig körs. Detta e
 Om vi vill komma åt innehållet i filen i den andra for-loopen, måste vi öppna filen på nytt:
 
 ```python
-with open("henkilot.csv") as tiedosto:
-    # tulostetaan nimet
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        print("Nimi:", osat[0])
+with open("personer.csv") as fil:
+    # skriver ut namn
+    for rad in fil:
+        delar = rad.split(";")
+        print("Namn:", delar[0])
 
-with open("henkilot.csv") as tiedosto:
-    # etsitään vanhin
-    vanhimman_ika = -1
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        nimi = osat[0]
-        ika = int(osat[1])
-        if ika > vanhimman_ika:
-            vanhimman_ika = ika
-            vanhin = nimi
-    print("vanhin on", vanhin)
+with open("personer.csv") as fil:
+    # söker efter den äldsta personen
+    hogsta_aldern = -1
+    for rad in fil:
+        delar = rad.split(";")
+        namn = delar[0]
+        alder = int(delar[1])
+        if alder > hogsta_aldern:
+            hogsta_aldern = alder
+            aldst = namn
+    print("Den äldsta är", aldst)
 ```
 
 Även om den ovanstående koden fungerar, innehåller den onödig upprepning. Det lönar sig vanligtvis att läsa filen bara en gång, och spara dess innehåll i ett passligt format för fortsatt behandling:
 
 ```python
-henkilot = []
-# luetaan tiedostosta henkilöt listaan
-with open("henkilot.csv") as tiedosto:
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        henkilot.append((osat[0], int(osat[1]), osat[2]))
+personer = []
+# vi läser in personerna till listan
+with open("personer.csv") as fil:
+    for rad in fil:
+        delar = rad.split(";")
+        personer.append((delar[0], int(delar[1]), delar[2]))
 
-# tulostetaan nimet
-for henkilo in henkilot:
-    print("Nimi:", henkilo[0])
+# skriver ut namn
+for person in personer:
+    print("Namn:", person[0])
 
-# etsitään vanhin
-vanhimman_ika = -1
-for henkilo in henkilot:
-    nimi = henkilo[0]
-    ika = henkilo[1]
-    if ika > vanhimman_ika:
-        vanhimman_ika = ika
-        vanhin = nimi
-print("vanhin on", vanhin)
+# söker efter den äldsta personen
+hogsta_aldern = -1
+for person in personer:
+    namn = person[0]
+    alder = person[1]
+    if alder > hogsta_aldern:
+        hogsta_aldern = alder
+        aldst = namn
+print("Den äldsta är", aldst)
 ```
 
 ## Mera om att behandla CSV-filer
@@ -355,48 +357,48 @@ Vi fortsätter behandla filen `vitsord.csv`, som innehåller det följande:
 
 <sample-data>
 
-Pekka;5;4;5;3;4;5;5;4;2;4
-Paula;3;4;2;4;4;2;3;1;3;3
-Pirjo;4;5;5;4;5;5;4;5;4;4
+Peter;5;4;5;3;4;5;5;4;2;4
+Pauline;3;4;2;4;4;2;3;1;3;3
+Pia;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
 Följande program skapar lexikonet `vitsord` baserat på innehållet i filen. Nycklarna är elevernas namn och värdet som är kopplat till nycklarna innehåller elevens vitsord. Programmet konverterar vitsorden till heltal så att de kan behandlas enklare.
 
 ```python
-arvosanat = {}
-with open("arvosanat.csv") as tiedosto:
-    for rivi in tiedosto:
-        rivi = rivi.replace("\n", "")
-        osat = rivi.split(";")
-        nimi = osat[0]
-        arvosanat[nimi] = []
-        for arvosana in osat[1:]:
-            arvosanat[nimi].append(int(arvosana))
+vitsord = {}
+with open("vitsord.csv") as fil:
+    for rad in fil:
+        rad = rad.replace("\n", "")
+        delar = rad.split(";")
+        namn = delar[0]
+        vitsord[namn] = []
+        for givet_vitsord in delar[1:]:
+            vitsord[namn].append(int(givet_vitsord))
 
-print(arvosanat)
+print(vitsord)
 ```
 
 <sample-output>
 
-{'Pekka': [5, 4, 5, 3, 4, 5, 5, 4, 2, 4], 'Paula': [3, 4, 2, 4, 4, 2, 3, 1, 3, 3], 'Pirjo': [4, 5, 5, 4, 5, 5, 4, 5, 4, 4]}
+{'Peter': [5, 4, 5, 3, 4, 5, 5, 4, 2, 4], 'Pauline': [3, 4, 2, 4, 4, 2, 3, 1, 3, 3], 'Pia': [4, 5, 5, 4, 5, 5, 4, 5, 4, 4]}
 
 </sample-output>
 
 Nu kan vi skriva ut statistik om varje studerande, baserat på värdena i lexikonet:
 
 ```python
-for nimi, lista in arvosanat.items():
-    paras = max(lista)
-    keskiarvo = sum(lista) / len(lista)
-    print(f"{nimi}: paras arvosana {paras}, keskiarvo {keskiarvo:.2f}")
+for namn, lista in vitsord.items():
+    basta = max(lista)
+    medeltal = sum(lista) / len(lista)
+    print(f"{namn}: bästa vitsordet {basta}, medeltal {medeltal:.2f}")
 ```
 
 <sample-output>
 
-Pekka: paras arvosana 5, keskiarvo 4.10
-Paula: paras arvosana 4, keskiarvo 2.90
-Pirjo: paras arvosana 5, keskiarvo 4.50
+Peter: bästa vitsordet 5, medeltal 4.10
+Pauline: bästa vitsordet 4, medeltal 2.90
+Pia: bästa vitsordet 5, medeltal 4.50
 
 </sample-output>
 
@@ -407,8 +409,8 @@ Ta en titt på programmet i exemplet ovan. Det kan verka något komplicerat på 
 Låt oss säga att vi har en CSV-fil med namn, exporterat från Excel:
 
 ```sh
-etunimi; sukunimi
-Pekka; Python
+förnamn; efternamn
+Peter; Python
 Jaana; Java
 Heikki; Haskell
 ```
@@ -418,16 +420,16 @@ Excel är ökänt för att lägga till extra mellanrum lite här och där. Här 
 Vi skulle vilja skriva ut efternamnet på varje person som finns i listan. Den första raden i filen innehåller information om den data som följer och kan skippas:
 
 ```python
-sukunimet = []
-with open("henkilot.csv") as tiedosto:
-    for rivi in tiedosto:
-        osat = rivi.split(";")
-        # ohitetaan otsikkorivi
-        if osat[0] == "etunimi":
+efternamn = []
+with open("personer.csv") as fil:
+    for rad in fil:
+        delar = rad.split(";")
+        # skippar raden med rubriker
+        if delar[0] == "förnamn":
             continue
-        sukunimet.append(osat[1])
+        efternamn.append(delar[1])
 
-print(sukunimet)
+print(efternamn)
 ```
 
 När koden körs får vi den här utskriften:
@@ -443,24 +445,24 @@ De två första elementen har ett radbrytningstecken i slutet och alla tre eleme
 Vi kan testa på metoden i Python-terminalen:
 
 ```python
->>> " koe ".strip()
-'koe'
->>> "\n\ntesti\n".strip()
-'testi'
+>>> " prov ".strip()
+'prov'
+>>> "\n\ntest\n".strip()
+'test'
 >>>
 ```
 
 Att ta bort de onödiga tecknen kräver bara en liten ändring i programmet:
 
 ```python
-sukunimet = []
-with open("henkilot.csv") as tiedosto:
-    for rivi in tiedosto:
-        osat = rivi.split(';')
-        if osat[0] == "etunimi":
-            continue # tämä oli otsikkorivi, ei huomioida!
-        sukunimet.append(osat[1].strip())
-print(sukunimet)
+efternamn = []
+with open("personer.csv") as fil:
+    for rad in fil:
+        delar = rad.split(';')
+        if delar[0] == "förnamn":
+            continue # skippar raden med rubriker
+        efternamn.append(delar[1].strip())
+print(efternamn)
 ```
 
 Nu har får vi den önskade utskriften:
@@ -474,10 +476,10 @@ Nu har får vi den önskade utskriften:
 Strängmetoderna `lstrip` och `rstrip` fungerar lika som metoden `strip`, men gör det då bara för antingen vänstra (l) eller högra (r) kanten av strängen:
 
 ```python
->>> " testimerkkijono  ".rstrip()
-' testimerkkijono'
->>> " testimerkkijono  ".lstrip()
-'testimerkkijono  '
+>>> " teststräng  ".rstrip()
+' teststräng'
+>>> " teststräng  ".lstrip()
+'teststräng  '
 ```
 
 ## Kombinera data från olika filer
@@ -485,17 +487,17 @@ Strängmetoderna `lstrip` och `rstrip` fungerar lika som metoden `strip`, men g�
 Det är mycket vanligt att data som behandlas av ett program finns utspritt i flera filer. Vi tar en titt på ett exempel där personalens information i ett företag finns i filen `personal.csv`:
 
 ```csv
-hetu;nimi;osoite;kaupunki
-080488-123X;Pekka Mikkola;Vilppulantie 7;00700 Helsinki
-290274-044S;Liisa Marttinen;Mannerheimintie 100 A 10;00100 Helsinki
-010479-007Z;Arto Vihavainen;Pihapolku 4;01010 Kerava
-010499-345K;Leevi Hellas;Tapiolantie 11 B;02000 Espoo
+personnr;namn;adress;adressort
+080488-123X;Peter Mikkola;Filpusvägen 7;00700 HELSINGFORS
+290274-044S;Lisa Marttinen;Mannerheimvägen 100 A 10;00100 HELSINGFORS
+010479-007Z;Arto Vihavainen;Tiilitehtaankatu 10;04260 KERAVA
+010499-345K;Leevi Hellas;Tapiolavägen 9;02100 ESBO
 ```
 
 Löneuppgifterna finns i en skild fil, `lon.csv`:
 
 ```csv
-hetu;palkka;bonus
+personnr;lön;bonus
 080488-123X;3300;0
 290274-044S;4150;200
 010479-007Z;1300;1200
@@ -506,10 +508,10 @@ Alla rader i båda filerna innehåller en personlig id-kod (pic) som identifiera
 <sample-output>
 
 <pre>
-ansiot:
-Pekka Mikkola    3300 euroa
-Liisa Marttinen  4350 euroa
-Arto Vihavainen  2500 euroa
+inkomster:
+Peter Mikkola    3300 euro
+Lisa Marttinen   4350 euro
+Arto Vihavainen  2500 euro
 </pre>
 
 </sample-output>
@@ -517,40 +519,40 @@ Arto Vihavainen  2500 euroa
 Programmet använder två lexikon som hjälpdatastrukturer: `namn` och `loner`. Båda använder pic som nyckel:
 
 ```python
-nimet = {}
+namn = {}
 
-with open("tyontekijat.csv") as tiedosto:
-    for rivi in tiedosto:
-        osat = rivi.split(';')
-        if osat[0] == "hetu":
+with open("personal.csv") as fil:
+    for rad in fil:
+        delar = rad.split(';')
+        if delar[0] == "personnr":
             continue
-        nimet[osat[0]] = osat[1]
+        namn[delar[0]] = delar[1]
 
-palkat = {}
+loner = {}
 
-with open("palkat.csv") as tiedosto:
-    for rivi in tiedosto:
-        osat = rivi.split(';')
-        if osat[0] == "hetu":
+with open("lon.csv") as fil:
+    for rad in fil:
+        delar = rad.split(';')
+        if delar[0] == "personnr":
             continue
-        palkat[osat[0]] = int(osat[1]) +int(osat[2])
+        loner[delar[0]] = int(delar[1]) +int(delar[2])
 
-print("ansiot:")
+print("inkomster:")
 
-for hetu, nimi in nimet.items():
-    if hetu in palkat:
-        palkka = palkat[hetu]
-        print(f"{nimi:16} {palkka} euroa")
+for personnr, person in namn.items():
+    if personnr in loner:
+        lon = loner[personnr]
+        print(f"{person:16} {lon} euro")
     else:
-        print(f"{nimi:16} 0 euroa")
+        print(f"{person:16} 0 euro")
 ```
 
 Först skapar programmet lexikonen `namn` och `loner`. De har dessa innehåll:
 
 ```sh
 {
-    '080488-123X': 'Pekka Mikkola',
-    '290274-044S': 'Liisa Marttinen',
+    '080488-123X': 'Peter Mikkola',
+    '290274-044S': 'Lisa Marttinen',
     '010479-007Z': 'Arto Vihavainen',
     '010499-345K': 'Leevi Hellas'
 }
@@ -572,70 +574,71 @@ Kom ihåg att ordningen som elementen är lagrade i lexikon inte har någon skil
 
 Ohjelma käsittelee kahta CSV-muotoista tiedostoa. Toisessa on tieto opiskelijoista:
 
+Programmet behandlar två CSV-filen. I den ena finns information om studerande:
+
 ```csv
-opnro;etunimi;sukunimi
+studerandenr;förnamn;efternamn
 12345678;pekka;peloton
 12345687;jaana;javanainen
 12345699;liisa;virtanen
 ```
 
-ja toisessa opiskelijoiden viikoittaisesta tehtävien lukumäärästä:
+Och i den andra antalet gjorda uppgifter på veckonivå:
 
 ```csv
-opnro;v1;v2;v3;v4;v5;v6;v7
+studerandenr;v1;v2;v3;v4;v5;v6;v7
 12345678;4;1;1;4;5;2;4
 12345687;3;5;3;1;5;4;6
 12345699;10;2;2;7;10;2;2
 ```
 
-Molempien CSV-tiedostojen ensimmäinen rivi on otsikkorivi, joka kertoo kunkin kentän sisällön.
+I de båda CSV-filerna innehåller den första rade rubriker.
 
-Tee ohjelma, joka kysyy tiedostojen nimet ja tämän jälkeen tulostaa kunkin opiskelijan tehtävien yhteenlasketun määrän. Ohjelma toimii seuraavasti, kun tiedostojen sisältö on yllä oleva:
+Skapa ett program som frågar efter filnamnen och skriver därefter ut antalet gjorda uppgifter för varje studerande. Exempel:
 
 <sample-output>
 
-Opiskelijatiedot: **opiskelijat1.csv**
-Tehtävätiedot: **tehtavat1.csv**
+Studerande (CSV): **studerande1.csv**
+Uppgifter (CSV): **uppgifter1.csv**
 pekka peloton 21
 jaana javanainen 27
 liisa virtanen 35
 
 </sample-output>
 
-Vinkki: Ohjelman testaileminen on toivottoman hidasta, jos käyttäjä joutuu kirjoittamaan syötteen aina käsin. Testausvaiheessa syötteet kannattaakin antaa "kovakoodaamalla" ne esim. seuraavasti:
+Tips: Hårdkoda värdena medan du testar programmet, så behöver du inte hela tiden mata in dem på nytt:
 
 ```python
 if False:
-    # tänne ei tulla
-    opiskelijatiedot = input("Opiskelijatiedot: ")
-    tehtavatiedot = input("Tehtävätiedot: ")
+    # hit kommer vi aldrig
+    studerande = input("Studerande (CSV): ")
+    uppgifter = input("Uppgifter (CSV): ")
 else:
-    # kovakoodatut syötteet
-    opiskelijatiedot = "opiskelijat1.csv"
-    tehtavatiedot = "tehtavat1.csv"
+    # de hårdkodade värdena
+    studerande = "studerande1.csv"
+    uppgifter = "uppgifter1.csv"
 ```
 
-Ohjelman varsinainen toiminnallisuus on nyt "piilotettu" ehdon `False`-haaraan, jota ei suoriteta koskaan.
+Den egentliga funktionaliteten är nu "gömd" bakom en `False`-förgrening som aldrig körs.
 
-Jos taas halutaan nopeasti tarkastaa, toimiiko ohjelma myös käyttäjän kirjoittaessa syötteen, voidaan arvo `False` muuttaa arvoksi `True`:
+Om vi vill testa inmatning av information (på "normalt" sätt), kan vi ändra `False` till `True`:
 
 ```python
 
 if True:
-    opiskelijatiedot = input("Opiskelijatiedot: ")
-    tehtavatiedot = input("Tehtävätiedot: ")
+    studerande = input("Studerande (CSV): ")
+    uppgifter = input("Uppgifter (CSV): ")
 else:
-    # tänne ei tulla!
-    opiskelijatiedot = "opiskelijat1.csv"
-    tehtavatiedot = "tehtavat1.csv"
+    # hit kommer vi aldrig!
+    studerande = "studerande1.csv"
+    uppgifter = "uppgifter1.csv"
 ```
 
-Kun koodi on kunnossa, voi ehtorakenteen poistaa.
+När koden är i skick kan if-satsen tas bort.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
-**Toinen huomio** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) kokeilla olevaa ohjetta.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
 </programming-exercise>
 
@@ -643,43 +646,44 @@ Kun koodi on kunnossa, voi ehtorakenteen poistaa.
 
 Edellinen tehtävä laajenee vielä siten, että myös opiskelijan koepisteet luetaan CSV-tiedostosta. Tiedoston sisältö näyttää seuraavalta:
 
+Vi utvidgar nu föregående uppgift så att de studerandes provpoäng också läses från en CSV-fil. Filens struktur är den följande:
+
 ```csv
-opnro;k1;k2;k3
+studerandenr;u1;u2;u3
 12345678;4;1;4
 12345687;3;5;3
 12345699;10;2;2
 ```
 
-Esimerkiksi opiskelija jonka opiskelijanumero on 12345678 on saanut kokeesta 4+1+4 eli yhteensä 9 pistettä.
+Till exempel studerande `12345678` har fått 4 + 1 + 4, alltså nio poäng.
 
-Ohjelma kysyy tiedostojen nimet ja tulostaa jokaisen opiskelijan arvosanan:
+Programmet ska fråga efter filnamnen och skriva ut vitsordet för varje studerande:
 
 <sample-output>
 
-Opiskelijatiedot: **opiskelijat1.csv**
-Tehtävätiedot: **tehtavat1.csv**
-Koepisteet: **koepisteet1.csv**
+Studerande (CSV): **studerande1.csv**
+Uppgifter (CSV): **uppgifter1.csv**
+Provpoäng (CSV): **provpoang1.csv**
 pekka peloton 0
 jaana javanainen 1
 liisa virtanen 3
 
 </sample-output>
 
-Tehtyjen harjoitustehtävien määrästä saa _pisteitä_ siten, että vähintään 10 % tehtävämäärästä tuo 1 pisteen, vähintään 20% tuo 2 pistettä jne., ja 100 % eli 40 harjoitustehtävää tuo 10 pistettä. Harjoitustehtävistä saatava pistemäärä on kokonaisluku.
+Av gjorda uppgifter får man poäng så att 10 % gjorda uppgifter ger ett poäng ända till 100 % (40 uppgifter), som ger tio poäng. Poängen är ett heltal.
 
-Kurssin arvosana määräytyy kokeen ja harjoituspisteiden summan perusteella seuraavan taulukon mukaan:
+Vitsordet för kursen bildas på basis av prov- och uppgiftspoängsumman:
 
-kokeen pisteet + harjoitusten pisteet   | arvosana
-:--:|:----:
-0-14 | 0 (eli hylätty)
-15-17 | 1
-18-20 | 2
-21-23 | 3
-24-27 | 4
-28- | 5
+prov- och uppgiftspoäng tillsammans | vitsord
+:----------------------------------:|:-------:
+0-14                                | 0 (underkänt)
+15-17                               | 1
+18-20                               | 2
+21-23                               | 3
+24-27                               | 4
+28-                                 | 5
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -687,70 +691,71 @@ kokeen pisteet + harjoitusten pisteet   | arvosana
 
 Tässä tehtävässä muotoillaan edellisen tehtävän tulostus parempaan muotoon:
 
+I den här uppgiften formaterar vi utskriften från den föregående uppgiften:
+
 <sample-output>
 
-Opiskelijatiedot: **opiskelijat1.csv**
-Tehtävätiedot: **tehtavat1.csv**
-Koepisteet: **koepisteet1.csv**
+Studerande (CSV): **studerande1.csv**
+Uppgifter (CSV): **uppgifter1.csv**
+Provpoäng (CSV): **provpoang1.csv**
 <pre>
-nimi                          teht_lkm  teht_pist koe_pist  yht_pist  arvosana
-pekka peloton                 21        5         9         14        0
-jaana javanainen              27        6         11        17        1
-liisa virtanen                35        8         14        22        3
+namn                          uppg_ant  uppg_poang  provpoang  tot_poang  vitsord
+pekka peloton                 21        5           9          14         0
+jaana javanainen              27        6           11         17         1
+liisa virtanen                35        8           14         22         3
 </pre>
 
 </sample-output>
 
-Jokaisella rivillä siis tulostetaan opiskelijan tehtävien lukumäärä, tehtävistä saatavat pisteet, kokeen pisteet, yhteispisteet (koe+harjoitukset) sekä arvosana "siististi" siten, että tulostus on jaoteltu sarakkeisiin. Nimisarakkeen leveys on 30 merkkiä ja muiden sarakkeiden leveys on tasan 10 merkkiä.
+På varje rad skrivs alltså ut den studerandes uppgiftsantal, uppgiftspoäng, provpoäng, totalpoäng samt vitsord. Det här görs "prydligt" så att namnkolumnen är 30 tecken bred och de övriga kolumnerna 10.
 
-Tehtävässä kannattaa käyttää [osassa 4](/osa-4/5-tulostuksen-muotoilu) käsiteltyjä f-merkkijonoja.
+Det lönar sig att utnyttja f-strängar (modul fyra).
 
-Kannattaa huomata, että merkkijonojen ja lukujen tulostaminen noudattaa hieman erilaista logiikkaa f-merkkijonoissa:
+Märk att utskrift av strängar och siffror fungerar med lite olik logik i f-strängar:
 
 ```python
-sana = "python"
-print(f"{sana:10}jatkuu")
-print(f"{sana:>10}jatkuu")
+ord = "python"
+print(f"{ord:10}fortsätter")
+print(f"{ord:>10}fortsätter")
 ```
 
 <sample-output>
 
 <pre>
-python    jatkuu
-    pythonjatkuu
+python    fortsätter
+    pythonfortsätter
 </pre>
 
 </sample-output>
 
-Oletusarvoisesti siis merkkijono sisentyy määritellyn levyisen alueen _vasempaan_ reunaan. Merkillä `>`voidaan ohjata tulostus sisentymään oikeaan reunaan.
+I vanliga fall är strängar vänsterjusterade, men med tecknet `>` kan man justera strängen till höger.
 
-Lukuja tulostettaessa logiikka on päinvastainen
+När siffror skrivs ut är logiken motsatt:
 
 ```python
 luku = 42
-print(f"{luku:10}jatkuu")
-print(f"{luku:<10}jatkuu")
+print(f"{luku:10}fortsätter")
+print(f"{luku:<10}fortsätter")
 ```
 
 <sample-output>
 
 <pre>
-        42jatkuu
-42        jatkuu
+        42fortsätter
+42        fortsätter
 </pre>
 
 </sample-output>
 
-Oletusarvo lukujen yhteydessä on tulostuksen sisentyminen _oikeaan_ reunaan. Merkillä `<` voidaan ohjata luvun tulostus sisentymään vasempaan reunaan.
+Siffror är normalt högerjusterade men med tecknet `<` kan vi justera siffran till vänster.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
 <programming-exercise name='Spell checker' tmcname='osa06-07_spellchecker'>
 
-Tee ohjelma, joka pyytää käyttäjää kirjoittamaan rivin englanninkielistä tekstiä. Ohjelma suorittaa tekstille oikeinkirjoitustarkistuksen ja tulostaa saman tekstin siten, että kaikki väärin kirjoitetut sanat on ympäröity tähdillä. Seuraavassa kaksi käyttöesimerkkiä:
+Skapa ett program som ber användaren ange text på engelska. Programmet ska utföra en språkkontroll och skriva ut texten så att felstavade ord är markerade med asterisker. Exempel:
 
 <sample-output>
 
@@ -770,126 +775,123 @@ This is *acually* good and *usefull* program
 
 </sample-output>
 
-Kirjainten koolla ei ole merkitystä ohjelman toiminnan kannalta.
+Bokstavsstorleken ska inte påverka programmets funktionalitet.
 
-Ohjelma tunnistaa oikein kirjoitetut sanat käyttämällä tehtäväpohjassa olevaa tiedostoa `wordlist.txt`.
+Programmet använder sig av filen `wordlist.txt` för att känna igen om orden är korrekt skrivna.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
-**Toinen huomio** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) kokeilla olevaa ohjetta.
-
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
 </programming-exercise>
 
 <programming-exercise name='Reseptihaku' tmcname='osa06-08_reseptihaku'>
 
-Tässä tehtävässä tehdään ohjelma, joka tarjoaa käyttäjälle mahdollisuuden reseptien hakuun reseptin nimen, valmistusajan tai raaka-aineen nimen perusteella. Ohjelma lukee reseptit käyttäjän antamasta tiedostosta.
+I den här uppgiften skapar vi ett program som låter användaren söka efter ett recept på basis av dess namn, tillagningstid eller ingrediens. Programmets recept finns lagrade i en fil.
 
-Jokainen resepti koostuu kolmesta tai useammasta rivistä reseptitiedostossa. Ensimmäisellä rivillä on reseptin nimi, toisella rivillä reseptin valmistusaika (kokonaisluku), ja kolmas ja sitä seuraavat rivit kertovat reseptin raaka-aineet. Reseptin raaka-aineiden kuvaus päättyy tyhjään riviin, poislukien viimeinen resepti. Tiedostossa voi olla useampia reseptejä. Alla kuvattuna esimerkkitiedosto.
+Varje recept består av tre eller fler rader i receptfilen. Den första raden innehåller receptets namn, den andra tillagningstiden (heltal) och tredje raden framåt ingredienser. Ingredienslistan avsluts med en tom rad (exkl. det sista receptet). Filen kan inntehålla flera recept. Se exemplet nedan:
 
 ```sh
-Lettutaikina
+Plättdeg
 15
-maito
-kananmuna
-jauho
-sokeri
-suola
-voi
+mjölk
+ägg
+mjöl
+socker
+salt
+smör
 
-Lihapullat
+Köttbullar
 45
-jauheliha
-kananmuna
-korppujauho
+malet kött
+ägg
+skorpmjöl
 
-Tofurullat
+Tofurullar
 30
 tofu
-riisi
-vesi
-porkkana
-kurkku
-avokado
+ris
+vatten
+morot
+gurka
+avocado
 wasabi
 
-Pullataikina
+Bulldeg
 60
-maito
-hiiva
-kananmuna
-suola
-sokeri
+mjölk
+jäst
+ägg
+salt
+socker
 kardemumma
-voi
+smör
 ```
 
-**Vihje** tässä tehtävässä lienee järkevintä lukea ensin tiedoston rivit listalle ja käsitellä sitten tätä listaa tehtävän edellyttämällä tavalla.
+Tips: I den här uppgiften lönar det sig kanske att läsa in filens rader i en lista och sedan behandla den här listan enligt den här uppgiftens specifikationer.
 
-#### reseptien haku nimen perusteella
+#### Sökning med receptnamn
 
-Tee funktio `hae_nimi(tiedosto: str, sana: str)` joka hakee parametrina annetun nimisestä tiedostosta reseptit, joiden nimessä esiintyy toisena parametrina annettu merkkijono. Funktio palauttaa listan, jossa kutakin löydettyä reseptiä vastaa merkkijono, joka kertoo reseptin nimen.
+Skapa funktionen `namnsok(fil: str, ord: str)` som söker efter recept vars namn innehåller den givna strängen. Funktionen ska returnera en lista med namnen på de matchande recepten.
 
-Esimerkki funktion käytöstä:
+Exempel:
 
 ```python
-loydetyt = hae_nimi("reseptit1.txt", "pulla")
+hittade = namnsok("recept1.txt", "bull")
 
-for resepti in loydetyt:
-    print(resepti)
+for recept in hittade:
+    print(recept)
 ```
 
 <sample-output>
 
-Lihapullat
-Pullataikina
+Köttbullar
+Bulldeg
 
 </sample-output>
 
-Huomaa, että hakusanojen kirjainten koolla ei ole merkitystä, eli hakusana _pulla_ löytää myös reseptin _Pullataikina_, joka alkaa isolla kirjaimella.
+Märk att bokstavsstorleken inte har någon skillnad. Med ordet `bull` hittar vi också `Bulldeg`.
 
-**Huom!** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) kokeilla olevaa ohjetta.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
+#### Sökning med tillagningstid
 
-#### reseptien hakeminen valmistusajan perusteella
+Skapa funktionen `tidssok(fil: str, tid: int)` som söker efter de recept vars tillagningstid är högst det som angetts som argument.
 
-Tee funktio `hae_aika(tiedosto: str, aika: int)` joka hakee parametrina annetun nimisestä tiedostosta reseptit, joiden valmistusaika on korkeintaan parametrina kerrottu minuuttimäärä.
-
-Kriteerin täyttävät reseptit palautetaan edellisen tehtävän tapaan listana, nyt kerrotaan myös reseptin valmistumisaika. Esimerkki funktion käytöstä:
+Matchande recept returneras som en lista och nu ska också tillagningstiden inkluderas. Exempel:
 
 ```python
-loydetyt = hae_aika("reseptit1.txt", 20)
+hittade = tidssok("recept1.txt", 20)
 
-for resepti in loydetyt:
-    print(resepti)
+for recept in hittade:
+    print(recept)
 ```
 
 <sample-output>
 
-Lettutaikina, valmistusaika 15 min
+Plättdeg, tillagningstid 15 min
 
 </sample-output>
 
-#### reseptien hakeminen raaka-aineen perusteella
+#### Sökning med ingrediens
 
-**Varoitus** tämä osa on edellisiä selvästi haastavampi. Jos tehtävä ei lähde heti aukenemaan, kannattanee tehdä ensin osan muut tehtävät ja palata lopuksi takaisin tähän. Huomaa, että voit lähettää moniosaisessa tehtävässä palvelimelle myös yksittäiset osat
+Varning!! Den här delen är mycket svårare än de tidigare delarna. Om du har svårigheter, lönar det sig att göra de andra delarna först och sedan återkomma hit. Märk att du också kan skicka enskilda delar till servern.
 
-Tee funktio `hae_raakaaine(tiedosto: str, aine: str)` joka hakee parametrina annetun nimisestä tiedostosta reseptit, jotka sisältävät toisena parametrina annetun raaka-aineen.
+Skapa funktionen `ingredienssok(fil: str, ingrediens: str)` som ska hitta recepten med den givna ingrediensen.
 
-Kriteerin täyttävät reseptit palautetaan edellisen tehtävän tapaan listana. Esimerkki funktion käytöstä:
+Matchande recept returneras som en lista. Exempel:
 
 ```python
-loydetyt = hae_raakaaine("reseptit1.txt", "maito")
+hittade = ingredienssok("recept1.txt", "mjölk")
 
-for resepti in loydetyt:
-    print(resepti)
+for recept in hittade:
+    print(recept)
 ```
 
 <sample-output>
 
-Lettutaikina, valmistusaika 15 min
-Pullataikina, valmistusaika 60 min
+Plättdeg, tillagningstid 15 min
+Bulldeg, tillagningstid 60 min
 
 </sample-output>
 
@@ -897,9 +899,9 @@ Pullataikina, valmistusaika 60 min
 
 <programming-exercise name='Kaupunkipyörät' tmcname='osa06-09_kaupunkipyorat'>
 
-Tässä tehtävässä tehdään muutama funktio, joiden avulla voidaan tarkastella [kaupunkipyörien](https://kaupunkipyorat.hsl.fi/fi) asemien sijaintia sisältävää tiedostoa.
+I den här uppgiften skapar vi några funktioner, med vilka vi kan inspektera en fil med information om stadscyklars parkeringsstationer.
 
-Tiedostot näyttävät seuraavilta:
+Så här ser filerna ut:
 
 ```csv
 Longitude;Latitude;FID;name;total_slot;operative;id
@@ -908,11 +910,11 @@ Longitude;Latitude;FID;name;total_slot;operative;id
 24.944927399779715;60.158189199971673;3;Kapteeninpuistikko;16;Yes;003
 ```
 
-Kutakin asemaa kohti tiedostossa on yksi rivi, joka kertoo aseman koordinaatit, aseman nimen ja muuta tunnistetietoa.
+För varje parkeringsstation finns det en skild rad i filen: här specificeras koordinater, namnet på stationen m.m.
 
-#### asemien välinen etäisyys
+#### Avstånd mellan stationer
 
-Tee ensin funktio `hae_asematiedot(tiedosto: str)`, joka lukee asematiedot tiedostosta ja palauttaa ne sanakirjana, joka näyttää tältä:
+Skapa funktionen `stationsinfo(fil: str)` som läser in stationsinfon och returnerar den som ett lexikon:
 
 <sample-output>
 
@@ -926,28 +928,28 @@ Tee ensin funktio `hae_asematiedot(tiedosto: str)`, joka lukee asematiedot tiedo
 
 </sample-output>
 
-Eli sanakirjan avaimena on aseman nimi ja arvona tuple, joka koostuu aseman koordinaateista, ensimmäisenä _Longitude_ ja toisena _Latitude_.
+Som nyckel kommer alltså stationens namn och som värde en tuple som består av longituden (1) och latituden (2).
 
-Tee seuraavaksi funktio `etaisyys(asemat: dict, asema1: str, asema2: str)`, joka palauttaa parametrina kerrottujen asemien välisen etäisyyden.
+Skapa nu funktionen `avstand(stationer: dict, station1: str, station2: str)` som returnerar avståndet mellan de två givna stationerna.
 
-Etäisyys lasketaan seuraavalla kaavalla (hyödyntäen Pythagoraan lausetta):
+Följande formel används för att räkna avståndet:
 
 ```python
-# tämä rivi tarvitaan, jotta saadaan käyttöön metodi sqrt
+# det här behövs för att funktionen sqrt ska fungera
 import math
 
-x_kilometreina = (longitude1 - longitude2) * 55.26
-y_kilometreina = (latitude1 - latitude2) * 111.2
-etaisyys = math.sqrt(x_kilometreina**2 + y_kilometreina**2)
+x_km = (longitude1 - longitude2) * 55.26
+y_km = (latitude1 - latitude2) * 111.2
+avstand = math.sqrt(x_km**2 + y_km**2)
 ```
 
 Esimerkkisuorituksia:
 
 ```python
-asemat = hae_asematiedot('stations1.csv')
-e = etaisyys(asemat, "Designmuseo", "Hietalahdentori")
+stationer = stationsinfo('stations1.csv')
+e = avstand(stationer, "Designmuseo", "Hietalahdentori")
 print(e)
-e = etaisyys(asemat, "Viiskulma", "Kaivopuisto")
+e = avstand(stationer, "Viiskulma", "Kaivopuisto")
 print(e)
 ```
 
@@ -958,16 +960,16 @@ print(e)
 
 </sample-output>
 
-**Huom!** Jos VS Code ei löydä tiedostoa vaikka olet tarkastanut tiedoston nimen kirjoitusasun, voit [täällä](/osa-6/1-tiedostojen-lukeminen#mita-jos-vs-code-ei-loyda-tiedostoja-koodia-suoritettaessa) kokeilla olevaa ohjetta.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
 
-#### pisin välimatka
+#### Längsta avstånd
 
-Tee funktio `suurin_etaisyys(asemat: dict)`, joka selvittää, mitkä kaksi asemaa ovat kauimpana toisistaan. Funktio palauttaa tuplen, jonka ensimmäiset kaksi arvoa kertovat asemien nimet ja kolmas arvo niiden välisen etäisyyden.
+Skapa funktionen `langsta_avstand(stationer: dict)` som ska ta reda på vilka stationer som är längst ifrån varandra. Funktionen ska returnera en tuple vars två första värden syftar till stationernas namn och det tredje värdet är avståndet i fråga.
 
 ```python
-asemat = hae_asematiedot('stations1.csv')
-asema1, asema2, suurin = suurin_etaisyys(asemat)
-print(asema1, asema2, suurin)
+stationer = stationsinfo('stations1.csv')
+station1, station2, suurin = langsta_avstand(stationer)
+print(station1, station2, suurin)
 ```
 
 <sample-output>
@@ -977,6 +979,5 @@ Laivasillankatu Hietalahdentori 1.478708873076181
 </sample-output>
 
 </programming-exercise>
-
 
 <quiz id="cdac5075-c9cf-56f5-9ea3-eda73a48df4e"></quiz>

@@ -24,38 +24,38 @@ Variabler har olika användningsområden inom programmering. Du kan använda var
 
 I Python skapas variabler på följande sätt:
 
-`muuttujan_nimi = ...`
+`variabelns_namn = ...`
 
 `...` ovan syftar till värdet som sparas i variabeln.
 
 Till exempel när du använde kommandot `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
 
 ```python
-nimi = input("Anna nimesi: ")
-print("Moi, " + nimi)
+namn = input("Ange ditt namn: ")
+print("Hejsan " + namn)
 ```
 
 <sample-output>
 
-Anna nimesi: **Kummitus**
-Moi, Kummitus
+Ange ditt namn: **Konstantin**
+Hejsan Konstantin
 
 </sample-output>
 
 Värdet som lagras i variabeln kan också definieras med hjälp av andra variabler:
 
 ```python
-etunimi = "Pekka"
-sukunimi = "Pythonen"
+fornamn = "Gabrielle"
+efternamn = "Gullholm"
 
-nimi = etunimi + " " + sukunimi
+namn = fornamn + " " + efternamn
 
-print(nimi)
+print(namn)
 ```
 
 <sample-output>
 
-Pekka Pythonen
+Gabrielle Gullholm
 
 </sample-output>
 
@@ -68,23 +68,23 @@ Som namnet möjligtvis avslöjar, kan värdet på en _variabel_ ändra. I den f�
 Medan vi kör följande program, kommer variabeln `ord` att ha tre olika värden:
 
 ```python
-sana = input("Anna sana: ")
-print(sana)
+ord = input("Ge ett ord: ")
+print(ord)
 
-sana = input("Anna toinen sana: ")
-print(sana)
+ord = input("Ge ett annat ord: ")
+print(ord)
 
-sana = "kolmas"
-print(sana)
+ord = "tredje"
+print(ord)
 ```
 
 <sample-output>
 
-Anna sana: **eka**
-eka
-Anna toinen sana: **toka**
-toka
-kolmas
+Ge ett ord: **första**
+första
+Ge ett annat ord: **andra**
+andra
+tredje
 
 </sample-output>
 
@@ -93,18 +93,18 @@ Värdet som är lagrat i variabeln ändrar varje gång vi tilldelar variabeln et
 Det nya värdet på en variabel kan basera sig på det föregående värdet. I följande exempel tilldelas variabeln `ord` först ett värde på basis av indata från användaren. Därefter tilldelas variabeln ett nytt värde – som består av det gamla värdet och tre utropstecken i slutet.
 
 ```python
-sana = input("Anna sana: ")
-print(sana)
+ord = input("Ge ett ord: ")
+print(ord)
 
-sana = sana + "!!!"
-print(sana)
+ord = ord + "!!!"
+print(ord)
 ```
 
 <sample-output>
 
-Anna sana: **testi**
-testi
-testi!!!
+Ge ett ord: **test**
+test
+test!!!
 
 </sample-output>
 
@@ -124,8 +124,8 @@ Hittills har vi enbart lagrat strängar i variabler, men det finns också flera 
 Det följande programmet skapar variabeln `alder`, som är ett heltal:
 
 ```python
-ika = 24
-print(ika)
+alder = 24
+print(alder)
 ```
 
 Utskriften ser helt enkelt ut så här:
@@ -141,11 +141,11 @@ Märk att citattecknen fattas. Om vi skulle lägga till citattecken runt siffran
 Varför ska variabler då ha en typ när programmets utskrift ändå ser ut lika, oavsett?
 
 ```python
-luku1 = 100
-luku2 = "100"
+siffra1 = 100
+siffra2 = "100"
 
-print(luku1)
-print(luku2)
+print(siffra1)
+print(siffra2)
 ```
 
 <sample-output>
@@ -158,11 +158,11 @@ print(luku2)
 Variabeltyper har skillnad eftersom olika operationer påverkar olika typer av variabler på olika sätt. Ta en titt på följande exempel:
 
 ```python
-luku1 = 100
-luku2 = "100"
+siffra1 = 100
+siffra2 = "100"
 
-print(luku1 + luku1)
-print(luku2 + luku2)
+print(siffra1 + siffra1)
+print(siffra2 + siffra2)
 ```
 
 Koden skriver ut det följande:
@@ -183,9 +183,9 @@ Alla operatorer är inte tillgängliga för alla typer av variabler. Siffror kan
 Det följande kommer inte att fungera eftersom `"Resultatet är "` och `resultat` är av olika typer:
 
 ```python
-tulos = 10 * 25
-# seuraava rivi tuottaa virheen
-print("Tulos on " + tulos)
+resultat = 10 * 25
+# nästa rad orsakar ett fel
+print("Resultatet är: " + resultat)
 ```
 
 Programmet skriver inte ut någonting – istället får vi ett fel:
@@ -201,26 +201,26 @@ I felet berättar Python att kombination av två olika typer av värden inte gå
 Om vi vill skriva ut en sträng och ett heltal i ett och samma kommando kan vi konvertera heltalet till en sträng med `str`-funktionen. Därefter kan de två strängarna kombineras normalt. Till exempel så här:
 
 ```python
-tulos = 10 * 25
-print("Tulos on " + str(tulos))
+resultat = 10 * 25
+print("Resultatet är: " + str(resultat))
 ```
 
 <sample-output>
 
-Tulos on 250
+Resultatet är: 250
 
 </sample-output>
 
 `print`-kommandot har också inbyggd funktionalitet som stödjer kombination av olika typer av värden. Det enklaste sättet är att lägga in ett komma mellan värdena. Alla värden kommer då att skrivas ut – oavsett typ:
 
 ```python
-tulos = 10 * 25
-print("Tulos on", tulos)
+resultat = 10 * 25
+print("Resultatet är", resultat)
 ```
 
 <sample-output>
 
-Tulos on 250
+Resultatet är: 250
 
 </sample-output>
 
@@ -233,49 +233,49 @@ Hur kan vi gå till väga om vi önskar oss mera flexibilitet och kontroll över
 Med f-strängar skulle det föregående exemplet se ut så här:
 
 ```python
-tulos = 10 * 25
-print(f"Tulos on {tulos}")
+resultat = 10 * 25
+print(f"Resultatet är: {resultat}")
 ```
 
 Låt oss se hur ovanstående exempel fungerar, del för del. Helt i början av strängen som vi håller på att skriva ut finns bokstaven f. Den här bokstaven berättar för Python att följande sträng är en f-sträng. Inom strängen finns variabelnamnet `resultat`, omringat av klammerparenteser. Värdet på variabeln kommer på det sättet att bli en del av strängen som skrivs ut. Utskriften ser helt likadan ut som i de föregående exemplen:
 
 <sample-output>
 
-Tulos on 250
+Resultatet är: 250
 
 </sample-output>
 
 En och samma f-sträng kan innehålla flera variabler. Den här koden…
 
 ```python
-nimi = "Arto"
-ika = 39
-kaupunki = "Espoo"
-print(f"Hei {nimi}, olet {ika}-vuotias. Asuinpaikkasi on {kaupunki}.")
+namn = "Joline"
+alder = 24
+stad = "Kyrkslätt"
+print(f"Hej {namn}, du är {alder} år. Du bor i {stad}.")
 ```
 
 …skriver ut det följande:
 
 <sample-output>
 
-Hei Arto, olet 39-vuotias. Asuinpaikkasi on Espoo.
+Hej Joline, du är 24 år. Du bor i Kyrkslätt.
 
 </sample-output>
 
 Det är svårt att åstadkomma en likadan utskrift med hjälp av kommanotationen i `print`-kommandot. Exempelvis programmet…
 
 ```python
-nimi = "Arto"
-ika = 39
-kaupunki = "Espoo"
-print("Hei", nimi, ", olet", ika, "-vuotias. Asuinpaikkasi on", kaupunki, ".")
+namn = "Joline"
+alder = 24
+stad = "Kyrkslätt"
+print("Hej", namn, ", du är", alder, " år. Du bor i", stad, ".")
 ```
 
 …skriver ut det följande:
 
 <sample-output>
 
-Hei Arto , olet 39 -vuotias. Asuinpaikkasi on Espoo .
+Hej Joline , du är 24  år. Du bor i Kyrkslätt .
 
 </sample-output>
 
@@ -285,54 +285,54 @@ Kommanotationen kan vara till nytta ibland, men ofta orsakar den mera problem ä
 
 <in-browser-programming-exercise name="Välilyönnillä vai ilman" tmcname="osa01-10b_valilyonnilla_vai_ilman" height=400px>
 
-Saat seuraavan koodinpätkän työnhakijoille suunnatun sovelluksen parissa työskentelevältä tuttavaltasi:
+Du får följande kodsnutt av en bekant:
 
 ```python
-nimi = "Teppo Testaaja"
-ika = 20
-taito1 = "python"
-taso1 = "aloittelija"
-taito2 = "java"
-taso2 = "veteraani"
-taito3 = "ohjelmointi"
-taso3 = "puoliammattilainen"
-ala = 2000
-yla = 3000
+namn = "Tindra Testare"
+alder = 20
+kunskap1 = "python"
+niva1 = "nybörjare"
+kunskap2 = "java"
+niva2 = "expert"
+kunskap3 = "programmering"
+niva3 = "nästan proffs"
+min = 2000
+max = 3000
 
-print("nimeni on ", nimi, " , olen ", ika, "-vuotias")
-print("taitoihini kuuluvat")
-print("- ", taito1, " (", taso1, ")")
-print("- ", taito2, " (", taso2, ")")
-print("- ", taito3, " (", taso3, " )")
-print("haen työtä, josta maksetaan palkkaa", ala, "-", yla, "euroa kuussa")
+print("mitt namn är ", namn, " , jag är ", alder, " år")
+print("till mina kunskaper hör")
+print("- ", kunskap1, " (", niva1, ")")
+print("- ", kunskap2, " (", niva2, ")")
+print("- ", kunskap3, " (", niva3, " )")
+print("jag söker efter ett jobb vars lön är", min, "-", max, "euro i månaden")
 ```
 
-Koodin pitäisi tuottaa _täsmälleen_ seuraavanlainen tulostus:
+Koden borde resultera i en exakt lika utskrift som den följande:
 
 <sample-output>
 
 <pre>
-nimeni on Teppo Testaaja, olen 20-vuotias
+mitt namn är Tindra Testare, jag är 20 år
 
-taitoihini kuuluvat
- - python (aloittelija)
- - java (veteraani)
- - ohjelmointi (puoliammattilainen)
+till mina kunskaper hör
+ - python (nybörjare)
+ - java (expert)
+ - programmering (nästan proffs)
 
-haen työtä, josta maksetaan palkkaa 2000-3000 euroa kuussa
+jag söker efter ett jobb vars lön är 2000-3000 euro i månaden
 </pre>
 
 </sample-output>
 
-Koodi toimii melkein oikein, mutta ei kuitenkaan ihan. Tässä tehtävässä on todella tarkat testit, jotka vaativat, että tulostus on välilyönnilleen oikein.
+Koden fungerar ungefär korrekt. Din uppgift är att korrigera koden. Testen i den här uppgiften är noggranna. Till och med ett litet mellanslag på fel ställe kommer att orsaka problem.
 
-Korjaa siis koodi siten, että tulostus näyttää oikealta. Huomaa, että erityisesti `print`-komennon muoto, jossa tulostettavat osat eritellään pilkulla, voi tuottaa yllätyksiä, sillä se lisää osien väliin välilyönnin.
+Koden ska alltså korrigeras så att utskriften ser korrekt ut. Observera att framför allt kommanotationen i `print`-kommandot ofta orsakar mellanslag på ställen där de är oönskade.
 
-Helpoiten saat muutettua koodin toimivaksi käyttämällä tulostukseen f-merkkijonoja.
+Det enklaste sättet att korrigera koden är att använda f-strängar.
 
-Vihje: saat tulostettua tyhjän rivin komennolla `print` tai lisäämällä tulostettavaan merkkijonoon merkinnän `\n`.
+Tips: Du kan lägga till ett radbyte med hjälp av `print`-kommandot eller genom att inkludera `\n` på det stället i en sträng där radbytet ska vara.
 
-Muista olla tarkkana tulostusten muodon suhteen jatkossakin kurssin tehtävissä. Osassa tehtävissä testit vaativat täsmälleen esimerkkitulostusten mukaisen muotoilun.
+Observera också utskriftsformatet i kommande övningar under kursens lopp. Vissa uppgifter kräver att utskriften från programmet är exakt densamma som i de givna exemplen.
 
 </in-browser-programming-exercise>
 
@@ -343,30 +343,30 @@ Flyttal är en term som du ofta kommer att stöta på i programmering. Det hänv
 Följande program räknar medeltalet av tre flyttal:
 
 ```python
-luku1 = 2.5
-luku2 = -1.25
+siffra1 = 2.5
+siffra2 = -1.25
 luku3 = 3.62
 
-keskiarvo = (luku1 + luku2 + luku3) / 3
-print(f"Keskiarvo: {keskiarvo}")
+medeltal = (siffra1 + siffra2 + luku3) / 3
+print(f"Medelvärde: {medeltal}")
 ```
 
 <sample-output>
 
-Keskiarvo: 1.6233333333333333
+Medelvärde: 1.6233333333333333
 
 </sample-output>
 
 <in-browser-programming-exercise name="Laskutoimitukset" tmcname="osa01-11_laskutoimitukset">
 
-Ohjelman tehtäväpohjassa on määritelty kaksi kokonaislukumuuttujaa `x` ja `y`:
+I den här övningen finns ett färdigt program med heltal tilldelade i variablerna `x` och `y`:
 
 ```python
 x = 27
 y = 15
 ```
 
-Täydennä ohjelma siten, että sen tulostus on seuraava:
+Utveckla programmet vidare så att utskriften ser ut så här:
 
 <sample-output>
 
@@ -377,14 +377,14 @@ Täydennä ohjelma siten, että sen tulostus on seuraava:
 
 </sample-output>
 
-Ohjelman tulee toimia siinäkin tapauksessa, että muuttujien arvoa vaihdetaan. Eli jos ensimmäiset rivit muuttuvat muotoon
+Programmet ska också fungera då värdet på variablerna ändras. I följande fall...
 
 ```python
 x = 4
 y = 9
 ```
 
-niin tulostus on seuraava:
+...ser utskriften ut så här:
 
 <sample-output>
 
@@ -399,22 +399,22 @@ niin tulostus on seuraava:
 
 <in-browser-programming-exercise name="Korjaa ohjelma: Tulostukset samalle riville" tmcname="osa01-12_korjaa_ohjelma_tulostukset_samalle_riville">
 
-Jos `print`-komennolle annetaan lisäparametri `end = ""`, komento ei tulosta rivinvaihtoa merkkijonon jälkeen.
+Om man ger `print`-kommandot parametern `end = ""`, kommer utskriften inte att avslutas med ett radbyte.
 
-Esimerkiksi:
+Exempel:
 
 ```python
-print("Moi ", end="")
-print("kaikki!")
+print("Hej ", end="")
+print("allesammans!")
 ```
 
 <sample-output>
 
-Moi kaikki!
+Hej allesammans!
 
 </sample-output>
 
-Korjaa ohjelma niin, että koko lasku tuloksineen tulostetaan yhdelle riville muuttamatta kuitenkaan `print`-komentojen määrää:
+Korrigera programmet så att räkneoperationen och resultatet skrivs ut på en rad. Antalet `print`-kommandon får dock inte ändras.
 
 ```python
 

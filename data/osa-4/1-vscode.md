@@ -23,48 +23,49 @@ Här hittar du en guide som berättar hur du kan installera allt som nämnts ova
 
 <programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_hello_visualstudio_code'>
 
-Tee ohjelma, joka kysyy käyttäjältä, mikä editori on käytössä. Ohjelma jatkaa, kunnes vastaus on _Visual Studio Code_.
+Skapa ett program som frågar vilken kodeditor användaren har. Programmet fortsätter köra tills användaren svarar Visual Studio Code.
 
-Seuraava käyttöesimerkki havainnollistaa ohjelman haluttua tulostusta:
+Exempel:
 
 <sample-output>
 
-Editori: **Emacs**
-ei ole hyvä
-Editori: **Vim**
-ei ole hyvä
-Editori: **Word**
-surkea
-Editori: **Atom**
-ei ole hyvä
-Editori: **Visual Studio Code**
-loistava valinta!
+Editor: **Emacs**
+inte bra
+Editor: **Vim**
+inte bra
+Editor: **Word**
+usel
+Editor: **Atom**
+inte bra
+Editor: **Visual Studio Code**
+perfekt val!
 
 </sample-output>
 
-Jos käyttäjä kirjoittaa Word tai Notepad, ohjelma vastaa _surkea_. Muissa epäkelvoissa tapauksissa vastaus on _ei ole hyvä_.
+Om användaren svarar Word eller Notepad ger programmet kommentaren "usel". I övriga icke-giltiga fall "inte bra".
 
-Ohjelman tulee toimia siten, että "oikean vastauksen" kirjoitusasu ei riipu siitä, kirjoitetaanko vastaus isoja vai pieniä kirjaimia käyttämällä:
+Programmet ska fungera oberoende hur namnet skrivs, dvs. bruket av gemener/versaler ska inte påverka:
 
 <sample-output>
 
-Editori: **NOTEPAD**
-surkea
-Editori: **viSUal STudiO cODe**
-loistava valinta!
+Editor: **NOTEPAD**
+usel
+Editor: **viSUal STudiO cODe**
+perfekt val!
 
 </sample-output>
 
 Kirjainten koon voi jättää huomiotta esim. muuttamalla kirjaimet pieniksi merkkijonojen metodilla `lower`, jota voi käyttää seuraavasti:
 
+Det här kan åstadkomma t.ex. genom att ändra bokstavsstorleken med metoden `lower`, och bara använda gemener:
+
 ```python
-mjono = "Visual Studio CODE"
-if "visual studio code" == mjono.lower():
-    print("merkkijono oli etsitty!")
+strang = "Visual Studio CODE"
+if "visual studio code" == strang.lower():
+    print("strängen hittades")
 ```
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -94,28 +95,28 @@ All Python-kod som skrivs i en fil kan också skrivas i tolken. Du kan till och 
 
 ```python
 >>> t = [1,2,3,4,5]
->>> for luku in t:
-...   print(luku)
+>>> for siffra in t:
+...   print(siffra)
 ...
 1
 2
 3
 4
 5
->>> def itseisarvo(luku):
-...   if luku<0:
-...      luku = -luku
-...   return luku
+>>> def absolutbelopp(siffra):
+...   if siffra<0:
+...      siffra = -siffra
+...   return siffra
 ...
 >>> x = 10
 >>> y = -7
->>> itseisarvo(luku)
+>>> absolutbelopp(siffra)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-NameError: name 'luku' is not defined
->>> itseisarvo(x)
+NameError: name 'siffra' is not defined
+>>> absolutbelopp(x)
 10
->>> itseisarvo(y)
+>>> absolutbelopp(y)
 7
 >>>
 ```
@@ -123,19 +124,19 @@ NameError: name 'luku' is not defined
 Tolken kan framför allt användas för att göra små kontroller. Du kan till exempel testa funktioner eller metoder – eller kolla om de existerar över huvud taget:
 
 ```python
->>> "TekstIä".toupper()
+>>> "teXt".toupper()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'str' object has no attribute 'toupper'
->>> "TekstIä".upper()
-'TEKSTIÄ'
+>>> "teXt".upper()
+'TEXT'
 >>>
 ```
 
 Om det finns en metod som du behöver, och du minns ungefär vad dess namn är, kan det ibland vara snabbare att skippa Google och istället använda `dir`-funktionen i tolken. Funktionen berättar vilka metoder kan användas hos ett specifikt objekt:
 
 ```python
->>> dir("teksti")
+>>> dir("text")
 ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__',
 '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__',
 '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__',
@@ -167,12 +168,12 @@ Listor i Python verkar inte ha så många metoder:
 Vi testar på några av dem – `reverse` och `clear` verkar lovande:
 
 ```python
->>> luvut = [1,2,3,4,5]
->>> luvut.reverse()
->>> luvut
+>>> siffror = [1,2,3,4,5]
+>>> siffror.reverse()
+>>> siffror
 [5, 4, 3, 2, 1]
->>> luvut.clear()
->>> luvut
+>>> siffror.clear()
+>>> siffror
 []
 ```
 

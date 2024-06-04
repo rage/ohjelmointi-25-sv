@@ -17,13 +17,13 @@ Efter den här delen
 Du är redan bekant med syntaxen `[]` för att ta fram en delsträng:
 
 ```python
-mjono = "esimerkki"
-print(mjono[3:7])
+strang = "exempel"
+print(strang[3:7])
 ```
 
 <sample-output>
 
-merk
+mpel
 
 </sample-output>
 
@@ -45,15 +45,15 @@ print(lista[3:7])
 Syntaxen `[]` fungerar faktiskt mycket lika som `range`-funktionen, vilket innebär att vi också kan ge den ett steg:
 
 ```python
-mjono = "esimerkki"
-print(mjono[0:7:2])
+strang = "exempel"
+print(strang[0:7:2])
 lista = [1,2,3,4,5,6,7,8]
 print(lista[6:2:-1])
 ```
 
 <sample-output>
 
-eiek
+eepl
 [7, 6, 5, 4]
 
 </sample-output>
@@ -61,14 +61,14 @@ eiek
 Om vi lämnar bort något av indexen kommer operatorn att inkludera alla element. Tack vare detta kan vi till exempel skriva ett mycket kort program som vänder om en sträng:
 
 ```python
-mjono = input("Kirjoita merkkijono: ")
-print(mjono[::-1])
+strang = input("Ange en sträng: ")
+print(strang[::-1])
 ```
 
 <sample-output>
 
-Kirjoita merkkijono: **esimerkki**
-ikkremise
+Ange en sträng: **exempel**
+lepmexe
 
 </sample-output>
 
@@ -137,19 +137,19 @@ TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa k
 
 <programming-exercise name='Kaikki väärinpäin' tmcname='osa04-21_kaikki_vaarinpain'>
 
-Kirjoita funktio `kaikki_vaarinpain`, joka saa parametrikseen listan merkkijonoja. Funktio luo ja palauttaa uuden listan, jossa kaikki alkuperäisellä listalla olevat merkkijonot on käännetty. Myös listan alkioiden järjestys muutetaan käänteiseksi.
+Skapa funktionen `allt_omvant` som får som argument en lista med strängar. Funktionen ska skapa och returnera en ny lista där alla strängar i den ursprungliga listan är omvända. Elementen ska också komma i omvänd ordning i listan.
 
-Esimerkki funktion käytöstä:
+Exempel:
 
 ```python
-lista = ["Moi", "kaikki", "esimerkki", "vielä yksi"]
-lista2 = kaikki_vaarinpain(lista)
+lista = ["Hej", "alla", "exempel", "ett till"]
+lista2 = allt_omvant(lista)
 print(lista2)
 ```
 
 <sample-output>
 
-['isky äleiv', 'ikkremise', 'ikkiak', 'ioM']
+['llit tte', 'lepmexe', 'alla', 'jeH']
 
 </sample-output>
 
@@ -160,8 +160,8 @@ print(lista2)
 Strängar och listor har en hel del likheter, framför allt då det kommer till hur de fungerar med olika operatorer. En nyckelskillnad är att strängar är oföränderliga. Det betyder att de inte kan ändras.
 
 ```python
-mjono = "esimerkki"
-mjono[0] = "a"
+strang = "exempel"
+strang[0] = "a"
 ```
 
 Strängar kan inte ändras på, så det här programmet kommer att ge ett felmeddelande:
@@ -186,8 +186,8 @@ lista[0] = 10
 <img src="4_4_1.png">
 
 ```python
-mjono = "Moi"
-mjono = mjono + "!"
+strang = "Hej"
+strang = strang + "!"
 ```
 
 <img src="4_4_2.png">
@@ -201,8 +201,8 @@ Vi återkommer till det här ämnet senare. Då utforskar vi hänvisningar till 
 Metoden `count` räknar antalet gånger ett element eller en delsträng finns i en lista eller sträng:
 
 ```python
-mjono = "Vesihiisi sihisi hississä"
-print(mjono.count("si"))
+strang = "Hon håsa på hussatimmen så lärar'n sa sakta: städa upp mjölet på golvet så att klassen int' e som en savann"
+print(strang.count("sa"))
 
 lista = [1,2,3,1,4,5,1,6]
 print(lista.count(1))
@@ -220,80 +220,80 @@ Metoden räknar inte överlappande förekomster. Till exempel i strängen `aaaa`
 Metoden `replace` skapar en ny sträng där en specifik delsträng har ersatts med en annan sträng:
 
 ```python
-mjono = "Moi kaikki"
-uusi = mjono.replace("Moi", "Hei")
+strang = "Hej alla"
+uusi = strang.replace("Hej", "God eftermiddag")
 print(uusi)
 ```
 
 <sample-output>
 
-Hei kaikki
+God eftermiddag alla
 
 </sample-output>
 
 Metoden påverkar alla delsträngar som hittas:
 
 ```python
-lause = "hei heilan löysin minä heinikosta hei"
-print(lause.replace("hei", "HEI"))
+lause = "de åtta potatissemlorna förvandlades till en stor potatisplåt i ugnen – läraren, ja hon suckade i sitt hörn av klassen"
+print(lause.replace("en", "EN"))
 ```
 
 <sample-output>
 
-HEI HEIlan löysin minä HEInikosta HEI
+de åtta potatissemlorna förvandlades till EN stor potatisplåt i ugnEN – lärarEN, ja hon suckade i sitt hörn av klassEN
 
 </sample-output>
 
 När `replace`-metoden används, är ett vanligt misstag att man glömmer att strängar är oföränderliga:
 
 ```python
-mjono = "Python on kivaa"
+strang = "Jag gillar Python"
 
-# Korvataan alijono, muttei tallenneta tulosta mihinkään...
-mjono.replace("Python", "Java")
-print(mjono)
+# vi ersätter en delsträng, men resultatet lagras ingenstans
+strang.replace("Python", "Java")
+print(strang)
 ```
 
 <sample-output>
 
-Python on kivaa
+Jag gillar Python
 
 </sample-output>
 
 Om den gamla strängen inte längre behövs kan man tilldela den nya strängen till samma variabel:
 
 ```python
-mjono = "Python on kivaa"
+strang = "Jag gillar Python"
 
-# Korvataan alijono, tallennetaan tulos samaan muuttujaan
-mjono = mjono.replace("Python", "Java")
-print(mjono)
+# vi ersätter en delsträng och lagrar resultatet
+strang = strang.replace("Python", "Java")
+print(strang)
 ```
 
 <sample-output>
 
-Java on kivaa
+Jag gillar Java
 
 </sample-output>
 
 <programming-exercise name='Eniten kirjaimia' tmcname='osa04-22_eniten_kirjaimia'>
 
-Kirjoita funktio `eniten_kirjainta`, joka saa parametrikseen merkkijonon. Funktio palauttaa kirjaimen, jota esiintyy eniten merkkijonossa. Jos yhtä yleisiä kirjaimia on monta, funktion tulee palauttaa niistä ensimmäisenä merkkijonossa esiintyvä.
+Skapa funktionen `vanligaste_bokstaven` som får som argument en sträng. Funktionen ska returnera den bokstav som förekommer mest i strängen. Om det finns flera kandidater ska man returnera den bokstav som förekommer först.
 
-Esimerkki funktion käytöstä:
+Exempel:
 
 ```python
-mjono = "abcbdbe"
-print(eniten_kirjainta(mjono))
+strang = "abba"
+print(vanligaste_bokstaven(strang))
 
-toinen_jono = "esimerkkimerkkijonokki"
-print(eniten_kirjainta(toinen_jono))
+strang2 = "jästsurdegmedsaltosocker"
+print(vanligaste_bokstaven(strang2))
 ```
 
 <sample-output>
 
-b
-k
+a
+s
 
 </sample-output>
 
@@ -302,20 +302,20 @@ k
 
 <programming-exercise name='Vokaalit pois' tmcname='osa04-23_vokaalit_pois'>
 
-Kirjoita funktio `ilman_vokaaleja`, joka saa parametrikseen merkkijonon. Funktio palauttaa uuden merkkijonon, jossa alkuperäisen merkkijonon vokaalit on poistettu.
+Skapa funktionen `utan_vokaler` som får som argument en sträng. Funktionen ska returnera en ny sträng där vokalerna i den ursprungliga strängen fattas.
 
-Voit olettaa, että merkkijono koostuu pelkästään pienistä suomen kielen kirjaimista a...ö.
+Du kan anta att strängen består av gemener i intervallet `a-ö`.
 
-Esimerkki funktion käytöstä:
+Exempel:
 
 ```python
-mjono = "tämä on esimerkki"
-print(ilman_vokaaleja(mjono))
+strang = "det här är ett exempel"
+print(ilman_vokaaleja(strang))
 ```
 
 <sample-output>
 
-tm n smrkk
+dt hr r tt xmpl
 
 </sample-output>
 
@@ -324,15 +324,15 @@ tm n smrkk
 
 <programming-exercise name='Poista isot' tmcname='osa04-24_poista_isot'>
 
-Pythonin merkkijonometodi `isupper()` palauttaa arvon `True`, jos merkkijono koostuu _pelkästään isoista kirjaimista_.
+Pythons strängmetod `isupper()` returnerar `True` om strängen består av enbart versaler.
 
-Esimerkiksi:
+Exempel:
 
 ```python
 print("XYZ".isupper())
 
-onko_iso = "Abc".isupper()
-print(onko_iso)
+bara_stora = "Abc".isupper()
+print(bara_stora)
 ```
 
 <sample-output>
@@ -342,20 +342,19 @@ False
 
 </sample-output>
 
-Kirjoita metodia hyödyntäen funktio `poista_isot`, joka saa parametrikseen listan merkkijonoja. Funktio palauttaa uuden listan, jolla on sen parametrina olevasta listasta ne merkkijonot, jotka eivät koostu kokonaan isoista kirjaimista.
+Skapa funktionen `versaler_bort` som tar emot som argument en lista med strängar. Funktionen ska returnera en ny lista med de strängar som inte består av enbart versaler.
 
-
-Esimerkki funktion käytöstä:
+Exempel:
 
 ```python
-lista = ["ABC", "def", "ISO", "TOINENISO", "pieni", "toinen pieni", "Osittain Iso"]
-karsittu_lista = poista_isot(lista)
-print(karsittu_lista)
+lista = ["ABC", "def", "STOR", "ANNANSTOR", "liten", "annan liten", "Delvis stoR"]
+filtrerad_lista = versaler_bort(lista)
+print(filtrerad_lista)
 ```
 
 <sample-output>
 
-['def', 'pieni', 'toinen pieni', 'Osittain Iso']
+['def', 'liten', 'annan liten', 'Delvis stoR']
 
 </sample-output>
 
@@ -363,17 +362,17 @@ print(karsittu_lista)
 
 <programming-exercise name='Naapureita listassa' tmcname='osa04-25_naapureita_listassa'>
 
-Määritellään, että listan alkiot ovat naapureita, jos niiden erotus on 1. Naapureita olisivat siis esim alkiot 1 ja 2 tai alkiot 56 ja 55.
+Vi definierar att två element i en lista är grannar då skillnaden mellan deras värden är ett. Dvs. t.ex. elementen `1` och `2` samt `56` och `55`.
 
-Kirjoita funktio `pisin_naapurijono`, joka etsii listasta pisimmän peräkkäisiä naapureita sisältävän osalistan ja palauttaa sen pituuden.
+Skapa funktionen `langsta_grannstrackan` som letar efter den längsta dellistan bestående av bredvidliggande grannar. Listans längd ska returneras.
 
-Esimerkiksi listassa `[1, 2, 5, 4, 3, 4]` pisin tällainen osalista olisi `[5, 4, 3, 4]`, ja sen pituus 4.
+T.ex. i listan `[1, 2, 5, 4, 3, 4]` skulle dellistan vara `[5, 4, 3, 4]` och längden som returneras därmed `4`.
 
-Esimerkki funktion kutsumisesta:
+Exempel:
 
 ```python
 lista = [1, 2, 5, 7, 6, 5, 6, 3, 4, 1, 0]
-print(pisin_naapurijono(lista))
+print(langsta_grannstrackan(lista))
 ```
 
 <sample-output>
@@ -394,8 +393,8 @@ Du kommer att behöva ett sätt att testa dina funktioner utanför huvudfunktion
 
 ```python
 def main():
-    pisteet = []
-    # ohjelman koodi tänne
+    poang = []
+    # programmets kod hit
 
 main()
 ```
@@ -403,21 +402,21 @@ main()
 Nu kan hjälpfunktionerna köras utan att huvudfunktionen körs:
 
 ```python
-# apufunktio, joka laskee arvosanan pisteiden perusteella
-def arvosana(pisteet):
-    # koodia
+# hjälpfunktion som räknar vitsord baserat på givet poängantal
+def vitsord(poang):
+    # koo
 
 def main():
-    pisteet = []
-    # ohjelman koodi tänne
+    poang = []
+    # programmets kod hit
 
-# kommentoidaan pääohjelma pois
+# kommenterar huvudprogrammet bort
 #main()
 
-# testataan apufunktiota
-pistemaara = 35
-tulos = arvosana(pistemaara)
-print(tulos)
+# testar hjälpfunktionen
+poang = 35
+resultat = vitsord(poang)
+print(resultat)
 ```
 
 ## Skicka data från en funktion till en annan
@@ -427,49 +426,49 @@ När ett program innehåller flera funktioner uppstår en fråga: hur skickar ja
 I följande exempel frågar man efter några heltal från användaren. Programmet skriver sedan ut dessa värden och utför en "analys" på dem. Programmet är uppdelat i tre skilda funktioner:
 
 ```python
-def lue_kayttajalta(maara: int):
-    print(f"Syötä {maara} lukua:")
-    luvut = []
+def las_fran_anvandare(antal: int):
+    print(f"Ange {antal} tal:")
+    siffror = []
 
-    for i in range(maara):
-        luku = int(input("Anna luku: "))
-        luvut.append(luku)
+    for i in range(antal):
+        siffra = int(input("Ange tal: "))
+        siffror.append(siffra)
 
-    return luvut
+    return siffror
 
-def tulosta(luvut: list):
-    print("Luvut ovat: ")
-    for luku in luvut:
-        print(luku)
+def skriv_ut(siffror: list):
+    print("Talen är: ")
+    for siffra in siffror:
+        print(siffra)
 
-def analysoi(luvut: list):
-    keskiarvo = sum(luvut) / len(luvut)
-    return f"Lukuja yhteensä {len(luvut)}, keskiarvo {keskiarvo}, pienin {min(luvut)} ja suurin {max(luvut)}"
+def analysera(siffror: list):
+    medeltal = sum(siffror) / len(siffror)
+    return f"Siffror tillsammans {len(siffror)}, medeltal {medeltal}, minsta {min(siffror)} och största {max(siffror)}"
 
-# funktioita käyttävä "pääohjelma"
-syotteet = lue_kayttajalta(5)
-tulosta(syotteet)
-analyysin_tulos = analysoi(syotteet)
-print(analyysin_tulos)
+# "huvudprogram" som använder funktionerna
+indata = las_fran_anvandare(5)
+skriv_ut(indata)
+analysens_resultat = analysera(indata)
+print(analysens_resultat)
 ```
 
 När programmet körs, skulle det kunna se ut så här:
 
 <sample-output>
 
-Syötä 5 lukua:
-Anna luku: **10**
-Anna luku: **34**
-Anna luku: **-32**
-Anna luku: **99**
-Anna luku: **-53**
-Luvut ovat:
+Ange 5 tal:
+Ange tal: **10**
+Ange tal: **34**
+Ange tal: **-32**
+Ange tal: **99**
+Ange tal: **-53**
+Talen är:
 10
 34
 -32
 99
 -53
-Lukuja yhteensä 5, keskiarvo 11.6, pienin -53 ja suurin 99
+Siffror tillsammans 5, medeltal 11.6, minsta -53 och största 99
 
 </sample-output>
 
@@ -484,69 +483,69 @@ Att skicka data ut och in från funktioner gör man alltså helst med hjälp av 
 Du kunde också göra huvudfunktionen till sin egen funktion. Då skulle variabeln siffor inte längre vara en global variabel, utan en lokal variabel i `main`-funktionen:
 
 ```python
-# pääohjelmaa edustava funktio
+# funktion som representerar huvudfunktionen
 def main():
-    syotteet = lue_kayttajalta(5)
-    tulosta(syotteet)
-    analyysin_tulos = analysoi(syotteet)
+    indata = las_fran_anvandare(5)
+    skriv_ut(indata)
+    analysens_resultat = analysera(indata)
 
-    print(analyysin_tulos)
+    print(analysens_resultat)
 
-# ohjelman käynnistys
+# start av programmet
 main()
 ```
 
 <programming-exercise name='Arvosanatilasto' tmcname='osa04-26_arvosanatilasto'>
 
-Tässä tehtävässä toteutetaan ohjelma kurssin arvosanatilastojen tulostamiseen.
+I den här uppgiften skapar vi ett program vars uppgift är att skriva ut vitsordsstatistik för en kurs.
 
-Ohjelmalle syötetään rivejä, jotka sisältävät yhden opiskelijan koepistemäärän sekä tehtyjen harjoitustehtävien määrän. Ohjelma tulostaa niiden perusteella arvosanoihin liittyviä tilastoja.
+Till programmet ger man rader med information om en studerandes provpoäng samt antalet gjorda uppgifter under kursen. Programmet skriver ut statistik på basis av dessa uppgifter.
 
-Koepisteet ovat kokonaislukuja väliltä 0–20. Tehtyjen harjoitustehtävien lukumäärät taas kokonaislukuja väliltä 0–100.
+Provpoängen är heltal mellan noll och 20. Antalet gjorda uppgifter under kursen är ett heltal mellan noll och 100.
 
-Ohjelma kyselee käyttäjältä rivejä niin kauan, kunnes käyttäjä syöttää tyhjän rivin. Voit olettaa, että kaikki rivit on syötetty "oikein", eli rivillä on joko kaksi kokonaislukua tai rivi on tyhjä.
+Programmet ber om indata från användaren, tills hon matar in en tom rad. Du kan anta att alla rader är korrekt inmatade – de innehåller alltså antingen två heltal eller är tomma.
 
-Koepisteiden ja harjoitustehtävien syöttäminen etenee seuraavasti:
+Så här anger man provpoängen och antalet gjorda uppgifter under kursen:
 
 <sample-output>
 
-Koepisteet ja harjoitusten määrä: **15 87**
-Koepisteet ja harjoitusten määrä: **10 55**
-Koepisteet ja harjoitusten määrä: **11 40**
-Koepisteet ja harjoitusten määrä: **4 17**
-Koepisteet ja harjoitusten määrä:
-Tilasto:
+Provpoäng samt antalet gjorda uppgifter under kursen: **15 87**
+Provpoäng samt antalet gjorda uppgifter under kursen: **10 55**
+Provpoäng samt antalet gjorda uppgifter under kursen: **11 40**
+Provpoäng samt antalet gjorda uppgifter under kursen: **4 17**
+Provpoäng samt antalet gjorda uppgifter under kursen:
+Statistik:
 
 </sample-output>
 
-Kun käyttäjä on syöttänyt tyhjän rivin, tulostaa ohjelma tilastot.
+När användaren matat in en tom rad ska programmet skriva ut statistik.
 
-Tilastot muodostuvat seuraavasti:
+Statistiken består av de följande:
 
-Tehtyjen harjoitustehtävien lukumäärästä saa _harjoituspisteitä_ siten, että vähintään 10 % tehtävämäärästä tuo yhden harjoituspisteen, 20 % tuo 2 harjoituspistettä, jne., ja 100 % eli 100 harjoitustehtävää tuo 10 harjoituspistettä. Harjoitustehtävistä saatava pistemäärä on kokonaisluku.
+Uppgiftspoäng: Ett poäng för 10 % gjorda uppgifter. Detta går ända upp till 100 % (100 uppgifter) --> 10 poäng. Uppgiftspoängen är ett heltal.
 
-Kurssin arvosana määräytyy kokeen pistemäärän ja harjoitustehtävistä saatavien pisteiden summasta seuraavan taulukon mukaan:
+Kursvitsord: Räknas på basis av prov- och uppgiftspoängens summa, se följande tabell.
 
-koepisteet+harjoituspisteet   | arvosana
-:--:|:----:
-0–14 | 0 (eli hylätty)
-15–17 | 1
-18–20 | 2
-21–23 | 3
-24–27 | 4
-28–30 | 5
+Provpoäng + uppgiftspoäng | Vitsord
+:------------------------:|:-------:
+0–14                      | 0 (underkänt)
+15–17                     | 1
+18–20                     | 2
+21–23                     | 3
+24–27                     | 4
+28–30                     | 5
 
-Edelliseen on kuitenkin poikkeus: jos kokeen pistemäärä on alle 10, on arvosana kokonaispistemäärästä riippumatta 0 eli hylätty.
+Om provpoängen är under 10, kommer vitsordet dock alltid att vara 0, underkänt.
 
-Yllä olevalla esimerkkisyötteellä ohjelma tulostaa seuraavat tilastot:
+Följande statistik skrivs ut med indatan från exemplet ovan:
 
 <sample-output>
 
 <pre>
-Tilasto:
-Pisteiden keskiarvo: 14.5
-Hyväksymisprosentti: 75.0
-Arvosanajakauma:
+Statistik:
+Poängmedeltal: 14.5
+Godkända (%): 75.0
+Vitsordsfördelning:
   5:
   4:
   3: *
@@ -557,22 +556,19 @@ Arvosanajakauma:
 
 </sample-output>
 
-Desimaaliluvut tulostetaan yhden desimaalin tarkkuudella.
+Decimaltal ska skrivas ut med en decimal.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon! Eli jos ohjelmasi toiminnallisuus on esim. funktiossa `main`, tulee sitä kutsuva koodi kirjoittaa normaaliin tapaan, eikä ym. if-lohkoon kuten on tehtävä niissä tehtävissä, joissa edellytetään funktioiden toteuttamista.
+Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det. Om programmets funktionalitet t.ex. finns i funktionen `main`, ska funktionen anropas utanför det nämnda if-blocket.
 
-**Vihje:**
-
-Ohjelman syöte koostuu riveistä joilla on peräkkäin kaksi numeroa:
+Tips: Indatan ges som rader som består av två siffror i följande format.
 
 <sample-output>
 
-Koepisteet ja harjoitusten määrä: **15 87**
+Provpoäng samt antalet gjorda uppgifter under kursen: **15 87**
 
 </sample-output>
 
-Syöterivi pitää pilkkoa ensin kahtia ja muuttaa palaset kokonaisluvuksi `int`-funktiolla. Rivin pilkkominen onnistuu samalla tavalla kun tehtävässä [Eka, toka ja vika sana](/osa-4/2-lisaa-funktioista). Siihen on olemassa myös hieman helpompi keino, merkkijonojen metodi `split`. Googlaa jos haluat, käytä esim. hakusanoja *python string split*.
+Raden som matas in ska först delas i två, varefter delarna ska konverteras till heltal med `int`-funktionen. Du kan dela en rad på samma sätt som i den här uppgiften. Du kan också använda strängmetoden `split`. Du kan söka efter `python string split` på nätet för mera information.
 
 <!-- **Huomaa** että tällä hetkellä Windowsissa on ongelmia joidenkin tehtävien testien suorittamisessa. Jos törmäät seuraavaan virheilmoitukseen
 
@@ -586,9 +582,7 @@ Ongelman saa korjattua menemällä laajennuksen asennusvalikkoon ja muuttamalla 
 
 Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
 
-
 </programming-exercise>
-
 
 <quiz id="00a23e8f-ecc1-59b7-bd22-a78c4c3e2d4b"></quiz>
 

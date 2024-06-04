@@ -21,9 +21,9 @@ CSV är ett så enkelt format att vi tills vidare har behandlat dessa filer med 
 ```python
 import csv
 
-with open("testi.csv") as tiedosto:
-    for rivi in csv.reader(tiedosto, delimiter=";"):
-        print(rivi)
+with open("test.csv") as fil:
+    for rad in csv.reader(fil, delimiter=";"):
+        print(rad)
 ```
 
 Koden ovan läser alla rader i CSV-filen `test.csv`, skiljer innehåller på varje rad med separatorn `;` och skriver ut varje lista. Om innehållet i filen är det följande…
@@ -69,19 +69,19 @@ JSON-filer är textfiler som följer en strikt syntax, som eventuellt är lite m
 ```x
 [
     {
-        "nimi": "Ohjelmoinnin perusteet",
-        "tunnus": "Ohpe",
-        "periodit": [1, 3]
+        "namn": "Introkurs i programmering",
+        "id": "Ohpe",
+        "perioder": [1, 3]
     },
     {
-        "nimi": "Ohjelmoinnin jatkokurssi",
-        "tunnus": "Ohja",
-        "periodit": [2, 4]
+        "namn": "Fortsättningskurs i programmering",
+        "id": "Ohja",
+        "perioder": [2, 4]
     },
     {
-        "nimi": "Tietokantasovellus",
-        "tunnus": "Tsoha",
-        "periodit": [1, 2, 3, 4]
+        "namn": "Databasapplikation",
+        "id": "Tsoha",
+        "perioder": [1, 2, 3, 4]
     }
 ]
 ```
@@ -94,32 +94,32 @@ Standardbiblioteket innehåller `json`-modulen som kan användas för att behand
 ```python
 import json
 
-with open("kurssit.json") as tiedosto:
-    data = tiedosto.read()
-kurssit = json.loads(data)
-print(kurssit)
+with open("kurser.json") as fil:
+    data = fil.read()
+kurser = json.loads(data)
+print(kurser)
 ```
 
 …får vi följande utskrift:
 
 <sample-output>
 
-[{'nimi': 'Ohjelmoinnin perusteet', 'tunnus': 'Ohpe', 'periodit': [1, 3]}, {'nimi': 'Ohjelmoinnin jatkokurssi', 'tunnus': 'Ohja', 'periodit': [2, 4]}, {'nimi': 'Tietokantasovellus', 'tunnus': 'Tsoha', 'periodit': [1, 2, 3, 4]}]
+[{'namn': 'Introkurs i programmering', 'id': 'Ohpe', 'perioder': [1, 3]}, {'namn': 'Fortsättningskurs i programmering', 'id': 'Ohja', 'perioder': [2, 4]}, {'namn': 'Databasapplikation', 'id': 'Tsoha', 'perioder': [1, 2, 3, 4]}]
 
 </sample-output>
 
 Om vi vill skriva ut namnet på varje kurs kan vi använda en for-loop:
 
 ```python
-for kurssi in kurssit:
-    print(kurssi["nimi"])
+for kurs in kurser:
+    print(kurs["namn"])
 ```
 
 <sample-output>
 
-Ohjelmoinnin perusteet
-Ohjelmoinnin jatkokurssi
-Tietokantasovellus
+Introkurs i programmering
+Fortsättningskurs i programmering
+Databasapplikation
 
 </sample-output>
 
@@ -130,35 +130,35 @@ Tarkastellaan JSON-tiedostoa, jossa on tietoa opiskelijoista seuraavassa muodoss
 ```json
 [
     {
-        "nimi": "Pekka Pythonisti",
-        "ika": 27,
-        "harrastukset": [
-            "koodaus",
-            "kutominen"
+        "namn": "Piritta Pythonist",
+        "alder": 27,
+        "hobbyer": [
+            "att koda",
+            "att virka"
         ]
     },
     {
-        "nimi": "Jaana Javanainen",
-        "ika": 24,
-        "harrastukset": [
-            "koodaus",
-            "kalliokiipeily",
-            "lukeminen"
+        "namn": "Jessica Javalig",
+        "alder": 24,
+        "hobbyer": [
+            "att koda",
+            "bergsklättring",
+            "att läsa"
         ]
     }
 ]
 ```
 
-Toteuta funktio `tulosta_henkilot(tiedosto: str)`, joka lukee esimerkin tavalla muodostetun JSON-tiedoston (jonka sisältönä voi olla mielivaltainen määrä henkilöitä) ja tulostaa ne seuraavassa muodossa:
+Skapa funktionen `skriv_ut_personer(fil: str)` som läser en JSON-fil enligt formatet ovan och skriver ut informationen så här:
 
 <sample-output>
 
-Pekka Pythonisti 27 vuotta (koodaus, kutominen)
-Jaana Javanainen 24 vuotta (koodaus, kalliokiipeily, lukeminen)
+Piritta Pythonist 27 år (att koda, att virka)
+Jessica Javalig 24 år (att koda, bergsklättring, att läsa)
 
 </sample-output>
 
-Harrastukset tulee luetella samassa järjestyksessä kuin ne on annettu JSON-tiedostossa.
+Hobbyerna ska vara i samma ordning som i JSON-filen.
 
 </programming-exercise>
 
@@ -171,19 +171,19 @@ Följande kodstunn skriver ut innehållet från huvudsidan för Helsingfors univ
 ```python
 import urllib.request
 
-pyynto = urllib.request.urlopen("https://helsinki.fi")
-print(pyynto.read())
+begaran = urllib.request.urlopen("https://helsinki.fi")
+print(begaran.read())
 ```
 
 Sidor som är skräddarsydda för människoögon ser inte vanligtvis trevliga ut när deras kod skrivs ut. I de kommande exemplen kommer vi däremot att läsa in data i maskinformat från internet. En stor del maskinläsbara data på internet är i JSON-format.
 
 <programming-exercise name='Kurssien tilastot' tmcname='osa07-13_kurssistatistiikka'>
 
-#### tieto kursseista
+#### Info om kurser
 
-Osoitteesta <https://studies.cs.helsinki.fi/stats-mock/api/courses> löytyy JSON-muodossa muutaman laitoksen verkkokurssin perustiedot.
+På adressen <https://studies.cs.helsinki.fi/stats-mock/api/courses> finns det info om några nätkurser i JSON-format.
 
-Tee funktio `hae_kaikki()` joka hakee ja palauttaa kaikkien menossa olevien kurssien (kentän `enabled` arvona `True`) tiedot listana tupleja. Paluuarvon muoto on seuraava:
+Skapa funktionen `hamta_alla()` som hämtar och returnerar de aktiva kursernas (fältet `enabled` har värdet `True`) info som en lista med tupler enligt följande exempel:
 
 <sample-output>
 
@@ -198,19 +198,18 @@ Tee funktio `hae_kaikki()` joka hakee ja palauttaa kaikkien menossa olevien kurs
 
 </sample-output>
 
-Jokainen tuple siis sisältää seuraavat arvot:
+Alla tupler innehåller alltså
 
-- kurssin koko nimi (`fullName`)
-- nimi (`name`)
-- vuosi (`year`)
-- harjoitusten (`exercises`) yhteenlaskettu määrä
+* kursens namn (`fullName`)
+* kort namn (`name`)
+* år (`year`)
+* totalt antal övningar (`exercises`).
 
+Obs! Du måste använda funktionen `urllib.request.urlopen`.
 
-*Huom*: Tämän tehtävän testien toimivuuden osalta on oleellista, että haet tiedot funktiolla `urllib.request.urlopen`.
+Obs! Hårdkoda inte data, testerna kommer att avslöja sådana försök!!
 
-*Huom2:* Testeissä käytetään myös ovelaa kikkaa, joka hieman muuttaa internetistä tulevaa dataa ja tämän avulla varmistaa, että et huijaa tehtävässäsi palauttamalla "kovakoodattua" dataa.
-
-*Huom3:* Jotkut Mac-käyttäjät ovat törmänneet tehtävässä seuraavaan ongelmaan:
+Obs! En del Mac-användare har stött på följande problem:
 
 ```sh
 File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/urllib/request.py", line 1353, in do_open
@@ -218,87 +217,87 @@ File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/urllib/req
 urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1124)>
 ```
 
-Ongelman ratkaisutapa riippuu siitä miten python on asennettu koneellesi. Joissain tapauksissa toimii seuraava:
+Lösningen beror på hur Python är installerat på datorn. I vissa fall fungerar:
 
 ```sh
 cd "/Applications/Python 3.8/"
 sudo "./Install Certificates.command
 ```
 
-Huomaa, että cd-komennon polku riippuu käyttämästäsi Pythonin versiosta. Se voi olla myös "/Applications/Python 3.8/".
+Sökvägen i `cd`-kommandot beror på din Python-version.
 
-[Täällä](https://stackoverflow.com/questions/27835619/urllib-and-ssl-certificate-verify-failed-error) on ehdotettu useita erilaisia ratkaisuja ongelmaan.
+Här hittar du flera möjliga lösningar.
 
-Eräs kikka jota voit kokeilla, on seuraava:
+Du kan testa på följande:
 
 ```python
 import urllib.request
 import json
-import ssl # lisää tämä kirjasto importeihin
+import ssl # lägg till det här
 
-def hae_kaikki():
-    # ja tämä rivi funktioiden alkuun
+def hamta_alla():
+    # och det här i början av funktioner
     context = ssl._create_unverified_context()
-    # muu koodi
+    # övrig kod
 ```
 
 Toinen tapa kiertää ongelma on seuraava:
 
  ```python
 import urllib.request
-import certifi # lisää tämä kirjasto importeihin
+import certifi # lägg till det här
 import json
 
-def hae_kaikki():
-    osoite = "https://studies.cs.helsinki.fi/stats-mock/api/courses"
-    # lisätään kutsuun toinen parametri
-    pyynto = urllib.request.urlopen(osoite, cafile=certifi.where())
-    # muu koodi
+def hamta_alla():
+    adress = "https://studies.cs.helsinki.fi/stats-mock/api/courses"
+    # lägger till ett andra argument
+    begaran = urllib.request.urlopen(adress, cafile=certifi.where())
+    # övrig kod
 ```
 
-#### yhden kurssin tiedot
+#### Info om en kurs
 
-Kunkin kurssin JSON-muotoinen tehtävästatistiikka löytyy omasta osoitteesta, joka saadaan vaihtamalla kurssin kenttä `name` seuraavassa tähtien paikalle <https://studies.cs.helsinki.fi/stats-mock/api/courses/****/stats>
+För varje kurs finns uppgiftsstatistik på adressen <https://studies.cs.helsinki.fi/stats-mock/api/courses/****/stats> – ersätt asteriskerna med kursens korta namn (`name`).
 
-Esimerkiksi kurssin `docker2019` tiedot ovat osoitteessa <https://studies.cs.helsinki.fi/stats-mock/api/courses/docker2019/stats>
+T.ex. statistik för kursen `docker2019` finns på <https://studies.cs.helsinki.fi/stats-mock/api/courses/docker2019/stats>.
 
-Tee ohjelmaasi funktio `hae_kurssi(kurssi: str)`, joka palauttaa kurssin tarkemman tehtävästatistiikan.
+Skapa funktionen `hamta_kurs(kurs: str)` som hämtar statistik för den valda kursen.
 
-Kun kutsutaan `hae_kurssi("docker2019")`, funktio palauttaa sanakirjan, jonka sisältö on seuraava:
+När vi anropar `hamta_kurs("docker2019")` returnerar funktionen ett lexikon med följande innehåll:
 
 <sample-output>
 
 <pre>
 {
-    'viikkoja': 4,
-    'opiskelijoita': 220,
-    'tunteja': 5966,
-    'tunteja_keskimaarin': 27,
-    'tehtavia': 4988,
-    'tehtavia_keskimaarin': 22
+    'veckor': 4,
+    'studerande': 220,
+    'timmar': 5966,
+    'timmar_genomsnitt': 27,
+    'uppgifter': 4988,
+    'uppgifter_genomsnitt': 22
 }
 </pre>
 
 </sample-output>
 
-Sanakirjaan tallennetut arvot määrittyvät seuraavasti:
+Värdena bestäms enligt följande:
 
-- `viikkoja`: kurssia vastaavan JSON-olioiden määrä
-- `opiskelijoita` viikkojen opiskelijamäärien maksimi
-- `tunteja`: kakkien viikkojen tuntimäärien (`hour_total`) summa
-- `tunteja_keskimaarin`: edellinen jaettuna opiskelijamäärällä (kokonaislukuna pyöristettynä alaspäin)
-- `tehtavia`: kakkien viikkojen tehtävämäärien (`exercise_total`) summa
-- `tehtavia_keskimaarin`: edellinen jaettuna opiskelijamäärällä (kokonaislukuna pyöristettynä alaspäin)
+- `veckor`: antal JSON-element som representerar en kurs
+- `studerande`: maxantal studerande under veckorna
+- `timmar`: summan av alla veckornas timantal (`hour_total`)
+- `timmar_genomsnitt`: föregående dividerat med antal studerande (heltal, avrundas nedåt)
+- `uppgifter`: alla veckors uppgiftsantal (`exercise_total`) summerat
+- `uppgifter_genomsnitt`: föregående dividerat med antal studerande (heltal, avrundas nedåt)
 
-*Huom*: Samat huomiot pätevät tähän osaan kuin edelliseen!
+Obs! Alla `Obs!` ovan gäller också här.
 
-*Huom2*: löydät [math](https://docs.python.org/3/library/math.html) -moduulista funktion, jonka avulla kokonaisluvun alaspäin pyöristäminen on helppoa
+Obs! I `math`-modulen hittar du en funktion som gör det lätt att avrunda nedåt.
 
 </programming-exercise>
 
 <programming-exercise name='Kuka huijasi' tmcname='osa07-14_kuka_huijasi'>
 
-Tiedostossa `tentin_aloitus.csv` on tenttien aloitusaikoja muodossa `tunnus;hh:mm`. Esimerkiksi:
+I filen `start.csv` finns starttider för tentor i formatet `id;hh:mm`:
 
 ```csv
 jarmo;09:00
@@ -306,33 +305,33 @@ timo;18:42
 kalle;13:23
 ```
 
-Lisäksi tiedostossa `palautus.csv` on tehtävien palautusaikoja muodossa `tunnus;tehtävä;pisteet;hh:mm`. Esimerkiksi:
+I filen `returnering.csv` finns returneringstiden för uppgifter i formatet `id;uppgift;poäng;hh:mm`:
 
 ```csv
 jarmo;1;8;16:05
 timo;2;10;21:22
 jarmo;2;10;19:15
-jne...
+o.s.v. ...
 ```
 
-Tehtäväsi on etsiä ne opiskelijat, jotka ovat käyttäneet tenttiin yli 3 tuntia aikaa, eli opiskelijat, joiden _jonkin_ tehtävän palautus on tehty yli 3 tuntia tentin aloitusajasta. Palautuksia voi siis olla useampi. Voit olettaa, että kaikki ajat ovat saman vuorokauden puolella.
+Din uppgift är att hitta de studerande som använt över tre timmar för att göra sin tenta, dvs. någon av uppgifterna har lämnats in över tre timmar sedan tentan inleddes. Det kan alltså finnas flera inlämningar. Du kan anta att alla klockslag är under samma dygn.
 
-Kirjoita funktio `huijarit()`, joka palauttaa listan huijanneiden opiskelijoiden käyttäjätunnuksista.
+Skapa funktionen `fuskare()` som returnerar en lista över fuskarnas id:n.
 
 </programming-exercise>
 
 <programming-exercise name='Kuka huijasi, versio 2' tmcname='osa07-15_kuka_huijasi_2'>
 
-Käytössäsi on edellisessä tehtävässä määritellyt datatiedostot. Kirjoita funktio `viralliset_pisteet()`, joka palauttaa sanakirjassa (dict) opiskelijoiden koepisteet seuraavien sääntöjen mukaan:
+Du har till ditt förfogande de filer som presenterades i den förra uppgiften. Skapa funktionen `officiella_poang()`, som returnerar studerandenas provpoäng i ett lexikon enligt följande regler:
 
-* Jos samaan tehtävänumeroon on tehty useita palautuksia, korkeimman pistemäärän palautus otetaan huomioon
-* Jos tehtäväpalautus on tehty yli 3 tuntia tentin aloittamisen jälkeen, palautusta ei huomioida ollenkaan
+* om samma uppgift har flera inlämningar, tas inlämningen med högsta poäng i beaktande
+* om en inlämning gjorts över tre timmar efter att tentan inletts, ska inlämningen inte tas i beaktande.
 
-Tehtävät on numeroitu 1–8 ja jokaisesta tehtävästä voi saada 0–6 pistettä.
+Uppgifterna är numrerade 1-8 och för varje uppgift kan man få 0-6 poäng.
 
-Palautetussa sanakirjassa tunnus on avain ja tehtävien yhteispistemäärä arvo.
+I lexikonet är nyckeln id:t och värdet totalpoängen.
 
-Vinkki: sisäkkäiset sanakirjat (dict) ovat mainio työkalua tallennettaessa eri opiskelijoiden pisteitä ja aikoja.
+Tips: Du kan lagra lexikon inuti lexikon, vilket kan vara till nytta då du lagrar poängantal och tider för olika studerande.
 
 </programming-exercise>
 
@@ -348,18 +347,18 @@ Förutom standardbiblioteket är internet fullproppat med andra Python-moduler f
 
 <programming-exercise name='Spellchecker, versio 2' tmcname='osa07-16_spellchecker_versio2'>
 
-Teemme tässä tehtävässä hieman parannellun version edellisen osan tehtävästä Spellchecker.
+I den här uppgiften förbättrar vi lite vårt språkkontrollverktyg.
 
-Edellisen osan version tapaan ohjelma pyytää käyttäjää kirjoittamaan rivin englanninkielistä tekstiä. Ohjelma suorittaa tekstille oikeinkirjoitustarkistuksen ja tulostaa saman tekstin siten, että kaikki väärin kirjoitetut sanat on ympäröity tähdillä. _Tämän lisäksi ohjelma antaa listan korjausehdotuksia väärin kirjotettuihin sanoihin._
+Som i den förra versionen ska programmet be användaren ange text på engelska. Programmet utför språkkontroll och markerar felstavade ord. Dessutom ska programmet nu föreslå lösningar på skrivfelen.
 
-Seuraavassa kaksi käyttöesimerkkiä:
+Två exempel:
 
 <sample-output>
 
 write text: **We use ptython to make a spell checker**
 <pre>
 We use *ptython* to make a spell checker
-korjausehdotukset:
+förslag:
 ptython: python, pythons, typhon
 </pre>
 
@@ -370,16 +369,16 @@ ptython: python, pythons, typhon
 write text: **this is acually a good and usefull program**
 <pre>
 this is *acually* a good and *usefull* program
-korjausehdotukset:
+förslag:
 acually: actually, tactually, factually
 usefull: usefully, useful, museful
 </pre>
 
 </sample-output>
 
-Korjausehdotukset etsitään standardikirjaston moduulin [difflib](https://docs.python.org/3/library/difflib.html) tarjoaman funktion [get\_close\_matches](https://docs.python.org/3/library/difflib.html#difflib.get_close_matches) avulla.
+Korrigeringsförslagen söks med hjälp av modulen `difflib` i standardbiblioteket: använd funktionen `get_close_matches`.
 
-*Huom*: jotta testit toimisivat, käytä funktiota "oletusasetuksilla", eli antamalla sille kaksi parametria: virheellinen sana ja lista oikeista sanoista.
+Obs! För att testen ska fungera ska du använda funktionen med dess förinställda val – ge alltså bara två argument: felaktiga ordet och listan med korrekta ord.
 
 </programming-exercise>
 

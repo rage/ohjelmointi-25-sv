@@ -22,28 +22,28 @@ Vi tar en titt på ett program som ber användaren att ge en siffra som skrivs u
 
 ```python
 while True:
-    luku = int(input("Anna luku, -1 lopettaa: "))
+    siffra = int(input("Ge en siffra, -1 avslutar programmet: "))
 
-    if luku == -1:
+    if siffra == -1:
         break
 
-    print(luku ** 2)
+    print(siffra ** 2)
 
-print("Kiitos ja moi!")
+print("Tack och hej!")
 ```
 
 Så här kan det se ut när programmet körs:
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **2**
+Ge en siffra, -1 avslutar programmet: **2**
 4
-Anna luku, -1 lopettaa: **4**
+Ge en siffra, -1 avslutar programmet: **4**
 16
-Anna luku, -1 lopettaa: **10**
+Ge en siffra, -1 avslutar programmet: **10**
 100
-Anna luku, -1 lopettaa: **-1**
-Kiitos ja moi!
+Ge en siffra, -1 avslutar programmet: **-1**
+Tack och hej!
 
 </sample-output>
 
@@ -52,21 +52,21 @@ Som du ser ovan, frågar programmet om ett nummer flera gånger. Detta tack vare
 När man arbetar med loopar är det viktigt att loopen avslutas vid något skede. Om man inte tar det här i beaktande kan loopen fortsätta för evigt. Vi ändrar lite på ovanstående exempel för att åstadkomma en sådan här situation:
 
 ```python
-luku = int(input("Anna luku, -1 lopettaa: "))
+siffra = int(input("Ge en siffra, -1 avslutar programmet: "))
 while True:
-    if luku == -1:
+    if siffra == -1:
         break
 
-    print(luku ** 2)
+    print(siffra ** 2)
 
-print("Kiitos ja moi!")
+print("Tack och hej!")
 ```
 
 I den här versionen frågar programmet användaren efter siffran utanför loopen. Om användaren ger någon annan siffra än -1 kommer loopen aldrig att avslutas. Vi har en oändlig loop vilket i princip betyder att koden körs oavbrutet, för evigt:
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **2**
+Ge en siffra, -1 avslutar programmet: **2**
 4
 4
 4
@@ -75,7 +75,7 @@ Anna luku, -1 lopettaa: **2**
 4
 4
 4
-(jatkuu ikuisesti...)
+(fortsätter oändligt...)
 
 </sample-output>
 
@@ -83,42 +83,42 @@ Följande program har en mycket liknande struktur jämfört med exemplet ovan, m
 
 ```python
 while True:
-    koodi = input("Anna PIN-koodi: ")
-    if koodi == "1234":
+    kod = input("Ange pin-kod: ")
+    if kod == "1234":
         break
-    print("Väärin... yritä uudelleen")
+    print("Fel! Försök igen")
 
-print("PIN-koodi oikein!")
+print("Korrekt pin-kod")
 ```
 
 <sample-output>
 
-Anna PIN-koodi: **0000**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **9999**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **1234**
-PIN-koodi oikein!
+Ange pin-kod: **0000**
+Fel! Försök igen
+Ange pin-kod: **9999**
+Fel! Försök igen
+Ange pin-kod: **1234**
+Korrekt pin-kod
 
 </sample-output>
 
 <in-browser-programming-exercise name="Jatketaanko" tmcname="osa02-15_jatketaanko">
 
-Kirjoita edellä olevaa toistolause-esimerkkiä mukaillen ohjelma, joka tulostaa viestin "moi" ja kysyy käyttäjältä "Jatketaanko?" kunnes käyttäjä syöttää merkkijonon "ei". Tämän jälkeen tulostetaan merkkijono "ei sitten" ja suoritus päättyy.
+Skriv enligt föregående exempel ett program som skriver ut texten "hej" och frågar "Fortsätter vi?" tills användaren svarar "nej". Efter det här skriver programmet ut "inte då" och programmet avslutas.
 
-Esimerkkitulostus
+Exempel:
 
 <sample-output>
 
-moi
-Jatketaanko? **kyllä**
-moi
-Jatketaanko? **yes**
-moi
-Jatketaanko? **jawohl**
-moi
-Jatketaanko? **ei**
-ei sitten
+hej
+Fortsätter vi? **ja**
+hej
+Fortsätter vi? **yes**
+hej
+Fortsätter vi? **jawohl**
+hej
+Fortsätter vi? **nej**
+inte då
 
 </sample-output>
 
@@ -126,12 +126,12 @@ ei sitten
 
 <in-browser-programming-exercise name="Syötteen rajaus" tmcname="osa02-16_syotteen_rajaus">
 
-Kirjoita ohjelma, joka kysyy käyttäjältä lukuja. Mikäli luku on negatiivinen (eli pienempi kuin nolla), käyttäjälle tulostetaan viesti "Epäkelpo luku" ja käyttäjältä kysytään uutta lukua. Jos taas luku on nolla, lukujen lukeminen lopetetaan ja ohjelma poistuu toistolauseesta.
+Skapa ett program som frågar efter siffror från användaren. Om siffran är negativ, skriver man ut meddelandet "Ogiltigt tal" och ett nytt tal tillfrågas. Om siffran är noll, avslutas loopen.
 
-Mikäli luku on positiivinen, ohjelma tulostaa luvun neliöjuuren käyttäen `sqrt`-funktiota, joka on tuotu ohjelmaan `import`-lauseella. Esimerkki funktion käytöstä:
+Om siffran är positiv, skriver programmet ut siffrans kvadratrot med hjälp av `sqrt`-funktionen som är tillgänglig tack vare `import`-satsen. Exempel på funktionen:
 
 ```python
-# Tämä pitää olla ohjelman alussa, jotta sqrt toimii
+# det här ska vara i början av programmet för att sqrt ska fungera
 from math import sqrt
 
 print(sqrt(9))
@@ -143,20 +143,20 @@ print(sqrt(9))
 
 </sample-output>
 
-Esimerkki ohjelman suorituksesta:
+Exempel på programmet:
 
 <sample-output>
 
-Syötä luku: **16**
+Ange tal: **16**
 4.0
-Syötä luku: **4**
+Ange tal: **4**
 2.0
-Syötä luku: **-3**
-Epäkelpo luku
-Syötä luku: **1**
+Ange tal: **-3**
+Ogiltigt tal
+Ange tal: **1**
 1.0
-Syötä luku: **0**
-Lopetetaan...
+Ange tal: **0**
+Avslutar...
 
 </sample-output>
 
@@ -164,51 +164,51 @@ Lopetetaan...
 
 <in-browser-programming-exercise name="Lähtölaskenta" tmcname="osa02-17_lahtolaskenta">
 
-Tehtäväpohjassa olevan ohjelman
+Det här programmet...
 
 ```python
-luku = 5
-print("Lähtölaskenta!")
+siffra = 5
+print("Nedräkning till start!")
 while True:
-  print(luku)
-  luku = luku - 1
-  if luku > 0:
+  print(siffra)
+  siffra = siffra - 1
+  if siffra > 0:
     break
 
-print("Nyt!")
+print("Gå!!")
 ```
 
-olisi tarkoitus toimia seuraavasti:
+...borde fungera så här:
 
 <sample-output>
 
-Lähtölaskenta!
+Nedräkning till start!
 5
 4
 3
 2
 1
-Nyt!
+Gå!!
 
 </sample-output>
 
-Korjaa ohjelmassa oleva ongelma.
+Korrigera problemet i koden.
 
 </in-browser-programming-exercise>
 
 <in-browser-programming-exercise name="Salasana uudelleen" tmcname="osa02-18_salasana_uudelleen">
 
-Tee ohjelma, joka kysyy käyttäjältä salasanaa ja tämän jälkeen pyytää toistamaan salasanan niin kauan, kunnes käyttäjä syöttää ensimmäisenä annetun salasanan uudelleen.
+Skapa ett program som ber användaren att ange ett lösenord och upprepa lösenordet, tills användaren anger det första lösenordet på nytt.
 
 <sample-output>
 
-Salasana: **sekred**
-Toista salasana: **salainen**
-Ei ollut sama!
-Toista salasana: **enmuistaenää123**
-Ei ollut sama!
-Toista salasana: **sekred**
-Käyttäjätunnus luotu!
+Lösenord: **hemligt?**
+Upprepa lösenordet: **hemlighet**
+Stämmer inte!
+Upprepa lösenordet: **intminnsjanumer321**
+Stämmer inte!
+Upprepa lösenordet: **hemligt?**
+Kontot skapat!
 
 </sample-output>
 
@@ -221,46 +221,46 @@ Vi gör föregående exemplet en aning mer realistiskt. Det här exemplet tillå
 Programmet består av två hjälpvariabler: `forsok` håller reda på hur många gånger användaren angett en pin-kod och `lyckades` är antingen `True` eller `False` beroende på om användaren ger den korrekta koden eller inte.
 
 ```python
-yritykset = 0
+forsok = 0
 
 while True:
-    tunnus = input("Anna PIN-koodi: ")
-    yritykset += 1
+    kod = input("Ange pin-kod: ")
+    forsok += 1
 
-    if tunnus == "1234":
-        onnistui = True
+    if kod == "1234":
+        lyckades = True
         break
 
-    if yritykset == 3:
-        onnistui = False
+    if forsok == 3:
+        lyckades = False
         break
 
-    # tänne tullaan jos väärin JA ei ole jo kolmea yritystä
-    print("Väärin... yritä uudelleen")
+    # vi kommer hit om koden är fel OCH tre försök inte ännu gjorts
+    print("Fel! Försök igen")
 
-if onnistui:
-    print("PIN-koodi oikein!")
+if lyckades:
+    print("Korrekt pin-kod")
 else:
-    print("Liian monta yritystä...")
+    print("För många försök...")
 ```
 
 <sample-output>
 
-Anna PIN-koodi: **0000**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **1234**
-PIN-koodi oikein!
+Ange pin-kod: **0000**
+Fel! Försök igen
+Ange pin-kod: **1234**
+Korrekt pin-kod
 
 </sample-output>
 
 <sample-output>
 
-Anna PIN-koodi: **0000**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **9999**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **4321**
-Liian monta yritystä...
+Ange pin-kod: **0000**
+Fel! Försök igen
+Ange pin-kod: **9999**
+Fel! Försök igen
+Ange pin-kod: **4321**
+För många försök...
 
 </sample-output>
 
@@ -273,38 +273,38 @@ Att introducera loopar i ett program ökar på möjligheten för buggar. Därfö
 Vi kikar på ett nästan identiskt program som i det föregående exemplet. Dock finns det en märkbar skillnad:
 
 ```python
-yritykset = 0
+forsok = 0
 
 while True:
-    tunnus = input("Anna PIN-koodi: ")
-    yritykset += 1
+    kod = input("Ange pin-kod: ")
+    forsok += 1
 
-    if yritykset == 3:
-        onnistui = False
+    if forsok == 3:
+        lyckades = False
         break
 
-    if tunnus == "1234":
-        onnistui = True
+    if kod == "1234":
+        lyckades = True
         break
 
-    print("Väärin... yritä uudelleen")
+    print("Fel! Försök igen")
 
-if onnistui:
-    print("PIN-koodi oikein!")
+if lyckades:
+    print("Korrekt pin-kod")
 else:
-    print("Liian monta yritystä...")
+    print("För många försök...")
 ```
 
 Den här versionen fungerar konstigt när användaren anger den korrekta koden på det tredje försöket:
 
 <sample-output>
 
-Anna PIN-koodi: **0000**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **9999**
-Väärin... yritä uudelleen
-Anna PIN-koodi: **1234**
-Liian monta yritystä...
+Ange pin-kod: **0000**
+Fel! Försök igen
+Ange pin-kod: **9999**
+Fel! Försök igen
+Ange pin-kod: **1234**
+För många försök...
 
 </sample-output>
 
@@ -312,46 +312,46 @@ Nu borde vi alltså reda ut det här problemet. Några `print`-satser borde hjä
 
 ```python
 while True:
-    print("whilen lohko alkaa:")
-    tunnus = input("Anna PIN-koodi: ")
-    yritykset += 1
+    print("while-blocket inleds:")
+    kod = input("Ange pin-kod: ")
+    forsok += 1
 
-    print("yritykset:", yritykset)
-    print("ehto1:", yritykset == 3)
-    if yritykset == 3:
-        onnistui = False
+    print("försök:", forsok)
+    print("villkor 1:", forsok == 3)
+    if forsok == 3:
+        lyckades = False
         break
 
-    print("tunnus:", tunnus)
-    print("ehto2:", tunnus == "1234")
-    if tunnus == "1234":
-        onnistui = True
+    print("kod:", kod)
+    print("villkor 2:", kod == "1234")
+    if kod == "1234":
+        lyckades = True
         break
 
-    print("Väärin... yritä uudelleen")
+    print("Fel! Försök igen")
 ```
 
 <sample-output>
 
-whilen lohko alkaa:
-Anna PIN-koodi: **2233**
-yritykset: 1
-ehto1: False
-tunnus: 2233
-ehto2: False
-Väärin... yritä uudelleen
-whilen lohko alkaa:
-Anna PIN-koodi: **4545**
-yritykset: 2
-ehto1: False
-tunnus: 4545
-ehto2: False
-Väärin... yritä uudelleen
-whilen lohko alkaa:
-Anna PIN-koodi: **1234**
-yritykset: 3
-ehto1: True
-Liian monta yritystä...
+while-blocket inleds:
+Ange pin-kod: **2233**
+försök: 1
+villkor 1: False
+kod: 2233
+villkor 2: False
+Fel! Försök igen
+while-blocket inleds:
+Ange pin-kod: **4545**
+försök: 2
+villkor 1: False
+kod: 4545
+villkor 2: False
+Fel! Försök igen
+while-blocket inleds:
+Ange pin-kod: **1234**
+försök: 3
+villkor 1: True
+För många försök...
 
 </sample-output>
 
@@ -361,14 +361,14 @@ Från utskriften ovan märker vi att under den tredje iterationen kommer villkor
   while True:
     # ....
 
-    # tämä lohko on liian aikaisin
-    if yritykset == 3:
-        onnistui = False
+    # det här blocket kommer för tidigt
+    if forsok == 3:
+        lyckades = False
         break
 
-    # tänne ei päästä enää kolmannella yrityksellä...
-    if tunnus == "1234":
-        onnistui = True
+    # vi når inte hit på det tredje försöket
+    if kod == "1234":
+        lyckades = True
         break
 ```
 
@@ -376,27 +376,27 @@ Ordningen på if-satser eller grenar inom if-satser är vanliga orsaker till bug
 
 <in-browser-programming-exercise name="PIN ja yritysten määrä" tmcname="osa02-19_pin_ja_yritysten_maara">
 
-Tee sovellus, joka kysyy käyttäjältä PIN-koodia niin kauan, kunnes käyttäjä antaa oikean PIN-koodin _4321_. Ohjelma kertoo yritysten lukumäärän:
+Skapa ett program som frågar användaren om en pin-kod tills hon anger den korrekta pin-koden 4321. Programmet berättar hur många försök som har gjorts:
 
 <sample-output>
 
-PIN-koodi: **3245**
-Väärin
-PIN-koodi: **1234**
-Väärin
-PIN-koodi: **0000**
-Väärin
-PIN-koodi: **4321**
-Oikein, tarvitsit 4 yritystä
+Pin-kod: **3245**
+Fel
+Pin-kod: **1234**
+Fel
+Pin-kod: **0000**
+Fel
+Pin-kod: **4321**
+Korrekt, du gjorde 4 försök
 
 </sample-output>
 
-Tulostus on hieman erilainen jos PIN-koodi on oikea heti ensimmäisellä yrityksellä:
+Utskriften skiljer sig då pin-koden är korrekt på det första försöket:
 
 <sample-output>
 
-PIN-koodi: **4321**
-Oikein, tarvitsit vain yhden yrityksen!
+Pin-kod: **4321**
+Korrekt, du behövde bara ett försök!
 
 </sample-output>
 
@@ -405,21 +405,21 @@ Oikein, tarvitsit vain yhden yrityksen!
 
 <in-browser-programming-exercise name="Seuraava karkausvuosi" tmcname="osa02-20_seuraava_karkausvuosi">
 
-Tee ohjelma, joka kyselee käyttäjältä vuosilukua ja kertoo, milloin on seuraava karkausvuosi.
+Skapa ett program som ber användaren ange ett årtal. Programmet ska berätta när nästa skottår är.
 
 <sample-output>
 
-Vuosi: **2019**
-Vuotta 2019 seuraava karkausvuosi on 2020
+År: **2019**
+Nästa skottår efter 2019 är 2020
 
 </sample-output>
 
-Jos käyttäjän syöttämä vuosi on karkausvuosi (kuten 2020), ohjelma ei kerro tätä vuotta vaan sitä seuraavan karkausvuoden:
+Om året användaren anger är ett skottår (t.ex. 2020), ska programmet ändå berätta när det följande skottåret är:
 
 <sample-output>
 
-Vuosi: **2020**
-Vuotta 2020 seuraava karkausvuosi on 2024
+År: **2020**
+Nästa skottår efter 2020 är 2024
 
 </sample-output>
 
@@ -430,11 +430,11 @@ Vuotta 2020 seuraava karkausvuosi on 2024
 Exemplet ovan använde hjälpvariabeln `forsok` för att hålla koll på hur många gånger användaren försökt skriva in en kod:
 
 ```python
-yritykset = 0
+forsok = 0
 
 while True:
-    tunnus = input("Anna PIN-koodi: ")
-    yritykset += 1
+    kod = input("Ange pin-kod: ")
+    forsok += 1
     # ...
 ```
 
@@ -443,27 +443,27 @@ Variabeln tilldelas värdet noll utanför loopen och varje iteration ökar på s
 Något liknande kan man också göra med strängar. Programmet kan till exempel hålla koll på de pin-koder användaren angett:
 
 ```python
-tunnukset = ""
-yritykset = 0
+koder = ""
+forsok = 0
 
 while True:
-    tunnus = input("Anna PIN-koodi: ")
-    yritykset += 1
-    tunnukset += tunnus + ", "
+    kod = input("Ange pin-kod: ")
+    forsok += 1
+    koder += kod + ", "
     # ...
 ```
 
 Hjälpvariabeln kan tilldelas värdet `""` – det vill säga en tom sträng:
 
 ```python
-tunnukset = ""
+koder = ""
 ```
 
 För varje iteration blir strängen längre i och med att koden användaren angett läggs till i slutet av strängen tillsammans med ett komma och ett mellanslag.
 
 ```python
-    tunnus = input("Anna PIN-koodi: ")
-    tunnukset += tunnus + ", "
+    kod = input("Ange pin-kod: ")
+    koder += kod + ", "
 ```
 
 Om användaren anger koderna 1111 2222 1234 kommer värdet på `koder` till slut att vara:
@@ -477,36 +477,36 @@ Om användaren anger koderna 1111 2222 1234 kommer värdet på `koder` till slut
 
 <in-browser-programming-exercise name="Tarina" tmcname="osa02-21_tarina">
 
-### Osa 1
+### Del 1
 
-Tee ohjelma, joka pyytää käyttäjää syöttämään sanoja. Kun käyttäjä syöttää sanan `loppu`, ohjelma tulostaa sanoista muodostuneen tarinan ja suoritus päättyy.
+Skapa ett program som ber användaren ange ord. Då användaren anger ordet `slut`, skriver programmet ut en berättelse som bildas av orden, varefter programmet avslutas.
 
 <sample-output>
 
-Anna sana: **Olipa**
-Anna sana: **kerran**
-Anna sana: **pieni**
-Anna sana: **talo**
-Anna sana: **preerialla**
-Anna sana: **loppu**
-Olipa kerran pieni talo preerialla
+Ange ord: **Det**
+Ange ord: **var**
+Ange ord: **en**
+Ange ord: **gång**
+Ange ord: **...**
+Ange ord: **slut**
+Det var en gång ...
 
 </sample-output>
 
-### Osa 2
+### Del 2
 
-Muokkaa edellisen tehtävän ohjelmaa niin, että sanojen syöttäminen päättyy, jos käyttäjä syöttää sanan `loppu` tai käyttäjä syöttää saman sanan kaksi kertaa peräkkäin.
+Redigera på programmet så att programmet slutar fråga efter ord då ordet `slut` anges eller då det föregående ordet upprepas.
 
 <sample-output>
 
-Anna sana: **Alussa**
-Anna sana: **oli**
-Anna sana: **suo**
-Anna sana: **kuokka**
-Anna sana: **ja**
-Anna sana: **Jussi**
-Anna sana: **Jussi**
-Alussa oli suo kuokka ja Jussi
+Ange ord: **I**
+Ange ord: **början**
+Ange ord: **fanns**
+Ange ord: **hönan**
+Ange ord: **eller**
+Ange ord: **ägget**
+Ange ord: **ägget**
+I början fanns hönan eller ägget
 
 </sample-output>
 
@@ -514,71 +514,71 @@ Alussa oli suo kuokka ja Jussi
 
 <in-browser-programming-exercise name="Lukujen käsittelyä" tmcname="osa02-22_lukujen_kasittelya">
 
-Tee ohjelma, joka pyytää käyttäjää syöttämään kokonaislukuja. Ohjelma pyytää lukuja niin kauan kunnes käyttäjä syöttää nollan.
+Skapa ett program som ber användaren ange heltal. Programmet ber efter tal tills talet noll anges.
 
 <sample-output>
 
-Syötä kokonaislukuja, 0 lopettaa:
-Luku: **5**
-Luku: **22**
-Luku: **9**
-Luku: **-2**
-Luku: **0**
+Ange heltal, 0 avslutar programmet:
+Tal: **5**
+Tal: **22**
+Tal: **9**
+Tal: **-2**
+Tal: **0**
 
 </sample-output>
 
-### Osa 1: lukumäärä
+### Del 1: Antal
 
-Syötteiden lukemisen jälkeen ohjelman tulee tulostaa syötettyjen lukujen lukumäärä. Syötteen loppumisesta kertovaa nollaa ei tule ottaa huomioon lukumäärässä.
+Efter att siffrorna har angetts, ska programmet skriva ut antalet siffror. Nollan ska inte tas i beaktande.
 
-Tarvitset tässä uuden muuttujan, jonka avulla pidät kirjaa luettujen lukujen määrästä.
+Du behöver en ny variabel som håller koll på antalet angivna siffror.
 
 <sample-output>
 
-... lukujen kysely
-Lukuja yhteensä 4
+(användaren anger tal)
+Tillsammans 4 tal
 
 </sample-output>
 
-### Osa 2: summa
+### Del 2: Summa
 
-Laajenna ohjelmaa siten, että se tulostaa syötettyjen lukujen summa. Syötteen loppumisesta kertovaa nollaa ei tule ottaa huomioon summan laskemisessa.
+Utvidga programmet så att det skriver ut summan av de angivna talen. Nollan ska inte tas i beaktande.
 
-Ohjelman tulostus laajenee seuraavasti:
+Så här ser utskriften ut nu:
 
 <sample-output>
 
-... lukujen kysely
-Lukuja yhteensä 4
-Lukujen summa 34
+(användaren anger tal)
+Tillsammans 4 tal
+Summan av talen är 34
 
 </sample-output>
 
-### Osa 3: keskiarvo
+### Del 3: Medelvärde
 
-Laajenna ohjelmaa siten, että se tulostaa syötettyjen lukujen keskiarvon. Syötteen loppumisesta kertovaa nollaa ei tule ottaa huomioon keskiarvon laskemisessa. Voit olettaa, että käyttäjä syöttää aina vähintään yhden luvun.
+Utveckla programmet så att det räknar medelvärdet av de angivna talen. Nollan ska inte tas i beaktande. Du kan anta att användaren ger minst ett tal.
 
 <sample-output>
 
-... lukujen kysely
-Lukuja yhteensä 4
-Lukujen summa 34
-Lukujen keskiarvo 8.5
+(användaren anger tal)
+Tillsammans 4 tal
+Summan av talen är 34
+Medelvärdet av talen är 8.5
 
 </sample-output>
 
-#### Osa 4: positiiviset ja negatiiviset
+#### Del 4: Positiva och negativa
 
-Laajenna ohjelmaa siten, että se tulostaa positiivisten ja negatiivisten lukujen lukumäärät
+Gör nu så att programmet också skriver ut antalet positiva och negativa tal.
 
 <sample-output>
 
-... lukujen kysely
-Lukuja yhteensä 4
-Lukujen summa 34
-Lukujen keskiarvo 8.5
-Positiivisia 3
-Negatiivisia 1
+(användaren anger tal)
+Tillsammans 4 tal
+Summan av talen är 34
+Medelvärdet av talen är 8.5
+Positiva 3
+Negativa 1
 
 </sample-output>
 

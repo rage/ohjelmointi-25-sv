@@ -25,22 +25,22 @@ En ytterligare central datastruktur i Python är lexikon, som vi nu ska se på. 
 Det följande visar hur datastrukturen hos lexikon fungerar. Här är ett enkelt lexikon som innehåller översättningar från finska till svenska:
 
 ```python
-sanakirja = {}
+lexikon = {}
 
-sanakirja["apina"] = "monkey"
-sanakirja["banaani"] = "banana"
-sanakirja["cembalo"] = "harpsichord"
+lexikon["apina"] = "apa"
+lexikon["banaani"] = "banan"
+lexikon["cembalo"] = "cembalo"
 
-print(len(sanakirja))
-print(sanakirja)
-print(sanakirja["apina"])
+print(len(lexikon))
+print(lexikon)
+print(lexikon["apina"])
 ```
 
 <sample-output>
 
 3
-{'apina': 'monkey', 'banaani': 'banana', 'cembalo': 'harpsichord'}
-monkey
+{'apina': 'apa', 'banaani': 'banan', 'cembalo': 'cembalo'}
+apa
 
 </sample-output>
 
@@ -49,26 +49,26 @@ Notationen `{}` skapar ett tomt lexikon dit vi kan lägga till element. Tre styc
 Efter att vi har skapat ett lexikon kan vi också använda det med indata från användaren:
 
 ```python
-sana = input("Anna sana: ")
-if sana in sanakirja:
-    print("Käännös:", sanakirja[sana])
+ord = input("Ange ord: ")
+if ord in lexikon:
+    print("Översättning:", lexikon[ord])
 else:
-    print("Sanaa ei löytynyt")
+    print("Ordet hittades inte")
 ```
 
 Märk hur vi använder `in`-operatorn ovan. När vi använder operatorn för variabler med typen lexikon, kollar operatorn om den första operanden finns bland nycklarna i lexikonet. Så här kan det se ut när programmet körs:
 
 <sample-output>
 
-Anna sana: **apina**
-Käännös: monkey
+Ange ord: **apina**
+Översättning: apa
 
 </sample-output>
 
 <sample-output>
 
-Anna sana: **pöllö**
-Sanaa ei löytynyt
+Ange ord: **pöllö**
+Ordet hittades inte
 
 </sample-output>
 
@@ -77,19 +77,19 @@ Sanaa ei löytynyt
 Datatypen kallas lexikon, men det innebär inte att man bara skulle kunna lagra strängar där. I det här exemplet är nycklarna strängar men värdena är heltal:
 
 ```python
-tulokset = {}
-tulokset["Maija"] = 4
-tulokset["Liisa"] = 5
-tulokset["Kalle"] = 2
+resultat = {}
+resultat["Maja"] = 4
+resultat["Lisa"] = 5
+resultat["Kalle"] = 2
 ```
 
 Här är nycklarna heltal medan värdena är listor:
 
 ```python
-listat = {}
-listat[5] = [1, 2, 3]
-listat[42] = [5, 4, 5, 4, 5]
-listat[100] = [5, 2, 3]
+listor = {}
+listor[5] = [1, 2, 3]
+listor[42] = [5, 4, 5, 4, 5]
+listor[100] = [5, 2, 3]
 ```
 
 ## Hur nycklar och värden fungerar
@@ -97,21 +97,21 @@ listat[100] = [5, 2, 3]
 Varje nyckel kan endast förekomma en gång i ett lexikon. Om du lägger till ett nytt värde med en nyckel som redan finns i lexikonet, kommer det ursprungliga värdet kopplat till nyckeln att ersättas med det nya värdet:
 
 ```python
-sanakirja["suuri"] = "big"
-sanakirja["suuri"] = "large"
-print(sanakirja["suuri"])
+lexikon["suuri"] = "väldig"
+lexikon["suuri"] = "stor"
+print(lexikon["suuri"])
 ```
 
 <sample-output>
 
-large
+stor
 
 </sample-output>
 
 Alla nycklar i ett lexikon måste vara oföränderliga. Det betyder att en lista inte kan vara en nyckel, eftersom listor kan ändras på. Den här koden ger till exempel ett fel:
 
 ```python
-sanakirja[[1, 2, 3]] = 5
+lexikon[[1, 2, 3]] = 5
 ```
 
 <sample-output>
@@ -132,14 +132,14 @@ Till skillnad från nycklar, kan värden i ett lexikon ändra och därmed kan vi
 
 <programming-exercise name='Kertaa kymmenen' tmcname='osa05-10b_kertaa_kymmenen'>
 
-Tee funktio `kertaa_kymmenen(alku: int, loppu: int)`, joka muodostaa ja palauttaa uuden sanakirjan. Sanakirjassa on avaimina luvut väliltä `alku`..`loppu`.
+Skapa funktionen `ganger_tio(start: int, slut: int)` som skapar och returnerar ett lexikon. Lexikonet ska ha nycklarna i intervallet `start-slut`.
 
-Jokaisen avaimen arvona on avain kerrottuna kymmenellä.
+Värdet för varje nyckel ska vara nyckeln multiplicerat med tio.
 
-Esimerkiksi:
+Exempel:
 
 ```python
-d = kertaa_kymmenen(3, 6)
+d = ganger_tio(3, 6)
 print(d)
 ```
 
@@ -153,14 +153,14 @@ print(d)
 
 <programming-exercise name='Kertomat' tmcname='osa05-11_kertomat'>
 
-Tee funktio `kertomat(n: int)`, joka palauttaa lukujen 1..`n` kertomat sanakirjassa siten, että luku on avain ja luvun kertoma arvo, johon avain viittaa.
+Skapa funktionen `fakulteter(n: int)` som returnerar fakulteterna för talen i intervallet `1-n` i ett lexikon så att nyckeln är `n` och värdet `n`:s fakultet.
 
-Muistutuksena: luvun `n` kertoma `n`! lasketaan kertomalla luku kaikilla itseään pienemmillä positiivisilla kokonaisluvuilla. Luvun 4 kertoma on siis 4 * 3 * 2 * 1 = 24.
+Som en påminnelse: Talet `n`:s fakultet (`n!`) räknas genom att multiplicera talet med alla föregående positiva heltal. T.ex. `4! = 4 * 3 * 2 * 1 = 24`.
 
-Esimerkki käytöstä:
+Exempel:
 
 ```python
-k = kertomat(5)
+k = fakulteter(5)
 print(k[1])
 print(k[3])
 print(k[5])
@@ -181,25 +181,25 @@ print(k[5])
 Den bekanta `for element in samling` -loopen kan också användas för att gå igenom ett lexikon. När det används direkt hos ett lexikon kommer loopen att en för en gå igenom nycklarna i lexikonet. I följande exempel skrivs varje nyckel och respektive värde:
 
 ```python
-sanakirja = {}
+lexikon = {}
 
-sanakirja["apina"] = "monkey"
-sanakirja["banaani"] = "banana"
-sanakirja["cembalo"] = "harpsichord"
+lexikon["apina"] = "apa"
+lexikon["banaani"] = "banan"
+lexikon["cembalo"] = "cembalo"
 
-for avain in sanakirja:
-    print("avain:", avain)
-    print("arvo:", sanakirja[avain])
+for nyckel in lexikon:
+    print("nyckel:", nyckel)
+    print("värde:", lexikon[nyckel])
 ```
 
 <sample-output>
 
-avain: apina
-arvo: monkey
-avain: banaani
-arvo: banana
-avain: cembalo
-arvo: harpsichord
+nyckel: apina
+värde: apa
+nyckel: banaani
+värde: banan
+nyckel: cembalo
+värde: cembalo
 
 </sample-output>
 
@@ -207,9 +207,9 @@ Ibland behöver du gå igenom allt innehåll i ett lexikon. Då kan du använda 
 
 ```python
 
-for avain, arvo in sanakirja.items():
-    print("avain:", avain)
-    print("arvo:", arvo)
+for nyckel, varde in lexikon.items():
+    print("nyckel:", nyckel)
+    print("värde:", varde)
 ```
 
 I exemplen ovan märkte du kanske att nycklar behandlas i den ordning som de lagts till i lexikonet. Eftersom nycklarna behandlas enligt deras hashvärden, borde ordningen inte ha någon skillnad i programmen. I flera äldre versioner av Python är det dessutom inte garanterat att ordningen är den samma som nycklarna lagts till.
@@ -219,10 +219,10 @@ I exemplen ovan märkte du kanske att nycklar behandlas i den ordning som de lag
 Låt oss kika på en lista med ord:
 
 ```python
-sanalista = [
-  "banaani", "maito", "olut", "juusto", "piimä", "mehu", "makkara",
-  "tomaatti", "kurkku", "voi", "margariini", "juusto", "makkara",
-  "olut", "piimä", "piimä", "voi", "olut", "suklaa"
+ordlista = [
+  "banan", "mjölk", "ost", "jordnöt", "pasta", "mjöl", "majs",
+  "tomat", "korv", "vitlök", "margarin", "jordnöt", "majs",
+  "ost", "pasta", "pasta", "vitlök", "ost", "socker"
 ]
 ```
 
@@ -231,90 +231,90 @@ Vi skulle vilja analysera den här ordlistan på olika sätt. Vi är till exempe
 Ett lexikon fungera väl för att hålla reda på sådan här information. I exemplet nedan går vi igenom orden i listan. Vi använder sedan orden som nycklar i ett lexikon som vi skapat, så att värdet som är kopplat till varje nyckel indikerar hur många gånger det specifika ordet har förekommit:
 
 ```python
-def lukumaarat(lista):
-    sanat = {}
-    for sana in lista:
-        # jos sana ei ole vielä tullut vastaan, alusta avaimen arvo
-        if sana not in sanat:
-            sanat[sana] = 0
-        # kasvata sanan esiintymislukumäärää
-        sanat[sana] += 1
-    return sanat
+def antal(lista):
+    ordsamling = {}
+    for ord in lista:
+        # om ordet inte förekommit ska nyckeln skapas och få ett värde
+        if ord not in ordsamling:
+            ordsamling[ord] = 0
+        # öka på antalet gånger ordet förekommit
+        ordsamling[ord] += 1
+    return ordsamling
 
-# kutsutaan funktiota
-print(lukumaarat(sanalista))
+# vi anropar funktionen
+print(antal(ordlista))
 ```
 
 Programmet skriver ut det följande:
 
 <sample-output>
 
-{'banaani': 1, 'maito': 1, 'olut': 3, 'juusto': 2, 'piimä': 3, 'mehu': 1, 'makkara': 2, 'tomaatti': 1, 'kurkku': 1, 'voi': 2, 'margariini': 1, 'suklaa': 1}
+{'banan': 1, 'mjölk': 1, 'ost': 3, 'jordnöt': 2, 'pasta': 3, 'mjöl': 1, 'majs': 2, 'tomat': 1, 'korv': 1, 'vitlök': 2, 'margarin': 1, 'socker': 1}
 
 </sample-output>
 
 Om vi då skulle vela ordna orden enligt den första bokstaven i varje ord? Här kunde vi också kunna använda lexikon:
 
 ```python
-def alkukirjaimen_mukaan(lista):
-    ryhmat = {}
-    for sana in lista:
-        alkukirjain = sana[0]
-        # alusta alkukirjaimeen liittyvä lista kun kirjain tulee vastaan 1. kerran
-        if alkukirjain not in ryhmat:
-            ryhmat[alkukirjain] = []
-        # lisää sana alkukirjainta vastaavalle listalle
-        ryhmat[alkukirjain].append(sana)
-    return ryhmat
+def enligt_forsta_bokstaven(lista):
+    grupper = {}
+    for ord in lista:
+        forsta_bokstaven = ord[0]
+        # skapa lista då bokstaven förekommer för den första gången
+        if forsta_bokstaven not in grupper:
+            grupper[forsta_bokstaven] = []
+        # lägg till ordet under den korrekta bokstaven
+        grupper[forsta_bokstaven].append(ord)
+    return grupper
 
-ryhmat = alkukirjaimen_mukaan(sanalista)
+grupper = enligt_forsta_bokstaven(ordlista)
 
-for avain, arvo in ryhmat.items():
-    print(f"kirjaimella {avain} alkavat sanat: ")
-    for sana in arvo:
-        print(sana)
+for nyckel, varde in grupper.items():
+    print(f"ord som börjar med {nyckel}: ")
+    for ord in varde:
+        print(ord)
 ```
 
 Funktionens struktur liknar mycket den som finns i det tidigare exemplet, men den här gången är värden lagrade i form av listor. Programmet skriver ut det följande:
 
 <sample-output>
 
-kirjaimella b alkavat sanat:
-  banaani
-kirjaimella m alkavat sanat:
-  maito
-  mehu
-  makkara
-  margariini
-  makkara
-kirjaimella o alkavat sanat:
-  olut
-  olut
-  olut
-kirjaimella j alkavat sanat:
-  juusto
-  juusto
-kirjaimella p alkavat sanat:
-  piimä
-  piimä
-  piimä
-kirjaimella t alkavat sanat:
-  tomaatti
-kirjaimella k alkavat sanat:
-  kurkku
-kirjaimella v alkavat sanat:
-  voi
-  voi
-kirjaimella s alkavat sanat:
-  suklaa
+ord som börjar med b:
+  banan
+ord som börjar med m:
+  mjölk
+  mjöl
+  majs
+  margarin
+  majs
+ord som börjar med o:
+  ost
+  ost
+  ost
+ord som börjar med j:
+  jordnöt
+  jordnöt
+ord som börjar med p:
+  pasta
+  pasta
+  pasta
+ord som börjar med t:
+  tomat
+ord som börjar med k:
+  korv
+ord som börjar med v:
+  vitlök
+  vitlök
+ord som börjar med s:
+  socker
 
 </sample-output>
 
 <programming-exercise name='Histogrammi' tmcname='osa05-12_histogrammi'>
 
-Tee funktio `histogrammi`, joka saa parametrina merkkijonon ja tulostaa merkkijonon eri kirjainten lukumäärää kuvaavan histogrammin, jossa kirjaimen jokaista esiintymää kohti tulostuu yksi tähti kirjaimen riville.
+Skapa funktionen `histogram` som får som argument en sträng. Funktionen ska skriva ut ett histogram som beskriver förekomsten av olika bokstäver.
 
-Esimerkiksi kutsuttaessa `histogrammi("abba")` tulostus on:
+Exempelvis för anropet `histogram("abba")` ska utskriften vara:
 
 <sample-output>
 
@@ -325,17 +325,18 @@ b **
 
 </sample-output>
 
-Vastaavasti kutsuttaessa `histogrammi("saippuakauppias")` tulostus on:
+Eller `histogram("lyxvilla")`:
 
 <sample-output>
 
 <pre>
-s **
-a ****
-i **
-p ****
-u **
-k *
+l *
+y *
+x *
+v *
+i *
+l **
+a *
 </pre>
 
 </sample-output>
@@ -344,73 +345,72 @@ k *
 
 <programming-exercise name='Puhelinluettelo, versio 1' tmcname='osa05-13_puhelinluettelo_versio1'>
 
-Tee puhelinluettelo, joka toimii seuraavasti:
+Skapa en telefonkatalog som fungerar på följande sätt:
 
 <sample-output>
 
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **pekka**
-numero: **040-5466745**
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **pekka**
+nummer: **040-5466745**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **emilia**
-numero: **045-1212344**
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **emilia**
+nummer: **045-1212344**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **pekka**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **pekka**
 040-5466745
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **maija**
-ei numeroa
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **pekka**
-numero: **09-22223333**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **maija**
+inget nummer
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **pekka**
+nummer: **09-22223333**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **pekka**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **pekka**
 09-22223333
-komento (1 hae, 2 lisää, 3 lopeta): **3**
-lopetetaan...
+kommando (1 sök, 2 lägg till, 3 avsluta): **3**
+avslutar...
 
 </sample-output>
 
-Huomaa, että jokaiseen nimeen voi liittyä vain yksi puhelinnumero. Jos samalle henkilölle lisätään uusi numero, se korvaa aiemmin lisätyn numeron.
+Observera att varje namn endast kan vara förknippat till ett nummer. Om ett nytt nummer ges för en person kommer det tidigare numret att ersättas.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
 <programming-exercise name='Puhelinluettelo, versio 2' tmcname='osa05-14_puhelinluettelo_versio2'>
 
-Tee puhelinluettelosta paranneltu versio, missä jokaisella henkilöllä voi olla useampia puhelinnumeroita. Ohjelma toimii kuten edellisessä tehtävässä, mutta nyt se listaa jokaisen numeron:
+Skapa nu en förbättrad version av telefonkatalogen. Samma person ska nu kunna ha flera nummer. I övrigt fungerar programmet som den tidigare versionen.
 
 <sample-output>
 
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **pekka**
-numero: **040-5466745**
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **pekka**
+nummer: **040-5466745**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **emilia**
-numero: **045-1212344**
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **emilia**
+nummer: **045-1212344**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **pekka**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **pekka**
 040-5466745
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **maija**
-ei numeroa
-komento (1 hae, 2 lisää, 3 lopeta): **2**
-nimi: **pekka**
-numero: **09-22223333**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **maija**
+inget nummer
+kommando (1 sök, 2 lägg till, 3 avsluta): **2**
+namn: **pekka**
+nummer: **09-22223333**
 ok!
-komento (1 hae, 2 lisää, 3 lopeta): **1**
-nimi: **pekka**
+kommando (1 sök, 2 lägg till, 3 avsluta): **1**
+namn: **pekka**
 040-5466745
 09-22223333
-komento (1 hae, 2 lisää, 3 lopeta): **3**
-lopetetaan...
+kommando (1 sök, 2 lägg till, 3 avsluta): **3**
+avslutar...
 
 </programming-exercise>
 
@@ -419,28 +419,28 @@ lopetetaan...
 Det är naturligtvis möjligt att ta bort nyckel-värdepar från ett lexikon. Det finns två sätt att göra det här. Det första sättet är att använda kommandot `del`:
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "Lehtori"}
-del henkilokunta["Arto"]
-print(henkilokunta)
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+del personal["Arto"]
+print(personal)
 ```
 
 <sample-output>
 
-{'Antti': 'lehtori', 'Emilia': 'professori'}
+{'Antti': 'lektor', 'Emilia': 'professor'}
 
 </sample-output>
 
 Om du försöker använda `del`-kommandot för att ta bort en nyckel som inte finns i listan, kommer ett fel att uppstå:
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
-del henkilokunta["Jukka"]
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+del personal["Jukka"]
 ```
 
 <sample-output>
 
 <pre>
->>> del henkilokunta["Jukka"]
+>>> del personal["Jukka"]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 'Jukka'
@@ -451,27 +451,27 @@ KeyError: 'Jukka'
 Därmed lönar det sig att kolla om en nyckel existerar före du försöker avlägsna den från listan:
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
-if "Jukka" in henkilokunta:
-  del henkilokunta["Jukka"]
-  print("Poistettiin")
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+if "Jukka" in personal:
+  del personal["Jukka"]
+  print("Avlägsnades")
 else:
-  print("Poistettavaa henkilöä ei löytynyt henkilökunnasta")
+  print("Hittade inte personen som skulle avlägsnas")
 ```
 
 Ett annat sätt att ta bort element från listan är att använda metoden `pop`:
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
-poistettu = henkilokunta.pop("Arto")
-print(henkilokunta)
-print("Poistettiin", poistettu)
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+borttagen = personal.pop("Arto")
+print(personal)
+print("Avlägsnade", borttagen)
 ```
 
 <sample-output>
 
-{'Antti': 'lehtori', 'Emilia': 'professori'}
-Poistettiin lehtori
+{'Antti': 'lektor', 'Emilia': 'professor'}
+Avlägsnade lektor
 
 </sample-output>
 
@@ -480,26 +480,26 @@ Metoden `pop` returnerar också värdet på elementet som togs bort.
 Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som ett andra argument ge till funktionen ett return-värde som funktionen kan returnera då en nyckel saknas. Värdet `None` kan till exempel användas här:
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
-poistettu = henkilokunta.pop("Jukka", None)
-if poistettu == None:
-  print("Poistettavaa henkilöä ei löytynyt henkilökunnasta")
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+borttagen = personal.pop("Jukka", None)
+if borttagen == None:
+  print("Hittade inte personen som skulle avlägsnas")
 else:
-  print("Poistettiin", poistettu)
+  print("Avlägsnade", borttagen)
 ```
 
 <sample-output>
 
-Poistettavaa henkilöä ei löytynyt henkilökunnasta
+Hittade inte personen som skulle avlägsnas
 
 </sample-output>
 
 Obs! Om du vill tömma ett lexikon och försöker göra det med en for-loop…
 
 ```python
-henkilokunta = {"Antti": "lehtori", "Emilia": "professori", "Arto": "lehtori"}
-for avain in henkilokunta:
-  del henkilokunta[avain]
+personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
+for nyckel in personal:
+  del personal[nyckel]
 ```
 
 …kommer du att få ett felmeddelande:
@@ -515,36 +515,36 @@ När man går igenom en samling med en for-loop, kan man inte ändra på samling
 Lyckligtvis har lexikon en inbyggd metod som kan användas istället:
 
 ```python
-henkilokunta.clear()
+personal.clear()
 ```
 
 <programming-exercise name='Sanakirjan kääntö' tmcname='osa05-15_sanakirjan_kaanto'>
 
-Kirjoita funktio `kaanna(sanakirja: dict)`, joka saa parametrikseen sanakirjan ja kääntää sen niin, että arvoista tulee avaimia ja päinvastoin.
-
-Esimerkki funktion käytöstä:
+Skapa funktionen `vand(lexikon: dict)` som får som argument ett lexikon. Funktionen ska vända på nycklarna och värdena enligt exemplet nedan.
 
 ```python
-s = {1: "eka", 2: "toka", 3: "kolmas", 4: "neljas"}
-kaanna(s)
+s = {1: "första", 2: "andra", 3: "tredje", 4: "fjärde"}
+vand(s)
 print(s)
 ```
 
 <sample-output>
 
-{"eka": 1, "toka": 2, "kolmas": 3, "neljas": 4}
+{"första": 1, "andra": 2, "tredje": 3, "fjärde": 4}
 
 </sample-output>
 
-**Huomaa**, että [tämä](/osa-5/2-viittaukset#parametrina-olevan-listan-muokkaaminen) pitää paikkansa myös parametrina oleville sanakirjoille!
+Observera att det här också gäller för lexikon som getts som argument.
 
-Jos kohtaat tehtävässä ongelmia, katso [visualisaattorilla](http://www.pythontutor.com/visualize.html#mode=edit) mitä koodisi tekee.
+Använd visualiseringsverktyget om du stöter på problem.
 
 </programming-exercise>
 
 <programming-exercise name='Luvut sanoina' tmcname='osa05-16_luvut_sanoina'>
 
 Kirjoita funktio `lukukirja()`, joka palauttaa uuden sanakirjan. Palautettu rakenne sisältää avaimina luvut nollasta 99:ään. Sanakirjan arvoina ovat luvut kirjaimin kirjoitettuna. Katso esimerkkiä alla:
+
+Skapa funktionen `siffersamling()` som returnerar ett nytt lexikon. Lexikonet ska innehålla nycklarna noll till 99. Värdena ska innehålla nyckeln i skriven form. Se exemplet nedan:
 
 ```python
 luvut = lukukirja()
@@ -557,15 +557,15 @@ print(luvut[0])
 
 <sample-output>
 
-kaksi
-yksitoista
-neljäkymmentäviisi
-yhdensänkymmentäyhdeksän
-nolla
+två
+elva
+fyrtiofem
+nittionio
+noll
 
 </sample-output>
 
-HUOM! Älä muodosta jokaista lukusanaa yksitellen, vaan mieti, miten voisit hyödyntää silmukoita ja sanakirjaa jotenkin ratkaisussasi!
+Obs! Bilda inte varje ord skilt för sig utan fundera hur du kan använda loopar och lexikon till nytta i din lösning.
 
 </programming-exercise>
 
@@ -574,23 +574,23 @@ HUOM! Älä muodosta jokaista lukusanaa yksitellen, vaan mieti, miten voisit hy�
 Lexikon fungerar bra för att strukturera data. Följande kodsnutt skapar ett lexikon som innehåller information om en person:
 
 ```python
-henkilo = {"nimi": "Pirjo Python", "pituus": 154, "paino": 61, "ikä:" 44}
+person = {"namn": "Peppa Python", "längd": 154, "vikt": 61, "ålder:" 44}
 ```
 
 Här har vi alltså en person som heter Peppa Python. Hennes längd är 154, vikt 61 och ålder 44. Samma information kunde också lagras i skilda variabler:
 
 
 ```python
-nimi = "Pirjo Python"
-pituus = 154
-paino = 61
-ika = 44
+namn = "Peppa Python"
+längd = 154
+vikt = 61
+alder = 44
 ```
 
 Fördelen med lexikon är att det är en samling. Det samlar relaterade data under en variabel och det är enkelt att komma åt den information man är ute efter. Samma funktionalitet erbjuds också av listor:
 
 ```python
-henkilo = ["Pirjo Python", 153, 61, 44]
+person = ["Peppa Python", 153, 61, 44]
 ```
 
 Men med listor måste programmeraren minnas vilket index används för vilken information. Det finns inget som indikerar att `person[2]` innehåller vikten och `person[3]` åldern hos en person. När man använder lexikon, undviker man det här problemet eftersom all information finns lagrad under namngivna nycklar.
@@ -598,56 +598,56 @@ Men med listor måste programmeraren minnas vilket index används för vilken in
 Om vi antar att det finns flera personer som definierats i samma format, kan vi komma åt deras information på följande sätt:
 
 ```python
-henkilo1 = {"nimi": "Pirjo Python", "pituus": 154, "paino": 61, "ikä": 44}
-henkilo2 = {"nimi": "Pekka Pythonen", "pituus": 174, "paino": 103, "ikä": 31}
-henkilo3 = {"nimi": "Pedro Python", "pituus": 191, "paino": 71, "ikä": 14}
+person1 = {"namn": "Peppa Python", "längd": 154, "vikt": 61, "ålder": 44}
+person2 = {"namn": "Philip Python", "längd": 174, "vikt": 103, "ålder": 31}
+person3 = {"namn": "Pedro Python", "längd": 191, "vikt": 71, "ålder": 14}
 
-henkilot = [henkilo1, henkilo2, henkilo3]
+personer = [person1, person2, person3]
 
-for henkilo in henkilot:
-    print(henkilo["nimi"])
+for person in personer:
+    print(person["namn"])
 
-yhteispituus = 0
-for henkilo in henkilot:
-    yhteispituus += henkilo["pituus"]
+total_langd = 0
+for person in personer:
+    total_langd += person["längd"]
 
-print("Keskipituus on", yhteispituus / len(henkilot))
+print("Medellängden är", total_langd / len(personer))
 ```
 
 <sample-output>
 
-Pirjo Python
-Pekka Pythonen
+Peppa Python
+Philip Python
 Pedro Python
-Keskipituus on 173.0
+Medellängden är 173.0
 
 </sample-output>
 
 <programming-exercise name='Elokuvarekisteri' tmcname='osa05-17_elokuvarekisteri'>
 
-Kirjoita funktio `lisaa_elokuva(rekisteri: list, nimi: str, ohjaaja: str, vuosi: int, pituus: int)`, joka lisää yhden elokuvaolion elokuvarekisteriin.
+Skapa funktionen `ny_film(register: list, namn: str, regissor: str, ar: int, langd: int)`. Funktionen ska lägga till en ny film i ett register.
 
-Rekisteri on toteutettu listana, ja jokainen listan alkio on yksi sanakirja. Sanakirjassa on seuraavat avaimet:
+Registret är en lista och varje element är ett lexikon med dessa nycklar:
 
-* nimi
-* ohjaaja
-* vuosi
-* pituus
+* namn
+* regissör
+* år
+* längd
 
-Arvot tulevat metodin parametreina.
+Värdena ges som argument till funktionen.
 
-Esimerkki:
+Exempel:
 
 ```python
-rekisteri = []
-lisaa_elokuva(rekisteri, "Pythonin viemää", "Pekka Python", 2017, 116)
-lisaa_elokuva(rekisteri, "Python lentokoneessa", "Renny Pytholin", 2001, 94)
-print(rekisteri)
+register = []
+ny_film(register, "Drunknad i Python", "Philip Python", 2017, 116)
+ny_film(register, "Python vs. Java – vol. 32", "Renny Pytholin", 2001, 94)
+print(register)
 ```
 
 <sample-output>
 
-[{"nimi": "Pythonin viemää", "ohjaaja": "Pekka Python", "vuosi": 2017, "pituus": 116}, {"nimi": "Python lentokoneessa", "ohjaaja": "Renny Pytholin", "vuosi": 2001, "pituus": 94}]
+[{"namn": "Drunknad i Python", "regissör": "Philip Python", "år": 2017, "längd": 116}, {"namn": "Python vs. Java – vol. 32", "regissör": "Renny Pytholin", "år": 2001, "längd": 94}]
 
 </sample-output>
 
@@ -655,22 +655,22 @@ print(rekisteri)
 
 <programming-exercise name='Etsi elokuvat' tmcname='osa05-17b_etsi_elokuvat'>
 
-Kirjoita funktio `etsi_elokuvat(rekisteri: list, hakusana: str)`, joka käsittelee edellisessä tehtävässä luotua elokuvarekisteriä. Funktio muodostaa uuden listan, jolle kopioidaan rekisteristä ne elokuvat, joiden nimestä löytyy hakusana. Pienet ja isot kirjaimet eivät merkitse haussa, joten hakusanalla `paj` pitää löytyä sekä elokuva `Tappajahai` että elokuva `Pajatoiminnan historia`.
+Skapa funktionen `hitta_filmer(register: list, term: str)`. Funktionen ska skapa en ny lista som innehåller de filmer i vars namn söktermen hittas. Gemener och versaler ska inte påverka – med termen `Lil` hittar man t.ex. både filmerna `Lilja 4-ever` och `Den lilla Pythonkodaren`.
 
-Esimerkki:
+Exempel:
 
 ```python
-rekisteri = [{"nimi": "Pythonin viemää", "ohjaaja": "Pekka Python", "vuosi": 2017, "pituus": 116},
-{"nimi": "Python lentokoneessa", "ohjaaja": "Renny Pythonen", "vuosi": 2001, "pituus": 94},
-{"nimi": "Koodaajien yö", "ohjaaja": "M. Night Python", "vuosi": 2011, "pituus": 101}]
+register = [{"namn": "Drunknad i Python", "regissör": "Philip Python", "år": 2017, "längd": 116},
+{"namn": "Python vs. Java – vol. 32", "regissör": "Renny Python", "år": 2001, "längd": 94},
+{"namn": "Skymning i kodarlandet", "regissör": "M. Night Python", "år": 2011, "längd": 101}]
 
-lista = etsi_elokuvat(rekisteri, "python")
+lista = hitta_filmer(register, "python")
 print(lista)
 ```
 
 <sample-output>
 
-[{"nimi": "Pythonin viemää", "ohjaaja": "Pekka Python", "vuosi": 2017, "pituus": 116}, {"nimi": "Python lentokoneessa", "ohjaaja": "Renny Pythonen", "vuosi": 2001, "pituus": 94}]
+[{"namn": "Drunknad i Python", "regissör": "Philip Python", "år": 2017, "längd": 116}, {"namn": "Python vs. Java – vol. 32", "regissör": "Renny Python", "år": 2001, "längd": 94}]
 
 </sample-output>
 

@@ -25,9 +25,9 @@ Till exempel `print("Hej")` är en sats som skriver ut en rad text. På samma s�
 En sats kan också vara mera invecklad. Den kan till exempel bestå av flera satser. Följande sats består av tre rader:
 
 ```python
-if nimi == "Anna":
-    print("Moi!")
-    luku = 2
+if namn == "Anna":
+    print("Hejsan!")
+    nummer = 2
 ```
 
 Ovan finns två satser (print-sats och tilldelningssats) inom en if-sats.
@@ -37,14 +37,14 @@ Ovan finns två satser (print-sats och tilldelningssats) inom en if-sats.
 Ett block är en grupp av efter varandra följande satser som är på samma nivå i programmets struktur. Till exempel if-satsens block innehåller de satser som körs då villkoret är sant.
 
 ```python
-if ika > 17:
-    # ehtolauseessa oleva lohko alkaa
-    print("Olet täysi-ikäinen!")
-    ika = ika + 1
-    print("nyt vuoden vanhempi...")
-    # lohko loppuu
+if alder > 17:
+    # if-satsens block inleds
+    print("Du är myndig!")
+    alder = alder + 1
+    print("Du är nu ett år äldre...")
+    # blocket avslutas
 
-print("tämä on eri lohkossa")
+print("Det här är i ett annat block.")
 ```
 
 I Python markeras block genom att indentera all kod i blocket med samma antal mellanrum.
@@ -52,9 +52,9 @@ I Python markeras block genom att indentera all kod i blocket med samma antal me
 Obs! Pythons huvudblock ska aldrig indenteras, utan ska alltid vara så långt till vänster som möjligt i filen:
 
 ```python
-# tämä ohjelma ei toimi sillä koodia ei ole sisennetty vasempaan reunaan
-  print("hei maailma")
-  print("huono ohjelma...")
+# det här programmet fungerar inte eftersom koden inte är indenterad till det vänstra hörnet
+  print("Hej allihopa")
+  print("Det här är ett dåligt program")
 ```
 
 ## Uttryck
@@ -73,14 +73,14 @@ Här följder några exempel på uttryck:
 Eftersom alla uttryck har en datatyp, kan de tilldelas till en variabel:
 
 ```python
-# muuttuja x saa arvoksi lausekkeen 1 + 2 arvon
+# variabeln x får värdet på uttrycket 1 + 2
 x = 1 + 2
 ```
 
 Enkla uttryck kan kombineras för att få ett mera komplicerat uttryck till stånd. Så här kan man till exempel utföra räkneoperationer:
 
 ```python
-# muuttuja y saa arvoksi lausekkeen '3 kertaa x plus x toiseen' arvon
+# variabeln y får värdet på uttrycket "3 gånger x plus x upphöjt till två"
 y = 3 * x + x**2
 ```
 
@@ -91,13 +91,13 @@ En funktion kör någon slags funktionalitet. Funktioner kan också ta emot en e
 En funktion körs då den anropas – det vill säga då funktionen och dess möjliga parametrar nämns i koden. Följande sats anropar `print`-funktionen med parametern `"det här är en parameter"`:
 
 ```python
-print("tämä on parametri")
+print("det här är en parameter")
 ```
 
 En annan funktion du redan känner till väl är `input`, som används för att ta emot data från användaren. Parametern i funktionen är det meddelande som ska visas till användaren:
 
 ```python
-nimi = input("Kerro nimesi: ")
+namn = input("Berätta ditt namn: ")
 ```
 
 I det här fallet returnerar funktionen också ett värde. När funktionen har körts ersätts den del i koden där funktionen anropades med det värde som funktionen returnerar – det är nu ett uttryck med ett värde. `input`-funktionen returnerar en sträng som innehåller den text som användaren gett programmet. Värdet som en funktion returnerar lagras ofta i en variabel för att programmet ska kunna använda det senare.
@@ -107,8 +107,8 @@ I det här fallet returnerar funktionen också ett värde. När funktionen har k
 Datatyp syftar till de egenskaper ett värde har i ett program. I följande kodexempel är datatyperna sträng (`str`) för variabeln `namn` och heltal (`int`) för variabeln `resultat`:
 
 ```python
-nimi = "Anna"
-tulos = 100
+namn = "Anna"
+resultat = 100
 ```
 
 Med hjälp av funktionen `type` kan man ta reda på datatypen hos ett uttryck. Så här kan du använda funktionen:
@@ -132,22 +132,22 @@ På samma sätt som vanliga språk har regler för hur man skriver har även pro
 Pythons syntax bestämmer bland annat att första raden i en if-sats ska sluta med ett kolon och att därefter följande block ska indenteras:
 
 ```python
-if nimi == "Anna":
-    print("Moi!")
+if namn == "Anna":
+    print("Hejsan!")
 ```
 
 Följer man inte dessa regler, kommer ett fel att uppstå:
 
 ```python
-if nimi == "Anna"
-    print("Moi!")
+if namn == "Anna"
+    print("Hejsan!")
 ```
 
 <sample-output>
 
 <pre>
   File "testi.py", line 1
-    if nimi == "Anna"
+    if namn == "Anna"
                     ^
 SyntaxError: invalid syntax
 </pre>
@@ -164,9 +164,9 @@ Buggar dyker upp i olika slags situationer. Vissa kan orsaka felmeddelanden meda
 ```python
 x = 10
 y = 0
-tulos = x / y
+resultat = x / y
 
-print(f"{x} jaettuna {y} on {tulos}")
+print(f"{x} dividerat med {y} är {resultat}")
 ```
 
 Nu får vi felet:
@@ -192,15 +192,15 @@ Ett enkelt – men desto nyttigare – sätt att debugga sitt program är att l�
 Det här är ett exempel på ett försök att lösa en av föregående modulens uppgifter:
 
 ```python
-tuntipalkka = float(input("Tuntipalkka: "))
-tunnit = int(input("Työtunnit: "))
-paiva = input("Viikonpäivä: ")
+timlon = float(input("Timlön: "))
+timmar = int(input("Arbetstimmar: "))
+dag = input("Veckodag: ")
 
-palkka = tuntipalkka * tunnit
-if paiva == "sunnnuntai":
-    palkka * 2
+lon = timlon * timmar
+if dag == "söndagg":
+    lon * 2
 
-print(f"Palkka {palkka} euroa")
+print(f"Lön {lon} euro")
 ```
 
 Det här programmet fungerar inte helt korrekt. När testen körs får vi följande resultat:
@@ -210,7 +210,7 @@ Det här programmet fungerar inte helt korrekt. När testen körs får vi följa
 <pre>
 FAIL: PalkkaTest: test_sunnuntai_1
 
-Syötteellä 23.0, 12, sunnuntai oikeaa palkkaa 552.0 ei löydy tulosteestasi Palkka 276.0 euroa
+Syötteellä 23.0, 12, söndag oikeaa palkkaa 552.0 ei löydy tulosteestasi Lön 276.0 euro
 </pre>
 
 </sample-output>
@@ -219,25 +219,25 @@ När vi debuggar den här kursens uppgifter är det första steget ofta att test
 
 <sample-output>
 
-Palkka 276.0 euroa
+Lön 276.0 euro
 
 </sample-output>
 
 Att debugga innebär vanligtvis att vi kör programmet flera gånger. Det kan vara händigt att tillfälligt hårdkoda det problematiska värdet istället för att alltid fråga efter värdet från användaren. Så här kunde det se ut i vårt exempel:
 
 ```python
-# tuntipalkka = float(input("Tuntipalkka: "))
-# tunnit = int(input("Työtunnit: "))
-# paiva = input("Viikonpäivä: ")
-tuntipalkka = 23.0
-tunnit = 12
-paiva = "sunnuntai"
+# timlon = float(input("Timlön: "))
+# timmar = int(input("Arbetstimmar: "))
+# dag = input("Veckodag: ")
+timlon = 23.0
+timmar = 12
+dag = "söndag"
 
-palkka = tuntipalkka * tunnit
-if paiva == "sunnnuntai":
-    palkka * 2
+lon = timlon * timmar
+if dag == "söndagg":
+    lon * 2
 
-print(f"Palkka {palkka} euroa")
+print(f"Lön {lon} euro")
 ```
 
 Nästa steg kan vara att lägga till `print`-satser för att debugga. Problemet i den här koden uppstår i den delen där söndagar behandlas. Låt oss lägga till ett par print-satser: en före lönen ska fördubblas och en efter det:
@@ -245,13 +245,13 @@ Nästa steg kan vara att lägga till `print`-satser för att debugga. Problemet 
 ```python
 # ...
 
-palkka = tuntipalkka * tunnit
-if paiva == "sunnnuntai":
-    print("palkka alussa:", palkka)
-    palkka * 2
-    print("palkka kasvatuksen jälkeen:", palkka)
+lon = timlon * timmar
+if dag == "söndagg":
+    print("lön i början:", lon)
+    lon * 2
+    print("lön efter fördubbling:", lon)
 
-print(f"Palkka {palkka} euroa")
+print(f"Lön {lon} euro")
 ```
 
 När vi kör koden märker vi att programmet inte alls skriver ut något på basis av de `print`-satser vi lagt till i koden. Det verkar som att innehållet i `if`-blocket aldrig körs. Det finns visst ett problem med if-satsen. Låt oss skriva ut Boolean-uttryckets värde:
@@ -259,71 +259,71 @@ När vi kör koden märker vi att programmet inte alls skriver ut något på bas
 ```python
 # ...
 
-palkka = tuntipalkka * tunnit
-print("ehto:", paiva=="sunnnuntai")
-if paiva == "sunnnuntai":
-    print("palkka alussa:", palkka)
-    palkka * 2
-    print("palkka kasvatuksen jälkeen:", palkka)
+lon = timlon * timmar
+print("villkor:", dag=="söndagg")
+if dag == "söndagg":
+    print("lön i början:", lon)
+    lon * 2
+    print("lön efter fördubbling:", lon)
 
-print(f"Palkka {palkka} euroa")
+print(f"Lön {lon} euro")
 ```
 
 Värdet är `False`, alltså kommer `if`-blockets kod aldrig att köras:
 
 <sample-output>
 
-ehto:  False
-Palkka 276.0 euroa
+villkor: False
+Lön 276.0 euro
 
 </sample-output>
 
-Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "Söndag" i Boolean-uttrycket är skrivet med en stor bokstav medan det i indatat inte är det. Vi korrigerar det – både i if-satsen och `print`-kommandot:
+Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "söndagg" i Boolean-uttrycket är skrivet med två g medan det i indatat inte är det. Vi korrigerar felet – både i if-satsen och `print`-kommandot:
 
 ```python
 # ...
 
-palkka = tuntipalkka * tunnit
-print("ehto:", paiva=="sunnuntai")
-if paiva == "sunnuntai":
-    print("palkka alussa:", palkka)
-    palkka * 2
-    print("palkka kasvatuksen jälkeen:", palkka)
+lon = timlon * timmar
+print("villkor:", dag=="söndag")
+if dag == "söndag":
+    print("lön i början:", lon)
+    lon * 2
+    print("lön efter fördubbling:", lon)
 
-print(f"Palkka {palkka} euroa")
+print(f"Lön {lon} euro")
 ```
 
 Nu får vi följande utskrift när programmet körs:
 
 <sample-output>
 
-ehto: True
-palkka alussa: 276.0
-palkka kasvatuksen jälkeen: 276.0
-Palkka 276.0 euroa
+villkor: True
+lön i början: 276.0
+lön efter fördubbling: 276.0
+Lön 276.0 euro
 
 </sample-output>
 
-Det verkar som att värdet lagrat i `dagslon` är korrekt i början: `timlon = 20.0` och `timmar = 12`, 20,0 * 6 = 120,0. Kommandot som ska multiplicera det här med två fungerar dock inte. Det måste alltså vara ett problem med det kommandot:
+Det verkar som att värdet lagrat i `lon` är korrekt i början: `timlon = 20.0` och `timmar = 12`, 20,0 * 6 = 120,0. Kommandot som ska multiplicera det här med två fungerar dock inte. Det måste alltså vara ett problem med det kommandot:
 
 ```python
-palkka * 2
+lon * 2
 ```
 
 Kommandot multiplicerar nog värdet, men resultatet lagras ingenstans. Vi ändrar på det:
 
 ```python
-palkka *= 2
+lon *= 2
 ```
 
 När vi nu kör programmet, märker vi att resultatet är korrekt:
 
 <sample-output>
 
-ehto:  True
-palkka alussa: 276.0
-palkka kasvatuksen jälkeen: 552.0
-Palkka 552.0 euroa
+villkor:  True
+lön i början: 276.0
+lön efter fördubbling: 552.0
+Lön 552.0 euro
 
 </sample-output>
 
@@ -335,35 +335,35 @@ Det här var ett ganska enkelt exempel och i fall som det här kan man eventuell
 
 <in-browser-programming-exercise name="Korjaa virheet" tmcname="osa02-01_korjaa_virheet" height="400px">
 
-Seuraavassa ohjelmassa on useita _syntaksivirheitä_. Korjaa ohjelma siten, että syntaksi on kunnossa ja se toimii alla olevien esimerkkien mukaisesti.
+I följande program finns flera syntaxfel. Korrigera dem så att programmet fungerar enligt nedan presenterade exempel.
 
 ```python
-  luku = input("Anna luku: ")
-  if luku>100
-    print("Luku oli suurempi kuin sata")
-    luku - 100
-    print("Nyt luvun arvo on pienentynyt sadalla)
-     print("Arvo on nyt"+ luku)
- print(luku + " taitaa olla onnenlukuni!")
- print("Hyvää päivänjatkoa!)
+  nummer = input("Ge en siffra: ")
+  if nummer>100
+    print("Siffran är större än 100")
+    nummer - 100
+    print("Nu har siffran blivit 100 mindre)
+     print("Värdet är nu"+ nummer)
+ print(nummer + " är visst mitt lyckotal!")
+ print("Ha en trevlig fortsättning på dagen!)
 ```
 
 <sample-output>
 
-Anna luku: **13**
-13 taitaa olla onnenlukuni!
-Hyvää päivänjatkoa!
+Ge en siffra: **13**
+13 är visst mitt lyckotal!
+Ha en trevlig fortsättning på dagen!
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **101**
-Luku oli suurempi kuin sata
-Nyt luvun arvo on pienentynyt sadalla
-Arvo on nyt 1
-1 taitaa olla onnenlukuni!
-Hyvää päivänjatkoa!
+Ge en siffra: **101**
+Siffran är större än 100
+Nu har siffran blivit 100 mindre
+Värdet är nu 1
+1 är visst mitt lyckotal!
+Ha en trevlig fortsättning på dagen!
 
 </sample-output>
 
@@ -372,58 +372,58 @@ Hyvää päivänjatkoa!
 
 <in-browser-programming-exercise name="Merkkien määrä" tmcname="osa02-02_merkkien_maara">
 
-Funktiolla `len` voidaan laskea (muun muassa) merkkijonon pituus. Funktio palauttaa merkkijonossa olevien merkkien määrän.
+Med funktionen `len` kan man bland annat räkna längden på en sträng. Funktionen returnerar antalet tecken i strängen.
 
-Esimerkkejä funktion toiminnasta:
+Exempel:
 
 ```python
-sana = "abcd"
-print(len(sana))
+ord = "abcd"
+print(len(ord))
 
-print(len("moikka"))
+print(len("hejsan"))
 
-sana2 = "heipparallaa"
-pituus = len(sana2)
-print(pituus)
+ord2 = "tjingeling"
+langd = len(ord2)
+print(langd)
 
-tyhja_merkkijono = ""
-pituus = len(tyhja_merkkijono)
-print(pituus)
+tom_strang = ""
+langd = len(tom_strang)
+print(langd)
 ```
 
 <sample-output>
 
 4
 6
-12
+10
 0
 
 </sample-output>
 
-Tee ohjelma, joka lukee käyttäjältä sanan ja tulostaa sanan merkkien määrän, mikäli niitä on enemmän kuin yksi.
+Skapa ett program som ber användaren mata in ett ord. Programmet ska därefter skriva ut antalet tecken, om antalet överstiger ett.
 
-Esimerkkisuorituksia:
+Exempel:
 
 <sample-output>
 
-Anna sana: hei
-Sanassa hei on 3 kirjainta
-Kiitos!
+Ge ett ord: hej
+I ordet hej finns det 3 bokstäver
+Tack!
 
 </sample-output>
 
 <sample-output>
 
-Anna sana: banaani
-Sanassa banaani on 7 kirjainta
-Kiitos!
+Ge ett ord: basilika
+I ordet basilika finns det 8 bokstäver
+Tack!
 
 </sample-output>
 
 <sample-output>
 
-Anna sana: b
-Kiitos!
+Ge ett ord: b
+Tack!
 
 </sample-output>
 
@@ -431,47 +431,47 @@ Kiitos!
 
 <in-browser-programming-exercise name="Tyyppimuunnos" tmcname="osa02-03_tyyppimuunnos">
 
-Pythonissa voidaan usein muuntaa jokin arvo tyypistä toiseen. Esimerkiksi liukuluku voidaan muuntaa kokonaisluvuksi funktion `int` avulla:
+I Python kan man ofta konvertera ett värde från en datatyp till en annan. Ett flyttal kan till exempel konverteras till ett heltal med funktionen `int`:
 
 ```python
 
-lampo = float(input("Anna lämpötila: "))
+temperatur = float(input("Ange temperatur: "))
 
-print("Lämpötila on", lampo)
+print("Temperaturen är", temperatur)
 
-print("...eli pyöreästi", int(lampo))
+print("Alltså ungefär", int(temperatur))
 
 ```
 
 <sample-output>
 
-Anna lämpötila: **5.15**
-Lämpötila on 5.15
-...eli pyöreästi 5
+Ange temperatur: **5.15**
+Temperaturen är 5.15
+Alltså ungefär 5
 
 </sample-output>
 
-Huomaa, että funktio ei pyöristä arvoa matematiikasta tutulla tavalla, vaan pyöristää luvun alaspäin (kyse on siis ns. _lattiafunktiosta_):
+Observera att funktionen inte avrundar värdet på det sättet vi kunde anta från matematiken. Siffran avrundas alltid nedåt (golvfunktion):
 
 <sample-output>
 
-Anna lämpötila: **8.99**
-Lämpötila on 8.99
-...eli pyöreästi 8
+Ange temperatur: **8.99**
+Temperaturen är 8.99
+Alltså ungefär 8
 
 </sample-output>
 
-Tee int-funktiota hyödyntäen ohjelma, joka kysyy käyttäjältä desimaaliluvun ja tulostaa erikseen luvun kokonaisosan ja desimaaliosan.
+Använd `int`-funktionen för att skapa ett program som frågar om ett decimaltal från användaren. Programmet ska därefter skriva ut heltals- och decimaldelen av talet på skilda rader.
 
-Huom! Voit olettaa, että annettu desimaaliluku on suurempi kuin nolla.
+Du kan anta att det givna decimaltalet är större än noll.
 
-Esimerkiksi
+Exempel:
 
 <sample-output>
 
-Anna luku: **1.34**
-Kokonaisosa: 1
-Desimaaliosa: 0.34
+Ge en siffra: **1.34**
+Heltalsdel: 1
+Decimaldel: 0.34
 
 </sample-output>
 

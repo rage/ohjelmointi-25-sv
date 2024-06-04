@@ -39,7 +39,7 @@ En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel 
 I den förra delen bekantade vi oss med `while True` -loopen som ett medel att upprepa delar av kod. Så som loopen är uppbyggd är villkoret alltid `True`, alltså sant. Vi måste då avsluta loopen manuellt vid något skede för att undvika en oändlig loop. Exempelvis:
 
 ```python
-# Tulosta lukuja kunnes muuttujan a arvo on 5
+# skriv ut siffror tills värdet på variabeln a är 5
 a = 1
 while True:
     print(a)
@@ -60,8 +60,8 @@ while True:
 Men förstås behöver villkoret inte alltid vara True, utan det kan vara vilket som helst Boolean-uttryck. while-satsens struktur ser ut så här:
 
 ```python
-while <ehtolauseke>:
-    <lohko>
+while <villkor>:
+    <block>
 ```
 
 Idén är att koden körs om och om igen – villkoret kollas för varje iteration. Om villkoret vid något skede inte är sant kommer programmet att fortsätta med koden som kommer efter while-blocket.
@@ -71,27 +71,27 @@ Idén är att koden körs om och om igen – villkoret kollas för varje iterati
 I den följande loopen har vi villkoret `nummer < 10`. Blocket inom loopen kommer bara att köras då variabeln nummer är mindre än tio.
 
 ```python
-luku = int(input("Anna luku: "))
+nummer = int(input("Ge ett tal: "))
 
-while luku < 10:
-    print(luku)
-    luku += 1
+while nummer < 10:
+    print(nummer)
+    nummer += 1
 
-print("Suoritus valmis.")
+print("Programmet är klart.")
 ```
 
 Utskriften skulle kunna se ut så här:
 
 <sample-output>
 
-Anna luku: **4**
+Ge ett tal: **4**
 4
 5
 6
 7
 8
 9
-Suoritus valmis.
+Programmet är klart.
 
 </sample-output>
 
@@ -99,8 +99,8 @@ Med den här strukturen kommer villkoret att kollas före blocket inom loopen k�
 
 <sample-output>
 
-Anna luku: **12**
-Suoritus valmis.
+Ge ett tal: **12**
+Programmet är klart.
 
 </sample-output>
 
@@ -117,12 +117,12 @@ Initialisering syftar till att ge startvärden till de variabler som används i 
 Om någon av de här tre komponenterna fattas kommer loopen antagligen inte att fungera korrekt. Ett vanligt misstag är att låta bli att uppdatera variabler:
 
 ```python
-luku = 1
+nummer = 1
 
-while luku < 10:
-    print(luku)
+while nummer < 10:
+    print(nummer)
 
-print("Suoritus valmis.")
+print("Programmet är klart.")
 ```
 
 Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fast i en oändlig loop. Samma kod upprepas tills användaren avslutar programmet, till exempel med tangentkombinationen Control + C:
@@ -134,22 +134,22 @@ Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fa
 1
 1
 1
-(tämä jatkuu ikuisesti...)
+(det här fortsätter i all oändlighet...)
 
 </sample-output>
 
 <in-browser-programming-exercise name="Tulosta luvut" tmcname="osa03-00_tulosta_luvut">
 
-Kirjoita ohjelma, joka tulostaa silmukassa luvut kahdesta kolmeenkymmeneen kahden luvun välein. Jokainen luku tulostetaan omalle rivilleen.
+Skapa ett program som i en loop skriver ut varannat tal från två till trettio. Varje tal skrivs ut på en ny rad.
 
-Ohjelman tulosteen alku näytää siis tältä:
+Så här ser utskriften ut:
 
 <sample-output>
 2
 4
 6
 8
-jne...
+o.s.v. ...
 </sample-output>
 
 </in-browser-programming-exercise>
@@ -157,33 +157,32 @@ jne...
 
 <in-browser-programming-exercise name="Lähtölaskenta" tmcname="osa03-01_lahtolaskenta">
 
-Korjaa tehtäväpohjassa oleva ohjelma
+Korrigera uppgiftens program...
 
 ```python
-print("Valmiina?")
-luku = int(input("Anna luku: "))
-while luku = 0:
-print(luku)
-print("Nyt!")
+print("Klara?")
+nummer = int(input("Ge ett tal: "))
+while nummer = 0:
+print(nummer)
+print("Gå!")
 ```
 
-siten että se toimii seuraavasti:
+...så att det fungerar på följande sätt:
 
 <sample-output>
 
-Valmiina?
-Anna luku: **5**
+Klara?
+Ge ett tal: **5**
 5
 4
 3
 2
 1
-Nyt!
+Gå!
 
 </sample-output>
 
-Älä tällä kertaa käytä `while True` -silmukkaa!
-
+Använd inte en `while True` -loop!
 
 </in-browser-programming-exercise>
 
@@ -192,18 +191,18 @@ Nyt!
 Alla Boolean-uttryck och kombinationer av dem kan användas som villkor i en loop. Till exempel följande program skriver ut var tredje nummer förutsatt att det är mindre än 100 och inte dividerbart med fem:
 
 ```python
-luku = int(input("Anna luku: "))
+nummer = int(input("Ge ett tal: "))
 
-while luku < 100 and luku % 5 != 0:
-    print(luku)
-    luku += 3
+while nummer < 100 and nummer % 5 != 0:
+    print(nummer)
+    nummer += 3
 ```
 
 Här följer två exempel på utskriften från programmet:
 
 <sample-output>
 
-Anna luku: **28**
+Ge ett tal: **28**
 28
 31
 34
@@ -213,7 +212,7 @@ Anna luku: **28**
 
 <sample-output>
 
-Anna luku: **96**
+Ge ett tal: **96**
 96
 99
 
@@ -224,18 +223,18 @@ När man ger programmet värdet 28 kommer loopen att avslutas med numret 37, eft
 När du skriver en loop är det viktigt att se till att loopen alltid kommer att avslutas vid något skede. Det här programmet avslutas – eller inte – beroende på det värde som ges:
 
 ```python
-luku = int(input("Anna luku: "))
+nummer = int(input("Ge ett tal: "))
 
-while luku != 10:
-    print(luku)
-    luku += 2
+while nummer != 10:
+    print(nummer)
+    nummer += 2
 ```
 
 Om man ger ett jämnt tal som är lika med tio eller mindre, kommer loopen att avslutas:
 
 <sample-output>
 
-Anna luku: **4**
+Ge ett tal: **4**
 4
 6
 8
@@ -246,11 +245,11 @@ I övriga fall kommer loopen att fortsätta oändligt eftersom det inte då finn
 
 <in-browser-programming-exercise name="Luvut" tmcname="osa03-02_luvut">
 
-Tee ohjelma, joka tulostaa kaikki käyttäjän antamaa lukua pienemmät luvut alkaen luvusta yksi.
+Skapa ett program som skriver ut alla tal under den siffra som användaren angett. Börja från ett.
 
 <sample-output>
 
-Mihin asti: **5**
+Fram till siffran: **5**
 1
 2
 3
@@ -258,7 +257,7 @@ Mihin asti: **5**
 
 </sample-output>
 
-Älä käytä tässä tehtävässä while-komennon ehtona arvoa `True`!
+Använd inte `True` som villkor i while-loopen!
 
 </in-browser-programming-exercise>
 
@@ -267,10 +266,10 @@ Mihin asti: **5**
 Föreställ att du håller på att skapa ett lite mera komplicerat program, som det i den följande uppgiften – _Potenser av två_. Så här skulle man kunna starta:
 
 ```python
-asti = int(input("Mihin asti"))
-luku = 1
-while luku == asti:
-   # koodia
+stanna = int(input("Fram till siffran"))
+nummer = 1
+while nummer == stanna:
+   # kod
 ```
 
 Nu börjar programmet med att läsa in den data användaren ger och fortsätter till en loop med ett villkor.
@@ -282,11 +281,11 @@ Den här kodsnutten frågar alltid efter indata från användaren vilket gör te
 Ett sätt att bli av med problemet är att hårdkoda ett värde i koden medan den testas:
 
 ```python
-# kovakoodataan syötteen arvo aluksi
-asti = 8 # int(input("Mihin asti"))
-luku = 1
-while luku == asti:
-   # koodia
+# vi hårdkodar värdet här tills vidare
+stanna = 8 # int(input("Fram till siffran"))
+nummer = 1
+while nummer == stanna:
+   # kod
 ```
 
 När programmet fungerar med det hårdkodade värdet, kan man enkelt testa med andra hårdkodade värden. När allt fungerar korrekt kan man testa på programmet så att användaren anger värdet.
@@ -294,11 +293,11 @@ När programmet fungerar med det hårdkodade värdet, kan man enkelt testa med a
 Det här tricket fungerar väl med flera av de tester som används i betygsättningen av den här kursens uppgifter. Om testet berättar att något är fel med till exempel värdet 42 så kan värdet tillfälligt hårdkodas i programmet medan du letar efter buggen:
 
 ```python
-# testi ilmoitti että koodi toimii väärin kun syöte on 42
-asti = 42 # int(input("Mihin asti"))
-luku = 1
-while luku == asti:
-   # koodia
+# testet meddelade att koden inte fungerade korrekt då indatat är 42
+stanna = 42 # int(input("Fram till siffran"))
+nummer = 1
+while nummer == stanna:
+   # kod
 ```
 
 Debuggning med hjälp av `print`-satsen nämndes några gånger under förra modulen i den här kursen. De program som du skapar kommer att bli mer invecklade i och med att kursen framskrider. Då kommer mängden debuggning som du behöver göra också antagligen att öka i samma proportion. Vanliga orsaker till buggar finns ofta i de villkor som avslutar loopar – de fungerar eventuellt korrekt för vissa värden, medan andra värden orsakar problem. Alltid är det inte heller lätt att observera det här.
@@ -321,13 +320,13 @@ Visualiseringsverktyget och `print`-satser är båda bra sätt för en programme
 
 <in-browser-programming-exercise name="Kahden potenssit" tmcname="osa03-03_kahden_potenssit">
 
-Tee ohjelma, joka tulostaa ensin luvun 1 ja sen jälkeen kerta toisensa jälkeen aina kaksi kertaa suuremman luvun. Ohjelma siis tulostaa luvun kaksi potensseja.
+Skapa ett program som först skriver ut siffran ett och därefter föregående siffra multiplicerat med två.
 
-Ohjelman suoritus päättyy, kun on tulostettu luku, joka on korkeintaan käyttäjän syötteen suuruinen. Yhtään käyttäjän syötettä suurempaa lukua ei siis tulosteta!
+Programmet avslutas då man skrivit ut det tal som är högst lika stort som det värde användaren angett. Man skriver inte alltså ut något tal som är större än det användaren angett!
 
 <sample-output>
 
-Mihin asti: **8**
+Fram till siffran: **8**
 1
 2
 4
@@ -337,7 +336,7 @@ Mihin asti: **8**
 
 <sample-output>
 
-Mihin asti: **20**
+Fram till siffran: **20**
 1
 2
 4
@@ -348,7 +347,7 @@ Mihin asti: **20**
 
 <sample-output>
 
-Mihin asti: **100**
+Fram till siffran: **100**
 1
 2
 4
@@ -359,20 +358,20 @@ Mihin asti: **100**
 
 </sample-output>
 
-Älä käytä tässä tehtävässä `while`-komennon ehtona arvoa `True`!
+Använd inte villkoret `True` i while-satsen!
 
-**Miten kahden potenssit lasketaan?** Ensimmäinen kahden potenssi on luku 1. Seuraava saadaan kertomalla 1 luvulla 2, eli se on 2. Sitä seuraava saadaan taas kertomalla edellinen kahden potenssi kahdella, eli kyseessä on 2 \* 2 eli 4, ja seuraava saadaan kertomalla kahdella 4 \* 2 eli kyseessä on 8, jne...
+Hur räknar man potenser av två? Den första potensen av två är 1. Den nästa potensen får man genom att multiplicera 1 med 2, resultatet är 2. Den nästa potensen får man på samma sätt: `2 * 2 = 4`. Därefter `4 * 2 = 8` o.s.v.
 
 </in-browser-programming-exercise>
 
 <in-browser-programming-exercise name="Luvun n potenssit" tmcname="osa03-04_luvun_n_potenssit">
 
-Muuta edellistä ohjelmaa siten, että käyttäjä saa määrätä kertoimen (edellisessä ohjelmassa kerroin oli aina 2), eli sen, minkä luvun potensseja ohjelma tulostaa.
+Ändra på det föregående programmet så att programmet räknar den n:te potensen. Användaren anger värdet på `n` (i föregående programmet var värdet alltid 2).
 
 <sample-output>
 
-Mihin asti: **27**
-Mikä kerroin: **3**
+Fram till siffran: **27**
+Upphöjt till: **3**
 1
 3
 9
@@ -382,8 +381,8 @@ Mikä kerroin: **3**
 
 <sample-output>
 
-Mihin asti: **1234567**
-Mikä kerroin: **10**
+Fram till siffran: **1234567**
+Upphöjt till: **10**
 1
 10
 100
@@ -394,36 +393,38 @@ Mikä kerroin: **10**
 
 </sample-output>
 
-Älä käytä tässä tehtävässä `while`-komennon ehtona arvoa `True`!
+Använd inte villkoret `True` i while-satsen i den här uppgiften!
 
 </in-browser-programming-exercise>
 
 <in-browser-programming-exercise name="Peräkkäisten summa, versio 1" tmcname="osa03-04a_perakkaisten_summa_helpompi">
 
-Tee ohjelma, joka laskee peräkkäisten lukujen summaa 1 + 2 + 3 + ... kunnes sen arvo on vähintään käyttäjän syöttämä luku. Ohjelma toimii seuraavasti:
+Skapa ett program som räknar summan av varanda följande tal `1 + 2 + 3 + ...`, tills värdet är minst lika stort som det tal användaren angett.
+
+Så här fungerar programmet:
 
 <sample-output>
 
-Mihin asti: **2**
+Fram till siffran: **2**
 3
 
 </sample-output>
 
 <sample-output>
 
-Mihin asti: **10**
+Fram till siffran: **10**
 10
 
 </sample-output>
 
 <sample-output>
 
-Mihin asti: **18**
+Fram till siffran: **18**
 21
 
 </sample-output>
 
-Voit olettaa, että käyttäjän antama luku on 2 tai suurempi.
+Du kan anta att det tal anvädaren anger är två eller större.
 
 </in-browser-programming-exercise>
 
@@ -432,45 +433,45 @@ Voit olettaa, että käyttäjän antama luku on 2 tai suurempi.
 Under kursens första vecka lärde vi oss att det är möjligt att bilda strängar av kortare strängar med hjälp av `+`-operatorn. Till exempel detta är valid Python-kod:
 
 ```python
-sanat = "suo"
-sanat = sanat + ", kuokka"
-sanat = sanat + " ja python"
+ord = "Ris"
+ord = ord + ", sås"
+ord = ord + " och Python"
 
-print(sanat)
+print(ord)
 ```
 
 <sample-output>
 
-suo, kuokka ja python
+Ris, sås och Python
 
 </sample-output>
 
 `+=`-operatorn låter oss skriva ovanstående lite mer kompakt:
 
 ```python
-sanat = "suo"
-sanat += ", kuokka"
-sanat += " ja python"
+ord = "Ris"
+ord += ", sås"
+ord += " och Python"
 
-print(sanat)
+print(ord)
 ```
 
 Det här gäller också f-strängar som kan vara nyttiga då värden lagrade i strängar behövs som delar av en resulterande sträng. Det här skulle till exempel fungera:
 
 ```python
-kurssi = "Ohjelmoinnin perusteet"
-arvosana = 4
+kurs = "Introkurs i programmering"
+vitsord = 4
 
-lausunto = "Olet saanut "
-lausunto += f"kurssilta {kurssi} "
-lausunto += f"arvosanan {arvosana}"
+text = "Du fick "
+text += f"vitsordet {vitsord} "
+text += f"i kursen {kurs}"
 
-print(lausunto)
+print(text)
 ```
 
 <sample-output>
 
-Olet saanut kurssilta Ohjelmoinnin perusteet arvosanan 4
+Du fick vitsordet 4 i kursen Introkurs i programmering
 
 </sample-output>
 
@@ -480,32 +481,31 @@ Samma fungerar också för strängar – du kan lägga till nya delar i en strä
 
 <in-browser-programming-exercise name="Peräkkäisten summa, versio 2" tmcname="osa03-05_perakkaisten_summa">
 
-Tee edellisestä ohjelmasta hieman kehittyneempi versio, joka tulostaa lopputuloksen lisäksi myös sen miten kyseinen summa lasketaan:
+Skapa en mer avancerad version av det föregående programmet. Nu ska programmet visa hur man kom till det resultat som man kommit fram till:
 
 <sample-output>
 
-Mihin asti: **2**
-Laskettiin 1 + 2 = 3
+Fram till siffran: **2**
+Räknade 1 + 2 = 3
 
 </sample-output>
 
 <sample-output>
 
-Mihin asti: **10**
-Laskettiin 1 + 2 + 3 + 4 = 10
+Fram till siffran: **10**
+Räknade 1 + 2 + 3 + 4 = 10
 
 </sample-output>
 
 <sample-output>
 
-Mihin asti: **18**
-Laskettiin 1 + 2 + 3 + 4 + 5 + 6 = 21
+Fram till siffran: **18**
+Räknade 1 + 2 + 3 + 4 + 5 + 6 = 21
 
 </sample-output>
 
-Voit olettaa, että käyttäjän antama luku on 2 tai suurempi.
+Du kan anta att den siffra användaren anger är två eller större.
 
 </in-browser-programming-exercise>
-
 
 <quiz id="742577d3-7a6c-5249-a0b8-10bbcaeea044"></quiz>

@@ -19,10 +19,10 @@ Du kan använda en while-loop för att gå igenom elementen i en lista på samma
 ```python
 lista = [3, 2, 4, 5, 2]
 
-kohta = 0
-while kohta < len(lista):
-    print(lista[kohta])
-    kohta += 1
+plats = 0
+while plats < len(lista):
+    print(lista[plats])
+    plats += 1
 ```
 
 <sample-output>
@@ -46,8 +46,8 @@ När man använder en while-loop, vet programmet inte på förhand hur många it
 Idén är att `for`-loopen går igenom elementen i samlingen ett för ett och utför samma sak för varje element. Programmeraren behöver inte fundera på vilket element som behandlas och när det görs. Syntaxen för `for`-loopen är den följande:
 
 ```python
-for <muuttuja> in <rakenne>:
-    <lohko>
+for <variabel> in <samling>:
+    <block>
 ```
 
 `for`-loopen tar ett element i samlingen, tilldelar det till en variabel, kör kodblocket och fortsätter till nästa element. När alla element har behandlats kommer programmet att fortsätta köras från och med kodraden som följer loopen.
@@ -59,8 +59,8 @@ Följande program skriver ut alla element i en lista med hjälp av en `for`-loop
 ```python
 lista = [3, 2, 4, 5, 2]
 
-for alkio in lista:
-    print(alkio)
+for element in lista:
+    print(element)
 ```
 
 <sample-output>
@@ -78,34 +78,34 @@ Jämfört med exemplet i början av den här delen är strukturen mycket enklare
 Samma princip gäller också för strängar:
 
 ```python
-nimi = input("Anna nimesi: ")
+namn = input("Ange ditt namn: ")
 
-for merkki in nimi:
-    print(merkki)
+for tecken in namn:
+    print(tecken)
 ```
 
 <sample-output>
 
-Anna nimesi: **Pekka**
+Ange ditt namn: **Peter**
 P
 e
-k
-k
-a
+t
+e
+r
 
 </sample-output>
 
 <programming-exercise name='Tulostus tähdillä' tmcname='osa04-11a_tulostus_tahdilla'>
 
-Tee ohjelma, joka pyytää käyttäjää syöttämään merkkijonon ja tulostaa sitten merkkijonon kirjaimet yksitellen allekkain.
+Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att dess tecken kommer under varandra.
 
-Jokaisen kirjaimen jälkeen tulostetaan lisäksi tähti (*) omalle rivilleen.
+Efter varje tecken skriver man också ut en asterisk på en ny rad.
 
-Esimerkiksi:
+Exempel:
 
 <sample-output>
 
-Anna merkkijono: **Python**
+Ange en sträng: **Python**
 P
 *
 y
@@ -121,8 +121,7 @@ n
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I de här uppgifterna ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -197,13 +196,13 @@ for i in range(6, 2, -1):
 
 <programming-exercise name='Negatiivisesta positiiviseen' tmcname='osa04-11b_negatiivisesta_positiiviseen'>
 
-Tee ohjelma, joka lukee käyttäjältä positiivisen kokonaisluvun N. Ohjelma tulostaa sen jälkeen luvut väliltä -N...N _nollaa lukuunottamatta_. Jokainen luku tulostetaan omalle rivilleen.
+Skapa ett program som ber användaren ge ett positivt heltal `n`. Programmet ska därefter skriva ut siffrorna i intervallet `-n ... n`, exklusive noll. Varje siffra skrivs ut på en skild rad.
 
-Esimerkiksi
+Exempel:
 
 <sample-output>
 
-Anna luku: **4**
+Ange tal: **4**
 -4
 -3
 -2
@@ -215,8 +214,7 @@ Anna luku: **4**
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I de här uppgifterna ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -225,8 +223,8 @@ Anna luku: **4**
 Funktionen `range` returnerar ett `range`-objekt som på flera sätt fungerar som en lista, men i verkligheten inte är det. Om du försöker skriva ut värdet som funktionen returnerar kommer du bara att se en beskrivning av `range`-objektet:
 
 ```python
-luvut = range(2, 7)
-print(luvut)
+siffror = range(2, 7)
+print(siffror)
 ```
 
 <sample-output>
@@ -238,8 +236,8 @@ range(2, 7)
 Funktionen `list` konverterar ett intervall till en lista. Listan kommer att innehålla de värden som finns i intervallet. I fortsättningskursen i Python som följer den här kursen kommer vi att gå djupare in på det här.
 
 ```python
-luvut = list(range(2, 7))
-print(luvut)
+siffror = list(range(2, 7))
+print(siffror)
 ```
 
 <sample-output>
@@ -253,13 +251,15 @@ print(luvut)
 Tills nu har de övningar som krävt att du skriver en funktion haft färdiga mallar som sett ut på följande sätt:
 
 ```python
-# tee ratkaisu tänne
-# funktiota kannattaa testata kutsumalla sitä täällä seuraavasti
+# din lösning ska skrivas här
+
+# det lönar sig att testa på funktionen här, på följande sätt
 if __name__ == "__main__":
-    lause = "olipa kerran kauan sitten ohjelmoija"
-    print(eka_sana(lause))
-    print(toka_sana(lause))
-    print(vika_sana(lause))
+    mening = "jag gillar blåbärspaj så länge den inte innehåller ägg"
+
+    print(ord_ett(mening))
+    print(ord_tva(mening))
+    print(sista_ordet(mening))
 ```
 
 Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == "__main__"` -blocket. De automatiska testen kommer fortsättningsvis ändå att kräva att de används, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
@@ -268,9 +268,9 @@ Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriv
 
 <programming-exercise name='Tähdet' tmcname='osa04-12_tahdet'>
 
-Tee funktio `lista_tahtina`, joka saa parametriksi listan kokonaislukuja. Funktio tulostaa joukon tähtirivejä siten, että listalla olevat luvut kertovat kunkin rivin tähtimäärän.
+Skapa funktionen `lista_som_asterisker` som får som argument en lista med heltal. Funktionen ska skriva ut rader med asterisker så att siffrorna i listan indikerar antalet asterisker på en rad.
 
-Esim. kutsuttaessa `lista_tahtina([3, 7, 1, 1, 2])` tulostus on:
+T.ex. med anropet `lista_som_asterisker([3, 7, 1, 1, 2])` ska resultatet vara:
 
 <sample-output>
 
@@ -300,61 +300,60 @@ Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
 
 <programming-exercise name='Anagrammi' tmcname='osa04-13_anagrammi'>
 
-Tee funktio `anagrammi` joka saa parametriksi kaksi merkkijonoa. Funktio palauttaa `True`, jos merkkijonot ovat anagrammeja eli ne muodostuvat täsmälleen samoista kirjaimista.
+Skapa funktionen `anagram` som får två strängar som argument. Funktionen ska returnera `True` om strängarna är anagram – dvs. de bildas av exakt samma bokstäver.
 
-Esimerkiksi funktiota voisi käyttää näin:
+Exempel:
 
 ```python
-print(anagrammi("talo", "tola")) # True
-print(anagrammi("talo", "lato")) # True
-print(anagrammi("talo", "olat")) # True
-print(anagrammi("tammi", "mitta")) # False
-print(anagrammi("python", "java")) # False
+print(anagram("stol", "lost")) # True
+print(anagram("burk", "bruk")) # True
+print(anagram("anagram", "magarna")) # True
+print(anagram("lykta", "lycka")) # False
+print(anagram("python", "java")) # False
 ```
 
-Vihje: funktio `sorted` toimii myös merkkijonoille.
+Tips: Funktionen `sorted` fungerar även för strängar.
 
 </programming-exercise>
 
 <programming-exercise name='Palindromit' tmcname='osa04-14_palindromit'>
 
-Tee funktio `palindromi`, joka saa parametriksi merkkijonon ja palauttaa `True`, jos merkkijono on palindromi (eli samansisältöinen luettuna alusta loppuun tai lopusta alkuun).
+Skapa funktionen `palindrom` som får en sträng som argument. Funktionen ska returnera `True` om strängen är ett palindrom – dvs. den är den samma oberoende om man börjar läsa från vänster eller höger.
 
-Tee myös funktiota hyödyntävä pääohjelma, joka kyselee käyttäjältä sanoja niin kauan, kunnes käyttäjä syöttää palindromin:
+Skapa ett huvudprogram som ber användaren ange ord tills ett palindrom ges:
 
 <sample-output>
 
-Anna palindromi: **python**
-ei ollut palindromi
-Anna palindromi: **java**
-ei ollut palindromi
-Anna palindromi: **kauppias**
-ei ollut palindromi
-Anna palindromi: **saippuakauppias**
-saippuakauppias on palindromi!
+Ange ett palindrom: **python**
+det var inte ett palindrom
+Ange ett palindrom: **java**
+det var inte ett palindrom
+Ange ett palindrom: **snöhöna**
+det var inte ett palindrom
+Ange ett palindrom: **snöhöns**
+snöhöns är ett palindrom!
 
 </sample-output>
 
-**Huomaa**, että pääohjelmaa **ei tule kirjoittaa**
-`if __name__ == "__main__":`-lohkon sisälle
+Obs! Huvudprogrammet ska inte vara i `if __name__ == "__main__"` -blocket.
 
 </programming-exercise>
 
 <programming-exercise name='Positiivisten summa' tmcname='osa04-15_positiivisten_summa'>
 
-Tee funktio `positiivisten_summa`, joka saa parametriksi kokonaislukuja sisältävän listan.
+Skapa funktionen `positiv_summa` som tar emot en lista med heltal som argument.
 
-Funktio palauttaa listan positiivisten lukujen summan.
+Funktionen ska returnera summan av de positiva talen i listan.
 
 ```python
 lista = [1, -2, 3, -4, 5]
-vastaus = positiivisten_summa(lista)
-print("vastaus", vastaus)
+svar = positiv_summa(lista)
+print("svar", svar)
 ```
 
 <sample-output>
 
-vastaus 9
+svar 9
 
 </sample-output>
 
@@ -364,21 +363,21 @@ I dessa uppgifter kommer vi att använda listor som argument och return-värden.
 
 <programming-exercise name='Parilliset' tmcname='osa04-16_parilliset'>
 
-Tee funktio `parilliset`, joka saa parametriksi kokonaislukuja sisältävän listan.
+Skapa funktionen `jamna` som får som argument en lista med heltal.
 
-Funktio palauttaa uuden listan, jolla on parametrina olevan listan sisältämät parilliset luvut.
+Funktionen ska returnera en ny lista som innehåller de jämna talen som förekommer i den ursprungliga listan.
 
 ```python
 lista = [1, 2, 3, 4, 5]
-uusi_lista = parilliset(lista)
-print("alkuperäinen", lista)
-print("uusi", uusi_lista)
+ny_lista = jamna(lista)
+print("ursprunglig", lista)
+print("ny", ny_lista)
 ```
 
 <sample-output>
 
-alkuperäinen [1, 2, 3, 4, 5]
-uusi [2, 4]
+ursprunglig [1, 2, 3, 4, 5]
+ny [2, 4]
 
 </sample-output>
 
@@ -386,11 +385,11 @@ uusi [2, 4]
 
 <programming-exercise name='Summalista' tmcname='osa04-17_summalista'>
 
-Tee funktio `summa`, joka saa parametriksi kaksi kokonaislukuja sisältävää listaa. Molemmissa listoissa on sama määrä alkioita.
+Skapa funktionen `summa` som får två listor som argument. Båda listorna har samma antal element, som består av heltal.
 
-Funktio palauttaa uuden listan, jonka alkiot muodostuvat parametreina olevien listojen alkioiden summista.
+Funktionen ska returnera en ny lista vars element består av summorna av elementen i de urpsrungliga listorna.
 
-Esim:
+Exempel:
 
 ```python
 a = [1, 2, 3]
@@ -402,13 +401,13 @@ print(summa(a, b)) # [8, 10, 12]
 
 <programming-exercise name='Uniikit' tmcname='osa04-18_uniikit'>
 
-Tee funktio `uniikit`, joka saa parametriksi kokonaislukuja sisältävän listan.
+Skapa funktionen `unika` som får som argument en lista med heltal.
 
-Funktio palauttaa uuden listan, joka sisältää parametrina annetun listan luvut suuruusjärjestyksessä siten, että jokainen luku on listalla vain kerran.
+Funktionen ska returnera en lista som innehåller den ursprungliga listans siffror i storleksordning. Varje siffra ska förekomma bara en gång.
 
 ```python
 lista = [3, 2, 2, 1, 3, 3, 1]
-print(uniikit(lista)) # [1, 2, 3]
+print(unika(lista)) # [1, 2, 3]
 ```
 
 </programming-exercise>
@@ -420,12 +419,12 @@ En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i
 Här är ett utkast som inte ännu fungerar:
 
 ```python
-paras = alkuarvo # sopiva alkuarvo riippuu tilanteesta
-for alkio in lista:
-    if alkio parempi kuin paras:
-        paras = alkio
+bast = start # det passliga startvärdet beror på situationen
+for element in lista:
+    if element bättre än bast:
+        bast = element
 
-# paras on nyt tiedossa!
+# vi vet nu det bästa värdet
 ```
 
 Detaljerna kring den slutliga koden beror på typen av elementen i listan och kriteriet för väljandet av det bästa (eller sämsta) elementet. Ibland kan du behöva fler än en hjälpvariabel.
@@ -434,26 +433,26 @@ Låt oss öva på den här metoden.
 
 <programming-exercise name='Listan pisimmän pituus' tmcname='osa04-18a_listan_pimman_pituus'>
 
-Tee funktio `pisimman_pituus`, joka saa parametriksi listan merkkijonoja. Funktio palauttaa tiedon mikä on listan pisimmän merkkijonon pituus.
+Skapa funktionen `langsta_langden` som får som argument en lista med strängar. Funktionen ska returnera längden på den längsta strängen i listan.
 
 ```python
-lista = ["eka", "toka", "kolmas", "seitsemäs"]
+lista = ["första", "andra", "tredje", "sjuttionde"]
 
-tulos = pisimman_pituus(lista)
-print(tulos)
+resultat = langsta_langden(lista)
+print(resultat)
 ```
 
 ```python
-lista = ["pekka", "emilia", "venla", "eero", "antti", "juhani"]
+lista = ["peter", "emilia", "venla", "eva", "antonia", "julia"]
 
-tulos = pisimman_pituus(lista)
-print(tulos)
+resultat = langsta_langden(lista)
+print(resultat)
 ```
 
 <sample-output>
 
-9
-6
+10
+7
 
 </sample-output>
 
@@ -461,27 +460,27 @@ print(tulos)
 
 <programming-exercise name='Listan lyhin' tmcname='osa04-18b_listan_lyhin'>
 
-Tee funktio `lyhin`, joka saa parametriksi listan merkkijonoja. Funktio palauttaa listan lyhimmän merkkijonon. Jos samanpituisia on useita (testeissä näin ei ole), voi funktio palauttaa niistä minkä vaan. Funktio voi olettaa että listalla ei ole tyhjiä eli nollan pituisia merkkijonoja.
+Skapa funktionen `kortast` som får som argument en lista med strängar. Funktionen ska returnera listans kortaste sträng. Om det finns flera strängar med samma längd kan man returnera vilken som helst av dessa. Man kan anta at det inte finns tomma strängar (längd noll) i listan.
 
 
 ```python
-lista = ["eka", "toka", "kolmas", "seitsemäs"]
+lista = ["första", "andra", "tredje", "sjuttionde"]
 
-tulos = lyhin(lista)
-print(tulos)
+resultat = kortast(lista)
+print(resultat)
 ```
 
 ```python
-lista = ["pekka", "emilia", "johanna", "venla", "eero", "antti"]
+lista = ["peter", "emilia", "venla", "eva", "antonia", "julia"]
 
-tulos = lyhin(lista)
-print(tulos)
+resultat = kortast(lista)
+print(resultat)
 ```
 
 <sample-output>
 
-eka
-eero
+andra
+eva
 
 </sample-output>
 
@@ -489,22 +488,20 @@ eero
 
 <programming-exercise name='Listan pisimmät' tmcname='osa04-19_listan_pisimmat'>
 
-Tee funktio `pisimmat`, joka saa parametriksi listan merkkijonoja. Funktio palauttaa listan, joka sisältää parametrina annetun listan pisimmän merkkijonon. Jos pisimpiä merkkijonoja on useampia, funktio palauttaa ne kaikki listassa.
-
-Merkkijonojen järjestyksen tuloslistassa tulee noudattaa merkkijonojen järjestystä alkuperäisessä listassa.
+Skapa funktionen `langsta` som får som argument en lista med strängar. Funktionen ska returnera en lista som innehåller den längsta strängen i listan. Om de finns flera strängar med samma längd skrivs de alla ut i listan, i den ordning som de förekommer i den ursprungliga listan.
 
 ```python
-lista = ["eka", "toka", "kolmas", "seitsemäs"]
+lista = ["första", "andra", "tredje", "sjuttionde"]
 
-tulos = pisimmat(lista)
-print(tulos) # ['seitsemäs']
+resultat = langsta(lista)
+print(resultat) # ['sjuttionde']
 ```
 
 ```python
-lista = ["pekka", "emilia", "venla", "eero", "antti", "juhani"]
+lista = ["peter", "emilia", "venla", "eva", "antonia", "julia", "saharah"]
 
-tulos = pisimmat(lista)
-print(tulos) # ['emilia', 'juhani']
+resultat = langsta(lista)
+print(resultat) # ['antonia', 'saharah']
 ```
 
 </programming-exercise>

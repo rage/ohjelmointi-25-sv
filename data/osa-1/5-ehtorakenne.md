@@ -19,23 +19,23 @@ Hittills har vi skapat program där koden körts rad för rad från början till
 Till exempel följande program verifierar att användaren är tillräckligt gammal:
 
 ```python
-ika = int(input("Kuinka vanha olet? "))
+alder = int(input("Vad är din ålder? "))
 
-if ika > 17:
-    print("Olet täysi-ikäinen!"
-    print("Tässä siis sinulle ikiomaksi GTA6.")
+if alder > 17:
+    print("Du är myndig!")
+    print("Här får du alltså GTA 6.")
 
-print("Seuraava asiakas, kiitos!")
+print("Nästa kund!")
 ```
 
 När användaren är över 17 år, borde det se ut så här när programmet körs:
 
 <sample-output>
 
-Kuinka vanha olet? **18**
-Olet täysi-ikäinen!
-Tässä siis sinulle ikiomaksi GTA6.
-Seuraava asiakas, kiitos!
+Vad är din ålder? **18**
+Du är myndig!
+Här får du alltså GTA 6.
+Nästa kund!
 
 </sample-output>
 
@@ -43,8 +43,8 @@ Däremot, om användaren är 17 eller yngre, ser utskriften ut så här:
 
 <sample-output>
 
-Kuinka vanha olet? **16**
-Seuraava asiakas, kiitos!
+Vad är din ålder? **16**
+Nästa kund!
 
 </sample-output>
 
@@ -57,11 +57,11 @@ I en if-sats följs nyckelordet `if` med ett villkor som till exempel kan vara e
 Notera kolontecknet. Om det saknas…
 
 ```python
-ika = 10
+alder = 10
 
 # kaksoispiste unohtui seuraavan rivin lopusta
-if ika > 17
-    print("Olet täysi-ikäinen.")
+if alder > 17
+    print("Du är myndig.")
 ```
 
 …orsakas ett fel när programmet körs:
@@ -69,8 +69,8 @@ if ika > 17
 <sample-output>
 <pre>
 File "ohjelma.py", line 3
-  if ika > 17
-            ^
+  if alder > 17
+              ^
 SyntaxError: invalid syntax
 </pre>
 </sample-output>
@@ -91,38 +91,38 @@ Det är vanligt att man vill jämföra två värden sinsemellan. Här följer en
 Vi tar nu en titt på ett program som skriver ut olika saker baserat på det värde som användaren anger. Här har vi if-satser som kan uppfyllas då värdet är negativt, positivt eller lika med noll:
 
 ```python
-luku = int(input("Anna luku: "))
+siffra = int(input("Ge ett tal: "))
 
-if luku < 0:
-    print("Luku on negatiivinen.")
+if siffra < 0:
+    print("Talet är negativt.")
 
-if luku > 0:
-    print("Luku on positiivinen.")
+if siffra > 0:
+    print("Talet är positivt.")
 
-if luku == 0:
-    print("Luku on nolla.")
+if siffra == 0:
+    print("Talet är noll.")
 ```
 
 Här har vi tre exempel med olika indata:
 
 <sample-output>
 
-Anna luku: **15**
-Luku on positiivinen.
+Ge ett tal: **15**
+Talet är positivt.
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **-18**
-Luku on negatiivinen.
+Ge ett tal: **-18**
+Talet är negativt.
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **0**
-Luku on nolla.
+Ge ett tal: **0**
+Talet är noll.
 
 </sample-output>
 
@@ -133,14 +133,14 @@ Python känner igen att en kodsnutt hör till en if-sats då varje rad är inden
 Exempelvis:
 
 ````python
-salasana = input("Anna salasana: ")
+losenord = input("Ange lösenord: ")
 
-if salasana == "kissa":
-    print("Tiesit salasanan!")
-    print("Olet siis joko oikea käyttäjä...")
-    print("...tai melkoinen hakkerivelho.")
+if losenord == "katt":
+    print("Du visste lösenordet!")
+    print("Du måste alltså vara den riktiga användaren...")
+    print("...eller så är du en hacker.")
 
-print("Ohjelman suoritus päättyi. Kiitos ja hei!")
+print("Programmet avslutades. Tack och hej!")
 ````
 
 Du kan använda Tab-tangenten för att lägga till mellanrum där det behövs.
@@ -157,17 +157,17 @@ Näppäimistökuvien alkuperä:
 
 <in-browser-programming-exercise name="Orwell" tmcname="osa01-21_orwel">
 
-Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Orwell" jos luku on täsmälleen 1984. Muussa tapauksessa ohjelma ei tulosta mitään.
+Skapa ett program som frågar efter ett heltal från användaren och skriver ut texten "Orwell" om siffran är 1984. Annars skrivs inget ut.
 
 <sample-output>
 
-Anna luku: **2020**
+Ge ett tal: **2020**
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **1984**
+Ge ett tal: **1984**
 Orwell
 
 </sample-output>
@@ -176,26 +176,26 @@ Orwell
 
 <in-browser-programming-exercise name="Itseisarvo" tmcname="osa01-22_itseisarvo">
 
-Kirjoita ohjelma, joka lukee käyttäjältä kokonaisluvun. Mikäli luku on pienempi kuin 0, ohjelma tulostaa luvun kerrottuna luvulla -1. Muulloin ohjelma tulostaa käyttäjän syöttämän luvun. Alla on muutamia esimerkkejä ohjelman odotetusta toiminnasta.
+Skapa ett program som ber efter ett heltal av användaren. Om siffran är mindre än noll, skriver programmet ut siffran multiplicerat med talet -1. I övriga fall skrivs den siffran användaren angett ut. Nedan finns några exempel på hur programmet ska fungera.
 
 <sample-output>
 
-Anna luku: **-7**
-Luvun itseisarvo on 7
+Ge ett tal: **-7**
+Siffrans absolutbelopp är 7
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **1**
-Luvun itseisarvo on 1
+Ge ett tal: **1**
+Siffrans absolutbelopp är 1
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **-99**
-Luvun itseisarvo on 99
+Ge ett tal: **-99**
+Siffrans absolutbelopp är 99
 
 </sample-output>
 
@@ -204,23 +204,23 @@ Luvun itseisarvo on 99
 
 <in-browser-programming-exercise name="Keittoa vai ei" tmcname="osa01-23_keittoa_vai_ei">
 
-Kirjoita ohjelma, joka kysyy ensin käyttäjän nimen. Jos nimi on mikä tahansa muu kuin "Jerry", ohjelma kysyy keittoannosten lukumäärän ja kertoo sitten kokonaishinnan. Yksi annos maksaa 5,90.
+Skapa ett program som först frågar efter användarens förnamn. Om namnet inte är "Jerry", fortsätter programmet med att fråga antalet sopportioner och berättar sedan priset för "hela soppan". En portion kostan 5,90.
 
-Kaksi esimerkkisuoritusta:
+Två exempel:
 
 <sample-output>
 
-Mikä on nimesi: **Kramer**
-Kuinka monta annosta keittoa: **2**
-Kokonaishinta on 11.8
-Seuraava!
+Vad heter du: **Kramer**
+Hur många sopportioner: **2**
+Slutsumma 11.8
+Nästa!
 
 </sample-output>
 
 <sample-output>
 
-Mikä on nimesi: **Jerry**
-Seuraava!
+Vad heter du: **Jerry**
+Nästa!
 
 </sample-output>
 
@@ -231,37 +231,39 @@ Seuraava!
 
 Tee ohjelma, joka lukee käyttäjältä kokonaisluvun ja kertoo sitten sen suuruusluokan oheisten esimerkkisuoritusten mukaisesti:
 
+Skapa ett program som frågar efter ett heltal från användaren. Programmet ska sedan berätta i vilken storleksklass siffran är, enligt följande exempel:
+
 <sample-output>
 
-Anna luku: **950**
-Luku on pienempi kuin 1000
-Kiitos!
+Ge ett tal: **950**
+Siffran är mindre än 1000
+Tackar!
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **59**
-Luku on pienempi kuin 1000
-Luku on pienempi kuin 100
-Kiitos!
+Ge ett tal: **59**
+Siffran är mindre än 1000
+Siffran är mindre än 100
+Tackar!
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **2**
-Luku on pienempi kuin 1000
-Luku on pienempi kuin 100
-Luku on pienempi kuin 10
-Kiitos!
+Ge ett tal: **2**
+Siffran är mindre än 1000
+Siffran är mindre än 100
+Siffran är mindre än 10
+Tackar!
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **1123**
-Kiitos!
+Ge ett tal: **1123**
+Tackar!
 
 </sample-output>
 
@@ -281,30 +283,30 @@ Resultatet av ett Boolean-uttryck kan lagras i en variabel på samma sätt som v
 
 ```python
 a = 3
-ehto = a < 5
-print(ehto)
-if ehto:
-    print("a on pienempi kuin 5")
+villkor = a < 5
+print(villkor)
+if villkor:
+    print("a är mindre än 5")
 ```
 
 <sample-output>
 
 True
-a on pienempi kuin 5
+a är mindre än 5
 
 </sample-output>
 
 Pythons nyckelord `True` och `False` kan också användas direkt som sådana. I det följande exemplet körs `print`-kommandot alltid, eftersom värdet på villkoret är `True`:
 
 ```python
-ehto = True
-if ehto:
-    print("Tänne tullaan aina")
+villkor = True
+if villkor:
+    print("Vi når hit alltid")
 ```
 
 <sample-output>
 
-Tänne tullaan aina
+Vi når hit alltid
 
 </sample-output>
 
@@ -312,15 +314,15 @@ Man kan tycka att det inte i ovanstående exempel verkar vara en så nyttig funk
 
 <in-browser-programming-exercise name="Laskin" tmcname="osa01-25_laskin">
 
-Tee ohjelma, joka kysyy käyttäjältä ensin kaksi lukua ja sen jälkeen komennon. Jos komento on joko _summa_, _tulo_ tai _erotus_, ohjelma laskee syötteille kyseisen operaation tuloksen. Muussa tapauksessa ohjelma ei tulosta mitään.
+Skapa ett program som först ber användaren ange två siffror och därefter ett kommando. Om kommandot är summa, produkt eller differens, ska programmet utföra den nämnda räkneoperationen. I övriga fall skriver inte programmet ut något.
 
-Esimerkkitulostuksia:
+Exempel:
 
 <sample-output>
 
-Luku 1: **10**
-Luku 2: **17**
-Komento: **summa**
+Tal 1: **10**
+Tal 2: **17**
+Kommando: **summa**
 
 10 + 17 = 27
 
@@ -328,9 +330,9 @@ Komento: **summa**
 
 <sample-output>
 
-Luku 1: **4**
-Luku 2: **6**
-Komento: **tulo**
+Tal 1: **4**
+Tal 2: **6**
+Kommando: **produkt**
 
 4 * 6 = 24
 
@@ -338,9 +340,9 @@ Komento: **tulo**
 
 <sample-output>
 
-Luku 1: **4**
-Luku 2: **6**
-Komento: **erotus**
+Tal 1: **4**
+Tal 2: **6**
+Kommando: **differens**
 
 4 - 6 = -2
 
@@ -350,20 +352,20 @@ Komento: **erotus**
 
 <in-browser-programming-exercise name="Lämpötilat" tmcname="osa01-26_lampotilat">
 
-Tee ohjelma, joka kysyy käyttäjältä lämpötilan fahrenheit-asteina, ja tulostaa sitten lämpötilan celsius-asteina. Jos lämpötila celsius-asteina on pienempi kuin 0, ohjelma tulostaa lisäksi viestin "Paleltaa!".
+Skapa ett program som ber användaren ange en temperatur i Farenheit. Programmet ska skriva ut den här temperaturen i Celcius. Om temperaturen mätt i Celcius är under noll ska programmet också skriva ut texten "Kallt!".
 
-Kaavan fahrenheit-asteiden muuntamiseksi celsius-asteiksi voit etsiä esimerkiksi googlaamalla.
+Du kan söka på nätet efter den korrekta formeln för att konvertera temperaturer i Farenheit till Celcius.
 
-Kaksi esimerkkisuoritusta:
+Exempel:
 
 <sample-output>
 
-Anna lämpötila (F): **101**
-101 fahrenheit-astetta on 38.333333333333336 celsius-astetta
+Ange temperatur (i Farenheit): **101**
+101 grader Farenheit on 38.333333333333336 grader Celcius
 
-Anna lämpötila (F): **21**
-21 fahrenheit-astetta on -6.111111111111111 celsius-astetta
-Paleltaa!
+Ange temperatur (i Farenheit): **21**
+21 grader Farenheit on -6.111111111111111 grader Celcius
+Kallt!
 
 </sample-output>
 
@@ -371,23 +373,23 @@ Paleltaa!
 
 <in-browser-programming-exercise name="Palkka" tmcname="osa01-27_palkka">
 
-Tee ohjelma, joka kysyy tuntipalkkaa, työskenneltyjen tuntien määrää ja viikonpäivää. Ohjelma tulostaa palkan, joka on tuntipalkka kertaa tuntien määrä muina päivinä paitsi sunnuntaisin, jolloin tuntipalkka on kaksinkertainen.
+Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndag är timlönen fördubblad.
 
 <sample-output>
 
-Tuntipalkka: **8.5**
-Työtunnit: **3**
-Viikonpäivä: **maanantai**
-Palkka 25.5 euroa
+Timlön: **8.5**
+Arbetstimmar: **3**
+Veckodag: **maanantai**
+Lön 25.5 euro
 
 </sample-output>
 
 <sample-output>
 
-Tuntipalkka: **12.5**
-Työtunnit: **10**
-Viikonpäivä: **sunnuntai**
-Palkka 250.0 euroa
+Timlön: **12.5**
+Arbetstimmar: **10**
+Veckodag: **sunnuntai**
+Lön 250.0 euro
 
 </sample-output>
 
@@ -395,18 +397,18 @@ Palkka 250.0 euroa
 
 <in-browser-programming-exercise name="Korjaa ohjelma: Korkoa kortille" tmcname="osa01-28_korjaaa_ohjelma_korkoa_kortille">
 
-Ohjelmassa lasketaan bonuskortin saldoon vuoden lopussa lisättävä bonuspistemäärä seuraavan kaavan mukaisesti:
+Det här programmet räknar antalet bonuspoäng som ska adderas till ett bonuskort i slutet av året, enligt följande formel:
 
-* Jos bonuspisteitä on alle sata, korkona saa 10 % lisää pisteitä
-* Muussa tapauksessa korkona saa 15 % lisää pisteitä
+* bonuspoäng < 100: ränta 10 % extra poäng
+* övriga fall: ränta 15 % extra poäng
 
-Ohjelma siis toimii esim. näin:
+Så här fungerar programmet:
 
 <sample-output>
 
-Kuinka paljon pisteitä? **55**
-Sait 10 % bonusta
-Pisteitä on nyt 60.5
+Hur många poäng? **55**
+Du fick 10 % i bonus
+Du har nu 60.5 poäng
 
 </sample-output>
 
@@ -414,66 +416,66 @@ Ohjelma toimii kuitenkin jollain syötteillä oudosti:
 
 <sample-output>
 
-Kuinka paljon pisteitä? **95**
-Sait 10 % bonusta
-Sait 15 % bonusta
-Pisteitä on nyt 120.175
+Hur många poäng? **95**
+Du fick 10 % i bonus
+Du fick 15 % i bonus
+Du har nu 120.175 poäng
 
 </sample-output>
 
-Korjaa ohjelma niin, että bonusta tulee joko 10 % tai 15 %, ei koskaan molempia.
+Korrigera programmet så att man endast får 10 % eller 15 % bonus – inte både och.
 
 </in-browser-programming-exercise>
 
 <in-browser-programming-exercise name="Huomiset vaatteet" tmcname="osa01-29_huomisen_vaatteet">
 
-Tee ohjelma, joka kysyy huomisen sääennusteen ja suosittelee sen mukaista pukeutumista.
+Gör ett program som frågar användaren om morgondagens väderprognos. Programmet rekommenderar därefter klädsel enligt vädret.
 
-Suositus vaihtelee sen mukaan, onko lämpötila yli 20 astetta, yli 10 astetta vai yli 5 astetta. Myös sade vaikuttaa suositukseen.
+Rekommendationen beror på om temperaturen är över fem, tio eller 20 grader samt om det regnar.
 
-Ohjelma toimii seuraavasti:
+Så här ska programmet fungera:
 
 <sample-output>
 
-Kerro huominen sääennuste:
-Lämpötila: **21**
-Sataako (kyllä/ei): **ei**
-Pue housut ja t-paita
+Berätta väderprognosen för imorgon:
+Temperatur: **21**
+Regnar det (ja/nej): **nej**
+Ta på dig byxor och t-skjorta
 
 </sample-output>
 
 <sample-output>
 
-Kerro huominen sääennuste:
-Lämpötila: **11**
-Sataako (kyllä/ei): **ei**
-Pue housut ja t-paita
-Ota myös pitkähihainen paita
+Berätta väderprognosen för imorgon:
+Temperatur: **11**
+Regnar det (ja/nej): **nej**
+Ta på dig byxor och t-skjorta
+Ta på dig också en långärmad tröja
 
 </sample-output>
 
 <sample-output>
 
-Kerro huominen sääennuste:
-Lämpötila: **7**
-Sataako (kyllä/ei): **ei**
-Pue housut ja t-paita
-Ota myös pitkähihainen paita
-Pue päälle takki
+Berätta väderprognosen för imorgon:
+Temperatur: **7**
+Regnar det (ja/nej): **nej**
+Ta på dig byxor och t-skjorta
+Ta på dig också en långärmad tröja
+Klä på dig en jacka
 
 </sample-output>
 
 <sample-output>
 
-Kerro huominen sääennuste:
-Lämpötila: **3**
-Sataako (kyllä/ei): **kyllä**
-Pue housut ja t-paita
-Ota myös pitkähihainen paita
-Pue päälle takki
-Suosittelen lämmintä takkia
-Kannattaa ottaa myös hanskat
-Muista sateenvarjo!
+Berätta väderprognosen för imorgon:
+Temperatur: **3**
+Regnar det (ja/nej): **ja**
+Ta på dig byxor och t-skjorta
+Ta på dig också en långärmad tröja
+Klä på dig en jacka
+En varm jacka rekommenderas
+Vantar rekommenderas också
+Kom ihåg paraplyet!
 
 </sample-output>
 
@@ -481,7 +483,7 @@ Muista sateenvarjo!
 
 <in-browser-programming-exercise name="Toisen asteen yhtälön ratkaiseminen" tmcname="osa01-30_toisen_asteen_yhtalo">
 
-Pythonin `math`-moduulissa on funktio `sqrt`, jolla voi laskea luvun neliöjuuren. Voit käyttää sitä ohjelmassa seuraavasti:
+Modulen `math` i Python har funktionen `sqrt` som kan användas för att räkna kvadratroten för ett tal. Så här fungerar funktionen:
 
 ```python
 from math import sqrt
@@ -489,7 +491,7 @@ from math import sqrt
 print(sqrt(9))
 ```
 
-Ohjelma tulostaa:
+Programmet skriver ut:
 
 <sample-output>
 
@@ -497,21 +499,21 @@ Ohjelma tulostaa:
 
 </sample-output>
 
-Kirjoita ohjelma, joka ratkaisee toisen asteen yhtälön ax²+bx+c. Ohjelmalle annetaan arvot a, b ja c, ja sen tulee laskea juuret (eli ratkaisut) kaavalla
+Gör ett program som räknar resultatet för andra gradens ekvation ax² + bx + c. Till programmet ges värdena a, b och c, och därefter beräknas lösningen med följande formel:
 
-x = (-b ± sqrt(b²-4ac))/(2a).
+x = (-b ± sqrt(b² - 4ac)) / (2a)
 
-Voit olettaa, että yhtälöllä on kaksi juurta, jolloin yllä oleva kaava toimii.
+Du kan anta att ekvationen har två rötter, varvid formeln ovan fungerar.
 
-Esimerkkituloste:
+Exempel:
 
 <sample-output>
 
-Anna a: **1**
-Anna b: **2**
-Anna c: **-8**
+Ge a: **1**
+Ge b: **2**
+Ge c: **-8**
 
-Juuret ovat 2.0 ja -4.0
+Rötterna är 2.0 och -4.0
 
 </sample-output>
 

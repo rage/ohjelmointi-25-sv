@@ -51,9 +51,9 @@ Kommandot `import` gör innehållet i en given modul tillgängligt i ett program
 ```python
 import math
 
-# luvun 5 neliöjuuri
+# kvadratroten av fem
 print(math.sqrt(5))
-# luvun 8 logaritmi (2-kantainen)
+# logaritmen av åtta (bas två)
 print(math.log(8, 2))
 ```
 
@@ -92,16 +92,16 @@ Det här sättet att importera moduler kan vara nyttigt då man testar på någo
 
 <programming-exercise name='Hypotenuusa' tmcname='osa07-01_hypotenuusa'>
 
-Tee funktio `hypotenuusa(kateetti1: float, kateetti2: float)`, joka saa parametrikseen suorakulmaisen kolmion kateettien pituudet. Funktio palauttaa kolmion hypotenuusan pituuden.
+Skapa funktionen `hypotenusa(katet1: float, katet2: float)` som får som argument kateternas längder i en rätvinklig triangel. Funktionen ska returnera hypotenusans längd.
 
-Ratkaisu lasketaan [Pythagoraan](https://fi.wikipedia.org/wiki/Pythagoraan_lause) lauseen avulla. Saat laskettua neliöjuuren `math`-moduulin funktion avulla.
+Använd Pythagoras sats. Kvadratroten kan du räkna med den relevanta funktionen i `math`-modulen.
 
-Esimerkkejä:
+Exempel:
 
 ```python
-print(hypotenuusa(3,4)) # 5.0
-print(hypotenuusa(5,12)) # 13.0
-print(hypotenuusa(1,1)) # 1.4142135623730951
+print(hypotenusa(3,4)) # 5.0
+print(hypotenusa(5,12)) # 13.0
+print(hypotenusa(1,1)) # 1.4142135623730951
 ```
 
 </programming-exercise>
@@ -130,28 +130,28 @@ Den här funktionen returnerar en lista av namn definierade av modulen. Det kan 
 
 <programming-exercise name='Erikoismerkit' tmcname='osa07-02_erikoismerkit'>
 
-Moduulissa [string](https://docs.python.org/3/library/string.html) on merkkijonovakioita, jotka määrittelevät tiettyjä merkkiryhmiä (esim. pienet kirjaimet ja välimerkit). Tutustu näihin vakioihin ja kirjoita niitä käyttäen funktio `jaa_merkkeihin(merkkijono: str)`, joka saa parametrikseen merkkijonon. Funktio palauttaa tuplen, jossa parametrina saadun merkkijonon merkit on jaettu kolmeen eri merkkijonoon:
+I modulen `string` finns strängkonstanter som definiar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som får som argument en sträng som ska returneras uppdelad i tre delar:
 
-* Ensimmäisessä jonossa on kaikki pienet ja suuret englanninkieliset kirjaimet (vakio `ascii_letters`)
-* Toisessa jonossa on kaikki vakiossa `punctuation` määritellyt välimerkit
-* Kolmannessa jonossa on kaikki merkit (mukaan lukien esim. välilyönnit), jotka eivät kuulu kahteen edelliseen ryhmään
+1. en sträng med alla gemener och versaler (enligt engelska alfabetet), konstanten `ascii_letters`
+1. en sträng med tecknen som definieras i konstanten `punctuation`
+1. en sträng med de resterade tecknen (t.ex. mellanslag)
 
-Merkit tulee tallentaa palautettuihin merkkijonoihin siinä järjestyksessä kuin ne esiintyvät alkuperäisessä merkkijonossa.
+Tecknen ska förekomma i samma ordning som i den ursprungliga strängen.
 
-Esimerkki:
+Exempel:
 
 ```python
-osat = jaa_merkkeihin("Tämä on testi!!! Toimiiko, mitä?")
-print(osat[0])
-print(osat[1])
-print(osat[2])
+delar = dela_upp("Det här är ett test, fungerar det?? åå")
+print(delar[0])
+print(delar[1])
+print(delar[2])
 ```
 
 <sample-output>
 
-TmontestiToimiikomit
-!!!,?
-ää    ä
+Dethrretttestfungerardet
+,??
+ ä ä     åå
 
 </sample-output>
 
@@ -159,17 +159,17 @@ TmontestiToimiikomit
 
 <programming-exercise name='Murtoluvuilla laskeminen' tmcname='osa07-03_murtoluvuilla_laskeminen'>
 
-Tutustu Pythonin moduuliin `fractions` ja toteuta sen avulla funktio `jaa_palasiksi(maara: int)`, joka saa parametrikseen palasten määrän. Funktio jakaa luvun 1 parametrin mukaisesti yhtä suuriin murtolukupalasiin ja palauttaa nämä palaset listassa.
+Bekanta dig med Pythonmodulen `fractions` och implementera funktionen `delar(antal: int)` som får som argument ett antal delar. Funktionen ska dela upp talet ett i så här många delar och returnera delarna i en lista.
 
 Esimerkki:
 
 ```python
-for p in jaa_palasiksi(3):
+for p in delar(3):
     print(p)
 
 print()
 
-print(jaa_palasiksi(5))
+print(delar(5))
 ```
 
 <sample-output>

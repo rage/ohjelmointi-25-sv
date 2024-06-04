@@ -23,8 +23,8 @@ Vi kan skapa en ny fil varje gång vi vill skriva data, men vi kan också lägga
 Om du vill skapa en ny fil ska du anropa funktionen `open` med `w` som andra argument. Det här indikerar att filen ska öppnas i skrivläge. Funktionsanropet skulle då kunna se ut så här:
 
 ```python
-with open("uusi_tiedosto.txt", "w") as tiedosto:
-    # tiedostoon kirjoittaminen
+with open("ny_fil.txt", "w") as fil:
+    # vi skriver till filen här
 ```
 
 Obs! Om filen redan finns, kommer allt innehåll att skrivas över. Man ska vara väldigt försiktig när man skapar nya filer.
@@ -32,76 +32,74 @@ Obs! Om filen redan finns, kommer allt innehåll att skrivas över. Man ska vara
 När filen är öppen, kan du skriva data i den. Du kan använda metoden `write`, som tar strängen som ska skrivas som sitt argument:
 
 ```python
-with open("uusi_tiedosto.txt", "w") as tiedosto:
-    tiedosto.write("Moi kaikki!")
+with open("ny_fil.txt", "w") as fil:
+    fil.write("Hej alla!")
 ```
 
 När du kör programmet, dyker en ny fil med namnet `ny_fil.txt` upp i mappen. Innehållet borde se ut så här:
 
 <sample-data>
 
-Moi kaikki!
+Hej alla!
 
 </sample-data>
 
 Om du vill ha radbyten i filen, måste du lägga till dem för hand. Funktionen `write` fungerar inte som print-funktionen, även om de har likheter. Följande program…
 
 ```python
-with open("uusi_tiedosto.txt", "w") as tiedosto:
-    tiedosto.write("Moi kaikki!")
-    tiedosto.write("Toinen rivi")
-    tiedosto.write("Viimeinen rivi")
+with open("ny_fil.txt", "w") as fil:
+    fil.write("Hej alla!")
+    fil.write("Andra raden")
+    fil.write("Sista raden")
 ```
 
 …skulle resultera i en fil som denna:
 
 <sample-data>
 
-Moi kaikki!Toinen riviViimeinen rivi
+Hej alla!Andra radenSista raden
 
 </sample-data>
 
 Radbrytningar får man till stånd med att inkludera `\n` i strängarna som ges som argument till `write`-funktionen:
 
 ```python
-with open("uusi_tiedosto.txt", "w") as tiedosto:
-    tiedosto.write("Moi kaikki!\n")
-    tiedosto.write("Toinen rivi\n")
-    tiedosto.write("Viimeinen rivi\n")
+with open("ny_fil.txt", "w") as fil:
+    fil.write("Hej alla!\n")
+    fil.write("Andra raden\n")
+    fil.write("Sista raden\n")
 ```
 
 Nu borde innehållet i `ny_fil.txt` se ut så här:
 
 <sample-data>
 
-Moi kaikki!
-Toinen rivi
-Viimeinen rivi
+Hej alla!
+Andra raden
+Sista raden
 
 </sample-data>
 
 <programming-exercise name='Omistuskirjoitus' tmcname='osa06-10_omistuskirjoitus'>
 
-Tee ohjelma, joka kysyy nimeä ja luo "omistuskirjoituksen" käyttäjän haluamaan tiedostoon. Seuraavassa ohjelman esimerkkisuoritus:
+Skapa ett program som ber om ett namn och skapar en liten text som är tillägnad till personen i fråga. Texten ska sparas i en fil. Exempel:
 
 <sample-output>
 
-Kenelle teos omistetaan: **Arto**
-Mihin kirjoitetaan: **omistettu.txt**
+Tillägnas till: **Stella**
+Skrivs till: **till_min_van.txt**
 
 </sample-output>
 
-Tiedoston `omistettu.txt` sisällöksi tulee
+Innehållet i `till_min_van.txt` är:
 
 <sample-data>
 
-Hei Arto, toivomme viihtyisiä hetkiä python-kurssimateriaalin parissa! Terveisin mooc.fi-tiimi
+Hej Stella! Vi önskar dig trevliga stunder med Python-kursmaterialet. Mvh. MOOC-teamet
 
 </sample-data>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
-
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -114,20 +112,20 @@ Om filen inte ännu finns, fungerar det här läget på samma sätt som skrivlä
 Följande program öppnar filen `ny_fil.txt` och lägger till några rader text i slutet:
 
 ```python
-with open("uusi_tiedosto.txt", "a") as tiedosto:
-    tiedosto.write("Rivi numero 4\n")
-    tiedosto.write("Ja taas yksi.\n")
+with open("ny_fil.txt", "a") as fil:
+    fil.write("Rad fyra\n")
+    fil.write("Ännu en till rad\n")
 ```
 
 När programmet körs, borde innehållet i filen se ut på följande sätt:
 
 <sample-output>
 
-Moi kaikki!
-Toinen rivi
-Viimeinen rivi
-Rivi numero 4
-Ja taas yksi.
+Hej alla!
+Andra raden
+Sista raden
+Rad fyra
+Ännu en till rad
 
 </sample-output>
 
@@ -137,57 +135,55 @@ Oftare läser man en fil, behandlar man data och till sist skrivs filen över me
 
 <programming-exercise name='Päiväkirja' tmcname='osa06-11_paivakirja'>
 
-Tee ohjelma, joka mallintaa yksinkertaista päiväkirjaa. Ohjelman tulee tallentaa päiväkirjamerkinnät tiedostoon `paivakirja.txt`. Kun ohjelma käynnistetään, se lukee merkinnät tiedostosta.
+Skapa ett program som låter användaren skapa en enkel dagbok. Dagboksinläggen ska lagras i filen `dagbok.txt`. När programmet körs läses inläggen in från filen.
 
-Huom! Paikalliset testit voivat muuttaa tiedoston sisältöä - kopioi siis tiedosto talteen ennen testien ajamista, jos haluat säilyttää sen sisällön.
+Obs! De lokala testen kan ändra på filens innehåll. Skapa alltså en kopia av filen om du vill behålla dess innehåll.
 
-Ohjelman tulee toimia seuraavan esimerkin mukaisesti:
-
-<sample-output>
-
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **1**
-Anna merkintä: **Tänään söin puuroa**
-Päiväkirja tallennettu
-
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **2**
-Merkinnät:
-Tänään söin puuroa
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **1**
-Anna merkintä: **Illalla kävin saunassa**
-Päiväkirja tallennettu
-
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **2**
-Merkinnät:
-Tänään söin puuroa
-Illalla kävin saunassa
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **0**
-Heippa!
-
-</sample-output>
-
-Uusi käynnistys:
+Programmet ska fungera så här:
 
 <sample-output>
 
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **2**
-Merkinnät:
-Tänään söin puuroa
-Illalla kävin saunassa
-1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta
-Valinta: **0**
-Heippa!
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **1**
+Skriv inlägg: **Idag åt jag gröt**
+Sparat
+
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **2**
+Inlägg:
+Idag åt jag gröt
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **1**
+Skriv inlägg: **På kvällen var jag i bastu**
+Sparat
+
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **2**
+Inlägg:
+Idag åt jag gröt
+På kvällen var jag i bastu
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **0**
+Hejdå!
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Vi startar programmet på nytt:
 
+<sample-output>
+
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **2**
+Inlägg:
+Idag åt jag gröt
+På kvällen var jag i bastu
+1 – lägg till inlägg, 2 – läs inlägg, 0 – avsluta
+Val: **0**
+Hejdå!
+
+</sample-output>
+
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -196,20 +192,20 @@ Heippa!
 CSV-filer kan skrivas rad för rad med `write`-metoden, precis som med vilken som helst annan fil. Det följande exemplet skapar filen `programmerare.csv` som innehåller namnet, programmeringsmiljön, favoritprogrammeringsspråket och antalet år arbetserfarenhet hos en programmerare. Fälten skiljs åt med semikolon.
 
 ```python
-with open("koodarit.csv", "w") as tiedosto:
-    tiedosto.write("Erkki;Windows;Pascal;10\n")
-    tiedosto.write("Matti;Linux;PHP;2\n")
-    tiedosto.write("Antti;Linux;Java;17\n")
-    tiedosto.write("Emilia;Mac;Cobol;9\n")
+with open("programmerare.csv", "w") as fil:
+    fil.write("Erik;Windows;Pascal;10\n")
+    fil.write("Mats;Linux;PHP;2\n")
+    fil.write("Anton;Linux;Java;17\n")
+    fil.write("Emilia;Mac;Cobol;9\n")
 ```
 
 När programmet körs får vi följande fil:
 
 <sample-output>
 
-Erkki;Windows;Pascal;10
-Matti;Linux;PHP;2
-Antti;Linux;Java;17
+Erik;Windows;Pascal;10
+Mats;Linux;PHP;2
+Anton;Linux;Java;17
 Emilia;Mac;Cobol;9
 
 </sample-output>
@@ -217,32 +213,32 @@ Emilia;Mac;Cobol;9
 Hur är det om data som ska skrivas finns i en lista i datorns minne?
 
 ```python
-koodarit = []
-koodarit.append(["Erkki", "Windows", "Pascal", 10])
-koodarit.append(["Matti", "Linux", "PHP", 2])
-koodarit.append(["Antti", "Linux", "Java", 17])
-koodarit.append(["Emilia", "Mac", "Cobol", 9])
+programmerare = []
+programmerare.append(["Erik", "Windows", "Pascal", 10])
+programmerare.append(["Mats", "Linux", "PHP", 2])
+programmerare.append(["Anton", "Linux", "Java", 17])
+programmerare.append(["Emilia", "Mac", "Cobol", 9])
 ```
 
 Vi kan konstruera den sträng som vi vill skriva som en f-sträng, och skriva den klara raden i filen:
 
 ```python
-with open("koodarit.csv", "w") as tiedosto:
-    for koodari in koodarit:
-        rivi = f"{koodari[0]};{koodari[1]};{koodari[2]};{koodari[3]}"
-        tiedosto.write(rivi+"\n")
+with open("programmerare.csv", "w") as fil:
+    for person in programmerare:
+        rad = f"{person[0]};{person[1]};{person[2]};{person[3]}"
+        fil.write(rad+"\n")
 ```
 
 Om varje lista skulle vara väldigt lång, skulle det vara arbetsdrygt att konstruera strängen för hand och då skulle vi istället kunna använda en for-loop:
 
 ```python
-with open("koodarit.csv", "w") as tiedosto:
-    for koodari in koodarit:
-        rivi = ""
-        for arvo in koodari:
-            rivi += f"{arvo};"
-        rivi = rivi[:-1]
-        tiedosto.write(rivi+"\n")
+with open("programmerare.csv", "w") as fil:
+    for person in programmerare:
+        rad = ""
+        for varde in person:
+            rad += f"{varde};"
+        rad = rad[:-1]
+        fil.write(rad+"\n")
 ```
 
 ## Tömma innehållet i en fil och ta bort en fil
@@ -250,7 +246,7 @@ with open("koodarit.csv", "w") as tiedosto:
 Ibland behöver vi tömma innehållet i en fil. Då kan vi helt enkelt öppna filen i skrivläge och därefter stänga filen:
 
 ```python
-with open("tyhjennettava_tiedosto.txt", "w") as tiedosto:
+with open("fil_som_ska_tommas.txt", "w") as fil:
     pass
 ```
 
@@ -259,7 +255,7 @@ Observera att `with`-blocket nu bara innehåller kommandot `pass`, som inte gör
 Det är också möjligt att undvika `with`-blocket och istället använda följande kommando:
 
 ```python
-open('tyhjennettava_tiedosto.txt', 'w').close()
+open('fil_som_ska_tommas.txt', 'w').close()
 ```
 
 <text-box variant='hint' name='Ta bort filer'>
@@ -267,10 +263,10 @@ open('tyhjennettava_tiedosto.txt', 'w').close()
 Du kan också helt och hållet avlägsna en fil. Vi måste be operativsystemet om hjälp för att uppnå detta:
 
 ```python
-# poisto-komento tuodaan koodin käyttöön import-lauseella
+# det här behöver vi för att kunna använda remove-funktionen
 import os
 
-os.remove("tarpeeton_tiedosto.csv")
+os.remove("onodig_fil.csv")
 ```
 
 Obs! Det här fungerar inte i testmiljön som används för de automatiska testen. Om du ombeds tömma innehållet i en fil, ska du använda någon av metoderna som beskrevs ovan.
@@ -280,44 +276,44 @@ Obs! Det här fungerar inte i testmiljön som används för de automatiska teste
 
 <programming-exercise name='Aineiston suodatus' tmcname='osa06-12_aineiston_suodatus'>
 
-Tiedostossa laskut.csv on tehtävien ratkaisuja seuraavan esimerkin mukaisesti:
+I filen `kalkyler.csv` finns lösningar på uppgifter enligt följande exempel:
 
 ```csv
-Arto;2+5;7
-Pekka;3-2;1
-Erkki;9+3;11
-Arto;8-3;4
-Pekka;5+5;10
-...jne...
+Anton;2+5;7
+Pärla;3-2;1
+Erik;9+3;11
+Anton;8-3;4
+Pärla;5+5;10
+o.s.v. ...
 ```
 
-Jokaisella rivin muoto on siis `oppilaan_nimi;lasku;lopputulos`. Laskut ovat kaikki esimerkin mukaisesti joko yhteen- tai vähennyslaskuja, ja kaikissa on kaksi operandia.
+Formatet för varje rad är alltså `studerande;uppgift;resultat`. Uppgifterna är alltså additions- eller subtraktionsräkningar med två operander.
 
-Kirjoita funktio `suodata_laskut()`, joka
+Skapa funktionen `ordna_uppgifter()` som
 
-* Lukee tiedoston `laskut.csv` sisällön ja
-* kirjoittaa tiedostoon `oikeat.csv` ne rivit, joilla laskutoimituksen lopputulos on oikein sekä
-* kirjoittaa tiedostoon `vaarat.csv` ne rivit, joilla laskutoimituksen lopputulos on väärin.
+* läser innehållet i `kalkyler.csv`
+* skriver filen `korrekta.csv` med de uppgifter som är korrekt lösta
+* skriver filen `inkorrekta.csv` med de övriga uppgifterna.
 
-Edellisestä esimerkistä tiedostoon `oikeat.csv` olisi siis kirjoitettu rivit
+Filen `korrekta.csv` skulle se ut så här med det föregående exemplet:
 
 ```sh
-Arto;2+5;7
-Pekka;3-2;1
-Pekka;5+5;10
+Anton;2+5;7
+Pärla;3-2;1
+Pärla;5+5;10
 ```
 
-Kaksi muuta riviä olisi kirjoitettu tiedostoon `vaarat.csv`.
+De två resterande raderna skulle vara i `inkorrekta.csv`.
 
-Kirjoita rivit samassa järjestyksessä kuin ne esiintyvät alkuperäisessä tiedostossa. Älä muuta alkuperäistä tiedostoa.
+Raderna ska förekomma i samma ordning som i den ursprungliga filen. Ändra inte på den filen.
 
-*Huomaa* että funktion tulee toimia oikein siinäkin tapauksessa että funktiota kutsutaan monta kertaa perkkäin. Eli riippumatta siitä suoritatko funktion vain kerran
+Märk att funktionen ska fungera oavsett hur många gånger den anropas:
 
 ```python
 suodata_laskut()
 ```
 
-tai useita kertoja peräkkän
+och...
 
 ```python
 suodata_laskut()
@@ -326,25 +322,23 @@ suodata_laskut()
 suodata_laskut()
 ```
 
-tiedostojen sisältöjen tulee lopulta olla samat.
+...ska ge likadant slutresultat.
 
 </programming-exercise>
 
 <programming-exercise name='Henkilöt talteen' tmcname='osa06-13_henkilot_talteen'>
 
-Kirjoita funktio `tallenna_henkilo(henkilo: tuple)` joka saa parametrikseen henkilöä kuvaavan tuplen. Tuplessa on seuraavat tiedot tässä järjestyksessä:
+Skapa funktionen `spara_person(person: tuple)` som får som argument en tuple som representerar en person. Tuplen innehåller följande information:
 
-* Nimi (merkkijono)
-* Ikä (kokonaisluku)
-* Pituus (liukuluku)
+1. Namn (sträng)
+1. Ålder (heltal)
+1. Längd (flyttal)
 
-Tallenna henkilön tiedot tiedostoon `henkilot.csv` olemassa olevien tietojen perään. Tiedot tulee tallentaa muodosssa
+Spara informationen i filen `personer.csv`, efter befintliga data. Formatet ska vara `namn;ålder;längd`. En person är alltså lika med en rad. Om tuplen är `("Sara Simonsson", 37, 175.5)` skulle programmet skriva följande rad i slutet av filen:
 
-nimi;ikä;pituus
-
-eli yhden henkilön tiedot tulevat yhdelle riville. Jos funktiota esim. kutsuttaisiin parametrien arvoilla `("Kimmo Kimmonen", 37, 175.5)`, ohjelma kirjoittaisi tiedoston loppuun rivin
-
-`Kimmo Kimmonen;37;175.5`
+```
+Sara Simonsson;37;175.5
+```
 
 </programming-exercise>
 
@@ -356,7 +350,7 @@ CSV-filen som vi har tillgång till när vi börjar ser ut så här:
 
 <sample-data>
 
-Pekka;4;2;3;5;4;0;0
+Pärla;4;2;3;5;4;0;0
 Paula;7;2;8;3;5;4;5
 Pirjo;3;4;3;5;3;4;4
 Emilia;6;6;5;5;0;4;8
@@ -368,55 +362,55 @@ Programmets logik är uppdelad i tre funktioner: läsande av filen och behandlan
 Filens inläsning sker enligt det vi lärt oss i den förra delen. Data lagras i ett lexikon där nyckeln är elevens namn och värdet är en lista på poängen som eleven i fråga har fått, i heltalsform:
 
 ```python
-def lue_viikkopisteet(tiedostonimi):
-    viikkopisteet = {}
-    with open(tiedostonimi) as tiedosto:
-        for rivi in tiedosto:
-            osat = rivi.split(";")
+def las_veckopoang(filnamn):
+    veckopoang = {}
+    with open(filnamn) as fil:
+        for rad in fil:
+            delar = rad.split(";")
             lista = []
-            for pisteet in osat[1:]:
-                lista.append(int(pisteet))
-            viikkopisteet[osat[0]] = lista
+            for poang in delar[1:]:
+                lista.append(int(poang))
+            veckopoang[delar[0]] = lista
 
-    return viikkopisteet
+    return veckopoang
 ```
 
 Den andra funktionen beräknar vilket vitsord ett visst antal poäng räcker till. Funktionen används av den tredje funktionen, som skriver resultaten i en fil:
 
 ```python
-def arvosana(pisteet):
-    if pisteet < 20:
+def vitsord(poang):
+    if poang < 20:
         return 0
-    elif pisteet < 25:
+    elif poang < 25:
         return 1
-    elif pisteet < 30:
+    elif poang < 30:
         return 2
-    elif pisteet < 35:
+    elif poang < 35:
         return 3
-    elif pisteet < 40:
+    elif poang < 40:
         return 4
     else:
         return 5
 
-def tallenna_tulokset(tiedostonimi, viikkopisteet):
-    with open(tiedostonimi, "w") as tiedosto:
-        for nimi, lista in viikkopisteet.items():
+def spara_resultat(filnamn, veckopoang):
+    with open(filnamn, "w") as fil:
+        for namn, lista in veckopoang.items():
             summa = sum(lista)
-            tiedosto.write(f"{nimi};{summa};{arvosana(summa)}\n")
+            fil.write(f"{namn};{summa};{vitsord(summa)}\n")
 ```
 
 Strukturen tillåter oss skapa en mycket enkel huvudfunktion. Observera att filnamnen ges som argument i huvudfunktionen:
 
 ```python
-viikkopisteet = lue_viikkopisteet("viikkopisteet.csv")
-tallenna_tulokset("tulokset.csv", viikkopisteet)
+veckopoang = las_veckopoang("veckopoang.csv")
+spara_resultat("resultat.csv", veckopoang)
 ```
 
 När huvudfunktionen körs, skapas filen `resultat.csv` med följande innehåll:
 
 <sample-data>
 
-Pekka;18;0
+Pärla;18;0
 Paula;34;3
 Pirjo;26;2
 Emilia;41;5
@@ -428,14 +422,14 @@ Notera att alla funktioner ovan är relativt enkla till sin funktionalitet – d
 Om vi till exempel vill ha en funktion för att skriva ut vitsordet för enskild studerande, kan vi skapa en ny funktion som använder sig av en befintlig funktion i koden:
 
 ```python
-def hae_arvosana(haettava, viikkopisteet):
-    for nimi, lista in viikkopisteet.items():
-        if nimi == haettava:
-            return arvosana(sum(lista))
+def hamta_vitsord(person, veckopoang):
+    for namn, lista in veckopoang.items():
+        if namn == person:
+            return vitsord(sum(lista))
 
 
-viikkopisteet = lue_viikkopisteet("viikkopisteet.csv")
-print(hae_arvosana("Paula", viikkopisteet))
+veckopoang = las_veckopoang("veckopoang.csv")
+print(hamta_vitsord("Paula", veckopoang))
 
 ```
 
@@ -449,38 +443,38 @@ Om vi märker att någon funktionalitet i programmet kräver åtgärdande, komme
 
 <programming-exercise name='Kurssin tulokset, osa 4' tmcname='osa06-14_kurssin_tulokset_osa4'>
 
-Laajennetaan vielä hieman aiemmin kurssien tulokset generoivaa sovellusta.
+Vi utvecklar ännu lite programmet som genererar kursresultat.
 
-Tällä hetkellä tiedostosta luetaan opiskelijoiden nimet, tehtäväpisteet sekä koepisteet. Laajennetaan ohjelmaa siten, että myös kurssin nimi ja laajuus luetaan tiedostosta, jonka muoto on seuraava (tiedosto on kirjoitettu ilman ääkkösiä, jotta se ei aiheuttaisi ongelmia Windowsissa):
+För tillfället läses studerandenas namn, uppgifts- och provpoäng från respektive filer. Vi ändrar på programmet så att också kursens namn och studiepoäng läses in från en fil. Formatet är det följande:
 
 <sample-data>
 
 <pre>
 
-nimi: Ohjelmoinnin perusteet
-laajuus opintopisteina: 5
+namn: Introkurs i programmering
+sp: 5
 </pre>
 
 </sample-data>
 
-Ohjelma luo kaksi tiedostoa. Tiedoston `tulos.txt` muoto on seuraava:
+Programmet ska skapa två filer. Filen `resultat.txt` ska följa det här formatet:
 
 <sample-data>
 
 <pre>
-Ohjelmoinnin perusteet, 5 opintopistettä
+Introkurs i programmering, 5 studiepoäng
 ========================================
-nimi                          teht_lkm  teht_pist koe_pist  yht_pist  arvosana
-pekka peloton                 21        5         9         14        0
-jaana javanainen              27        6         11        17        1
-liisa virtanen                35        8         14        22        3
+namn                          uppg_ant  uppg_poang  provpoang  tot_poang  vitsord
+pekka peloton                 21        5           9          14         0
+jaana javanainen              27        6           11         17         1
+liisa virtanen                35        8           14         22         3
 </pre>
 
 </sample-data>
 
-Tulokset kertova osa on siis samanlainen kuin tehtävän edellisen osan tulostus.
+Den här delen liknar alltså utskriften från den förra versionen av programmet.
 
-Tämän lisäksi luodaan tiedosto `tulos.csv`, jonka muoto on seuraava:
+Dessutom ska filen `resultat.csv` skapas. Dess format ska följa detta exempel:
 
 <sample-data>
 
@@ -492,22 +486,21 @@ Tämän lisäksi luodaan tiedosto `tulos.csv`, jonka muoto on seuraava:
 
 </sample-data>
 
-Ohjelman suoritus näyttää seuraavalta:
+Exempelkörning:
 
 <sample-output>
 
-opiskelijatiedot: **opiskelijat1.csv**
-tehtävätiedot: **tehtavat1.csv**
-koepisteet: **koepisteet1.csv**
-kurssin tiedot: **kurssi1.txt**
-Tulokset talletettu tiedostoihin tulos.txt ja tulos.csv
+Studerande (CSV): **studerande1.csv**
+Uppgifter (CSV): **uppgifter1.csv**
+Provpoäng (CSV): **provpoang1.csv**
+Kursinfo (textfil): **kurs1.txt**
+Resultaten lagrade i filerna resultat.txt och resultat.csv
 
 </sample-output>
 
-Ohjelma siis ainoastaan kyselee tiedostojen nimet ja varsinaiset tulokset tallennetaan vain tiedostoihin.
+Programmet frågar bara alltså om filnamnen och skriver resultaten i resultatfilerna.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -515,29 +508,29 @@ Ohjelma siis ainoastaan kyselee tiedostojen nimet ja varsinaiset tulokset tallen
 
 <programming-exercise name='Sanahaku' tmcname='osa06-15_sanahaku'>
 
-Tehtäväpohjasta löytyy tiedosto `sanat.txt`, joka sisältää englanninkielisiä sanoja.
+I den här uppgiften behandlar vi filen `ord.txt` som innehåller ord på engelska.
 
-Tehtäväsi on kirjoittaa funktio `hae_sanat(hakusana: str)`, joka palauttaa listana annetun hakusanan mukaiset sanat tiedostosta.
+Skapa funktionen `sok_ord(term: str)` som returnerar en lista över matchande ord i filen.
 
-Hakusanassa voi käyttää pienten kirjainten lisäksi seuraavia erikoismerkkejä:
+I söktermen kan man, förutom gemener, använda dessa specialtecken:
 
-* Piste `.` tarkoittaa, että mikä tahansa merkki käy (esim `ca.` vastaa vaikkapa sanoja cat ja car, `p.ng` sanoja ping ja pong ja `.a.e` sanoja sane, care tai late.
-* Asteriski `*` tarkoittaa, että sanan alku- tai loppuosaksi käy mikä tahansa jono, esim. `ca*` vastaa vaikkapa sanoja california, cat, caring tai catapult. Vastaavasti hakusana `*ane` vastaa vaikkapa sanoja crane, insane tai aeroplane. Voit olettaa, että asteriski on aina joko hakusanan alussa tai lopussa, ja että hakusanassa esiintyy korkeintaan yksi asteriski.
-* Jos hakusanassa ei ole erikoismerkkejä, haetaan vain täsmälleen hakusanaa vastaava sana.
+* punkt betyder att vilket som helst tecken accepteras (`ca.` matchar t.ex. cat och car och `.a.e` care och late)
+* asterisk betyder att ordet kan börja eller avslutas på valfritt vis (`ca*` matchar t.ex. california och cat, `*ane` matchar insane och aeroplane) – du kan anta att asterisken endast finns i början eller slutet av ett ord och att söktermen innehåller högst en asterisk
+* om söktermen inte innehåller specialtecken ska termen matcha exakt med det sökta ordet.
 
-Sovitaan, että samassa hakusanassa ei voi käyttää molempia erikoismerkkejä.
+Vi bestämmer också att en sökterm inte kan innehålla båda typer av specialtecken.
 
-Sanat ovat tiedostossa kokonaan pienillä kirjaimilla kirjoitettuna. Voit myös olettaa, että funktion parametri on annettu kokonaan pienillä kirjaimilla.
+Orden är skrivna med gemener. Du kan också anta att argumentet inte innehåller versaler.
 
-Jos yhtään tulosta ei löydy, funktio palauttaa tyhjän listan.
+Om inga resultat hittas ska funktionen returnera en tom lista.
 
-Vinkki: Pythonin merkkijonometodeista startswith() ja endswith() saattaa olla hyötyä tehtävässä, googlaa niiden toiminta tarvittaessa tarkemmin!
+Tips: Pythons strängmetoder `startswith()` och `endswith()` kan vara händiga. Sök på nätet för mera information.
 
-Esimerkki funktion kutsumisesta:
+Exempel:
 
 ```python
 
-print(hae_sanat("*vokes"))
+print(sok_ord("*vokes"))
 
 ```
 
@@ -551,55 +544,53 @@ print(hae_sanat("*vokes"))
 
 <programming-exercise name='Muistava sanakirja' tmcname='osa06-16_muistava_sanakirja'>
 
-Tee sanakirjaa mallintava ohjelma, johon voi syöttää uusia sanoja tai josta voi hakea syötettyjä sanoja.
+Skapa ett program som fungerar som en ordbok, dit man kan lägga till nya ord eller där man kan söka efter befintliga ord.
 
-Ohjelman tulee toimia näin:
+Programmet ska fungera så här:
 
 <sample-output>
 
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **1**
-Anna sana suomeksi: **auto**
-Anna sana englanniksi: **car**
-Sanapari lisätty
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **1**
-Anna sana suomeksi: **roska**
-Anna sana englanniksi: **garbage**
-Sanapari lisätty
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **1**
-Anna sana suomeksi: **laukku**
-Anna sana englanniksi: **bag**
-Sanapari lisätty
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **2**
-Anna sana: **bag**
-roska - garbage
-laukku - bag
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **2**
-Anna sana: **car**
-auto - car
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **2**
-Anna sana: **laukku**
-laukku - bag
-1 - Lisää sana, 2 - Hae sanaa, 3 - Poistu
-Valinta: **3**
-Moi!
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **1**
+Ange ord på svenska: **bil**
+Ange ord på engelska: **car**
+Ordpar tillagt
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **1**
+Ange ord på svenska: **sopa**
+Ange ord på engelska: **garbage**
+Ordpar tillagt
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **1**
+Ange ord på svenska: **väska**
+Ange ord på engelska: **bag**
+Ordpar tillagt
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **2**
+Ange ord: **bag**
+sopa - garbage
+väska - bag
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **2**
+Ange ord: **car**
+bil - car
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **2**
+Ange ord: **väska**
+väska - bag
+1 – lägg till ord, 2 – sök ord, 3 – avsluta
+Val: **3**
+Hejdå!
 
 </sample-output>
 
-Sanat tallennetaan tiedostoon `sanakirja.txt`. Ohjelma lukee tiedoston sisällön kun se käynnistetään. Uudet sanaparit lisätään tiedostoon aina tallennuksen yhteydessä.
+Orden ska lagras i filen `ordbok.txt`. Programmet ska läsa in den här filen när det startar. Nya ordpar läggs till genast.
 
-Voit itse päättää tiedostoon tallennettavan tiedon muodon.
+Du kan själv bestämma i vilket format data lagras.
 
-Huomaa, että paikallisten TMC-testien ajaminen voi tyhjentää sanakirja-tiedoston.
+Observera att körande av de lokala testen kan tömma ordboksfilen.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
-
+Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
 </programming-exercise>
 

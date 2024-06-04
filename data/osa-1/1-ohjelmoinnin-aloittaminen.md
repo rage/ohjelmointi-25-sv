@@ -21,21 +21,21 @@ Låt oss börja programmera genom att bekanta oss med `print`-kommandot som skri
 Det följande programmet skriver ut texten "Hej!":
 
 ```python
-print("Moi kaikki!")
+print("Hej!")
 ```
 
 När programmet körs, blir resultatet det följande:
 
 <sample-output>
 
-Moi kaikki!
+Hej!
 
 </sample-output>
 
 Programmet fungerar inte om koden inte skrivs exakt som den är ovan. Om man till exempel kör programmet utan citattecken, på följande sätt…
 
 ```python
-print(Moi kaikki!)
+print(Hej!)
 ```
 
 …så kommer texten "Hej!" inte att skrivas ut. Istället får vi ett felmeddelande:
@@ -44,7 +44,7 @@ print(Moi kaikki!)
 
 <pre>
 File "<stdin>", line 1
-  print(Moi kaikki!)
+  print(Hej!)
                    ^
 SyntaxError: invalid syntax
 </pre>
@@ -55,7 +55,7 @@ Sammanfattningsvis: För att skriva ut text, måste den vara inom citattecken f�
 
 <in-browser-programming-exercise name="Hymiö" tmcname="osa01-01_hymio" height="300px">
 
-Kirjoita ohjelma, joka tulostaa ruudulle hymiön: :-)
+Gör ett program som skriver ut ett leende: :-)
 
 </in-browser-programming-exercise>
 
@@ -64,24 +64,23 @@ Kirjoita ohjelma, joka tulostaa ruudulle hymiön: :-)
 Flera kommandon som skrivs efter varandra körs i ordning från det första till det sista. Till exempel följande program…
 
 ```python
-print("Tervetuloa opettelemaan ohjelmointia!")
-print("Aluksi harjoitellaan print-komennon käyttöä.")
-print("Tämä ohjelma tulostaa ruudulle kolme riviä tekstiä.")
+print("Välkommen till vår programmeringskurs!")
+print("För att börja ska vi testa på print-kommandot.")
+print("Det här programmet skriver ut tre rader text.")
 ```
 …skriver ut dessa textrader på skärmen:
 
 <sample-output>
 
-Tervetuloa opettelemaan ohjelmointia!
-Aluksi harjoitellaan print-komennon käyttöä.
-Tämä ohjelma tulostaa ruudulle kolme riviä tekstiä.
+Välkommen till vår programmeringskurs!
+För att börja ska vi testa på print-kommandot.
+Det här programmet skriver ut tre rader text.
 
 </sample-output>
 
 <in-browser-programming-exercise name="Korjaa ohjelma: seitsemän veljestä" tmcname="osa01-03_korjaa_ohjelma_7_veljesta">
 
-Ohjelman tarkoitus on tulostaa seitsemän veljestä aakkosjärjestyksessä. Ohjelmassa on kuitenkin yksi tai useampi virhe, jonka takia se ei toimi oikein.
-Korjaa ohjelma niin, että veljekset tulostuvat oikeassa järjestyksessä.
+Det här programmet borde skriva ut namnet på sju bröder i alfabetisk ordning. Det finns ändå några fel i programmet. Korrigera dem, så att namnen skrivs ut i korrekt ordning.
 
 ```python
 print("Simeoni")
@@ -98,13 +97,13 @@ print("Timo")
 
 <in-browser-programming-exercise name="Ukko Nooa" tmcname="osa01-02_ukko_nooa">
 
-Kirjoita ohjelma, joka tulostaa ruudulle seuraavat rivit (tarkalleen annetussa muodossa välimerkkeineen):
+Gör ett program som skriver ut följande textrader (exakt som de står nedan):
 
 <sample-output>
 
-Ukko Nooa, Ukko Nooa oli kunnon mies.
-Kun hän meni saunaan, laittoi laukun naulaan.
-Ukko Nooa, Ukko Nooa oli kunnon mies.
+Gubben Noak, gubben Noak var en hedersman
+När han gick ur arken plantera han på marken
+Gubben Noak, gubben Noak var en hedersman.
 
 </sample-output>
 
@@ -155,8 +154,8 @@ Om en rad börjar med tecknet `#`, tolkas raden som en kommentar. Det innebär a
 Kommentarer kan användas för att beskriva hur ett program fungerar – både för programmeraren och för andra personer som läser koden. I det här programmet finns en kommentar som beskriver räkneoperationen som utförs:
 
 ```python
-print("Tuntien määrä vuodessa:")
-# vuodessa on 365 päivää ja jokaisessa 24 tuntia
+print("Antal timmar i ett år:")
+# ett år består av 365 dagar och varje dag av 24 timmar
 print(365*24)
 ```
 
@@ -164,7 +163,7 @@ När programmet körs, kommer kommentaren inte att synas för användaren:
 
 <sample-output>
 
-Tuntien määrä vuodessa:
+Antal timmar i ett år:
 8760
 
 </sample-output>
@@ -172,48 +171,43 @@ Tuntien määrä vuodessa:
 Korta kommentarer kan också skrivas i slutet på en rad, på följande sätt:
 
 ```python
-print("Tuntien määrä vuodessa:")
-print(365*24) # 365 päivää, 24 tuntia päivässä
+print("Antal timmar i ett år:")
+print(365*24) # 365 dagar, 24 timmar per dag
 ```
 
 <in-browser-programming-exercise name="Minuutit vuodessa" tmcname="osa01-04_minuuttien_maara_vuodessa">
 
-Tee ohjelma, joka tulostaa minuuttien määrän vuodessa. Käytä edellisen esimerkin tapaan Pythonia tekemään laskutoimitus!
+Gör ett program som skriver ut antalet minuter i ett år. Låt Python utföra räkneoperationen som i exemplet ovan.
 
 </in-browser-programming-exercise>
 
 <in-browser-programming-exercise name="Ohjelma tulostaa koodia" tmcname="osa01-05_ohjelma_tulostaa_koodia">
 
-Pythonissa voidaan käyttää kaksinkertaisten lainausmerkkien `"` lisäksi myös yksinkertaista lainausmerkkiä `'`.
+Istället för dubbla citattecken (`"`) kan man i Python också använda enkla citattecken ( `'`).
 
-Tämä on kätevää, kun haluat tulostaa lainausmerkkejä:
+Det här kan vara nyttigt till exempel i situationer där man vill skriva ut citattecken:
 
 ```python
 
-print('"Heti takaisin!", poliisi huusi.')
+print('"Kom tillbaka direkt!", vrålade polisen.')
 
 ```
 
 <sample-output>
 
-"Heti takaisin!", poliisi huusi.
+"Kom tillbaka direkt!", vrålade polisen.
 
 </sample-output>
 
-Tee ohjelma, jonka tulostus on seuraava:
+Skapa ett program som skriver ut det följande:
 
 <sample-output>
 
-print("Moi kaikki!")
+print("Hej!")
 
 </sample-output>
 
-
-
 </in-browser-programming-exercise>
-
-
-
 
 Kertauskysely tämän osan asioihin liittyen:
 

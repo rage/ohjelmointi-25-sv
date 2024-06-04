@@ -46,7 +46,7 @@ print(lista[0])
 print(lista[1])
 print(lista[3])
 
-print("Kahden ekan summa:", lista[0] + lista[1])
+print("Summan av de två första:", lista[0] + lista[1])
 ```
 
 <sample-output>
@@ -54,7 +54,7 @@ print("Kahden ekan summa:", lista[0] + lista[1])
 7
 2
 5
-Kahden ekan summa: 9
+Summan av de två första: 9
 
 </sample-output>
 
@@ -103,27 +103,26 @@ print(len(lista))
 
 <programming-exercise name='Alkioiden arvojen muutokset' tmcname='osa04-07a_alkioiden_arvojen_muutokset'>
 
-Tee ohjelma, joka alustaa listan jossa on arvot `[1, 2, 3, 4, 5]`. Tämän jälkeen ohjelma kysyy käyttäjältä alkion indeksin ja uuden arvon, vaihtaa kyseisen alkion arvon ja tulostaa listan uudelleen. Ohjelman suoritus päättyy, jos käyttäjä antaa alkion indeksiksi -1.
+Skapa ett program som initierar en lista med värdena `[1, 2, 3, 4, 5]`. Programmet ber därefter användaren ange ett index och ett nytt värde som programmet lagrar, och listan skrivs ut på nytt. Programmet avslutas då använder anger -1 som index.
 
-Esimerkkisuoritus:
+Exempel:
 
 <sample-output>
 
-Anna indeksi: **0**
-Anna arvo: **10**
+Ange index: **0**
+Ange värde: **10**
 [10, 2, 3, 4, 5]
-Anna indeksi: **2**
-Anna arvo: **250**
+Ange index: **2**
+Ange värde: **250**
 [10, 2, 250, 4, 5]
-Anna indeksi: **4**
-Anna arvo: **-45**
+Ange index: **4**
+Ange värde: **-45**
 [10, 2, 250, 4, -45]
-Anna indeksi: **-1**
+Ange index: **-1**
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -132,11 +131,11 @@ Anna indeksi: **-1**
 Metoden `append` lägger till element i slutet av en lista. Metoden fungerar så här:
 
 ```python
-luvut = []
-luvut.append(5)
-luvut.append(10)
-luvut.append(3)
-print(luvut)
+siffror = []
+siffror.append(5)
+siffror.append(10)
+siffror.append(3)
+print(siffror)
 ```
 
 <sample-output>
@@ -148,56 +147,55 @@ print(luvut)
 Följande exempel använder sig av två listor:
 
 ```python
-luvut = []
-kengannumerot = []
+siffror = []
+skonummer = []
 
-luvut.append(5)
-luvut.append(10)
-luvut.append(3)
+siffror.append(5)
+siffror.append(10)
+siffror.append(3)
 
-kengannumerot.append(37)
-kengannumerot.append(44)
-kengannumerot.append(40)
-kengannumerot.append(28)
+skonummer.append(37)
+skonummer.append(44)
+skonummer.append(40)
+skonummer.append(28)
 
-print("Luvut:")
-print(luvut)
+print("Siffror:")
+print(siffror)
 
-print("Kengännumerot:")
-print(kengannumerot)
+print("Skonummer:")
+print(skonummer)
 ```
 
 Elementet läggs till i slutet av den lista som metoden anropas på:
 
 <sample-output>
 
-Luvut:
+Siffror:
 [5, 10, 3]
-Kengännumerot:
+Skonummer:
 [37, 44, 40, 28]
 
 </sample-output>
 
 <programming-exercise name='Alkioiden lisäys listaan' tmcname='osa04-07b_alkoiden_lisays_listaan'>
 
-Tee ohjelma, joka kysyy käyttäjältä ensin lukujen määrän. Sen jälkeen ohjelma pyytää käyttäjää syöttämään annetun määrän lukuja yksitellen ja lisää ne listaan samassa järjestyksessä.
+Skapa ett program som ber användaren ge antalet siffror. Därefter ber programmet användaren ange det här antalet siffror, som läggs till i en lista i den givna ordningen.
 
-Lopuksi lista tulostetaan.
+Listan ska till slut skrivas ut:
 
 Esimerkkisuoritus:
 
 <sample-output>
 
-Kuinka monta lukua: **3**
-Anna luku 1: **10**
-Anna luku 2: **250**
-Anna luku 3: **34**
+Hur många siffror: **3**
+Ge siffra 1: **10**
+Ge siffra 2: **250**
+Ge siffra 3: **34**
 [10, 250, 34]
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -210,11 +208,11 @@ Om du vill specificera på vilket ställe i en lista ett värde ska läggas till
 Till exempel det här programmet…
 
 ```python
-luvut = [1, 2, 3, 4, 5, 6]
-luvut.insert(0, 10)
-print(luvut)
-luvut.insert(2, 20)
-print(luvut)
+siffror = [1, 2, 3, 4, 5, 6]
+siffror.insert(0, 10)
+print(siffror)
+siffror.insert(2, 20)
+print(siffror)
 ```
 
 …skriver ut följande:
@@ -256,8 +254,8 @@ Det är bra att minnas att `pop`-metoden också returnerar det avlägsnade eleme
 ```python
 lista = [4, 2, 7, 2, 5]
 
-luku = lista.pop(2)
-print(luku)
+siffra = lista.pop(2)
+print(siffra)
 print(lista)
 ```
 
@@ -308,32 +306,31 @@ print(lista)
 
 <programming-exercise name='Lisäys ja poisto' tmcname='osa04-07c_lisays_ja_poisto'>
 
-Tee ohjelma, joka pyytää käyttäjää valitsemaan alkion lisäyksen tai poiston. Sekä lisäys että poisto tehdään listan loppuun. Lisättävän alkion arvo on aina yhtä suurempi kuin listan viimeinen alkio (tai 1, jos listassa ei ole alkioita).
+Skapa ett program som låter användaren lägga till eller avlägsna ett värde. Varje operation görs i slutet av listan. När ett element läggs till är dess värde alltid ett större än det föregående värdet (1 om inga element finns i listan).
 
-Joka operaation välissä lista tulostetaan. Katso esimerkkiä seuraavasta tulosteesta:
+Mellan varje operation skrivs listan ut. Här följer ett exempel:
 
 <sample-output>
 
-Lista on nyt []
-(l)isää, (p)oista vai e(x)it: **l**
-Lista on nyt [1]
-(l)isää, (p)oista vai e(x)it: **l**
-Lista on nyt [1, 2]
-(l)isää, (p)oista vai e(x)it: **l**
-Lista on nyt [1, 2, 3]
-(l)isää, (p)oista vai e(x)it: **p**
-Lista on nyt [1, 2]
-(l)isää, (p)oista vai e(x)it: **l**
-Lista on nyt [1, 2, 3]
-(l)isää, (p)oista vai e(x)it: **x**
-Moi!
+Listan är nu []
+(l)ägg till, (a)vlägsna eller a(v)sluta: **l**
+Listan är nu [1]
+(l)ägg till, (a)vlägsna eller a(v)sluta: **l**
+Listan är nu [1, 2]
+(l)ägg till, (a)vlägsna eller a(v)sluta: **l**
+Listan är nu [1, 2, 3]
+(l)ägg till, (a)vlägsna eller a(v)sluta: **a**
+Listan är nu [1, 2]
+(l)ägg till, (a)vlägsna eller a(v)sluta: **l**
+Listan är nu [1, 2, 3]
+(l)ägg till, (a)vlägsna eller a(v)sluta: **v**
+Hejdå!
 
 </sample-output>
 
-Voit olettaa, että listalta ei yritetä poistaa alkioita, jos lista on tyhjä.
+Du kan anta att man inte försöker avlägsna element då listan är tom.
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -343,35 +340,34 @@ Om det givna elementet inte hittas i listan, kommer remove-funktionen att ge ett
 lista = [1, 3, 4]
 
 if 1 in lista:
-    print("Listalla on alkio 1")
+    print("Listan innehåller värdet 1")
 
 if 2 in lista:
-    print("listalla on alkio 2")
+    print("Listan innehåller värdet 2")
 ```
 
 <sample-output>
 
-Listalla on alkio 1
+Listan innehåller värdet 1
 
 </sample-output>
 
 <programming-exercise name='Sama sana kahdesti' tmcname='osa04-08_sama_sana_kahdesti'>
 
-Tee ohjelma, joka kyselee käyttäjältä sanoja. Kun käyttäjä syöttää jonkin sanan kahdesti, ohjelma tulostaa eri sanojen määrän ja lopettaa toimintansa.
+Skapa ett program som ber användaren mata in ord. När användaren anger ett ord som hon gett tidigare, avslutas programmet och antalet ord skrivs ut.
 
 <sample-output>
 
-sana: **olipa**
-sana: **kerran**
-sana: **kauan**
-sana: **sitten**
-sana: **kerran**
-Annoit 4 eri sanaa
+ord: **det**
+ord: **var**
+ord: **en**
+ord: **gång**
+ord: **en**
+Du gav 4 olika ord
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -407,10 +403,10 @@ print(sorted(lista))
 Kom ihåg skillnaden mellan dessa: `sort` ändrar på ordningen i den ursprungliga listan medan `sorted` skapar en ny, ordnad kopia av listan. Med `sorted` kan vi behålla den ursprungliga ordningen hos listan:
 
 ```python
-alkuperainen = [2, 5, 1, 2, 4]
-jarjestetty = sorted(alkuperainen)
-print(alkuperainen)
-print(jarjestetty)
+ursprunglig = [2, 5, 1, 2, 4]
+ordnad = sorted(ursprunglig)
+print(ursprunglig)
+print(ordnad)
 ```
 
 <sample-output>
@@ -422,35 +418,35 @@ print(jarjestetty)
 
 <programming-exercise name='Lista kahdesti' tmcname='osa04-08b_lista_kahdesti'>
 
-Tee ohjelma, joka kysyy käyttäjältä lukuja ja lisää niitä listaan. Lista tulostetaan jokaisen luvun lisäyksen jälkeen kahdella eri tavalla:
-- alkiot lisäysjärjestyksessä ja
-- järjestettynä pienimmästä suurimpaan alkioon
+Skapa ett program som ber användaren ange siffror, som läggs till i en lista. Efter varje tillägg skrivs listan ut på två sätt:
 
-Ohjelman suoritus päättyy, kun käyttäjä syöttää luvun 0.
+* elementen i den ordning de lagts till
+* elementen i storleksordning från det minsta till det största
 
-Esimerkkisuoritus:
+Programmet avslutas då användaren anger siffran 0.
+
+Exempel:
 
 <sample-output>
 
-Anna luku: **3**
+Ange siffra: **3**
 Lista: [3]
-Järjestettynä: [3]
-Anna luku: **1**
+Ordnat: [3]
+Ange siffra: **1**
 Lista: [3, 1]
-Järjestettynä: [1, 3]
-Anna luku: **9**
+Ordnat: [1, 3]
+Ange siffra: **9**
 Lista: [3, 1, 9]
-Järjestettynä: [1, 3, 9]
-Anna luku: **5**
+Ordnat: [1, 3, 9]
+Ange siffra: **5**
 Lista: [3, 1, 9, 5]
-Järjestettynä: [1, 3, 5, 9]
-Anna luku: **0**
-Moi!
+Ordnat: [1, 3, 5, 9]
+Ange siffra: **0**
+Hejdå!
 
 </sample-output>
 
-**Huom:** tässä tehtävässä (eikä missään muussakaan tehtävissä missä _ei_ erikseen pyydetä funktioiden toteuttamista) mitään koodia __ei tule sijoittaa__
-`if __name__ == "__main__"`-lohkoon!
+Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
@@ -461,19 +457,19 @@ Funktionerna `max` och `min` returnerar det största respektive minsta värdet i
 ```python
 lista = [5, 2, 3, 1, 4]
 
-suurin = max(lista)
-pienin = min(lista)
+storst = max(lista)
+minst = min(lista)
 summa = sum(lista)
 
-print("Pienin:", pienin)
-print("Suurin:", suurin)
+print("Minst:", minst)
+print("Störst:", storst)
 print("Summa:", summa)
 ```
 
 <sample-output>
 
-Pienin: 1
-Suurin: 5
+Minst: 1
+Störst: 5
 Summa: 15
 
 </sample-output>
@@ -485,13 +481,13 @@ Det finns två sätt att behandla listor i Python, och det här kan ibland orsak
 ```python
 lista = []
 
-# metodikutsuja
+# metodanrop
 lista.append(3)
 lista.append(1)
 lista.append(7)
 lista.append(2)
 
-# metodikutsu
+# metodanrop
 lista.sort()
 ```
 
@@ -500,24 +496,24 @@ En del funktioner kan ta emot listor som argument. De nyss presenterade funktion
 ```python
 lista = [3, 2, 7, 1]
 
-# funktiokutsuissa lista on parametrina
-suurin = max(lista)
-pienin = min(lista)
+# funktionsanrop, lista som argument
+storst = max(lista)
+minst = min(lista)
 pituus = len(lista)
 
-print("Pienin:", pienin)
-print("Suurin:", suurin)
+print("Minst:", minst)
+print("Störst:", storst)
 print("Listan pituus:", pituus)
 
-# funktiokutsu: lista on parametrina, järjestetty lista paluuarvona
+# funktionsanrop, lista som argument, ordnad lista returneras
 jarjestyksessa = sorted(lista)
 print(jarjestyksessa)
 ```
 
 <sample-output>
 
-Pienin: 1
-Suurin: 7
+Minst: 1
+Störst: 7
 Listan pituus: 4
 [1, 2, 3, 7]
 
@@ -528,10 +524,10 @@ Listan pituus: 4
 Som de inbyggda funktionerna ovan kan också våra egna funktioner ta listor som argument och returnera listor. Den följande funktionen tar reda på det mellersta – median – värdet i en ordnad lista:
 
 ```python
-def mediaani(lista: list):
-    jarjestetty = sorted(lista)
-    keskikohta = len(jarjestetty) // 2
-    return jarjestetty[keskikohta]
+def median(lista: list):
+    ordnad = sorted(lista)
+    mellersta = len(ordnad) // 2
+    return ordnad[mellersta]
 ```
 
 Funktionen skapar en ordnad version av listan som gavs som argument och returnerar elementet i mitten. Märk heltalsdivisionsoperatorn `//` som används. Indexet i en lista måste vara ett heltal.
@@ -539,31 +535,31 @@ Funktionen skapar en ordnad version av listan som gavs som argument och returner
 Funktionen fungerar på följande sätt:
 
 ```python
-kengannumerot = [45, 44, 36, 39, 40]
-print("Kengännumeroiden mediaani on", mediaani(kengannumerot))
+skonummer = [45, 44, 36, 39, 40]
+print("Skonumrens median är", median(skonummer))
 
 iat = [1, 56, 34, 22, 5, 77, 5]
-print("Ikien mediaani on", mediaani(iat))
+print("Medianåldern är", median(iat))
 ```
 
 <sample-output>
 
-Kengännumeroiden mediaani on 40
-Ikien mediaani on 22
+Skonumrens median är 40
+Medianåldern är 22
 
 </sample-output>
 
 En funktion kan också returnera en lista. Den följande funktionen ber användaren ge heltal, som sedan returneras som en lista:
 
 ```python
-def lue_luvut():
-    luvut = []
+def las_in_siffror():
+    siffror = []
     while True:
-        syote = input("Anna luku (tyhjä lopettaa): ")
-        if len(syote) == 0:
+        indata = input("Ge siffra (tomt avslutar programmet): ")
+        if len(indata) == 0:
             break
-        luvut.append(int(syote))
-    return luvut
+        siffror.append(int(indata))
+    return siffror
 ```
 
 Funktionen använder sig av hjälpvariabeln `siffror`, som är en lista. Alla siffror som användaren skriver läggs till i listan. När loopen avslutas returnerar funktionen listan med satsen `return siffror`.
@@ -571,24 +567,24 @@ Funktionen använder sig av hjälpvariabeln `siffror`, som är en lista. Alla si
 När funktionen anropas så här…
 
 ```python
-luvut = lue_luvut()
+siffror = las_in_siffror()
 
-print("Suurin luku on", max(luvut))
-print("Lukujen mediaani on", mediaani(luvut))
+print("Största siffran är", max(siffror))
+print("Medianvärdet är", median(siffror))
 ```
 
 …kan utskriften se ut på följande sätt:
 
 <sample-output>
 
-Anna luku (tyhjä lopettaa): **5**
-Anna luku (tyhjä lopettaa): **-22**
-Anna luku (tyhjä lopettaa): **4**
-Anna luku (tyhjä lopettaa): **35**
-Anna luku (tyhjä lopettaa): **1**
-Anna luku (tyhjä lopettaa):
-Suurin luku on 35
-Lukujen mediaani on 4
+Ge siffra (tomt avslutar programmet): **5**
+Ge siffra (tomt avslutar programmet): **-22**
+Ge siffra (tomt avslutar programmet): **4**
+Ge siffra (tomt avslutar programmet): **35**
+Ge siffra (tomt avslutar programmet): **1**
+Ge siffra (tomt avslutar programmet):
+Största siffran är 35
+Medianvärdet är 4
 
 </sample-output>
 
@@ -597,19 +593,19 @@ Det här lilla exemplet demonstrerar ett av de viktigaste användningsområdena 
 Samma funktionalitet kan förstås fås till stånd utan några som helst egna funktioner:
 
 ```python
-luvut = []
+siffror = []
 while True:
-    syote = input("Anna luku (tyhjä lopettaa): ")
-    if len(syote) == 0:
+    indata = input("Ge siffra (tomt avslutar programmet): ")
+    if len(indata) == 0:
         break
-    luvut.append(int(syote))
+    siffror.append(int(indata))
 
-jarjestetty = sorted(luvut)
-keskikohta = len(jarjestetty) // 2
-mediaani = jarjestetty[keskikohta]
+ordnad = sorted(siffror)
+mellersta = len(ordnad) // 2
+median = ordnad[mellersta]
 
-print("Suurin luku on", max(luvut))
-print("Lukujen mediaani on", mediaani)
+print("Största siffran är", max(siffror))
+print("Medianvärdet är", median)
 ```
 
 I den här versionen är det svårare att uppfatta logiken bakom programmet, eftersom det inte mera är enkelt att se vilka kommandon som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, räkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
@@ -619,34 +615,34 @@ Att dela din kod i flera funktioner kommer att förbättra läsbarheten av koden
 En annan viktig orsak till att använda funktioner är återanvändbarhet av koden. Om du behöver samma funktionalitet på flera ställen i ditt program är det en bra idé att skapa en funktion och namnge den väl:
 
 ```python
-print("Kengännumerot:")
-kengat = lue_luvut()
+print("Skonummer:")
+skor = las_in_siffror()
 
 print("Painot:")
-painot = lue_luvut()
+vikter = las_in_siffror()
 
 print("Pituudet:")
-pituudet = lue_luvut()
+langder = las_in_siffror()
 ```
 
 <programming-exercise name='Listan pituus' tmcname='osa04-09_listan_pituus'>
 
-Tee funktio `pituus`, joka palauttaa parametrinaan saamansa listan pituuden.
+Skapa funktionen `langd` som returnerar längden på den lista som getts som argument.
 
 ```python
 lista = [1, 2, 3, 4, 5]
-vastaus = pituus(lista)
-print("vastaus", vastaus)
+svar = langd(lista)
+print("svar", svar)
 
-# huomaa, että voit kutsua funktiota myös antamalla listan suoraan funktion parametriksi
-vastaus = pituus([1, 1, 1, 1])
-print("vastaus", vastaus)
+# observera att du också kan anropa funktionen genom att direkt ge en lista som argument till funktionen
+svar = langd([1, 1, 1, 1])
+print("svar", svar)
 ```
 
 <sample-output>
 
-vastaus 5
-vastaus 4
+svar 5
+svar 4
 
 </sample-output>
 
@@ -654,17 +650,17 @@ vastaus 4
 
 <programming-exercise name='Keskiarvo' tmcname='osa04-10_keskiarvo'>
 
-Tee funktio `keskiarvo`, joka palauttaa parametrinaan saamansa kokonaislukuja sisältävän listan alkioiden keskiarvon.
+Skapa funktionen `medeltal` som returnerar medelvärdet av värdena i en lista bestående av heltal som getts som argument till funktionen.
 
 ```python
 lista = [1, 2, 3, 4, 5]
-vastaus = keskiarvo(lista)
-print("vastaus", vastaus)
+svar = medeltal(lista)
+print("svar", svar)
 ```
 
 <sample-output>
 
-vastaus 3.0
+svar 3.0
 
 </sample-output>
 
@@ -672,17 +668,17 @@ vastaus 3.0
 
 <programming-exercise name='Vaihteluväli' tmcname='osa04-11_vaihteluvali'>
 
-Tee funktio `vaihteluvali`, joka palauttaa parametrinaan saamansa kokonaislukuja sisältävän listan vaihteluvälin (eli suurimman ja pienimmän alkion erotuksen).
+Skapa funktionen `variationsbredd` som returnerar diffrensen av det största och minsta värdet i en lista med heltal som getts som argument till funktionen.
 
 ```python
 lista = [1, 2, 3, 4, 5]
-vastaus = vaihteluvali(lista)
-print("vastaus", vastaus)
+svar = variationsbredd(lista)
+print("svar", svar)
 ```
 
 <sample-output>
 
-vastaus 4
+svar 4
 
 </sample-output>
 

@@ -21,47 +21,47 @@ Du har redan bekantat dig med `break`-kommandot. Det kan användas för att dire
 Samma funktionalitet kan skapas utan `break`-kommandot med ett passligt villkor. De här två programmen ber användaren ge siffor som adderas ihop tills användaren skriver siffran -1.
 
 ```python
-# 1. versio break-komennon avulla
+# version 1 med break-kommando
 
 summa = 0
 
 while True:
-    luku = int(input("Anna luku, -1 lopettaa: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if siffra == -1:
         break
-    summa += luku
+    summa += siffra
 
-print (f"Summa on {summa}")
+print (f"Summan är {summa}")
 ```
 
 ```python
-# 2. versio ilman break-komentoa
+# version 2 utan break-kommando
 
 summa = 0
-luku = 0
+siffra = 0
 
-while luku != -1:
-    luku = int(input("Anna luku, -1 lopettaa: "))
-    if luku != -1:
-        summa += luku
+while siffra != -1:
+    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if siffra != -1:
+        summa += siffra
 
-print (f"Summa on {summa}")
+print (f"Summan är {summa}")
 ```
 
 Båda programmen skriver ut samma saker med samma indata, exempelvis:
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **2**
-Anna luku, -1 lopettaa: **4**
-Anna luku, -1 lopettaa: **5**
-Anna luku, -1 lopettaa: **3**
-Anna luku, -1 lopettaa: **-1**
-Summa on 14
+Ge ett tal, -1 avslutar programmet: **2**
+Ge ett tal, -1 avslutar programmet: **4**
+Ge ett tal, -1 avslutar programmet: **5**
+Ge ett tal, -1 avslutar programmet: **3**
+Ge ett tal, -1 avslutar programmet: **-1**
+Summan är 14
 
 </sample-output>
 
-Båda programmen är alltså identiska till deras funktion men den första metoden är ofta enklare eftersom villkoret `nummer == 1` endast finns på ett ställe och variabeln `nummer` behöver inte initieras utanför loopen.
+Båda programmen är alltså identiska till deras funktion men den första metoden är ofta enklare eftersom villkoret `siffra == 1` endast finns på ett ställe och variabeln `siffra` behöver inte initieras utanför loopen.
 
 `break`-kommandot kan kombineras med ett passligt villkor. Till exempel följande loop upprepas så länge summan av siffrorna är högst 100, men avslutas också då man ger siffran -1.
 
@@ -71,34 +71,34 @@ Så här kan det se ut när programmet körs:
 summa = 0
 
 while summa <= 100:
-    luku = int(input("Anna luku, -1 lopettaa: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if siffra == -1:
         break
-    summa += luku
+    summa += siffra
 
-print (f"Summa on {summa}")
+print (f"Summan är {summa}")
 ```
 
-Mahdollisia suorituksia:
+Exempel:
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **15**
-Anna luku, -1 lopettaa: **8**
-Anna luku, -1 lopettaa: **21**
-Anna luku, -1 lopettaa: **-1**
-Summa on 44
+Ge ett tal, -1 avslutar programmet: **15**
+Ge ett tal, -1 avslutar programmet: **8**
+Ge ett tal, -1 avslutar programmet: **21**
+Ge ett tal, -1 avslutar programmet: **-1**
+Summan är 44
 
 </sample-output>
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **15**
-Anna luku, -1 lopettaa: **8**
-Anna luku, -1 lopettaa: **21**
-Anna luku, -1 lopettaa: **45**
-Anna luku, -1 lopettaa: **17**
-Summa on 106
+Ge ett tal, -1 avslutar programmet: **15**
+Ge ett tal, -1 avslutar programmet: **8**
+Ge ett tal, -1 avslutar programmet: **21**
+Ge ett tal, -1 avslutar programmet: **45**
+Ge ett tal, -1 avslutar programmet: **17**
+Summan är 106
 
 </sample-output>
 
@@ -110,14 +110,14 @@ Som alltid inom programmering finns det flera sätt att uppnå samma resultat. F
 summa = 0
 
 while True:
-    luku = int(input("Anna luku, -1 lopettaa: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if siffra == -1:
         break
-    summa += luku
+    summa += siffra
     if summa > 100:
         break
 
-print (f"Summa on {summa}")
+print (f"Summan är {summa}")
 ```
 ## `continue`-kommandot
 
@@ -131,24 +131,24 @@ Till exempel följande program adderar siffor som användaren ger, men bara då 
 summa = 0
 
 while True:
-    luku = int(input("Anna luku, -1 lopettaa: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if siffra == -1:
         break
-    if luku >= 10:
+    if siffra >= 10:
         continue
-    summa += luku
+    summa += siffra
 
-print (f"Summa on {summa}")
+print (f"Summan är {summa}")
 ```
 
 <sample-output>
 
-Anna luku, -1 lopettaa: **4**
-Anna luku, -1 lopettaa: **7**
-Anna luku, -1 lopettaa: **99**
-Anna luku, -1 lopettaa: **5**
-Anna luku, -1 lopettaa: **-1**
-Summa on 16
+Ge ett tal, -1 avslutar programmet: **4**
+Ge ett tal, -1 avslutar programmet: **7**
+Ge ett tal, -1 avslutar programmet: **99**
+Ge ett tal, -1 avslutar programmet: **5**
+Ge ett tal, -1 avslutar programmet: **-1**
+Summan är 16
 
 </sample-output>
 
@@ -158,33 +158,33 @@ Precis som med if-satser kan loopar placeras inom andra loopar. Till exempel fö
 
 ```python
 while True:
-    luku = int(input("Anna luku: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal: "))
+    if siffra == -1:
         break
-    while luku > 0:
-        print(luku)
-        luku -= 1
+    while siffra > 0:
+        print(siffra)
+        siffra -= 1
 ```
 
 <sample-output>
 
-Anna luku: **4**
+Ge ett tal: **4**
 4
 3
 2
 1
-Anna luku: **3**
+Ge ett tal: **3**
 3
 2
 1
-Anna luku: **6**
+Ge ett tal: **6**
 6
 5
 4
 3
 2
 1
-Anna luku: **-1**
+Ge ett tal: **-1**
 
 </Sample-output>
 
@@ -192,14 +192,14 @@ I kapslade loopar är det bra att märka att `break` och `continue` endast påve
 
 ```python
 while True:
-    luku = int(input("Anna luku: "))
-    if luku == -1:
+    siffra = int(input("Ge ett tal: "))
+    if siffra == -1:
         break
     while True:
-        if luku <= 0:
+        if siffra <= 0:
             break
-        print(luku)
-        luku -= 1
+        print(siffra)
+        siffra -= 1
 ```
 
 Här avslutar det andra `break`-kommandot endast den inre loopen som används för att skriva ut siffrorna.
@@ -209,16 +209,16 @@ Här avslutar det andra `break`-kommandot endast den inre loopen som används f�
 Vi har redan använt oss av hjälpvariabler – som ökar eller minskar för varje iteration av en loop – flera gånger, så följande program borde till sin struktur se ganska bekant ut. Programmet skriver ut alla jämna tal från noll fram till det tal som användaren angett:
 
 ```python
-raja = int(input("Anna luku: "))
+grans = int(input("Ge ett tal: "))
 i = 0
-while i < raja:
+while i < grans:
     print(i)
     i += 2
 ```
 
 <sample-output>
 
-Anna luku: **8**
+Ge ett tal: **8**
 0
 2
 4
@@ -231,19 +231,19 @@ Hjälpvariabeln `i` har tilldelats värdet 0 före loopen, som ökar på talet m
 När man använder kapslade loopar kan det uppstå ett behov för en ny hjälpvariabel för den inre loopen. Följande program skriver ut en "sifferpyramid" baserat på den siffra som användaren angett:
 
 ```python
-luku = int(input("Anna luku: "))
-while luku > 0:
+siffra = int(input("Ge ett tal: "))
+while siffra > 0:
     i = 0
-    while i < luku:
+    while i < siffra:
         print(f"{i} ", end="")
         i += 1
     print()
-    luku -= 1
+    siffra -= 1
 ```
 
 <sample-output>
 
-Anna luku: **5**
+Ge ett tal: **5**
 0 1 2 3 4
 0 1 2 3
 0 1 2
@@ -252,23 +252,21 @@ Anna luku: **5**
 
 </sample-output>
 
-I programmet använder den yttre loopen hjälpvariabeln `nummer` som minskar med ett tills det når till noll. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
+I programmet använder den yttre loopen hjälpvariabeln `siffra` som minskar med ett tills det når till noll. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
 
-Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `nummer`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-kommandot i den yttre loopen en ny rad.
+Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `siffra`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-kommandot i den yttre loopen en ny rad.
 
-I och med att värdet på nummer minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
+I och med att värdet på `siffra` minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
 
 Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors visualiseringsverktyg för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
 
 <in-browser-programming-exercise name="Kertotaulut" tmcname="osa03-15b_kertotaulut">
 
-Tee ohjelma, joka kysyy käyttäjältä positiivisen kokonaisluvun. Ohjelma tulostaa esimerkkitulostuksen mukaisesti kertolaskuja lukuun asti:
-
-Esimerkkisuorituksia:
+Skapa ett program som ber om ett positivt heltal från användare. Programmet ska skriva ut multiplikationsoperationer fram till talet, enligt exemplen nedan:
 
 <sample-output>
 
-Anna luku: 2
+Ge ett tal: 2
 1 x 1 = 1
 1 x 2 = 2
 2 x 1 = 2
@@ -278,7 +276,7 @@ Anna luku: 2
 
 <sample-output>
 
-Anna luku: 3
+Ge ett tal: 3
 1 x 1 = 1
 1 x 2 = 2
 1 x 3 = 3
@@ -296,16 +294,17 @@ Anna luku: 3
 
 <in-browser-programming-exercise name="Sanojen ensimmäiset kirjaimet" tmcname="osa03-16_sanojen_ensimmaiset_kirjaimet">
 
-Tee ohjelma, joka kysyy käyttäjältä lauseen. Ohjelma tulostaa jokaisen sanan ensimmäisen kirjaimen ruudulle omille riveilleen.
+Skapa ett program som ber användaren ange en mening. Programmet skriver därefter ut den första bokstaven i varje ord på sin egen rad.
 
-Esimerkkisuoritus:
+Exempel:
 
 <sample-output>
 
-Anna lause: **Vesihiisi sihisi hississä**
-V
-s
-h
+Ge en mening: **Kira gillade klara glaskulor**
+K
+g
+k
+g
 
 </sample-output>
 
@@ -313,29 +312,29 @@ h
 
 <in-browser-programming-exercise name="Kertomat" tmcname="osa03-17_kertomat">
 
-Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun. Jos käyttäjä syöttää negatiivisen luvun tai nollan, ohjelman suoritus päättyy. Muuten ohjelma tulostaa luvun kertoman.
+Skapa ett program som ber användaren ange ett heltal. Om talet är negativt eller noll, avslutas programmet. I övriga fall skriver programmet ut talets fakultet.
 
-Kertoma lasketaan kertomalla keskenään luku ja kaikki sitä pienemmät positiiviset kokonaisluvut. Esim. luvun 5 kertoma on 1 * 2 * 3 * 4 * 5 = 120.
+Fakultet räknas genom att multiplicera talet med sig själv samt alla mindre positiva heltal. Fakulteten för 5 är t.ex. `1 * 2 * 3 * 4 * 5 = 120`.
 
-Esimerkkisuorituksia:
+Exempel:
 
 <sample-output>
 
-Anna luku: **3**
-Luvun 3 kertoma on 6
-Anna luku: **4**
-Luvun 4 kertoma on 24
-Anna luku: **-1**
-Kiitos ja moi!
+Ge ett tal: **3**
+Talets 3 fakultet är 6
+Ge ett tal: **4**
+Talets 4 fakultet är 24
+Ge ett tal: **-1**
+Tack och hej!
 
 </sample-output>
 
 <sample-output>
 
-Anna luku: **1**
-Luvun 1 kertoma on 1
-Anna luku: **0**
-Kiitos ja moi!
+Ge ett tal: **1**
+Talets 1 fakultet är 1
+Ge ett tal: **0**
+Tack och hej!
 
 </sample-output>
 
@@ -343,11 +342,11 @@ Kiitos ja moi!
 
 <in-browser-programming-exercise name="Parit ympäri" tmcname="osa03-18_parit_ympari">
 
-Tee ohjelma, joka tulostaa luvut 1:stä käyttäjän antamaan lukuun. Luvut on kuitenkin käännetty pareittain ympäri.
+Skapa ett program som skriver ut talen från ett till det tal användaren angett. Talen ska parvis vara omvända.
 
 <sample-output>
 
-Anna luku: **5**
+Ge ett tal: **5**
 2
 1
 4
@@ -358,7 +357,7 @@ Anna luku: **5**
 
 <sample-output>
 
-Anna luku: **6**
+Ge ett tal: **6**
 2
 1
 4
@@ -372,11 +371,11 @@ Anna luku: **6**
 
 <in-browser-programming-exercise name="Vuorotellen" tmcname="osa03-19_vuorotellen">
 
-Tee ohjelma, joka kysyy käyttäjältä luvun ja tulostaa sitten lukuja vuorotellen seuraavien esimerkkien mukaisesti.
+Skapa ett program som ber användaren ange ett tal. Programmet ska skriva ut talen turvis enligt följande exempel:
 
 <sample-output>
 
-Anna luku: **5**
+Ge ett tal: **5**
 1
 5
 2
@@ -387,7 +386,7 @@ Anna luku: **5**
 
 <sample-output>
 
-Anna luku: **6**
+Ge ett tal: **6**
 1
 6
 2
