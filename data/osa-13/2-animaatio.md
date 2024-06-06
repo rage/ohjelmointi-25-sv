@@ -1,24 +1,24 @@
 ---
 path: '/osa-13/2-animaatio'
-title: 'Animaatio'
+title: 'Animation'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten voi toteuttaa animaation
-- Osaat tahdistaa ohjelman nopeuden kellon avulla
-- Osaat käyttää trigonometriaa animaatiossa
+- Vet du hur man skapar en animation med pygame
+- Kommer du att kunna använda en klocka för att ställa in hastigheten på ditt program
+- Kommer du att kunna använda grundläggande trigonometriska funktioner i dina animationer
 
 </text-box>
 
-Monissa peleissä on tarvetta saada aikaan liikkuvia hahmoja, joten seuraava luonteva askel on opetella animaation tekeminen. Animaatio syntyy, kun kuva piirretään eri kohtiin näytöllä sopivasti ajastettuna.
+Många spel har rörliga karaktärer, så ett logiskt nästa steg är att skapa animationer. Vi kan skapa en illusion av rörelse genom att rita samma bild på olika ställen på skärmen och tajma ändringarna på rätt sätt.
 
-## Animaation tekeminen
+## Skapa en animation
 
-Seuraava koodi luo animaation, jossa robotti kulkee vasemmalta oikealle ikkunassa:
+Följande kod skapar en animation där en robot rör sig från vänster till höger i ett pygame-fönster:
 
 ```python
 import pygame
@@ -45,24 +45,24 @@ while True:
     kello.tick(60)
 ```
 
-Ohjelman suoritus näyttää seuraavalta:
+När detta exekveras, borde resultatet se ut så här:
 
 <img src="pygame_animaatio.gif">
 
-Katsotaan taas tarkemmin, mitä ohjelmassa tapahtuu. Jotta kuva pystyy liikkumaan, ohjelmassa täytyy olla tieto sen paikasta. Tämä onnistuu ottamalla käyttöön kaksi muuttujaa, jotka sisältävät kuvan vasemman yläkulman koordinaatit:
+Låt oss ta en närmare titt på de instruktioner som är inblandade. Om vi vill spåra bildens rörelse på skärmen måste vi veta var den befinner sig. Därför har vi två variabler för koordinaterna för bildens övre vänstra hörn:
 
 ```python
 x = 0
 y = 0
 ```
 
-Tämän lisäksi määritellään kello, jonka avulla pystyy huolehtimaan siitä, että animaation nopeus on sopiva:
+Vi har även en klocka, som vi använder för att se till att animationens hastighet är korrekt:
 
 ```python
 kello = pygame.time.Clock()
 ```
 
-Pääsilmukan sisällä on koodi, joka piirtää kuvan sen nykyiseen paikkaan:
+Huvudloopen ritar bilden på sin aktuella plats vid varje iteration:
 
 ```python
     naytto.fill((0, 0, 0))
@@ -70,29 +70,29 @@ Pääsilmukan sisällä on koodi, joka piirtää kuvan sen nykyiseen paikkaan:
     pygame.display.flip()
 ```
 
-Ensin kutsutaan metodia `fill`, joka tyhjentää ikkunan mustalla värillä. Väri määritellään RGB-muodossa parametrilla `(0, 0, 0)`, mikä tarkoittaa, että värin punainen, vihreä ja sininen komponentti on 0 eli väri on musta. Jokainen komponentti voi olla välillä 0–255. Esimerkiksi `(255, 255, 255)` on valkoinen ja `(255, 0, 0)` on punainen. Verkossa on monia työkaluja, joiden avulla voi tutkia RGB-värejä, kuten [RGB Color Codes Chart](https://www.rapidtables.com/web/color/RGB_Color.html).
+Först fyller metoden fill fönstret med svart, precis som tidigare. Färgen skickas som en tupel som innehåller RGB-värdena för färgen. I det här fallet är argumentet `(0, 0, 0)`, vilket innebär att alla tre komponenterna - röd, grön och blå - har värdet 0. Varje komponent kan ha ett värde mellan 0 och 255. Om vi skickar `(255, 255, 255)` som argument får vi alltså ett vitt fönster, och med `(255, 0, 0)` får vi ett rött fönster. RGB-färgkoder utgör ryggraden i digital färgläggning, och det finns många verktyg online för att arbeta med dem, till exempel [RGB Color Codes Chart](https://www.rapidtables.com/web/color/RGB_Color.html).
 
-Tämän jälkeen kuva piirretään tuttuun tapaan metodilla `blit` ja lopuksi ikkunan sisältö päivitetään funktiolla `pygame.display.flip`.
+När fönstret har fyllts med färg ritas bilden på den angivna platsen med blit-metoden. Sedan uppdateras innehållet i fönstret med funktionen `pygame.display.flip`.
 
-Silmukan päätteeksi muuttujan `x` arvo kasvaa, minkä ansiosta kuva liikkuu pikselin eteenpäin joka kierroksella:
+Slutligen ökas värdet som lagras i x, vilket gör att bilden flyttas en pixel åt höger för varje iteration:
 
 ```python
     x += 1
 ```
 
-Lisäksi silmukan lopussa suoritetaan kellon metodi `tick`:
+Klock-metoden `tick` kallas i slutet:
 
 ```python
     kello.tick(60)
 ```
 
-Metodi `tick` huolehtii siitä, että animaation nopeus on sopiva: se tahdistaa silmukan niin, että silmukka pyritään suorittamaan 60 kertaa sekunnissa. Toisin sanoen kuva liikkuu sekunnissa 60 pikseliä oikealle. Tämä vastaa suunnilleen pelien yhteydessä käytettävää termiä _FPS_ (_frames per second_).
+Metoden `tick` tar hand om hastigheten på animationen. Argumentet 60 anger att loopen ska exekveras `60` gånger per sekund, vilket innebär att bilden förflyttas 60 pixlar åt höger varje sekund. Detta motsvarar ungefär det värde för FPS eller bilder per sekund som används i spel.
 
-Metodi `tick` on hyödyllinen, koska sen avulla animaatio toimii periaatteessa yhtä nopeasti jokaisella koneella. Jos silmukassa ei olisi tällaista ajastusta, pelin nopeus riippuisi siitä, kuinka nopeasti pelaajan kone toimii.
+I princip ser `tick`-metoden till att animationen körs med samma hastighet på alla datorer. Om det inte fanns någon sådan timing skulle animationens hastighet bero på datorns hastighet.
 
-## Seinään törmääminen
+## Studsa av en vägg
 
-Äskeinen animaatio on muuten hieno, mutta kun robotti etenee ikkunan ulkopuolelle, animaatio jatkuu ja robotti katoaa näkyvistä. Tehdään seuraavaksi ohjelmaan parannus, jonka avulla robotin suunta muuttuu, jos se törmää seinään.
+Den föregående animationen var annars utmärkt, men när roboten nådde en vägg fortsatte den bara att försvinna ur syn. Låt oss få roboten att studsa mot väggen.
 
 ```python
 import pygame
@@ -115,7 +115,7 @@ while True:
     naytto.fill((0, 0, 0))
     naytto.blit(robo, (x, y))
     pygame.display.flip()
-    
+
     x += nopeus
     if nopeus > 0 and x+robo.get_width() >= 640:
         nopeus = -nopeus
@@ -125,13 +125,13 @@ while True:
     kello.tick(60)
 ```
 
-Ohjelman suoritus näyttää nyt tältä:
+Exekvering av koden ovan borde se ut så här:
 
 <img src="pygame_animaatio2.gif">
 
-Nyt ohjelmassa on uusi muuttuja `nopeus`, joka määrittää robotin liikkumistavan. Positiivinen nopeus tarkoittaa liikkumista oikealle ja negatiivinen nopeus tarkoittaa liikkumista vasemmalle. Tässä tapauksessa kun nopeus on 1, robotti liikkuu oikealle, ja kun nopeus on –1, robotti liikkuu vasemmalle.
+Det finns en ny variabel, `hastighet`, som bestämmer rörelseriktningen. Om värdet är över noll sker förflyttningen åt höger och om det är under noll sker förflyttningen åt vänster. I det här fallet rör sig roboten åt höger om värdet är `1`, åt vänster om värdet är `-1`.
 
-Seuraavat rivit huolehtivat, että robotti osaa törmätä seinään:
+Följande rader gör att roboten studsar mot sidoväggarna:
 
 ```python
     if nopeus > 0 and x+robo.get_width() >= 640:
@@ -140,13 +140,13 @@ Seuraavat rivit huolehtivat, että robotti osaa törmätä seinään:
         nopeus = -nopeus
 ```
 
-Jos nopeus on positiivinen eli robotti liikkuu oikealle ja sen oikea reuna menee ikkunan oikean reunan ulkopuolelle, robotin suunta muuttuu käänteiseksi eli se alkaa liikkua vasemmalle. Vastaavasti jos nopeus on negatiivinen ja robotin vasen reuna menee ikkunan vasemman reunan ulkopuolelle, suunta muuttuu taas käänteiseksi eli robotti alkaa liikkua oikealle.
+Om hastigheten är över noll så att roboten rör sig åt höger, och högerkanten på bilden går utanför fönstrets högra kant, vänds riktningen och roboten börjar röra sig åt vänster. På samma sätt, om hastigheten är under noll så att roboten rör sig åt vänster, och bildens vänstra kant når fönstrets vänstra kant, vänds riktningen igen och roboten börjar röra sig åt höger igen.
 
-Tämän koodin ansiosta robotti jatkaa loputtomasti rataa, jossa se liikkuu ensin koko ikkunan verran oikealle, sitten takaisin vasemmalle, sitten taas oikealle, jne.
+Detta gör att roboten rör sig på en bana från fönstrets vänstra kant till den högra kanten, och tillbaka till vänster, och sedan till höger igen, upprepat i all oändlighet.
 
-## Pyörivä animaatio
+## Rotation
 
-Tehdään vielä animaatio, jossa robotti _pyörii_  ikkunan keskipisteen ympärillä:
+Låt oss skapa ytterligare en animation. Den här gången ska roboten rotera i en cirkel runt fönstrets mitt:
 
 ```python
 import pygame
@@ -176,20 +176,20 @@ while True:
     kello.tick(60)
 ```
 
-Ohjelman suoritus näyttää tältä:
+Exekvering av koden ovan borde se ut så här:
 
 <img src="pygame_pyorinta.gif">
 
-Pyörimisanimaatio saadaan toteutettua trigonometrian avulla: muuttujassa `kulma` on radiaaneina robotin sijainnin kulma suhteessa ikkunan keskipisteeseen. Tästä saadaan laskettua sini- ja kosinifunktioilla robotin sijainti:
+Rotation i en relativt exakt cirkel uppnås med hjälp av några grundläggande trigonometriska funktioner. Variabeln `vinkel` innehåller vinkeln för robotens position i förhållande till fönstrets mittpunkt och den horisontella linjen som går genom fönstret. Sinus- och cosinusfunktionerna från Pythons matematikbibliotek används här för att beräkna koordinaterna för robotens position:
 
 ```python
         x = 320+math.cos(kulma)*100-robo.get_width()/2
         y = 240+math.sin(kulma)*100-robo.get_height()/2
 ```
 
-Tämä tarkoittaa, että robotin sijainti on ympyrällä, jonka säde on 100. Kosini antaa x-suuntaisen sijainnin ja sini puolestaan y-suuntaisen sijainnin. Jotta animaatio näyttää hyvältä, robotti lisäksi keskitetään niin, että sen keskipiste on ympyrällä.
+Roboten roterar runt en cirkel med radien 100 runt fönstrets mittpunkt. Hypotenusan i detta scenario är cirkelns radie. Cosinusfunktionen anger längden på den angränsande sidan i en rätvinklig triangel i förhållande till hypotenusan, vilket innebär att den ger oss platsens `x`-koordinat. Sinusfunktionen ger längden på den motsatta sidan, dvs. `y`-koordinaten. Platsen justeras sedan för bildens storlek, så att cirkelns mittpunkt ligger i fönstrets mittpunkt.
 
-Joka kierroksella muuttujan `kulma` arvo kasvaa 0.01:llä. Koska radiaaneissa täysi ympyrä on 2π eli noin 6.28, robotti pyörii suunnilleen kierroksen verran 10 sekunnissa.
+För varje iteration ökar storleken på `vinkel` med 0,01. Eftersom vi använder radianer är en hel cirkel 2π, vilket motsvarar ca 6,28. Det tar cirka 628 iterationer för roboten att gå en hel cirkel, och med 60 iterationer per sekund tar detta drygt 10 sekunder. 
 
 <programming-exercise name='Pystyliike' tmcname='osa13-05_pystyliike'>
 

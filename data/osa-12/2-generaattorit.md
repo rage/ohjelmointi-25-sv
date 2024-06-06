@@ -1,26 +1,28 @@
 ---
 path: '/osa-12/2-generaattorit'
-title: 'Generaattorit'
+title: 'Generatorer'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä tarkoitetaan generaattorilla Pythonissa
-- Tiedät, mitä avainsana yield tekee
-- Osaat kirjoittaa itse generaattorifunktioita
+- Vet du vad en Python-generator är
+- Kommer du  att känna till nyckelordet `yield`
+- Kommer du att kunna skriva dina egna generator-funktioner
 
 </text-box>
 
-Eräissä tilanteissa olisi kätevää saada ohjelmassa seuraava alkio (tai useampi alkio) tietystä sarjasta ilman että muodostetaan koko sarjaa kerralla. Pythonissa tämä onnistuu näppärästi _generaattoreiden_ avulla. Generaattorifunktio muistuttaa normaalia arvon palauttavaa funktiota, mutta kun normaalifunktio palauttaa (tai ainakin sen pitäisi palauttaa) samalla syötteellä saman arvon, generaattorifunktio palauttaa seuraavan luvun sarjasta.
+Vi har redan stött på situationer där vi har att göra med en serie föremål och vi behöver nästa föremål i serien, men vi vill inte nödvändigtvis formulera hela serien fram till den punkten varje gång ett nytt föremål krävs. Vissa rekursiva serier, till exempel Fibonacci-numret, är ett bra exempel på en sådan situation. Om varje funktionsanrop rekursivt genererar hela serien fram till önskad punkt, slutar det med att vi genererar början av serien många gånger om.
 
-Generaattorien toiminta voidaan toteuttaa ohjelmissa myös muilla keinoilla (itse asiassa sama pätee useimpiin ohjelmointitekniikoihin), mutta niiden käyttö selkeyttää ja mahdollisesti säästää muistia tai muita resursseja tietyntyylisissä ohjelmissa.
+Python-generatorer är ett sätt att bara producera nästa föremål i en serie när det behövs, vilket i princip innebär att genereringsprocessen för serien bara körs en gång (för en viss exekvering av ett program). De fungerar i stort sett som vanliga funktioner, eftersom de kan anropas och returnerar värden, men det värde som en generatorfunktion returnerar skiljer sig från en vanlig funktion. En normal funktion ska returnera samma värde varje gång, givet samma argument. En generatorfunktion, å andra sidan, ska komma ihåg sitt nuvarande tillstånd och returnera nästa föremål i serien, som kan skilja sig från föregående föremål.
 
-## Avainsana yield
+Precis som det finns många sätt att lösa de flesta programmeringsproblem finns det många sätt att uppnå en funktionalitet som liknar generatorer, men generatorer kan bidra till att göra programmet lättare att förstå och kan i vissa situationer spara minne eller andra beräkningsresurser.
 
-Generaattorifunktion toiminta perustuu avainsanaan `yield`. Tarkastellaan esimerkkinä funktiota, joka palauttaa yksi kerrallaan kokonaislukuja nollasta alkaen kunnes maksimiarvo on saavutettu:
+## Nyckelordet yield
+
+En generatorfunktion måste innehålla nyckelordet `yield`, som markerar det värde som funktionen returnerar. Låt oss titta på en funktion som genererar heltal, med början från noll och slut vid ett förutbestämt maxvärde:
 
 ```python
 
@@ -32,7 +34,7 @@ def laskuri(maksimi: int):
 
 ```
 
-Nyt laskurilta voi pyytää seuraavan arvon funktiolla `next()`:
+Nu kan `raknare`-funktionen skickas som argument till funktionen `nasta()`
 
 ```python
 if __name__ == "__main__":
@@ -52,9 +54,9 @@ Toka arvo:
 
 </sample-output>
 
-Niinkuin esimerkistä huomataan, `yield` muistuttaa `return`-komentoa siinä, että se palauttaa arvon funktiosta. Eroavaisuus on kuitenkin siinä, että yield palauttaa yksittäisen arvon, ja funktio "muistaa" mihin tilaan se jäi.
+Som du kan se i exemplet ovan liknar nyckelordet `yield` nyckelordet `return`: båda används för att definiera ett returvärde. Skillnaden är att `yield` inte "stänger" funktionen på samma sätt som `return`. En generatorfunktion med nyckelordet `yield` håller reda på sitt tillstånd och nästa gång den anropas kommer den att fortsätta från samma tillstånd.
 
-Arvoja voi pyytää vain niin kauan kun niitä on generaattorissa jäljellä - tämän jälkeen generaattorifunktio antaa poikkeuksen `StopIteration`:
+Den här generatorn kräver också ett maxvärde, i exemplet ovan var det `10`. När generatorn får slut på värden kommer den att ge upphov till ett `StopIteration`-undantag:
 
 ```python
 if __name__ == "__main__":
@@ -75,7 +77,7 @@ StopIteration
 
 </sample-output>
 
-Poikkeuksen voi ottaa kiinni `try`-`except` lohkolla:
+Undantaget kan bli fångat med ett `try`- `except` block:
 
 ```python
 if __name__ == "__main__":
@@ -96,7 +98,7 @@ Luvut loppuivat kesken
 
 </sample-output>
 
-Jos halutaan palauttaa kaikki generaattorin tuottamat alkiot, helpointa on iteroida ne läpi `for`-lauseella:
+Att gå igenom alla objekt i en generator görs enkelt med en `for`-loop:  
 
 ```python
 if __name__ == "__main__":
@@ -115,6 +117,10 @@ if __name__ == "__main__":
 5
 
 </sample-output>
+
+Generatorer behöver inte ha ett definierat maxvärde eller en slutpunkt. De kan generera värden i det oändliga (naturligtvis inom andra beräkningsmässiga och fysiska begränsningar).
+
+Tänk dock på att det bara fungerar att genomkorsa en generator med en `for`-loop om generatorn avslutas vid någon punkt. Om generatorn är uppbyggd på en oändlig loop kommer en enkel `for`-loop att orsaka en oändlig exekvering, precis som en `while`-loop utan slut- eller brytvillkor.
 
 <programming-exercise name='Parilliset luvut' tmcname='osa12-08_parilliset'>
 
@@ -188,11 +194,9 @@ Vinkki: Voit tarkastaa, onko luku _x_ alkuluku, silmukalla, joka käy läpi luvu
 </programming-exercise>
 
 
-## Generaattorikoosteet
+## Generator comprehensions
 
-Generaattorin voi luoda myös listakoostetta (list comprehension) muistuttavalla syntaksilla. Erotuksena listakoosteeseen on, että lauseke ympäröidään kaarisulkeilla hakasulkeiden sijasta.
-
-Esimerkiksi
+Du behöver inte nödvändigtvis en funktionsdefinition för att skapa en generator. Vi kan använda en struktur som liknar en list comprehension istället. Den här gången använder vi runda parenteser för att beteckna en generator i stället för en lista eller en ordlista: 
 
 ```python
 # Generaattori palauttaa 2:n potensseja
@@ -215,7 +219,7 @@ for i in range(5):
 
 </sample-output>
 
-Toinen esimerkki, jossa generaattori tuottaa kolmimerkkisiä alijonoja englanninkielisistä aakkosista. Esimerkissä tulostetaan generaattorin 10 ensimmäistä alkiota:
+I följande exempel skriver vi ut delsträngar av det engelska alfabetet, var och en tre tecken lång. Detta skriver ut de första 10 objekten i generatorn:
 
 ```python
 alijonot = ("abcdefghijklmnopqrstuvwxyz"[i : i + 3] for i in range(24))
@@ -269,5 +273,3 @@ ccc
 Huom! Voit ratkaista tehtävän itse valitsemallasi tavalla (eli käyttäen joko generaattorikoostetta tai "perinteistä" generaattoria).
 
 </programming-exercise>
-
-

@@ -1,22 +1,22 @@
 ---
 path: '/osa-8/5-lisaa-esimerkkeja'
-title: 'Lisää esimerkkejä'
+title: 'Fler exempel'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat luoda aiempaa monipuolisempia luokkia
-- Osaat määritellä luokkaan metodin `__str__`
+- Kommer du att kunna skapa mer mångsidiga klasser
+- Vet du hur du lägger till en `__str__`-metod i dina klassdefinitioner
 
 </text-box>
 
 
-## Esimerkki 1: Luokka Suorakulmio
+## Exempel 1: klassen Rektangel
 
-Tarkastellaan seuraavaksi luokkaa, joka mallintaa suorakulmiota kaksiulotteisessa koordinaatistossa:
+Låt oss ta en titt på en klass som modellerar en rektangel i ett tvådimensionellt rum:
 
 ```python
 class Suorakulmio:
@@ -39,13 +39,13 @@ class Suorakulmio:
         self.oikea_alakulma = (kulma[0]+x_muutos, kulma[1]+y_muutos)
 ```
 
-Kun suorakulmio luodaan, konstruktorille annetaan kaksi tuplea: vasemman yläkulman ja oikean alakulman sijainti (x- ja y-koordinaatit). Konstruktori laskee tämän perusteella suorakulmion leveyden ja korkeuden.
+En ny `Rektangel` skapas med två tupler som argument. Dessa tupler innehåller x- och y-koordinaterna för det övre vänstra hörnet och det nedre högra hörnet. Konstruktören beräknar rektangelns höjd och bredd baserat på dessa värden.
 
-Metodit `pinta_ala` ja `piiri` laskevat suorakulmion pinta-alan ja piirin korkeuden ja leveyden perusteella. Metodi `siirra` puolestaan siirtää suorakulmiota koordinaatistossa annetun verran x- ja y-suunnissa.
+Metoderna `area` och `omkrets` beräknar rektangelns area och omkrets baserat på höjd och bredd. Metoden `flytta` flyttar rektangeln med de x- och y-värden som anges som argument.
 
-Huomaa, että suorakulmio esitetään koordinaatistossa, jossa x-koordinaatit kasvavat vasemmalta oikealle ja y-koordinaatit kasvavat ylhäältä alaspäin. Tämä on usein käytetty koordinaatisto ohjelmoinnissa, koska on luontevaa esittää tietokoneen näyttö niin, että vasemman yläkulman x- ja y-koordinaatti on 0.
+Rektangeln representeras i ett koordinatsystem där x-koordinaterna ökar från vänster till höger och y-koordinaterna ökar från topp till botten. Detta är ett vanligt sätt att hantera koordinater i programmering eftersom det ofta är enklare och mer naturligt att betrakta datorskärmens övre vänstra hörn som den punkt där x och y är lika med noll.
 
-Seuraava koodi testaa luokkaa:
+Följande program testar klassen `Rektangel`:
 
 ```python
 suorakulmio = Suorakulmio((1, 1), (4, 3))
@@ -74,16 +74,16 @@ print(suorakulmio.oikea_alakulma)
 
 </sample-output>
 
-## Olion tulostaminen
+## Skriva ut ett objekt
 
-Kun omasta luokasta luotu olio tulostetaan sellaisenaan `print`-komennolla, lopputulos ei ole kovin selkeä:
+När du har ett objekt som skapats från en klass som du själv definierat, är standardreaktionen på att anropa instruktionen `print` med objektet som argument inte särskilt informativt:
 
 ```python
 suorakulmio = Suorakulmio((1, 1), (4, 3))
 print(suorakulmio)
 ```
 
-Ohjelma tulostaa jotain seuraavankaltaista:
+Utskriften borde se ut någorlunda så här:
 
 <sample-output>
 
@@ -91,9 +91,9 @@ Ohjelma tulostaa jotain seuraavankaltaista:
 
 </sample-output>
 
-Järkevämpi tulostus saadaan lisäämällä luokkaan metodi `__str__`, joka palauttaa ymmärrettävän kuvauksen olion tilasta merkkijonona. Kun tämä metodi on määritelty, metodin palauttama kuvaus oliosta tulee näkyviin `print`-komennossa.
+Vi vill självklart ha mer kontroll över vad som skrivs ut. Det enklaste sättet att göra detta är att lägga till en speciell `__str__`-metod i klassdefinitionen. Dess syfte är att returnera en ögonblicksbild av objektets tillstånd i strängformat. Om klassdefinitionen innehåller en `__str__`-metod är det värde som returneras av metoden, det som skrivs ut när instruktionen `print` körs.
 
-Lisätään luokkaan `Suorakulmio` metodi `__str__`:
+Så låt oss lägga till en `__str__`-metoddefinition i vår `Rektangel`-klass:
 
 ```python
 class Suorakulmio:
@@ -105,7 +105,7 @@ class Suorakulmio:
         return f"suorakulmio {self.vasen_ylakulma} ... {self.oikea_alakulma}"
 ```
 
-Nyt `print`-komento tuottaa luettavan lopputuloksen:
+Nu borde `print` instruktionen producera nånting mer användarvänligt:
 
 ```python
 suorakulmio = Suorakulmio((1, 1), (4, 3))
@@ -118,7 +118,7 @@ suorakulmio (1, 1) ... (4, 3)
 
 </sample-output>
 
-Metodia `__str__` kutsutaan yleisemmin silloin, kun oliosta muodostetaan merkkijonokuvaus `str`-funktiolla. Seuraava koodi esittelee asiaa:
+Metoden `__str__` används kanske oftare för att formulera en strängrepresentation av objektet med `str`-funktionen, som i följande program:
 
 ```python
 suorakulmio = Suorakulmio((1, 1), (4, 3))
@@ -133,7 +133,7 @@ suorakulmio (1, 1) ... (4, 3)
 </sample-output>
 
 
-Metodin `__str__` lisäksi olioon voidaan määritellä samantapainen metodi `__repr__`, joka antaa teknisen kuvauksen olion tilasta. Tutustumme tähän metodiin tarkemmin myöhemmin.
+Det finns många fler speciella understrukna metoder som kan definieras för klasser. En metod som liknar `__str__`-metoden är `__repr__`-metoden. Dess syfte är att ge en teknisk representation av objektets tillstånd. Vi kommer att stöta på denna metod senare.
 
 <programming-exercise name='Sekuntikello' tmcname='osa08-11a_sekuntikello'>
 
@@ -391,9 +391,9 @@ Matti: Kortilla on rahaa 72.8 euroa
 
 </programming-exercise>
 
-## Esimerkki 2: Tehtävälista
+## Exempel 2: Uppgiftslista
 
-Seuraava luokka `Tehtavalista` toteuttaa tehtävälistan:
+Följande klass `UppgiftsLista` modellerar en lista med uppgifter:
 
 ```python
 class Tehtavalista:
@@ -417,11 +417,11 @@ class Tehtavalista:
         self.tehtavat = []
 ```
 
-Metodi `lisaa` lisää listalle uuden tehtävän tietyllä prioriteetilla ja metodi `hae_seuraava` poistaa ja palauttaa listan suurimman prioriteetin tehtävän. Lisäksi metodi `yhteensa` antaa listan tehtävien yhteismäärän ja metodi `tyhjenna` tyhjentää listan.
+Metoden `tillägg_uppgift` lägger till en ny uppgift på listan. Varje uppgift har också en prioritet, som används för att sortera uppgifterna. Metoden `hämta_nästa` tar bort och returnerar den uppgift som har högst prioritet i listan. Metoden `mängden_uppgifter` finns också, som returnerar antalet uppgifter i listan, och slutligen metoden `rensa_uppgifter`, som rensar uppgiftslistan.
 
-Tehtäviä säilytetään sisäisesti listassa, jossa on tuplena kunkin tehtävän prioriteetti ja nimi. Prioriteetti tallennetaan ensin, jolloin tärkein tehtävä on listan lopussa listan järjestämisen jälkeen. Tämän ansiosta tehtävän saa haettua ja poistettua listalta kätevästi `pop`-metodilla.
+Inom objektet lagras uppgifterna i en lista. Varje uppgift består av en tupel som innehåller uppgiftens prioritet och dess namn. Prioritetsvärdet lagras först, så att den uppgift som har högst prioritet hamnar sist i listan då den sorteras. Därför kan vi sedan helt enkelt använda `pop`-metoden för att hämta och ta bort det högst prioriterade objektet.
 
-Seuraava koodi esittelee luokan käyttämistä:
+Ta en titt på följande program med uppgiftslistan i handling: 
 
 ```python
 lista = Tehtavalista()
@@ -555,4 +555,3 @@ Huomaa, että yllä oleva koodi ja testit olettavat, että luokassa on attribuut
 Vastaa lopuksi osion loppukyselyyn:
 
 <quiz id="05b480cc-49ea-51e4-a971-d03209a54d5b"></quiz>
-

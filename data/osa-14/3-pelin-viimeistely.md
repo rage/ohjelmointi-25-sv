@@ -1,16 +1,16 @@
 ---
 path: '/osa-14/3-pelin-viimeistely'
-title: 'Pelin viimeistely'
+title: 'Färdigställande av spelet'
 hidden: false
 ---
 
-Peli on jo hyvässä vaiheessa, joten nyt voimme alkaa viimeistellä pelin toteutusta. Lisäämme peliin laskurin, joka näyttää siirtojen määrän, mahdollisuuden aloittaa uusi peli ja sulkea peli näppäinkomennoilla sekä ilmoituksen, kun pelaaja onnistuu läpäisemään pelin.
+Vårt spel är redan ganska fungerande, så det är dags att lägga till några sista detaljer. Vi lägger till en räknare för att visa antalet drag, en möjlighet att starta ett nytt spel och stänga spelet med tangentbordsinmatning samt ett meddelande när spelaren lyckas vinna spelet.
 
-## Siirtolaskuri
+## Räknare för mängden drag
 
-Siirtolaskuri näyttää pelin ikkunan alalaidassa, montako siirtoa pelaaja on tehnyt tähän mennessä. Tämän avulla voi yrittää etsiä ratkaisua, jossa on mahdollisimman vähän siirtoja.
+Dragräknaren i nedre kanten av spelfönstret visar antalet drag som spelaren har gjort hittills. Detta kan användas för att hitta den lösning som kräver minst antal drag.
 
-Laskurin tekeminen vaatii joitakin muutoksia koodiin. Muutetaan ensin konstruktoria niin, että ikkunassa on tilaa laskurille ja käytettävissä on fontti tekstin piirtämistä varten:
+Räknaren kräver några ändringar i koden. Först ändrar vi konstruktorn så att det finns tillräckligt med utrymme för räknaren och att vi har ett lämpligt teckensnitt till vårt förfogande för att rita texten:
 
 ```python
     def __init__(self):
@@ -21,7 +21,7 @@ Laskurin tekeminen vaatii joitakin muutoksia koodiin. Muutetaan ensin konstrukto
         ...
 ```
 
-Siirtolaskuri nollataan pelin alussa ja jokainen siirto kasvattaa sitä yhdellä:
+Dragräknaren ställs in till noll i början av spelet. Varje drag ökar den med ett:
 
 ```python
     def uusi_peli(self):
@@ -36,7 +36,7 @@ Siirtolaskuri nollataan pelin alussa ja jokainen siirto kasvattaa sitä yhdellä
 
 ```
 
-Lisäksi näytön päivityksen yhteydessä näytetään siirtojen määrä laskurin avulla:
+Varje gång innehållet i fönstret uppdateras, bör även antalet drag som visas på skärmen uppdateras:
 
 ```python
     def piirra_naytto(self):
@@ -46,9 +46,9 @@ Lisäksi näytön päivityksen yhteydessä näytetään siirtojen määrä lasku
         ...
 ```
 
-## Uusi peli ja pelin sulkeminen
+## Nytt spel och att avsluta spelet
 
-Lisätään peliin seuraavaksi näppäinkomennot, joiden avulla pelaaja voi aloittaa uuden pelin painamalla F2 sekä sulkea pelin painamalla Esc. Molemmat toiminnot on helppo toteuttaa:
+Nu ska vi lägga till tangentbordsinstruktioner för att starta ett nytt spel med F2 och avsluta spelet med Esc. Båda är ganska enkla att implementera:
 
 ```python
     def tutki_tapahtumat(self):
@@ -60,7 +60,7 @@ Lisätään peliin seuraavaksi näppäinkomennot, joiden avulla pelaaja voi aloi
         ...
 ```
 
-Lisäksi piirretään ikkunan alalaitaan pelaajalle tiedoksi, että pelissä on tällaiset toiminnot:
+Vi bör också lägga till information om den här funktionen så att spelaren kan se den:
 
 ```python
     def piirra_naytto(self):
@@ -73,9 +73,9 @@ Lisäksi piirretään ikkunan alalaitaan pelaajalle tiedoksi, että pelissä on 
         ...
 ```
 
-## Pelin läpäiseminen
+## Vinna spelet
 
-Pelaaja läpäisee pelin, kun jokainen laatikko on jossain kohderuudussa. Tämä voidaan tarkastaa seuraavalla metodilla:
+Spelaren har vunnit spelet när varje låda befinner sig i en av målrutorna. Följande metod tar hand om att kontrollera detta:
 
 ```python
     def peli_lapi(self):
@@ -86,9 +86,9 @@ Pelaaja läpäisee pelin, kun jokainen laatikko on jossain kohderuudussa. Tämä
         return True
 ```
 
-Metodi käy läpi kaikki ruudut ja jos jossain ruudussa on luku 2 (tyhjä kohderuutu) tai 6 (robotti kohderuudussa), peli ei ole vielä läpäisty ja metodi palauttaa `False`. Jos mitään tällaista ruutua ei ole ruudukossa, peli kuitenkin on läpäisty ja metodi palauttaa `True`.
+Metoden går igenom alla rutor i rutnätet. Om någon av rutorna är en 2:a (en tom målruta) eller en 6:a (en robot i en målruta) är spelet ännu inte löst och metoden returnerar `False`. Om det inte finns någon sådan ruta i rutnätet måste alla målrutor vara upptagna av lådor, spelet är löst och metoden returnerar `True`.
 
-Jos pelaaja läpäisee pelin, metodi `piirra_naytto` näyttää asiaan kuuluvan viestin:
+Om spelaren löser spelet bör vi visa ett lämpligt meddelande med metoden `rita_fonster`:
 
 ```python
     def piirra_naytto(self):
@@ -102,7 +102,7 @@ Jos pelaaja läpäisee pelin, metodi `piirra_naytto` näyttää asiaan kuuluvan 
         ...
 ```
 
-Lisäksi metodin `liiku` alkua muutetaan niin, että liikkuminen ei ole enää mahdollista, kun pelaaja on läpäissyt pelin:
+För fullständighetens skull ändrar vi också `flytta`-metoden så att spelaren inte längre kan flytta när han eller hon har löst spelet:
 
 ```python
     def liiku(self, liike_y, liike_x):
@@ -111,31 +111,31 @@ Lisäksi metodin `liiku` alkua muutetaan niin, että liikkuminen ei ole enää m
         ...
 ```
 
-Tässä tilanteessa kuitenkin pelaaja näkee edelleen ruudukon ja lopullisen pelitilanteen.
+Spelaren kan dock fortfarande se rutnätet och det slutliga läget i spelet.
 
-## Vinkki testauksen
+## Ett tips för testning
 
-Pelin kehityksen aikana tulee helposti tarve tarkastaa, mitä tapahtuu jossain vaiheessa myöhemmin pelissä. Esimerkiksi tässä pelissä tällainen tapahtuma on pelin läpäiseminen ja siitä tuleva ilmoitus.
+När man utvecklar spel händer det ofta att man vill kontrollera vad som händer i någon senare situation i spelet. I det här spelet är till exempel det ögonblick då spelet vinns en sådan situation.
 
-Tällaisen tapahtuman testaaminen voi olla hankalaa, jos esimerkiksi pitää aina läpäistä koko peli ennen kuin tapahtuman näkee. Kuitenkin pelin ohjelmoija voi helposti tehdä koodiin väliaikaisia muutoksia, jotka helpottavat testausta. Esimerkiksi pelin läpäisyä voi testata muuttamalla koodia näin:
+Det kan vara svårt att testa att en sådan situation fungerar korrekt, eftersom man normalt sett måste lösa spelet för att komma till den punkten i spelet. Som programmerare kan vi göra några tillfälliga underlättningar i våra spel, för att göra det lättare att testa dem. Vi skulle till exempel kunna lägga till följande för att göra det tillfälligt lättare att lösa spelet:
 
 ```python
     def peli_lapi(self):
         return True
 ```
 
-Nyt metodi palauttaa aina `True` eli peli on läpäisty heti pelin alkaessa. Tämän avulla voi mukavasti varmistaa, että pelin lopussa tuleva ilmoitus näyttää oikealta eikä pelaaja pysty enää siirtymään ruudukossa. Sitten kun pelin päättyminen toimii oikein, metodin voi jälleen palauttaa ennalleen.
+Nu returnerar metoden alltid `True`, vilket innebär att spelet är "löst" till att börja med. Detta gör det enkelt att kontrollera att notifieringen i slutet ser bra ut och att spelaren inte längre kan röra sig på rutnätet efter lösningen. När denna funktionalitet är noggrant testad kan vi återkalla ändringarna.
 
-## Peli GitHubiin
+## Ditt spel på GitHub?
 
-Peli on nyt valmis ja voit hakea pelin lopullisen koodin ja kuvat GitHubista:
+Spelet är nu färdigt. Om du vill ha ett enkelt sätt att leka med koden och bilderna kan du hämta källkoden från GitHub:
 
 * [https://github.com/moocfi/sokoban](https://github.com/moocfi/sokoban)
 
-GitHub on hyvä paikka omille ohjelmointiprojekteille: sen avulla projektin koodin ja muut tiedostot saa talteen Git-versionhallintaan ja projektin pystyy helposti jakamaan muille. GitHubia käytetään paljon myöhemmillä tietojenkäsittelytieteen kursseilla.
+GitHub är en populär plats för många typer av programmeringsprojekt. Det kan användas för att lagra källkoden och annat material för alla dina egna programmeringsprojekt också, och ditt program kommer då att underhållas genom git-versionskontroll, och det kan enkelt delas med andra. Du kommer att bli mycket bekant med git och GitHub om du fortsätter med andra programmeringskurser på mooc.fi.
 
-## Montako siirtoa tarvitaan?
+## Hur många drag krävs?
 
-Vaikka pelin ruudukko on melko pieni, peli ei ole helppo. Ensimmäinen haaste on onnistua läpäisemään peli, ja sen jälkeen haasteena on keksiä ratkaisu, jossa siirtojen määrä on mahdollisimman pieni. Kuinka lyhyen ratkaisun onnistut muodostamaan?
+Rutnätet i det här spelet är ganska litet, men spelet är inte så lätt. Den första utmaningen är att helt enkelt klara spelet, men nästa steg är att försöka göra det med så få drag som möjligt. Hur kort är den kortaste vägen till en lösning?
 
-Lyhimmän mahdollisen ratkaisun etsiminen käsin on hyvin vaikeaa, mutta tässäkin voi käyttää apuna ohjelmointia. Kurssilla _Tietorakenteet ja algoritmit_  tutustutaan tekniikoihin, joiden avulla voidaan löytää automaattisesti lyhin mahdollinen ratkaisu peliin.
+Att leta efter den kortaste möjliga lösningen är inte alls en lätt uppgift, men det finns beräkningslösningar för detta också. Detta är ett av ämnena i kursen Datastrukturer och algoritmer. 

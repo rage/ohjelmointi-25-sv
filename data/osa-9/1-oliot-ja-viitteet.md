@@ -1,19 +1,19 @@
 ---
 path: '/osa-9/1-oliot-ja-viittaukset'
-title: 'Oliot ja viittaukset'
+title: 'Objekt och referenser'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten olioita voi tallentaa tietorakenteisiin
-- Tiedät, miten olioiden välitys parametrina toimii
+- Kommer du att kunna använda olika datastrukturer för att hantera objekt
+- Vet du hur objekt kan bli passerade som argument
 
 </text-box>
 
-Pythonissa kaikki arvot ovat olioita ja myös omista luokista luotuja olioita voi käsitellä kuin mitä tahansa muitakin olioita. Esimerkiksi olioita voidaan tallentaa listaan:
+Varje värde i Python är ett objekt. Alla objekt som du skapar baserat på en klass som du själv har definierat fungerar exakt på samma sätt som alla "vanliga" Python-objekt. Objekt kan till exempel lagras i en lista:
 
 ```python
 from datetime import date
@@ -119,7 +119,7 @@ Koesuoritus (suorittaja: Petriina, pisteet: 17)
 
 </programming-exercise>
 
-Listaan ei tarkkaan ottaen tallenneta olioita vaan _viittauksia olioihin_. Niinpä sama olio voi esiintyä listassa useaan kertaan ja samaan olioon voidaan viitata useaan kertaan listassa ja sen ulkopuolella. Esimerkiksi näin:
+Du kanske minns att listor inte innehåller några objekt i sig själva. De innehåller referenser till objekt. Exakt samma objekt kan förekomma flera gånger i en och samma lista, och det kan refereras till flera gånger i listan eller utanför den. Låt oss ta en titt på ett exempel:
 
 ```python
 class Tuote:
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
 <img src="9_1_1.png">
 
-Jos samaan olioon on useampi kuin yksi viittaus, on lopputuloksen kannalta yhdentekevää, mitä viittauksista käytetään:
+Om det finns mer än en referens till samma objekt spelar det ingen roll vilken av referenserna som används:
 
 ```python
 class Koira:
@@ -187,9 +187,9 @@ Fifi
 
 </sample-output>
 
-Listan kohdissa 0 ja 1 on viittaus samaan olioon,  joten olion sisältöä voidaan muuttaa kumman tahansa viittauksen kautta. Listan kohdassa 2 on kuitenkin viittaus toiseen olioon, minkä vuoksi tämän olion muuttaminen ei muuta muita.
+Referenserna på index 0 och 1 i listan hänvisar till samma objekt. Var och en av referenserna kan användas för att komma åt objektet. Referensen på index 2 hänvisar till ett annat objekt, men med till synes samma innehåll. Om innehållet i det senare objektet ändras påverkas inte det andra.
 
-Operaattorilla `is` voidaan tutkia, onko kyseessä täysin sama olio, ja operaattorilla `==` voidaan tutkia, onko kyseessä saman sisältöinen olio. Seuraava koodi havainnollistaa asiaa:
+Operatorn `is` används för att kontrollera om de två referenserna hänvisar till exakt samma objekt, medan operatorn `==` talar om för dig om innehållet i objekten är detsamma. Följande exempel gör förhoppningsvis skillnaden tydlig:
 
 
 ```python
@@ -220,7 +220,7 @@ True
 
 </sample-output>
 
-Omista luokista muodostettuja olioita voidaan myös tallentaa esimerkiksi sanakirjaan ja muihin tietorakenteisiin:
+Alla Python-objekt kan också lagras i en ordlista eller någon annan datastruktur. Detta gäller även objekt som är av en klass som du själv har definierat.
 
 ```python
 class Opiskelija:
@@ -235,16 +235,16 @@ if __name__ == "__main__":
     opiskelijat["54321"] = Opiskelija("Outi Opiskelija", 67)
 ```
 
-[Visualisaattori](http://www.pythontutor.com/visualize.html#mode=edit) osaa havainnollistaa nämäkin asiat hienosti:
+[Visualiseringsverktyget](http://www.pythontutor.com/visualize.html#mode=edit) kan hjälpa dig att förstå exemplet ovan:
 
 <img src="9_1_2.png">
 
 
-## Selfillä vai ilman?
+## Self eller inget self?
 
-Tässä vaiheessa kurssia `self`-määre saattaa vaikuttaa vielä hämärältä. Käytetään siis hetki sen pohtimiseen, milloin selfiä tulee käyttää, ja milloin sitä kannattaa olla käyttämättä.
+Hittills har vi bara snuddat vid ytan när det gäller att använda parameternamnet `self`. Låt oss titta närmare på när det bör eller inte bör användas.
 
-Tarkastellaan esimerkkinä yksinkertaista luokkaa, jonka avulla joukosta sanoja on mahdollista muodostaa sanasto:
+Nedan har vi en enkel klass som låter oss skapa ett vocabulary-objekt som innehåller några ord:
 
 ```python
 class Sanasto:
@@ -278,11 +278,11 @@ python
 
 </sample-output>
 
-Luokka tallentaa sanalistan oliomuuttujaan `self.sanat`. Tässä tapauksessa `self` tarvitaan ehdottomasti sekä luokan konstruktorissa että luokan muissa metodeissa tähän muuttujaan viitatessa, koska muuten sama lista ei ole kaikkien olion metodien käytettävissä.
+Listan med ord lagras i ett attribut med namnet `self.ord`. I det här fallet är parameternamnet `self` obligatoriskt både i klassens konstruktormetod och i alla andra metoder som använder variabeln. Om `self` utelämnas kommer de olika metoderna inte att få tillgång till samma lista med ord.
 
-Lisätään luokalle metodi `pisin_sana(self)` joka selvittää nimensä mukaisesti sanaston pisimmän sanan (tai yhden niistä).
+Låt oss lägga till en ny metod i vår klassdefinition. Metoden `längsta_ordet(self)` returnerar (ett av) de längsta orden i vokabulären.
 
-Tehtävän voisi toteuttaa vaikkapa seuraavasti, mutta näemme kohta miksei se ole kovin hyvä idea:
+Följande är ett sätt att utföra denna uppgift, men vi kommer snart att se att det inte är ett särskilt bra sätt:
 
 ```python
 class Sanasto:
@@ -304,7 +304,7 @@ class Sanasto:
         return self.pisin
 ```
 
-Metodi siis käyttää kahta apumuuttujaa, jotka on määritelty käyttäen `self`-määrettä. Jos vielä halutaan hämmentää ohjelmakoodia lukevaa, apumuuttujat voisi lisäksi nimetä kryptisemmin, esim. `apu` ja `apu2`:
+Den här metoden använder två hjälpvariabler som deklareras med parameternamnet `self`. Kom ihåg att namnen på variablerna inte spelar någon roll i funktionell mening, så dessa variabler kan också namnges mer förvirrande som till exempel `hjälpare` och `hjälpare2`. Koden börjar se lite kryptisk ut:
 
 ```python
 class Sanasto:
@@ -326,11 +326,11 @@ class Sanasto:
         return self.apu
 ```
 
-Kun muuttujan määrittely tehdään `self`-määreen avulla, liitetään muuttuja olion attribuutiksi, eli muuttuja tulee olemaan edelleen olemassa myös metodin suorituksen päätyttyä. Tämä on aivan tarpeetonta, koska kyseisiä apumuuttujia on tarkoitus käyttää vain metodissa `pisin_sana(self)`. Apumuuttujien määrittely `self`-määreen avulla on siis varsin huono idea.
+När en variabel deklareras med parameternamnet `self` blir den ett attribut till objektet. Detta innebär att variabeln kommer att existera så länge objektet existerar. Specifikt kommer variabeln att fortsätta existera även efter att metoden som deklarerar den har avslutat sin exekvering (engelska “Execution”). I exemplet ovan är detta helt onödigt, eftersom hjälpvariablerna endast är avsedda att användas inom metoden `longest_word(self)`. Så att deklarera hjälpvariabler med parameternamnet `self` är inte en särskilt bra idé här.
 
-Paitsi turhaa, apumuuttujien liittäminen `self`-määreellä olion attribuuteiksi on myös riskialtista, varsinkin epämääräisesti nimettyjen apumuuttujien tapauksessa. Jos samaa apumuuttujaa `self.apu` käytetään monessa eri metodissa mutta täysin eri tarkoituksiin, voivat seuraukset olla arvaamattomat ja koodissa voi ilmetä hankalasti löydettäviä bugeja.
+Förutom att variabler kan existera efter sitt "utgångsdatum" kan användning av `self` för att skapa nya attribut där de inte är nödvändiga orsaka svåra buggar i din kod. Särskilt generiskt namngivna attribut som `self.hjalpare`, som sedan används i flera olika metoder, kan orsaka oväntade beteenden som är svåra att spåra.
 
-Ongelma voi tulla esiin erityisesti silloin jos apumuuttujan alkuarvo annetaan jossain muualla, esimerkiksi konstruktorissa:
+Om t.ex. en hjälpvariabel deklareras som ett attribut och tilldelas ett ursprungligt värde i konstruktorn, men variabeln sedan används i ett orelaterat sammanhang i en annan metod, blir resultatet ofta oförutsägbart:
 
 ```python
 class Sanasto:
@@ -354,9 +354,9 @@ class Sanasto:
         return self.apu
 ```
 
-Toisaalta uusien olion attribuuttien määrittely _muualla_ kuin konstruktorissa on sikäli vaarallista, että tällöin olion attribuutit riippuvat siitä, mitä metodeja on suoritettu. Kaikilla saman luokan avulla luoduilla olioilla ei välttämättä ole samoja attribuutteja, mistä seuraa helposti bugeja.
+Man skulle kunna tro att detta skulle lösas genom att bara deklarera attributen där de används, utanför konstruktorn, men detta resulterar i en situation där de attribut som är tillgängliga via ett objekt är beroende av vilka metoder som har utförts. I föregående del såg vi att fördelen med att deklarera attribut i konstruktorn är att alla instanser av klassen då kommer att ha exakt samma attribut. Om så inte är fallet kan det lätt leda till fel om man använder olika instanser av klassen.
 
-Siispä oikea tapa määritellä yhdessä metodissa käytettävät apumuuttujat on tehdä se _ilman_ `self`-määrettä:
+Sammanfattningsvis, om du behöver hjälpvariabler för användning inom en enda metod, är det korrekta sättet att göra det utan `self`. För att göra din kod lättare att förstå, använd också informativa variabelnamn:
 
 ```python
 class Sanasto:
@@ -378,13 +378,13 @@ class Sanasto:
         return pisin
 ```
 
-Tällaisessa toteutuksessa apumuuttujat ovat olemassa ainoastaan metodin suorituksen aikana, ja niissä olevat arvot eivät pääse aiheuttamaan komplikaatioita muussa koodissa.
+I implementeringen ovan är hjälpvariablerna endast tillgängliga när metoden utförs. De värden som lagras i dem kan inte orsaka komplikationer i andra delar av programmet.
 
-## Oliot funktioiden parametrina
+## Objekt som argument till funktioner
 
-Omista luokista luodut oliot ovat yleensä muuttuvia eli mutatoituvia, joten niiden toiminta parametrina välitettäessä muistuttaa esimerkiksi listoista tuttua tapaa: funktio, jolle olio välitetään parametrina, voi muuttaa kyseistä oliota.
+De objekt som skapas baserat på våra egna klasser är vanligtvis mutabla. Du kanske kommer ihåg att till exempel Python-listor är föränderliga: när de passeras som argument till funktioner kan deras innehåll ändras som ett resultat av exekveringen.
 
-Tarkastellaan yksinkertaista esimerkkiä, jossa funktiolle välitetään `Opiskelija`-luokasta luotu olio. Funktion sisällä muutetaan opiskelijan nimi, ja muutos näkyy myös pääohjelmassa, koska molemmissa tilanteissa viitataan samaan olioon.
+Låt oss titta på ett enkelt exempel där en funktion får en referens till ett objekt av typen `Student` som sitt argument. Funktionen ändrar sedan namnet på studenten. Både funktionen och huvudfunktionen som anropar den har åtkomst till samma objekt, så ändringen syns även i huvudfunktionen.
 
 ```python
 class Opiskelija:
@@ -414,7 +414,7 @@ Olli Opiskelija (12345)
 
 </sample-output>
 
-Olion voi myös luoda funktion sisällä. Mikäli funktio palauttaa viittauksen olioon, on muodostettu olio käytettävissä myös pääohjelmassa:
+Det är också möjligt att skapa objekt inom funktioner. Om en funktion returnerar en referens till det nyskapade objektet är det också åtkomligt inom huvudfunktionen:
 
 ```python
 from random import randint, choice
@@ -452,6 +452,7 @@ if __name__ == "__main__":
     for opiskelija in opiskelijat:
         print(opiskelija)
 ```
+Om du kör ovanstående kan det resultera i följande utskrift (OBS: eftersom slumpen är inblandad kommer resultaten sannolikt att bli annorlunda om du testar koden själv).
 
 <sample-output>
 
@@ -463,9 +464,9 @@ Minna Pythonen (86211)
 
 </sample-output>
 
-## Oliot metodien parametrina
+## Objekt som argument till metoder
 
-Oliot toimivat normaaliin tapaan myös _metodien_ parametrina. Tarkastellaan seuraavaa esimerkkiä:
+På liknande sätt kan objekt fungera som argument till metoder. Låt oss ta en titt på ett exempel från en nöjespark:
 
 ```python
 class Henkilo:
@@ -490,7 +491,7 @@ class Huvipuistolaite:
         return f"{self.nimi} ({self.kavijoita} kävijää)"
 ```
 
-Huvipuistolaitteen metodi `ota_kyytiin` saa nyt parametrina luokan `Henkilo` olion. Jos kävijä on riittävän pitkä, metodi päästää hänet laitteeseen ja lisää kävijöiden määrää. Seuraavassa esimerkkisuoritus:
+Attraktionen innehåller en metod `motta_besökare`, som tar ett objekt av typen `Person` som argument. Om besökaren är tillräckligt lång släpps denne ombord och antalet besökare ökas. Klasserna kan testas på följande sätt:
 
 ```python
 hurjakuru = Huvipuistolaite("Hurjakuru", 120)
@@ -826,9 +827,9 @@ Maukkaita lounaita myyty 1
 
 </programming-exercise>
 
-## Saman luokan oliot metodien parametrina
+## En instans av samma klass som argument till en metod
 
-Tarkastellaan jälleen kerran yhtä versiota luokasta `Henkilo`:
+Nedan har vi ytterligare en version av klassen `Person`:
 
 ```python
 class Henkilo:
@@ -837,7 +838,7 @@ class Henkilo:
         self.syntynyt = syntynyt
 ```
 
-Oletetaan että olemme tekemässä ohjelmaa, joka vertailee henkilöiden ikiä. Voisimme tehdä tarkoitusta varten erillisen funktion:
+Låt oss anta att vi vill skriva ett program som jämför åldern på objekt av typen Person. Vi kan skriva en separat funktion för detta ändamål:
 
 ```python
 def vanhempi_kuin(henkilo1: Henkilo, henkilo2: Henkilo):
@@ -868,7 +869,7 @@ Grace Hopper ei ole vanhempi kuin  Blaise Pascal
 
 </sample-output>
 
-Olio-ohjelmoinnin henkeen kuuluu kuitenkin sijoittaa oliota käsittelevät "funktiot" luokan metodeiksi. Voisimmekin tehdä henkilölle metodin, jonka avulla henkilön ikää voidaan verrata _toiseen_ henkilöön:
+En av principerna för objektorienterad programmering är att all funktionalitet som hanterar objekt av en viss typ ska inkluderas i klassdefinitionen, som metoder. I stället för en funktion kan vi alltså skriva en metod som gör det möjligt att jämföra åldern på ett Person-objekt med ett annat Person-objekt:
 
 ```python
 class Henkilo:
@@ -884,9 +885,9 @@ class Henkilo:
             return False
 ```
 
-Nyt siis olio itse on `self` ja `toinen` on henkilöolio, joka toimii vertailukohtana.
+Här kallas det objekt som metoden anropas på för `self`, medan det andra Person-objektet kallas för `annan`.
 
-Huomaa, miten metodin kutsuminen eroaa funktion kutsumisesta:
+Kom ihåg att anrop av en metod skiljer sig från anrop av en funktion. En metod är kopplad till ett objekt med punktnotationen:
 
 ```python
 muhammad = Henkilo("Muhammad ibn Musa al-Khwarizmi", 780)
@@ -904,11 +905,11 @@ else:
     print(f"{grace.nimi} ei ole vanhempi kuin {pascal.nimi}")
 ```
 
-Pisteen vasemmalla puolella on siis verrattava henkilö, eli olio, johon metodin suorituksessa viittaa muuttuja `self`. Metodin parametrina taas on vertailukohta, eli metodin suorituksessa muuttujan `toinen` viittaama olio.
+Till vänster om punkten finns själva objektet, som kallas `self` i metoddefinitionen. Inom parentes står argumentet till metoden, vilket är det objekt som kallas `annan`.
 
-Ohjelman tulostus on sama kuin edellisessä funktiota käyttäneessä esimerkissä.
+Utskriften från programmet är exakt densamma som med funktionsimplementeringen ovan.
 
-Huomaa, että if-else-rakenne metodissa `vanhempi_kuin` on oikeastaan turha, sillä vertailun arvona on suoraan haluamamme totuusarvo. Voimme siis yksinkertaistaa metodia seuraavasti:
+Till sist, en ganska kosmetisk punkt: `if...else`-strukturen i metoden `aldre_an` är i stort sett onödig. Värdet på det booleska uttrycket i villkoret är redan exakt samma sanningsvärde som returneras. Metoden kan alltså förenklas:
 
 ```python
 class Henkilo:
@@ -921,7 +922,7 @@ class Henkilo:
         return self.syntynyt < toinen.syntynyt:
 ```
 
-Edellisestä esimerkistä kannattaa huomata se, että kun metodi saa parametrikseen toisen saman luokan olion, tulee tyyppivihje antaa hipsuissa, eli seuraava koodi aiheuttaisi virheen:
+Liksom det framkommer av kommentarerna i exemplen ovan, så måste typhintet omslutas av citattecken ifall parametern i en metoddefinition är av samma typ som klassen själv. Om citattecknen utelämnas uppstår ett fel, vilket du kommer att se om du försöker med följande: 
 
 ```python
 class Henkilo:

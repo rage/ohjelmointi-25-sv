@@ -1,6 +1,6 @@
 ---
 path: '/osa-10/3-olio-ohjelmoinnin-tekniikoita'
-title: 'Olio-ohjelmoinnin tekniikoita'
+title: 'Objektorienterade programmeringstekniker'
 hidden: false
 ---
 
@@ -8,13 +8,13 @@ hidden: false
 
 Tämän osion jälkeen
 
-- Tunnet muuttujan self eri käyttötarkoituksia
-- Osaat ylikuormittaa operaattoreita omissa luokissa
-- Tiedät miten muodostaa iteroitavan luokan
+- Känner du till några av de olika användningsområdena för variabelnamnet `self`
+- Vet du hur du överbelastar operatorer i dina egna klasser
+- Kommer du att kunna skapa en iterabel klass
 
 </text-box>
 
-Luokka voi palauttaa metodista myös sen itsensä tyyppisen olion. Luokan `Tuote` metodi `alennustuote` palauttaa uuden tuotteen, jolla on sama nimi kuin nykyisellä tuotteella, mutta 25% halvempi hinta:
+En klass kan innehålla en metod som returnerar ett objekt av samma klass. Nedan har vi t.ex. klassen `Produkt`, vars metod `produkt_på_rea` returnerar ett nytt Produkt-objekt med samma namn som det ursprungliga men med ett pris som är 25 % lägre:
 
 ```python
 class Tuote:
@@ -44,7 +44,7 @@ Omena (hinta 2.2425)
 
 </sample-output>
 
-Kerrataan vielä muuttujan `self` merkitys: luokan sisällä se viittaa nykyiseen olioon. Tyypillinen tapa käyttää muuttujaa onkin viitata olion omiin piirteisiin, esimerkiksi attribuuttien arvoihin. Muuttujaa voidaan käyttää myös palauttamaan koko olio (vaikka tälle onkin selvästi harvemmin tarvetta). Esimerkkiluokan `Tuote` metodi `halvempi` osaa palauttaa halvemman tuotteen, kun sille annetaan parametriksi toinen `Tuote`-luokan olio:
+Låt oss gå igenom syftet med variabeln `self`: inom en klassdefinition hänvisar den till själva objektet. Vanligtvis används den för att hänvisa till objektets egna egenskaper, dess attribut och metoder. Variabeln kan också användas för att hänvisa till hela objektet, till exempel om själva objektet måste returneras till klientkoden. I exemplet nedan har vi lagt till metoden `billigare` i klassdefinitionen. Den tar en annan Produkt som sitt argument och returnerar det billigare av de två:
 
 ```python
 class Tuote:
@@ -82,13 +82,13 @@ Appelsiini (3.95)
 
 </sample-output>
 
-Esimerkin vertailun toteutus vaikuttaa kuitenkin melko kömpelöltä - paljon parempi olisi, jos voisimme vertailla `Tuote`-olioita suoraan Pythonin vertailuoperaattoreilla.
+Även om det här fungerar bra är det ett mycket specialiserat fall av att jämföra två objekt. Det skulle vara bättre om vi kunde använda Pythons jämförelseoperatorer direkt på dessa `Produkt`-objekt.
 
-## Operaattorien ylikuormitus
+## Överbelastande av operatorer
 
-Pythonin lasku- ja vertailuoperaattorien käyttö omien olioiden kanssa on onneksi mahdollista. Tähän käytetään tekniikkaa, jonka nimi on _operaattorien ylikuormitus_. Kun halutaan, että tietty operaattori toimii myös omasta luokasta muodostettujen olioiden kanssa, luokkaan kirjoitetaan vastaava metodi joka palauttaa oikean lopputuloksen. Periaate on vastaava kuin metodin `__str__` kanssa: Python osaa käyttää tietyllä tapaa nimettyjä metodeja tietyissä operaatioissa.
+Python innehåller några speciellt namngivna inbyggda metoder för att arbeta med standardoperatorerna för aritmetik och jämförelse. Tekniken kallas operatörsöverbelastning. Om du vill kunna använda en viss operator på instanser av självdefinierade klasser kan du skriva en speciell metod som returnerar det korrekta resultatet av operatorn. Vi har redan använt den här tekniken med `__str__` metoden: Python vet att leta efter en metod som heter så här när en strängrepresentation av ett objekt efterfrågas.
 
-Tarkastellaan ensin esimerkkiä, jossa `Tuote`-luokkaan on toteutettu metodi `__gt__` (lyhenne sanoista *g*reater *t*han) joka toteuttaa suurempi kuin -operaattorin. Tarkemmin sanottuna metodi palauttaa arvon `True`, jos nykyinen olio on suurempi kuin parametrina annettu olio.
+Låt oss börja med operatorn > som talar om för oss om den första operanden är större än den andra. Klassdefinitionen `Produkt` nedan innehåller metoden `__gt__`, som är en förkortning av greater than. Denna speciellt namngivna metod ska returnera det korrekta resultatet av jämförelsen. Specifikt ska den returnera `True` om och endast om det aktuella objektet är större än det objekt som skickas som ett argument. De kriterier som används kan bestämmas av programmeraren. Med aktuellt objekt menar vi det objekt som metoden anropas på med punkt `.` notationen
 
 ```python
 class Tuote:
@@ -107,9 +107,9 @@ class Tuote:
         return self.hinta > toinen_tuote.hinta
 ```
 
-Metodi `__gt__` palauttaa arvon `True`, jos nykyisen tuotteen hinta on suurempi kuin parametrina annetun tuotteen, ja muuten arvon `False`.
+I implementationen ovan returnerar metoden `__gt__` `True` om priset på den aktuella produkten är högre än priset på den produkt som skickas som argument. I annat fall returnerar metoden `False`.
 
-Nyt luokan olioita voidaan vertailla käyttäen `>`-operaattoria samalla tavalla kuin vaikkapa kokonaislukuja:
+Nu finns jämförelseoperatorn `>` tillgänglig för användning med objekt av typen Produkt:
 
 ```python
 appelsiini = Tuote("Appelsiini", 4.90)
@@ -127,7 +127,7 @@ Appelsiini on suurempi
 
 </sample-output>
 
-Olioiden suuruusluokan vertailua toteuttaessa täytyy päättää, millä perusteella suuruusjärjestys määritetään. Voisimme myös haluta, että tuotteet järjestetään hinnan sijasta nimen mukaiseen aakkosjärjestykseen. Tällöin omena olisikin appelsiinia "suurempi":
+Som nämnts ovan är det upp till programmeraren att bestämma vilka kriterier som ska gälla för att avgöra vad som är störst och vad som är minst. Vi kan t.ex. bestämma att ordningen inte ska baseras på pris, utan i stället ska vara alfabetisk enligt namn. Detta skulle innebära att `banan` nu skulle vara "större än" `apelsin`, eftersom "banan" kommer senare alfabetiskt.
 
 ```python
 class Tuote:
@@ -166,9 +166,9 @@ Omena on suurempi
 
 </sample-output>
 
-## Lisää operaattoreita
+## Fler operatorer
 
-Tavalliset vertailuoperaattorit ja näitä vastaavat metodit on esitetty seuraavassa taulukossa:
+Här har vi en tabell som innehåller de vanliga jämförelseoperatorerna, tillsammans med de metoder som måste implementeras om vi vill göra dem tillgängliga för användning på våra objekt:
 
 Operaattori | Merkitys perinteisesti | Metodin nimi
 :--:|:--:|:--:
@@ -179,7 +179,7 @@ Operaattori | Merkitys perinteisesti | Metodin nimi
 `<=` | Pienempi tai yhtäsuuri kuin | `__le__(self, toinen)`
 `>=` | Suurempi tai yhtäsuuri kuin | `__ge__(self, toinen)`
 
-Lisäksi luokissa voidaan toteuttaa tiettyjä muita operaattoreita, esimerkiksi:
+Du kan också implementera några andra operatorer, inklusive följande aritmetiska operatorer:
 
 Operaattori | Merkitys perinteisesti | Metodin nimi
 :--:|:--:|:--:
@@ -189,11 +189,11 @@ Operaattori | Merkitys perinteisesti | Metodin nimi
 `/` | Jakaminen | `__truediv__(self, toinen)`
 `//` | Kokonaisjakaminen | `__floordiv__(self, toinen)`
 
-Lisää operaattoreita ja metodien nimien vastineita löydät helposti Googlella.
+Fler operatorer och metodnamn finns lätt att hitta på nätet. Kom också ihåg `dir`-instruktionen för att lista de metoder som är tillgängliga för användning på ett visst objekt.
 
-Huomaa, että vain hyvin harvoin on tarvetta toteuttaa kaikkia operaatioita omassa luokassa. Esimerkiksi jakaminen on operaatio, jolle on hankalaa keksiä luontevaa käyttöä useimmissa luokissa (mitä tulee, kun jaetaan opiskelija kolmella saati toisella opiskelijalla?). Tiettyjen operaattoreiden toteuttamisesta voi kuitenkin olla hyötyä, mikäli vastaavat operaatiot ovat loogisia luokalle.
+Det är mycket sällan nödvändigt att implementera alla aritmetiska operatorer och jämförelseoperatorer i dina egna klasser. Division är t.ex. en operation som sällan är meningsfull utanför numeriska objekt. Vad skulle resultatet av att dividera ett Student-objekt med tre, eller med ett annat Student-objekt bli? Trots detta är vissa av dessa operatorer ofta mycket användbara även i egna klasser. Valet av metoder att implementera beror på vad som är vettigt, med tanke på egenskaperna hos dina objekt.
 
-Tarkastellaan esimerkkinä luokkaa joka mallintaa yhtä muistiinpanoa. Kahden muistiinpanon yhdistäminen `+`-operaattorilla tuottaa uuden, yhdistetyn muistiinpanon, kun on toteutettu metodi `__add__`:
+Låt oss ta en titt på en klass som modellerar en enda anteckning. Om vi implementerar metoden `__add__` i vår klassdefinition blir additionsoperatorn + tillgänglig för våra Anteckning-objekt:
 
 ```python
 from datetime import datetime
@@ -212,7 +212,7 @@ class Muistiinpano:
         uusi_muistiinpano.merkinta = self.merkinta + " ja " + toinen.merkinta
         return uusi_muistiinpano
 ```
-        
+
 ```python
 merkinta1 = Muistiinpano(datetime(2016, 12, 17), "Muista ostaa lahjoja")
 merkinta2 = Muistiinpano(datetime(2016, 12, 23), "Muista hakea kuusi")
@@ -228,18 +228,18 @@ print(molemmat)
 
 </sample-output>
 
-## Olion esitys merkkijonona
+## En strängrepresentation av ett objekt
 
-Olemme toteuttaneet luokkiin usein metodin `__str__`, joka antaa merkkijonoesityksen olion sisällöstä. Toinen melko samanlainen metodi on `__repr__`, joka antaa _teknisen_  esityksen olion sisällöstä. Usein metodi `__repr__` toteutetaan niin, että se antaa koodin, joka muodostaa olion.
+Du har redan implementerat en hel del `__str__`-metoder i dina klasser. Som du vet returnerar metoden en strängrepresentation av objektet. En annan ganska liknande metod är `__repr__` som returnerar en teknisk representation av objektet. Metoden `__repr__` är ofta implementerad så att den returnerar den programkod som kan exekveras för att returnera ett objekt med identiskt innehåll som det aktuella objektet.
 
-Funktio `repr` antaa olion teknisen merkkijonoesityksen, ja lisäksi tätä esitystä käytetään, jos oliossa ei ole määritelty `__str__`-metodia. Seuraava luokka esittelee asiaa:
+Funktionen `repr` returnerar denna tekniska strängrepresentation av objektet. Den tekniska representationen används även när metoden `__str__` inte har definierats för objektet. Exemplet nedan kommer att göra detta tydligare:
 
 ```python
 class Henkilo:
     def __init__(self, nimi: str, ika: int):
         self.nimi = nimi
         self.ika = ika
-        
+
     def __repr__(self):
         return f"Henkilo({repr(self.nimi)}, {self.ika})"
 ```
@@ -258,16 +258,16 @@ Henkilo('Pekka', 99)
 
 </sample-output>
 
-Huomaa, että metodissa `__repr__` haetaan nimen tekninen esitys metodilla `repr`, jolloin tässä tapauksessa nimen ympärille tulee `'`-merkit.
+Lägg märke till hur metoden `__repr__` själv använder `repr`-funktionen för att hämta den tekniska representationen av strängen. Detta är nödvändigt för att inkludera tecknen `'` i resultatet.
 
-Seuraavassa luokassa on toteutettu sekä metodi `__repr__` että `__str__`:
+Följande klass har definitioner för både `__repr__` och `__str__`:
 
 ```python
 class Henkilo:
     def __init__(self, nimi: str, ika: int):
         self.nimi = nimi
         self.ika = ika
-        
+
     def __repr__(self):
         return f"Henkilo({repr(self.nimi)}, {self.ika})"
 
@@ -288,7 +288,7 @@ Henkilo('Anna', 25)
 
 </sample-output>
 
-Kun tietorakenteessa (kuten listassa) on olioita, Python käyttää vähän epäloogisesti metodia `__repr__` olioiden merkkijonoesityksen muodostamiseen, kun lista tulostetaan:
+Det är värt att nämna att med datastrukturer, såsom listor, använder Python alltid `__repr__`-metoden för strängrepresentationen av innehållet. Detta kan ibland se lite förvirrande ut:
 
 ```python3
 henkilot = []
@@ -524,9 +524,9 @@ print(p1-p3)
 
 </programming-exercise>
 
-## Iteraattorit
+## Iteratorer
 
-Olemme aikaisemmin käyttäneet for-lausetta erilaisten tietorakenteiden ja tiedostojen _iterointiin_ eli läpikäyntiin. Tyypillinen tapaus olisi vaikkapa seuraavanlainen funktio:
+Vi vet att `for`-satsen kan användas för att iterera genom många olika datastrukturer, filer och samlingar av objekt. Ett typiskt användningsfall skulle kunna vara följande funktion:
 
 ```python
 
@@ -539,11 +539,11 @@ def laske_positiiviset(lista: list):
 
 ```
 
-Funktio käy läpi listan alkio kerrallaan ja laskee positiivisten alkioiden määärän.
+Funktionen går igenom objekten i listan ett efter ett och håller reda på hur många av objekten som var positiva.
 
-Iterointi on mahdollista toteuttaa myös omiin luokkiin. Hyödyllistä tämä on silloin, kun luokasta muodostetut oliot tallentavat kokoelman alkioita. Esimerkiksi aikaisemmin kirjoitettiin luokka, joka mallintaa kirjahyllyä – olisi näppärä, jos kaikki kirjahyllyn kirjat voisi käydä läpi yhdessä silmukassa. Samalla tavalla opiskelijarekisterin kaikkien opiskelijoiden läpikäynti for-lauseella olisi kätevää.
+Det är också möjligt att göra sina egna klasser itererbara. Detta är användbart när klassens huvudsyfte handlar om att lagra en samling objekt. Klassen Bokhylla från ett tidigare exempel skulle vara en bra kandidat, eftersom det skulle vara vettigt att använda en `for`-loop för att gå igenom böckerna på hyllan. Detsamma gäller för, exempelvis, ett studentregister. Att kunna iterera genom samlingen av studenter kan vara användbart.
 
-Iterointi mahdollistuu toteuttamalla luokkaan iteraattorimetodit `__iter__` ja  `__next__`. Käsitellään metodien toimintaa tarkemmin, kun on ensin tarkasteltu esimerkkinä kirjahyllyluokkaa, joka mahdollistaa kirjojen läpikäynnin:
+För att göra en klass itererbar måste du implementera iteratormetoderna `__iter__` och `__next__`. Vi återkommer till detaljerna i dessa metoder efter följande exempel:
 
 ```python
 
@@ -585,9 +585,11 @@ class Kirjahylly:
 
 ```
 
-Metodissa `__iter__` siis alustetaan iteroinnissa tarvittava muuttuja tai muuttujat - tässä tapauksessa riittää, että meillä on laskuri joka osoittaa listan nykyiseen alkioon. Lisäksi tarvitaan metodi `__next__`, joka palauttaa seuraavan alkion. Esimerkkitapauksessa palautetaan listasta alkio muuttujan `n` kohdalta ja kasvatetaan muuttujan arvoa yhdellä. Jos listassa ei ole enempää alkiota, "nostetaan" poikkeus `StopIteration`, joka kertoo iteroijalle (esim. for-silmukalle), että kaikki alkiot on käyty läpi.
+Metoden `__iter__` initialiserar iterationsvariabeln eller variablerna. I det här fallet räcker det med att ha en enkel räknare som innehåller index för det aktuella objektet i listan. Vi behöver också metoden `__next__`, som returnerar nästa objekt i iteratorn. I exemplet ovan returnerar metoden objektet med index n från listan i Bokhylla-objektet, och iteratorvariabeln inkrementeras också.
 
-Nyt voidaan käydä kirjahyllyn kirjat läpi esimerkiksi for-silmukassa näppärästi:
+När alla objekt har genomgåtts utlöser metoden `__next__` undantaget `StopIteration`. Processen skiljer sig inte från andra undantag, men det här undantaget hanteras automatiskt av Python och dess syfte är att signalera till koden som anropar iteratorn (t.ex. en `for`-loop) att iterationen nu är över.
+
+Vår bokhylla är nu redo för iteration, till exempel med en `for`-loop: 
 
 ```python
 

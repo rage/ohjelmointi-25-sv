@@ -1,24 +1,24 @@
 ---
 path: '/osa-13/3-tapahtumat'
-title: 'Tapahtumat'
+title: 'Händelser'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Olet tutustunut Pygamen tapahtumiin
-- Osaat tehdä ohjelman, joka lukee näppäimistön painalluksia
-- Osaat tehdä ohjelman, joka lukee hiiren tapahtumia
+- Kommer du att vara bekant med pygame händelser
+- Kommer du att kunna skriva ett program som reagerar på tangenttryckningar
+- Kommer du att kunna skriva ett program som reagerar på mushändelser
 
 </text-box>
 
-Tähän asti olemme toteuttaneet Pygame-ohjelman pääsilmukan niin, että se käy läpi tapahtumat ja tunnistaa tapahtuman `pygame.QUIT`, mutta ei käsittele muita tapahtumia. Nyt on aika tutustua tarkemmin tapahtumien käsittelyyn.
+Hittills har våra huvudloopar bara kört förutbestämda animationer och reagerat på händelser av typen `pygame.QUIT`, trots att loopen får en lista över alla händelser från operativsystemet. Låt oss nu ta itu med några andra typer av händelser.
 
-## Tapahtumien käsittely
+## Hantering av händelser
 
-Seuraava koodi näyttää, mitä tapahtumia syntyy ohjelman suorituksen aikana:
+Det här programmet skriver ut information om alla händelser som skickas från operativsystemet till programmet pygame, medan det körs:
 
 ```python
 import pygame
@@ -33,7 +33,7 @@ while True:
             exit()
 ```
 
-Kun ohjelmaa käytetään hetki, se voi tulostaa esimerkiksi seuraavanlaisia tapahtumia:
+Låt oss anta att programmet kördes ett tag och att man sedan klickade på avslutningsknappen. Programmet skriver ut följande information:
 
 ```x
 <Event(4-MouseMotion {'pos': (495, 274), 'rel': (495, 274), 'buttons': (0, 0, 0), 'window': None})>
@@ -51,13 +51,13 @@ Kun ohjelmaa käytetään hetki, se voi tulostaa esimerkiksi seuraavanlaisia tap
 <Event(12-Quit {})>
 ```
 
-Tässä ensimmäiset tapahtumat liittyvät hiiren käyttämiseen, seuraavat tapahtumat näppäimistön käyttämiseen ja viimeinen tapahtuma sulkee ohjelman. Jokaisella tapahtumalla on tyyppi ja mahdollisesti lisätietoa, josta voi päätellä esimerkiksi hiiren sijainnin tai painetun näppäimen.
+De första händelserna gäller musanvändningen, därefter kommer några händelser från tangentbordet och slutligen stänger den sista händelsen programmet. Varje händelse har åtminstone en typ, men de kan också innehålla annan identifierande information, till exempel var muspekaren befinner sig eller vilken tangent som trycktes in.
 
-Tapahtumia voi etsiä Pygamen dokumentaatiosta mutta usein tehokas tapa löytää sopiva tapahtuma on käyttää yllä olevaa koodia ja tutkia, millainen tapahtuma syntyy, kun ohjelmassa tapahtuu haluttu asia.
+Du kan leta efter händelsebeskrivningar i pygame-dokumentationen, men det kan ibland vara enklare att skriva ut händelser med koden ovan och leta efter den händelse som inträffar när något du vill reagera på händer.
 
-## Näppäimistön käsittely
+## Tangentbordshändelser
 
-Seuraava ohjelma tunnistaa tapahtumat, joissa käyttäjä painaa oikealle tai vasemmalle nuolinäppäintä. Ohjelma tulostaa testiksi tiedon näppäimen painamisesta.
+Detta program kan behandla händelser där användaren trycker på piltangenten antingen till höger eller till vänster på sitt tangentbord. Programmet skriver ut vilken tangent som trycktes in.
 
 ```python
 import pygame
@@ -77,9 +77,9 @@ while True:
             exit()
 ```
 
-Tässä vakiot `pygame.K_LEFT` ja `pygame.K_RIGHT` tarkoittavat nuolinäppäimiä vasemmalle ja oikealle. Näppäimistön eri näppäimiä vastaavat vakiot on listattu [Pygamen dokumentaatiossa](https://www.pygame.org/docs/ref/key.html#key-constants-label).
+Konstanterna `pygame.K_LEFT` och `pygame.K_RIGHT` avser piltangenterna till vänster och höger. Konstanterna för pygame-tangenterna för de olika tangenterna på ett tangentbord anges i [Pygame dokumentationen](https://www.pygame.org/docs/ref/key.html#key-constants-label).
 
-Esimerkiksi kun käyttäjä painaa ensin kahdesti oikealle, sitten kerran vasemmalle ja lopuksi kerran oikealle, ohjelman tulostus on seuraava:
+Om användaren t.ex. trycker på piltangenten till höger två gånger, sedan den vänstra en gång och sedan den högra en gång till, skriver programmet ut
 
 ```x
 oikealle
@@ -88,7 +88,7 @@ vasemmalle
 oikealle
 ```
 
-Voimme nyt tehdä ohjelman, jossa käyttäjä pystyy liikuttamaan hahmoa oikealle ja vasemmalle nuolinäppäimillä. Tämä onnistuu seuraavasti:
+Vi har nu alla verktyg som behövs för att flytta en karaktär, eller sprite, på skärmen till höger och vänster med piltangenterna. Följande kod kommer att uppnå detta:
 
 ```python
 import pygame
@@ -116,13 +116,13 @@ while True:
     pygame.display.flip()
 ```
 
-Ohjelman suoritus voi näyttää seuraavalta:
+Beroende på hur du använder piltangenterna kunde programmet köra på följande sätt:
 
 <img src="pygame_liikutus.gif">
 
-Tässä muuttujat `x` ja `y` sisältävät hahmon sijainnin. Käyttäjä pystyy muuttamaan muuttujaa `x`, ja muuttuja `y` on asetettu niin, että hahmo on ikkunan alalaidassa. Kun käyttäjä painaa vasemmalle tai oikealle nuolinäppäintä, hahmo liikkuu vastaavasti 10 pikseliä oikealle tai vasemmalle.
+I koden ovan har vi variablerna `x` och `y` som innehåller sprite-koordinaterna. Variabeln `y` är inställd så att spriten visas längst ned i fönstret. Värdet för `y` ändras inte under hela körningen av programmet. `x`-värdet ökar däremot med 10 när användaren trycker på piltangenten till höger och minskar med 10 när användaren trycker på piltangenten till vänster.
 
-Yllä oleva ohjelma toimii muuten hyvin, mutta pelikokemuksessa on puutteena, että näppäintä pitää painaa uudestaan aina, kun haluaa liikkua askeleen oikealle tai vasemmalle. Olisi parempi, että voi pitää näppäintä pohjassa ja hahmo liikkuu niin kauan, kuin näppäin on pohjassa. Seuraava koodi mahdollistaa tämän:
+Programmet fungerar i övrigt ganska bra, men tangenten måste tryckas in igen varje gång vi vill förflytta oss igen. Det skulle vara bättre om rörelsen var kontinuerlig när tangenten hölls nedtryckt. Följande program erbjuder denna funktionalitet:
 
 ```python
 import pygame
@@ -168,9 +168,9 @@ while True:
     kello.tick(60)
 ```
 
-Koodissa on nyt muuttujat `oikealle` ja `vasemmalle`, joissa pidetään tietoa siitä, kuuluuko hahmon liikkua tällä hetkellä oikealle tai vasemmalle. Kun käyttäjä painaa alas nuolinäppäimen, vastaava muuttuja saa arvon `True`, ja kun käyttäjä nostaa alas nuolinäppäimen, vastaava muuttuja saa arvon `False`.
+Koden innehåller nu variablerna `till_hoger` och `till_vanster`. Dessa innehåller vetskap om huruvida spriten ska röra sig åt höger eller vänster vid ett givet tillfälle. När användaren trycker ner en piltangent blir värdet som lagras i den relevanta variabeln `True`. När tangenten släpps ändras värdet till `False`.
 
-Hahmon liike on tahdistettu kellon avulla niin, että liikkumista tapahtuu 60 kertaa sekunnissa. Jos nuolinäppäin on alhaalla, hahmo liikkuu 2 pikseliä oikealle tai vasemmalle. Tämän seurauksena hahmo liikkuu 120 pikseliä sekunnissa, jos nuolinäppäin on painettuna.
+Klockan används för att tidsbestämma spritens rörelser, så att de potentiellt sker 60 gånger per sekund. Om en piltangent trycks ned förflyttas spriten två pixlar åt höger eller vänster. Detta innebär att spriten rör sig 120 pixlar per sekund om tangenten hålls nedtryckt.
 
 <programming-exercise name='Neljä suuntaa' tmcname='osa13-11_nelja_suuntaa'>
 
@@ -196,9 +196,9 @@ Tee ohjelma, jossa kaksi pelaajaa voi ohjata omia robottejaan. Toinen pelaaja k�
 
 </programming-exercise>
 
-## Hiiren käsittely
+## Händelser med musen
 
-Seuraava koodi tunnistaa tapahtumat, jossa käyttäjä painaa hiiren nappia ikkunan alueella:
+Följande kod reagerar på händelser där en musknapp trycks ned medan markören befinner sig inom fönsterområdet:
 
 ```python
 import pygame
@@ -215,7 +215,7 @@ while True:
             exit()
 ```
 
-Ohjelman suoritus voi näyttää tältä:
+Exekveringen av detta program borde mer eller mindre se ut så här:
 
 ```x
 painoit nappia 1 kohdassa (82, 135)
@@ -224,9 +224,9 @@ painoit nappia 1 kohdassa (269, 297)
 painoit nappia 3 kohdassa (515, 324)
 ```
 
-Tässä nappi 1 tarkoittaa hiiren vasenta nappia ja nappi 3 tarkoittaa hiiren oikeaa nappia.
+Knapp nummer 1 avser vänster musknapp och knapp nummer 3 avser höger musknapp.
 
-Seuraava ohjelma yhdistää hiiren käsittelyn ja kuvan piirtämisen. Kun käyttäjä painaa hiirellä ikkunan alueella, robotti piirretään hiiren kohtaan.
+Nästa program kombinerar hantering av mushändelser och ritning av en bild på skärmen. När användaren trycker på en musknapp medan muspekaren befinner sig inom fönstrets gränser ritas en bild av en robot på den platsen.
 
 ```python
 import pygame
@@ -250,11 +250,11 @@ while True:
             exit()
 ```
 
-Ohjelman suoritus voi näyttää tältä:
+Exekveringen av programmet borde se ut så här:
 
 <img src="pygame_hiiri.gif">
 
-Seuraava ohjelma puolestaan toteuttaa animaation, jossa robotti seuraa hiirtä. Robotin sijainti on muuttujissa `robo_x` ja `robo_y`, ja kun hiiri liikkuu, sen sijainti merkitään muuttujiin `kohde_x` ja `kohde_y`. Jos robotti ei ole hiiren kohdalla, se liikkuu sopivaan suuntaan.
+Följande program innehåller en animation där robotspriten följer muspekaren. Spritens position lagras i variablerna `robot_x` och `robot_y`. När musen rör sig lagras dess position i variablerna `mal_x` och `mal_y`. Om roboten inte befinner sig på denna plats förflyttar den sig i lämplig riktning.
 
 ```python
 import pygame
@@ -296,7 +296,7 @@ while True:
     kello.tick(60)
 ```
 
-Ohjelman suoritus voi näyttää tältä:
+Exekveringen av programmet borde se ut så här: 
 
 <img src="pygame_hiiri2.gif">
 

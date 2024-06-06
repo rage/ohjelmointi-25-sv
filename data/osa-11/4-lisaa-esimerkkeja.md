@@ -1,33 +1,35 @@
 ---
 path: '/osa-11/4-lisaa-esimerkkeja'
-title: 'Lisää esimerkkejä'
+title: 'Fler exempel på rekursion'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tässä osiossa
+Efter den här delen
 
-- Käydään läpi muutamia binääripuuhun liittyviä rekursiivisia esimerkkialgoritmeja
+- Kommer du att känna till binära träd och några rekursiva algoritmer som används för att bearbeta dem
 
 </text-box>
 
 
-Rekursion todellinen hyöty tulee esiin tilanteissa, joissa iteratiivinen ratkaisu on hankala kirjoittaa. Tarkastellaan esimerkkinä _binääripuuta_. Binääripuulla tarkoitetaan puurakennetta, jossa jokaisella alkiolla on korkeintaan kaksi "lasta". Binääripuu voisi siis näyttää esim. tältä (huomaa, että vaikka tietojenkäsittelijöitä pidetään joissain yhteyksissä luonnontieteilijöinä, käsityksemme puiden kasvusuunnasta on nurinkurinen):
+De verkliga fördelarna med rekursion blir uppenbara när vi stöter på problem där iterativa lösningar är svåra att skriva. Låt oss ta en titt på binära träd, till exempel. Ett binärt träd är en förgrenad struktur där vi har noder och vid varje nod förgrenar sig strukturen, som mest, i två underordnade grenar med egna noder. Ett binärt träd skulle då kunna se ut så här (datavetenskap betraktas ofta som en gren av naturvetenskapen, men vår förståelse av träd är lite upp och ner, som du kommer att märka):
 
 <img src="11_4_1.png">
 
-Binääripuiden (ja puiden yleensäkin) käsittely rekursiivisesti on ainakin teoriassa helppoa: jos halutaan tehdä jokin operaatio binääripuun kaikille alkioille - esim. etsiä jokin tietty alkio puusta, voidaan kirjoittaa rekursiivinen algoritmi, joka
+Binära träd bör åtminstone teoretiskt sett vara lätta att hantera rekursivt: om vi vill utföra någon operation på varje nod i trädet behöver vår algoritm helt enkelt
 
-1. Käsittelee nykyisen alkion
-2. Kutsuu itseään vasemmasta lapsesta alkavalle "alipuulle"
-3. Kutsuu itseään oikeasta lapsesta alkavalle "alipuulle"
+1. Behandla den aktuella noden
+2. Anropa sig själv på barnnoden till vänster
+3. Anropa sig själv på barnnoden till höger
 
 <img src="11_4_2.png">
 
-Kun koko rekursiivinen algoritmi on käsitelty, on vierailtu kerran puun jokaisessa solussa. Iteratiivinen versio algoritmista on yleensä hankalampi kirjoittaa, koska kirjanpito vieralluista alkioista menee äkkiä monimutkaiseksi.
+Som du kan se på bilden ovan är både de vänstra och högra "underträden" fullfjädrade binära träd i sig, och den enda nod som lämnas utanför de rekursiva anropen är den överordnade noden, som bearbetas i steg 1 innan funktionen anropas rekursivt. På så sätt kan vi vara säkra på att varje nod har besökts exakt en gång när funktionen är klar.
 
-Binääripuuta voidaan mallintaa helposti kirjoittamalla luokka, joka mallintaa yhtä alkiota puussa. Alkiolla on arvon lisäksi tieto vasemmasta ja oikeasta lapsestaan:
+En iterativ version av en binär trädtraversering skulle vara mycket mer komplicerad, eftersom vi på något sätt skulle behöva hålla reda på alla noder som vi redan har besökt. Samma principer gäller för alla beräkningsbara trädstrukturer, inte bara binära.
+
+Ett binärt träd är också lätt att modellera i Python-kod. Vi behöver bara skriva en klassdefinition för en enda nod. Den har ett värdeattribut och attribut för de vänstra och högra underordnade noderna:
 
 ```python
 
@@ -39,11 +41,11 @@ class Alkio:
         self.oikea_lapsi = oikea_lapsi
 ```
 
-Nyt jos halutaan mallintaa esimerkiksi oheisen kaltainen puu:
+Låt oss anta att vi vill modellera följande träd:
 
 <img src="11_4_3.png">
 
-...se voidaan muodostaa seuraavalla ohjelmalla:
+Vi kunde uppnå detta med följande kod:
 
 ```python
 if __name__ == "__main__":
@@ -58,11 +60,11 @@ if __name__ == "__main__":
 
 ```
 
-## Rekursiiviset binääripuualgoritmit
+## Algoritmer för rekursiva binära träd
 
-Tarkastellaan ensin algoritmia, joka tulostaa kaikki binääripuun alkiot allekkain. Käytetään esimerkkinä tässä ja tulevissa tehtävissä yllä muodostettua puuta.
+Låt oss först ta en titt på en algoritm som skriver ut alla noder i ett binärt träd en efter en. I de följande exemplen kommer vi att arbeta med det binära träd som definieras ovan.
 
-Funktio saa parametrikseen juurialkion (eli kaikkein ylimmäisenä olevan alkion, jonka _jälkeläisiä_ kaikki muut alkiot ovat):
+Argumentet till utskriftsfunktionen är rotnoden i det binära trädet. Detta är noden högst upp i vår illustration ovan. Alla andra noder är barn till den här noden:
 
 ```python
 
@@ -77,9 +79,9 @@ def tulosta_alkiot(juuri: Alkio):
 
 ```
 
-Funktio tulostaa annetun alkion arvon, ja sen jälkeen kutsuu itseään uudestaan vasemmalle ja oikealla alipuulle (edellyttäen, että vasen ja/tai oikea alkio on määritelty). Algoritmi on melko yksinkertainen, mutta käy tehokkaasti läpi kaikki puun alkiot riippumatta puun koosta. Algoritmi ei myöskään vieraile missään puun alkiossa kahta kertaa.
+Funktionen skriver ut värdet på den nod som skickas som argument och anropar sedan sig själv på de vänstra och högra underordnade noderna, förutsatt att noderna är definierade. Det här är en mycket enkel algoritm, men den går på ett effektivt och tillförlitligt sätt igenom alla noder i trädet, oavsett trädets storlek. Avgörande är att ingen nod besöks två gånger. Varje värde skrivs bara ut en gång.
 
-Kun funktiolle annetaan parametriksi aikaisemmin luodun binääripuun juurialkio `puu`, se tulostaa
+Om vi skickar rotnoden `trad` i det binära trädet som illustreras ovan som ett argument till funktionen, skriver den ut
 
 <sample-output>
 
@@ -92,7 +94,9 @@ Kun funktiolle annetaan parametriksi aikaisemmin luodun binääripuun juurialkio
 
 </sample-output>
 
-Vastaavalla tavalla voidaan kirjoittaa algoritmi, joka laskee kaikkien puun alkioiden summan:
+Som du kan se av ordningen på noderna i utskriften rör sig algoritmen först längs trädets "vänstra ben" ner till botten, och därifrån går den igenom de andra noderna i ordning.
+
+På samma sätt kan vi skriva en algoritm för att beräkna summan av alla de värden som finns lagrade i trädets noder:
 
 ```python
 
@@ -109,7 +113,7 @@ def alkioiden_summa(juuri: Alkio):
 
 ```
 
-Muuttuja `summa` alustetaan nykyisen alkion arvolla. Tämän jälkeen siihen lisätään rekursiivisesti vasemman ja oikean alipuun summat (tarkastaen taas ensin, että ne ovat olemassa). Lopuksi summa palautetaan.
+Variabeln `nod_summa` initieras till att vara lika med värdet för den aktuella noden. Värdet i variabeln ökas sedan genom rekursiva anrop till nodens summor i det vänstra och högra underordnade trädet (först kontrolleras naturligtvis att de finns). Detta resultat returneras sedan.
 
 <programming-exercise name='Suurin alkio' tmcname='osa11-16_suurin_alkio'>
 
@@ -145,15 +149,15 @@ if __name__ == "__main__":
 
 </programming-exercise>
 
-## Järjestetty binääripuu
+## Sorterat binärt träd
 
-Binääripuusta on erityisesti hyötyä silloin, kun alkiot on järjestetty tietyllä tavalla. Alkion löytäminen järjestetystä puusta on nopeaa.
+Ett binärt träd är särskilt användbart när noderna är sorterade på ett visst sätt. Det gör att det går snabbt och effektivt att hitta noder i trädet.
 
-Tarkastellaan esimerkkinä puuta, jossa alkiot on järjestetty seuraavasti: jokaisen alkion vasen lapsi on pienempi kuin alkio itse, ja vastaavasti oikea alkio on suurempi kuin alkio itse.
+Låt oss ta en titt på ett träd som är sorterat på följande sätt: det vänstra barnet till varje nod är mindre än själva noden och det högra barnet är på motsvarande sätt större.
 
 <img src="11_4_1.png">
 
-Nyt alkion etsimiseen voidaan kirjoittaa rekursiivinen algoritmi, joka toimii hyvin samankaltaisesti kuin aiemmin tarkastelemamme binäärihaku: jos juurialkio on tarkasteltava alkio, palautetaan arvo `True`. Muuten jatketaan rekursiivisesti hakua joko vasemmasta tai oikeasta alipuusta. Jos alkio on tyhjä, palautetaan `False`.
+Nu kan vi skriva en rekursiv algoritm för att söka efter noder. Idén är mycket lik den binära sökningen från föregående avsnitt: om den aktuella noden är den nod vi letar efter, returnera `True`. Annars fortsätter vi rekursivt med antingen det vänstra eller det högra underordnade trädet. Om noden inte är definierad returneras `False`.
 
 ```python
 
@@ -217,9 +221,9 @@ if __name__ == "__main__":
 
 </programming-exercise>
 
-## Paluu aikaan ennen rekursiota
+## Besök till tiden innan rekursion
 
-Harjoitellaan vielä osan lopussa hieman laajemman ohjelman tekemistä olioita hyödyntäen. Tässä tehtäväsarjassa ei rekursiota tarvitse eikä edes kannata käyttää. Listakoosteita sen sijaan pääsee hyödyntämään!
+Låt oss avsluta denna del av materialet med en lite större övning som koncentrerar sig på objektorienterade programmeringsprinciper. Vi rekommenderar inte att du använder rekursion i denna serie av uppgifter, men tekniker för list comprehension kommer att vara användbara. 
 
 <programming-exercise name='Tilauskirja' tmcname='osa11-18_tilauskirja'>
 
@@ -498,4 +502,3 @@ virheellinen syöte
 Vastaa lopuksi osion loppukyselyyn:
 
 <quiz id="4acb2792-f51e-55f0-b482-addf1977c630"></quiz>
-

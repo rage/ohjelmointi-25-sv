@@ -1,20 +1,20 @@
 ---
 path: '/osa-8/4-metodit-omissa-luokissa'
-title: 'Metodit omissa luokissa'
+title: 'Metoder i egna klasser'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen:
+Efter den här delen:
 
-- Tiedät, miten metodit toimivat luokissa
-- Osaat kirjoittaa metodeita omiin luokkiin
-- Ymmärrät, mitä tarkoitetaan kapseloinnilla ja asiakkaalla olio-ohjelmoinnissa
+- Vet du hur klassmetoder fungerar
+- Kan du skriva nya metoder i dina egna klasser
+- Kommer du att förstå begreppen inkapsling och klient inom objektorienterad programmering
 
 </text-box>
 
-Vain attribuutteja sisältävät luokat eivät käytännössä eroa juurikaan sanakirjoista. Seuraavassa esimerkissä on esitetty pankkitiliä mallintava rakenne sekä oman luokan että sanakirjan avulla toteutettuna:
+Klasser som endast innehåller dataattribut skiljer sig inte så mycket från ordlistor. Nedan kan du se två sätt att modellera ett bankkonto, först med en klassdefinition och sedan med hjälp av en ordlista.
 
 ```python
 # Esimerkki omaa luokkaa käyttäen
@@ -34,15 +34,15 @@ pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
 pekan_tili = {"tilinumero": "12345-678", "omistaja": "Pekka Python", "saldo": 1500.0, "vuosikorko": 0.0}
 ```
 
-Sanakirjaa käyttäen rakenteen toteutus on huomattavasti suoraviivaisempi ja koodi on lyhyempi. Luokan hyötynä tässä tapauksessa on, että se määrittelee rakenteen "tiukemmin", jolloin kaikki luokasta muodostetut oliot ovat rakenteeltaan samanlaisia. Luokka on lisäksi nimetty: oliota muodostaessa viitataan `Pankkitili`-luokkaan ja olion tyyppi on `Pankkitili` eikä sanakirja.
+Med en ordlista är implementeringen mycket kortare och enklare. Med en klass är strukturen däremot mer "hårt bunden", så vi kan förvänta oss att alla `Bankkonto`-objekt är strukturellt lika. Dessutom är en klass också namngiven. Klassen `Bankkonto` refereras till när ett nytt bankkonto skapas, och objektets typ är `Bankkonto`, inte dict.
 
-Luokilla on lisäksi etuna, että niihin voidaan lisätä attribuuttien lisäksi myös toiminnallisuutta. Yksi olio-ohjelmoinnin periaatteista onkin, että olioon on yhdistetty sekä tallennettavat tiedot että operaatiot, joilla tietoa voidaan käsitellä.
+En annan stor fördel med klasser är att de förutom data även kan innehålla funktionalitet. En av de vägledande principerna för objektorienterad programmering är att ett objekt används för att komma åt både den data som är kopplad till ett objekt och funktionaliteten för att bearbeta denna data.
 
-## Metodit luokissa
+## Metoder i klasser
 
-Metodi tarkoittaa luokkaan sidottua aliohjelmaa. Yleensä metodin toiminta kohdistuu vain yhteen olioon. Metodi kirjoitetaan luokan sisälle, ja se voi käsitellä attribuutteja kuten mitä tahansa muuttujia.
+En metod är ett underprogram eller en funktion som är knuten till en specifik klass. Vanligtvis påverkar en metod bara ett enda objekt. En metod definieras inom klassdefinitionen och den kan komma åt klassens dataattribut precis som vilken annan variabel som helst.
 
-Katsotaan esimerkkinä `Pankkitili`-luokan metodia, joka lisää koron pankkitilille:
+Låt oss fortsätta med klassen `Bankkonto` som introducerades ovan. Nedan har vi en ny metod som lägger till ränta på kontot:
 
 ```python
 class Pankkitili:
@@ -69,9 +69,9 @@ print(pekan_tili.saldo)
 
 </sample-output>
 
-Metodi `lisaa_korko` kertoo olion saldon vuosikorkoprosentilla ja lisää tuloksen nykyiseen saldoon. Metodin toiminta kohdistuu siihen olioon, jonka kautta sitä kutsutaan.
+Metoden `tillsätt_ränta` multiplicerar saldot på kontot med den årliga ränteprocenten och lägger sedan till resultatet till det aktuella saldot. Metoden verkar bara på det objekt som den anropas på.
 
-Katsotaan vielä toinen esimerkki, jossa luokasta on muodostettu useampi olio:
+Låt oss se hur detta fungerar när vi har skapat flera instanser av klassen:
 
 ```python
 # Luokka Pankkitili on määritelty edellisessä esimerkissä
@@ -98,13 +98,13 @@ print(paulin_tili.saldo)
 
 </sample-output>
 
-Korko lisätään vain siihen tiliin, jonka kautta metodia kutsutaan. Esimerkistä huomataan, että Pekalle ja Pirjolle lisätään eri korkoprosentit ja Paulin tilin saldo ei muutu ollenkaan, koska olion `paulin_tili` kautta ei kutsuta metodia `lisaa_korko`.
+Som du kan se ovan läggs den årliga räntan endast till på de konton som metoden anropas på. Eftersom den årliga räntan är olika för Peters och Paulas konton, blir resultatet olika för dessa två konton. Saldot på Pippas konto ändras inte, eftersom metoden `tillsätt_ränta` inte anropas på objektet `pippas_konto`.
 
-## Kapselointi
+## Inkapsling
 
-Olio-ohjelmoinnin yhteydessä puhutaan usein olioiden _asiakkaista_. Asiakkaalla (client) tarkoitetaan koodin osaa, joka muodostaa olion ja käyttää sen palveluita kutsumalla metodeita. Kun olion tietosisältöä käsitellään vain olion tarjoamien metodien avulla, voidaan varmistua siitä, että olion _sisäinen eheys_ säilyy. Käytännössä tämä tarkoittaa esimerkiksi sitä, että `Pankkitili`-luokassa tarjotaan metodi, jolla tililtä nostetaan rahaa, sen sijaan, että asiakas käsittelisi suoraan attribuuttia `saldo`. Tässä metodissa voidaan sitten esimerkiksi varmistaa, ettei tililtä nosteta katetta enempää rahaa.
+Inom objektorienterad programmering dyker ordet klient upp då och då. Det används för att hänvisa till ett kodavsnitt som skapar ett objekt och använder den tjänst som tillges av dess metoder. När data som finns i ett objekt endast används genom de metoder som det tillges, garanteras objektets interna integritet. I praktiken innebär detta att t.ex. en `Bankkonto`-klass erbjuder metoder för att hantera `saldo`-attributet, så att saldot aldrig nås direkt av klienten. Dessa metoder kan sedan verifiera att saldot till exempel inte tillåts gå under noll.
 
-Esimerkiksi:
+Ett exempel på hur detta skulle fungera:
 
 ```python
 class Pankkitili:
@@ -149,9 +149,9 @@ Nosto ei onnistunut, rahaa ei ole tarpeeksi.
 
 </sample-output>
 
-Olion sisäisen eheyden säilyttämistä ja sopivien metodien tarjoamista asiakkaalle kutsutaan _kapseloinniksi_. Tämä tarkoittaa, että olion toteutus piilotetaan asiakkaalta ja olio tarjoaa ulkopuolelle metodit, joiden avulla tietoja voi käsitellä.
+Att bibehålla objektets interna integritet och erbjuda lämpliga metoder för att säkerställa detta kallas inkapsling. Tanken är att objektets inre arbete är dolt för klienten, men objektet erbjuder metoder som kan användas för att komma åt den data som lagras i objektet.
 
-Pelkkä metodin lisäys ei kuitenkaan piilota attribuuttia: vaikka luokkaan `Pankkitili` onkin lisätty metodi `nosto` rahan nostamiseksi, asiakas voi edelleen muokata `saldo`-attribuutin arvoa suoraan:
+Att lägga till en metod innebär inte att attributet automatiskt döljs. Även om klassdefinitionen `Bankkonto` innehåller metoden `uttag` för att ta ut pengar, kan klientkoden fortfarande komma åt och ändra attributet `saldo` direkt:
 
 ```python
 pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
@@ -168,7 +168,7 @@ else:
 print("Saldo nyt:", pekan_tili.saldo)
 ```
 
-Ongelma voidaan ainakin osittain ratkaista piilottamalla attribuutit asiakkaalta. Käytännön toteutukseen palataan tarkemmin ensi viikolla.
+Det är möjligt att dölja dataattributen från klientkoden, vilket kan bidra till att lösa detta problem. Vi återkommer till detta ämne i nästa del.
 
 <programming-exercise name='Vähenevä laskuri' tmcname='osa08-10_vaheneva_laskuri'>
 
@@ -280,7 +280,7 @@ arvo: 55
 
 </programming-exercise>
 
-Tarkastellaan vielä esimerkkiä luokasta, joka mallintaa pelaajan ennätystulosta. Luokkaan on kirjoitettu erilliset metodit, joilla voidaan tarkastaa, ovatko annetut parametrit sopivia. Metodeja kutsutaan heti konstruktorissa. Näin varmistetaan luotavan olion sisäinen eheys.
+Som avslutning på detta avsnitt tittar vi på en klass som modellerar en spelares personliga bästa. Klassdefinitionen innehåller separata valideringsmetoder som kontrollerar att de argument som skickas är giltiga. Metoderna anropas redan i konstruktorn. Detta säkerställer att det skapade objektet är sunt internt.
 
 ```python
 from datetime import date
@@ -341,13 +341,13 @@ Piia
 
 </sample-output>
 
-Esimerkistä huomataan, että myös olion omiin metodeihin pitää viitata `self`-määreen avulla, kun niitä kutsutaan konstruktorista. Luokkiin voidaan kirjoittaa myös _staattisia metodeita_ eli metodeja, joita voidaan kutsua ilman, että luokasta muodostetaan oliota. Tähän palataan kuitenkin tarkemmin ensi viikolla.
+I exemplet ovan anropades även hjälpmetoderna via parameternamnet `self` när de användes i konstruktorn. Det är också möjligt att inkludera /statiska/ metoddefinitioner i klassdefinitioner. Dessa är metoder som kan anropas utan att det någonsin skapas en instans av klassen. Vi återkommer till detta i nästa del.
 
-Määrettä `self` käytetään kuitenkin vain silloin, kun viitataan _olion piirteisiin_ (eli metodeihin tai olion attribuutteihin). Olion metodeissa voidaan käyttää myös paikallisia muuttujia. Tämä on suositeltavaa, jos muuttujaan ei ole tarvetta viitata metodin ulkopuolella.
+Parameternamnet `self` används endast när man hänvisar till /objektets egenskaper som en instans av klassen/. Det gäller både dataattributen och de metoder som är knutna till ett objekt. För att göra terminologin mer förvirrande kallas dataattributen och metoderna tillsammans ibland helt enkelt för objektets attribut, vilket är anledningen till att vi i detta material ofta har angett dataattribut när vi menar de variabler som definieras inom klassen. Det är här terminologin hos vissa Python-programmerare skiljer sig något från den terminologi som mer allmänt används inom objektorienterad programmering, där attribut vanligtvis bara hänvisar till dataattributen hos ett objekt.
 
-Paikallinen muuttuja määritellään ilman `self`-määrettä - eli samoin kuin esimerkiksi kaikki muuttujat kurssin ensimmäisellä puoliskolla.
+Det är också möjligt att skapa lokala variabler inom metoddefinitioner utan att hänvisa till `self`. Detta bör du göra om det inte finns något behov av att komma åt variablerna utanför metoden. Lokala variabler inom metoder har inga speciella nyckelord; de används precis som alla vanliga variabler som du har stött på hittills. .
 
-Esimerkiksi
+Så här skulle det till exempel fungera: 
 
 ```python
 class Bonuskortti:

@@ -1,19 +1,19 @@
 ---
 path: '/osa-11/3-rekursio'
-title: 'Rekursio'
+title: 'Rekursion'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetaan rekursiolla
-- Osaat kirjoittaa itse yksinkertaisen rekursiivisen funktion
+- Vet du vad rekursion innebär
+- Kommer du att kunna skriva en enkel rekursiv funktion
 
 </text-box>
 
-Kuten aiemmin on huomattu, funktiot voivat kutsua toisia funktioita. Esimerkiksi näin:
+Som vi har sett många gånger tidigare kan funktioner anropa andra funktioner. Till exempel:
 
 ```python
 def tervehdi(nimi : str):
@@ -24,7 +24,7 @@ def tervehdi_monesti(nimi : str, kerrat : int):
         tervehdi(nimi)
 ```
 
-Samaan tapaan funktio voi kutsua myös itseään. Jos kuitenkaan funktion parametrit eivät muutu kutsukertojen välissä, tästä syntyy "ikuinen silmukka":
+En funktion kan också anropa sig själv, men vi som programmerare måste vara försiktiga när vi gör det. Det är lätt att hamna i en oändlig loop av funktionsanrop, precis som vi hamnade i en oändlig loop av upprepningar med `while`-loopar om vi utelämnade lämpliga brytvillkor. Så om man försöker anropa en `hello`-funktion med följande definition
 
 ```python
 def tervehdi(nimi : str):
@@ -32,7 +32,7 @@ def tervehdi(nimi : str):
     tervehdi(nimi)
 ```
 
-Tällöin funktion kutsuminen millä tahansa merkkijonolla antaa virheilmoituksen:
+skulle skapa ett nytt sort av fel:
 
 <sample-output>
 
@@ -40,11 +40,11 @@ RecursionError: maximum recursion depth exceeded
 
 </sample-output>
 
-## Mitä rekursio tarkoittaa?
+## Vad betyder rekursion?
 
-Virheilmoituksessakin mainitulla _rekursiolla_ tarkoitetaan sitä, että funktio kutsuu itseään. Rekursiossa funktion parametrien pitää kuitenkin muuttua niin, että jossain vaiheessa kutsuminen lopetetaan. Perusperiaate on sama kuin silmukoissa: jotta silmukka ei jatkuisi ikuisesti, siinä tulee olla päättymisehto, joka toteutuu jossain vaiheessa.
+Den rekursion som nämns i felet ovan innebär att man definierar något i termer av sig självt. I programmeringssammanhang handlar det oftast om en funktion som anropar sig själv. För att detta ska fungera utan att orsaka oändliga loopar måste de argument som skickas till funktionen ändras varje gång, så att de nästlade funktionsanropen slutar vid något skede. Grundprincipen här är densamma som i `while`-loopar: det måste alltid finnas ett stoppvillkor av något slag, och det villkoret måste utlösas vid någon tidpunkt i exekveringen.
 
-Tarkastellaan aluksi yksinkertaista funktiota, joka lisää listan loppuun 0-alkioita niin kauan kuin listan pituus on alle 10. Silmukan sijasta funktio kutsuukin itseään uudestaan, jos ehto ei täyty:
+Låt oss ta en titt på en enkel funktion som lägger till nollor i en lista så länge det finns färre än 10 objekt i listan. Den här gången använder vi dock inte en loop. Om villkoret ännu inte är uppfyllt anropar funktionen sig själv
 
 ```python
 def tayta_lista(luvut: list):
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Perinteisellä silmukalla ohjelma näyttäisi esimerkiksi tältä:
+Denna funktionalitet kunde lika väl bli uppnådd genom en vanlig `while`-loop:
 
 ```python
 
@@ -83,13 +83,13 @@ if __name__ == "__main__":
 
 ```
 
-Esimerkeistä huomataan, että perinteinen (eli _iteratiivinen_) lähestymistapa tuottaa lyhyemmän ja selkeämmän ohjelman. Rekursiivinen ohjelma kuitenkin toimii ja tuottaa oikean lopputuloksen, koska funktio käsittelee jokaisella kutsukerralla samaa listaa viittauksen kautta.
+Det mer traditionella iterativa tillvägagångssättet ger ett kortare program som förmodligen också är lättare att förstå. Med den rekursiva versionen är det inte lika tydligt att vi under hela processen arbetar med exakt samma lista. Så är det dock och därför fungerar den rekursiva funktionen lika bra.
 
-<text-box variant="hint" name="Iteratiivinen vai rekursiivinen?">
+<text-box variant="hint" name="Iterativ eller rekursiv?">
 
-Tietojenkäsittelytieteteessä erotetaan usein _iteratiiviset_ ja _rekursiiviset_ algoritmit. Iteratiivinen tarkoittaa kurssilla tähän asti yleensä käyttämäämme tapaa, jossa ratkaisu perustuu peräkkäisyyteen – yleensä siihen, että käsitellään rakenne silmukassa. Rekursiivinen tarkoittaa vaihtoehtoista tapaa, jossa funktio silmukan sijasta (tai lisäksi) kutsuu itseään muuttuvilla parametrien arvoilla.
+Inom datavetenskapsteori skiljer man ofta mellan iterativa och rekursiva algoritmer, så det är bäst att bekanta sig med dessa termer redan från början. Iterativa lösningar är sådana som baseras på sekventiell bearbetning av objekt, ofta med hjälp av loopar. Hittills har vi behandlat iterativa metoder ganska exklusivt. Rekursiv, å andra sidan, avser en metod där funktionen anropar sig själv med förändrade parametervärden.
 
-Mikä tahansa algoritmi on periaatteessa mahdollista toteuttaa sekä iteratiivisesti että rekursiivisesti, mutta monessa tapauksessa jompikumpi tapa soveltuu selkeästi paremmin ongelman ratkaisemiseen.
+I princip borde det vara möjligt att lösa alla problem med antingen iterativa eller rekursiva metoder. I praktiken är det dock oftast så att den ena eller den andra metoden är klart bättre lämpad för varje problem. Förmågan att avgöra vilken som är bäst kommer till stor del med övning.
 
 </text-box>
 
@@ -115,9 +115,9 @@ print(luvut)
 
 </programming-exercise>
 
-## Rekursio ja paluuarvot
+## Rekursion och returvärden
 
-Rekursiivisella funktiolla voi olla myös palautusarvo. Tarkastellaan tätä tarkoitusta varten esimerkkiä, joka laskee kertoman rekursiivisesti:
+Rekursiva funktioner kan också ha returvärden. I de senaste avsnitten har vi arbetat med faktorialtal, så låt oss skriva en rekursiv faktorialfunktion:
 
 ```python
 
@@ -148,13 +148,13 @@ Luvun 6 kertoma on 720
 
 </sample-output>
 
-Jos funktion parametrin arvo on 0 tai 1, funktio palauttaa 1 (koska kertoman määritelmän mukaan lukujen 0 ja 1 kertoma on 1). Muuten funktio palauttaa lausekkeen `n * kertoma(n - 1)`. Tämä tarkoittaa, että parametri `n` kerrotaan funktion itsensä kutsun palauttamalla arvolla.
+Om parametern för den rekursiva faktoriella funktionen är 0 eller 1, returnerar funktionen 1, eftersom det är så faktoriell operation definieras. I alla andra fall returnerar funktionen värdet `n * faktorial(n - 1)`, vilket är värdet av dess parameter n multiplicerat med returvärdet av funktionsanropet `faktorial(n - 1)`.
 
-Olennaista funktion toimivuuden kannalta on, että funktiossa on määritelty ehto, jolla se ei kutsu itseään enää uudestaan. Tässä tapauksessa ehto on `n < 2`.
+Det avgörande här är att funktionsdefinitionen innehåller ett stoppvillkor. Om detta uppfylls avslutas rekursionen. I det här fallet är villkoret `n < 2`. Vi vet att det kommer att nås så småningom, eftersom det värde som skickas som argument till funktionen minskas med ett på varje nivå i rekursionen.
 
-[Visualisaattori](http://www.pythontutor.com/visualize.html#mode=edit) on oivallinen väline rekursiota käyttävien ohjelmien tutkimiseksi.
+[Visualiseringsverktyget](http://www.pythontutor.com/visualize.html#mode=edit) kan vara till stor hjälp när det gäller att förstå rekursiva program.
 
-Laajennetaan kertoman laskevaa funktiota niin, että se käyttää apumuuttujia:
+Exemplet ovan skulle kanske bli lite tydligare om vi använde oss av hjälpvariabler:
 
 ```python
 def kertoma(n: int):
@@ -164,17 +164,21 @@ def kertoma(n: int):
     edellisen_luvun_kertoma = kertoma(n - 1)
     luvun_n_kertoma = n * edellisen_luvun_kertoma
     return luvun_n_kertoma
-    
+
 kertoma(5)
 ```
 
-Kokeile, miten [visualisaattori](http://www.pythontutor.com/visualize.html#code=def%20kertoma%28n%3A%20int%29%3A%0A%20%20%20%20if%20n%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20edellisen_luvun_kertoma%20%3D%20kertoma%28n%20-%201%29%0A%20%20%20%20luvun_n_kertoma%20%3D%20n%20*%20edellisen_luvun_kertoma%0A%20%20%20%20return%20luvun_n_kertoma%0A%20%20%20%20%0Akertoma%285%29&cumulative=false&curInstr=5&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false) demonstroi rekursion etenemisen.
+Ta en titt på hur[visualiseringsverktyget](http://www.pythontutor.com/visualize.html#code=def%20kertoma%28n%3A%20int%29%3A%0A%20%20%20%20if%20n%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20edellisen_luvun_kertoma%20%3D%20kertoma%28n%20-%201%29%0A%20%20%20%20luvun_n_kertoma%20%3D%20n%20*%20edellisen_luvun_kertoma%0A%20%20%20%20return%20luvun_n_kertoma%0A%20%20%20%20%0Akertoma%285%29&cumulative=false&curInstr=5&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false) visar hur rekursionen fortskrider.
 
-Hieman normaalista poiketen visualisaattorissa kutsupino "kasvaa" alaspäin. Suorituksessa oleva funktiokutsu on kutsupinon alimpana oleva sinisellä merkitty "lohko", jolla on omat muuttujansa. Hetken kuluttua palautettava tulos on laskettu muuttujaan `luvun_n_kertoma`.
+Visualiseringsverktyget har en liten finess i hur det hanterar anropsstacken, eftersom den verkar "växa" nedåt. Vanligtvis avbildas anropsstaplar som just staplar, där de nya anropen placeras överst. I visualiseringsverktyget är det aktiva funktionsanropet det skuggade blocket längst ner, som har sina egna kopior av de variabler som syns.
+
+När den rekursiva faktorfunktionen anropas byggs anropsstapeln upp tills den gräns som utgörs av `n < 2` nås. Då återkommer det sista funktionsanropet i stacken med ett värde - det är `1`, eftersom `n` nu är mindre än 2. Detta återkomstvärde skickas till det föregående funktionsanropet i stacken, där det används för att beräkna det funktionsanropets återkomstvärde, och så vidare tillbaka ut ur stacken.
+
+Returvärdet för varje funktionsanrop lagras i hjälpvariabeln `faktorial_nu`. Gå igenom visualiseringen noggrant tills du förstår vad som händer i varje steg, och var särskilt uppmärksam på det värde som returneras i varje steg.
 
 <img src="11_1_1.png">
 
-Tarkastellaan vielä toista funktiota, joka laskee halutun Fibonaccin luvun rekursiivisesti. Fibonaccin lukujonossa luku on aina kahden edellisen luvun summa. Niinpä jonon alku näyttää tältä: 1, 1, 2, 3, 5, 8, 13, 21, 34.
+Låt oss ta en titt på ett annat vanligt rekursivt exempel: Fibonacci-talen. I en Fibonacci-sekvens är varje tal summan av de två föregående talen. De två första talen definieras här som 1 och 1, och sekvensen börjar då så här: 1, 1, 2, 3, 5, 8, 13, 21, 34.
 
 ```python
 def fibonacci(n: int):
@@ -208,21 +212,21 @@ Fibonaccin 10. luku on 55
 
 </sample-output>
 
-Tällä kertaa lopetusehtona on, että luku on pienempi tai yhtä suuri kuin 2, koska Fibonaccin kaksi ensimmäistä lukua ovat molemmat ykkösiä.
+Den här gången är stoppvillkoret att parametern är mindre än eller lika med 2, eftersom hela sekvensen definieras från de två första siffrorna och framåt, och vi definierade de två första siffrorna som lika med 1.
 
-Miten algoritmi käytännössä oikein toimii?
+Hur fungerar då den här funktionen i praktiken?
 
-Luvuille 1 ja 2 algoritmi palauttaa arvon 1 ehdon `n <= 2` mukaisesti.
+Om funktionen anropas med 1 eller 2 som argument returnerar den 1, vilket dikteras av villkoret `n <= 2`.
 
-Luvulle 3 algoritmi palauttaa arvon lausekkeesta `fibonacci(n - 1) + fibonacci(n - 2)`, eli käytännössä lausekkeen `fibonacci(2) + fibonacci(1)`. Koska edellisessä kohdassa huomattiin, että näiden molempien arvo on 1, palauttaa funktio siis arvon 2 (joka onkin kolmas Fibonaccin luku)
+Om argumentet är 3 eller större returnerar funktionen värdet av `fibonacci(n - 1) + fibonacci(n - 2)`. Om argumentet är exakt 3 är detta värde lika med `fibonacci(2) + fibonacci(1)`, och vi vet redan resultatet av båda dessa från föregående steg. `1 + 1` är lika med 2, som alltså är det tredje talet i Fibonacci-sekvensen.
 
-Luvulle 4 algoritmi palauttaa arvon lausekkeesta `fibonacci(3) + fibonacci(2)`, mikä edellisten kohtien perusteella on siis `2 + 1` eli 3.
+Om argumentet är 4 är returvärdet `fibonacci(3) + fibonacci(2)`, som vi nu vet är `2 + 1`, vilket är lika med 3.
 
-Luvulle 5 algoritmi palauttaa arvon lausekkeesta `fibonacci(4) + fibonacci(3)`, mikä edellisten kohtien perusteella on siis `3 + 2` eli 5.
+Om argumentet är 5 är returvärdet `fibonacci(4) + fibonacci(3)`, vilket vi nu vet är `3 + 2`, vilket är lika med 5.
 
-jne.
+Och så vidare, och så vidare.
 
-Rekursiivinen algoritmimme siis toimii, koska voimme todistaa jokaisen luvun kohdalla ohjelman toimivuuden aikaisempien lukujen perusteella.
+Vi kan i varje steg verifiera att funktionen ger rätt resultat, vilket ofta är tillräckligt i grundläggande programmeringsuppgifter. Den formella verifierbarheten av algoritmer är ett ämne för mer avancerade kurser, till exempel Data Structures and Algorithms.
 
 <programming-exercise name='Rekursiivinen summa' tmcname='osa11-14_rekursiivinen_summa'>
 
@@ -330,22 +334,22 @@ False
 
 </programming-exercise>
 
-## Binäärihaku
+## Binär sökning
 
-Binäärihaussa yritetään löytää järjestyksessä olevasta listasta annettu alkio. Järjestys tarkoittaa tässä yhteydessä esimerkiksi lukujen järjestystä pienimmästä suurimpaan tai merkkijonoja aakkosjärjestyksessä.
+I en binär sökning har vi en sorterad lista med objekt och vi försöker hitta ett visst objekt i den. Ordningen på objekten kan till exempel vara siffror från minst till störst, eller strängar från alfabetiskt först till sist. Sorteringsmetoden spelar ingen roll, så länge den är känd och relevant för det objekt som vi försöker hitta.
 
-Binäärihaun ideana on, että tarkastellaan aina listan keskimmäistä alkiota. Jos
-- keskimmäinen alkio on etsitty alkio, palautetaan tieto siitä, että alkio löytyi
-- keskimmäinen alkio on pienempi kuin etsittävä alkio, rajataan haku listan jälkimmäiselle puolikkaalle
-- keskimmäinen alkio on suurempi kuin etsittävä alkio, rajataan haku listan ensimmäiselle puolikkaalle
+Tanken med en binär sökning är att alltid titta på objektet i mitten av listan. Vi har då tre möjliga scenarier. Om objektet i mitten är
+- det vi letar efter: vi kan returnera en indikation på att vi hittade objektet
+- mindre än det vi letar efter: vi kan göra om sökningen i den större halvan av listan
+- större än den vi letar efter: vi kan göra om sökningen i den mindre halvan av listan.
 
-Jos lista on tyhjä, palautetaan tieto siitä, että alkiota ei löytynyt.
+Om listan är tom kan vi fastställa att objektet inte hittades och returnera en indikation på det.
 
-Seuraava kuva havainnollistaa binäärihaun etenemistä, kun etsitään listasta lukua 24:
+I följande bild kan vi se hur en binär sökning fortskrider när den letar efter talet 24:
 
 <img src="11_3_1.png">
 
-Rekursiivinen algoritmi binäärihaulle:
+Här är en rekursiv algoritm för en binär sökning:
 
 ```python
 def binaarihaku(lista: list, alkio: int, vasen : int, oikea : int):
@@ -387,6 +391,8 @@ False
 
 </sample-output>
 
-Tässä funktiolle `binaarihaku` annetaan neljä parametria: viite listaan, etsittävä alkio sekä hakualueen vasen ja oikea kohta. Alussa hakualue on koko lista, jolloin vasen kohta on 0 ja oikea kohta on `len(lista)-1`. Funktio tarkastaa hakualueen keskellä olevan alkion ja joko ilmoittaa, että haluttu alkio löytyi, tai jatkaa hakua vasemmasta tai oikeasta puoliskosta.
+Funktionen `binar_sokning` tar fyra argument: mållistan, det objekt som söks samt vänster och höger kant på sökområdet. När funktionen anropas första gången täcker sökområdet hela mållistan. Den vänstra kanten ligger på index `0` och den högra kanten ligger på index `len(mål)-1`. Funktionen beräknar det centrala indexet och kontrollerar den positionen på listan. Antingen har objektet hittats eller så fortsätter sökningen till den mindre eller större halvan av mållistan.
 
-Jos verrataan binäärihakua _peräkkäishakuun_, algoritmien tehokkuus erottuu selvästi. Peräkkäishaussa alkiota lähdetään etsimään listan alusta ja listaa käydään läpi yksi alkio kerrallaan, kunnes alkio on löytynyt tai on päästy listan loppuun. Jos listan pituus on miljoona alkiota, tarvitaan perättäishaussa koko listan läpikäyntiin miljoona askelta, mutta binäärihaussa askelia tarvitaan vain 20.
+Låt oss jämföra detta med en enkel linjär sökning. Vid en linjär sökning är sökområdet från början och framåt, tills antingen objektet hittas eller sökområdet tar slut. Antalet steg som behövs för att täcka hela sökområdet växer linjärt i samma takt som sökområdets storlek. Varje söksteg täcker endast en sökkandidat från början av sökområdet. Låt oss anta att det sökta objektet inte hittas. Om sökområdet är en miljon objekt långt måste vi ta en miljon söksteg för att försäkra oss om att objektet inte finns i sökområdet.
+
+Vid en binär sökning växer däremot antalet steg som behövs logaritmiskt. Låt oss återigen anta att det sökta objektet inte hittas. Sökområdet halveras för varje steg, eftersom vi vet att objektet antingen är mindre eller större än den aktuella sökkandidaten i mitten. 2 gånger 20 (2^20) är redan långt över 1 miljon, så det tar som mest 20 steg att täcka hela sökområdet med en binär sökning. När vi har att göra med sorterade sökområden, vilket ofta är fallet när vi har att göra med datorer och material som ska bearbetas automatiskt, är en binär sökning alltså mycket effektivare än en linjär sökning. 

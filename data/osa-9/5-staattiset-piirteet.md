@@ -1,28 +1,28 @@
 ---
 path: '/osa-9/5-staattiset-piirteet'
-title: 'Staattiset piirteet'
+title: 'Klassattribut'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen:
+Efter den här delen
 
-- Ymmärrät käsitteet luokkamuuttuja ja luokkametodi
-- Tiedät miten staattiset piirteet eroavat olioiden piirteistä
-- Osaat lisätä staattisia piirteitä omiin luokkiin
+- Är du bekant med begreppen klassvariabel och klassmetod
+- Vet du hur statiska egenskaper skiljer sig från egenskaper hos instanser
+- Kommer du att kunna lägga till statiska egenskaper i dina egna klasser
 
 </text-box>
 
-Olio-ohjelmoinnissa puhutaan _piirteistä_. Näillä tarkoitetaan olion ominaisuuksia: luokan sisälle kirjoitettuja metodeja ja luokassa määriteltyjä muuttujia.
+Objektens egenskaper är ett centralt begrepp inom objektorienterad programmering. Termen egenskaper (eng. traits) omfattar de metoder och variabler som definieras i klassdefinitionen.  
 
-Tähän mennessä olemme käsitelleen _olioiden piirteitä_ eli oliometodeita ja attribuutteja. Olio-ohjelmointiin kuuluvat kuitenkin myös _luokan piirteet_, joita kutsutaan usein myös _staattisiksi piirteiksi_. Myös käsitettä _luokkamuuttuja_ käytetään.
+Hittills har vi mest behandlat egenskaper hos objekt. Dessa inkluderar de metoder och attribut som är tillgängliga i alla instanser av en klass. Faktum är att klasser i sig också kan ha egenskaper, som ibland kallas statiska egenskaper, eller mer specifikt klassvariabler och klassmetoder.
 
-## Luokkamuuttujat
+## Klassvariabler
 
-Kuten on aiemmin opittu, jokaisella oliolla on omat itsenäiset arvonsa attribuuteille. Attribuuttien lisäksi luokassa voidaan määritellä _luokkamuuttujia_ eli staattisia muuttujia. Luokkamuuttujalla tarkoitetaan muuttujaa, jota käytetään luokan kautta eikä luokasta muodostettujen olioiden kautta. Luokkamuuttujalla on yksi yhteinen arvo riippumatta siitä, montako oliota luokasta muodostetaan.
+Varje instans av en klass har sina egna specifika värden för varje attribut som definieras i klassen, som vi har sett i exemplen i de tidigare avsnitten. Men vad händer om vi vill ha data som delas mellan de olika instanserna? Här kommer klassvariablerna in i bilden, även kallade statiska variabler. En klassvariabel är en variabel som nås via själva klassen, inte via de instanser som skapas baserat på klassen. Vid varje given tidpunkt under exekveringen av programmet har en klassvariabel ett enda värde, oavsett hur många instanser av klassen som skapas.
 
-Luokkamuuttujan määrittely eroaa attribuutista siinä, että se määritellään ilman `self`-aluketta. Jos luokkamuuttujaa halutaan käyttää koko luokassa ja mahdollisesti luokan ulkopuoleltakin, se tulee määritellä metodien ulkopuolella.
+En klassvariabel deklareras utan `self`-prefixet och vanligtvis utanför varje metoddefinition eftersom den ska kunna nås var som helst inom klassen eller till och med utanför klassen.
 
 ```python
 class Korkotili:
@@ -43,9 +43,9 @@ class Korkotili:
         return self.__saldo
 ```
 
-Koska yleiskorko on määritelty luokassa eikä metodin sisällä eikä sen alustuksessa ole käytetty `self`-aluketta, se on luokkamuuttuja.
+Eftersom variabeln `allman_ranta` definieras inom klassen men utanför alla metoddefinitioner och inte använder prefixet `self`, är det en klassvariabel.
 
-Luokkamuuttujaan viitataan luokan nimen avulla, esimerkiksi näin:
+En klassvariabel nås via klassens namn, till exempel så här:
 
 ```python
 # Yleiskorko on olioista riippumaton
@@ -64,9 +64,9 @@ Yleiskorko on 0.03
 
 </sample-output>
 
-Luokkamuuttujiin viitataan siis luokan nimen avulla, esimerkiksi `Korkotili.yleiskorko`, ja oliomuuttujiin eli attribuutteihin olion nimen avulla `tili.saldo`. Oliomuuttujiin voi luonnollisesti viitata vasta, kun luokasta on muodostettu olio.
+Klassvariablerna nås alltså via klassens namn, till exempel `Sparkonto.allman_ranta`, medan instansvariablerna nås via objektvariabelns namn, till exempel `konto.saldo`. En instansvariabel existerar naturligtvis bara när en instans av klassen har skapats, men en klassvariabel är tillgänglig överallt och vid varje tidpunkt då klassen i sig är tillgänglig.
 
-Luokkamuuttujaa on kätevä käyttää, kun halutaan tallentaa arvoja, jotka on jaettu kaikkien olioiden kesken. Edellisessä esimerkissä oletetaan, että kaikilla pankkitileillä on sama yleiskorkoprosentti, jonka lisäksi tilille voidaan erikseen määrittää oma korkoprosenttinsa. Yleiskorkokin voi muuttua, mutta muutos vaikuttaa kaikkiin luokasta muodostettuihin olioihin:
+Klassvariabler är användbara när det finns behov av värden som delas av alla instanser av klassen. I exemplet ovan antog vi att den totala räntan för alla sparkonton består av två komponenter: den allmänna räntan delas av alla konton, men varje konto har också sin egen ränta i en instansvariabel. Den allmänna räntan kan också förändras, men förändringen kommer då att påverka alla instanser av klassen lika mycket.
 
 ```python
 class Korkotili:
@@ -118,9 +118,9 @@ Yleiskorko: 0.1
 
 </sample-output>
 
-Kun yleiskorko nousee, kaikkien luokasta määriteltyjen tilien kokonaiskorko nousee. Huomaa, että kokonaiskorko on määritelty havainnointimetodiksi, vaikkei vastaavaa attribuuttia olekaan suoraan määritelty. Metodi palauttaa tilin koron ja yleiskoron summan.
+När den allmänna räntan ändras, ändras den totala räntan för alla instanser av klassen. Som du kan se ovan är det möjligt att lägga till en getter-metod med `@property`-dekoratorn även om det inte finns ett attribut med samma namn i klassen. Denna metod returnerar summan av den allmänna räntan och den kontospecifika räntan.
 
-Tarkastellaan vielä toista esimerkkiä. Luokassa `Puhelinnumero` on maatunnukset tallennettuna sanakirjaan. Lista maatunnuksista on yhteinen kaikille luokasta luoduille puhelinnumero-olioille, koska maatunnus saman maan puhelinnumeroille on aina sama.
+Låt oss ta en titt på ett annat exempel. Klassen `TelefonNummer` används för att definiera ett enda telefonnummer, men den innehåller också några landskoder i en ordbok. Denna ordbok är en klassvariabel och delas därför av alla instanser av klassen, eftersom landskoden för telefonnummer från ett och samma land alltid är densamma.
 
 ```python
 class Puhelinnumero:
@@ -148,9 +148,9 @@ print(paulan_nro.puhelinnumero)
 
 </sample-output>
 
-Kun puhelinnumero-olio luodaan, tallennetaan nimen ja numeron lisäksi maa. Kun numero haetaan havainnointimetodilla, haetaan numeron eteen maatunnus luokkamuuttujasta olion attribuuttiin tallennetun maatiedon avulla.
+Varje TelefonNummer-objekt innehåller namnet på ägaren, själva numret och det land där telefonnumret finns. När attributet som innehåller telefonnumret nås med getter-metoden hämtas lämplig landskod från klassvariabelns ordbok baserat på landattributet, och resultatet prefixeras till numret.
 
-Esimerkkiluokka on toiminnallisuudeltaan melko vajavainen. Katsotaan vielä, miltä näyttäisi parempi toteutus, jossa on havainnointi- ja asetusmetodit eri attribuuteille:
+Implementeringsexemplet ovan är inte särskilt funktionellt i övrigt. I följande exempel har vi lagt till getter och sättare för alla attribut:
 
 ```python
 class Puhelinnumero:
@@ -239,15 +239,15 @@ Muuta toiminnallisuutta ei tarvitse toteuttaa.
 
 </programming-exercise>
 
-## Luokkametodit
+## Klassmetoder
 
-Luokkametodi eli staattinen metodi on luokassa oleva metodi, jota ei ole sidottu mihinkään luokasta muodostettuun olioon. Niinpä luokkametodia voi kutsua ilman, että luokasta muodostetaan oliota.
+En klassmetod, även kallad statisk metod, är en metod som inte är knuten till någon enskild instans av klassen. En klassmetod kan anropas utan att några instanser av klassen skapas.
 
-Luokkametodit ovat yleensä työkalumetodeja, jotka liittyvät jotenkin luokkaan mutta joita on tarkoituksenmukaista kutsua ilman olion muodostamista. Luokkametodit ovat yleensä julkisia, jolloin niitä voidaan kutsua sekä luokan ulkopuolelta että luokan ja siitä muodostettujen olioiden sisältä.
+Klassmetoder är vanligen verktyg som har något att göra med klassens syfte, men som är fristående i den meningen att det inte ska vara nödvändigt att skapa instanser av klassen för att kunna anropa dem. Klassmetoder är vanligtvis offentliga, så att de kan anropas både utanför klassen och inom klassen, inklusive inom instanser av klassen.
 
-Luokkametodi merkitään annotaatiolla `@classmethod` ja sen ensimmäinen parametri on aina `cls`. Tunnistetta `cls` käytetään samaan tapaan kuin tunnistetta `self`, mutta erotuksena on, että `cls` viittaa luokkaan ja `self` viittaa olioon. Kummallekaan parametrille ei anneta kutsuessa arvoa, vaan Python tekee sen automaattisesti.
+En klassmetod definieras med annotationen `@classmethod`. Den första parametern är alltid `cls`. Variabelnamnet `cls` liknar `self`-parametern. Skillnaden är att `cls` pekar på klassen medan `self` pekar på en instans av klassen. Ingen av parametrarna ingår i argumentlistan när funktionen anropas, utan Python fyller i lämpligt värde automatiskt.
 
-Esimerkiksi luokassa `Rekisteriote` voisi olla staattinen metodi, jolla voidaan tarkistaa, onko annettu rekisteritunnus oikeamuotoinen. Metodi on staattinen, jotta tunnuksen voi tarkastaa myös ilman, että luodaan uutta oliota luokasta:
+I följande exempel har vi en klass som modellerar fordonsregistreringar. Klassen `Registration` innehåller en statisk metod för att kontrollera om en registreringsskylt är giltig. Metoden är en statisk klassmetod eftersom det är användbart att kunna kontrollera om en registreringsskylt är giltig redan innan ett enda Registration-objekt har skapats:
 
 ```python
 class Rekisteriote:
@@ -305,7 +305,7 @@ Tämä on validi tunnus!
 
 </sample-output>
 
-Rekisteriotteen oikeellisuuden voi tarkistaa kutsumalla metodia (esimerkiksi `Rekisteriote.rekisteritunnus_kelpaa("xyz-789"))`) ilman, että muodostaa luokasta oliota. Samaa metodia kutsutaan myös uutta oliota muodostaessa luokan konstruktorista. Huomaa kuitenkin, että myös tässä kutsussa viitataan metodiin luokan nimen avulla eikä `self`-tunnisteella!
+Giltigheten för en registreringsskylt kan kontrolleras även utan att skapa en enda instans av klassen, t.ex. med `Registration.nummer_plat_giltig("xyz-789")`. Samma metod anropas i klassens konstruktor. OBS: även inom konstruktören är denna metod åtkomlig via klassens namn, inte `self`! 
 
 <programming-exercise name='Lista-apuri' tmcname='osa09-14_lista_apuri'>
 

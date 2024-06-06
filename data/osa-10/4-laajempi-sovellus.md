@@ -1,67 +1,68 @@
 ---
 path: '/osa-10/4-lisaa-esimerkkeja'
-title: 'Laajemman sovelluksen kehittäminen'
+title: 'Att utveckla en större applikation '
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tässä osiossa
+Efter den här delen
 
-- Käydään läpi hieman laajemman sovelluksen tekemiseen liittyviä seikkoja
-- Erityinen fokus on sovelluksen eri osa-alueiden (käyttöliittymä, sovelluslogiikka ja tiedostojen käsittely) eriyttämisessä
-- Harjoitellaan laajemman sovelluksen toteuttamista itse
+- Känner du till några grundläggande principer för applikationsutveckling
+- Kommer du att känna dig bekväm med att skilja mellan de olika delarna av en applikation (användargränssnitt, programlogik och filhantering)
+- Har du övat på att skriva din egna lite större applikation
 
 </text-box>
 
-Ohjelmoinnin perusteiden ja jatkokurssin aikana on esitelty suuri määrä Pythonin tarjoamia ominaisuuksia.
+Hittills i detta kursmaterial har vi gått igenom ett stort antal Python-funktioner.
 
-Ohjelmoinnin perusteissa tutustuttiin kielen kontrollirakenteisiin (while ja for), funktioihin sekä perustietorakenteisiin eli listaan ja sanakirjaan. Näytti jo hetken siltä että muuta ei tarvitakaan. Periaatteessa näin onkin: ohjelmoinnin perusteiden kalustolla pystyy ilmaisemaan kaiken mikä Pythonilla on ylipäätään ilmaistavissa.
+I Introduktion till programmering-kursen introducerades kontrollstrukturer som while och for, funktioner samt grundläggande datastrukturer som listor, tupler och ordlistor. I princip är dessa verktyg allt som behövs för att uttrycka vad som helst som en programmerare kan tänka sig vilja uttrycka med Python.
 
-Jatkokurssin alussa, eli kurssin osassa 8 pakkaa ruvettiin kuitenkin hämmentämään tuomalla mukaan luokat ja oliot. Milloin ja ylipäätään _miksi_ olioita tulisi käyttää jos kurssin osien 1-7 kalusto on jo ilmaisuvoimaltaan riittävä?
+På denna avancerade kurs i programmering, med början i del 8 av materialet, har du blivit bekant med klasser och objekt. Låt oss ta en stund att fundera på när och varför de är nödvändiga, ifall de grundläggande verktygen från del 1 till 7 borde räcka.
 
-## Monimutkaisuuden hallintaa
+## Att hantera komplexitet
 
-Monissa tilanteissa voi ja varmasti kannattaakin olla käyttämättä oliota. Esimerkiksi jos koodataan pieni "kertakäyttöinen" apuohjelma, ei ehkä ole mitään tarvetta olioille. Tilanne alkaa muuttua, kun siirrytään hieman suuremman kokoluokan ohjelmiin.
+Objekt och klasser är långt ifrån nödvändiga i alla programmeringssammanhang. Om du t.ex. programmerar ett litet skript för engångsbruk är objekt oftast överflödiga. Men när du ska programmera något större och mer komplicerat blir objekten mycket användbara.
 
-Kun ohjelma laajenee, alkaa sen sisältämien yksityiskohtien määrä nousta hallitsemattomaksi, ellei ohjelmaa jäsennellä jollain järkevällä tavalla. Itse asiassa jo ohjelmoinnin perusteiden tehtävissä oli havaittavissa varsin monimutkaisia ratkaisuja, joiden ymmärtämisessä jopa alan ammattilaisilla on vaikeuksia.
+När programmen blir allt mer komplexa blir mängden detaljer snabbt ohanterlig, såvida inte programmet är organiserat på något systematiskt sätt. Även några av de mer komplicerade övningarna på den här kursen hittills skulle ha haft nytta av de exempel som ges i den här delen av materialet.
 
-Käsite [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) on ollut jo vuosikymmeniä eräs ohjelmoinnin ja koko tietojenkäsittelyn keskeisiä teemoja. Wikipedian mukaan käsitteellä tarkoitetaan seuraavaa
+I flera decennier har begreppet [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) varit en av de centrala principerna inom programmering och inom datavetenskapen i stort. Citat från Wikipedia:
 
 _Separation of concerns is a design principle for separating a computer program into distinct sections such that each section addresses a separate concern. A concern is a set of information that affects the code of a computer program_
 
-Kyse on ohjelman suunnittelua ohjaavasta periaatteesta, jonka mukaan ohjelmakoodi jäsennellään pienempiin osiin, joista kukin huolehtii vain omasta "tontistaan". Kuhunkin osaan tehdyt muutokset vaikuttavat - periaatteen mukaisesti - vain rajattuun alueeseen ohjelmassa, joten ohjelmien väistämätöntä monimutkaisuutta on helpompi hallita.
+Genom att dela upp programmet i olika delar, så att varje del har sina egna problem att hantera, blir det lättare att hantera den oundvikliga komplexiteten i ett datorprogram.
 
-Funktiot ovat yksi mekanismi tämän tavoitteen saavuttamiseen. Sen sijaan että ohjelma kirjoitetaan yhtenä isona kokonaisuutena, koostetaan se pienistä funktioista, joista kukin ratkaisee pienen osan ongelmasta.
+Funktioner är ett sätt att organisera ett program i distinkta, hanterbara helheter. I stället för att skriva ett enda skript är tanken att formulera små, separat verifierbara funktioner som var och en löser en del av det större problemet.
 
-Olio-ohjelmointi tarjoaa funktioita jossain määrin ilmaisuvoimaisemman ja joidenkin mielestä "paremman" tavan saavuttaa sama tavoite. Kuten olemme nähneet, olioiden avulla on mahdollista koota samaan asiaan liittyvä data ja sitä käsittelevä koodi, eli olion metodit, samaan paikkaan. Oliot tarjoavat myös mekanismin käsittelemänsä datan kapselointiin, joka taas tavallaan on keino piilottaa "turhia" yksityiskohtia olion ulkopuoliselta osalta ohjelmaa.
+En annan vanlig metod för att hantera större program är objekt, genom objektorienterade programmeringsprinciper. Det finns fördelar och nackdelar med båda metoderna, och varje programmerare har sin egen favorit. Som vi har sett hittills kan vi med hjälp av objekt och klasser samla alla data och den kod som bearbetar dessa data i en enda enhet, i ett objekts attribut och metoder. Dessutom ger objekten ett sätt att kapsla in de data de kontrollerar, så att andra delar av programmet inte behöver oroa sig för de interna detaljerna i ett objekt.
 
-## Esimerkki: puhelinluettelo
+## Ett fungerande exempel: telefonkatalog
 
-Miten ohjelma sitten tulisi jakaa luokkiin ja olioihin? Kysymys ei ole helppo, ja asiaa on helpompi pohdiskella konkreettisen esimerkin kautta. Toteutetaan esimerkkinä olio-ohjelmointia hyödyntäen hieman samantyylinen puhelinluettelo, joka oli aiheena ohjelmoinnin perusteiden viidennen osan [tehtävässä](/osa-5/3-dictionary#programming-exercise-puhelinluettelo-versio-2).
+Hur ska ett program delas in i klasser och objekt? Det här är inte alls en enkel fråga med ett enda godtagbart svar, så vi fortsätter med ett exempel. I del fem genomförde du en [telefonkatalogsapplikation](/osa-5/3-dictionary#programming-exercise-puhelinluettelo-versio-2), och nu ska vi genomföra något liknande med hjälp av objektorienterade programmeringsprinciper.  
 
-Separation of concerns -periaatetta noudatellen koodi tulee jakaa osiin, joista kukin käsittelee omaa asiaansa. Olio-ohjelmoinnin piirissä tätä periaatetta ilmentää niin sanottu [yhden vastuun (single responsibility)](https://en.wikipedia.org/wiki/Single-responsibility_principle) -periaate. Ei mennä sen tarkemmin periaatteen yksityiskohtiin, mutta maalaisjärjellä ajatellen periaatteen nimi jo kertoo mistä on kyse: _yksittäisen luokan olioiden tulisi olla vastuussa yhdestä asiasta_.
+Enligt principen om separation of concerns bör ett program delas upp i sektioner som var och en har sin egen sak att ta hand om. I objektorienterad programmering översätts detta till [principen om ett ansvar](https://en.wikipedia.org/wiki/Single-responsibility_principle). Utan att gå in på detaljerna framgår det grundläggande syftet redan av namnet: en enda klass och de objekt som skapas utifrån den ska ha ett enda ansvar i programmet.
 
-Olioita käytettäessä ohjelmointiongelman "reaalimaailman asioita" vastaa yleensä oma luokkansa. Puhelinluettelon tapauksessa tälläisiä reaalimaailman asioita olisivat esimerkiksi:
-- henkilö
-- nimi
-- puhelinnumero
 
-Näistä nimi ja puhelinnumero ovat kenties liian vähäpätöisiä ollakseen omia luokkiaan, mutta _henkilö_ voisi hyvinkin olla oma luokkansa, jonka vastuulla on sitoa yhteen tietty nimi ja siihen liittyvät puhelinnumerot.
+Objektorienterad programmering används ofta som ett sätt att modellera objekt och fenomen i den verkliga världen. Ett enskilt objekt i den verkliga världen modelleras med en enda klass i programkoden. I fallet med en telefonkatalog kan sådana objekt vara
+- en person
+- ett namn
+- ett telefonnummer
 
-Myös _puhelinluettelo_ itsessään on potentiaalinen luokka, sen vastuulla on hallinnoida eri henkilöiden tietoja.
+Ett namn och ett telefonnummer kan uppfattas som data som inte förtjänar egna klasser, men en person är en distinkt fysisk enhet i den verkliga världen, och i programmeringsvärlden skulle den kunna fungera som en klass. Ett Person-objekt skulle vara ansvarigt för att knyta ihop ett namn och de telefonnummer som är kopplade till det.
 
-Nämä kaksi luokkaa eli _puhelinluettelo_ ja _henkilö_ muodostavat sovelluksen ytimen, eli niin sanotun _sovelluslogiikan_. Näiden lisäksi ohjelma tarvitsee muutaman muunkin luokan.
+En telefonkatalog i sig skulle kunna vara en bra kandidat för en klass. Dess ansvar skulle vara att hantera olika personobjekt och de data de innehåller.
 
-Käyttäjän kanssa tapahtuvasta interaktiosta huolehtivaa luokkaa ei kannata sotkea sovelluslogiikan kanssa samaan luokkaan - sehän on kokonaan oma vastuunsa. Eli sovelluslogiikan luokkien lisäksi ohjelmalle tulee myös luokka, joka huolehtii ohjelman käyttöliittymästä.
+Nu har vi skissat kärnan i vår applikation: telefonkatalog och person utgör programmeringslogiken i vår applikation, eller applikationslogiken i korthet. Vår applikation skulle behöva några andra klasser också.
 
-Talletamme puhelinluettelon tiedot tiedostoon. Myös tiedoston käsittely on selkeästi oma vastuunsa, joten tulemme sisällyttämään siihen käytettävän koodin omaan luokkaansa.
+Det är oftast en bra idé att hålla all interaktion med en användare skild från applikationslogiken. Det är ju trots allt ett helt eget ansvar. Förutom den centrala applikationslogiken bör vårt program därför innehålla en klass som hanterar användargränssnittet.
 
-Kun ohjelman luokkarakenne alkaa pikkuhiljaa hahmottua, nousee kysymykseksi se, mistä ohjelmointi kannattaa aloittaa. Usein paras tapa aloittaa on pienellä palalla sovelluslogiikka.
+Dessutom bör vår telefonkatalog ha någon form av beständig lagring mellan exekveringar. Filhanteringen är återigen ett tydligt separat ansvar, så den förtjänar en egen klass.
 
-## Vaihe 1: sovelluslogiikan runko
+Nu när vi har en översikt över de grundläggande komponenterna i vårt program uppstår frågan: var ska vi börja programmera? Inte heller här finns det något rätt eller fel svar, men det är ofta en bra idé att börja med någon del av programlogiken.
 
-Aloitetaan luokasta _Puhelinluettelo_. Runko voisi näyttää seuraavalta:
+## Steg 1: en skiss för applikationslogiken
+
+Låt oss börja med klassen Telefonkatalog. En skelettimplementering skulle kunna se ut så här:
 
 ```python
 class Puhelinluettelo:
@@ -76,11 +77,11 @@ class Puhelinluettelo:
 
 ```
 
-Luokka pitää siis sisällään listan henkilöitä ja tarjoaa metodit tietojen lisäämiseen ja hakemiseen.
+Denna klass består av en lista med personer samt metoder för att både lägga till och hämta data.
 
-Jokaiseen henkilöön voi liittyä useita numeroita, joten toteutetaan luettelon sisäinen tila sanakirjan avulla, koska sanakirjasta on helppo hakea nimen perusteella. Sanakirjaan on helppo tallettaa suoraan myös nimeen liittyvät numerot, joten ainakaan tässä vaiheessa ei tarvita erillistä luokkaa yksittäisen henkilön tietojen tallettamiseen.
+Varje person kan vara kopplad till flera nummer, så låt oss implementera den interna strukturen för `personer` med en ordlista. En ordlista ger oss möjlighet att söka efter nycklar enligt namn, och värdet som är kopplat till en ordlistas nyckel kan vara en lista. Hittills ser det ut som att vi inte behöver en separat klass för att representera en person – ett inlägg i en ordlista räcker.
 
-Luokka laajenee seuraavasti. Mukana on myös pieni toiminnan varmistava koodinpätkä:
+Låt oss implementera de metoder som listas ovan och testa vår telefonkatalog:
 
 ```python
 class Puhelinluettelo:
@@ -107,7 +108,7 @@ print(luettelo.hae_numerot("Erkki"))
 print(luettelo.hae_numerot("Emilia"))
 ```
 
-Testikoodin tulostus on seuraava:
+Detta borde utskriva följande:
 
 <sample-output>
 
@@ -116,16 +117,15 @@ None
 
 </sample-output>
 
-Metodi `hae_numerot` siis palauttaa arvon `None`, jos henkilö ei löydy luettelosta, jos henkilö löytyy, palautetaan lista joka sisältää henkilön puhelinnumerot.
+Metoden `hamta_nummer` returnerar `None` om ett namn inte finns med i telefonkatalogen. Om namnet finns returneras listan med de nummer som är kopplade till namnet.
 
-Ohjelmoidessa mitä tahansa ohjelmaa kannattaa _aina_ kokeilla, että koodi toimii kuten sen olettaa toimivan, ennen kun etenee muuhun koodiin.
-Usein tämä testikoodi on poisheitettävää koodia, ja sikäli voisi ajatella testaamisesta olevan ylimääräistä vaivaa. Lähes 100% tapauksissa ei näin kuitenkaan ole.
+När man gör ändringar i ett program är det alltid värt att testa att koden fungerar som förväntat innan man går vidare med andra ändringar. Den kod som används för testning är vanligtvis något som raderas strax efteråt, och därför kanske du tycker att det inte är värt besväret att skriva några tester i första hand. I de flesta fall är detta inte sant. Testning är en förutsättning för bra programmeringsresultat.
 
-Koodiin tullut bugi kannattaa saada kiinni ja korjata niin pian kuin mahdollista. Jos koodin toimivuuden varmistaa lähes jokaisen uuden koodirivin jälkeen, on debuggaus ja korjaaminen yleensä vaivatonta ja nopeaa, koska tällöin voi olla melko varma siitä, että ongelma johtuu hetki sitten lisätyistä koodiriveistä. Jos taas koodia testataan vasta sen jälkeen kun siihen on lisätty kymmeniä koodirivejä, on virhelähteitä moninkertaisesti.
+En bugg i programmet bör fångas upp och åtgärdas så snart som möjligt. Om du tar för vana att kontrollera funktionaliteten i praktiskt taget varje ny kodrad kommer du att upptäcka att buggarna oftast är lätta att hitta och åtgärda, eftersom du kan vara helt säker på att buggen orsakades av den senaste ändringen. Om du bara testar programmet efter att ha lagt till dussintals rader kod ökar de potentiella källorna till buggar också med dussintals gånger.
 
-## Vaihe 2: käyttöliittymän runko
+## Steg 2: en skiss för användargränssnittet
 
-Kun sovelluslogiikan ydintoiminnallisuus on kunnossa, voidaan edetä sovelluksen tekstikäyttöliittymään. Tehdään sitä varten oma luokka `PuhelinluetteloSovellus`, jonka runko on seuraava:
+Med den grundläggande applikationslogiken ur vägen är det dags att implementera ett textbaserat användargränssnitt. Vi kommer att behöva en ny klass, `TelefonkatalogApplikation`, med följande inledande funktionalitet:
 
 ```python
 class PuhelinluetteloSovellus:
@@ -148,9 +148,9 @@ sovellus = PuhelinluetteloSovellus()
 sovellus.suorita()
 ```
 
-Luokka saattaa vaikuttaa vielä hämmentävältä, mutta tässä luodaan tosiaan vasta runko toiminnalle. Konstruktori luo puhelinluettelon, jonka olio pitää sisällään. Metodi `suorita(self)` käynnistää sovelluksen tekstikäyttöliittymän, jonka ytimen muodostaa `while`-silmukka, joka kyselee käyttäjältä mikä komento halutaan suorittaa. Ennen toistolauseeseen menemistä ohjelma tulostaa käyttöohjeet, kutsumalla metodia `ohje(self)`. Varsinaiset toiminnot toteutetaan seuraavaksi.
+Det här programmet gör inte så mycket ännu, men låt oss gå igenom innehållet. Konstruktormetoden skapar en ny Telefonkatalog, som lagras i ett privat attribut. Metoden `exekvera(self)` startar programmets textbaserade användargränssnitt, vars kärna är `while`-loopen, som fortsätter att be användaren om instruktioner tills de skriver in instruktionen för att avsluta. Det finns också en metod för instruktioner, `hjalp(self)`, som anropas innan man går in i loopen, så att instruktionerna skrivs ut.
 
-Laajennetaan käyttöliittymää siten, että luetteloon voidaan lisätä uusia tietoja:
+Låt oss nu lägga till lite faktisk funktionalitet. Först implementerar vi att kunna lägga till nya data i telefonkatalogen:
 
 ```python
 class PuhelinluetteloSovellus:
@@ -178,11 +178,11 @@ sovellus = PuhelinluetteloSovellus()
 sovellus.suorita()
 ```
 
-Jos valittu komento on tietojen lisäys (eli komento on _1_), kysyy käyttöliittymä nimen ja numeron käyttäjältä, ja lisää tiedot puhelinluetteloon kutsumalla sopivaa luettelon metodia.
+Om användaren skriver in 1 för att lägga till ett nytt nummer, frågar användargränssnittet efter ett namn och ett nummer och lägger till dessa i telefonkatalogen med hjälp av den lämpliga metod som definieras i klassen.
 
-Käyttöliittymä on siis vastuussa ainoastaan siitä, että se kommunikoi käyttäjän kanssa. Puhelinnumeron säilöminen nimen yhteyteen on jätetty kokonaisuudessan _Puhelinluettelo_-olion vastuulle.
+Användargränssnittets enda ansvar är att kommunicera med användaren. All annan funktionalitet, t.ex. att lagra ett nytt namn- och nummerpar, är Telefonkatalog-objektets ansvar.
 
-Käyttöliittymän rakennetta on mahdollista vielä parannella siten, että tietojen lisäys eriytetään omaan metodiinsa _lisays(self)_:
+Det finns utrymme för förbättringar i strukturen i vår användargränssnittsklass. Låt oss skapa en metod `tillägg_inlägg(self)` som hanterar instruktionen för att lägga till ett nytt inlägg:
 
 ```python
 class PuhelinluetteloSovellus:
@@ -214,9 +214,9 @@ sovellus = PuhelinluetteloSovellus()
 sovellus.suorita()
 ```
 
-Erillisen metodin käyttämisen taustallakin on sama _separation of concerns_ -periaate. Sen sijaan että koko käyttöliittymän toiminnallisuus sijoitettaisiin ison `while`-silmukan sisälle, tehdään jokaisesta yksittäisestä toiminnosta oma metodinsa. Tämä helpottaa kokonaisuuden hallintaa. Jos halutaan muokata tietojen lisäämisen toiminnallisuutta, tiedetään heti missä päin relevantti koodi sijaitsee.
+Separation of concerns-principen sträcker sig även till metodnivå. Vi skulle kunna ha hela användargränssnittets funktionalitet i en enda komplicerad `while`-loop, men det är bättre att separera varje funktionalitet i en egen metod. Ansvaret för `exekvera()`-metoden är bara att delegera de instruktioner som användaren skriver in till relevanta metoder. Detta hjälper till att hantera den växande komplexiteten i vårt program. Om vi till exempel senare vill ändra hur det fungerar att lägga till inlägg, är det omedelbart klart att vi då måste fokusera våra ansträngningar på `tillägg_inlägg()`-metoden.
 
-Lisätään käyttöliittymään toiminnallisuus numeroiden hakemista varten. Sijoitetaan sen hoitava koodi heti omaan metodiinsa:
+Låt oss inkludera funktionalitet för att söka efter inlägg i vårt användargränssnitt. Detta bör också ha sin egen metod:
 
 ```python
 
@@ -262,7 +262,7 @@ sovellus = PuhelinluetteloSovellus()
 sovellus.suorita()
 ```
 
-Sovelluksen perusversio toimii nyt. Seuraavassa esimerkki sovelluksen käytöstä:
+Vi har nu en enkel fungerande telefonkatalogsapplikation som är redo för testning. Följande är ett exempel på en körning:
 
 <sample-output>
 
@@ -292,18 +292,18 @@ komento: **0**
 
 </sample-output>
 
-Koodia on aika paljon, todennäköisesti enemmän kuin jos kaikki olisi ohjelmoitu yhteen pötköön. Koodin rakenne on kuitenkin siistihkö, ja koodin laajentamisenkaan ei pitäisi olla kovin hankalaa.
+För en så enkel applikation har vi skrivit ganska mycket kod. Om vi hade skrivit allt i den enda `while`-loopen hade vi förmodligen kunnat komma undan med mycket mindre kod. Det är dock ganska lätt att läsa koden, strukturen är tydlig och vi borde inte ha några problem med att lägga till nya funktioner.
 
-## Vaihe 3: tietojen haku tiedostosta
+## Steg 3: Importera data från en fil
 
-Laajennetaan ohjelmaa siten, että se lataa käynnistäessään puhelinluettelon tiedostosta, joka on seuraavaa muotoa:
+Låt oss anta att vi redan har några telefonnummer lagrade i en fil, och att vi vill läsa detta när programmet startar. Datafilen är i följande CSV-format:
 
 ```csv
 Erkki;02-1234567;045-4356713
 Emilia;040-324344
 ```
 
-Tiedoston käsittely on selkeästi oma vastuualueensa, eli toteutetaan sitä varten oma luokka:
+Hantering av filer är helt klart ett eget ansvarsområde, så det förtjänar en klass för sig:
 
 ```python
 class Tiedostonkasittelija():
@@ -321,9 +321,9 @@ class Tiedostonkasittelija():
         return nimet
 ```
 
-Konstruktorin parametrina annetaan tiedoston nimi. Metodi `lataa(self)` lukee tiedoston, ja pilkkoo sen rivit sanakirjaksi, missä avain on nimi ja arvona ovat nimeen liittyvät numerot.
+Konstruktörsmetoden tar namnet på filen som sitt argument. Metoden `ladda_fil(self)` läser innehållet i filen. Varje rad delas upp i två delar: ett namn och en lista med siffror. Sedan läggs dessa till i en ordbok, med namnet som nyckel och listan som värde.
 
-Metodi käyttää erästä Pythonin kätevää ominaisuutta: listasta on mahdollista ottaa ensin yksittäisiä alkioita erikseen nimettyinä muuttujina, sekä loput alkiot uutena listana, kuten seuraavasta esimerkistä käy ilmi. [Luvusta 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) muistamme että merkkijonojen metodi `split` tuottaa nimenomaan listan.
+Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [del 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) att strängmetoden `split` returnerar en lista.
 
 ```python
 lista = [1, 2, 3, 4, 5]
@@ -341,9 +341,9 @@ print(loput)
 
 </sample-output>
 
-Sijoituslauseen viimeisen muuttujan nimen edessä on *, ja se tarkoittaa, että viimeiseen muuttujaan kerätään taulukosta loput, eli kolmas ja sitä seuraavat alkiot.
+Tecknet `*` framför variabelnamnet `resten` i ovanstående exempel betyder att den sista variabeln ska innehålla alla återstående poster i listan, från den tredje och framåt.
 
-Tiedostonkäsittelijääkin kannattaa ehdottomasti testata, ennen kuin se pultataan muuhun koodiin:
+Vi bör absolut testa filhanteraren separat innan vi inkluderar den i vår applikation:
 
 ```python
 t = Tiedostonkasittelija("luettelo.txt")
@@ -356,7 +356,7 @@ print(t.lataa())
 
 </sample-output>
 
-Kun tiedostosta lukemisen todetaan toimivan, liitetään koodi muuhun ohjelmaan. Looginen paikka tiedoston lukemiseen on se hetki kun sovellus käynnistyy, eli luokan _PuhelinluetteloSovellus_ konstruktori:
+Eftersom filhanteraren verkar fungera bra kan vi lägga till den i vår applikation. Låt oss anta att vi vill läsa filen som det första varje gång programmet körs. Den logiska platsen för att läsa filen skulle vara konstruktören för klassen `TelefonkatalogApplikation`:
 
 ```python
 class PuhelinluetteloSovellus:
@@ -372,13 +372,13 @@ class PuhelinluetteloSovellus:
     # muu koodi
 ```
 
-Tiedoston lukua osana PuhelinLuetteloSovellusta kannattaa myös testata. Kun on varmistettu, että tiedoston sisältö saadaan ladattua luetteloon, voidaan edetä viimeiseen vaiheeseen.
+Denna funktionalitet bör också testas. När vi har försäkrat oss om att filens innehåll är tillgängligt via användargränssnittet i vår applikation kan vi gå vidare till nästa steg.
 
-## Vaihe 4: tietojen talletus tiedostoon
+## Steg 4: exportera data till en fil
 
-Viimeistellään ohjelman alustava versio vielä siten, että se tallentaa lopetettaessa puhelinluettelon takaisin tiedostoon.
+Den sista funktionen i vår grundversion av applikationen är att spara innehållet i telefonkatalogen tillbaka i samma fil som data lästes från.
 
-Tätä varten luokkaa _Puhelinluettelo_ tulee laajentaa siten, että sieltä saadaan tallennusta varten kaikki tiedot ulos:
+Detta innebär en förändring av `Telefonkatalog`-klassen. Vi måste kunna exportera innehållet i telefonkatalogen:
 
 ```python
 class Puhelinluettelo:
@@ -392,7 +392,7 @@ class Puhelinluettelo:
         return self.__henkilot
 ```
 
-Tallennus on luonnollisesti luokan _Tiedostonkasittelija_ vastuulla, eli laajennetaan sitä metodilla _talleta_, joka saa parametriksi puhelinluetteloa edustavan sanakirjan:
+Själva sparandet till filen bör hanteras av `FilHanterare`-klassen. Låt oss lägga till metoden `spara_fil` som tar en ordlistsrepresentation av telefonkatalogen som argument:
 
 ```python
 class Tiedostonkasittelija():
@@ -409,7 +409,7 @@ class Tiedostonkasittelija():
                 f.write(";".join(rivi) + "\n")
 ```
 
-Tallennus tapahtuu samalla kun sovelluksen käyttö lopetetaan. Tehdään tätäkin tarkoitusta varten oma metodinsa ja kutsutaan sitä sopivassa kohdassa:
+Sparandet bör ske när programmet avslutas. Låt oss lägga till en metod för detta ändamål i användargränssnittet och anropa den innan vi bryter ut ur `while`-loopen:
 
 ```python
 
@@ -473,13 +473,13 @@ Tee laajennus sitten, että kunnioitat ohjelman rakennetta. Eli lisää luokkaan
 
 </programming-exercise>
 
-## Olioita sanakirjassa
+## Objekt i en ordlista
 
-Seuraavassa tehtävässä on tarkoitus muuttaa puhelinluetteloa siten, että sanakirjan arvoksi talletetaan tavallisten listojen sijaan _olioita_.
+I nästa övning ombeds du att ändra din telefonkatalog så att värdena i ordlistan är objekt, inte listor.
 
-Periaatteessa asiassa ei ole mitään ihmeellistä, mutta kurssilla ei vielä ole näin tehty, joten tutkitaan ennen tehtävää hieman samantapaista, mutta yksinkertaisempaa esimerkkiä.
+Det är inget konstigt med det i sig, men det är första gången på den här kursen som något sådant föreslås, så låt oss gå igenom ett enklare exempel innan vi dyker ner i övningen.
 
-Tehdään sovellus, jonka avulla voidaan pitää kirjaa siitä, kuinka monta tehtävää opiskelijat ovat tehneet kurssin aikana. Kunkin opiskelijan tehtävämäärä lasketaan yksinkertaisen olion avulla:
+Här har vi en applikation som håller reda på hur många övningar som studenterna har gjort på en kurs. Varje elevs antal övningar lagras i ett enkelt objekt:
 
 ```python
 class Tehtavalaskuri:
@@ -493,7 +493,7 @@ class Tehtavalaskuri:
         return self.__tehtavia
 ```
 
-Luokkaa käyttävä pääohjelma on seuraavassa:
+Följande huvudfunktion använder klassen ovan:
 
 ```python
 opiskelijat = {}
@@ -518,7 +518,7 @@ for opiskelija, tehtavat in opiskelijat.items():
     print(f"{opiskelija} tehtäviä {tehtavat.tehtyja()} kpl")
 ```
 
-Käyttöesimerkki
+Att exekvera koden ovan kunde se ut enligt följande:
 
 <sample-output>
 
@@ -541,29 +541,29 @@ juuso tehtäviä 2 kpl
 
 </sample-output>
 
-Esimerkissä on parikin huomionarvoista seikkaa. Kun opiskelijan nimi syötetään, tarkastetaan aina ensin onko opiskelijaa vastaava olio jo sanakirjassa. Jos olioa ei ole, luodaan se:
+Det finns ett par saker att tänka på i exemplet ovan. När användaren matar in ett namn kontrollerar programmet först om namnet redan är en nyckel i ordlistan. Om namnet inte finns skapas ett nytt objekt som läggs till som en post i ordlistan:
 
 ```python
 if not nimi in opiskelijat:
     opiskelijat[nimi] = Tehtavalaskuri()
 ```
 
-Tämän jälkeen _tiedetään_ että olio on olemassa. Se on joko luotu juuri äsken tai jo aiemmalla silmukan kierroksella. Haetaan olio sanakirjasta, ja kutsutaan sen metodia `merkkaa`:
+Efter detta kan vi vara säkra på att objektet existerar, kopplat till namnet på den student som används som nyckel. Antingen skapades det precis, eller så fanns det redan från en tidigare iteration av loopen. I vilket fall som helst kan vi nu hämta objektet med nyckeln och kalla metoden `klar`:
 
 ```python
 opiskelijat[nimi].merkkaa()
 ```
 
-Rivillä tapahtuu oikeastaan kaksi asiaa, ja sama voitaisiin kirjoittaa siten, että sanakirjasta haettu olio sijoitettaisiin apumuuttujaan:
+Raden ovan innehåller egentligen två separata händelser. Vi kan lika gärna använda en hjälpvariabel och skriva den på två separata kodrader:
 
 ```python
 opiskelijan_laskuri = opiskelijat[nimi]
 opiskelijan_laskuri.merkkaa()
 ```
 
-Huomaa, että vaikka olio sijoitettaisiin apumuuttujaan, se _ei tarkoita_ että olio poistuisi sanakirjasta tai oliosta syntyisi kopio. Apumuuttuja on ainoastaan _viite_ sanakirjassa olevaan olioon.
+OBS: Även om objektet här tilldelas en hjälpvariabel, så finns objektet kvar i ordlistan precis som tidigare. Hjälparvariabeln innehåller en referens till objektet i ordlistan.
 
-Esimerkin koodia kannattaa **ehdottomasti** kokeilla [visualisaattorissa](http://www.pythontutor.com/visualize.html#mode=edit) jos ei ole aivan 100% varma siitä, miten koodi toimii.
+Om du inte är helt säker på vad som egentligen händer i koden ovan kan du prova med [visualiseringsverktyget](http://www.pythontutor.com/visualize.html#mode=edit).
 
 <programming-exercise name='Puhelinluettelon laajennus, osa 2' tmcname='osa10-11_puhelinluettelo_osa2'>
 
@@ -666,21 +666,21 @@ Varmista ensin että voit lisätä osoitteita luokkaan `Puhelinluettelo` ja kun 
 
 </programming-exercise>
 
-## Erinäisiä huomioita
+## Några avslutande anmärkningar
 
-Puhelinluetteloesimerkki noudattaa rakenteeltaan melko klassisia hyvän olio-ohjelmoinnin periaatteita. Kantavana ideana on siis ohjelman eri vastuualueiden jaottelu erillisiin luokkiin ja metodeihin. Eräs suurimmista motiiveista tällaiselle jaottelulle on monimutkaisuuden hallinta. Toinen tärkeä syy on se, että oikein tehty koodin jaottelu - tai _modularisointi_ kuten ammattijargon asian ilmaisee - tekee koodista potentiaalisesti helpomman ylläpitää ja laajentaa.
+Strukturen i Telefonkatalog-exemplet ovan följer de grundläggande principerna för objektorienterad programmering ganska väl. Den centrala principen är att identifiera de olika ansvarsområdena i programmet och fördela dessa logiskt mellan de olika klasserna och metoderna. Ett av de viktigaste motiven för denna uppdelning är att hantera komplexiteten. Ett annat viktigt motiv är att en logisk uppdelning av ansvarsområden - modularitet i facktermer - ofta gör koden lättare att underhålla och bygga vidare på.
 
-Oikeissa ohjelmistoissa ylivoimaisesti suurimman kustannuserän aiheuttaa juuri ylläpito (eli bugien korjailu) sekä ohjelman laajentaminen, joten tällä seikalla on taloudellisesti erittäin suuri merkitys.
+I de programvarupaket som utvecklas och används ute i världen är underhåll och utbyggnad, dvs felsökning av befintlig programvara och implementering av nya funktioner, den absolut dyraste delen av utvecklingen. Korrekt implementerad modularitet är ekonomiskt sett en mycket viktig funktion i programvaruutvecklingen.
 
-Nostetaan esimerkistä esiin vielä pari tärkeää seikkaa. Koodi ilmentää hyvin sitä, miten sovelluslogiikan varsinainen ydin on eriytetty sekä käyttöliittymästä, että datan tallettamisesta. Tämä on tärkeää muutamastakin syystä. Ensinnäkin se mahdollistaa koodin testailun pienemmissä yksiköissä, luokka ja metodi kerrallaan. Toisaalta koska sovelluslogiikka ei nyt riipu käyttöliittymästä tai tiedon talletustavasta, on esim. käyttöliittymää mahdollista muuttaa (ainakin johonkin pisteeseen asti) rikkomatta muuta sovellusta.
+Det finns några fler objektorienterade programmeringsprinciper som är värda att lyfta fram här. Telefonkatalog är ett bra exempel på hur den centrala programlogiken kan (och bör) separeras från både användargränssnitt och datalagring. Detta är viktigt på grund av ett par olika skäl. För det första gör denna separation det möjligt att testa koden i mindre enheter, en klass och metod i taget. För det andra, eftersom kärnlogiken nu är oberoende av gränssnitten som kommer till omvärlden, är det möjligt att i viss utsträckning ändra implementeringen av antingen kärnlogiken eller gränssnitten utan att hela applikationen går sönder.
 
-Tiedostojen käsittelyn suhteen kannattaa myös huomata se, että ohjelma lukee tiedostoa ainoastaan kerran, käynnistysvaiheessa. Tämän jälkeen kaikki tieto säilytetään ohjelman muuttujissa. Ohjelma tallettaa tiedot kokonaisuudessaan, eli käytännössä uudelleenkirjoittaa tiedoston joka kerta kokonaan uudestaan. Tiedostojen käsittely kannattaa lähes kaikissa tapauksissa tehdä näin.
+Filhanteringen i Telefonkatalog-programmet går till på följande sätt: Programmet läser filen en enda gång, när det startar. Efter detta lagras all data i variabler i programmet. När programmet avslutas lagras alla data igen, vilket i praktiken innebär att filen skrivs över. I de flesta fall är detta det rekommenderade sättet att hantera externa filer, eftersom det ofta är mycket mer komplicerat att redigera data på plats.
 
-Hyvän koodin kirjoittamisesta kerrotaan lisää esimerkiksi Robert Martinin mainiossa kirjassa [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882). Kirjan koodiesimerkit on kuitenkin toteutettu Javalla, eli esimerkkien lukeminen saattaa tässä vaiheessa olla vielä varsin työlästä. Paneudumme ylläpidettävyydeltään ja laajennettavuudeltaan laadukkaan koodin toteuttamiseen tarkemmin kursseilla [Ohjelmistotekniikka](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024742-2020-08-01) ja [Ohjelmistotuotanto](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024909-2020-08-01).
+Det finns många bra guideböcker för att lära sig om god programmeringspraxis. En sådan är [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) av Robert Martin. Kodexemplen i boken är dock implementerade i Java, så att arbeta igenom exemplen kan vara ganska besvärligt vid denna tidpunkt i din programmeringskarriär, även om boken i sig rekommenderas mycket av kurspersonalen. Teman som lätt underhållen, utbyggbar kod av god kvalitet kommer att utforskas ytterligare på kurserna [Software Development Methods](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024742-2020-08-01) och [Software Engineering](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024909-2020-08-01).
 
-Hyvän olio-ohjelmoinnin periaatteiden mukaisen koodin kirjoittamisella on myös hintansa. Koodia tulee todennäköisesti enemmän kuin jos sama ongelma ratkaistaisiin yhteen pötköön kirjoitetulla spagettikoodilla. Ohjelmoijan onkin aina ratkaistava se, minkälainen lähestymistapa on paras kuhunkin tilanteeseen. Joskus voi olla vain parasta häkkeröidä kasaan nopeasti jotain joka toimii nyt. Jos taas on odotettavissa, että samaa koodia tullaan jatkossa laajentamaan. joko koodarin itsensä tai jonkun muun toimesta, on todennäköisesti kannattavaa panostaa koodin luettavuuteen ja jäsentämiseen jossain määrin jo alkuvaiheissa.
+Att skriva kod enligt etablerade principer för objektorienterad programmering har ett pris. Du kommer sannolikt att få skriva mer kod än om du skulle skriva din implementation i en enda kontinuerlig stöt av spaghettikod. En av de viktigaste färdigheterna hos en programmerare är att bestämma det bästa tillvägagångssättet för varje situation. Ibland är det nödvändigt att bara hacka ihop något snabbt för omedelbar användning. Å andra sidan, om det inom överskådlig framtid kan förväntas att koden kommer att återanvändas, underhållas eller vidareutvecklas, antingen av dig eller, mer kritiskt, av någon helt annan, blir programkodens läsbarhet och logiska modularitet väsentlig. Oftast är det så att om det är värt att göra, så är det värt att göra det bra, även i de allra tidigaste utvecklingsstadierna.
 
-Harjoitellaan vielä isomman ohjelmakokonaisuuden toteuttamista yhden ohjelmointitehtävän verran.
+För att avsluta denna del av materialet kommer du att implementera ytterligare en större applikation.
 
 <programming-exercise name='Opintorekisteri' tmcname='osa10-12_opintorekisteri'>
 
@@ -766,9 +766,9 @@ Tehtävästä on tarjolla kaksi tehtäväpistettä. Ensimmäisen pisteen saa jos
 
 </programming-exercise>
 
-## Epilogi
+## Epilog
 
-Palataan vielä hetkeksi tarkastelemaan puhelinluetteloesimerkkiä, ja sen käyttöliittymän toteuttavaa luokkaa:
+För att avsluta den här delen av materialet återvänder vi till användargränssnittet i telefonkatalogsexemplet för en stund.
 
 ```python
 class PuhelinluetteloSovellus:
@@ -782,9 +782,9 @@ sovellus = PuhelinluetteloSovellus()
 sovellus.suorita()
 ```
 
-`PuhelinluetteloSovellus`-olio pitää siis sisällään sekä `Puhelinluettelo`-olion että `Tiedostonkasittelija`-olion. Jos olisimme ammattikoodareita, tekisimme sovellukseen pienen muutoksen. Nyt nimittäin se, että sovellus käyttää nimenomaan tiedostoa _luettelo.txt_ tallentamaan luettelon tiedot, on sovelluksen _käyttöliittymän_ kannalta täysin turha deltaji. Jos tiedosto haluttaisiin vaihtaa, edellyttäisi se muutosta luokan `PuhelinluetteloSovellus` koodiin. Tämä taas ei ole hyvä _separation of concerns_ -periaatetta ajatellen, sillä puhelinluettelon tallentaminen ei kuulu ollenkaan käyttöliittymästä huolehtivan luokan vastuisiin.
+Ett `TelefonkatalogApplikation`-objekt innehåller både ett `Telefonkatalog`-objekt och ett `FilHanterare`-objekt. Namnet på den fil som skickas till FilHanterare är för närvarande hårdkodat i `TelefonkatalogApplikation`-klassen. Detta är en helt irrelevant detalj när det gäller applikationens användargränssnitt. Faktum är att den bryter mot principen om separation of concerns: var ett `Telefonkatalog`-objekt sparar sitt innehåll ska inte vara en angelägenhet för en `TelefonkatalogApplikation`, men om vi vill ändra platsen måste vi ändra koden för `TelefonkatalogApplikation`.
 
-Parempi vaihtoehto olisikin luoda tiedostokäsittelijä muualla ja antaa se `PuhelinluetteloSovellus`-oliolle, esimerkiksi konstruktorin parametrina:
+Det skulle vara en bättre idé att skapa ett FilHanterare-objekt någonstans utanför `TelefonkatalogApplikation`-klassen och skicka det som ett argument till applikationen:
 
 ```python
 class PuhelinluetteloSovellus:
@@ -801,7 +801,7 @@ sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
 sovellus.suorita()
 ```
 
-Näin on saatu poistettua luokalta `PuhelinluetteloSovellus` _turha riippuvuus_ käsiteltävän tiedoston nimeen. Jos tiedoston nimi muuttuu, ei luokan koodiin tarvitse koskea ollenkaan. Riittää ainoastaan, että oliolle annetaan hieman erilainen konstruktoriparametri:
+Detta tar bort ett onödigt beroende från `TelefonkatalogApplikation`-klassen. Om namnet på filen ändras behöver användargränssnittet inte längre ändras. Vi behöver bara skicka ett annat argument till konstruktören:
 
 
 ```python
@@ -818,7 +818,9 @@ sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
 sovellus.suorita()
 ```
 
-Tämä sama tekniikka mahdollistaa sen, että siirrytäänkin tallentamaan puhelinluettelo tiedoston sijaan esimerkiksi internetissä olevaan pilvipalveluun. On vain kirjoitettava pilvipalvelua käyttävä luokka, joka tarjoaa puhelinluettelosovellukselle samanlaiset metodit kuin `Tiedostonkasittelija`. Tämän luokan olio voidaan antaa sovellukselle, ilman että sovelluksen koodista tulee muuttaa riviäkään:
+Denna förändring gör det också möjligt för oss att överväga mer exotiska lagringsplatser, till exempel en molntjänst på internet. Vi behöver bara implementera en klass som använder molntjänsten och erbjuder `TelefonkatalogApplikation` exakt samma metoder som `FilHanterare`.
+
+En instans av denna nya "moln hanterar"-klass kan skickas som ett argument till konstruktören och inte en enda rad kod behöver ändras i användargränssnittet:
 
 ```python
 class InternetTallennin:
@@ -829,12 +831,11 @@ sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
 sovellus.suorita()
 ```
 
-Kuten aiemmin todettiin, on tämän kaltaisten tekniikoiden käytöllä oma hintansa: koodia tulee enemmän, ja ohjelmoijan tulee harkita milloin se hinta kannattaa maksaa.
+Som du har sett tidigare har den här typen av tekniker ett pris, eftersom det blir mer kod att skriva, så en programmerare måste överväga om det är en acceptabel avvägning.
 
-Tässä esitelty tekniikka (joka kulkee ammattijargonissa nimellä _dependency injection_), missä oliolle annetaan ulkopuolelta käsin sen tarvitsema _riippuvuus_ (eli käytännössä jokin muu olio) on erittäin tyypillinen kikka ammattimaisessa koodauksessa, muun muassa siksi, että se helpottaa ohjelmistojen laajentamista sekä niiden automatisoitua testaamista. Jatkamme teeman käsittelyä kursseilla [Ohjelmistotekniikka](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024742-2020-08-01) ja [Ohjelmistotuotanto](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024909-2020-08-01).
+Den teknik som beskrivs ovan kallas beroendeinjektion. Som namnet antyder är tanken att alla beroenden som krävs av ett objekt ska tillhandahållas utanför objektet. Det är ett mycket användbart verktyg i en programmerares verktygslåda, eftersom det gör det lättare att implementera nya funktioner i program och underlättar automatisk testning. Detta tema kommer att utforskas ytterligare på de tidigare nämnda kurserna [Software Development](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024742-2020-08-01) och [Software Engineering](https://studies.helsinki.fi/opintotarjonta/cu/hy-CU-118024909-2020-08-01).
 
 
-Vastaa lopuksi osion loppukyselyyn:
+Svara vänligen på en snabb enkät om denna del av kursen.
 
 <quiz id="a5d5c420-b834-5a04-a8e3-a442912adcfa"></quiz>
-

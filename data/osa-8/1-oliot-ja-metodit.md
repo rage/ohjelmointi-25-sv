@@ -1,26 +1,24 @@
 ---
 path: '/osa-8/1-oliot-ja-metodit'
-title: 'Oliot ja metodit'
+title: 'Objekt och metoder'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä tarkoitetaan oliolla
-- Ymmärrät, mitä tarkoitetaan olioiden itsenäisyydellä
-- Osaat muodostaa ja käsitellä olioita
+- Kommer du veta vad ett objekt är i programmering
+- Kommer du förstå vad som menas med oberoende hos individuella objekt
+- Kommer du kunna skapa och komma åt objekt
 
 </text-box>
 
-Tämä on Ohjelmoinnin jatkokurssin ensimmäinen osa, ja kurssilla käytetään VS Codea samaan tapaan kuin Ohjelmoinnin perusteissa. Jos et ole käyttänyt ennen VS Codea, löydät [tästä](https://www.mooc.fi/fi/installation/vscode) ohjeet ympäristön asentamiseen.
+Detta är första delen av den Avancerade Kursen inom Programmering. Materialet är designat för att bli använt med Visual Studio Code editeraren, liksom den föregående kursen Introduktion till Programming. Ifall du inte använt Visual Studio Code tidigare, så hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://programming-24.mooc.fi/part-4/1-vscode).
 
-Jatkokurssi ja peruskurssi ovat TMC:ssä yhtenä kurssina. Jos lopetit juuri peruskurssin tekemisen, jatkokurssin tehtävät löytyvät samasta kurssista. Tämän jatkokurssin ensimmäisen osan numero on **Osa 8**. Mikäli et ole tehnyt tähän jatkokurssin liittyvää peruskurssia, valitse TMC-pluginissa organisaatioksi **MOOC** ja kurssiksi **Ohjelmoinnin MOOC 2024** ja aloita kurssin tekeminen osasta 8.
+I introduktion till Programmering kursen så lade vi märke till att det ofta är logiskt att gruppera relaterad data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tuple eller en ordlista för att organisera datan till en enskild datastruktur.
 
-Kuten kurssin ensimmäisen puolikkaan aikana huomattiin, on usein hyödyllistä yhdistää samaan asiaan liittyvät tiedot yhdeksi kokonaisuudeksi. Esimerkiksi kirjaa on kätevä mallintaa vaikkapa tuplen tai sanakirjan avulla, kun kaikki kirjaan liittyvät tiedot voidaan tallentaa samaan rakenteeseen.
-
-Tuplea käyttämällä esimerkki voisi näyttää tältä:
+Lösningen kunde se ut så här när man använder en tuple:
 
 ```python
 nimi = "Nuoruuteni näppäilyt"
@@ -34,7 +32,7 @@ kirja = (nimi, kirjailija, vuosi)
 print(kirja[0])
 ```
 
-Sanakirjassa on tässä yhteydessä se etu, että avaimina voidaan käyttää merkkijonoja kokonaislukujen sijasta. Näin ollen alkioille voidaan antaa niiden sisältöä kuvaavat nimet:
+I ett fall som detta är fördelen med att använda en ordlista att vi kan använda strängar istället för indexar som nycklar. Alltså, kan vi ge deskriptiva namn till sakerna som förvaras datastrukturen:
 
 ```python
 nimi = "Nuoruuteni näppäilyt"
@@ -48,9 +46,9 @@ kirja = {"nimi": nimi, "kirjailija": kirjailija, "vuosi": vuosi}
 print(kirja["nimi"])
 ```
 
-Molemmissa tapauksissa tietojen tallentaminen tietorakenteeseen muodostaa _olion_. Olio on itsenäinen kokonaisuus, joka sisältää (tässä tapauksessa) toisiinsa liittyvää tietoa. Itsenäisyys tarkoittaa sitä, että olioon tehdyt muutokset eivät vaikuta muihin olioihin.
+I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen specifikt betydelsen av en oberoende helhet, i detta fall innehållande några bitar av data som på något vis är relaterade. Att vara oberoende betyder att ändringar till ett objekt inte påverkar andra objekt.
 
-Jos esimerkiksi muodostetaan sanakirjaa käyttäen kaksi kirjaoliota, ensimmäiseen kirjaan tehdyt muutokset eivät vaikuta toiseen kirjaan:
+Ifall vi skulle skapa två strukturellt identiska representationer av böcker, användandes ordlistor och identiska nycklar, skulle ändringar som görs till en av dem inte påverka den andra:
 
 ```python
 kirja1 = {"nimi": "Vanhus ja Python", "kirjailija": "Ernest Pythonen", "vuosi": 1952}
@@ -76,17 +74,19 @@ Seitsemän Pythonia
 
 <img src="8_1_1.png">
 
-<text-box variant="info" name="Oliot Pythonissa">
+<text-box variant="info" name="Python objekt">
 
-Kuten kurssin ensimmäisen puolikkaan aikana kerrottiin, Pythonissa kaikki arvot ovat itse asiassa olioita. Tämä tarkoittaa, että muuttujan arvo on _viittaus olioon_, ja varsinainen tieto on tallennettu olioon. Kun esimerkiksi alustetaan muuttuja `a = 3`, ei muuttujan `a` arvo ole 3 vaan _viittaus olioon, jonka sisältö on arvo 3_.
 
-Useimmissa muissa ohjelmointikielissä on olioiden lisäksi ns. perustyyppisiä arvoja (esimerkiksi kokonais- ja liukuluvut sekä totuusarvot), jotka tallennetaan sellaisenaan muuttujiin. Pythonissakin perustyyppiset oliot (kuten vaikkapa luvut, totuusarvot tai merkkijonot) ovat kuitenkin muuttumattomia eli _mutatoitumattomia_. Ohjelmoijan kannalta niiden käyttö ei siis käytännössä eroa perustyyppisistä arvoista.
+Du kanske kommer ihåg från introduktion till programmering kursen att vilket som helst värde i Python internt är behandlat som ett objekt. Detta betyder att värdet lagrat i en variabel är en _referens till ett objekt_. Själva datan är lagrad inuti ett objekt i datorns minne. Ifall du ger ett värde till en ny variable med kommandot `a = 3`, är värdet som lagras i variabeln _inte_ 3, utan en _referens till ett objekt som innehåller värdet 3_.
+
+De flesta andra programmeringsspråk (i varje fall de som stöder objekt-orienterad programmering) inkluderar vissa särskilt definierade _primitiva datatyper_. Dessa inkluderar ofta åtminstone [integer] nummer, flyttals nummer och boleska sanningsvärden. Primitiver är processerade direkt, vilket betyder att de är lagrade direkt i variabler, inte som referenser. Python har inga sådana primitiver, men att jobba med de grundläggade datatyperna i Python är i praktiken väldigt liknande. Objekt av dessa grundläggande datatyper (såsom nummer, boleska värden och strängar) är _oföränderliga_, vilket betyder att de inte kan ändras i minnet. Ifall värdet som lagras i en variabel med en grundläggande datatyp måste ändras så byts hela referensen ut, men själva objektet kvarstår i minnet.
+
 
 </text-box>
 
-## Oliot ja metodit
+## Objekt och metoder
 
-Olioiden tietosisältöä voidaaan havainnoida ja muuttaa _metodien_ avulla. Metodi on funktio, jonka toiminta kohdistuu annettuun olioon. Metodin erottaa muista funktioista tapa, jolla sitä kutsutaan: ensin kirjoitetaan kohdeolio ja sen perään kutsuttava metodi pisteellä erotettuna. Esimerkiksi sanakirja-olion kaikki arvot voidaan palauttaa metodin `values` avulla:
+Datan som lagras i ett objekt kan kommas åt genom olika _metoder_. En metod är en funktion som opererar på ett specifikt objekt som den är kopplad till. Sättet att åtskilja mellan metoder och andra funktioner ligger i hur de är kallade: först skriver man namnet på objektet som avses, sedan en punkt och till sist metodens namn, åtföljt av argument ifall sådana finns. Till exempel returnerar metoden `values` alla värden som är lagrade i ett objekt av typen ordlista eller `dict`:
 
 ```python
 # muodostetaan sanakirjatyyppinen kirjaolio
@@ -107,7 +107,7 @@ Ernest Pythonen
 
 </sample-output>
 
-Samalla tavalla merkkijonometodit kohdistuvat siihen merkkijonoon, jonka kautta niitä kutsutaan. Esimerkiksi merkkijonon metodeja ovat `count` ja `find`:
+På samma sätt opererar en strängmetod på det strängobjekt som den kallas på. Några exempel av strängmetoder är `count` och `find`:
 
 ```python
 nimi = "Keijo Keksitty"
@@ -134,7 +134,7 @@ print("Ihan eri jono".find("Keksitty"))
 
 </sample-output>
 
-Merkkijonometodit palauttavat arvoja, mutta niiden avulla ei voida muuttaa merkkijonoa. Kuitenkin esimerkiksi lista-olion metodien avulla voidaan muuttaa listan sisältöä:
+Strängmetoder returnerar värden, men ändrar inte innehållet av en sträng. Liksom nämnt ovan är strängar i Python oföränderliga. Detta gäller däremot inte alla metoder; Pythonlistor är föränderliga, alltså kan listmetoder ändra innehållet av listan som de kallas på: 
 
 ```python
 lista = [1,2,3]

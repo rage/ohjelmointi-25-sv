@@ -1,20 +1,20 @@
 ---
 path: '/osa-8/2-luokat-ja-oliot'
-title: 'Luokat ja oliot'
+title: 'Klasser och objekt'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter detta avsnitt
 
-- Tiedät, mitä tarkoitetaan luokalla
-- Ymmärrät luokan ja olion yhteyden
-- Tiedät, mitä olio-ohjelmointi tarkoittaa
+- Vet du vad en klass är
+- Kommer du att förstå vad kopplingen mellan en klass och ett objekt är
+- Kommer du att veta vad som menas med objektorienterad programmering
 
 </text-box>
 
-Edellisessä osassa käsitellyt esimerkkioliot – listat, tuplet, sanakirjat ja merkkijonot – ovat siinä mielessä erikoistapauksia, että niiden kaikkien muodostamiseen on Pythonissa sisäänrakennettuna oma syntaksinsa:
+I föregående avsnitt arbetade vi med listor, tupler, ordlistor och strängar. Dessa är alla ganska speciella fall i Python-programmering. Pythons syntax har en unik, fördefinierad metod för att deklarera ett objekt som tillhör var och en av dessa typer:
 
 ```python
 # Lista luodaan antamalla arvot hakasuluissa
@@ -30,7 +30,7 @@ sanakirja = {"yksi": 1, "kaksi:": 2}
 oma_tuple = (1,2,3)
 ```
 
-Muita olioita muodostettaessa kutsutaan erityistä metodia, joka luo olion. Tällaista metodia kutsutaan _konstruktoriksi_. Tarkastellaan esimerkkinä murtolukuolioiden muodostamista Fraction-luokasta:
+När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk genom Fraction-klassen.
 
 ```python
 # Tuodaan käyttöön luokka Fraction modulista fractions
@@ -61,20 +61,20 @@ print(puolikas + kolmasosa)
 
 </sample-output>
 
-Esimerkistä huomataan, että konstuktorikutsut poikkeavat aiemmista metodikutsuista. Konstruktorikutsuja ei ole sidottu tiettyyn olioon (mikä on sikäli loogista, että olio muodostetaan kutsumalla konstruktoria). Lisäksi metodin nimi on kirjoitettu isolla alkukirjaimella: `puolikas = Fraction(1,2)`. Pureudutaan tarkemmin olion muodostamisen mekanismiin esittelemällä _luokan_ käsite.
+Som du kan se ovan, ser metodkallningar för konstruktorer lite annorlunda ut än de normala metodkallningar som vi har stött på tidigare. För det första är de inte kopplade till något objekt med punktnotationen (eftersom konstruktoranropet behövs för att skapa ett objekt i första hand). Konstruktorsmetoden skrivs också med stor bokstav: `[half = Fraction(1,2)]`. Låt oss titta närmare på hur objekt konstrueras genom att bekanta oss med begreppet klass.
 
-## Luokka on olion käsikirjoitus
+## En klass är ritningen till ett objekt
 
-Materiaalissa on jo aiemmin vilahtanut käsite _luokka_. Edellisessä esimerkissä otettiin käyttöön luokka `Fraction` moduulista `fractions`. Uudet oliot muodostettiin kutsumalla luokan `Fraction` _konstruktoria_.
+Vi har redan använt termen klass i materialet många gånger. I exemplet ovan importerade vi t.ex. klassen `Fraction` från modulen `fractions`. Nya bråktalsobjekt skapades genom att kalla på konstruktorsmetoden för klassen `Fraction`.
 
-Luokassa määritellään siitä muodostettavien olioiden rakenne ja toiminnallisuus. Luokkaa nimitetään tästä syystä joskus olion käsikirjoitukseksi. Luokassa siis kerrotaan, millaista tietoa olio sisältää, ja määritellään metodit, joiden avulla oliota voidaan käsitellä. _Olio-ohjelmoinnilla_ tarkoitetaan ohjelmointitapaa, jossa ohjelman toiminnallisuus tapahtuu luokkien ja niistä muodostettujen olioiden avulla.
+En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den. Därför kallas klasser ibland till objektens ritningar. En klassdefinition berättar alltså till oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser och objekt som skapas baserat på dessa.
 
-Yhdestä luokasta voidaan muodostaa useita olioita. Niin kuin aiemmin kerrottiin, oliot ovat itsenäisiä - muutokset olioon eivät vaikuta muihin luokasta muodostettuihin olioihin. Jokaisella oliolla on oma tietosisältönsä. Vähän yksinkertaistaen voisi sanoa, että
+En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs till ett objekt påverkar i allmänhet inte de andra objekten som är samma klass. Varje objekt har sin egen unika uppsättning dataattribut. Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
 
-* luokassa määritellään muuttujat ja
-* oliota muodostaessa niille annetaan arvot.
+* En klass definierar variablerna
+* när ett objekt skapas tilldelas dessa variabler värden
 
-Luodaan esimerkkinä `Fraction`-luokasta olio ja tulostetaan sen osoittaja ja nimittäjä:
+Vi kan alltså använda ett objekt av typen `Fraction` för att komma åt täljaren och nämnaren i ett bråktal:
 
 ```python
 from fractions import Fraction
@@ -95,9 +95,9 @@ print(luku.denominator)
 
 </sample-output>
 
-Luokassa `Fraction` on siis määritelty, että olioilla on muuttujat `numerator` ja `denominator`. Jokaisella oliolla on kuitenkin oma arvonsa näille muuttujille.
+Klassdefinitionen för `Fraction` innehåller deklarationer för variablerna `numerator` och `denominator`. Varje objekt som skapas baserat på klassen har sina egna specifika värden som tilldelas dessa variabler.
 
-Samalla tavalla `date`-luokasta muodostetuilla olioilla on kaikilla omat itsenäiset arvonsa vuodelle, kuukaudelle ja päivämäärälle:
+På samma sätt innehåller objekt som skapats baserat på klassen `date` sina egna unika värden för datumets år, månad och dag:
 
 ```python
 from datetime import date
@@ -117,11 +117,11 @@ print(juhannus.month)
 
 </sample-output>
 
-Luokassa `date` on siis määritelty, että luokasta muodostettavilla olioilla on muuttujat `year`, `month` ja `day`. Kun luokasta muodostetaan olio, annetaan muuttujille arvot. Joka oliolla on omat arvonsa muuttujille.
+Definitionen av klassen `date` innehåller deklarationer av variablerna `year`, `month` och `day`. När ett nytt datumobjekt skapas baserat på klassen tilldelas dessa variabler värden. Varje objekt har sina egna unika värden som tilldelas dessa variabler.
 
-## Olioita käsittelevät funktiot
+## Funktioner som arbetar med objekt
 
-Funktioiden parametrina oleviin olioihin ei liity oikeastaan mitään sen kummempaa. Niitä on jo kurssin aiemmissa osissa nähty runsaasti. Seuraavassa on esimerkki funktiosta, joka tarkastaa, onko sen parametrina oleva `date`-olio viikonloppu:
+Att passera ett objekt som ett argument till en funktion borde vara bekant för dig vid det här laget eftersom vi har gjort det redan många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som passeras som argument infaller på en helg:
 
 ```python
 def onko_viikonloppu(paiva: date):
@@ -129,9 +129,7 @@ def onko_viikonloppu(paiva: date):
     return viikonpaiva == 6 or viikonpaiva == 7
 ```
 
-Funktio siis  käyttää parametrina olevan olion metodia [isoweekday](https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday), joka palauttaa viikonpäivää vastaavan numeron niin, että maanantai on 1, tiistai on 2, jne.
-
-Funktiota käytetään seuraavasti:
+Denna funktion använder metoden [isoweekday](https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday), som definieras i klassdefinitionen för klassen date, och returnerar ett heltalsvärde på det sättet att om det angivna datumet är en måndag returnerar den 1, och om det är en tisdag returnerar den 2, och så vidare.
 
 ```python
 joulu = date(2020, 12, 24)
@@ -148,9 +146,9 @@ True
 
 </sample-output>
 
-## Metodi vs. olion muuttuja
+## Metoder vs variabler
 
-Jos tarkastellaan `date`-oliota, niin huomataan, että sen käsittely poikkeaa hieman riippuen siitä, mitä asiaa olion sisällöstä tarkastellaan:
+När du arbetar med ett objekt av typen `date` kanske du märker att det finns en liten skillnad mellan hur variablerna i objektet åtkoms jämfört med hur metoderna som är kopplade till objekten åtkoms:
 
 ```python
 paiva = date(2020, 12, 24)
@@ -172,13 +170,13 @@ Kuukausi: 12
 
 </sample-output>
 
-Päiväolion viikonpäivä saadaan siis selville kutsumalla _metodia_ isoweekday:
+Veckodagen som datumet infaller på är tillgänglig via metoden isoweekday:
 
 ```python
 viikonpaiva = paiva.isoweekday()
 ```
 
-Koska on kyse metodikutsusta, niin metodin nimen perään laitetaan sulut. Jos sulut unohtuvat, on lopputulos outo:
+Detta är en metodkallelse, alltså finns det parenteser efter namnet på metoden. Om du lämnar bort parenteserna uppstår det inte något fel, men resultatet blir konstigt:
 
 ```python
 viikonpaiva =  paiva.isoweekday
@@ -191,13 +189,13 @@ Viikonpäivä: <built-in method isoweekday of datetime.date object at 0x10ed6645
 
 </sample-output>
 
-Päiväolioon liittyvä kuukausi taas on olion muuttuja, ja sen arvo selviää _viittaamalla_ muuttujaan
+Månaden av ett date-objekt är en variabel, alltså kan det tillgivna värdet kommas åt med en referens.
 
 ```python
 kuukausi = paiva.month
 ```
 
-Nyt siis käytössä _ei ole sulkuja_. Jos tässä tilanteessa yritettäisiin käyttää sulkuja, ohjelma aiheuttaisi virheen:
+Lägg märke till att det inte finns parenteser här. Att sätta in parenteser skulle orsaka ett fel:
 
 ```python
 kuukausi = paiva.month()

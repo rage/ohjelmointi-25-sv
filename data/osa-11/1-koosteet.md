@@ -1,23 +1,21 @@
 ---
 path: '/osa-11/1-koosteet'
-title: 'Koosteet'
+title: 'List comprehension'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetaan koosteella (comprehension)
-- Osaat hyödyntää koosteita uusien listojen muodostamiseen
+- Vet du vad list comprehension är
+- Kommer du att kunna använda list comprehensions för att skapa nya listor
 
 </text-box>
 
-Ohjelmointiin liittyy usein erilaisten sekvenssien (eli sarjojen) käsittely. Aikaisemmissa osissa on käytetty runsaasti aikaa merkkijonojen, listojen ja sanakirjojen käsittelyyn eri tavoilla.
+En av de situationer där programmering är som mest kraftfull är vid bearbetning av sekvenser av objekt och händelser. Datorer är bra på att upprepa saker. I de tidigare delarna av det här materialet har vi till exempel itererat strängar, listor och ordlistor på olika sätt.
 
-Oletetaan tilanne, jossa meillä on lista kokonaislukuja. Tämän listan perusteella meidän pitäisi luoda vastaava merkkijonolista.
-
-Perinteinen tapa toteuttaa operaatio näyttäisi esimerkiksi tältä:
+Låt oss anta att vi har en lista med heltal och att vi skulle behöva samma lista med objekt i strängformat. Ett traditionellt sätt att utföra uppgiften skulle kunna se ut så här:
 
 ```python
 luvut = [1, 2, 3, 6, 5, 4, 7]
@@ -27,28 +25,30 @@ for luku in luvut:
     merkkijonot.append(str(luku))
 ```
 
-## Listakooste
+## List comprehension
 
-Python tarjoaa kuitenin "pythonmaisemman" tavan uuden listan muodostamiseksi vanhan perusteella. Menetelmää voidaan kutsua "listakoosteeksi", mutta huomattavasti yleisempää on käyttää englanninkielistä nimeä _list comprehension_.
+Det finns också ett mer "pythoniskt" sätt att generera listor från befintliga listor. Dessa kallas list comprehensions.
 
-Menetelmässä ideana on kuvata yhden rivin lausekkeella, mikä operaatio listan kaikille alkioille tehdään, ennen kuin ne tallennetaan uuteen listaan.
+Tanken är att på en enda rad få plats med både beskrivningen av vad som ska göras med varje objekt i listan och tilldelningen av resultatet till en ny lista.
 
-Esimerkiksi yllä esitetty ohjelma, joka luo merkkijonolistan kokonaislukulistan perusteella, näyttäisi listakoostetta hyödyntäen tältä:
+I exemplet ovan var operationen som utfördes på varje objekt i listan mycket enkel: varje heltal omvandlades till en sträng. Låt oss se hur detta skulle se ut implementerat med en list comprehension:
 
 ```python
 luvut = [1, 2, 3, 6, 5, 4, 7]
 merkkijonot = [str(luku) for luku in luvut]
 ```
 
-Koosteessa näyttää siis olevan jotakuinkin samat elementit kuin perinteisessäkin toteutuksessa, mutta syntaksi on uudenlainen. Yleisemmin listakoosteen syntaksi voitaisiin esittää esimerkiksi näin:
+Den andra raden ovan innehåller många av samma element som den mer traditionella iterativa metoden, men syntaxen är annorlunda. Ett sätt att generalisera en list comprehension skulle kunna vara
 
-`[<lauseke> for <alkio> in <sarja>]`
+`[<uttryck> for <föremål> in <serie>]`
 
-Koosteen ympärillä olevat hakasulkeet kertovat, että lopputuloksena on uusi lista. Koosteessa poimitaan yksi kerrallaan alkio alkuperäisestä sarjasta (esimerkkimme tapauksessa listasta) ja tallennetaan siihen liittyvän lausekkeen arvo uuteen listaan. Lopputuloksena on lista, jossa on yhtä paljon alkioita kuin alkuperäisessä listassa ja kaikki alkiot on käsitelty samalla tavalla.
+Hakparenteserna runt list comprehensionsatsen signalerar till Python att resultatet ska vara en ny lista. En efter en bearbetas varje objekt i den ursprungliga listan och resultatet lagras i den nya listan, precis som i det iterativa tillvägagångssättet ovan. Som resultat har vi en ny lista med exakt lika många objekt som i originalet, och alla objekt har behandlats på ett identiskt sätt.
+
+(OBS: originalen till bilderna i denna del saknas tillfälligt, vilket är anledningen till att det finns en del finskt vokabulär i illustrationerna i denna del. Vi arbetar på att åtgärda detta).
 
 <img src="11_1_2.png">
 
-Toisessa esimerkissä jokainen alkuperäisen listan alkio kerrotaan kymmenellä ja tallennetaan uuteen listaan:
+List comprehensions kan också hantera mycket mer komplicerade operationer. Vi kan utföra beräkningar, till exempel multiplicera de ursprungliga objekten med tio:
 
 ```python
 luvut = list(range(1,10))
@@ -65,7 +65,7 @@ print(luvut_kerrottuna)
 
 </sample-output>
 
-Lauseke voi olla mikä tahansa Pythonin lauseke. Esimerkiksi koosteessa voidaan kutsua itse määriteltyä funktiota:
+Faktum är att uttrycket i list comprehension-satsen kan vara vilket Python-uttryck som helst. Du kan till och med anropa funktioner som du själv har definierat:
 
 ```python
 def kertoma(n: int):
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Sama ohjelma esitettynä perinteisellä silmukalla näyttäisi tältä:
+Med den mer välbekanta `for`-loopen skulle samma process kunna uttryckas så här:
 
 ```python
 
@@ -109,9 +109,9 @@ if __name__ == "__main__":
 
 ```
 
-Koosteen avulla on siis mahdollista ilmaista sama toiminnallisuus tiiviimmin ja silti yhä helposti luettavassa muodossa.
+List Comprehensions gör att vi kan uttrycka samma funktionalitet på ett mer konsekvent sätt, vanligtvis utan att förlora något av läsbarheten.
 
-Palauttamalla funktiosta suoraan kooste saadaan aikaiseksi hyvin tiivistä koodia:
+Vi kan också returnera en list comprehension-sats direkt från en funktion. Om vi behövde en funktion för att producera faktorialtal för listor med tal, skulle vi kunna göra det på ett mycket kortfattat sätt:
 
 ```python
 def kertomat(luvut: list):
@@ -237,15 +237,17 @@ print(pituudet(listat))
 </programming-exercise>
 
 
-## Alkioiden suodatus
+## Att filtrera föremål
 
-Edellisissä esimerkeissä uusi lista muodostettiin kaikista alkuperäisen listan alkioista. Joskus on kuitenkin näppärää, jos voitaisiin valita alkuperäiseltä listalta vain tietyt alkiot. Koosteessa tämä onnistuu yhdistämällä siihen ehto-osa. Yleinen syntaksi on seuraava:
+I exemplen ovan var alla våra listor lika långa före och efter en list comprehension-operation. I varje fall användes alla föremål i den ursprungliga listan som grund för den nya listan. Men ibland behöver vi bara några av de ursprungliga föremålen. Hur kan detta åstadkommas?
 
-`[<lauseke> for <alkio> in <sarja> if <ehtolauseke>]`
+En list comprehension-sats kan också innehålla ett villkor, så att vi kan kontrollera objekten mot villkoret och bara välja ut dem som matchar. Den allmänna syntaxen är enligt följande:
 
-Erotuksena aiempaan koosteen loppuun kirjoitetaan siis ehtolause. Ainoastaan ne alkiot poimitaan mukaan tuloslistaan, joiden kohdalla ehtolauseke on tosi.
+`[<uttryck> for <föremål> in <serie> if <boolskt uttryck>]`
 
-Esimerkissä poimitaan kaikki parilliset alkiot uuteen listaan. Huomaa, että lausekkeena on esimerkissä ainoastaan listan alkio eli poimittavia alkioita ei käsitellä minkään operaation avulla ennen sijoittamista uuteen listaan:
+Satsen ovan är i övrigt identisk med den allmänna form som introducerades i början av detta avsnitt, men nu finns det en if-sats i slutet. Endast de objekt från den ursprungliga listan för vilka det booleska uttrycket är sant används som grund för den nya listan.
+
+I exemplet nedan väljer vi alla jämna objekt från den ursprungliga listan som bas för den nya listan. I själva verket bearbetas inte dessa objekt ytterligare på något sätt, utan de tilldelas den nya listan som de är:
 
 ```python
 lista = [1, 1, 2, 3, 4, 6, 4, 5, 7, 10, 12, 3]
@@ -260,7 +262,7 @@ print(parilliset)
 
 </sample-output>
 
-Jos lausekkeeksi on määritelty jotain muuta kuin pelkkä alkio, mukaan otetuille alkioille toteutetaan tämä operaatio kuten ennenkin. Muokataan edellistä esimerkkiä niin, että uudessa listassa on kaikki alkuperäisen listan parilliset alkiot kerrottuna kymmenellä:
+Uttrycket i list comprehension-satsen ovan är bara ett enkelt `foremal`, vilket innebär att inga operationer ska utföras på föremålen i listan. Uttrycket kan vara vilket Python-uttryck som helst, precis som i de tidigare exemplen. Följande list comprehension-sats tar till exempel alla jämna föremål i en lista, multiplicerar varje föremål med tio och lagrar resultatet i en ny lista:
 
 ```python
 lista = [1, 1, 2, 3, 4, 6, 4, 5, 7, 10, 12, 3]
@@ -275,7 +277,9 @@ print(parilliset)
 
 </sample-output>
 
-Seuraavassa esimerkissä lasketaan ainoastaan positiivisten alkioiden kertoma:
+När du stöter på mer och mer komplicerade list comprehensions kan det vara bra att försöka läsa villkoret först. Föremålen bearbetas ändå bara om de klarar testet, så det är ofta vettigt att först ta reda på vilka objekt som klarar filtreringssteget. Ibland skulle uttrycket i en list comprehension-sats inte ens vara möjligt för alla föremål i den ursprungliga listan.
+
+Till exempel är faktorialtal bara definierat för icke-negativa heltal. Om vi inte kan vara säkra på att en lista bara innehåller värden på noll eller högre, måste innehållet filtreras innan det skickas vidare till den faktorialfunktion som vi skapade tidigare:
 
 ```python
 def kertoma(n: int):
@@ -298,7 +302,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Tarkastellaan vielä edellisestä jatkettua esimerkkiä, jossa kertoma lasketaan vain parillisista positiivista luvuista. Lisäksi listaan tallennetaan tuplessa sekä alkuperäinen alkio että kertoma:
+Som vi såg i vårt allra första exempel på list comprehension, där heltal omvandlades till strängar, behöver föremålen i den nya listan inte vara av samma typ som föremålen i den ursprungliga listan. Om vi fortsätter från faktorialexemplet ovan kan vi skapa en tupel från varje originella föremål och dess bearbetade motsvarighet och lagra dessa i en lista, vilket kombinerar allt vi har lärt oss hittills i en enda list comprehension-sats:
 
 ```python
 
@@ -323,7 +327,9 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Esimerkissä lauseke on siis `(luku, kertoma(luku))`, joka muodostaa tuplen, jossa ensimmäinen alkio on alkio alkuperäisestä listasta ja toinen alkio kertoma-funktion palauttama arvo. Ehtolauseke on `luku > 0 and luku % 2 == 0`, jossa valikoidaan mukaan vain alkiot, jotka ovat sekä positiivisia että jaollisia kahdella.
+Om vi plockar isär exemplet ovan har vi det booleska uttrycket `n > 0 and n % 2 == 0`. Detta innebär att endast föremål som är både positiva och delbara med två accepteras för vidare bearbetning från den ursprungliga listan.
+
+Dessa positiva, jämna tal bearbetas sedan i tur och ordning till formatet `(n, faktorial(n))`. Detta är en tupel, där det första objektet är själva talet och det andra objektet är resultatet som returneras av faktorialfunktionen.
 
 <programming-exercise name='Poista pienemmät' tmcname='osa11-05_poista_pienemmat'>
 
@@ -378,15 +384,15 @@ appelsiini
 
 </programming-exercise>
 
-## Vaihtoehtoinen haara suodatuksessa
+## Alternativ exekvering med list comprehension
 
-Koosteessa voi käyttää ehtolauseen ohella myös vaihtoehtoista haaraa. Tämä onnistuu käyttämällä jo aiemmin mainittua _ehtolauseketta_:
+Ofta när vi har en villkorlig sats inkluderar vi också en else-gren. Eftersom vi kan använda villkor i list comprehensions är else-grenen också tillgänglig med list comprehension. Den allmänna syntaxen för villkoret som används med list comprehension ser ut så här:
 
-`<lauseke 1> if <ehto> else <lauseke 2>`
+`<uttryck 1> if <villkor> else <uttryck 2>`
 
-...joka saa arvokseen joko lausekkeen 1 tai 2 arvon riippuen siitä, onko ehto tosi vai epätosi.
+Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [del 7](https://programming-24.mooc.fi/part-7/6-more-features). Uttrycket ovan utvärderas till antingen `uttryck 1` eller `uttryck 2`, beroende på om villkoret är sant eller falskt.
 
-Niinpä esim. ohjelma, joka tulostaa kahdesta luvusta suuremman yhdellä print-lauseella voisi näyttää tältä:
+Som en uppfräschning av ämnet kan vi säga att om vi behöver skriva ut det större av två tal och vi bara vill använda en enda utskriftssats, kan vi få plats med allt på en enda rad:
 
 ```python
 luku1 = int(input("Anna luku 1:"))
@@ -394,13 +400,15 @@ luku2 = int(input("Anna luku 2:"))
 print (luku1 if luku1 > luku2 else luku2)
 ```
 
-Kun yhdistetään syntaksi listakoosteeseen, saadaan seuraavankaltainen rakenne:
+Genom att kombinera den ternära operatorssyntaxen med en list comprehension-sats får man följande allmänna struktur:
 
-`[<lauseke 1> if <ehto> else <lauseke 2> for <alkio> in <sarja>]`
+`[<uttryck 1> if <villkor> else <uttryck 2> for <föremål> in <serie>]`
 
-Lopputuloksena syntyvässä listassa on yksi alkio jokaista alkuperäisen sarjan alkiota kohti. Jokaiselle alkiolle suoritetaan joko lauseke 1 tai lauseke 2 riippuen siitä onko ehtolauseke tosi vai ei.
+Det här kan se lite förvirrande ut, eftersom den villkorliga strukturen nu kommer före den faktiska list comprehensionen. Det är bara så här syntaxen har definierats, åtminstone för tillfället. Om det också finns en `else`-gren kommer villkoret först. Om det bara finns ett `if`, kommer det sist. Du kan prova att byta ut dem och se vad som händer.
 
-Seuraava esimerkki muodostaa uuden listan, jossa alkuperäisen listan negatiiviset alkiot on käännetty vastaluvuikseen - positiiviset alkiot kelpuutetaan sellaisenaan. Käytännössä koostelause siis muodostaa listan alkuperäisen listan itseisarvoista.
+Att inkludera en else-operator innebär att vi återigen kommer att bearbeta varje objekt från den ursprungliga listan. Beroende på om villkoret är sant eller falskt utförs antingen `uttryck 1` eller `uttryck 2` på varje objekt i listan.
+
+I följande exempel kontrolleras om föremåleni en lista är noll eller högre. Alla sådana föremål accepteras som de är, men alla negativa föremål negeras, så att tecknet ändras från negativt till positivt. Resultatet är en lista som innehåller de absoluta värdena för föremålen i den ursprungliga listan.
 
 ```python
 
@@ -416,9 +424,9 @@ print(itseisarvot)
 
 </sample-output>
 
-Suoritettava lauseke on siis `luku` (eli alkio sellaisenaan), jos ehto `luku >= 0` on tosi, muuten suoritetaan lauseke `-luku`.
+Vi upprepar vad som händer ovan: om villkoret `nummer >= 0` är sant, genomgår föremålet uttrycket `nummer`, och resultatet är själva föremålet. Om villkoret är falskt genomgår föremålet uttrycket `–nummer`, så att det får ett positivt värde.
 
-Seuraavassa esimerkissä funktio `merkkijonojen_pituudet` saa parametrikseen sekalaisia alkioita sisältävän listan. Funktio laskee merkkijonoista tuloslistaan pituuden, muun tyyppisten alkioiden kohdalle asetetaan -1.
+I följande exempel har vi funktionen `strang_langder` som tar en lista som sitt argument och returnerar en annan lista med längderna på alla strängar i den ursprungliga listan. Den här funktionen är dock okej med listföremål av alla typer. Om föremålet är en sträng beräknar den dess längd. Om objektet är något annat infogar den -1 i listan som den returnerar. 
 
 ```python
 

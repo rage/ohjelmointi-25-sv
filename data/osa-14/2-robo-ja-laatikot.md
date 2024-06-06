@@ -1,14 +1,14 @@
 ---
 path: '/osa-14/2-robo-ja-laatikot'
-title: 'Robotti ja laatikot'
+title: 'Robot och lådor'
 hidden: false
 ---
 
-Vaikein asia Sokoban-pelin toteutuksessa on saada robotti liikkumaan niin, että se pystyy työntämään laatikoita halutulla tavalla. Pelin pitää tunnistaa, milloin robotti pystyy siirtymään pelaajan haluamaan suuntiin, sekä käsitellä oikein tilanteet, joissa robotti työntää laatikkoa. Nyt on aika tarttua tähän haasteeseen.
+Det svåraste att implementera i ett Sokoban-spel brukar vara att flytta roboten så att den kan skjuta lådor i önskad riktning. Spelet ska kunna avgöra när roboten kan röra sig i en angiven riktning och kunna hantera alla situationer där en låda också ska röra sig. Låt oss ta an den här utmaningen nu.
 
-## Näppäimistön käsittely
+## Att hantera viktiga händelser
 
-Pelaaja ohjaa robottia nuolinäppäimillä, joten tapahtumien käsittelyä täytyy laajentaa niin, että se tarkkailee myös näppäimistön tapahtumia:
+Spelaren styr roboten med de fyra piltangenterna, så vår händelsehanterare ska också kunna reagera på lämpliga tangenthändelser:
 
 ```python
     def tutki_tapahtumat(self):
@@ -27,11 +27,11 @@ Pelaaja ohjaa robottia nuolinäppäimillä, joten tapahtumien käsittelyä täyt
                 exit()
 ```
 
-Nyt kun pelaaja painaa nuolinäppäintä, kutsutaan metodia `liiku` sopivilla parametreilla. Ensimmäinen parametri ilmaisee liikkeen määrän pystysuunnassa ja toinen parametri puolestaan ilmaisee liikkeen määrän vaakasuunnassa.
+När spelaren nu trycker på en piltangent anropas metoden `flytta` med ett lämpligt par av argument. Det första argumentet innehåller förflyttningen i vertikal riktning, medan det andra innehåller förflyttningen i horisontell riktning.
 
-## Robotin etsiminen
+## Sökning av roboten
 
-Pelin täytyy tietää robotin sijainti, jotta sitä pystyy siirtämään oikealla tavalla. Seuraava metodi `etsi_robo` selvittää robotin sijainnin:
+Spelet måste veta var roboten befinner sig för att kunna förflytta den på rätt sätt. Låt oss lägga till metoden `hitta_robot` som räknar ut var roboten befinner sig:
 
 ```python
     def etsi_robo(self):
@@ -41,13 +41,15 @@ Pelin täytyy tietää robotin sijainti, jotta sitä pystyy siirtämään oikeal
                     return (y, x)
 ```
 
-Metodi käy läpi kaikki ruudukon ruudut ja palauttaa ruudun koordinaatit, jos ruudussa on luku 4 (robotti yksinään) tai luku 6 (robotti kohderuudun päällä).
+Metoden går igenom alla rutor i rutnätet och returnerar koordinaterna för den ruta som innehåller antingen siffran 4 (roboten på egen hand) eller siffran 6 (roboten på en målruta).
 
-Ideana on, että aina kun käyttäjä painaa nuolinäppäintä, selvitetään ensin robotin sijainti käymällä läpi ruudukon ruudut. Tämä voi tuntua vähän hitaalta, koska vaihtoehtoisesti voisi myös pitää yllä tietoa robotin sijainnista omissa muuttujissa. Tämän toteutuksen etuna on kuitenkin, että robotin sijainti ei ole tallessa kahdessa paikassa (ruudukossa ja erillisissä muuttujissa) vaan vain yhdessä paikassa, eli muistissa oleva pelin tila on yksinkertaisempi.
+Tanken är att varje gång spelaren trycker på en piltangent ska robotens position först fastställas genom att gå igenom rutorna i rutnätet. Detta kan tyckas lite långsamt och överflödigt, eftersom vi lika gärna kan hålla robotens plats i en separat variabel eller två. Fördelen med denna sökmetod är att vi inte lagrar robotens position på två olika ställen (i spelrutan och i separata variabler), utan vi behöver bara bry oss om ett ställe (spelrutan), vilket innebär att spelets tillstånd i datorminnet blir enklare att hantera.
 
-## Muutokset ruudukossa
+## Förändringar av rutnätet
 
-Metodi `liiku` saa parametreina suunnan, johon pelaaja haluaa robotin liikkuvan, ja metodi joko päivittää ruudukkoa sopivasti tai toteaa, että liikkuminen ei ole mahdollista eikä muuta ruudukon sisältöä.
+Vi har redan anropat metoden `flytta` ovan, men vi har inte definierat den än. Låt oss göra det nu.
+
+Metoden `flytta` tar som argument den riktning som spelaren vill förflytta sig till. Den uppdaterar sedan rutnätet i enlighet med detta, eller fastställer att förflyttningen inte är tillåten och lämnar rutnätet oförändrad.
 
 ```python
     def liiku(self, liike_y, liike_x):
@@ -72,9 +74,9 @@ Metodi `liiku` saa parametreina suunnan, johon pelaaja haluaa robotin liikkuvan,
         self.kartta[robon_uusi_y][robon_uusi_x] += 4
 ```
 
-Metodi on melko monimutkainen, joten katsotaan tarkemmin metodin osia:
+Metoden har en hel del olika steg, så låt oss ta en titt på vart och ett i tur och ordning:
 
-### Robotin vanha ja uusi sijainti
+### Robotens gamla och nya plats
 
 ```python
         robon_vanha_y, robon_vanha_x = self.etsi_robo()
@@ -82,20 +84,20 @@ Metodi on melko monimutkainen, joten katsotaan tarkemmin metodin osia:
         robon_uusi_x = robon_vanha_x + liike_x
 ```
 
-Metodi kutsuu ensin metodia `etsi_robo`, joka selvittää robotin vanhan sijainnin ennen siirtoa. Tämä sijainti tallennetaan muuttujiin `robon_vanha_y` ja `robon_vanha_x`.
+Först anropas metoden `hitta_robot` för att ta reda på robotens aktuella position innan förflyttningen. Detta lagras i variablerna `robot_tidigare_y` och `robot_tidigare_x`.
 
-Tämän jälkeen muuttujiin `robon_uusi_y` ja `robon_uusi_x` lasketaan robotin haluttu uusi sijainti. Tämä saadaan laskettua kätevästi, kun tiedossa on vanha sijainti sekä haluttu sijainnin muutos pysty- ja vaakasuunnassa.
+Därefter lagras robotens nya position efter den tänkta förflyttningen i variablerna `robot_nya_y` och `robot_nya_x`. De nya koordinaterna kan enkelt beräknas genom att lägga till de värden som skickats som argument till robotens gamla position, eftersom både vertikala och horisontella värden ingår.
 
-### Törmääkö robotti seinään?
+### Gick roboten in i en vägg?
 
 ```python
         if self.kartta[robon_uusi_y][robon_uusi_x] == 1:
             return
 ```
 
-Seuraavaksi käsitellään tapaus, jossa pelaaja yrittää ohjata robottia seinään (luku 1 tarkoittaa seinää). Tämä ei ole sallittua, joten tässä tilanteessa ei tapahdu mitään ja metodin suoritus vain loppuu.
+`if`-satsen ovan tar hand om situationen där roboten skulle träffa en vägg som ett resultat av förflyttningen. Kom ihåg att 1 var positionen för en väggruta i listan med bilder. Detta är inte tillåtet, så metoden returnerar helt enkelt utan vidare.
 
-### Laatikon siirtyminen
+### Flyttning av låda
 
 ```python
         if self.kartta[robon_uusi_y][robon_uusi_x] in [3, 5]:
@@ -109,43 +111,43 @@ Seuraavaksi käsitellään tapaus, jossa pelaaja yrittää ohjata robottia sein�
             self.kartta[laatikon_uusi_y][laatikon_uusi_x] += 3
 ```
 
-Jos robotin uudessa sijainnissa on luku 3 (laatikko) tai 5 (laatikko kohderuudussa), robotti työntää laatikkoa liikkuessaan. Tätä varten lasketaan muuttujiin `laatikon_uusi_y` ja `laatikon_uusi_x` laatikon uusi sijainti työntämisen jälkeen.
+Om robotens nytänkta position innehåller siffran 3 (en egen låda) eller siffran 5 (en låda i en målruta) försöker roboten flytta lådan till nästa ruta. För detta ändamål behöver vi två nya variabler: `lada_ny_y` och `lada_ny_x`, som innehåller lådans placering efter flytten.
 
-Laatikko ei voi siirtyä, jos uudessa kohdassa on luku 1 (seinäruutu), luku 3 (toinen laatikko) tai luku 5 (toinen laatikko kohderuudussa). Näissä tapauksissa metodi sulkee itsensä eikä tee mitään.
+På samma sätt som roboten kan lådan inte flyttas till en väggruta med identifieraren 1. Lådan kan inte heller flyttas till en annan låda eller till en målruta med en låda på. Om detta skulle hända till följd av förflyttningen, återgår metoden helt enkelt utan att göra några ändringar i rutnätet.
 
-Muissa tapauksissa kuitenkin laatikkoa pystyy siirtämään, jolloin laatikon nykyisen ruudun luvusta vähennetään 3 ja uuden ruudun lukuun lisätään 3. Tämä päivittää ruudukkoa oikealla tavalla sekä silloin, kun laatikko on tavallisessa lattiaruudussa tai kohderuudussa.
+I alla andra fall kan lådan röra sig. Värdet på lådans nuvarande rutnätsplats minskas med 3 och värdet på dess nya rutnätsplats ökas med 3. På grund av den smarta ordningen på objekten i listan `bilder` fungerar detta korrekt både när det gäller golvrutor och målrutor.
 
-### Robotin siirtyminen
+### Förflyttning av roboten
 
 ```python
         self.kartta[robon_vanha_y][robon_vanha_x] -= 4
         self.kartta[robon_uusi_y][robon_uusi_x] += 4
 ```
 
-Jos metodin suoritus etenee loppuun asti, myös robotin tulee vielä siirtyä. Tämä toteutetaan samalla tavalla kuin laatikon siirtyminen, paitsi että vähennettävä ja lisättävä arvo on 4. Tässäkin tapauksessa ruudukon sisältö muuttuu oikein tilanteissa, joissa robotti on tavallisessa lattiaruudussa tai kohderuudussa.
+Om metoden har nått denna punkt utan att återvända, är det dags att flytta roboten också. Proceduren är densamma som när lådan flyttas, men det värde som dras från och läggs till på de aktuella platserna i rutnätet är 4 den här gången. Detta säkerställer, återigen genom den smarta ordningen av objekten i bildlistan, att slutresultatet i rutnätet blir korrekt både när golv- och målrutor är inblandade i förflyttningen.
 
-## Refaktorointia?
+## Omfaktorisering?
 
-Tässä käytetty tapa tallentaa ruudukon tilanne on siinä mielessä kätevä, että yksi ruudukko kuvaa pelin koko tilanteen tiiviissä muodossa ja ruudukkoa on melko helppoa päivittää vähentämällä ja poistamalla sopivasti lukuja.
+Att endast använda rutnätet för att lagra spelets tillstånd hela tiden är mycket praktiskt i den meningen att endast en variabel är permanent inblandad i hela processen, och det är relativt enkelt att uppdatera rutnätets tillstånd genom enkla additioner och subtraktioner.
 
-Toteutuksen huonona puolena on kuitenkin, että pelin koodin ymmärtäminen voi olla vaikeaa. Esimerkiksi jos ulkopuolinen koodari näkee seuraavan rivin, se näyttää luultavasti mystiseltä.
+Nackdelen är att det kan vara en aning svårt att förstå spelets programkod. Om någon som inte är bekant med den logik som används såg följande kodrad skulle de troligen bli lite förvirrade:
 
 ```python
             if self.kartta[laatikon_uusi_y][laatikon_uusi_x] in [1, 3, 5]:
 ```
 
-Tässä on käytetty _taikalukuja_ (_magic numbers_) ruutujen esittämiseen, ja koodin lukijan täytyy tietää, että 1 tarkoittaa seinää, 3 tarkoittaa laatikkoa ja 5 tarkoittaa kohderuudussa olevaa laatikkoa.
+Kodsnutten ovan använder magiska siffror för att representera rutorna i rutnätet. Den som läser koden måste veta att 1 betyder vägg, 3 betyder en låda och 5 betyder en låda i en målruta.
 
-Vielä mystisempiä ovat rivit tyyliin
+Raderna med de smarta subtraktionerna och adderingarna skulle se ännu mer förvirrande ut:
 
 ```python
             self.kartta[robon_uusi_y][robon_uusi_x] -= 3
 ```
 
-koska nyt laatikkoa tarkoittava luku 3 vähennetään ruudun luvusta. Tämä toimii, koska tämä muuttaa tavallisen laatikon lattiaksi ja kohderuudussa olevan laatikon kohderuuduksi, mutta asian ymmärtäminen vaatii huolellista perehtymistä ruutujen numerointiin.
+Siffran 3 betydde en ruta precis som tidigare, men nu subtraheras den från värdet på en ruta i rutnätet. Detta fungerar inom ramen för vårt numreringssystem, eftersom det ändrar en låda (3) till en normal golvruta (0) eller en målruta med en låda (5) till en tom målruta (2), men för att förstå detta krävs kännedom i det numreringssystem som används.
 
-Pelin koodin lukijan työtä voisi helpottaa _refaktoroimalla_ koodia eli muuttamalla koodin rakennetta paremmaksi ja selkeämmäksi. Tässä tapauksessa helppo muutos olisi käyttää lukujen 0–6 sijasta kuvaavampia ruutujen nimiä, mutta tämä ei selittäisi sitä, miksi lukuja voi vähentää ja lisätä ja ruudukko muuttuu oikealla tavalla.
+Vi kan göra det enklare för alla som läser koden genom att omfaktorisera vår implementation. Det innebär att vi förbättrar kodens struktur och läsbarhet. Ett sätt att uppnå detta skulle vara att använda namnen på rutorna i stället för siffrorna 0 till 6, även om detta fortfarande inte skulle förklara hur och varför siffror kan adderas och subtraheras samtidigt som rutnätets integritet bibehålls.
 
-Pelin koodin saaminen todella helposti luettavaksi vaatisikin luultavasti paljon suurempaa refaktorointia, kuten ruudukon pysyvän rakenteen tallentamista erillään ja robotin ja laatikoiden sijaintien tallentamista omissa tietorakenteissaan. Toisaalta tämän kääntöpuolena olisi, että koodia voisi tulla paljon lisää ja pelin sisäinen toiminta muuttuisi monimutkaisemmaksi.
+För att göra programkoden verkligt tillgänglig skulle det sannolikt krävas mycket mer grundläggande transformativ omfaktorisering. Vi skulle till exempel kunna behålla spelkartans struktur på en plats och lagra robotens och lådornas platser i en separat datastruktur. Nackdelen med detta skulle vara att det sannolikt skulle resultera i mycket mer kod och att spelets interna struktur skulle bli mycket mer komplicerad.
 
-Refaktorointiin ja koodin laatuun liittyviin asioihin tutustutaan lisää tulevilla kursseilla, kuten _Ohjelmistotekniikka_ ja _Ohjelmistotuotanto_.
+Omfaktorisering och kodkvalitet är ett ämne för en del efterföljande kurser, t.ex. Software Development Methods och Software Engineering.

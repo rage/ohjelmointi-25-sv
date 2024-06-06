@@ -1,37 +1,39 @@
 ---
 path: '/osa-12/3-funktionaalista-ohjelmointia'
-title: 'Funktionaalista ohjelmointia'
+title: 'Funktionell programmering'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetaan funktonaalisella ohjelmoinilla
-- Osaat hyödyntää operaatioita map, reduce ja filter omissa ohjelmissasi
+- Vet du vad funktionell programmering innebär
+- Kommer du att kunna använda funktionerna `map`, `reduce` och `filter` i dina egna program
 
 </text-box>
 
-Funktionaalisella ohjelmoinnilla tarkoitetaan _ohjelmointiparadigmaa_, jossa vältetään tilan muutoksia mahdollisimman pitkälle. Muuttujien sijasta ohjelman suoritus perustuu funktionaalisessa ohjelmoinnissa mahdollisimman pitkälti funktioiden keskinäisiin kutsuihin.
+Funktionell programmering avser ett programmeringsparadigm som undviker förändringar i programtillståndet så mycket som möjligt. Variabler undviks i allmänhet. Istället är det kedjor av funktionsanrop som utgör ryggraden i programmet.
 
-Aikaisemmin esitetyt lambda-lausekkeet ja listakoosteet ovat esimerkkejä funktionaalisesta ohjelmointityylistä, koska niitä käyttämällä voidaan välttää ohjelman tilan muutokset - esimerkiksi lambda-lausekkeella voimme luoda funktion ilman että viittausta siihen tallennetaan mihinkään.
+Lambda-uttryck och olika typer av förståelser är vanliga tekniker i den funktionella programmeringsstilen, eftersom de låter dig bearbeta data utan att lagra dem i variabler, så att programmets tillstånd inte ändras. Ett lambdauttryck är till exempel i alla avseenden en funktion, men vi behöver inte lagra en namngiven referens till den någonstans.
 
-Funktionaalinen ohjelmointi on esimerkki ohjelmointiparadigmasta eli ohjelmointityylistä. Muita tyypillisiä ja kurssilla jo aiemmin käsiteltyjä paradigmoja ovat esimerkiksi
+Som nämnts ovan är funktionell programmering ett programmeringsparadigm, eller en programmeringsstil. Det finns många olika programmeringsparadigm, och vi har redan stött på några av dem:
 
-* imperatiivinen paradigma, joka perustuu peräkkäisiin komentoihin ja niiden suorittamiseen järjestyksessä
-* proseduraalinen paradigma, jossa ohjelma jaetaan pienempiin aliohjelmiin. Imperatiivinen ja proseduraalinen paradigma tarkoittavat joidenkin määrittelyjen mukaan samaa asiaa.
-* olio-ohjelmointi, jossa ohjelma ja sen tila mallinnetaan luokista muodostettujen olioiden avulla.
+* imperativ programmering, där programmet består av en sekvens av instruktioner som utförs i tur och ordning
+* procedurprogrammering, där programmet är uppdelat i procedurer eller underprogram
+* objektorienterad programmering, där programmet och dess tillstånd lagras i objekt som definieras i klasser.
 
-Pythonin monipuolisuus tulee hyvin esille siinä, että voimme hyödyntää siinä useita eri paradigmoja - jopa samoissa ohjelmissa. Näin voimme hyödyntää tehokkainta ja selkeintä tapaa ongelmien ratkaisemiseksi.
+Det finns olika uppfattningar om gränsdragningen mellan de olika paradigmen, t.ex. hävdar vissa att imperativ och procedurell programmering betyder samma sak, medan andra placerar imperativ programmering som ett paraplybegrepp som täcker både procedurell och objektorienterad programmering. Terminologin och uppdelningen är inte så viktig, och det är inte heller viktigt att strikt hålla sig till det ena eller andra paradigmet, men det är viktigt att förstå att det finns sådana olika synsätt eftersom de påverkar de val som programmerare gör.
 
-Tarkastellaan vielä muutamaa funktionaalisen ohjelmoinnin työkalua Pythonissa.
+Många programmeringsspråk är utformade med det ena eller det andra programmeringsparadigmet i åtanke, men Python är ett ganska mångsidigt programmeringsspråk och gör det möjligt att följa flera olika programmeringsparadigm, även inom ett enda program. Detta gör att vi kan välja den mest effektiva och tydliga metoden för att lösa varje problem.
+
+Låt oss ta en titt på några funktionella programmeringsverktyg som tillhandahålls av Python.
 
 ## map
 
-Funktio `map` suorittaa annetun operaation kaikille annetun iteroitavan sarjan alkioille. Niinpä `map` muistuttaa koostetta monessa mielessä, syntaksi tosin näyttää erilaiselta.
+Funktionen `map` utför någon operation på varje objekt i en iterabel serie. Det här låter ungefär som den effekt en comprehension har, men syntaxen är annorlunda.
 
-Tarkastellaan esimerkkinä funktiokutsua, joka muuttaa merkkijonot kokonaisluvuiksi:
+Låt oss anta att vi har en lista med strängar som vi vill konvertera till en lista med heltal:
 
 ```python
 mjonolista = ["123","-10", "23", "98", "0", "-110"]
@@ -56,11 +58,13 @@ for luku in luvut:
 
 </sample-output>
 
-Funktion `map` yleinen syntaksi on siis
+Den allmänna syntaxen för `map`-funktionen är
 
-`map(<funktio, jota alkioille kutsutaan>, <sarja, jonka alkioille funktiota kutsutaan>)`
+`map(<funktion>, <serie>)`
 
-Funktio palauttaa map-tyyppisen objektin, jonka voi joko iteroida läpi for-lauseella tai esimerkiksi muuttaa listaksi `list`-funktiolla:
+där `funktion` är den operation vi vill utföra på varje föremål  i `serie`n.
+
+`map`-funktionen returnerar ett objekt av typen `map`, som är itererbart och kan konverteras till en lista:
 
 ```python
 def alkukirjain_isoksi(mjono: str):
@@ -82,9 +86,9 @@ print(valmiit_lista)
 
 </sample-output>
 
-Kuten esimerkistä huomataan, map-funktiossa voi tietysti käyttää lambda-lausekkeella luodun funktion lisäksi myös `def`-avainsanalla aiemmin määriteltyä nimettyä funktiota.
+Som du kan se i exemplen ovan accepterar `map`-funktionen både en anonym lambda-funktion och en namngiven funktion som definieras med nyckelordet `def`.
 
-Edellinen esimerkki voitaisiin toteuttaa myös vaikkapa listakoosteen avulla, esimerkiksi:
+Vi skulle kunna uppnå samma resultat med en list comprehension:
 
 ```python
 def alkukirjain_isoksi(mjono: str):
@@ -99,11 +103,9 @@ valmiit_lista = [alkukirjain_isoksi(alkio) for alkio in testilista]
 print(valmiit_lista)
 ```
 
-...tai esimerkiksi iteroimalla lista läpi for-lauseella ja tallentamalla käsitellyt alkiot uuteen listaan `append`-metodilla. Onkin tyypillistä, että saman asian voi toteuttaa usealla eri tavalla. Eri vaihtoehtojen tunteminen auttaa valitsemaan niistä ohjelmaan (ja omaan makuun) parhaiten sopivan.
+...eller så kan vi gå igenom den ursprungliga listan med en `for`-loop och spara de bearbetade objekten i en ny lista med `append`-metoden. I programmering finns det vanligtvis många olika lösningar på varje problem. Det finns sällan några absolut rätta eller felaktiga svar. Att känna till många olika tillvägagångssätt hjälper dig att välja den mest lämpliga för varje situation, eller den som bäst passar din egen smak.
 
-Kannattaa huomata, että `map`-funktion palauttama lopputulos ei ole lista, vaan _iteraattori_-olio ja vaikka se käyttäytyykin listan tapaan monissa tilanteissa, niin näin ei ole aina.
-
-Tarkastellaan seuraavaa esimerkkiä:
+Det är värt att påpeka att `map`-funktionen inte returnerar en lista, utan ett iteratorobjekt av typen map. En iterator beter sig på många sätt som en lista, men det finns undantag, vilket kan ses i följande exempel:
 
 ```python
 def alkukirjain_isoksi(mjono: str):
@@ -124,7 +126,7 @@ for sana in valmiit:
   print(sana)
 ```
 
-Tulostus on seuraava:
+Detta skulle skriva ut följande:
 
 <sample-output>
 
@@ -136,9 +138,9 @@ sama uusiksi:
 
 </sample-output>
 
-Eli kun `map`-funktion tuloksena olevat nimet yritetään tulostaa toiseen kertaan, ei tulostu mitään. Syynä tälle on se, läpikäynti `for`-lauseella käy iteraattorin oliot jo läpi, ja kun samaa yritetään toistamiseen, ei ole enää mitään läpikäytävää!
+Ovan försökte vi skriva ut innehållet i `map`-iteratorn två gånger, men det andra försöket gav ingen utskrift. Anledningen är att `map` är en iterator; när man går igenom den med en `for`-loop "töms" den, ungefär som en generator töms när dess maximala värde har uppnåtts. När objekten i iteratorn har genomgåtts med en `for`-loop finns det inget kvar att gå igenom.
 
-Jos ohjelma haluaa tarkastella `map`-funktion tulosta useampaan kertaan, tulee tulos esimerkiksi muuttaa listaksi antamalla se parametriksi `list`-konstruktorille:
+Om du behöver gå igenom innehållet i en `map`-iterator mer än en gång kan du t.ex. konvertera map till en lista:
 
 ```python
 testilista = ["eka", "toka", "kolmas", "neljäs"]
@@ -168,9 +170,9 @@ Neljäs
 
 </sample-output>
 
-## map ja oliot
+## Map-funktionen och dina egna klasser
 
-Funktiolla `map` voidaan toki käsitellä myös omien luokkien olioita. Asiaan ei liity mitään tavanomaisesta poikkeavaa. Tarkastellaan seuraavaa esimerkkiä
+Du kan naturligtvis också bearbeta instanser av dina egna klasser med `map`-funktionen. Det krävs inga speciella knep, som du kan se i exemplet nedan:
 
 ```python
 class Pankkitili:
@@ -212,13 +214,13 @@ Maija Miljonääri
 
 </sample-output>
 
-Koodissa selvitetään ensin funktion `map` avulla tilien omistajat. Huomaa miten lambda-funktiolla haetaan attribuuttina oleva nimi pankkitiliolioista:
+Här samlar vi först in namnen på kontoinnehavarna med `map`-funktionen. En anonym lambda-funktion används för att hämta värdet på `namn`-attributet från varje Bankkonto-objekt:
 
 ```python
 asiakkaat = map(lambda t: t.nimi, tilit)
 ```
 
-Tämän jälkeen haetaan samalla tyylillä jokaisen pankkitilin saldo. Lambda-funktio on nyt hieman erilainen, sillä saldo saadaan selville kutsumalla pankkitiliolion metodia:
+På samma sätt samlas saldot för varje Bankkonto in. Lambda-funktionen ser lite annorlunda ut, eftersom saldot hämtas med ett metodanrop, inte direkt från attributet:
 
 ```python
 saldot = map(lambda t: t.hae_saldo(), tilit)
@@ -293,9 +295,9 @@ Hyödynnä funktion toteutuksessa `map`-funktiota. Se ei tosin yksistään riit�
 
 ## filter
 
-Funktio `filter` muistuttaa funktiota `map`, mutta nimensä mukaisesti se ei poimi kaikkia alkioita lähteestä, vaan ainoastaan ne, joille annettu funktio palauttaa arvon True.
+Den inbyggda Python-funktionen `filter` liknar `map`-funktionen, men som namnet antyder tar den inte alla föremål från källan. Istället filtrerar den dem med en kriteriefunktion, som skickas som ett argument. Om kriteriefunktionen returnerar `True` väljs föremålet.
 
-Tarkastellaan taas ensin esimerkkiä funktion käytöstä:
+Låt oss titta på ett exempel med `filter`:
 
 ```python
 luvut = [1, 2, 3, 5, 6, 4, 9, 10, 14, 15]
@@ -316,7 +318,7 @@ for luku in parilliset:
 
 </sample-output>
 
-Sama esimerkki voitaisiin kirjoittaa ilman lambda-lauseketta määrittelemällä funktio `def`-avainsanalla:
+Det kunde göra ovanstående exemplet en aning tydligare ifall vi använde en namngiven funktion istället:
 
 ```python
 def onko_parillinen(luku: int):
@@ -332,9 +334,9 @@ for luku in parilliset:
     print(luku)
 ```
 
-Toiminnallisuuden kannalta ohjelmat ovat täysin yhtäläiset. Onkin mielipidekysymys kumpaa pitää selkeämpänä.
+Dessa två program är funktionellt helt identiska. Det är mest en fråga om åsikt vilket du anser vara det bättre tillvägagångssättet.
 
-Tarkastellaan vielä toista esimerkkiä suodattamisesta. Ohjelmassa poimitaan kalalistasta ainoastaan ne kalat, jotka ovat vähintään 1000 gramman painoisia:
+Låt oss ta en titt på ett annat filtreringsexempel. Det här programmet modellerar fiskar och väljer bara ut dem som väger minst 1000 gram:
 
 ```python
 class Kala:
@@ -369,15 +371,15 @@ Turska (2449 g.)
 
 </sample-output>
 
-Taas kerran sama voitaisiin toteuttaa listakoosteena:
+Vi kunde lika väl använda oss av en list comprehension för att uppnå samma resultat:
 
 ```python
 ylikiloiset = [kala for kala in kalat if kala.paino >= 1000]
 ```
 
-## filter palauttaa iteraattorin
+## Returvärdet för filter är en iterator
 
-Funktion `map` tapaan, myös funktio `filter` palauttaa listan sijaan _iteraattorin_ ja on tilanteita joissa on syytä olla varuillaan sillä iteraattorin voi käydä läpi vain kerran. Eli seuraava yritys tulostaa suuret kalat kahteen kertaan ei onnistu:
+Funktionen `filter` liknar funktionen `map` även i det avseendet att den returnerar en iterator. Det finns situationer där du bör vara särskilt försiktig med `filter` eftersom iteratorer bara kan genomlöpas en gång. Så att försöka skriva ut samlingen av stora fiskar två gånger kommer inte att fungera så enkelt som du kanske tror:
 
 ```python
 k1 = Kala("Hauki", 1870)
@@ -399,7 +401,7 @@ for kala in ylikiloiset:
     print(kala)
 ```
 
-Tulostuu
+Detta skulle skriva ut följande:
 
 <sample-output>
 
@@ -410,7 +412,7 @@ sama uudelleen
 
 </sample-output>
 
-Jos funktion `filter` tulosta on tarve käsitellä useaan kertaan, tulee se muuttaa esimerkiksi listaksi:
+Om du behöver gå igenom innehållet i en `filter` iterator mer än en gång kan du konvertera resultatet till en lista:
 
 ```python
 kalat = [k1, k2, k3, k4, k5]
@@ -496,11 +498,11 @@ Toteuta funktio käyttäen funktioita `filter` ja `map`.
 
 ## reduce
 
-Viimeinen tarkastelemamme funktio on `reduce`. Kuten funktion nimi vihjaa, sen tarkoituksena on vähentää sarjan alkioiden määrä. Itse asiassa alkioiden sijasta `reduce` palauttaa yksittäisen arvon.
+En tredje hörnstensfunktion i denna introduktion till funktionella programmeringsprinciper är `reduce`, från modulen `functools`. Som namnet antyder är dess syfte att reducera objekten i en serie till ett enda värde.
 
-Reduce toimii sitten, että se pitää mukanaan koko ajan _arvoa_, jota se muuttaa yksi kerrallaan käydessään läpi listan alkioita.
+`reduce`-funktionen börjar med en operation och ett startvärde. Den utför den givna operationen på varje objekt i serien i tur och ordning, så att värdet ändras i varje steg. När alla objekt har bearbetats returneras det resulterande värdet.
 
-Seuraavassa on esimerkki, joka summaa `reduce`-funktion avulla listan luvut yhteen. Huomaa, että Pythonin versiosta 3 alkaen funktio `reduce` pitää erikseen ottaa käyttöön moduulista `functools`.
+Vi har gjort summering av listor med heltal på olika sätt tidigare, men här har vi ett exempel med hjälp av funktionen `reduce`. Notera `import`-satsen; i Python version 3 och senare är den nödvändig för att komma åt `reduce`-funktionen. I äldre Python-versioner behövdes inte `import`-satsen, så du kan stöta på exempel utan den på nätet.
 
 ```python
 from functools import reduce
@@ -518,17 +520,17 @@ print(lukujen_summa)
 
 </sample-output>
 
-Tarkastellaan esimerkkiä hieman tarkemmin. Funktio `reduce` saa kolme parametria. Parametreista toisena on läpikäytävä lista, ja kolmantena on laskennan alkuarvo. Koska laskemme listan alkioiden summaa, on sopiva alkuarvo nolla.
+Låt oss ta en närmare titt på vad som händer här. `reduce`-funktionen tar emot tre argument: en funktion, en serie av föremål och ett startvärde. I det här fallet är serien en lista med heltal, och eftersom vi beräknar en summa är ett lämpligt startvärde noll.
 
-Ensimmäisenä parametrina on funktio, joka suorittaa toimenpiteen yksi kerrallaan kullekin listan alkiolle. Tällä kertaa funktio on seuraava:
+Det första argumentet är en funktion, som representerar den operation vi vill utföra på varje objekt. Här är funktionen en anonym lambda-funktion:
 
 ```python
 lambda summa, alkio: summa + alkio
 ```
 
-Funktiolla on kaksi parametria. Näistä ensimmäinen on laskennan sen hetkinen tulos ja toinen parametri on käsittelyvuorossa oleva listan alkio. Funktio laskee uuden arvon parametriensa perusteella. Tässä tapauksessa uusi arvio on vanha summa _plus_ kyseisen alkion arvo.
+Denna funktion tar två argument: det aktuella reducerade värdet och det föremål vars tur det är att bearbetas. Dessa används för att beräkna ett nytt värde för det reducerade värdet. I detta fall är det nya värdet summan av det gamla värdet och det aktuella objektet.
 
-Funktion `reduce` toiminta hahmottuu kenties selkeämmin, jos käytetään lambdan sijaan normaalia funktiota apuna ja tehdään funktiosta aputulostuksia:
+Det kan vara lättare att förstå vad funktionen `reduce` faktiskt gör om vi använder en vanlig namngiven funktion i stället för en lambda-funktion. På så sätt kan vi också inkludera användbara utskrifter:
 
 ```python
 from functools import reduce
@@ -546,7 +548,7 @@ lukujen_summa = reduce(summaaja, lista, 0)
 print(lukujen_summa)
 ```
 
-Ohjelma tulostaa:
+Detta program skriver ut:
 
 <sample-output>
 
@@ -558,11 +560,11 @@ summa nyt 6, vuorossa alkio 5
 
 </sample-output>
 
-Ensimmäisenä siis käsitellään listan alkio, jonka arvo on 2. Tässä vaiheessa summa on 0, eli sillä on reducelle annettu alkuarvo. Funktio laskee ja palauttaa näiden summan eli 0 + 2.
+Först tar funktionen hand om objektet med värdet 2. Till att börja med är den reducerade summan 0, vilket är det ursprungliga värdet som skickas till `reduce`-funktionen. Funktionen beräknar och returnerar summan av dessa två: `0 + 2 = 2`.
 
-Tämä arvo on parametrin `summa` arvona kun funktiota kutsutaan seuraavalle listan alkiolle eli luvulle 3. Funktio laskee ja palauttaa 2 + 3, joka taas toimii parametrina seuraavalle funktiokutsulle.
+Detta är det värde som lagras i `reducerad_summa` när `reduce`-funktionen bearbetar nästa objekt i listan, med värdet 3. Funktionen beräknar och returnerar summan av dessa två: `2 + 3 = 5`. Detta resultat används sedan när nästa objekt bearbetas, och så vidare, och så vidare.
 
-Toinen esimerkkimme laskee kaikkien listassa olevien kokonaislukujen tulon.
+Nu är det enkelt att summera, eftersom det till och med finns en inbyggd `sum`-funktion för detta ändamål. Men hur är det med multiplikation? Det krävs bara små förändringar för att skapa en reducerad produkt:
 
 ```python
 from functools import reduce
@@ -580,11 +582,11 @@ print(tulo)
 
 </sample-output>
 
-Koska on kyse tulosta, ei alkuarvo voi olla nyt 0 (miten käy jos se olisi nolla?), vaan sopiva arvo sille on 1.
+Eftersom vi har att göra med multiplikation är startvärdet inte noll. Istället använder vi 1. Vad skulle hända om vi använde 0 som startvärde?
 
-Aivan kuten `filter` ja `map`, myös `reduce` voi käsitellä minkä tahansa tyyppisiä olioita.
+Ovan har vi till stor del behandlat heltal, men `map`, `filter` och `reduce` kan alla hantera en samling objekt av alla typer.
 
-Tarkastellaan esimerkkinä pankin tilien yhteenlasketun saldon selvittämistä reducella:
+Låt oss som ett exempel generera en totalsumma av saldona för alla konton i en bank med hjälp av `reduce`:
 
 ```python
 class Pankkitili:
@@ -617,7 +619,7 @@ print("pankissa rahaa yhteensä")
 print(saldot_yhteensa)
 ```
 
-Ohjelma tulostaa:
+Detta program skulle skriva ut:
 
 <sample-output>
 
@@ -626,7 +628,7 @@ pankissa rahaa yhteensä
 
 </sample-output>
 
-Huomaa miten funktio `saldojen_summaaja` "kaivaa" saldon jokaisen tiliolion sisältä kutsumalla tilille saldon palauttavaa metodia:
+Funktionen `saldo_summa_hjalpare` tar saldot på varje bankkonto, med den metod som är avsedd för ändamålet i klassdefinitionen `Bankkonto`:
 
 ```python
 def saldojen_summaaja(yht_saldo, tili):
@@ -647,19 +649,19 @@ print(lukujen_summa)
 
 Jos alkuarvoa ei anneta, toimii listan ensimmäinen luku alkuarvona ja "redusointi" aloitetaan vasta listan toisesta alkiosta.
 
-Huomaa, että jos käsiteltävän listan alkiot ovat eri tyyppisiä kuin laskettava arvo, on `reduce`-funktion kolmas parametri välttämätön. Jos yrittäisimme olla tili-esimerkissä käyttämättä alkuarvoa:
+OBS: Om föremålen i serien är av en annan typ än det avsedda reducerade resultatet, är det tredje argumentet obligatoriskt. Exemplet med bankkontona skulle inte fungera utan det ursprungliga värdet. Det vill säga att prova detta
 
 ```python
 saldot_yhteensa = reduce(saldojen_summaaja, tilit)
 ```
 
-olisi seurauksena virhe
+Skulle producera ett fel:
 
 ```python
 TypeError: unsupported operand type(s) for +: 'Pankkitili' and 'int'
 ```
 
-sillä `reduce`-funktion parametri `yht_saldo` saisi ensimmäisellä kerralla arvokseen listan ensimmäisen pankkitilin ja sen summaaminen pankkitilin saldoon ei olisi mahdollista.
+I ovanstående fall, när `reduce` försöker utföra funktionen `saldo_summa_hjalpare` för första gången, är de argument som används de två första föremålen i listan, som båda är av typen Bankkonto. Specifikt är det värde som tilldelats parametern `saldo_summa` det första föremålet i listan. Funktionen `saldo_summa_hjalpare` försöker lägga till ett heltalsvärde till den, men att lägga till ett heltal direkt till ett Bankkonto-objekt är inte en åtgärd som stöds. 
 
 </text-box>
 

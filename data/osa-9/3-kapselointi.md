@@ -1,27 +1,27 @@
 ---
 path: '/osa-9/3-kapselointi'
-title: 'Kapselointi'
+title: 'Inkapsling'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, mitä tarkoitetaan kapseloinnilla
-- Osaat muodostaa piilotetun attribuutin
-- Osaat kirjoittaa attribuutille asetus- ja havainnointimetodit
+- Vet du vad inkapsling innebär
+- Kommer du att kunna skapa privata attribut
+- Vet du hur du skapar gettar och sättare för dina attribut
 
 </text-box>
 
-Olio-ohjelmoinnissa asiakkaalla tarkoitetaan luokkaa tai siitä muodostettuja olioita käyttävää ohjelmaa. Luokka tarjoaa asiakkaalle _palveluja_, joiden avulla asiakas voi käyttää olioita. Päämääränä on, että
+I objektorienterad programmering avser termen klient ett program som använder en klass eller instanser av en klass. En klass erbjuder klienten tjänster genom vilka klienten kan komma åt de objekt som skapats baserat på klassen. Målen här är att
 
-1) asiakkaan kannalta luokan ja olioiden käyttö on mahdollisimman yksinkertaista ja
-2) olion _sisäinen eheys_ säilyy joka tilanteessa.
+1) användningen av en klass och/eller objekt är så enkel som möjligt ur klientens synvinkel
+2) integriteten för varje objekt bevaras hela tiden
 
-Sisäisellä eheydellä tarkoitetaan, että olion _tila_ (eli käytännössä olion attribuuttien arvot) pysyy koko ajan hyväksyttävänä. Virheellinen tila olisi esimerkiksi sellainen, jossa päivämäärää esittävälle oliolle kuukauden numero on 13 tai opiskelijaa esittävällä oliolla opintopistemäärä on negatiivinen luku.
+Ett objekts integritet innebär att objektets tillstånd alltid förblir acceptabelt. I praktiken innebär detta att värdena på objektets attribut alltid är acceptabla. Ett objekt som representerar ett datum ska till exempel aldrig ha 13 som värde för månaden, ett objekt som representerar en student ska aldrig ha ett negativt tal som värde för uppnådda studiepoäng och så vidare.
 
-Tarkastellaan esimerkkinä luokkaa Opiskelija:
+Låt oss ta en titt på en klass som heter Student:
 
 ```python
 class Opiskelija:
@@ -35,7 +35,7 @@ class Opiskelija:
             self.opintopisteet += opintopisteet
 ```
 
-`Opiskelija`-olio tarjoaa asiakkaalle metodin `lisaa_suoritus`, jolla opintopisteitä voidaan lisätä. Metodi varmistaa, että lisättävä opintopisteiden määrä on positiivinen. Esimerkiksi seuraava koodi lisää kolme suoritusta:
+`Student`objektet erbjuder sina klienter metoden `tillägg_poäng`, som gör det möjligt för klienten att lägga till ett angivet antal studiepoäng till studentens totala antal. Metoden säkerställer att värdet som skickas som argument är över noll. Följande kod lägger till studiepoäng vid tre tillfällen:
 
 ```python
 oskari = Opiskelija("Oskari Opiskelija", "12345")
@@ -52,7 +52,7 @@ Opintopisteet: 20
 </sample-output>
 
 
-Asiakas pystyy kuitenkin muuttamaan opintopistemäärää myös suoraan viittaamalla attribuuttiin `opintopisteet`. Näin olio voi päätyä virheelliseen tilaan, jossa se ei ole enää sisäisesti eheä:
+Trots metoddefinitionen är det fortfarande möjligt att komma åt attributet `studie_poäng` direkt. Detta kunde resultera i ett felaktigt tillstånd där objektets integritet går förlorad:
 
 ```python
 oskari = Opiskelija("Oskari Opiskelija", "12345")
@@ -66,9 +66,9 @@ Opintopisteet: -100
 
 </sample-output>
 
-## Kapselointi
+## Inkapsling
 
-Luokka voi piilottaa attribuutit asiakkailta. Pythonissa tämä tapahtuu lisäämällä attribuuttimuuttujan nimen alkuun kaksi alaviivaa `__`:
+Ett vanligt inslag i objektorienterade programmeringsspråk är att klasserna kan dölja sina attribut för eventuella kunder. Dolda attribut kallas vanligtvis privata. I Python uppnås denna sekretess genom att lägga till två understreck `__` i början av attributnamnet:
 
 ```python
 class Pankkikortti:
@@ -78,7 +78,7 @@ class Pankkikortti:
         self.nimi = nimi
 ```
 
-Piilotettu attribuutti ei näy asiakkaalle, vaan siihen viittaaminen aiheutta virheilmoituksen. Niinpä nimen voi tulostaa ja sitä voi muuttaa:
+Ett privat attribut är inte direkt synligt för klienten. Försök att referera till det orsakar ett fel. I exemplet ovan är attributet namn lätt att komma åt och ändra:
 
 ```python
 kortti = Pankkikortti("123456","Reijo Rahakas")
@@ -94,7 +94,7 @@ Reijo Rutiköyhä
 
 </sample-output>
 
-Mutta jos kortin numeroa yritetään tulostaa, seuraa virheilmoitus:
+Ifall man provar få en utskrift av kortnumret så orsakar det däremot ett fel:
 
 ```python
 kortti = Pankkikortti("123456","Reijo Rahakas")
@@ -107,9 +107,9 @@ AttributeError: 'Pankkikortti' object has no attribute '__numero'
 
 </sample-output>
 
-Tietojen piilottamista asiakkaalta kutsutaan _kapseloinniksi_. Nimensä mukaisesti attribuutti siis "suljetaan kapseliin" ja asiakkaalle tarjotaan sopiva rajapinta, jonka kautta tietoa voi käsitellä.
+Att dölja attribut från klienter kallas inkapsling. Som namnet antyder är attributet "slutet inne i en kapsel". Klienten erbjuds sedan ett lämpligt gränssnitt (engelska: interface) för att komma åt och bearbeta den data som finns lagrad i objektet.
 
-Laajennetaan pankkikorttiesimerkkiä niin, että kortilla on piilotettu attribuutti saldo ja tämän käsittelyyn tarkoitetut julkiset metodit, joiden avulla asiakas voi hallita saldoa:
+Låt oss lägga till ett annat inkapslat attribut: saldot på kreditkortet. Den här gången lägger vi också till offentligt synliga metoder som gör det möjligt för klienten att komma åt och ändra saldot:
 
 ```python
 class Pankkikortti:
@@ -151,7 +151,7 @@ print(kortti.hae_saldo())
 
 </sample-output>
 
-Saldoa ei voi suoraan muuttaa, koska attribuutti on piilotettu, mutta sitä voi muuttaa metodeilla `lisaa_rahaa` ja `kayta_rahaa` ja sen voi hakea metodilla `hae_saldo`. Metodeihin voidaan sijoittaa sopivia tarkastuksia, joilla varmistetaan, että olion sisäinen eheys säilyy: esimerkiksi rahaa ei voi käyttää enempää kuin kortilla on saldoa jäljellä.
+Saldot kan inte ändras direkt eftersom attributet är privat, men vi har inkluderat metoderna `tillsatt_pengar` och `ta_ut_pengar` för att ändra värdet. Metoden `returnera_saldo` returnerar det värde som lagrats i saldo. Metoderna innehåller några rudimentära kontroller för att bibehålla objektets integritet: till exempel kan kortet inte överdras.
 
 <programming-exercise name='Auto' tmcname='osa09-09_auto'>
 
@@ -196,9 +196,15 @@ Auto: ajettu 60 km, bensaa 60 litraa
 
 </programming-exercise>
 
-## Asetus- ja havainnointimetodit
+## En kort notis om privata attribut, Python och objektorienterad programmering
 
-Python tarjoaa myös suoraviivaisemman syntaksin attribuuttien havainnoimiselle ja asettamiselle. Tarkastellaan ensin esimerkkinä yksinkertaista luokkaa `Lompakko`, jossa ainoa attribuutti `rahaa` on suojattu asiakkailta:
+Det finns sätt att kringgå understryknings `__`-notationen för att dölja attribut, som du kan stöta på om du söker efter material online. Inget Python-attribut är verkligen privat, och det är avsiktligt från skaparna av Pythons. Å andra sidan förväntas en Python-programmerare i allmänhet respektera de riktlinjer för synlighet som anges i klasser, och det krävs en särskild ansträngning för att komma runt dessa. I andra objektorienterade programmeringsspråk, till exempel Java, är privata variabler ofta verkligen dolda, och det är bäst om du tänker på privata Python-variabler som sådana också.
+
+## Getter och sättare
+
+I objektorienterad programmering kallas metoder som är avsedda för att komma åt och ändra attribut vanligtvis för getter och sättare (eng: setters). Inte alla Python-programmerare använder termerna "getter" och "sättare", men konceptet med egenskaper som beskrivs nedan är mycket liknande, vilket är varför vi kommer att använda den allmänt accepterade objektorienterade programmeringsterminologin här.
+
+Ovan skapade vi några offentliga metoder för att komma åt privata attribut, men det finns ett enklare, "pythoniskt" sätt att komma åt attribut. Låt oss ta en titt på en enkel klass som heter `Plånbok` med ett enda privat attribut `pengar`:
 
 ```python
 class Lompakko:
@@ -206,7 +212,7 @@ class Lompakko:
         self.__rahaa = 0
 ```
 
-Luokkaan voidaan lisätä havainnointi- ja asetusmetodit, joilla asiakas voi hallita rahamäärää:
+Vi kan tillägga getter och sättar metoder för att komma åt det privata attributet genom att använda `@property` dekoratorn:
 
 ```python
 class Lompakko:
@@ -225,9 +231,9 @@ class Lompakko:
             self.__rahaa = rahaa
 ```
 
-Luokalle siis määritellään ensin havainnointimetodi, joka palauttaa rahamäärän, ja sitten asetusmetodi, joka asettaa rahamäärän ja varmistaa, että uusi rahamäärä ei ole negatiivinen.
+Först definierar vi en getter-metod som returnerar den summa pengar som för närvarande finns i plånboken. Sedan definierar vi en sättar-metod som sätter ett nytt värde för money-attributet och samtidigt ser till att det nya värdet inte är negativt.
 
-Kutsuminen tapahtuu esimerkiksi näin:
+De nya metoderna kan användas på följande sätt:
 
 ```python
 lompsa = Lompakko()
@@ -248,11 +254,11 @@ print(lompsa.rahaa)
 
 </sample-output>
 
-Asiakkaan kannalta metodien kutsuminen muistuttaa attribuuttien kutsumista, koska kutsussa ei käytetä sulkuja vaan voi kirjoittaa esimerkiksi`lompsa.rahaa = 50`. Tarkoituksena onkin piilottaa (eli kapseloida) sisäinen toteutus ja tarjota asiakkaalle vaivaton tapa muokata olion tietoja.
+För klienten är det ingen skillnad att använda dessa nya metoder jämfört med att direkt komma åt ett attribut. Parenteser är inte nödvändiga, utan det är helt acceptabelt att ange `plånbok.pengar = 50`, som om vi helt enkelt tilldelar ett värde till en variabel. Syftet var faktiskt att dölja (dvs. kapsla in) den interna implementeringen av attributet och samtidigt erbjuda ett enkelt sätt att komma åt och ändra den data som lagras i objektet.
 
-Edellisessä esimerkissä on kuitenkin yksi pieni vika: asiakas ei saa mitään viestiä siitä, että negatiivisen rahasumman asettaminen ei toimi. Kun arvo on selvästi virheellinen, hyvä tapa viestiä tästä on heittää poikkeus. Tässä tapauksessa oikea poikkeus voisi olla `ValueError`, joka kertoo että arvo on väärä.
+I det föregående exemplet finns dock ett litet problem: klienten meddelas inte om att det inte går att ange ett negativt värde för attributet pengar. När ett värde som anges är uppenbart felaktigt är det vanligtvis en bra idé att skapa ett undantag och på så sätt informera klienten. I det här fallet bör undantaget förmodligen vara av typen `ValueError` för att visa att det angivna värdet var oacceptabelt.
 
-Korjattu versio luokasta ja testikoodi:
+Här har vi en förbättrad version av klassen, tillsammans med lite kod för att testa den:
 
 ```python
 class Lompakko:
@@ -284,7 +290,7 @@ ValueError: Rahasumma ei saa olla negatiivinen
 
 </sample-output>
 
-Huomaa, että havainnointimetodi eli `@property`-dekoraattori pitää esitellä luokassa ennen asetusmetodia, muuten seuraa virhe. Tämä johtuu siitä, että `@property`-dekoraattori määrittelee käytettävän "asetusattribuutin" nimen (edellisessä esimerkiksi `rahaa`), ja asetusmetodi `.setter` liittää siihen uuden toiminnallisuuden.
+OBS: getter-metoden, dvs `@property-dekoratorn`, måste introduceras före sättar-metoden i koden, annars blir det fel när klassen exekveras. Detta beror på att `@property-dekoratorn` definierar namnet på det "attribut" som erbjuds till klienten. Sättar-metoden, som läggs till med `.setter`, lägger helt enkelt till en ny funktionalitet till den.
 
 <programming-exercise name='Äänite' tmcname='osa09-10_aanite'>
 
@@ -319,7 +325,7 @@ Jos et muista miten poikkeus tuotetaan, kertaa
 
 </programming-exercise>
 
-Katsotaan vielä esimerkki luokasta, jolla on kaksi suojattua attribuuttia ja molemmille havainnointi- ja asetusmetodit:
+Följande exempel har en klass med två privata attribut, tillsammans med getter och sättare för båda. Prova programmet med olika värden som skickas som argument:
 
 ```python
 class Pelaaja:
@@ -370,7 +376,9 @@ Paula Palloilija
 
 </sample-output>
 
-Kolmantena esimerkkinä tarkastellaan luokkaa, joka mallintaa päiväkirjaa. Huomaa, että omistajalla on asetus- ja havainnointimetodit, mutta merkintöjen lisäys on toteutettu "perinteisillä" metodeilla. Tämä siksi, että asiakkaalle ei ole haluttu tarjota suoraan pääsyä tietorakenteeseen, johon merkinnät tallennetaan. Kapseloinnista on tässä sekin hyöty, että sisäistä toteutusta voidaan myöhemmin muuttaa (esim. vaihtamalla lista vaikka sanakirjaksi) ilman, että asiakkaan täytyy muuttaa omaa koodiaan.
+Som avslutning på detta avsnitt ska vi titta på en klass som modellerar en enkel dagbok. Alla attribut är privata, men de hanteras genom olika gränssnitt: dagbokens ägare har getter- och sättar-metoder, men dagboksposterna behandlas med "traditionella" metoder. I det här fallet är det vettigt att neka klienten all tillgång till dagbokens interna datastruktur. Endast de offentliga metoderna är direkt synliga för klienten.
+
+Inkapsling säkerställer också att den interna implementeringen av klassen kan ändras när som helst, förutsatt att det offentliga gränssnittet förblir intakt. Klienten behöver inte veta eller bry sig om huruvida den interna datastrukturen är baserad på listor, ordlistor eller något helt annat. 
 
 ```python
 class Paivakirja:

@@ -1,30 +1,30 @@
 ---
 path: '/osa-13/4-lisaa-tekniikoita'
-title: 'Lisää tekniikoita'
+title: 'Fler pygame-tekniker'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten ikkunan otsikkoa voi muuttaa
-- Osaat piirtää kuvioita Pygamessa
-- Osaat piirtää ikkunaan myös tekstiä
+- Kommer du att veta hur man titlar pygame-fönstret
+- Kommer du att kunna rita former med pygame
+- Kommer du att veta hur du visar text i ditt fönster
 
 </text-box>
 
-## Ikkunan otsikko
+## Fönstrets titel
 
-Ohjelma näyttää ammattimaisemmalta, jos ikkunan otsikkopalkissa ei lue "pygame window" vaan ohjelman todellinen nimi. Tämä onnistuu näin:
+Dina program kommer att se mer professionella ut om fönstertiteln istället för "pygame window" innehåller det faktiska namnet på programmet. Titeln ställs in med funktionen `pygame.display.set_caption`:
 
 ```python
 pygame.display.set_caption("Suuri seikkailu")
 ```
 
-## Kuvioiden piirtäminen
+## Att rita former
 
-Seuraava ohjelma luo kuvan, jossa on suorakulmio, ympyrä ja viiva:
+Följande program ritar en rektangel, en cirkel och en linje på skärmen:
 
 ```python
 import pygame
@@ -45,13 +45,13 @@ while True:
             exit()
 ```
 
-Ohjelman tulos näyttää tältä:
+Körning av koden ovan borde se ut enligt följande:
 
 <img src="pygame_kuviot.gif">
 
-## Tekstin piirtäminen
+## Att rita text
 
-Tekstin piirtäminen tapahtuu Pygame-kirjastossa niin, että ensin luodaan tekstiä vastaava kuva ja sen jälkeen piirretään kuva näytölle. Seuraava ohjelma esittelee asiaa:
+Text i pygame ritas i två steg: först skapar vi en bild som innehåller den önskade texten, och sedan ritas denna bild på skärmen. Det fungerar på följande sätt:
 
 ```python
 import pygame
@@ -71,17 +71,17 @@ while True:
             exit()
 ```
 
-Ohjelman suoritus näyttää seuraavalta:
+Körning av koden ovan borde se ut enligt följande:
 
 <img src="pygame_teksti.gif">
 
-Tässä metodi `pygame.font.SysFont` luo fonttiolion, joka käyttää järjestelmän fonttia Arial kokona 24. Tämän jälkeen olion metodi `render` luo kuvan, jossa lukee teksti "Moikka!" punaisella värillä, ja tämä kuva piirretään ikkunaan.
+Här skapar metoden `pygame.font.SysFont` ett typsnittsobjekt, som använder systemtypsnittet Arial i storlek 24. Metoden `render` skapar sedan en bild av den angivna texten i den angivna färgen. Denna bild ritas på fönstret med metoden `blit`, precis som tidigare.
 
-Huomaa, että eri järjestelmissä on saatavilla eri fontit. Jos järjestelmässä ei ole fonttia Arial (mikä tosin on yleinen fontti), yllä oleva koodi käyttää sen sijasta järjestelmän oletusfonttia. Toinen mahdollisuus on käyttää metodia `pygame.font.Font`, jolle annetaan hakemistossa olevan fonttitiedoston nimi.
+OBS: olika system kommer att ha olika teckensnitt tillgängliga. Om det system som det här programmet körs på inte har teckensnittet Arial, trots att Arial är ett mycket vanligt teckensnitt som finns på de flesta system, används istället systemets standardteckensnitt. Om du behöver ha ett specifikt teckensnitt tillgängligt för ditt spel kan du inkludera teckensnittsfilen i spelkatalogen och ange dess plats för metoden `pygame.font.Font`.
 
-## Tehtävät
+## Övningar
 
-Tässä on pari vaikeampaa tehtävää, joiden avulla voit harjoitella lisää tämän luvun asioita.
+Här är några mer avancerade övningar för att öva på det du har lärt dig i denna del av kursmaterialet. 
 
 <programming-exercise name='Kello' tmcname='osa13-16_kello'>
 
@@ -105,5 +105,3 @@ Tehtäväpohjassa on asteroidia varten kuvatiedosto `kivi.png`.
 Vastaa lopuksi osion loppukyselyyn:
 
 <quiz id="d16c5c09-a375-57da-a51b-22470587f95d"></quiz>
-
-

@@ -1,23 +1,23 @@
 ---
 path: '/osa-9/4-metodien-nakyvyys'
-title: 'Metodien näkyvyys'
+title: 'Metodernas räckvidd'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten metodin näkyvyys määritellään Pythonissa
-- Osaat kirjoittaa piilotettuja metodeita
+- Vet du hur du kan begränsa synligheten för en metod i Python
+- Kommer du att kunna skriva privata metoder
 
 </text-box>
 
-Luokassa olevien metodien näkyvyyteen voidaan vaikuttaa samalla tavalla kuin attribuuttien näkyvyyteen. Jos metodin nimi alkaa kahdella alaviivalla `__`, metodi ei ole näkyvissä asiakkaille.
+De metoder som definieras inom en klass kan döljas på exakt samma sätt som attributen i föregående avsnitt. Om metoden börjar med två understreck `__` är den inte direkt åtkomlig för klienten.
 
-Käytännössä mekanismia käytetään hiukan eri tavalla: piilotettujen attribuuttien käyttöä varten kirjoitetaan usein julkiset havainnointi- ja asetusmetodit. Piilotettu metodi on kuitenkin yleensä tarkoitettu vain luokan sisäiseen käyttöön, apumetodiksi asiakkaalta piilotettujen operaatioiden toteuttamiseksi.
+Tekniken är alltså densamma för både metoder och attribut, men användningsfallen är oftast lite annorlunda. Privata attribut kommer ofta tillsammans med getter- och sättar-metoder för att kontrollera åtkomsten till dem. Privata metoder å andra sidan är vanligtvis endast avsedda för internt bruk, som hjälpmetoder för processer som klienten inte behöver känna till.
 
-Piilotettua metodia voidaan kutsua luokan sisällä normaalisti, mutta kutsuttaessa pitää muistaa `self`-aluke. Tarkastellaan esimerkkinä sähköpostin vastaanottajaa mallintavaa luokkaa `Vastaanottaja`, jossa yksityistä apumetodia käytetään tarkistamaan sähköpostiosoitteen oikeellisuus:
+En privat metod kan användas inom klassen precis som vilken annan metod som helst, men man måste naturligtvis komma ihåg att inkludera `self`-prefixet. Följande är en enkel klass som representerar mottagaren av e-postbrev. Den innehåller en privat hjälpmetod för att kontrollera att e-postadressen är i ett giltigt format:
 
 ```python
 class Vastaanottaja:
@@ -33,7 +33,7 @@ class Vastaanottaja:
         return len(sposti) > 5 and "." in sposti and "@" in sposti
 ```
 
-Jos asiakas yrittää kutsua metodia, seuraa virhe:
+Försök att kalla den privata metoden direkt orsakar ett fel:
 
 ```python
 pertti = Vastaanottaja("Pertti Keinonen", "pertti@example.com")
@@ -46,7 +46,7 @@ AttributeError: 'Vastaanottaja' object has no attribute '__tarkasta_sposti'
 
 </sample-output>
 
-Samaa apumetodia kannattaa kutsua myös sähköpostia asettaessa - lisätään siis luokkaan esimerkin vuoksi havainnointi- ja asetusmetodit sähköpostille:
+Inom klassen kan metoden användas på normalt sätt, och det är vettigt att använda den även för att ange ett nytt värde för adressen. Låt oss lägga till getter- och sätter-metoder för e-postadressen:
 
 ```python
 class Vastaanottaja:
@@ -73,7 +73,7 @@ class Vastaanottaja:
             raise ValueError("Sähköposti ei kelpaa")
 ```
 
-Tarkastellaan sitten toista esimerkkiä. Luokka `Korttipakka` mallintaa nimensä mukaisesti 52 kortin korttipakkaa. Apumetodi `__alusta_pakka` luo uuden sekoitetun pakan oliota luotaessa. Vastaava alustus voitaisiin toki tehdä myös metodissa `__init__`, mutta erillisen apumetodin käyttö tekee koodista siistimpää ja mahdollistaa alustusmetodin kutsumisen myös muualta luokasta tarvittaessa.
+I följande exempel är klassen `Kortlek` en modell för en kortlek med 52 kort. Den innehåller hjälpmetoden `__återställ_kortlek`, som skapar en ny blandad kortlek. Den privata metoden anropas för närvarande endast i konstruktörsmetoden, så implementationen skulle kunna placeras direkt i konstruktören. Att använda en separat metod gör dock koden mer lättläst och gör det också möjligt att komma åt funktionaliteten senare i andra metoder om det behövs.
 
 ```python
 from random import shuffle
@@ -100,7 +100,7 @@ class Korttipakka:
         return kasi
 ```
 
-Seuraava koodi testaa luokkaa:
+Låt oss testa klassen:
 
 ```python
 korttipakka = Korttipakka()
@@ -110,7 +110,7 @@ kasi2 = korttipakka.jaa(5)
 print(kasi2)
 ```
 
-Ohjelma tulostaa esimerkiksi
+Eftersom händerna är slumpmässigt genererade, är följande endast ett exempel av det som kunde utskrivas:
 
 <sample-output>
 
@@ -119,7 +119,7 @@ Ohjelma tulostaa esimerkiksi
 
 </sample-output>
 
-Piilotettuja metodeja tarvitaan yleensä harvemmin kuin piilotettuja attribuutteja. Metodi kannattaa piilottaa, jos asiakas ei tarvitse siihen suoraa pääsyä, ja varsinkin silloin, jos on todennäköistä, että asiakas voisi sotkea olion sisäisen eheyden metodia kutsumalla.
+Privata metoder är i allmänhet mindre vanliga än privata attribut. En tumregel är att en metod ska döljas när klienten inte har något behov av att direkt komma åt den. Detta är särskilt fallet när det är möjligt att klienten kan påverka objektets integritet negativt genom att anropa metoden. 
 
 <programming-exercise name='Palvelumaksu' tmcname='osa09-12_palvelumaksu'>
 
@@ -156,4 +156,3 @@ print(tili.saldo)
 
 
 </programming-exercise>
-

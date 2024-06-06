@@ -1,67 +1,67 @@
 ---
 path: '/osa-13/1-pygame-kayttoon'
-title: 'Pygame käyttöön'
+title: 'Pygame'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Olet asentanut Pygame-kirjaston koneellesi
-- Osaat luoda ikkunan ja sulkea ohjelman
-- Osaat piirtää ikkunaan tiedostossa olevan kuvan
+- Har du installerat pygame-biblioteket på din dator
+- Vet du hur man skapar ett pygame-fönster och hur man avslutar ett program
+- Kommer du att kunna använda en bild som lagras i en fil i ett pygame-fönster
 
 </text-box>
 
-Kurssin kahdella viimeisellä viikolla tutustumme Pygame-kirjastoon, joka on peliohjelmointiin tarkoitettu Python-kirjasto. Pygamen avulla pystyy piirtämään grafiikkaa, käsittelemään näppäimistön ja hiiren tapahtumia ja tekemään muuta peleissä tarvittavaa.
+I de här två sista delarna av kursmaterialet kommer vi att bekanta oss med pygame-biblioteket. Det är ett Python-bibliotek för programmering av spel. Det hjälper dig att skapa grafiska element, hantera händelser från tangentbordet och musen samt implementera andra funktioner som är nödvändiga i spel.
 
-## Pygamen asentaminen
+## Att installera pygame
 
 ### Linux
 
-Avaa komentorivi ja kirjoita `pip3 install pygame`.
+Öppna en instruktionsrad, skriv in `pip3 install pygame` och tryck på `enter`.
 
 <img src="pygame_linux.png">
 
+Detta borde installera pygame-biblioteket på din dator.
+
 ### Windows
 
-Avaa Windowsin terminaali napauttamalla vasemman alakulman Windows-painiketta. Kirjoita aukeavaan ikkunaan `cmd` ja paina enter:
+Öppna Windows-terminalen genom att öppna menyn, skriva `cmd` och trycka på `enter`:
 
 <img src="13_1_1.png">
 
-Kirjoita auenneeeseen komentokehoteikkunaan seuraava komentosarja ja paina `enter`:
+Fönstret för kommandoradstolken borde öppnas. Skriv in `pip3 install pygame` och tryck på `enter`.
 
-`pip3 install pygame`
+Detta borde installera pygame-biblioteket på din dator.
 
-Tämä asentaa Pygame-paketin koneellesi.
+Installationen kan kräva systemadministratörsbehörighet. Om ovanstående inte fungerar kan du prova på att köra terminalprogrammet som administratör: öppna Windows-menyn, leta reda på CMD-programmet, högerklicka på det och välj "Kör som administratör".
 
-Asennus voi vaatia järjestelmänvalvojan oikeuksia. Jos ylläoleva ei toimi, voit yrittää ajaa terminaalin järjestelmänvalvojana (valitse Windows-valikko, paina hiiren kakkospainiketta CMD-valinnan päällä ja valitse "Run as administrator" tai "Aja järjestelmänvalvojana").
-
-Huomaa, että asennus vaatii että olet asennusvaiheessa ohjeiden mukaisesti valinnut kohdan "Add Python 3.XX to path", katso [ohjeet](https://www.mooc.fi/fi/installation/vscode#python3)
+För att installera och få åtkomst till pygame krävs att din Python-installation läggs till i sökvägen, enligt [instruktionerna](https://www.mooc.fi/fi/installation/vscode#python3) här.
 
 ### Mac
 
-Avaa _Terminaali_, esim. painamalla oikean yläkulman suurennuslasi-symbolia:
+Öppna Terminalen, t.ex. genom förstoringsglas-symbolen i det övre högra hörnet:
 
 <img src="13-1-2.png">
 
- Kirjoita aukeavaan teksikenttään `terminal` ja paina enter:
+Sökverktyget borde öppna. Skriv in `terminal` och tryck `enter`:
 
 <img src="13-1-3.png">
 
-Kirjoita auenneeeseen komentokehoteikkunaan seuraava komentosarja ja paina `enter`:
+Skriv in följande och tryck `enter`:
 
 `pip3 install pygame`
 
 <img src="13-1-4.png">
 
 
-Tämä asentaa Pygame-paketin koneellesi.
+Detta borde installera pygame-biblioteket på din dator.
 
-## Ensimmäinen ohjelma
+## Ditt första program
 
-Tässä on yksinkertainen Pygamea käyttävä testiohjelma:
+Här är ett enkelt program för att kontrollera att din pygame-installation fungerar korrekt:
 
 ```python
 import pygame
@@ -78,31 +78,31 @@ while True:
             exit()
 ```
 
-Kun ohjelma käynnistetään, se näyttää käyttäjälle seuraavanlaisen ikkunan:
+När detta program körs borde det visa ett fönster:
 
 <img src="pygame_eka.gif">
 
-Ohjelmassa ei ole kuitenkaan vielä muuta sisältöä kuin ikkunan näyttäminen. Ohjelman suoritus jatkuu niin kauan, kunnes käyttäjä sulkee ikkunan.
+Programmet visar endast ett fönster, och det körs tills användaren stänger fönstret.
 
-Katsotaan seuraavaksi tarkemmin, miten ohjelma on rakentunut. Ohjelman alussa rivi `import pygame` ottaa mukaan Pygame-kirjaston. Kirjaston käyttäminen alkaa kutsumalla funktiota `pygame.init`, minkä jälkeen ohjelma luo ikkunan funktiolla `pygame.display.set_mode`.
+Låt oss ta en närmare titt på de steg som krävs för att uppnå detta. Den första raden tar pygame-biblioteket i bruk: `import pygame`. Nästa instruktion, `pygame.init`, initierar pygame-modulerna, och nästa skapar ett fönster med funktionen `pygame.display.set_mode`.
 
 ```python
 pygame.init()
 naytto = pygame.display.set_mode((640, 480))
 ```
 
-Muuttujan `naytto` kautta ikkunaan voidaan viitata myöhemmin esimerkiksi grafiikan piirtämistä varten. Parametri `(640, 480)` tarkoittaa, että tässä ohjelmassa ikkunan leveys on 640 pikseliä ja korkeus on 480 pikseliä.
+Funktionen `set_mode` tar fönstrets dimensioner som ett argument. Tupeln `(640, 480)` anger att fönstret är 640 pixlar brett och 480 pixlar högt. Variabelnamnet `fonster` kan senare användas för att komma åt fönstret, t.ex. för att rita något i det.
 
-Seuraavaksi ohjelmassa on kaksi komentoa:
+De följande två instruktionerna gör just detta:
 
 ```python
 naytto.fill((0, 0, 0))
 pygame.display.flip()
 ```
 
-Metodi `fill` täyttää näytön annetulla värillä. Tässä tapauksessa värinä on `(0, 0, 0)`, mikä tarkoittaa mustaa. Sitten metodi `pygame.display.flip` päivittää näytön sisällön.
+Metoden `fill` fyller fönstret med den färg som anges som argument. I det här fallet är färgen svart, som skickas som ett RGB-värde i tupeln `(0, 0, 0)`. Metoden `pygame.display.flip` uppdaterar innehållet i fönstret.
 
-Tämän jälkeen alkaa ohjelman _pääsilmukka_:
+Efter dessa initialiseringsinstruktioner börjar programmets huvudloop:
 
 ```python
 while True:
@@ -111,15 +111,15 @@ while True:
             exit()
 ```
 
-Pääsilmukka käsittelee tapahtumat, jotka käyttöjärjestelmä välittää ohjelmalle. Joka kierroksella funktio `pygame.event.get` antaa listan tapahtumista, jotka ovat syntyneet funktion edellisen kutsukerran jälkeen.
+Huvudloopen hanterar alla händelser som operativsystemet skickar till programmet. Vid varje iteration returnerar funktionen `pygame.event.get` en lista över alla händelser som har samlats in sedan föregående iteration.
 
-Tässä tapauksessa ohjelma käsittelee vain tyyppiä `pygame.QUIT` olevat tapahtumat. Tällainen tapahtuma syntyy, kun käyttäjä sulkee ohjelman esimerkiksi painamalla ikkunan ylänurkassa olevaa raksia. Tämän tapahtuman seurauksena ohjelma sulkee itsensä kutsumalla `exit`-funktiota.
+I exemplet ovan hanterar programmet endast händelser av typen `pygame.QUIT`. Denna händelse uppstår t.ex. genom att man klickar på exit-knappen i fönstrets hörn. Om händelsen `pygame.QUIT` utlöses avslutas programmet genom funktionen exit.
 
-Voit kokeilla, mitä tapahtuu, jos ohjelma ei käsittele tapahtumaa `pygame.QUIT`. Tällöin raksin painamisen ei pitäisi vaikuttaa ohjelman toimintaan, mikä on hämmentävää käyttäjälle. Ohjelman voi kuitenkin tässäkin tapauksessa sulkea väkisin komentoriviltä painamalla Control+C.
+Du kan prova och se vad som händer om ditt program inte hanterar händelsen `pygame.QUIT`. Detta borde innebära att det inte händer någonting om man klickar på exit-knappen, vilket skulle vara förvirrande för användaren. Eftersom programmet körs från kommandoraden kan du fortfarande stoppa det från kommandoraden med Control+C.
 
-## Kuva ohjelmaan
+## Lägg till en bild
 
-Laajennetaan seuraavaksi ohjelmaa niin, että se näyttää ikkunassa kuvan. Tämä onnistuu seuraavasti:
+Låt oss lägga till en bild i fönstret:
 
 ```python
 import pygame
@@ -139,21 +139,21 @@ while True:
             exit()
 ```
 
-Koodi käyttää kuvaa `robo.png`, jossa on robotin kuva:
+Programmet använder denna bild av en robot, som finns lagrad i filen `robot.png`:
 
 <img src="robo.png">
 
-Tiedoston `robo.png` tulee olla samassa hakemistossa ohjelman lähdekoodin kanssa, jotta ohjelma löytää kuvan. Tämän viikon tehtävissä robotin kuva on valmiina tehtäväpohjissa.
+Filen `robot.png` måste finnas i samma katalog som källkoden för ditt program, annars kan programmet inte hitta den. I övningsmallarna för denna del väntar bilderna i övningskatalogen.
 
-Nyt ikkuna näyttää tältä:
+Fönstret borde nu se ut så här:
 
 <img src="pygame_kuva.gif">
 
-Tässä funktio `pygame.image.load` lataa muuttujaan tiedostossa `robo.png` olevan kuvan. Tämän jälkeen metodi `blit` piirtää kuvan ikkunaan kohtaan `(100, 50)` ja sitten funktio `pygame.display.flip` päivittää ikkunan sisällön. Kohta `(100, 50)` tarkoittaa, että kuvan _vasen yläkulma_  on kyseisessä kohdassa.
+Funktionen `pygame.image.load` laddar in bilden i filen `robot.png` och lagrar en referens till den i variabeln `robot`. Metoden `blit` ritar bilden på platsen `(100, 50)`, och funktionen `pygame.display.flip` uppdaterar fönstrets innehåll, som tidigare. Platsen `(100, 50)` innebär att bildens övre vänstra hörn befinner sig på den platsen i fönstret.
 
-Huomaa, että Pygamessa ja yleensä muutenkin ohjelmoinnissa koordinaatisto on rakennettu niin, että piirtoalueen vasen yläkulma on kohdassa `(0, 0)` ja koordinaatit kasvavat x-suunnassa oikealle ja y-suunnassa alaspäin. Tässä tapauksessa ikkunan oikean alakulman koordinaatit ovat `(640, 480)`.
+I pygame ligger origo-punkten `(0, 0)` i fönstrets övre vänstra hörn. X-koordinaterna ökar åt höger och y-koordinaterna ökar nedåt, så att det nedre högra hörnet har koordinaterna `(640, 480)`. Detta är tvärtemot hur koordinater brukar hanteras inom t.ex. matematiken, men det är ganska vanligt i programmeringssammanhang och värt att vänja sig vid.
 
-Kuvan voi piirtää moneenkin kohtaan ikkunassa. Esimerkiksi seuraava koodi piirtää kuvan kolmeen eri kohtaan:
+När du har laddat en bild kan du använda den många gånger i samma fönster. I följande kod ritas bilden av roboten på tre olika platser:
 
 ```python
 naytto.blit(robo, (0, 0))
@@ -161,11 +161,11 @@ naytto.blit(robo, (300, 0))
 naytto.blit(robo, (100, 200))
 ```
 
-Tällöin ikkuna näyttää seuraavalta:
+Resultatet borde vara att fönstret ser ut så här:
 
 <img src="pygame_kuva2.gif">
 
-Seuraava koodi puolestaan piirtää kuvan ikkunan keskelle:
+Här sätter vi lokationen av bilden så, att den ligger i mitten av fönstret:
 
 ```python
 leveys = robo.get_width()
@@ -173,17 +173,17 @@ korkeus = robo.get_height()
 naytto.blit(robo, (320-leveys/2, 240-korkeus/2))
 ```
 
-Nyt ikkuna näyttää tältä:
+Fönstret borde nu se ut så här:
 
 <img src="pygame_kuva3.gif">
 
-Tässä metodi `get_width` antaa kuvan leveyden ja vastaavasti metodi `get_height` antaa kuvan korkeuden. Ikkunan keskikohta on `(320, 240)`, joten tämän avulla saadaan laskettua sopiva kohta kuvan vasemmalle yläkulmalle niin, että kuva sijoittuu ikkunan keskelle.
+Metoden `get_width` ger bildens bredd och metoden `get_height` ger dess höjd, båda i pixlar. Fönstrets mittpunkt ligger på halva bredden och höjden, alltså på `(320, 240)`, vilket vi kan använda för att beräkna en lämplig plats för bildens övre vänstra hörn, så att det ligger exakt i mitten.
 
-<text-box variant='hint' name='Pygame-tehtävät'>
+<text-box variant='hint' name='Pygame-övningar'>
 
-Tämän osan tehtävissä ei ole automaattisia testejä, vaan testi antaa pisteet automaattisesti, kun lähetät ratkaisun palvelimelle. Lähetä ratkaisu vasta sitten, kun se on valmis ja vastaa tehtävänannon vaatimuksia. Vaikka tehtävissä ei ole testejä, kurssin henkilökunta näkee lähetetyt ratkaisut. Myös keskeneräisen ratkaisun lähettäminen TMC Pasteen antaa pisteet automaattisesti, joten sitä ei tule käyttää kysyessä apua tämän osan tehtäviin. Voit kurssin tukikanavilla apua kysyessä käyttää [Pastebin.com](https://pastebin.com/)ia tai jotain muuta internetin pastebin-palvelua.
+Övningarna i den här delen av kursen har inga automatiserade tester, eftersom resultaten verifieras visuellt. Testerna ger poäng automatiskt när du skickar in din lösning till servern, oavsett hur du har implementerat den. Skicka bara in din lösning när du är redo och din lösning matchar övningsbeskrivningen. Övningarna kanske inte har automatiska tester, men kurspersonalen kommer ändå att se din lösning. Att skicka in en ofullständig lösning till TMC Paste ger också poäng automatiskt, så det bör inte användas när du ber om hjälp med övningarna i den här delen. Du kan använda [Pastebin.com](https://pastebin.com/) eller någon annan pastebin-tjänst på internet när du ber om hjälp i kursens stödkanaler.
 
-Jos lähetät palvelimelle ratkaisun, joka selkeästi ei vastaa tehtävänantoa, voit menettää pisteet tämän osan tehtävistä.
+Om din lösning helt klart inte stämmer överens med övningsbeskrivningen kan du förlora de poäng som du har fått för övningarna i den här delen. 
 
 </text-box>
 

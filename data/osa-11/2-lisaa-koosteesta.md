@@ -1,23 +1,21 @@
 ---
 path: '/osa-11/2-lisaa-koosteesta'
-title: 'Lisää koosteesta'
+title: 'Fler comprehensions'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten koosteita voidaan hyödyntää merkkijonojen kanssa
-- Osaat käyttää omia olioita koosteissa
-- Osaat muodostaa myös sanakirjakoosteita
+- Kommer du att kunna använda comprehensions med strängar
+- Vet du hur du använder comprehensions med dina egna klasser
+- Kommer du att kunna skapa ordlistscomprehensions
 
 </text-box>
 
 
-Koska koosteen lähteenä voi olla mikä tahansa sarja, voidaan sitä soveltaa myös merkkijonojen käsittelyyn. Merkkijonon läpikäynnissä poimitaan merkit yksitellen jonosta, suoritetaan nille annettu lauseke ja tallennetaan lopputulos uuden listan alkioksi.
-
-Esimerkiksi
+Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista.
 
 ```python
 
@@ -34,9 +32,7 @@ print(isot_kirjaimet)
 
 </sample-output>
 
-Huomaa, että lopputuloksena on lista. Jos halutaan muodostaa merkkijonon perusteella uusi merkkijono, voidaan hyödyntää aikaisemmin esiteltyä `join`-metodia. Metodin avulla voidaan yhdistää listan alkiot merkkijonoksi. Metodi kohdistuu välimerkkiin, jolla alkiot yhdistetään.
-
-Metodi toimii siis esimerkiksi näin:
+Resultatet är en lista, vilket dikteras av parentesnotationen runt comprehension-satsen. Om vi ville ha en sträng istället skulle vi kunna använda strängmetoden `join`  för att tolka listan till en sträng. Kom ihåg att metoden anropas på den sträng som vi vill använda som "lim" mellan tecknen. Låt oss ta en titt på några exempel:
 
 ```python
 
@@ -61,7 +57,7 @@ P ja e ja k ja k ja a
 
 </sample-output>
 
-Kun yhdistetään `join`-metodin koosteeseen, voidaan muodostaa merkkijonosta uusi merkkijono helposti. Tarkastellaan esimerkkiä `join`-metodin ja koosteen yhdistelmästä, joka muodostaa alkuperäisen merkkijonon pohjalta uuden merkkijonon, jossa on ainoastaan vokaalit:
+List comprehensions och `join`-metoden gör det enkelt att skapa nya strängar baserade på andra strängar. Vi kan t.ex. skapa en sträng som bara innehåller vokalerna från en annan sträng:
 
 ```python
 
@@ -80,7 +76,7 @@ eiaaaaiiääoei
 
 </sample-output>
 
-Esimerkissä on selkeyden vuoksi jaettu kooste ja `join`-metodin kutsu omille riveilleen, mutta toki ne voi kirjoittaa myös yhdeksi lausekkeeksi:
+I exemplet ovan står list comprehension och `join`-metoden på separata rader, men de kan kombineras till ett enda uttryck:
 
 ```python
 
@@ -92,7 +88,7 @@ print(vokaalijono)
 
 ```
 
-Hyödyntämällä samassa yhteydessä vielä `split`-metodia, voidaan käsitellä esimerkiksi kokonaisia lauseita tehokkaasti yhdellä lausekkeella. Esimerkissä poistetaan lauseen jokaisesta sanasta ensimmäinen kirjain:
+Många Python-programmerare står trogna vid dessa oneliners, så det är väl värt besväret att lära sig läsa dem. Vi kan till och med lägga till `split`-metoden i mixen, så att vi kan bearbeta hela meningar effektivt med ett enda uttalande. I exemplet nedan tas det första tecknet från varje ord i en mening bort:
 
 ```python
 
@@ -109,13 +105,13 @@ esihiisi e uulkaa aan ihisi ississä
 
 </sample-output>
 
-Käydään läpi tarkemmin mitä koko lausekkeessa tapahtuu:
+Låt oss gå igenom detta steg för steg:
 
-`sana[1:]` ottaa osajonon sanasta alkaen toisesta merkistä (eli indeksistä 1)
-`lause.split()` purkaa merkkijonon listaksi annetun välimerkin kohdalta. Kun välimerkkiä ei ole määritelty, käytetään oletuksena tyhjiä välejä
-`" ".join()` yhdistää listan palaset uudeksi jonoksi käyttäen välilyöntiä palojen välissä.
+- `ord[1:]` extraherar en delsträng från det andra tecknet (vid index 1) och framåt
+- `mening.split()` delar upp meningen i avsnitt vid det angivna tecknet. I det här fallet ges inget argument till metoden, så meningen delas upp vid mellanslagstecken som standard
+- `" ".join()` kombinerar föremålen i listan till en ny sträng med ett mellanslag mellan föremålen
 
-Sama esimerkki perinteisemmällä tavalla näyttäisi esimerkiksi tältä:
+En mer traditionell iterativ metod skulle kunna se ut så här:
 
 ```python
 
@@ -156,11 +152,11 @@ Suo kuokka ja python hieno yhdistelmä
 
 </programming-exercise>
 
-## Omat oliot koosteissa
+## Egna klasser och comprehensions
 
-Joskus omia olioita on näppärä käsitellä tai muodostaa koosteiden avulla. Tarkastellaan seuraavaksi muutamaa esimerkkiä tähän liittyen.
+Comprehensions kan vara ett användbart verktyg för att bearbeta eller formulera instanser av dina egna klasser, vilket vi kommer att se i följande exempel.
 
-Ensimmäisessä esimerkissä luokka Maa mallintaa yhtä maata asukaslukuineen. Koosteessa poimitaan listalta kaikkien sellaisten maiden nimet, joiden asukasluku on suurempi kuin 5 miljoonaa.
+Låt oss först ta en titt på klassen `Land` som är en enkel modell för ett enda land, med attribut för namn och befolkning. I huvudfunktionen nedan skapar vi först några Land-objekt och använder sedan en list comprehension för att bara välja dem vars befolkning är större än fem miljoner.
 
 ```python
 
@@ -192,7 +188,7 @@ Ruotsi
 
 </sample-output>
 
-Toinen vaihtoehto olisi luoda lista maa-olioista ja tulostaa sen jälkeen nimet. Tämä vaihtoehto olisi järkevämpi, jos maita tarvittaisiin vielä myöhemminkin (tai mikäli haluttaisiin esimerkiksi tarkemmin tarkastella maiden asukaslukuja silmukassa):
+I list comprehension ovan valde vi bara namnattributet från Land-objekten, så innehållet i listan kunde skrivas ut direkt. Vi skulle också kunna skapa en ny lista med länderna och komma åt namnattributet i `for`-loopen. Detta skulle vara användbart om samma lista med länder skulle användas senare i programmet, eller om vi behövde befolkningsattributet i `for`-loopen också:
 
 ```python
 
@@ -209,9 +205,9 @@ if __name__ == "__main__":
         print(maa.nimi)
 ```
 
-Toisessa esimerkissä luokka `Juoksumatka` mallintaa yhtä juoksumatkaa nimineen ja pituuksineen. Nyt koosteen avulla luodaan lista `Juoksumatka`-olioita annettujen pituuksien mukaaan.
+I nästa exempel har vi en klass som heter `Springning` som modellerar ett enskilt lopp med attribut för loppets längd och namn. Vi kommer att använda list comprehension för att skapa `Springning`-objekt baserat på en lista med tävlingslängder.
 
-Huomaa, että `Juoksumatka`-luokan konstruktorissa parametrilla `nimi` on oletusarvo, eikä sitä olioita luodessa esimerkissä erikseen annetakaan:
+Parametern `namn` har ett standardvärde i konstruktorn för `Springning`-klassen, vilket är varför vi inte behöver skicka namnet som ett argument.
 
 ```python
 
@@ -247,7 +243,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Jos oma luokka on viime kerran esimerkin mukaisesti iteroitava, voidaan sitä käyttää lähteenä listakoosteessa:
+Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehendible”). I föregående del lärde vi oss hur vi kan göra våra egna klasser itererbara. Det är exakt samma funktion som också möjliggör list comprehension. Om din egen klass är itererbar kan den användas som grund för en list comprehension. Följande klassdefinitioner är kopierade direkt från [del 10](https://programming-24.mooc.fi/part-10/3-oo-programming-techniques#iterators):
 
 ```python
 
@@ -375,13 +371,13 @@ Kerava 4h ja keittiö           hintaero 16500 euroa
 
 </programming-exercise>
 
-## Koosteet sanakirjan kanssa
+## Comprehensions och ordlistor
 
-Koosteet toimivat samalla tavalla myös sanakirjan kanssa: jos vaihdetaan hakasulkeet aaltosulkeiksi, syntyy koosteen seurauksena listan sijasta sanakirja. Koska sanakirjan alkio muodostuu kahdesta komponentista - arvosta ja avaimesta, tulee molemmat komponentit antaa myös koostetta luodessa.
+Det finns inget i sig "list-aktigt" med comprehensions. Resultatet är en lista eftersom comprehension-satsen är inkapslad i hakparenteser, som indikerar en Python-lista. Förståelser fungerar lika bra med Python-ordlistor om du använder rundparenteser istället. Kom dock ihåg att ordlistor kräver nyckel-värde-par. Båda måste anges när en ordlista skapas, även när det gäller comprehensions.
 
-Lähteenä voidaan edelleen käyttää mitä tahansa sarjaa, eli esimerkiksi listaa, merkkijonoa, tuplea, sanakirjaa tai omaa iteroinnin toteuttavaa luokkaa.
+Grunden för en comprehension kan vara vilken itererbar serie som helst, vare sig det är en lista, en sträng, en tupel, en ordlista, någon av dina egna itererbara klasser och så vidare.
 
-Esimerkki, joka luo merkkijonon pohjalta sanakirjan, joka sisältää kaikki merkkijonon kirjaimet ja niiden esiintymämäärät:
+I följande exempel använder vi en sträng som bas för en ordlista. Ordlistan innehåller alla unika tecken i strängen, tillsammans med antalet gånger de förekommer:
 
 ```python
 
@@ -398,11 +394,11 @@ print(merkkimäärät)
 
 </sample-output>
 
-Periaate on siis täsmälleen sama, mutta yksittäisen arvon sijasta annetaan erikseen avain ja arvo. Yleisesti merkittynä siis:
+Principen för comprehension-satsen är exakt densamma som för listor, men i stället för ett enda värde består uttrycket nu av en nyckel och ett värde. Den allmänna syntaxen ser ut så här:
 
-`{<avainlauseke> : <arvolauseke> for <alkio> in <sarja>}`
+`{<nyckeluttryck> : <värdeuttryck> för <föremål> i <serie>}`
 
-Tarkastellaan vielä toisena esimerkkinä ohjelmaa, joka laskee kaikkien listalla olevien positiivisten lukujen kertomat, mutta tällä kertaa sanakirjaan. Luku toimii avaimena ja kertoma arvona:
+Som avslutning på det här avsnittet tittar vi på faktorialtal igen. Den här gången lagrar vi resultaten i en ordlista. Själva talet är nyckeln, medan värdet är resultatet av faktorn från vår funktion: 
 
 ```python
 

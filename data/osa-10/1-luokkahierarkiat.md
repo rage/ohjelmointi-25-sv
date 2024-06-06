@@ -1,22 +1,24 @@
 ---
 path: '/osa-10/1-luokkahierarkiat'
-title: 'Luokkahierarkiat'
+title: 'Klasshierarkier'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetaan perinnällä
-- Osaat kirjoittaa luokkia jotka perivät jonkin toisen luokan
-- Tiedät miten eri piirteet periytyvät
+- Vet du vad arv betyder i programmeringssammanhang
+- Kommer du att kunna skriva klasser som ärver andra klasser
+- Vet du hur arv påverkar egenskaperna i klasser  
 
 </text-box>
 
-## Luokkien erikoistaminen
+## Specialklasser för speciella ändamål
 
-Joskus tulee vastaan tilanne, jossa luokan toimintaa olisi hyvä pyrkiä erikoistamaan, mutta vain osalle olioista. Tarkastellaan esimerkkinä tilannetta, jossa meillä on kaksi luokkaa - Opiskelija ja Opettaja. Yksinkertaistuksen vuoksi luokista on jätetty pois kaikki asetus- ja havainnointimetodit.
+Ibland stöter man på en situation där man redan har definierat en klass, men sedan inser att man behöver speciella egenskaper i vissa, men inte alla, instanser av klassen. Och ibland inser man att man har definierat två stycken mycket liknande klasser med bara små skillnader. Som programmerare strävar vi efter att alltid upprepa oss så lite som möjligt, medan vi behåller tydlighet och läsbarhet. Så hur kan vi ta hänsyn till olika implementeringar av liknande objekt?
+
+Låt oss ta en titt på två klassdefinitioner: `Student` och `Larare`. Getter- och sättar-metoder har utelämnats tills vidare för att hålla exemplet kort.
 
 ```python
 
@@ -38,7 +40,9 @@ class Opettaja:
 
 ```
 
-Yksinkertaistetustakin esimerkistä huomataan, että luokilla on yhteisiä piirteitä - tässä tapauksessa nimi ja sähköpostiosoite. Monessa tilanteessa olisi hyvä, jos yhteisiä piirteitä voitaisin käsitellä yhdellä operaatiolla: oletetaan tilanne, jossa koulun sähköpostitunnus muuttuu. Toki voitaisiin kirjoittaa kaksi käsittelyfunktiota...
+Även i ett avskalat exempel som ovan har vi redan en hel del upprepningar: båda klasserna innehåller attributen `namn` och `epost`. Det vore en bra idé att ha en enda attributdefinition, så att det räcker med en enda funktion för att redigera båda attributen.
+
+Tänk dig till exempel att skolans e-postadress ändras. Alla adresser skulle behöva uppdateras. Vi skulle kunna skriva två separata versioner av i stort sett samma funktion:  
 
 ```python
 
@@ -50,15 +54,15 @@ def korjaa_email2(o: Opettaja):
 
 ```
 
-...mutta saman koodin toistaminen kahteen kertaan tuntuu turhalta työltä, ja lisää virheiden mahdollisuutta. Olisi siis hyvä, jos molempien luokkien mukaisia olioita voitaisiin käsitellä samalla metodilla.
+Att skriva i stort sett samma sak två gånger är onödig upprepning, för att inte tala om att det fördubblar möjligheterna till fel. Det skulle vara en klar förbättring om vi kunde använda en enda funktion för att arbeta med instanser av båda klasserna.
 
-Luokat kuitenkin sisältävät myös piirteitä, joita toisella luokalla ei ole. Sen takia luokkien yhdistäminen ei tunnu järkevältä.
+Båda klasserna har också attribut som är unika för dem. Att bara kombinera alla attribut i en enda klass skulle innebära att alla instanser av klassen då skulle ha onödiga attribut, bara olika för olika instanser. Det verkar inte heller vara en idealisk situation.
 
- ## Perintä
+## Arv
 
- Ratkaisu löytyy olio-ohjelmoinnin tekniikasta nimeltä _perintä_. Perinnällä tarkoitetaan sitä, että luokka _perii_ piirteet joltain toiselta luokalta. Näiden perittyjen piirteiden rinnalle luokka voi sitten toteuttaa uusia piirteitä.
+Objektorienterade programmeringsspråk innehåller vanligtvis en teknik som kallas arv (eng. inheritance). En klass kan ärva egenskaper från en annan klass. Förutom dessa ärvda egenskaper kan en klass också innehålla egenskaper som är unika för den.
 
- Opettaja- ja Opiskelija-luokilla voisi olla yhteinen _yliluokka_ `Henkilo`:
+Med detta i åtanke är det rimligt att klasserna `Larare` och `Student` har en gemensam bas eller föräldraklass `Person`:
 
  ```python
 
@@ -70,9 +74,9 @@ class Henkilo:
 
  ```
 
- Luokassa on toteutettu siis henkilöön liittyvät piirteet. Nyt luokat Opiskelija ja Opettaja voivat _periä_ luokan ja lisätä perittyjen ominaisuuksien rinnalle uusia piirteitä:
+Den nya klassen innehåller de egenskaper som delas av de andra två klasserna. Nu kan `Student` och `Larare` ärva dessa egenskaper och dessutom lägga till sina egna. :
 
- Perintä tapahtuu kirjoittamalla luokan nimen perään perittävän luokan nimi sulkuihin:
+Syntaxen för arv innebär helt enkelt att basklassens namn läggs till inom parentes på rubrikraden:
 
  ```python
 
@@ -114,9 +118,9 @@ if __name__ == "__main__":
 
  ```
 
- Koska sekä Opiskelija että Opettaja perivät luokan Henkilo, molemmilla on käytössään Henkilo-luokassa määritellyt piirteet, mukaanlukien metodi `vaihda_spostitunniste`.
+Både `Student` och `Larare` ärver klassen `Person`, så båda har de egenskaper som definieras i klassen Person, inklusive metoden `uppdatera_epost_doman`. Samma metod fungerar för instanser av båda de härledda klasserna.
 
- Tarkastellaan vielä toista esimerkkiä, jossa luokka Kirjahylly perii luokan Laatikko:
+ Låt oss titta på ett annat exempel. Vi har en `Bokhylla` som ärver klassen `BokLada`:
 
  ```python
 class Kirja:
@@ -151,11 +155,11 @@ class Kirjahylly(Kirjalaatikko):
 
  ```
 
- Luokassa Kirjahylly on määritelty metodi `lisaa_kirja`. Samanniminen metodi on määritelty myös yliluokassa `Kirjalaatikko`. Tällaisessa tapauksessa puhutaan metodin _uudelleenmäärittelystä_ tai ylikirjoituksesta (overwriting): aliluokan samanniminen metodi korvaa yliluokan vastaavan metodin.
+ Klassen `Bokhylla` innehåller metoden `tillägg_bok`. En metod med samma namn finns definierad i basklassen `BokLada`. Detta kallas överstyrning (eng. override): om en härledd klass har en metod med samma namn som basklassen, överstyr den härledda versionen originalet i instanser av den härledda klassen.
 
- Esimerkissämme idea on, että kirjalaatikossa kirja asetetaan aina laatikossa päällimmäiseksi, mutta kirjahyllyssä voidaan määritellä asetuspaikka. Sen sijaan metodin `listaa_kirjat` uudelleenmäärittelyä ei ole nähty tarpeelliseksi - sama kirjojen listaus toimii niin laatikossa kuin hyllyssäkin (ainakin esimerkissämme).
+ Tanken i exemplet ovan är att en ny bok som läggs till i en BokLada alltid hamnar högst upp, men med en Bokhylla kan du själv ange platsen. Metoden `lista_böcker` fungerar likadant för båda klasserna, eftersom det inte finns någon överordnad metod i den härledda klassen.
 
- Tarkastellaan esimerkkiä luokkien käyttämisestä:
+ Låt oss prova dessa klasser:
 
  ```python
 
@@ -203,13 +207,13 @@ Sinuhe (Mika Waltari)
 
  </sample-output>
 
- Myös Kirjahylly-luokasta muodostettujen olioiden kautta voidaan käyttää metodia `listaa_kirjat`, koska perinnän ansiosta se on olemassa myös luokan `Kirjahylly` aliluokissa.
+Klassen Bokhylla har alltså också tillgång till metoden `lista_böcker`. Genom ärvning är metoden medlem i alla klasser som kommer från klassen `BokLada`.
 
- ## Piirteiden periytyminen
+## Arv och räckvidd av egenskaper
 
- Aliluokka perii yliluokalta kaikki piirteet. Aliluokasta voidaan viitata suoraan yliluokan piirteisiin, paitsi jos yliluokassa on määritelty piirteet yksityisiksi (käyttämällä kahta alaviivaa muuttujan nimen edessä).
+ En härledd klass ärver alla egenskaper från sin basklass. Dessa egenskaper är direkt åtkomliga i den härledda klassen, såvida de inte har definierats som privata i basklassen (med två understreck före egenskapens namn).
 
- Niinpä esimerkiksi Kirjahylly-luokasta voitaisiin viitata yliluokan konstruktoriin sen sijaan että kirjoitettaisiin toiminnallisuus uudestaan:
+ Eftersom attributen för en Bokhylla är identiska med en BokLada, fanns det ingen anledning att skriva om konstruktorn för Bokhylla. Vi anropade helt enkelt basklassens konstruktor:
 
  ```python
 
@@ -220,9 +224,9 @@ Sinuhe (Mika Waltari)
 
 ```
 
-Yliluokan konstuktoriin (tai yliluokkaan muutenkin) viitataan funktion `super()` avulla. Huomaa, että tässäkin tapauksessa parametri `self` lisätään automaattisesti.
+Alla egenskaper i basklassen kan nås från den härledda klassen med funktionen `super()`. Argumentet `self` utelämnas från metodanropet, eftersom Python lägger till det automatiskt.
 
-Tarkastellaan toisena esimerkkinä luokkaa Gradu, joka perii luokan Kirja. Aliluokasta kutsutaan yliluokan konstruktoria:
+Men vad händer om attributen inte är identiska; kan vi fortfarande använda basklassens konstruktor på något sätt? Låt oss titta på en klass som heter `Avhandling` och som ärver klassen `Bok`. Den härledda klassen kan fortfarande anropa konstruktören från basklassen:
 
 ```python
 
@@ -243,9 +247,9 @@ class Gradu(Kirja):
 
 ```
 
-Nyt Gradu-luokan konstruktorista kutsutaan yliluokan (eli luokan Kirja) konstruktoria, jossa asetetaan attribuuttien `nimi` ja `kirjailija` arvot. Sen jälkeen aliluokan konstruktorissa asetetaan attribuutin `arvosana` arvo - tätä luonnollisesti ei voida tehdä yliluokan konstruktorissa, koska yliluokalla ei tällaista attribuuttia ole.
+Konstruktorn i `Avhandling`-klassen anropar konstruktorn i basklassen `Bok` med argumenten för `namn` och `forfattare`. Dessutom anger konstruktören i den härledda klassen värdet för attributet `vitsord`. Detta kan naturligtvis inte vara en del av basklassens konstruktor, eftersom basklassen inte har något sådant attribut.
 
-Luokkaa voidaan käyttää esimerkiksi näin:
+Ovanstående klass kan användas på följande sätt:
 
 
 ```python
@@ -269,9 +273,7 @@ Pekka Python
 
 </sample-output>
 
-Koska aliluokka `Gradu` perii kaikki yliluokan piirteet, se perii myös attribuutit `nimi` ja `kirjailija`. Arvot osalle attribuuteista annetaan yliluokan sisältä löytyvässä konstruktorissa.
-
-Aliluokka voi myös viitata yliluokan metodiin, vaikka metodi olisikin määritelty uudestaan aliluokassa. Seuraavassa esimerkissä luokasta `Platinakortti` kutsutaan uudelleenmääritellyssä metodissa `bonuspisteet` yliluokan vastaavaa metodia.
+Även om en härledd klass åsidosätter en metod i sin basklass kan den härledda klassen fortfarande anropa den åsidosatta metoden i basklassen. I följande exempel har vi ett grundläggande `BonusKort` och ett särskilt `PlatinumKort` för särskilt lojala kunder. Metoden `rakna_bonus` är åsidosatt i den härledda klassen, men den åsidosatta metoden anropar basmetoden:
 
 ```python
 
@@ -312,7 +314,7 @@ class Platinakortti(Bonuskortti):
 
 ```
 
-Nyt platinakortin bonus lasketaan hyödyntämällä aluksi yliluokan vastaavaa metodia ja lisäämällä sitten ylimääräiset 5 prosenttia tähän bonukseen. Esimerkki luokkien käytöstä:
+Bonusen för ett PlatinumKort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används: 
 
 ```python
 if __name__ == "__main__":

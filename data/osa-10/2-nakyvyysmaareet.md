@@ -1,19 +1,19 @@
 ---
 path: '/osa-10/2-nakyvyysmaareet'
-title: 'Näkyvyysmääreet'
+title: 'Åtkomstmodifierare'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä eroa on näkyvyysmääreillä yksityinen ja suojattu
-- Tiedät, miten piirteiden näkyvyys määritetään Pythonissa
+- Kommer du att förstå åtkomstmodifierarna privat och skyddad
+- Vet du hur synligheten för egenskaper bestäms i Python
 
 </text-box>
 
-Aikaisemmin mainittiin, että yliluokassa yksityiseksi määritettyihin piirteisiin ei pääse käsiksi aliluokassa. Tarkastellaan esimerkkinä luokkaa `Muistikirja`, jossa muistiinpanojen säilyttämiseen käytettävä lista-attribuutti on piilotettu asiakkailta:
+Om en egenskap definieras som privat i basklassen är den inte direkt åtkomlig i några härledda klasser, liksom kort nämndes i föregående avsnitt. Låt oss ta en titt på ett exempel. I klassen `Anteckningsbok` nedan lagras anteckningarna i en lista, och listattributet är privat:
 
 ```python
 
@@ -35,7 +35,7 @@ class Muistikirja:
 
 ```
 
-Luokan sisäisen eheyden kannalta tietorakenteena toimivan listan piilottaminen asiakkaalta on sinänsä järkevää, koska luokka tarjoaa itse sopivat operaatiot muistiinpanojen lisäämiseksi ja selaamiseksi. Ongelmalliseksi tilanne muodostuu, jos yritetään kirjoittaa `Muistikirja`-luokan perivä luokka `ProMuistikirja`, johon halutaan lisätä muistiinpanojen etsiminen ja järjestäminen. Piilotettu attribuutti ei ole käytettävissä myöskään aliluokissa; metodi `etsi_muistiinpanot` antaa kutsuttaessa virheen:
+Om klassens integritet är viktig är det vettigt att göra listattributen `anteckningar` privat. Klassen förser trots allt klienten med lämpliga metoder för att lägga till och bläddra i anteckningar. Detta tillvägagångssätt blir problematiskt om vi definierar en ny klass `AnteckningsbokPro`, som ärver `Anteckningsbok`-klassen. Det privata listattributet är inte tillgängligt för klienten, men det är inte heller tillgängligt för de härledda klasserna. Om vi försöker komma åt det, som i metoden `hitta_anteckningar` nedan, får vi ett felmeddelande:
 
 ```python
 class MuistikirjaPro(Muistikirja):
@@ -66,11 +66,11 @@ AttributeError: 'MuistikirjaPro' object has no attribute '_MuistikirjaPro__muist
 
 
 
-## Suojatut piirteet
+## Skyddade egenskaper
 
-Toisin kuin joistain muista ohjelmointikielistä, Pythonista ei suoraan löydy ominaisuutta joka piilottaa piirteet asiakkailta mutta samaan aikaan avaa ne mahdollisille aliluokille. Ratkaisuksi Python-yhteisö onkin päätynyt _konventioon_ eli yleisesti ymmärrettyyn merkintätapaan _suojatuille_ (eli _protected_)  piirteille.
+Många objektorienterade programmeringsspråk har en funktion, oftast ett speciellt nyckelord, för att skydda egenskaper. Detta innebär att en egenskap ska vara dold för klassens klienter, men hållas tillgänglig för dess underklasser. Python avskyr i allmänhet nyckelord, så ingen sådan funktion är direkt tillgänglig i Python. Istället finns det en konvention för att markera skyddade egenskaper på ett visst sätt.
 
-Koska piirre voidaan piilottaa kirjoittamalla sen tunnisteen (eli nimen) eteen kaksi alaviivaa
+Kom ihåg att en egenskap kan döljas genom att prefixera dess namn med två understreck:
 
 ```python
 
@@ -79,7 +79,7 @@ def __init__(self):
 
 ```
 
-on yleisesti sovittu että yhdellä alaviivalla alkavat piirteet ovat tarkoitettu ainoastaan luokan ja sen aliluokkien käyttöön, eikä niitä tulisi käyttää suoraan sen ulkopuolelta.
+Den överenskomna konventionen för att skydda en egenskap är att prefixera namnet med endast ett understreck. Nu är detta bara en konvention. Ingenting hindrar en programmerare från att bryta mot konventionen, men det anses vara en dålig programmeringspraxis.
 
 ```python
 
@@ -88,7 +88,7 @@ def __init__(self):
 
 ```
 
-Alla on esitetty koko muistikirjaesimerkki uudestaan niin, että muistiinpanot on merkitty suojatuiksi yliluokassa yksityisen sijasta:
+Nedan har vi hela Anteckningsbok-exemplet, med skyddade `_anteckningar` istället för privata `__anteckningar`:
 
 ```python
 
@@ -127,7 +127,7 @@ class MuistikirjaPro(Muistikirja):
 
 ```
 
-Seuraavassa taulukossa on vielä esitetty piirteiden näkyvyys kaikkien eri suojausmääreiden tapauksessa:
+Nedan har vi en praktisk tabell för synligheten av attribut med olika åtkomstmodifierare:
 
 Näkyvyysmääre	| Esimerkki | Näkyy asiakkaalle | Näkyy aliluokalle
 :--:|:----:|:----:|:----:
@@ -135,7 +135,7 @@ Julkinen | `self.nimi` | kyllä | kyllä
 Suojattu | `self._nimi` | ei | kyllä
 Yksityinen | `self.__nimi` | ei | ei
 
-Näkyvyysmääreet toimivat vastaavasti kaikkien piirteiden kanssa. Luokassa Henkilo oleva metodi `isot_alkukirjaimet` on suojattu, joten sitä voi käyttää myös aliluokassa Jalkapalloilija:
+Åtkomstmodifierare fungerar på samma sätt med alla egenskaper. I klassen `Person` nedan har vi till exempel den skyddade metoden `kapitalisera_initialer` Den kan användas från den härledda klassen `Fotbollsspelare`: 
 
 ```python
 

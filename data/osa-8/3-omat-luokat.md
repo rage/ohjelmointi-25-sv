@@ -1,49 +1,49 @@
 ---
 path: '/osa-8/3-omat-luokat'
-title: 'Omat luokat'
+title: 'Egna klasser'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät, miten omia luokkia määritellään
-- Osaat muodostaa itse määritellystä luokasta olion
-- Osaat kirjoittaa konstruktorin
-- Tiedät, mitä tarkoittaa avainsana `self`
-- Tiedät, mitä ovat attribuutit ja miten niitä käytetään
+- Vet du hur du definierar dina egna klasser
+- Kommer du att kunna skapa objekt baserade på klasser som du själv har definierat
+- Vet du hur man skriver en konstruktor
+- Är du bekant med parameternamnet `self`
+- Vet du vad attribut är och hur de används
 
 </text-box>
 
-Luokka määritellään avainsanan `class` avulla. Syntaksi on
+En klass definieras med nyckelordet `class`. Syntaxen ser ut enligt följande:
 
 ```python
 class LuokanNimi:
     # Luokan toteutus
 ```
 
-Luokat nimetään yleensä _camel case_ -käytännöllä niin, että sanat kirjoitetaan yhteen ja jokainen sana alkaa isolla alkukirjaimella. Esimerkiksi seuraavat ovat tämän käytännön mukaisia luokkien nimiä:
+Klasser namnges vanligtvis med kamelnotation. Detta innebär att alla ord i klassnamnet skrivs tillsammans, utan mellanslag, och att varje ord börjar med stor bokstav. Följande exempel på klassnamn följer denna konvention:
 
-* `Pankkitili`
-* `OhjelmaApuri`
-* `KirjastoTietokanta`
-* `PythonKurssinArvosanat`
+* `Veckodag`
+* `Bankkonto`
+* `BibliotekDatabas`
+* `PythonKursBetyg`
 
-Yhdellä luokalla pyritään mallintamaan jokin sellainen yksittäinen kokonaisuus, jonka sisältämät tiedot liittyvät kiinteästi yhteen. Monimutkaisemmissa ratkaisuissa luokka voi sisältää toisia luokkia (esimerkiksi luokka `Kurssi` voisi sisältää luokan `Osasuoritus` mukaisia olioita).
+En enskild klassdefinition bör representera en enskild helhet, vars innehåll bör vara sammanlänkat på något sätt. I mer komplicerade program kan klasser innehålla medlemmar av andra klasser. Till exempel kan klassen `Kurs` innehålla objekt av klasserna `Lektion`, `ÖvningsTillfälle` osv.
 
-Tarkastellaan esimerkkinä yksinkertaista luokkamäärittelyä, josta sisältö vielä puuttuu:
+Låt oss ta en titt på ett skelett av en klassdefinition. Funktionerna saknas fortfarande vid denna tidpunkt.
 
 ```python
 class Pankkitili:
     pass
 ```
 
-Koodissa määritellään luokka, jonka nimi on `Pankkitili`. Luokalle ei ole määritelty varsinaista sisältöä, mutta tästä huolimatta luokasta voidaan muodostaa olio.
+Kodstycket ovan talar om för Python att vi här definierar en klass med namnet `Bankkonto`. Klassen innehåller ingen funktionalitet ännu, men vi kan fortfarande skapa ett objekt baserat på klassen.
 
-Tarkastellaan ohjelmaa, jossa luokasta muodostetun olion sisälle on määritelty kaksi muuttujaa, `saldo` ja `omistaja`. Olion muuttujia kutsutaan _attribuuteiksi_. Attribuutista käytetään myös nimitystä _oliomuuttuja_.
+Låt oss titta på ett program där två variabler läggs till ett `Bankkonto`-objekt: `saldo` och `ägare`. Alla variabler som är kopplade till ett objekt kallas dess attribut, eller mer specifikt, dataattribut, eller ibland instansvariabler.
 
-Kun luokasta luodaan olio, voidaan attribuuttien arvoja käsitellä olion kautta:
+De attribut som är kopplade till ett objekt kan nås via objektet:
 
 ```python
 class Pankkitili:
@@ -64,7 +64,7 @@ Pekka Python
 
 </sample-output>
 
-Attribuutit ovat käytettävissä ainoastaan sen olion kautta, jossa ne on määritelty. Pankkitili-luokasta muodostetuilla olioilla on jokaisella omat arvonsa attribuuteille. Attribuuttien arvot haetaan olioiden kautta, esimerkiksi näin:
+Dataattributen är endast tillgängliga via det objekt som de är kopplade till. Varje Bankkonto-objekt som skapas baserat på Bankkonto-klassen har sina egna värden kopplade till dataattributen. Dessa värden kan nås genom att hänvisa till objektet i fråga:
 
 ```python
 tili = Pankkitili()
@@ -74,11 +74,12 @@ print(tili.saldo) # Viittaa tilin attribuuttiin saldo
 print(saldo) # TÄSTÄ TULEE VIRHE, koska oliomuuttuja ei ole mukana!
 ```
 
-## Konstruktorin lisääminen
+## Att lägga till en konstruktor
 
-Kuten edellisestä esimerkistä huomataan, luokasta voi luoda uuden olion kutsumalla konstruktoria, joka on muotoa `LuokanNimi()`. Yleensä olisi kuitenkin kätevä antaa attribuuteille arvot heti kun olio luodaan – nyt esimerkiksi Pankkitilin omistaja ja saldo asetetaan vasta, kun pankkitiliolio on luotu.
+I exemplet ovan såg vi att en ny instans av en klass kan skapas genom att anropa klassens konstruktormetod på följande sätt: `KlassensNamn()`. Ovan kopplade vi sedan dataattribut till objektet separat, men det är ofta bekvämare att skicka dessa initiala värden för attribut direkt när objektet skapas. I exemplet ovan hade vi först ett Bankkonto-objekt utan dessa attribut, och attributen existerade först efter att de uttryckligen hade deklarerats.
 
-Attribuuttien asettamisessa ilman konstruktoria on myös se ongelma, että samasta luokasta luoduilla olioilla voi olla eri attribuutit. Seuraava ohjelmakoodi esimerkiksi antaa virheen, koska oliolle `pirjon_tili` ei ole määritelty attribuuttia `saldo`:
+
+Att deklarera attribut utanför konstruktorn leder till en situation där olika instanser av samma klass kan ha olika attribut. Följande kod ger ett fel eftersom vi nu har ett annat `Bankkonto-objekt`, `paulas_konto`, som inte innehåller samma attribut:
 
 ```python
 class Pankkitili:
@@ -95,11 +96,11 @@ print(pekan_tili.saldo)
 print(pirjon_tili.saldo) # TÄSTÄ TULEE VIRHE
 ```
 
-Sen sijaan että attribuuttien arvot alustettaisiin luokan luomisen jälkeen, on huomattavasti parempi ajatus alustaa arvot samalla, kun luokasta luodaan olio.
+Så istället för att deklarera attribut efter att varje instans av klassen har skapats, är det oftast en bättre idé att initialisera attributens värden när klasskonstruktorn anropas. Eftersom klassdefinitionen Bankkonto för närvarande bara är ett skelett, antas konstruktormetoden implicit av Python-tolkaren, men det är möjligt att definiera egna konstruktormetoder, och det är precis vad vi kommer att göra nu.
 
-Konstruktori kirjoitetaan luokan sisään metodina `__init__` yleensä heti luokan alkuun.
+En konstruktormetod är en metoddeklaration med det speciella namnet `__init__`, som vanligtvis inkluderas i början av en klassdefinition.
 
-Tarkastellaan `Pankkitili`-luokkaa, johon on lisätty konstruktori:
+Låt oss ta en titt på en `Bankkonto`-klass med en konstruktormetod tillagd:
 
 ```python
 class Pankkitili:
@@ -110,19 +111,19 @@ class Pankkitili:
         self.omistaja = omistaja
 ```
 
-Konstruktorin nimi on aina `__init__`. Huomaa, että nimessä sanan `init` molemmilla puolilla on _kaksi alaviivaa_.
+Namnet på konstruktorsmetoden är alltid `__init__`. Lägg märke till de två understrecken på båda sidorna av ordet `init`.
 
-Konstruktorin ensimmäinen parametri on nimeltään `self`. Tämä viittaa olioon, jota käsitellään. Asetuslause
+Den första parametern i en konstruktorsdefinition heter alltid `self`. Detta refererar till själva objektet och är nödvändigt för att deklarera alla attribut som är knutna till objektet. Tilldelningen
 
 `self.saldo = saldo`
 
-asettaa parametrina annetun saldon luotavan olion saldoksi. On tärkeä huomata, että tässä yhteydessä muuttuja `self.saldo` on eri muuttuja kuin muuttuja `saldo`:
+tilldelar objektets saldoattribut den balans som mottagits som argument. Det är vanligt att använda samma variabelnamn för parametrarna och dataattributen som definieras i en konstruktor, men variabelnamnen `self.saldo` och `saldo` ovan hänvisar till två olika variabler:
 
-* Muuttuja `self.saldo` viittaa olion attribuuttiin. Jokaisella Pankkitili-luokan oliolla on oma saldonsa.
+* Variabeln `self.saldo` är ett attribut för objektet. Varje Bankkonto-objekt har sitt eget saldo.
 
-* Muuttuja `saldo` on konstruktorimetodin `__init__` parametri, jolle annetaan arvo, kun metodia kutsutaan (eli kun halutaan luoda uusi olio luokasta).
+* Variabeln `saldo` är en parameter i konstruktorsmetoden `__init__`. Dess värde sätts till det värde som skickas som argument till metoden när konstruktorn kallas (dvs. när en ny insctance av klassen skapas).
 
-Nyt kun konstruktorille on määritelty parametrit, voidaan attribuuttien arvot antaa oliota luotaessa:
+Nu när vi har definierat parametrarna för konstruktorsmetoden kan vi skicka de önskade initiala värdena för dataattributen som argument när ett nytt objekt skapas:
 
 ```python
 class Pankkitili:
@@ -148,9 +149,9 @@ print(pirjon_tili.saldo)
 
 </sample-output>
 
-Esimerkistä huomataan, että olioiden luominen helpottuu, kun arvot voidaan antaa heti oliota muodostaessa. Samalla tämä varmistaa, että arvojen antaminen ei unohdu, ja ohjaa käyttäjää antamaan arvot attribuuteille.
+Det är nu mycket enklare att arbeta med Bankkonto-objekten, eftersom värdena kan skickas när objektet skapas, och de två separata instanserna kan hanteras på ett mer förutsägbart och enhetligt sätt. Att deklarera dataattribut i konstruktorn säkerställer också att attributen verkligen deklareras, och att de önskade initiala värdena alltid ges av programmeraren som använder klassen.
 
-Attribuuttien arvoja voi edelleen muuttaa myöhemmin ohjelmassa, vaikka alkuarvo olisikin annettu konstruktorissa:
+Det är fortfarande möjligt att ändra de initiala värdena för dataattributen senare i programmet:
 
 ```python
 class Pankkitili:
@@ -180,7 +181,7 @@ print(pekan_tili.saldo)
 
 </sample-output>
 
-Tarkastellaan vielä toista esimerkkiä luokasta ja olioista. Kirjoitetaan luokka, joka mallintaa yhtä lottokierrosta:
+Låt oss titta på ett annat exempel på klasser och objekt. Vi ska skriva en klass som modellerar en enstaka dragning av lotterinummer:
 
 ```python
 from datetime import date
@@ -218,7 +219,7 @@ for numero in kierros1.numerot:
 
 </sample-output>
 
-Attribuutit voivat olla siis minkä tahansa tyyppisiä – esimerkiksi edellisessä esimerkissä jokaiseen olioon tallennetaan lista ja päivämäärä.
+Som du kan se ovan kan attributerna vara av  vilken sort som helst. Här har varje LotteriDragnings objekt attributer av typerna `list` och `date`.
 
 
 <programming-exercise name='Kirja' tmcname='osa08-06_kirja'>
@@ -267,9 +268,9 @@ Kirjoita jokaiselle luokalle myös konstruktori, jossa attribuutit annetaan siin
 
 </programming-exercise>
 
-## Omien luokkien olioiden käyttö
+## Användning av objekt från egengjorda klasser
 
-Omasta luokasta muodostetut oliot käyttäytyvät esimerkiksi funktioiden parametrina ja paluuarvona samalla tavalla kuin muutkin oliot. Voisimme esimerkiksi tehdä pari apufunktiota tilien käsittelyyn:
+Objekt som bildas från dina egna klassdefinitioner skiljer sig inte från andra Python-objekt. De kan skickas som argument och returnera värden precis som alla andra objekt. Vi kan till exempel skriva hjälpfunktioner för att arbeta med bankkonton: 
 
 ```python
 # funktio luo uuden tiliolion ja palauttaa sen

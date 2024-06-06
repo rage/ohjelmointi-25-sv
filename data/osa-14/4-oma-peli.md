@@ -1,85 +1,84 @@
 ---
 path: '/osa-14/4-oma-peli'
-title: 'Oma peli'
+title: 'Ditt eget spel'
 hidden: false
 ---
 
-## Viikon tehtävä
+## Den sista programmeringsövningen
 
-Tämän viikon tehtäväsi on tehdä oma pieni peli Pygamen avulla. Peliä varten tehtäväpohjassa on joukko kuvia, joita voit käyttää pelissä. Älä käytä muita kuvia, jotta muutkin pystyvät kokeilemaan peliä koodin perusteella.
+Den sista programmeringsövningen på den här kursen är att skapa ett eget litet spel med pygame. Övningsmallen innehåller några bilder som du kan använda. Använd inte andra bilder i ditt spel för då kommer andra inte att kunna testa ditt spel enbart baserat på källkoden.
 
-Saat päättää pelin aiheen itse, ja pelin tulisi olla suunnilleen saman laajuinen kuin tämän viikon esimerkki. Pelin tulisi noudattaa seuraavia vaatimuksia:
+Vad spelet handlar om är upp till dig, men det bör vara ungefär lika komplicerat som Sokoban-exemplet i denna del av materialet. Spelet bör innehålla följande funktioner:
 
-* Pelissä on hahmo, jota pelaaja pystyy liikuttamaan
-* Pelissä on kerättäviä asioita ja/tai vihollisia
-* Pelaajalla on jokin selkeä tavoite
-* Pelissä on laskuri, joka näyttää, miten pelaaminen sujuu
-* Pelin koodi on jaettu sopivasti funktioihin tämän viikon esimerkin tyylisesti
+* Spelet har en sprite som spelaren kan röra sig med på något sätt
+* Spelet har några föremål som går att samla på och/eller fiender
+* Spelaren måste få en tydlig uppgift i spelet
+* Spelet innehåller en räknare som talar om för spelaren hur det går i spelet
+* Källkoden för spelet är indelad i funktioner som i Sokoban-exemplet
 
-Kun peli on valmis, lähetä se vertaisarviointiin alla olevan lomakkeen avulla. Tämän jälkeen tutustu vielä kahden muun kurssilaisen peliin ja anna niille mielestäsi sopiva arvosana ja kirjoita lyhyt arvio peleistä. Ota arvioinnissa huomioon sekä pelin kiinnostavuus ja pelattavuus että koodin selkeys.
+När spelet är klart kan du skicka in det för granskning av andra spelare med hjälp av nedanstående formulär. Efter detta ska du bekanta dig med två av dina kurskamraters spel, ge spelen ett betyg som du anser lämpligt och skriva en kort recension av spelet. Ta hänsyn till både hur intressant och spelbart spelet var, och hur läsbar programkoden är när du betygsätter och recenserar spelen.
 
-### Pelin lähettäminen
+### Skicka in spelet
 
-Pelin lähetys onnistuu lähettämällä oma ohjelmakoodi TMC Paste -ominaisuuden avulla palvelimelle ja liittämällä linkki palautuslomakkeeseen.
+Du ska skicka in källkoden till ditt spel via TMC:s Paste-funktion och inkludera länken du får i formuläret nedan.
 
-Klikkaa ensin TMC-painiketta (silmän oikealla puolella oleva painike). Tämä avaa valikon, josta löydät oikean ominaisuuden kirjoittamalla hakukenttään sanan `send`:
+Med din lösning öppen i redigeraren klickar du på TMC-menyknappen i Visual Studio Code (bredvid ögonsymbolen). Detta öppnar en meny där du kan leta efter TMC Paste-funktionen genom att skriva in `send`:
 
 <img src="tmc_paste_1.png">
 
-Kun klikkaat valintaa `Send Exercise to TMC Paste`, ruudun oikeaan alakulmaan putkahtaa tieto siitä, että ohjelmakoodi on lähetetty palvelimelle:
+Välj alternativet `Send Exercise to TMC Paste`, sedan borde det finnas en notifikation i det nedre högra hörnet av fönstret som berättar att källkoden har skickats till TMC-servern:
 
 <img src="tmc_paste_2.png">
 
-Saat linkin kopioitua leikepöydälle klikkaamalla painiketta `Open URL` ja valitsemalla aukeavasta ikkunasta valihtoehdon `Copy`.
+Du kan kopiera länken genom att klicka på knappen `Open URL` i meddelandet. En popup borde visas och den ska innehålla alternativet `Copy`:
 
 <img src="tmc_paste_3.png">
 
-Tämä linkki sinun tulee liittää palautuslomakkeeseen.
+Det här är länken som du ska klistra in i formuläret nedan.
 
-## Osan 14 arvioinnista
+## Hur del 14 betygsätts
 
-Tämän viikon tavoitteena on saada aikaan toimiva peli. Koska osassa on vain yksi tehtävä, *myös yritys hyväksytään*. Voit siis palauttaa pelisi vaikka se ei toimisikaan haluamallasi tavalla.
+Målet med den här delen är att bygga ett litet, fungerande spel. Eftersom den här delen bara innehåller en enda uppgift får du poäng för ansträngning. Skicka in ditt spel även om du inte kan få det att fungera riktigt som du ville.
 
-Jos et saa peliä toimimaan, kirjoita ohjelmakoodin kommentteihin miten pelin (tai jonkin puuttuvan ominaisuuden) olisi tarkoitus toimia.
+Om ditt spel inte fungerar som du tänkt dig, bifoga kommentarer i din kod om hur det borde fungera, eller eventuella funktioner som du tycker saknas men inte lyckats implementera.
 
-Kun arvioit (osittain tai kokonaan) toimimatonta peliä, pyri arviossasi mahdollisuuksien mukaan kertomaan mitä pelin valmiiksi saaminen olisi mielestäsi vaatinut.
+Om ett spel som du recenserar är ofullständigt eller inte fungerar riktigt som det ska får du gärna kommentera vad du tycker att man kunde ha gjort för att få det att fungera, ifall det är möjligt.
 
-## Peli-ideoita
+## Några spelidéer
 
-Voit valita pelin aiheen vapaasti mutta tässä on joitakin ideoita. Pelin tekemisessä on hyötyä myös viikon 13 materiaalista.
+Det är helt upp till dig vad ditt spel ska handla om, men här är några idéer som kan hjälpa dig att komma igång. Kom ihåg materialet i del 13; de exemplen kan också hjälpa dig att arbeta med dina idéer.
 
-### Keräilypeli
+### Ett samlingsspel
 
-* Pelaaja liikuttaa robottia nuolinäppäimillä
-* Ruudulla on kolikko, joka robotin tulee kerätä. Kun robotti saa kolikon, se siirtyy uuteen paikkaan.
-* Ruudulla liikkuu myös hirviöitä, joita robotin tulee väistellä.
+* Spelaren flyttar roboten med piltangenterna.
+* Ett mynt dyker upp på en slumpmässig plats på skärmen. När roboten når fram till myntet flyttas det till en ny plats.
+* Det finns också monster på skärmen och roboten måste undvika dem.
 
-### Rahasade
+### Myntregn
 
-* Ruudun alareunassa on robotti, jota pelaaja voi liikuttaa vasemmalle tai oikealle
-* Taivaalta sataa rahaa, jota robotin tulee kerätä.
-* Taivaalta sataa myös hirviöitä, joita robotin tulee väistellä.
+* Spelaren flyttar roboten till vänster och höger längs skärmens nedre kant.
+* Mynt regnar från himlen. Dessa måste roboten samla in.
+* Det regnar också monster från himlen. Roboten måste undvika dessa.
 
-## Vertaisarviointi
+## Kollegial granskning
 
-Arvioi peliä esimerkiksi seuraavien kriteerien mukaan:
+Du ska bedöma spelet utifrån följande kriterier:
 
-* Miltä peli näyttää?
-* Onko peli *pelattava*, ts. onko sen pelaaminen hauskaa ja sujuvaa?
-* Onko peli-idea kiinnostava?
-* Miten hyvin peliohjelma on kirjoitettu? Onko pelissä hyödynnetty tarvittavissa kohdin järkevästi funktioita ja luokkia?
+* Hur ser spelet ut?
+* Är spelet spelbart? Är det roligt att spela och lätt att använda?
+* Är spelet spelbart? Är det roligt att spela och lätt att använda?
+* Hur väl är det programmerat? Är koden läsbar och används klasser och funktioner på rätt sätt?
 
-Hyvään arvioon kuuluu yleensä se, että löydät ohjelmasta sekä hyviä puolia että jotain kehitettävää.
+En bra recension brukar peka ut både bra funktioner och några förslag till förbättringar.
 
 <quiz id="029a36d7-85ba-563e-bf52-bcae0d519e23"></quiz>
 
-## Loppukysely
+## Frågeformulär för att avsluta
 
-Vastaa ensin osion loppukyselyyn...
+Först ber vi dig svara på en snabb enkät om den här delen av kursen.
 
 <quiz id="db980809-c0f7-561a-a843-cb0dfc5cc58f"></quiz>
 
-...ja sitten vielä koko kurssin loppukyselyyn:
+Vänligen svara också på kursens feedbackformulär. Enkätens svar hjälper oss att förbättra kursen. 
 
 <quiz id="de9225f1-9413-50de-85e4-89170e7d4e5c"></quiz>
-

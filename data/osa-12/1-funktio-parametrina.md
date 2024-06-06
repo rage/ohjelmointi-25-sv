@@ -1,23 +1,23 @@
 ---
 path: '/osa-12/1-funktio-parametrina'
-title: 'Funktio parametrina'
+title: 'Funktioner som argument'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat järjestää listoja eri kriteerien mukaan
-- Tiedät mitä tarkoitetaan lambda-lausekkeella
-- Osaat hyödyntää lambda-lauseketta myös muiden Pythonin funktioiden kanssa
-- Osaat välittää funktion parametrina funktiolle
+- Kan du sortera listor enligt olika kriterier
+- Kommer du att veta vad ett lambdauttryck är
+- Kan du använda lambda-uttryck med andra Python-funktioner
+- Vet du hur en funktion skickas som argument till en annan funktion
 
 </text-box>
 
-Olemme jo aikaisemmin käyttäneet metodia `sort` ja funktiota `sorted` järjestämään listoja luonnolliseen järjestykseen. Metodit toimivat sellaisenaan hyvin luvuista ja merkkijonoista koostuvien listojen kanssa, mutta jos lista sisältää monimutkaisempia alkioita, Python ei välttämättä järjestä listaa niin kuin ohjelmoija toivoisi.
+Vi är redan bekanta med metoden `sort` och funktionen `sorted`, som används för att sortera listor i deras naturliga ordning. För siffror och strängar fungerar detta vanligtvis bra. För allt som är mer komplicerat än dem så är dock den naturliga ordningen på föremål enligt Python inte alltid det som vi som programmerare avser.
 
-Esimerkiksi lista tupleja järjestetään oletuksena jokaisen tuplen ensimmäisen alkion perusteella:
+Till exempel sorteras som standard en lista med tupler baserat på det första objektet i varje tupel:
 
 ```python
 tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
@@ -37,13 +37,13 @@ for tuote in tuotteet:
 
 </sample-output>
 
-Mitä jos haluaisimme järjestää tuotelistan hinnan perusteella?
+Men vad händer om vi vill sortera listan baserat på priset?
 
-## Funktiot parametrina
+## Funktioner som argument
 
-Järjestysmetodille tai -funktiolle voidaan antaa toisena parametrina järjestyksen määräävä avain. Avaimeksi annetaan funktio, joka kertoo, miten yksittäisen alkion arvo määritetään. Python kutsuu tätä funktiota järjestämisen aikana alkioiden vertailemiseen.
+En sorteringsmetod eller -funktion accepterar vanligtvis ett valfritt andra argument som gör att du kan kringgå standardsorteringskriterierna. Detta andra argument är en funktion som definierar hur värdet på varje föremål i listan bestäms. När listan sorteras anropar Python denna funktion när den jämför föremålen med varandra.
 
-Esimerkiksi:
+Låt oss ta en titt på ett exempel:
 
 ```python
 def hintajarjestys(alkio: tuple):
@@ -69,15 +69,15 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Nyt ohjelma järjestää listan hinnan mukaiseen järjestykseen. Mutta mitä ohjelmassa oikeastaan tapahtuu?
+Nu är listan sorterad utifrån artiklarnas priser, men vad händer egentligen i programmet?
 
-Funktion `hintajarjestys` määrittely on melko yksinkertainen: se saa parametrikseen yhden alkion ja palauttaa alkiolle arvon - tässä tapauksessa tuplen toisen alkion (joka esimerkissämme esittää tuotteen hintaa). Tarkastellaan kuitenkin lähemmin järjestysmetodia kutsuvaa riviä:
+Funktionen `ordning_enligt_pris` är faktiskt ganska enkel. Den tar ett objekt som sitt argument och returnerar ett värde för det objektet. Mer specifikt returnerar den det andra objektet i tupeln, som representerar priset. Men sedan har vi den här kodraden, där `sort`-metoden anropas:
 
-`tuotteet.sort(key=hintajarjestys)`
+`produkter.sort(key=ordning_enligt_pris)`
 
-Rivillä annetaan metodille `sort` parametriksi funktio. Ei siis funktion paluuarvoa, vaan _viittaus funktioon_. Järjestysmetodi kutsuu tätä funktiota jokaiselle alkiolle.
+Här anropas `sort`-metoden med en funktion som argument. Detta är inte en referens till funktionens returvärde, utan en referens till själva funktionen. `Sort`-metoden anropar denna funktion flera gånger och använder varje objekt i listan som argument i tur och ordning.
 
-Kutsut nähdään selkeästi lisäämällä vertailufunktioomme ylimääräinen tulostuslause:
+Om vi inkluderar en extra print-sats i funktionsdefinitionen för `ordning_enligt_pris` kan vi verifiera att funktionen verkligen anropas en gång för varje objekt i listan:
 
 ```python
 def hintajarjestys(alkio: tuple):
@@ -110,7 +110,7 @@ Kutsuttiin hintajarjestys(('vesimeloni', 4.95))
 
 </sample-output>
 
-Järjestys saadaan käännettyä _päinvastaiseksi_ hyödyntämällä sekä metodista `sort` että funktiosta `sorted` löytyvää toista parametria `reverse`:
+Ordningen kan vändas med ett annat nyckelordsargument; `reverse`, som är tillgängligt med både `sort`-metoden och funktionen `sorted`:
 
 ```python
 tuotteet.sort(key=hintajarjestys, reverse=True)
@@ -118,9 +118,9 @@ tuotteet.sort(key=hintajarjestys, reverse=True)
 t2 = sorted(tuotteet, key=hintajarjestys, reverse=True)
 ```
 
-## Funktion sisällä määritelty funktio
+## En funktionsdefinition inom en funktionsdefinition
 
-Jos haluaisimme siirtää edellisessä esimerkissä tehdyn järjestämisen omaan funktioonsa `jarjesta_hinnan_mukaan`, voisimme toteuttaa sen seuraavasti:
+Vi kan också inkludera en namngiven funktion för den nya prisbaserade sorteringsfunktionen som vi har skapat. Låt oss lägga till en funktion med namnet `sortera_enligt_pris`:
 
 ```python
 def hintajarjestys(alkio: tuple):
@@ -136,7 +136,7 @@ for tuote in jarjesta_hinnan_mukaan(tuotteet):
     print(tuote)
 ```
 
-Jos järjestämisen käyttämää apufunktiota `hintajarjestys` ei käytetä missään muussa kohtaa ohjelmaa kuin funktiossa `jarjesta_hinnan_mukaan`, sen määrittely voitaisiin siirtää funktion sisälle:
+Om vi vet att hjälpfunktionen `ordning_enligt_pris` inte används någonstans utanför funktionen `sortera_enligt_pris`, kan vi placera den första funktionsdefinitionen inom den senare:
 
 ```python
 def jarjesta_hinnan_mukaan(alkiot: list):
@@ -211,9 +211,9 @@ Dexter 8.6
 
 </programming-exercise>
 
-## Omien olioiden alkioiden järjestäminen
+## Sortering av samlingar av egna objekt
 
-Kirjoitetaan samaa periaatetta hyödyntäen ohjelma, joka järjestää listan omasta `Opiskelija`-luokasta luotuja olioita kahden eri kriteerin avulla:
+Låt oss med samma princip skriva ett program som sorterar en lista med objekt från vår egen klass `Student` på två olika sätt:
 
 ```python
 class Opiskelija:
@@ -265,7 +265,7 @@ Aapeli (a123), 220 op.
 
 </sample-output>
 
-Järjestäminen toimii niinkuin pitää. Jos olioille arvon antavia funktioita `tunnuksen_mukaan` ja `pisteiden_mukaan` ei tarvita muuten, voimme kuitenkin vielä yksinkertaistaa ohjelmaa.
+Som du kan se ovan fungerar sortering efter olika kriterier precis som det är tänkt. Om funktionerna `enligt_id` och `enligt_studiepoäng` inte behövs någon annanstans finns det sätt att göra implementeringen enklare. Vi återkommer till detta ämne efter dessa övningar.
 
 <programming-exercise name='Kiipeilyreitti' tmcname='osa12-04_kiipeilyreitti'>
 
@@ -432,13 +432,15 @@ Olhava, 3 reittiä, vaikein 6B
 
 </programming-exercise>
 
-## Lambda-lauseke
+## Lambda-uttryck
 
-Lambda-lausekkeen avulla voidaan luoda anonyymi funktio eli funktio, joka muodostetaan sillä hetkellä, kun sitä tarvitaan. Lausekkeen yleinen syntaksi on seuraava:
+Vi har mest arbetat med funktioner ur modularitetssynpunkt. Det är sant att funktioner spelar en viktig roll när det gäller att hantera komplexiteten i dina program och undvika upprepning av kod. Funktioner skrivs vanligtvis så att de kan användas många gånger.
 
-`lambda <parametrit> : <lauseke>`
+Men ibland behöver man något som liknar en funktion som man bara använder en gång. Med lambda-uttryck kan du skapa små, anonyma funktioner som skapas (och kasseras) när de behövs i koden. Den allmänna syntaxen är som följer:
 
-Esimerkiksi tuplelistan järjestys onnistuisi näin käyttämällä lambda-lauseketta:
+`lambda <parametrar> : <uttryck>`
+
+Att sortera en lista med tupler efter det andra objektet i varje tupel skulle se ut så här implementerat med ett lambda-uttryck:
 
 ```python
 tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
@@ -459,11 +461,11 @@ for tuote in tuotteet:
 
 </sample-output>
 
-Lauseke
+Uttrycket
 
-`lambda alkio: alkio[1]`
+`lambda föremål: föremål[1]`
 
-vastaa funktiomäärittelyä
+Är ekvivalent med funktionsdefinitionen
 
 ```python
 
@@ -471,9 +473,9 @@ def hinta(alkio):
     return alkio[1]
 ```
 
-paitsi että lambda-lauseketta käytettäessä funktiolle ei anneta nimeä. Tämän takia muodostettavaa funktiota kutsutaan anonyymiksi funktioksi.
+förutom det faktum att en lambdafunktion inte har något namn. Det är därför lambda-funktioner kallas anonyma funktioner.
 
-Muuten lambdan avulla muodostettava funktio on kuin mikä tahansa muukin funktio. Esimerkiksi seuraava esimerkki järjestää merkkijonot niiden viimeisten merkkien mukaiseen aakkosjärjestykseen:
+I alla andra avseenden skiljer sig inte en lambda-funktion från någon annan funktion, och de kan användas i alla samma sammanhang som en motsvarande namngiven funktion. Följande program sorterar till exempel en lista med strängar i alfabetisk ordning enligt det sista tecknet i varje sträng:
 
 ```python
 mjonot = ["Mikko", "Makke", "Maija", "Markku", "Mikki"]
@@ -492,7 +494,7 @@ Markku
 
 </sample-output>
 
-Mennään vielä pidemmälle: yhdistämällä listakooste ja `join`-metodi lambda-lausekkeeseen voidaan esimerkiksi järjestää merkkijonot niistä löytyvien vokaalien mukaiseen järjestykseen välittämättä muista merkeistä:
+Vi kan också kombinera list comprehensions, `join`-metoden och lambda-uttryck. Vi kan till exempel sortera strängar baserat på enbart vokalerna i dem och ignorera alla andra tecken:
 
 ```python
 mjonot = ["Mikko", "Makke", "Maija", "Markku", "Mikki"]
@@ -511,9 +513,9 @@ Mikko
 
 </sample-output>
 
-Anonyymejä funktioita voi hyödyntää Pythonissa monien muidenkin valmiiden funktioiden yhteydessä. Esimerkiksi funktioille `min` ja `max` voidaan määritellä samalla tavalla parametri `key`, jonka perusteella minimi- tai maksimiarvo valitaan.
+Anonyma funktioner kan också användas med andra inbyggda Python-funktioner, inte bara de som används för sortering. Till exempel tar funktionerna `min` och `max` också ett nyckelordsargument som heter `key`. Det används som kriterium för att jämföra objekten när det lägsta eller högsta värdet väljs.
 
-Esimerkissä poimitaan levyistä aluksi vanhin ja sitten pisin:
+I följande exempel handlar det om ljudinspelningar. Först väljer vi den äldsta inspelningen och sedan den längsta:
 
 ```python
 
@@ -613,9 +615,9 @@ Palloilija(nimi=Hessu Hopo, pelinumero=4, maalit=3, syotot=9, minuutit=12)
 
 </programming-exercise>
 
-## Funktiot parametreina omissa funktioissa
+## Funktioner som argument inom egna funktioner
 
-Pythonissa on siis mahdollista välittää viittaus johonkin funktioon toiselle funktiolle. Tarkastellaan vielä esimerkkinä omaa funktiota, joka saa parametrikseen toisen funktion:
+Vi konstaterade ovan att det är möjligt att skicka en referens till en funktion som argument till en annan funktion. Som avslutning på detta avsnitt skriver vi en egen funktion som tar en funktion som argument.
 
 ```python
 # tyyppivihje callable viittaa funktioon
@@ -645,9 +647,9 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Funktion `suorita_operaatio` lopputulos siis riippuu siitä, mikä funktio sille on välitetty parametrina. Funktioksi kelpaa mikä tahansa funktio (niin `def`-lauseella määritelty kuin anonyymikin) jolla on kaksi parametria.
+Det värde som returneras av funktionen `utfor_operation` beror på vilken funktion som skickades som argument. Vilken funktion som helst som tar emot två argument skulle duga, oavsett om den är anonym eller namngiven.
 
-Vaikkei funktioiden välittäminen parametrina olekaan kaikkein yleisimmin tarvittava operaatio, on se joka tapauksessa hyödyllinen mekanismi. Esimerkiksi seuraava ohjelma kirjoittaa tiedostosta 1 halutut rivit tiedostoon 2. Rivien valintakriteeri annetaan funktiona, joka palauttaa `True`, jos rivi tulee kirjoittaa toiseen tiedostoon:
+Att skicka referenser till funktioner som argument till andra funktioner är kanske inte något som du kommer att göra dagligen under din programmeringskarriär, men det kan vara en användbar teknik. Följande program väljer ut några rader från en fil och skriver dem till en annan fil. Hur raderna väljs ut bestäms av en funktion som returnerar True endast om raderna ska kopieras:
 
 ```python
 def kopioi_rivit(lahde_nimi: str, kohde_nimi: str, kriteeri= lambda x: True):
@@ -674,7 +676,7 @@ if __name__ == "__main__":
     kopioi_rivit("eka.txt", "toka.txt", lambda rivi: rivi[-1] != ".")
 ```
 
-Funktiossa parametrille `kriteeri` on määritelty oletusarvoksi lambda-lauseke `lambda x: True`, jonka tuottama anonyymi funktio palauttaa arvon `True` kaikille syötteille. Niinpä oletuksena kopioidaan kaikki rivit tiedostosta toiseen. Jos käyttäjä antaa kolmannelle parametrille arvon, tämä korvaa oletusarvon.
+Funktionsdefinitionen innehåller ett standardvärde för nyckelordsparametern `kriterie`: `lambda x: True`. Denna anonyma funktion returnerar alltid `True` oavsett indata. Standardbeteendet är alltså att kopiera alla rader. Som vanligt gäller att om ett värde anges för en parameter med ett standardvärde, ersätter det nya värdet standardvärdet. 
 
 <programming-exercise name='Tuotteiden haku' tmcname='osa12-07_tuotteiden_haku'>
 
@@ -726,4 +728,3 @@ for tuote in hae(tuotteet, lambda t: t[2]>10):
 </sample-output>
 
 </programming-exercise>
-

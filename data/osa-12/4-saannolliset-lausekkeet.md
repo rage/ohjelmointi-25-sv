@@ -1,26 +1,25 @@
 ---
 path: '/osa-12/4-saannolliset-lausekkeet'
-title: 'Säännölliset lausekkeet'
+title: 'Reguljära uttryck'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tiedät mitä tarkoitetan säännöllisellä lausekkeella
-- Osaat hyödyntää säännöllisiä lausekkeita omissa ohjelmissasi
+- Vet du vad reguljära uttryck är
+- Kommer du att kunna använda reguljära uttryck i dina egna program
 
 </text-box>
 
-Python on mainio työkalu tekstin käsittelemiseen. Yksi työkalu tekstin käsittelemisessä ovat
-_säännölliset lausekkeet_ (_regular expressions_), joiden avulla voi esimerkiksi poimia ja etsiä merkkijonoja, jotka ovat tietyn muotoisia. Tässä osiossa käydään läpi säännöllisten lausekkeiden perusteita, ja löydät lisää tietoa Pythonin omasta [tutoriaalista](https://docs.python.org/3/howto/regex.html).
+Vi har redan konstaterat att Python är en utmärkt miljö för att bearbeta text. Ett ytterligare kraftfullt verktyg för textbehandling är reguljära uttryck (eng. regular expressions), ofta förkortat som regex eller regexp. De är ett sätt att välja ut och söka efter strängar som följer ett visst mönster. I det här avsnittet får du en introduktion till grunderna i reguljära uttryck, men du hittar mycket mer information på nätet, bland annat i Pythons egna [handledning](https://docs.python.org/3/howto/regex.html).
 
-## Mitä ovat säännölliset lausekkeet?
+## Vad är reguljära uttryck?
 
-Säännölliset lausekkeet ovat tavallaan ohjelmointikieli ohjelmointikielen sisällä. Lausekkeilla on oma syntaksinsa, jonka mukaan ne määritellään. Ideana on, että säännöllisellä lausekkeella määritellään sellaisten merkkijonojen joukko, jotka ovat tiettyjen sääntöjen mukaisia.
+Reguljära uttryck är inte bara en Python-funktion. De representerar på sätt och vis ett programmeringsspråk inom ett programmeringsspråk. De är i viss utsträckning kompatibla med många olika programmeringsspråk. Reguljära uttryck har sin egen specifika syntax. Tanken är att definiera en samling strängar som följer vissa regler.
 
-Tarkistellaan yksinkertaista esimerkkiä lausekkeiden käytöstä ennen tarkempaa perehtymistä sääntöihin:
+Låt oss börja med ett enkelt exempel innan vi dyker djupare in i syntaxen:
 
 ```python
 import re
@@ -41,11 +40,9 @@ Pallon löytyy!
 
 </sample-output>
 
-Pythonissa säännöllisiä lausekkeita voi käsitellä moduulin `re` avulla. Esimerkiksi yllä olevassa koodissa oleva metodi `search` etsii merkkijonosta osaa, joka täsmää annettuun säännölliseen lausekkeeseen.
+Vi behöver importera modulen `re` för att kunna använda reguljära uttryck i Python. Modulen `re` innehåller många funktioner för att arbeta med reguljära uttryck. I exemplet ovan tar `search`-funktionen två strängargument: mönstersträngen och den målsträng där mönstret ska sökas.
 
-Huomaa, että säännöllinen lauseke annetaan _merkkijonona_ funktion `search` parametriksi.
-
-Toinen esimerkki etsii merkkijonosta luvut. Metodi `findall` palauttaa kaikki säännölliseen lausekkeeseen täsmäävät osajonot listana:
+I det här andra exemplet letar man efter alla siffror i en sträng. Funktionen `findall` returnerar en lista över alla instanser som matchar mönstret:
 
 ```python
 import re
@@ -67,9 +64,9 @@ for luku in luvut:
 
 </sample-output>
 
-## Säännöllisten lausekkeiden syntaksi
+## Syntaxen för reguljära uttryck
 
-Tarkastellaan seuraavaksi syntaksia, jota säännöllisissä lausekkeissa käytetään. Useimmissa esimerkeissä käytetään samaa testiohjelmaa eri syötteillä.
+Låt oss bekanta oss med den grundläggande syntaxen för reguljära uttryck. De flesta av följande exempel använder sig av detta testprogram:
 
 ```python
 import re
@@ -86,11 +83,11 @@ while True:
         print("Ei osumaa.")
 ```
 
-### Vaihtoehtoiset alijonot
+### Alternativa delsträngar
 
-Pystyviivalla voidaan erottaa vaihtoehtoisia osajonoja. Esimerkiksi lauseke `911|112` täsmää merkkijonoihin, joista löytyy joko osajono `911` tai osajono `112`.
+Lodstrecket  (eng. vertical bar) `|`, gör att du kan matcha alternativa delsträngar. Dess betydelse är alltså eller. Uttrycket `911|112` matchar t.ex. strängar som innehåller antingen delsträngen `911` eller delsträngen `112`.
 
-Esimerkiksi
+Ett exempel med testprogrammet:
 
 <sample-output>
 
@@ -109,11 +106,15 @@ Ei osumaa.
 </sample-output>
 
 
-### Merkkijoukot
+### Grupper av tecken
 
-Hakasulkeiden väliin voidaan merkitä joukko hyväksyttyjä merkkejä. Esimerkiksi merkintä `[aeio]` täsmää jonoihin, joista löytyy jokin merkeistä a, e, i, tai o. Merkintätapa sallii myös väliviivan käytön. Merkintä `[0-68a-d]` hyväksyy jonot, joista löytyy numero nollasta kuuteen, kahdeksikko tai merkki väliltä a...d. Merkintä `[1-3][0-9]` hyväksyy kaksinumeroiset luvut väliltä 10...39.
+Hakparenteser används för att beteckna grupper av accepterade tecken. Uttrycket `[aeio]` skulle t.ex. matcha alla strängar som innehåller något av tecknen a, e, i eller o.
 
-Esimerkiksi:
+Ett bindestreck är också tillåtet för att matcha intervall av tecken. Uttrycket `[0-68a-d]` skulle till exempel matcha alla strängar som innehåller en siffra mellan 0 och 6, eller en åtta, eller ett tecken mellan a och d. I den här notationen är alla intervall inkluderande.
+
+Om du kombinerar två uppsättningar parenteser kan du matcha två tecken i följd. Till exempel skulle uttrycket `[1-3][0-9]` matcha alla tvåsiffriga tal mellan 10 och 39, inklusive.
+
+Ett exempel med testprogrammet:
 
 <sample-output>
 
@@ -133,17 +134,17 @@ Ei osumaa.
 
 </sample-output>
 
-### Toistaminen
+### Upprepade matchningar
 
-Lausekkeen osaa voidaan toistaa esimerkiksi seuraavien operaattorien avulla:
+Varje del av ett uttryck kan upprepas med följande operatorer:
 
-* `*` toistaa osaa minkä tahansa määrän kertoja (myös nolla)
-* `+` toistaa osaa minkä tahansa määrän kertoja (ainakin yhden)
-* `{m}` toistaa osaa täsmälleen `m` kertaa
+* `*` upprepas hur många gånger som helst, inklusive noll
+* `+` upprepas hur många gånger som helst, men minst en gång
+* `{m}` upprepas exakt `m` gånger
 
-Operaattorit viittaavat niitä edeltävään lausekkeen osaan. Esimerkiksi lauseke `ba+b` hyväksyy esimerkiksi osajonot `bab`, `baab` ja `baaaaaaaaaaab`. Lauseke `A[BCDE]*Z` puolestaan hyväksyy esimerkiksi osajonot `AZ`, `ADZ` tai `ABCDEBCDEBCDEZ`.
+Dessa operatorer fungerar på den del av uttrycket som kommer omedelbart före operatorn. Uttrycket `ba+b` skulle t.ex. matcha delsträngarna `bab`, `baab` och `baaaaaaaaaaab`, bland andra. Uttrycket `A[BCDE]*Z` skulle matcha delsträngarna `AZ`, `ADZ` eller `ABCDEBCDEBCDEZ`, bland andra.
 
-Esimerkiksi:
+Ett exempel med testprogrammet:
 
 <sample-output>
 
@@ -164,9 +165,11 @@ Ei osumaa.
 </sample-output>
 
 
-### Muita erikoismerkkejä
+### Andra specialtecken
 
-Pisteellä merkitään mitä tahansa yksittäistä merkkiä. Niinpä merkintä `c...o` vastaa esimerkiksi merkkijonoja `c-3po` tai `combo`. Merkillä `^` voidaan määritellä, että osuman pitää löytyä merkkijonon alusta, ja vastaavasti merkillä `$`, että sen on oltava lopussa. Näillä voidaan näppärästi myös rajata sääntö koskemaan vain annettuja merkkejä:
+En punkt är ett jokertecken som kan matcha vilket enskilt tecken som helst. Uttrycket `c...o` skulle till exempel matcha alla delsträngar med fem tecken som börjar med ett `c` och slutar med ett `o`, till exempel `c-3po` eller `cello`.
+
+Tecknet `^` anger att matchningen måste ske i början av strängen och `$` anger att matchningen måste ske i slutet av strängen. Dessa tecken kan också användas för att utesluta andra tecken än de angivna från matchningen:
 
 <sample-output>
 
@@ -180,9 +183,7 @@ Osuma!
 
 </sample-output>
 
-Kenoviivaa voidaan käyttää etsimään erikoismerkkejä. Merkintä `1+` tarkoittaa yhtä tai useampaa ykköstä, mutta merkintä `1\+` merkkijonoa `1+`.
-
-Esimerkiksi
+Ibland behöver du matcha för specialtecken som är reserverade för syntaxen för reguljära uttryck. Omvänt snedstreck (eng. backslash) `\` kan användas för att undkomma specialtecken. Uttrycket `1+` matchar alltså ett eller flera tal `1`, men uttrycket `1\+` matchar strängen `1+`.
 
 <sample-output>
 
@@ -196,9 +197,7 @@ Osuma!
 
 </sample-output>
 
-Kaarisulkeilla voidaan ryhmitellä lausekkeen osia. Esimerkiksi lauseke `(ab)+c` hyväksyy jonot `abc`, `ababc` ja `ababababababc`, mutta ei esimerkiksi jonoja `ac` tai `bc`.
-
-Esimerkiksi
+Runda parenteser kan användas för att gruppera ihop olika delar av uttrycket. Till exempel skulle uttrycket `(ab)+c` matcha delsträngarna `abc`, `ababc` och `abababababababc`, men inte strängarna `ac` eller `bc`, eftersom hela delsträngen `ab` måste förekomma minst en gång.
 
 <sample-output>
 
@@ -280,11 +279,11 @@ False
 
 </programming-exercise>
 
-## Loppuhuipennus
+## Den stora finalen
 
-Harjoitellaan vielä osan lopussa hieman laajemman ohjelman tekemistä olioita hyödyntäen. Tämä tehtävä ei sijainnistaan huolimatta liity mitenkään säännöllisiin lausekkeisiin, mutta luvun [Funktio parametrina](/osa-12/1-funktio-parametrina) asia tulee olemaan tarpeen ja myös [listakoosteet](/osa-11/1-koosteet) voivat olla käyttökelpoisia.
+Som avslutning på denna del av materialet ska vi arbeta lite mer med objekt och klasser genom att bygga ett lite mer omfattande program. Denna övning innefattar inte nödvändigtvis reguljära uttryck, men avsnitten om [Funktioner som argument ](/osa-12/1-funktio-parametrina) och [list comprehension](/osa-11/1-koosteet) kommer sannolikt att vara användbara.
 
-Sovelluksen rakenteelle voi ottaa inspiraatiota osan 10 [viimeisestä luvusta](/osa-10/4-lisaa-esimerkkeja).
+Du kan också ha nytta av de exempel som finns i [del 10](/osa-10/4-lisaa-esimerkkeja).
 
 <programming-exercise name='Tilastot ojennukseen' tmcname='osa12-15_tilastot_ojennukseen'>
 
@@ -486,5 +485,3 @@ komento: **0**
 Vastaa lopuksi osion loppukyselyyn:
 
 <quiz id="2249a8d3-9455-5228-bd15-d5328d147b19"></quiz>
-
-

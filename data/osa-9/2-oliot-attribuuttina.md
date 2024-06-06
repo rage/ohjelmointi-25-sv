@@ -1,23 +1,23 @@
 ---
 path: '/osa-9/2-oliot-attribuuttina'
-title: 'Oliot attribuuttina'
+title: 'Objekt som attribut '
 hidden: False
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Osaat tallentaa olioita toisten olioiden sisään
-- Tiedät, mitä tarkoittaa `None`
+- Vet du hur man använder objekt som attribut i andra objekt
+- Kommer du vara bekant med nyckelordet `None`
 
 </text-box>
 
-Aikaisemmin nähtiin esimerkkejä luokista, joissa attribuutteina oli käytetty esimerkiksi listoja. Samalla tavalla myös omista luokista luotuja olioita voi käyttää toisten olioiden attribuutteina. Seuraavissa esimerkeissä on määritelty luokat `Kurssi`, `Opiskelija` ja `Opintosuoritus`. Opintosuorituksessa hyödynnetään kahta ensimmäistä luokkaa. Luokkien sisäinen toteutus on lyhyt, jotta esimerkki toisi esille oleellisen.
+Vi har redan sett exempel på klasser som har listor som attribut. Eftersom det alltså inte finns något som hindrar oss från att inkludera mutabla objekt som attribut i våra klasser, kan vi lika gärna använda instanser av våra egna klasser som attribut i andra klasser som vi själva har definierat. I följande exempel kommer vi att definiera klasserna `Kurs`, `Student` och `AvslutadKurs`. En avslutad kurs använder sig av de två första klasserna. Klassdefinitionerna är mycket korta och enkla för att vi bättre ska kunna koncentrera oss på tekniken att använda instanser av våra egna klasser som attribut.
 
-Esimerkissä jokainen luokka on kirjoitettu omaan tiedostoonsa.
+Vi kommer att anta att varje klass definieras i en separat fil.
 
-Esitellään aluksi luokka `Kurssi`, joka on määritelty tiedostossa `kurssi.py`:
+Först definierar vi klassen `Kurs` i en fil med namnet `kurs.py`:
 
 ```python
 class Kurssi:
@@ -27,7 +27,7 @@ class Kurssi:
         self.opintopisteet = opintopisteet
 ```
 
-Luokka `Opiskelija` mallintaa yhtä opiskelijaa. Luokka on määritelty tiedostossa `opiskelija.py`:
+Till näst, klassen `Student` i en fil med namnet `student.py`:
 
 ```python
 class Opiskelija:
@@ -37,7 +37,7 @@ class Opiskelija:
         self.opintopisteet = opintopisteet
 ```
 
-Luokka `Opintosuoritus` hyödyntää luokkia `Kurssi` ja `Opiskelija` suorituksen tallentamiseen. Huomaa, että luokat tuodaan mukaan `import`-lauseella:
+Slutligen är klassen `AvslutadKurs` definierad i en fil med namned `avslutadkurs.py`. Eftersom den använder de två andra klasserna, måste de importeras innan de kan användas:
 
 ```python
 from kurssi import Kurssi
@@ -50,7 +50,7 @@ class Opintosuoritus:
         self.arvosana = arvosana
 ```
 
-Esimerkki opintosuoritusten lisäämisestä listaan:
+Här är ett exempel av en huvudfunktion som lägger till några avslutade kurser i en lista:
 
 ```python
 from opintosuoritus import Opintosuoritus
@@ -86,15 +86,15 @@ Tiina
 
 </sample-output>
 
-Tarkastellaan lähemmin riviä `print(suoritus.opiskelija.nimi)`:
+Vad exakt händer med alla prickar på raden `print(kurs.student.namn)`?
 
-* `suoritus` on luokan `Opintosuoritus` mukainen olio
-* Niinpä muuttuja `opiskelija` viittaa suoritukseen tallennettuun `Opiskelija`-olioon
-* `Opiskelija`-luokan muuttuja `nimi` sisältää opiskelijan nimen
+* `kurs` är en instans av klassen `AvslutadKurs`
+* `student` refererar till ett attribut i objektet `AvslutadKurs`, som är ett objekt av typen `Student`
+* attributnamnet i `Student`-objektet innehåller namnet på studenten
 
-## Milloin import tarvitaan?
+## När är en import nödvändig?
 
-Edellisessä esimerkissä käytetään muutamassa kohdassa `import`:ia:
+I exemplen ovan förekommer en `import`-sats ganska många gånger:
 
 ```python
 from opintosuoritus import Opintosuoritus
@@ -104,7 +104,7 @@ from opiskelija import Opiskelija
 # koodi
 ```
 
-Importia tarvitaan vain jos tiedostossa käytetään jossain muualla  määriteltyä koodia. Näin on esimerkiksi kun käytetään jotain Pythonin valmista kalustoa, esim. matemaattisia operaatiota tarjoavaa moduulia `math`:
+En importsats är bara nödvändig när man använder kod som är definierad någonstans utanför den aktuella filen (eller Python-tolksessionen). Detta inkluderar situationer där vi vill använda något som är definierat i Pythons standardbibliotek. Modulen `math` innehåller till exempel vissa matematiska operationer:
 
 ```python
 import math
@@ -113,13 +113,11 @@ x = 10
 print(f"luvun {x} {neliöjuuri math.sqrt(x)}")
 ```
 
-Edellisessä tehtävässä oletettiin, että luokat on määritelty omissa tiedostoissaan. Esimerkki toteaa mm.
- _Esitellään aluksi luokka Kurssi, joka on määritelty tiedostossa kurssi.py_
-ja importin tarve siis johtuu tästä.
+I exemplet ovan antog vi att de tre klasserna definierades i var sin fil och att huvudfunktionen kördes från ytterligare en fil. Det var därför `import`-satserna var nödvändiga.
 
-Jos kaikki koodi sijoitetaan samaan tiedostoon, kuten kaikissa kurssin ohjelmointitehtävissä ohjeistetaan, **et tarvitse** `import`:ia luomiesi luokkien käytöön.
+Om all programkod skrivs i samma fil, vilket de flesta övningarna i den här kursen rekommenderar, behöver du **inte** `import`-satser för att använda de klasser du har definierat.
 
-Jos siis päädyt kirjottamaan kurssilla seuraavanlaista koodia
+Ifall du märker dig själv skriva något i stil med
 
 ```python
 from henkilo import Henkilo
@@ -127,7 +125,7 @@ from henkilo import Henkilo
 # koodi
 ```
 
-ratkaisusi on todennäköisesti väärä! Lisää importin käytöstä [osan 7](/osa-7/1-moduulit/) materiaalissa.
+är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import`deklarationen för första gången i [del 7](/osa-7/1-moduulit/) av kursmaterialet.
 
 <programming-exercise name='Lemmikit' tmcname='osa09-06_lemmikki'>
 
@@ -152,11 +150,11 @@ Leevi, kaverina Hulda, joka on sekarotuinen koira
 
 </programming-exercise>
 
-## Olion attribuuttina lista olioita
+## En lista med objekt som attribut till ett objekt
 
-Äskeisissä esimerkeissä oliolla oli attribuuttina yksittäinen toisen luokan olio, esim. henkilöllä attribuuttina lemmikki ja opintosuorituksella attribuuttina kurssi.
+I exemplen ovan använde vi enstaka instanser av andra klasser som attribut: en Person har ett enda Husdjur som attribut, och en AvslutadKurs har en Student och en Kurs som attribut.
 
-Olio-ohjelmoinnissa törmätään kutenkin usein tilanteeseen, jossa oliolla on attribuuttina _joukko_ toisen luokan olioita. Eräs tälläinen tilanne kuvaa joukkueen ja sen pelaajien välistä yhteyttä:
+I objektorienterad programmering är det ofta så att vi vill ha en samling objekt som attribut. Till exempel följer relationen mellan ett idrottslag och dess spelare detta mönster:
 
 ```python
 class Pelaaja:
@@ -184,7 +182,7 @@ class Joukkue:
         print("Pelaajien maalimäärät", maalit)
 ```
 
-Käyttöesimerkki:
+Ett exempel på hur vår klass fungerar:
 
 ```python
 kupa = Joukkue("Kumpulan pallo")
@@ -258,11 +256,11 @@ print(pakkaus.yhteispaino())
 
 </programming-exercise>
 
-## None eli viite ei mihinkään
+## None: en referens till ingenting
 
-Pythonissa muuttujat viittaavat aina johonkin olioon. On kuitenkin tilanteita, joissa haluaisimme määrittää arvon, joka ei viittaa mihinkään. Arvoa `None` käytetään esittämään tyhjää viittausta.
+I Python-programmering refererar alla initialiserade variabler till ett objekt. Det finns dock oundvikligen situationer där vi måste referera till något som inte existerar, utan att orsaka fel. Nyckelordet `None` representerar just ett sådant "tomt" objekt.
 
-Jos esimerkiksi luokkaan joukkue lisättäisiin metodi, joka etsii joukkueen pelaajan, saattaisi olla luontevaa esittää paluuarvolla `None` tilanne, jossa pelaajaa ei löydy:
+Låt oss fortsätta från exemplet med lag och spelare ovan och anta att vi vill lägga till en metod för att söka efter spelare i laget med hjälp av spelarens namn. Om ingen sådan spelare hittas kan det vara vettigt att returnera `None`:
 
 ```python
 class Pelaaja:
@@ -288,7 +286,7 @@ class Joukkue:
         return None
 ```
 
-Käyttöesimerkki:
+Låt oss testa vår funktion:
 
 ```python
 kupa = Joukkue("Kumpulan pallo")
@@ -309,7 +307,7 @@ None
 
 </sample-output>
 
-`None`-arvojen kanssa pitää olla tarkkana. On hyvin tyypillistä, että ohjelmassa kutsutaan jotain metodia oliolle (tai pyydetään attribuutin arvoa oliolta), joka onkin `None`:
+Var dock försiktig med `None`. Det kan ibland orsaka mer problem än det löser. Det är ett vanligt programmeringsfel att försöka komma åt en metod eller ett attribut via en referens som utvärderas till `None`:
 
 ```python
 kupa = Joukkue("Kumpulan pallo")
@@ -319,7 +317,7 @@ pelaaja = kupa.etsi("Jukkis")
 print(f"Jukkiksen maalimäärä {pelaaja.maalit}")
 ```
 
-Jos näin tehdään, ohjelma päättyy virheeseen:
+Exekverande av ovanstående skulle orsaka ett fel:
 
 <sample-output>
 
@@ -329,7 +327,7 @@ AttributeError: 'NoneType' object has no attribute 'maalit'
 
 </sample-output>
 
-`None`-arvojen varalta onkin syytä tehdä tarkistus, ennen kuin riskialtista koodia kutsutaan:
+Det är en god idé att kontrollera om det finns `None` innan du försöker komma åt några attribut eller metoder för returvärden: 
 
 ```python
 kupa = Joukkue("Kumpulan pallo")
@@ -484,4 +482,3 @@ class Huone:
 ```
 
 </programming-exercise>
-

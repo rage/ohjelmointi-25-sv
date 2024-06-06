@@ -1,19 +1,19 @@
 ---
 path: '/osa-9/6-lisaa-esimerkkeja'
-title: 'Lisää esimerkkejä'
+title: 'Fler exempel med klasser'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
-- Tunnet lisää esimerkkejä luokista ja olioista
-- Osaat käyttää parametrien oletusarvoja metodeissa
+- Är du bekant med några fler exempel på klasser och objekt
+- Kan du använda standardvärden för parametrar i dina metoder
 
 </text-box>
 
-Tarkastellaan seuraavaksi esimerkkiä, joka muodostuu kahdesta luokasta. Luokka `Piste` mallintaa yhtä pistettä kaksiulotteisessa koordinaatistossa ja luokka `Jana` kahden pisteen välistä janaa. Luokkien toiminta on kommentoitu koodiin.
+Följande exempel består av två klasser. Klassen `Punkt` är en modell för en punkt i ett tvådimensionellt rum. Klassen `Linje` är en modell för ett linjesegment mellan två punkter. Koden nedan är kommenterad, läs gärna kommentarerna för att förstå hur klasserna fungerar.
 
 ```python
 import math
@@ -99,15 +99,15 @@ print(jana)
 
 </sample-output>
 
-## Parametrien oletusarvot
+## Standardvärden för parametrar
 
-Pythonissa mille tahansa parametrille voidaan asettaa oletusarvo. Oletusarvoja voidaan käyttää sekä funktioiden että metodien parametreissa.
+I Python-programmering kan du i allmänhet ange ett standardvärde för alla parametrar. Standardvärden kan användas i både funktioner och metoder.
 
-Jos parametrille on annettu oletusarvo, sille ei ole pakko antaa arvoa kutsuttaessa. Jos arvo annetaan, se syrjäyttää oletusarvon, ja jos arvoa ei anneta, käytetään oletusarvoa.
+Om en parameter har ett standardvärde behöver du inte inkludera ett värde som ett argument när du anropar funktionen. Om ett argument anges ignoreras standardvärdet. Om inte, används standardvärdet.
 
-Oletusarvot ovat usein hyödyllisiä konstruktoreissa: jos on oletettavaa, ettei tiettyä tietoa ole aina olemassa oliota luodessa, on parempi antaa sille vakioarvo konstruktorissa kuin antaa tämä asiakkaan huoleksi. Tämä on asiakkaalle helpompaa ja myös ylläpitää olion sisäistä eheyttä, kun voidaan esimerkiksi olla varmoja, että "tyhjä" arvo on aina samanlainen (muuten se voisi olla esimerkiksi merkkijono `""`, arvo `None` tai merkkijono `"ei asetettu"`).
+Default-värden används ofta i konstruktörer. Om man kan förvänta sig att all information inte är tillgänglig när ett objekt skapas är det bättre att inkludera ett standardvärde i definitionen av konstruktörsmetoden än att tvinga klienten att ta hand om problemet. Detta gör det enklare att använda klassen ur klientens synvinkel, men det säkerställer också objektets integritet. Med ett fastställt standardvärde kan vi t.ex. vara säkra på att ett "tomt" värde alltid är detsamma, såvida inte klienten specifikt vill ange något annat. Om ett standardvärde inte anges är det upp till kunden att tillhandahålla ett "tomt" värde. Det kan t.ex. vara en tom sträng `""`, det speciella tomma objektet `None` eller strängen `"inte angivet"`.
 
-Tarkastellaan esimerkkinä luokkaa, joka mallintaa opiskelijaa. Pakollisia kenttiä luodessa ovat opiskelijanumero ja nimi ja näistä opiskelijanumeroa ei pysty myöhemmin muuttamaan. Opintopisteet ja muistiinpanot voi halutessaan antaa oliota luodessa, mutta niille on myös asetettu oletusarvot. Luokan toiminta on kommentoitu suoraan ohjelmakoodin yhteyteen.
+Låt oss ta en titt på ännu en klass som representerar en student. När ett nytt Student-objekt skapas måste klienten ange ett namn och ett studentnummer. Studentnumret är privat och ska inte ändras i efterhand. Dessutom har ett Student-objekt attribut för studiepoäng och anteckningar, vilka har standardvärden som anges i konstruktorn. Nya värden kan skickas som argument till konstruktören, men de kan också utelämnas så att standardvärdena används istället. Titta gärna på kommentarerna i koden för att bättre förstå vad varje metod gör.
 
 ```python
 class Opiskelija:
@@ -203,9 +203,9 @@ Opiskelija Onerva Opiskelija (98765):
 
 </sample-output>
 
-Huomaa, että attribuutille opiskelijanumero ei ole määritelty asetusmetodia, koska ideana on, että opiskelijanumero ei voi muuttua.
+OBS: Det finns ingen sättar-metod för attributet `student_nummer` eftersom det inte är meningen att studentnumret ska ändras.
 
-Parametrien oletusarvojen käyttöön liittyy kuitenkin eräs huomattavan iso "mutta" joka ilmenee seuraavasti esimerkistä:
+Det finns en ganska betydande hake när man använder standardvärden för parametrar. Följande exempel som modellerar ännu en typ av student kommer att belysa detta mer:
 
 ```python
 class Opiskelija:
@@ -235,7 +235,7 @@ print(opiskelija2.tehdyt_kurssit)
 
 </sample-output>
 
-Huomataan siis, että kurssisuorituksen lisääminen Ollille muuttaa myös Outin kurssisuorituksia. Ilmiö johtuu siitä, että Python uudelleenkäyttää oletusarvoa. Yllä oleva tapa luoda opiskelijat vastaa siis seuraavaa koodia:
+Om du lägger till slutförda kurser i Sallys lista läggs dessa kurser också till i Sassys lista. Faktum är att dessa två är exakt samma lista, eftersom Python återanvänder referensen som lagras i standardvärdet. Att skapa de två nya Student-objekten i exemplet ovan är likvärdigt med följande:
 
 ```python
 kurssit = []
@@ -243,7 +243,7 @@ opiskelija1 = Opiskelija("Olli Opiskelija", kurssit)
 opiskelija2 = Opiskelija("Outi Opiskelija", kurssit)
 ```
 
-Tästä johtuen parametrin oletusarvona ei koskaan tulisi käyttää monimutkaisempia tietorakenteita kuten listoja. Korjattu versio luokan `Opiskelija` konstruktorista on seuraava:
+Standardvärdena för parametrar bör aldrig vara instanser av mer komplicerade, föränderliga datastrukturer, t.ex. listor. Problemet kan kringgås genom att göra följande ändringar i konstruktorn för klassen `Student`:
 
 ```python
 class Opiskelija:
@@ -276,9 +276,9 @@ print(opiskelija2.tehdyt_kurssit)
 
 </sample-output>
 
-## Loppuhuipennus
+## Den stora finalen
 
-Vaikka seuraava tehtävä on tässä luvussa, et tarvitse tehtävän ratkaisemiseen mitään muuta kun luvussa [Oliot attribuuttina](/osa-9/2-oliot-attribuuttina) esiteltyjä tekniikoita. Tehtävä on käytännössä hyvin samanlainen kuin tuon luvun  tehtävät [lahjapakkaus](/osa-9/2-oliot-attribuuttina#programming-exercise-lahjapakkaus) ja [huoneen lyhin](/osa-9/2-oliot-attribuuttina#programming-exercise-huoneen-lyhin).
+Fastän följande övning avslutar den här delen av materialet, så har de tekniker som krävs för att lösa den redan behandlats i avsnittet som heter [Objekt som attribut](/osa-9/2-oliot-attribuuttina). Du behöver inte använda `@property`-dekoratorn eller standardvärden för parametrar i den här övningen. Den här övningen är mycket lik övningarna [en presentask](/osa-9/2-oliot-attribuuttina#programming-exercise-lahjapakkaus) och [den kortaste personen i rummet](/osa-9/2-oliot-attribuuttina#programming-exercise-huoneen-lyhin).
 
 <programming-exercise name='Tavara, Matkalaukku ja Lastiruuma' tmcname='osa09-15_tavara_matkalaukku_lastiruuma'>
 
@@ -531,4 +531,3 @@ Tiiliskivi (4 kg)
 Vastaa lopuksi osion loppukyselyyn:
 
 <quiz id="a85a3eb4-0bdf-5c7e-98f7-bbad2301c344"></quiz>
-
