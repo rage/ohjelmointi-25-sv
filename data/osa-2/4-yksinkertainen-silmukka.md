@@ -102,7 +102,7 @@ Korrekt pin-kod
 
 </sample-output>
 
-<in-browser-programming-exercise name="Jatketaanko" tmcname="osa02-15_jatketaanko">
+<in-browser-programming-exercise name="Fortsätter vi?" tmcname="osa02-15_jatketaanko">
 
 Skriv enligt föregående exempel ett program som skriver ut texten "hej" och frågar "Fortsätter vi?" tills användaren svarar "nej". Efter det här skriver programmet ut "inte då" och programmet avslutas.
 
@@ -124,7 +124,7 @@ inte då
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Syötteen rajaus" tmcname="osa02-16_syotteen_rajaus">
+<in-browser-programming-exercise name="Valida värden" tmcname="osa02-16_syotteen_rajaus">
 
 Skapa ett program som frågar efter siffror från användaren. Om siffran är negativ, skriver man ut meddelandet "Ogiltigt tal" och ett nytt tal tillfrågas. Om siffran är noll, avslutas loopen.
 
@@ -162,7 +162,7 @@ Avslutar...
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Lähtölaskenta" tmcname="osa02-17_lahtolaskenta">
+<in-browser-programming-exercise name="Nedräkning" tmcname="osa02-17_lahtolaskenta">
 
 Det här programmet...
 
@@ -196,7 +196,7 @@ Korrigera problemet i koden.
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Salasana uudelleen" tmcname="osa02-18_salasana_uudelleen">
+<in-browser-programming-exercise name="Lösenord på nytt" tmcname="osa02-18_salasana_uudelleen">
 
 Skapa ett program som ber användaren att ange ett lösenord och upprepa lösenordet, tills användaren anger det första lösenordet på nytt.
 
@@ -374,7 +374,7 @@ Från utskriften ovan märker vi att under den tredje iterationen kommer villkor
 
 Ordningen på if-satser eller grenar inom if-satser är vanliga orsaker till buggar – framför allt inom loopar. Debuggning med hjälp av print-satser hjälper förvånansvärt ofta.
 
-<in-browser-programming-exercise name="PIN ja yritysten määrä" tmcname="osa02-19_pin_ja_yritysten_maara">
+<in-browser-programming-exercise name="Pin och antal försök" tmcname="osa02-19_pin_ja_yritysten_maara">
 
 Skapa ett program som frågar användaren om en pin-kod tills hon anger den korrekta pin-koden 4321. Programmet berättar hur många försök som har gjorts:
 
@@ -403,7 +403,7 @@ Korrekt, du behövde bara ett försök!
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Seuraava karkausvuosi" tmcname="osa02-20_seuraava_karkausvuosi">
+<in-browser-programming-exercise name="Nästa skottår" tmcname="osa02-20_seuraava_karkausvuosi">
 
 Skapa ett program som ber användaren ange ett årtal. Programmet ska berätta när nästa skottår är.
 
@@ -475,7 +475,7 @@ Om användaren anger koderna 1111 2222 1234 kommer värdet på `koder` till slut
 </sample-output>
 
 
-<in-browser-programming-exercise name="Tarina" tmcname="osa02-21_tarina">
+<in-browser-programming-exercise name="Berättelse" tmcname="osa02-21_tarina">
 
 ### Del 1
 
@@ -512,7 +512,7 @@ I början fanns hönan eller ägget
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Lukujen käsittelyä" tmcname="osa02-22_lukujen_kasittelya">
+<in-browser-programming-exercise name="Behandling av tal" tmcname="osa02-22_lukujen_kasittelya">
 
 Skapa ett program som ber användaren ange heltal. Programmet ber efter tal tills talet noll anges.
 

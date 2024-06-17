@@ -230,7 +230,7 @@ print(resultat) # False
 
 Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller visualiseringsverktyget. Det lönar sig verkligen att lära sig använda dessa effektivt.
 
-<programming-exercise name='Pisin merkkijono' tmcname='osa05-01a_pisin_merkkijono'>
+<programming-exercise name='Längsta strängen' tmcname='osa05-01a_pisin_merkkijono'>
 
 **HUOM:** tämä ja seuraava tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
 
@@ -481,13 +481,13 @@ print(m)
 Den yttre loopen går igenom indexen från noll till matrisens längd, alltså antalet rader i matrisen. Den inre loopen går igenom indexen från noll till radernas längd.
 
 
-<programming-exercise name='Alkioiden määrä' tmcname='osa05-01_alkoiden_maara'>
+<programming-exercise name='Antalet element' tmcname='osa05-01_alkoiden_maara'>
 
 **HUOM:** tämä ja edellinen tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
 
 Skapa funktionen `rakna_element(matris: list, element: int)` som tar emot en matris samt ett heltal som argument. Funktionen ska returnera antalet gånger det valda elementet hittas i matrisen.
 
-Esimerkiksi
+Exempel:
 
 ```python
 m = [[1, 2, 1], [0, 3, 4], [1, 0, 0]]
@@ -575,7 +575,7 @@ Funktionen ska returnera `1` om spelare ett har vunnit, `2` om spelare två har 
 
 </programming-exercise>
 
-<programming-exercise name='Sudoku: rivit oikein' tmcname='osa05-03_sudoku_osa1'>
+<programming-exercise name='Sudoku: Rader korrekt' tmcname='osa05-03_sudoku_osa1'>
 
 Skapa funktionen `rad_korrekt(sudoku: list, radnummer: int)` som får som argument en matris samt ett heltal. Radnumreringen börjar med noll. Funktionen ska returnera ett värde som beskriver om raden är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
 
@@ -605,7 +605,7 @@ False
 
 </programming-exercise>
 
-<programming-exercise name='Sudoku: sarakkeet oikein' tmcname='osa05-04_sudoku_osa2'>
+<programming-exercise name='Sudoku: Kolumner korrekt' tmcname='osa05-04_sudoku_osa2'>
 
 Skapa funktionen `kolumn_korrekt(sudoku: list, kolumnnummer: int)` som får som argument en matris samt ett heltal. Funktionen ska returnera ett värde som beskriver om kolumnen är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
 
@@ -636,7 +636,7 @@ True
 
 </programming-exercise>
 
-<programming-exercise name='Sudoku: neliöt oikein' tmcname='osa05-05_sudoku_osa3'>
+<programming-exercise name='Sudoku: Kvadrater korrekt' tmcname='osa05-05_sudoku_osa3'>
 
 Skapa funktionen `kvadrat_korrekt(sudoku: list, radnummer: int, kolumnnummer: int)` som får som argument en matris samt två heltal.
 
@@ -688,7 +688,7 @@ I ett riktigt sudokuspel skulle den här kvadraten inte alltså kollas.
 
 </programming-exercise>
 
-<programming-exercise name='Sudoku: ruudukko oikein' tmcname='osa05-06_sudoku_osa4'>
+<programming-exercise name='Sudoku: Korrekt?' tmcname='osa05-06_sudoku_osa4'>
 
 Skapa funktionen `sudoku_korrekt(sudoku: list)` som får som argument en matris. Den här funktionen ska använda sig av de tre föregående uppgifternas funktioner (kopiera dem) för att säkerställa att varje rad, kolumn och 3 x 3 -kvadrat innehåller högst en av siffrorna 1-9.
 

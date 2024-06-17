@@ -101,7 +101,7 @@ print(len(lista))
 </sample-output>
 
 
-<programming-exercise name='Alkioiden arvojen muutokset' tmcname='osa04-07a_alkioiden_arvojen_muutokset'>
+<programming-exercise name='Ändra på elementens värden' tmcname='osa04-07a_alkioiden_arvojen_muutokset'>
 
 Skapa ett program som initierar en lista med värdena `[1, 2, 3, 4, 5]`. Programmet ber därefter användaren ange ett index och ett nytt värde som programmet lagrar, och listan skrivs ut på nytt. Programmet avslutas då använder anger -1 som index.
 
@@ -177,13 +177,11 @@ Skonummer:
 
 </sample-output>
 
-<programming-exercise name='Alkioiden lisäys listaan' tmcname='osa04-07b_alkoiden_lisays_listaan'>
+<programming-exercise name='Lägg till element i en lista' tmcname='osa04-07b_alkoiden_lisays_listaan'>
 
 Skapa ett program som ber användaren ge antalet siffror. Därefter ber programmet användaren ange det här antalet siffror, som läggs till i en lista i den givna ordningen.
 
 Listan ska till slut skrivas ut:
-
-Esimerkkisuoritus:
 
 <sample-output>
 
@@ -304,7 +302,7 @@ print(lista)
 
 </sample-output>
 
-<programming-exercise name='Lisäys ja poisto' tmcname='osa04-07c_lisays_ja_poisto'>
+<programming-exercise name='Lägg till, ta bort' tmcname='osa04-07c_lisays_ja_poisto'>
 
 Skapa ett program som låter användaren lägga till eller avlägsna ett värde. Varje operation görs i slutet av listan. När ett element läggs till är dess värde alltid ett större än det föregående värdet (1 om inga element finns i listan).
 
@@ -352,7 +350,7 @@ Listan innehåller värdet 1
 
 </sample-output>
 
-<programming-exercise name='Sama sana kahdesti' tmcname='osa04-08_sama_sana_kahdesti'>
+<programming-exercise name='Samma ord två gånger' tmcname='osa04-08_sama_sana_kahdesti'>
 
 Skapa ett program som ber användaren mata in ord. När användaren anger ett ord som hon gett tidigare, avslutas programmet och antalet ord skrivs ut.
 
@@ -416,7 +414,7 @@ print(ordnad)
 
 </sample-output>
 
-<programming-exercise name='Lista kahdesti' tmcname='osa04-08b_lista_kahdesti'>
+<programming-exercise name='En lista, två varianter' tmcname='osa04-08b_lista_kahdesti'>
 
 Skapa ett program som ber användaren ange siffror, som läggs till i en lista. Efter varje tillägg skrivs listan ut på två sätt:
 
@@ -625,7 +623,7 @@ print("Pituudet:")
 langder = las_in_siffror()
 ```
 
-<programming-exercise name='Listan pituus' tmcname='osa04-09_listan_pituus'>
+<programming-exercise name='Listans längd' tmcname='osa04-09_listan_pituus'>
 
 Skapa funktionen `langd` som returnerar längden på den lista som getts som argument.
 
@@ -648,7 +646,7 @@ svar 4
 
 </programming-exercise>
 
-<programming-exercise name='Keskiarvo' tmcname='osa04-10_keskiarvo'>
+<programming-exercise name='Medeltal' tmcname='osa04-10_keskiarvo'>
 
 Skapa funktionen `medeltal` som returnerar medelvärdet av värdena i en lista bestående av heltal som getts som argument till funktionen.
 
@@ -666,7 +664,7 @@ svar 3.0
 
 </programming-exercise>
 
-<programming-exercise name='Vaihteluväli' tmcname='osa04-11_vaihteluvali'>
+<programming-exercise name='Variationsbredd' tmcname='osa04-11_vaihteluvali'>
 
 Skapa funktionen `variationsbredd` som returnerar diffrensen av det största och minsta värdet i en lista med heltal som getts som argument till funktionen.
 
@@ -685,7 +683,7 @@ svar 4
 
 </programming-exercise>
 
-## Lisää listan käsittelystä
+## Mer om att behandla listor
 
 Det finns flera sätt till att använda listor i Python. Om du vill läsa mera är Pythons dokumentation ett bra ställe att börja med.
 

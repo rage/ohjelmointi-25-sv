@@ -54,7 +54,7 @@ TypeError: 'tuple' object does not support item assignment
 
 </sample-output>
 
-<programming-exercise name='Muodosta tuple' tmcname='osa05-17c_muodosta_tuple'>
+<programming-exercise name='Skapa tuple' tmcname='osa05-17c_muodosta_tuple'>
 
 Skapa funktionen `skapa_tuple(x: int, y: int, z: int)` som skapar och returnerar en tuple enligt dessa regler:
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
 </programming-exercise>
 
-<programming-exercise name='Vanhin henkilöistä' tmcname='osa05-18_vanhin_henkiloista'>
+<programming-exercise name='Äldst' tmcname='osa05-18_vanhin_henkiloista'>
 
 Skapa funktionen `aldst(personer: list)` som får som argument en lista med tupler som innehåller information om personer. Funktionen ska hitta den äldsta personen och returnera hennes namn.
 
@@ -106,7 +106,7 @@ Mette
 
 </programming-exercise>
 
-<programming-exercise name='Vanhemmat henkilöt' tmcname='osa05-19_vanhemmat_henkilot'>
+<programming-exercise name='Äldre' tmcname='osa05-19_vanhemmat_henkilot'>
 
 Vi antar att vi fortfarande har tuplerna från den föregående uppgiften till vårt förfogande.
 
@@ -251,7 +251,7 @@ tal1 = tal2
 tal2 = hjalp
 ```
 
-<programming-exercise name='Opiskelijarekisteri' tmcname='osa05-20_opiskelijarekisteri'>
+<programming-exercise name='Studeranderegister' tmcname='osa05-20_opiskelijarekisteri'>
 
 I denna uppgift skapar vi ett enkelt register över studerande. Före du börjar programmera lönar det sig att fundera hurdan datastruktur som behövs för att organisera den data som ska lagras.
 
@@ -366,7 +366,7 @@ bästa medeltal 4.5 Lilou
 
 </programming-exercise>
 
-<programming-exercise name="Kirjainruudukko" tmcname="osa05-21_kirjainruudukko">
+<programming-exercise name="Bokstavsruta" tmcname="osa05-21_kirjainruudukko">
 
 Den här delen når nu sitt kulmen med en relativt svår uppgift som kräver problemlösningsförmåga. Uppgiften kan lösas på flera sätt. Även om vi nyss har behandlat tupler så lönar det sig dock antagligen inte att använda dem i den här uppgiften.
 

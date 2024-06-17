@@ -158,7 +158,7 @@ Det är ännu 8188 sekunder till midnatt
 
 </sample-output>
 
-<programming-exercise name='Kuinka vanha' tmcname='osa07-09_kuinka_vanha'>
+<programming-exercise name='Hur gammal?' tmcname='osa07-09_kuinka_vanha'>
 
 Skapa ett program som frågar om användarens födelsetid och skriver därefter ut hur gammal hon var 31/12 1999.
 
@@ -186,7 +186,7 @@ Du kan anta att användaren ger ett korrekt datum (inte t.ex. 31/2 1999).
 
 </programming-exercise>
 
-<programming-exercise name='Henkilötunnus oikein?' tmcname='osa07-10_henkilotunnus_oikein'>
+<programming-exercise name='Personbeteckning rätt?' tmcname='osa07-10_henkilotunnus_oikein'>
 
 Skapa funktionen `valid(personbeteckning: str)` som returnerar `True` eller `False` beroende på om den givna personbeteckningen är korrekt. Formatet på beteckningen är `ddmmååxyyyz` där `ddmmåå` indikerar födelsetid, `x` är ett skiljetecken, `yyy` födelsenummer och `z` ett kontrolltecken.
 
@@ -261,7 +261,7 @@ Du föddes på förra årtusendet
 
 </sample-output>
 
-<programming-exercise name='Ruutuaika' tmcname='osa07-11_ruutuaika'>
+<programming-exercise name='Skärmtid' tmcname='osa07-11_ruutuaika'>
 
 I det här programmet antecknar vi användarens dagliga skärmtid (tv, dator, mobil) i en fil.
 

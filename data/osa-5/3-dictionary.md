@@ -130,7 +130,7 @@ Kursen Datastrukturer och algoritmer ger en större insikt i hashtabeller.
 
 Till skillnad från nycklar, kan värden i ett lexikon ändra och därmed kan vilken som helst typ av data lagras som ett värde. Ett och samma värde kan också vara kopplat till flera nycklar i samma lexikon.
 
-<programming-exercise name='Kertaa kymmenen' tmcname='osa05-10b_kertaa_kymmenen'>
+<programming-exercise name='Gånger tio' tmcname='osa05-10b_kertaa_kymmenen'>
 
 Skapa funktionen `ganger_tio(start: int, slut: int)` som skapar och returnerar ett lexikon. Lexikonet ska ha nycklarna i intervallet `start-slut`.
 
@@ -151,7 +151,7 @@ print(d)
 
 </programming-exercise>
 
-<programming-exercise name='Kertomat' tmcname='osa05-11_kertomat'>
+<programming-exercise name='Fakulteter' tmcname='osa05-11_kertomat'>
 
 Skapa funktionen `fakulteter(n: int)` som returnerar fakulteterna för talen i intervallet `1-n` i ett lexikon så att nyckeln är `n` och värdet `n`:s fakultet.
 
@@ -310,7 +310,7 @@ ord som börjar med s:
 
 </sample-output>
 
-<programming-exercise name='Histogrammi' tmcname='osa05-12_histogrammi'>
+<programming-exercise name='Histogram' tmcname='osa05-12_histogrammi'>
 
 Skapa funktionen `histogram` som får som argument en sträng. Funktionen ska skriva ut ett histogram som beskriver förekomsten av olika bokstäver.
 
@@ -343,7 +343,7 @@ a *
 
 </programming-exercise>
 
-<programming-exercise name='Puhelinluettelo, versio 1' tmcname='osa05-13_puhelinluettelo_versio1'>
+<programming-exercise name='Telefonkatalog, version 1' tmcname='osa05-13_puhelinluettelo_versio1'>
 
 Skapa en telefonkatalog som fungerar på följande sätt:
 
@@ -381,7 +381,7 @@ Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -bl
 
 </programming-exercise>
 
-<programming-exercise name='Puhelinluettelo, versio 2' tmcname='osa05-14_puhelinluettelo_versio2'>
+<programming-exercise name='Telefonkatalog, version 2' tmcname='osa05-14_puhelinluettelo_versio2'>
 
 Skapa nu en förbättrad version av telefonkatalogen. Samma person ska nu kunna ha flera nummer. I övrigt fungerar programmet som den tidigare versionen.
 
@@ -518,7 +518,7 @@ Lyckligtvis har lexikon en inbyggd metod som kan användas istället:
 personal.clear()
 ```
 
-<programming-exercise name='Sanakirjan kääntö' tmcname='osa05-15_sanakirjan_kaanto'>
+<programming-exercise name='Att vända ett lexikon' tmcname='osa05-15_sanakirjan_kaanto'>
 
 Skapa funktionen `vand(lexikon: dict)` som får som argument ett lexikon. Funktionen ska vända på nycklarna och värdena enligt exemplet nedan.
 
@@ -540,19 +540,17 @@ Använd visualiseringsverktyget om du stöter på problem.
 
 </programming-exercise>
 
-<programming-exercise name='Luvut sanoina' tmcname='osa05-16_luvut_sanoina'>
-
-Kirjoita funktio `lukukirja()`, joka palauttaa uuden sanakirjan. Palautettu rakenne sisältää avaimina luvut nollasta 99:ään. Sanakirjan arvoina ovat luvut kirjaimin kirjoitettuna. Katso esimerkkiä alla:
+<programming-exercise name='Siffror som ord' tmcname='osa05-16_luvut_sanoina'>
 
 Skapa funktionen `siffersamling()` som returnerar ett nytt lexikon. Lexikonet ska innehålla nycklarna noll till 99. Värdena ska innehålla nyckeln i skriven form. Se exemplet nedan:
 
 ```python
-luvut = lukukirja()
-print(luvut[2])
-print(luvut[11])
-print(luvut[45])
-print(luvut[99])
-print(luvut[0])
+siffror = siffersamling()
+print(siffror[2])
+print(siffror[11])
+print(siffror[45])
+print(siffror[99])
+print(siffror[0])
 ```
 
 <sample-output>
@@ -623,7 +621,7 @@ Medellängden är 173.0
 
 </sample-output>
 
-<programming-exercise name='Elokuvarekisteri' tmcname='osa05-17_elokuvarekisteri'>
+<programming-exercise name='Filmregister' tmcname='osa05-17_elokuvarekisteri'>
 
 Skapa funktionen `ny_film(register: list, namn: str, regissor: str, ar: int, langd: int)`. Funktionen ska lägga till en ny film i ett register.
 
@@ -653,7 +651,7 @@ print(register)
 
 </programming-exercise>
 
-<programming-exercise name='Etsi elokuvat' tmcname='osa05-17b_etsi_elokuvat'>
+<programming-exercise name='Hitta film' tmcname='osa05-17b_etsi_elokuvat'>
 
 Skapa funktionen `hitta_filmer(register: list, term: str)`. Funktionen ska skapa en ny lista som innehåller de filmer i vars namn söktermen hittas. Gemener och versaler ska inte påverka – med termen `Lil` hittar man t.ex. både filmerna `Lilja 4-ever` och `Den lilla Pythonkodaren`.
 

@@ -141,7 +141,7 @@ Viktindexet är 28.02137829801649
 
 </sample-output>
 
-<in-browser-programming-exercise name="Luku kertaa viisi" tmcname="osa01-13_kerrottuna_viidella">
+<in-browser-programming-exercise name="Siffra gånger fem" tmcname="osa01-13_kerrottuna_viidella">
 
 Skapa ett program som frågar efter ett tal från användaren. Programmet ska skriva ut talet multiplicerat med fem.
 
@@ -156,7 +156,7 @@ När 3 multipliceras med 5, får vi 15
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Nimi ja ikä" tmcname="osa01-14_nimi_ja_ika">
+<in-browser-programming-exercise name="Namn och ålder" tmcname="osa01-14_nimi_ja_ika">
 
 Skapa ett program som frågar efter användarens namn samt födelseår. Programmet ska därefter skriva ut ett meddelande enligt följande exempel:
 
@@ -297,7 +297,7 @@ alder = int(input("Vad är din ålder? "))
 # programmet fortsätter...
 ```
 
-<in-browser-programming-exercise name="Vuorokaudet sekunteina" tmcname="osa01-15_sekunteja_vuorokaudessa">
+<in-browser-programming-exercise name="Dygn i sekunder" tmcname="osa01-15_sekunteja_vuorokaudessa">
 
 Skapa ett program som frågar användaren om ett antal dagar. Programmet ska därefter räkna ut hur långa dessa dagar tillsammans är mätt i sekunder.
 
@@ -322,10 +322,7 @@ Hur många dygns längd ska räknas i sekunder? **7**
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Korjaa ohjelma: Lukujen tulo" tmcname="osa01-20_korjaa_ohjelma_lukujen_tulo">
-
-Oheinen ohjelma kysyy käyttäjältä kolme lukua ja tulostaa näiden tulon (eli luvut kerrottuna toisillaan).
-Ohjelmassa on kuitenkin virhe tai virheitä, joiden takia se ei toimi. Korjaa ohjelma sellaiseksi, että se toimii oikein.
+<in-browser-programming-exercise name="Fixa programmet: Produkten av talen" tmcname="osa01-20_korjaa_ohjelma_lukujen_tulo">
 
 Det här programmet borde fråga efter tre tal från användaren och räkna talens produkt. Det finns dessvärre fel i programmet. Korrigera dem, så att programmet fungerar på önskat sätt.
 
@@ -342,7 +339,7 @@ Produkten av talen är 30
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Lukujen summa ja tulo" tmcname="osa01-16_lukujen_summa_ja_tulo">
+<in-browser-programming-exercise name="Talens summa och produkt" tmcname="osa01-16_lukujen_summa_ja_tulo">
 
 Skapa ett program som ber användaren att ge två siffror. Programmet ska räkna summan och produkten av dessa tal.
 
@@ -360,7 +357,7 @@ Produkten av siffrorna 21
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Lukujen summa ja keskiarvo" tmcname="osa01-17_lukujen_summa_ja_keskiarvo">
+<in-browser-programming-exercise name="Summa och medeltal" tmcname="osa01-17_lukujen_summa_ja_keskiarvo">
 
 Skapa ett program som ber användaren att ange fyra siffror. Programmet ska räkna summan och medeltalet av dessa siffror.
 
@@ -380,7 +377,7 @@ Summan av siffrorna är 16 ja medeltalet är 4.0
 
 
 
-<in-browser-programming-exercise name="Ruokailukustannukset" tmcname="osa01-19_ruokailukustannukset">
+<in-browser-programming-exercise name="Matkostnader" tmcname="osa01-19_ruokailukustannukset">
 
 Skapa ett program som uppskattar användarens genomsnittliga matkostnader.
 
@@ -404,7 +401,7 @@ Under en vecka 38.5 euro
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Opiskelijat ryhmiin" tmcname="osa01-18_opiskelijat_ryhmiin">
+<in-browser-programming-exercise name="Gruppindelning" tmcname="osa01-18_opiskelijat_ryhmiin">
 
 Gör ett program som frågar efter antalet studerande under en kurs samt storleken på en grupp. Programmet ska räkna hur många grupper bildas. En av grupperna kan vid behov ha färre medlemmar än den önskade gruppstorleken.
 

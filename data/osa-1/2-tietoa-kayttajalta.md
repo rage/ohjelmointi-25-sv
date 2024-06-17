@@ -51,7 +51,7 @@ Det är ett allmänt tillvägagångssätt att namnge variabler på engelska, men
 
 </text-box>
 
-<in-browser-programming-exercise name="Nimi kahdesti" tmcname="osa01-06_nimi_kahdesti">
+<in-browser-programming-exercise name="Namn, två gånger" tmcname="osa01-06_nimi_kahdesti">
 
 Gör ett program som frågar efter användarens förnamn. Programmet ska sedan skriva ut namnet två gånger på varandra följande rader.
 
@@ -108,7 +108,7 @@ Hej Ellen Exempel! Ditt namn var alltså Ellen Exempel?
 
 </sample-output>
 
-<in-browser-programming-exercise name="Nimet huutomerkillä" tmcname="osa01-07_nimi_ja_huutomerkit">
+<in-browser-programming-exercise name="Namn med utropstecken" tmcname="osa01-07_nimi_ja_huutomerkit">
 
 Gör ett program som frågar efter användarens förnamn. Programmet ska skriva ut det angivna namnet två gånger på samma rad, så att det finns ett utropstecken mellan namnen och i början och slutet av raden.
 
@@ -192,7 +192,7 @@ Gatuadressen är nu Värjan 1
 
 </sample-output>
 
-<in-browser-programming-exercise name="Nimi ja osoite" tmcname="osa01-08_nimi_ja_osoite">
+<in-browser-programming-exercise name="Namn och adress" tmcname="osa01-08_nimi_ja_osoite">
 
 Skapa ett program som frågar efter användarens namn och adress. Skriv sedan ut dem.
 
@@ -212,7 +212,7 @@ Bulevarden 12
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name=" Korjaa ohjelma: Lausahdukset" tmcname="osa01-09_korjaa_ohjelma_lausahdukset">
+<in-browser-programming-exercise name="Fixa programmet: Uttryck" tmcname="osa01-09_korjaa_ohjelma_lausahdukset">
 
 I den här uppgiften finns ett program som borde fråga användaren efter tre ord och skriva dem ut på följande sätt.
 
@@ -229,7 +229,7 @@ Det finns några problem i koden som du nu borde lösa, så att programmet funge
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Tarina" tmcname="osa01-10_tarina">
+<in-browser-programming-exercise name="Berättelse" tmcname="osa01-10_tarina">
 
 Skapa ett program som skriver ut den följande berättelsen. Namnet och årtalet användaren anger ska användas i texten.
 

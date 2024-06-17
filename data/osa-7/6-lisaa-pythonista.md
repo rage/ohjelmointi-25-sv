@@ -137,7 +137,7 @@ Deras summa är 15
 
 </sample-output>
 
-<programming-exercise name='Oma ohjelmointikieli' tmcname='osa07-18_oma_ohjelmointikieli'>
+<programming-exercise name='Eget programmeringsspråk' tmcname='osa07-18_oma_ohjelmointikieli'>
 
 I den här uppgifter skapar vi ett program som kan köra vårt eget programmeringsspråk. Du kan använda allt du lärt dig under den här kursen när du utför den här uppgiften.
 

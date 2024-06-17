@@ -333,7 +333,7 @@ Det här var ett ganska enkelt exempel och i fall som det här kan man eventuell
 
 `print`-satser är bara ett sätt att debugga program. Vi återkommer till det här ämnet senare under kursen. Nu ska du bli van vid att debugga, med hjälp av `print`-kommandon, för att hitta problematiska delar i din kod. Proffs klarar sig inte utan `print`-satser i debuggningssyfte – det är alltså en viktig resurs redan som nybörjare.
 
-<in-browser-programming-exercise name="Korjaa virheet" tmcname="osa02-01_korjaa_virheet" height="400px">
+<in-browser-programming-exercise name="Fixa felen" tmcname="osa02-01_korjaa_virheet" height="400px">
 
 I följande program finns flera syntaxfel. Korrigera dem så att programmet fungerar enligt nedan presenterade exempel.
 
@@ -370,7 +370,7 @@ Ha en trevlig fortsättning på dagen!
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Merkkien määrä" tmcname="osa02-02_merkkien_maara">
+<in-browser-programming-exercise name="Antalet tecken" tmcname="osa02-02_merkkien_maara">
 
 Med funktionen `len` kan man bland annat räkna längden på en sträng. Funktionen returnerar antalet tecken i strängen.
 
@@ -429,7 +429,7 @@ Tack!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Tyyppimuunnos" tmcname="osa02-03_tyyppimuunnos">
+<in-browser-programming-exercise name="Konvertera värden" tmcname="osa02-03_tyyppimuunnos">
 
 I Python kan man ofta konvertera ett värde från en datatyp till en annan. Ett flyttal kan till exempel konverteras till ett heltal med funktionen `int`:
 

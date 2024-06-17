@@ -101,7 +101,7 @@ Radernas totallängd: 63
 
 Det finns en radbrytning `\n` i slutet av varje rad i filen, men `print`-funktionen lägger också automatiskt till en rad i slutet av utskriften. Det finns inga extra radbyten i utskriften ovan eftersom radbrytningarna avlägsnats med hjälp av `replace`-metoden. Metoden ersätter alla radbrytningstecken med en tom sträng. I och med detta räknas radernas längder också korrekt.
 
-<programming-exercise name='Suurin luku' tmcname='osa06-01_suurin_luku'>
+<programming-exercise name='Största siffran' tmcname='osa06-01_suurin_luku'>
 
 I filen `siffror.txt` finns siffror listade på olika rader enligt exemplet nedan:
 
@@ -213,7 +213,7 @@ Vitsord: ['4', '5', '5', '4', '5', '5', '4', '5', '4', '4']
 
 </sample-output>
 
-<programming-exercise name='Hedelmäkauppa' tmcname='osa06-02_hedelmakauppa'>
+<programming-exercise name='Fruktaffär' tmcname='osa06-02_hedelmakauppa'>
 
 I filen `frukter.csv` finns frukter med deras pris enligt exemplet nedan:
 
@@ -234,7 +234,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Matriisi' tmcname='osa06-03_matriisi'>
+<programming-exercise name='Matris' tmcname='osa06-03_matriisi'>
 
 I filen `matris.txt` finns en matris enligt exemplet nedan:
 
@@ -570,9 +570,7 @@ Programmet kan också ta i beaktande situationer där pic saknas för en arbetst
 
 Kom ihåg att ordningen som elementen är lagrade i lexikon inte har någon skillnad, eftersom nycklarna behandlas med hjälp av hashvärden.
 
-<programming-exercise name='Kurssin tulokset, osa 1' tmcname='osa06-04_kurssin_tulokset_osa1'>
-
-Ohjelma käsittelee kahta CSV-muotoista tiedostoa. Toisessa on tieto opiskelijoista:
+<programming-exercise name='Kursresultat, del 1' tmcname='osa06-04_kurssin_tulokset_osa1'>
 
 Programmet behandlar två CSV-filen. I den ena finns information om studerande:
 
@@ -642,9 +640,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Kurssin tulokset, osa 2' tmcname='osa06-05_kurssin_tulokset_osa2'>
-
-Edellinen tehtävä laajenee vielä siten, että myös opiskelijan koepisteet luetaan CSV-tiedostosta. Tiedoston sisältö näyttää seuraavalta:
+<programming-exercise name='Kursresultat, del 2' tmcname='osa06-05_kurssin_tulokset_osa2'>
 
 Vi utvidgar nu föregående uppgift så att de studerandes provpoäng också läses från en CSV-fil. Filens struktur är den följande:
 
@@ -687,9 +683,7 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 </programming-exercise>
 
-<programming-exercise name='Kurssin tulokset, osa 3' tmcname='osa06-06_kurssin_tulokset_osa3'>
-
-Tässä tehtävässä muotoillaan edellisen tehtävän tulostus parempaan muotoon:
+<programming-exercise name='Kursresultat, del 3' tmcname='osa06-06_kurssin_tulokset_osa3'>
 
 I den här uppgiften formaterar vi utskriften från den föregående uppgiften:
 
@@ -785,7 +779,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Reseptihaku' tmcname='osa06-08_reseptihaku'>
+<programming-exercise name='Receptsök' tmcname='osa06-08_reseptihaku'>
 
 I den här uppgiften skapar vi ett program som låter användaren söka efter ett recept på basis av dess namn, tillagningstid eller ingrediens. Programmets recept finns lagrade i en fil.
 
@@ -897,7 +891,7 @@ Bulldeg, tillagningstid 60 min
 
 </programming-exercise>
 
-<programming-exercise name='Kaupunkipyörät' tmcname='osa06-09_kaupunkipyorat'>
+<programming-exercise name='Stadscyklar' tmcname='osa06-09_kaupunkipyorat'>
 
 I den här uppgiften skapar vi några funktioner, med vilka vi kan inspektera en fil med information om stadscyklars parkeringsstationer.
 
@@ -943,7 +937,7 @@ y_km = (latitude1 - latitude2) * 111.2
 avstand = math.sqrt(x_km**2 + y_km**2)
 ```
 
-Esimerkkisuorituksia:
+Exempel:
 
 ```python
 stationer = stationsinfo('stations1.csv')

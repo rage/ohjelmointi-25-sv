@@ -90,7 +90,7 @@ print(log(5,2))
 
 Det här sättet att importera moduler kan vara nyttigt då man testar på något eller arbetar med ett mindre projekt. Det kan däremot orsaka problem, vilket vi kommer att se lite senare.
 
-<programming-exercise name='Hypotenuusa' tmcname='osa07-01_hypotenuusa'>
+<programming-exercise name='Hypotenusa' tmcname='osa07-01_hypotenuusa'>
 
 Skapa funktionen `hypotenusa(katet1: float, katet2: float)` som får som argument kateternas längder i en rätvinklig triangel. Funktionen ska returnera hypotenusans längd.
 
@@ -128,7 +128,7 @@ Den här funktionen returnerar en lista av namn definierade av modulen. Det kan 
 
 </sample-output>
 
-<programming-exercise name='Erikoismerkit' tmcname='osa07-02_erikoismerkit'>
+<programming-exercise name='Specialtecken' tmcname='osa07-02_erikoismerkit'>
 
 I modulen `string` finns strängkonstanter som definiar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som får som argument en sträng som ska returneras uppdelad i tre delar:
 
@@ -157,11 +157,11 @@ Dethrretttestfungerardet
 
 </programming-exercise>
 
-<programming-exercise name='Murtoluvuilla laskeminen' tmcname='osa07-03_murtoluvuilla_laskeminen'>
+<programming-exercise name='Bråk' tmcname='osa07-03_murtoluvuilla_laskeminen'>
 
 Bekanta dig med Pythonmodulen `fractions` och implementera funktionen `delar(antal: int)` som får som argument ett antal delar. Funktionen ska dela upp talet ett i så här många delar och returnera delarna i en lista.
 
-Esimerkki:
+Exempel:
 
 ```python
 for p in delar(3):

@@ -95,7 +95,7 @@ Tillträde förbjudet
 </sample-output>
 
 
-<in-browser-programming-exercise name="Täysi-ikäisyys" tmcname="osa02-04_taysi_ikaisyys" height="400px">
+<in-browser-programming-exercise name="Myndig eller inte?" tmcname="osa02-04_taysi_ikaisyys" height="400px">
 
 Skapa ett program som ber användaren ge sin ålder. Programmet berättar om användaren är myndig (> 18 år) eller inte.
 
@@ -203,7 +203,7 @@ Tack och hej.
 
 </sample-output>
 
-<in-browser-programming-exercise name=" Suurempi tai yhtäsuuri" tmcname="osa02-05_suurempi_tai_yhtasuuri"  height="400px">
+<in-browser-programming-exercise name="Större eller lika med" tmcname="osa02-05_suurempi_tai_yhtasuuri"  height="400px">
 
 Skapa ett program som ber användaren ge två heltal. Programmet ska skriva ut det större av de givna talen. Om talen är de samma, observerar programmet även det här.
 
@@ -236,7 +236,7 @@ Talen är lika stora!
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Vanhempi" tmcname="osa02-06_vanhempi" height="550px">
+<in-browser-programming-exercise name="Äldre" tmcname="osa02-06_vanhempi" height="550px">
 
 Skapa ett program som frågar efter namnen och åldrarna hos två personer. Programmet ska skirva ut namnet på den äldre personen.
 
@@ -268,7 +268,7 @@ Amadeus och Vilma är lika gamla
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Aakkosjärjestyksessä viimeinen" tmcname="osa02-07_aakkkosjarjestyksessa_viimeinen"  height="500px">
+<in-browser-programming-exercise name="Sist i alfabetet" tmcname="osa02-07_aakkkosjarjestyksessa_viimeinen"  height="500px">
 
 Förutom med siffror, kan man också jämföra storleken på strängar i Python. Strängen `a` är mindre än strängen `b` om strängen `a` kommer före i alfabetet än strängen `b`. Observera att det här gäller då
 

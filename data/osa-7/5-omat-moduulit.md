@@ -183,7 +183,7 @@ full
 
 I uppgifterna under den här kursen har du flera gånger ombetts att ha dina test under ett `if __name__ == "__main__"` -block. Nu vet du varför.
 
-<programming-exercise name='Merkkiapuri' tmcname='osa07-17_merkkiapuri'>
+<programming-exercise name='Teckenverktyg' tmcname='osa07-17_merkkiapuri'>
 
 Skapa modulen `teckenverktyg` som innehåller de följande funktionerna:
 

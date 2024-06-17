@@ -80,7 +80,7 @@ Sista raden
 
 </sample-data>
 
-<programming-exercise name='Omistuskirjoitus' tmcname='osa06-10_omistuskirjoitus'>
+<programming-exercise name='Tillägnad för...' tmcname='osa06-10_omistuskirjoitus'>
 
 Skapa ett program som ber om ett namn och skapar en liten text som är tillägnad till personen i fråga. Texten ska sparas i en fil. Exempel:
 
@@ -133,7 +133,7 @@ I praktiken är det inte så vanligt att man lägger till innehåll i en befintl
 
 Oftare läser man en fil, behandlar man data och till sist skrivs filen över med nya data. Till exempel om man vill ändra på innehållet i mitten av en fil, är det vanligtvis enklast att skriva över hela filen.
 
-<programming-exercise name='Päiväkirja' tmcname='osa06-11_paivakirja'>
+<programming-exercise name='Dagbok' tmcname='osa06-11_paivakirja'>
 
 Skapa ett program som låter användaren skapa en enkel dagbok. Dagboksinläggen ska lagras i filen `dagbok.txt`. När programmet körs läses inläggen in från filen.
 
@@ -274,7 +274,7 @@ Obs! Det här fungerar inte i testmiljön som används för de automatiska teste
 </text-box>
 
 
-<programming-exercise name='Aineiston suodatus' tmcname='osa06-12_aineiston_suodatus'>
+<programming-exercise name='Filtrera data' tmcname='osa06-12_aineiston_suodatus'>
 
 I filen `kalkyler.csv` finns lösningar på uppgifter enligt följande exempel:
 
@@ -326,7 +326,7 @@ suodata_laskut()
 
 </programming-exercise>
 
-<programming-exercise name='Henkilöt talteen' tmcname='osa06-13_henkilot_talteen'>
+<programming-exercise name='Lagra personer' tmcname='osa06-13_henkilot_talteen'>
 
 Skapa funktionen `spara_person(person: tuple)` som får som argument en tuple som representerar en person. Tuplen innehåller följande information:
 
@@ -441,7 +441,7 @@ print(hamta_vitsord("Paula", veckopoang))
 
 Om vi märker att någon funktionalitet i programmet kräver åtgärdande, kommer ändringar inte att orsaka följder överallt i koden. Om vi till exempel vill ändra på vitsordsgränserna, behöver vi bara ändra på funktionen som räknar ut vitsordet – alla andra funktioner som använder den här funktionen skulle fortfarande fungera, med de nya gränserna. Om koden för den här funktionaliteten skulle vara splittrad, finns det en risk att vi glömmer att uppdatera koden på något ställe. Det här skulle antagligen orsaka problem.
 
-<programming-exercise name='Kurssin tulokset, osa 4' tmcname='osa06-14_kurssin_tulokset_osa4'>
+<programming-exercise name='Kursresultat, del 4' tmcname='osa06-14_kurssin_tulokset_osa4'>
 
 Vi utvecklar ännu lite programmet som genererar kursresultat.
 
@@ -506,7 +506,7 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 
 
-<programming-exercise name='Sanahaku' tmcname='osa06-15_sanahaku'>
+<programming-exercise name='Ordsök' tmcname='osa06-15_sanahaku'>
 
 I den här uppgiften behandlar vi filen `ord.txt` som innehåller ord på engelska.
 
@@ -542,7 +542,7 @@ print(sok_ord("*vokes"))
 
 </programming-exercise>
 
-<programming-exercise name='Muistava sanakirja' tmcname='osa06-16_muistava_sanakirja'>
+<programming-exercise name='Ordbok som minns' tmcname='osa06-16_muistava_sanakirja'>
 
 Skapa ett program som fungerar som en ordbok, dit man kan lägga till nya ord eller där man kan söka efter befintliga ord.
 

@@ -174,7 +174,7 @@ Orwell
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Itseisarvo" tmcname="osa01-22_itseisarvo">
+<in-browser-programming-exercise name="Absolutbelopp" tmcname="osa01-22_itseisarvo">
 
 Skapa ett program som ber efter ett heltal av användaren. Om siffran är mindre än noll, skriver programmet ut siffran multiplicerat med talet -1. I övriga fall skrivs den siffran användaren angett ut. Nedan finns några exempel på hur programmet ska fungera.
 
@@ -202,9 +202,9 @@ Siffrans absolutbelopp är 99
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Keittoa vai ei" tmcname="osa01-23_keittoa_vai_ei">
+<in-browser-programming-exercise name="Soppa. Eller inte." tmcname="osa01-23_keittoa_vai_ei">
 
-Skapa ett program som först frågar efter användarens förnamn. Om namnet inte är "Jerry", fortsätter programmet med att fråga antalet sopportioner och berättar sedan priset för "hela soppan". En portion kostan 5,90.
+Skapa ett program som först frågar efter användarens förnamn. Om namnet inte är "Jerry", fortsätter programmet med att fråga antalet sopportioner och berättar sedan priset för "hela soppan". En portion kostar 5,90.
 
 Två exempel:
 
@@ -227,9 +227,7 @@ Nästa!
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Luvun suuruusluokka" tmcname="osa01-24_luvun_suuruusluokka">
-
-Tee ohjelma, joka lukee käyttäjältä kokonaisluvun ja kertoo sitten sen suuruusluokan oheisten esimerkkisuoritusten mukaisesti:
+<in-browser-programming-exercise name="Storleksklass" tmcname="osa01-24_luvun_suuruusluokka">
 
 Skapa ett program som frågar efter ett heltal från användaren. Programmet ska sedan berätta i vilken storleksklass siffran är, enligt följande exempel:
 
@@ -312,7 +310,7 @@ Vi når hit alltid
 
 Man kan tycka att det inte i ovanstående exempel verkar vara en så nyttig funktion. Senare under kursens lopp ska vi se på situationer där vi kan ha mera nytta av Boolean-variabler.
 
-<in-browser-programming-exercise name="Laskin" tmcname="osa01-25_laskin">
+<in-browser-programming-exercise name="Räknare" tmcname="osa01-25_laskin">
 
 Skapa ett program som först ber användaren ange två siffror och därefter ett kommando. Om kommandot är summa, produkt eller differens, ska programmet utföra den nämnda räkneoperationen. I övriga fall skriver inte programmet ut något.
 
@@ -350,7 +348,7 @@ Kommando: **differens**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Lämpötilat" tmcname="osa01-26_lampotilat">
+<in-browser-programming-exercise name="Temperaturer" tmcname="osa01-26_lampotilat">
 
 Skapa ett program som ber användaren ange en temperatur i Farenheit. Programmet ska skriva ut den här temperaturen i Celcius. Om temperaturen mätt i Celcius är under noll ska programmet också skriva ut texten "Kallt!".
 
@@ -371,7 +369,7 @@ Kallt!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Palkka" tmcname="osa01-27_palkka">
+<in-browser-programming-exercise name="Lön" tmcname="osa01-27_palkka">
 
 Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndag är timlönen fördubblad.
 
@@ -395,7 +393,7 @@ Lön 250.0 euro
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Korjaa ohjelma: Korkoa kortille" tmcname="osa01-28_korjaaa_ohjelma_korkoa_kortille">
+<in-browser-programming-exercise name="Fixa programmet: Ränta" tmcname="osa01-28_korjaaa_ohjelma_korkoa_kortille">
 
 Det här programmet räknar antalet bonuspoäng som ska adderas till ett bonuskort i slutet av året, enligt följande formel:
 
@@ -427,7 +425,7 @@ Korrigera programmet så att man endast får 10 % eller 15 % bonus – inte båd
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Huomiset vaatteet" tmcname="osa01-29_huomisen_vaatteet">
+<in-browser-programming-exercise name="Morgondagens klädsel" tmcname="osa01-29_huomisen_vaatteet">
 
 Gör ett program som frågar användaren om morgondagens väderprognos. Programmet rekommenderar därefter klädsel enligt vädret.
 
@@ -481,7 +479,7 @@ Kom ihåg paraplyet!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Toisen asteen yhtälön ratkaiseminen" tmcname="osa01-30_toisen_asteen_yhtalo">
+<in-browser-programming-exercise name="Andra gradens ekvation" tmcname="osa01-30_toisen_asteen_yhtalo">
 
 Modulen `math` i Python har funktionen `sqrt` som kan användas för att räkna kvadratroten för ett tal. Så här fungerar funktionen:
 

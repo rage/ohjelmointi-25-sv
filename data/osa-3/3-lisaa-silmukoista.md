@@ -260,7 +260,7 @@ I och med att värdet på `siffra` minskar för varje iteration av den yttre loo
 
 Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors visualiseringsverktyg för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
 
-<in-browser-programming-exercise name="Kertotaulut" tmcname="osa03-15b_kertotaulut">
+<in-browser-programming-exercise name="Multiplikationstabell" tmcname="osa03-15b_kertotaulut">
 
 Skapa ett program som ber om ett positivt heltal från användare. Programmet ska skriva ut multiplikationsoperationer fram till talet, enligt exemplen nedan:
 
@@ -292,7 +292,7 @@ Ge ett tal: 3
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Sanojen ensimmäiset kirjaimet" tmcname="osa03-16_sanojen_ensimmaiset_kirjaimet">
+<in-browser-programming-exercise name="Ordens första bokstäver" tmcname="osa03-16_sanojen_ensimmaiset_kirjaimet">
 
 Skapa ett program som ber användaren ange en mening. Programmet skriver därefter ut den första bokstaven i varje ord på sin egen rad.
 
@@ -310,7 +310,7 @@ g
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Kertomat" tmcname="osa03-17_kertomat">
+<in-browser-programming-exercise name="Fakulteter" tmcname="osa03-17_kertomat">
 
 Skapa ett program som ber användaren ange ett heltal. Om talet är negativt eller noll, avslutas programmet. I övriga fall skriver programmet ut talets fakultet.
 
@@ -340,7 +340,7 @@ Tack och hej!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Parit ympäri" tmcname="osa03-18_parit_ympari">
+<in-browser-programming-exercise name="Sväng paren" tmcname="osa03-18_parit_ympari">
 
 Skapa ett program som skriver ut talen från ett till det tal användaren angett. Talen ska parvis vara omvända.
 
@@ -369,7 +369,7 @@ Ge ett tal: **6**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Vuorotellen" tmcname="osa03-19_vuorotellen">
+<in-browser-programming-exercise name="Turvis" tmcname="osa03-19_vuorotellen">
 
 Skapa ett program som ber användaren ange ett tal. Programmet ska skriva ut talen turvis enligt följande exempel:
 

@@ -138,7 +138,7 @@ Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fa
 
 </sample-output>
 
-<in-browser-programming-exercise name="Tulosta luvut" tmcname="osa03-00_tulosta_luvut">
+<in-browser-programming-exercise name="Skriv ut siffror" tmcname="osa03-00_tulosta_luvut">
 
 Skapa ett program som i en loop skriver ut varannat tal från två till trettio. Varje tal skrivs ut på en ny rad.
 
@@ -155,7 +155,7 @@ o.s.v. ...
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Lähtölaskenta" tmcname="osa03-01_lahtolaskenta">
+<in-browser-programming-exercise name="Nedräkning" tmcname="osa03-01_lahtolaskenta">
 
 Korrigera uppgiftens program...
 
@@ -243,7 +243,7 @@ Ge ett tal: **4**
 
 I övriga fall kommer loopen att fortsätta oändligt eftersom det inte då finns något sätt för variabeln att vara lika med tio. Till exempel tre och tolv är värden som skulle förorsaka en oändlig loop.
 
-<in-browser-programming-exercise name="Luvut" tmcname="osa03-02_luvut">
+<in-browser-programming-exercise name="Siffror" tmcname="osa03-02_luvut">
 
 Skapa ett program som skriver ut alla tal under den siffra som användaren angett. Börja från ett.
 
@@ -318,7 +318,7 @@ De som har sysslat med programmering en längre tid använder sällan visualiser
 
 Visualiseringsverktyget och `print`-satser är båda bra sätt för en programmerare att med egna ögon se att programmet gör exakt det som det ska göra.
 
-<in-browser-programming-exercise name="Kahden potenssit" tmcname="osa03-03_kahden_potenssit">
+<in-browser-programming-exercise name="Potenser av två" tmcname="osa03-03_kahden_potenssit">
 
 Skapa ett program som först skriver ut siffran ett och därefter föregående siffra multiplicerat med två.
 
@@ -364,7 +364,7 @@ Hur räknar man potenser av två? Den första potensen av två är 1. Den nästa
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Luvun n potenssit" tmcname="osa03-04_luvun_n_potenssit">
+<in-browser-programming-exercise name="n:te potensen" tmcname="osa03-04_luvun_n_potenssit">
 
 Ändra på det föregående programmet så att programmet räknar den n:te potensen. Användaren anger värdet på `n` (i föregående programmet var värdet alltid 2).
 
@@ -397,7 +397,7 @@ Använd inte villkoret `True` i while-satsen i den här uppgiften!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Peräkkäisten summa, versio 1" tmcname="osa03-04a_perakkaisten_summa_helpompi">
+<in-browser-programming-exercise name="Summa av varandra följande tal, version 1" tmcname="osa03-04a_perakkaisten_summa_helpompi">
 
 Skapa ett program som räknar summan av varanda följande tal `1 + 2 + 3 + ...`, tills värdet är minst lika stort som det tal användaren angett.
 
@@ -479,7 +479,7 @@ I det förra exemplet räknade du summan av varandra påföljande siffror genom 
 
 Samma fungerar också för strängar – du kan lägga till nya delar i en sträng inom en loop. Den här tekniken kan vara till nytta i följande uppgift.
 
-<in-browser-programming-exercise name="Peräkkäisten summa, versio 2" tmcname="osa03-05_perakkaisten_summa">
+<in-browser-programming-exercise name="Summa av varandra följande tal, version 2" tmcname="osa03-05_perakkaisten_summa">
 
 Skapa en mer avancerad version av det föregående programmet. Nu ska programmet visa hur man kom till det resultat som man kommit fram till:
 

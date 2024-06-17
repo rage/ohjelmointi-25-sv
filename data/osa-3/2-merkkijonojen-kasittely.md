@@ -74,7 +74,7 @@ Så här ser utskriften ut:
 
 Kommandot `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde subtraheras med ett.
 
-<in-browser-programming-exercise name="Monta jonoa" tmcname="osa03-05a_monistetut_jonot">
+<in-browser-programming-exercise name="Flera strängar" tmcname="osa03-05a_monistetut_jonot">
 
 Skapa ett program som ber användaren ange en sträng samt en siffra. Programmet ska sedan skriva ut strängen så många gången som siffran anger, enligt följande exempel:
 
@@ -113,7 +113,7 @@ Hejsan svejsan!
 
 Strängens längd innehåller alla tecken i strängen – också mellanslag. Till exempel längden på strängen `hej igen` är 8.
 
-<in-browser-programming-exercise name="Pidempi jono" tmcname="osa03-05b_pidempi_jono">
+<in-browser-programming-exercise name="Den längre strängen" tmcname="osa03-05b_pidempi_jono">
 
 Skapa ett program som ber användaren ange två strängar. Programmet ska skriva ut den längre av de angivna strängarna. Om båda är lika långa skrivs meddelandet "Strängarna är lika långa" ut.
 
@@ -278,7 +278,7 @@ else:
 
 I exemplet ovan skulle en sträng med längden noll ha orsakat problem om programmeraren inte skulle ha lagt till en längdkontroll i koden. En sträng med längden noll är en tom sträng. I det här fallet kan vi orsaka en sådan med att helt enkelt trycka på tangenten Enter utan att skriva något annat.
 
-<in-browser-programming-exercise name="Lopusta alkuun" tmcname="osa03-05c_lopusta_alkuun">
+<in-browser-programming-exercise name="Omvänt" tmcname="osa03-05c_lopusta_alkuun">
 
 Skapa ett program som ber användaren ange en sträng. Programmet ska skriva ut tecknen i omvänd ordning på varsin rad.
 
@@ -298,9 +298,9 @@ g
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Toinen ja toiseksi viimeinen" tmcname="osa03-06_toinen_ja_toiseksi_viimeinen">
+<in-browser-programming-exercise name="Andra och näst sista" tmcname="osa03-06_toinen_ja_toiseksi_viimeinen">
 
-Skapa ett program som ger användaren mata in ett ord. Programmet ska därefter berätta om ordets andra och nästa sista bokstäver är de samma.
+Skapa ett program som ger användaren mata in ett ord. Programmet ska därefter berätta om ordets andra och näst sista bokstäver är de samma.
 
 <sample-output>
 
@@ -318,7 +318,7 @@ Den andra och den näst sista bokstaven är a
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Risuaitaviiva" tmcname="osa03-09_risuaitaviiva">
+<in-browser-programming-exercise name="Speciellt streck" tmcname="osa03-09_risuaitaviiva">
 
 Skapa ett program som ritar ut ett streck bestående så många nummertecken (`#`) som användaren anger.
 
@@ -342,7 +342,7 @@ Bredd: **8**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Risuaitasuorakulmio" tmcname="osa03-10_risuaitanelio">
+<in-browser-programming-exercise name="Fyrkant" tmcname="osa03-10_risuaitanelio">
 
 Utveckla det föregående programmet så att användaren också kan definiera höjden på figuren.
 
@@ -358,7 +358,7 @@ Höjd: **3**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Alleviivaus" tmcname="osa03-11_alleviivaus">
+<in-browser-programming-exercise name="Understrykning" tmcname="osa03-11_alleviivaus">
 
 Skapa ett program som ber användaren om strängar. Programmet skriver ut strängarna med understrykning enligt exemplet. Programmet avslutas då användaren ger en tom sträng, dvs. en sträng med längden noll.
 
@@ -385,7 +385,7 @@ Ange sträng:
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Tasaus oikeaan" tmcname="osa03-12_tasaus_oikeaan">
+<in-browser-programming-exercise name="Högerjusterat" tmcname="osa03-12_tasaus_oikeaan">
 
 Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att utskriften är exakt 20 tecken. Om strängen är kortare ska det finnas ett passligt antal asterisker (`*`) i början av strängen.
 
@@ -421,11 +421,9 @@ Ord: **sssuperlångstränggg**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Sanalaatikko" tmcname="osa03-13_sanalaatikko">
+<in-browser-programming-exercise name="Ordlåda" tmcname="osa03-13_sanalaatikko">
 
 Skapa ett program som ber användaren ge ett ord. Programmet ska skriva ut ordet i mitten av en ram som består av asterisker. Bredden av ramen är 30 tecken. Du kan anta att ordet som anges ryms i ramen.
-
-Huom! Jos sanan pituus on pariton, voit tulostaa sanan kumpaan tahansa mahdollisista keskikohdista.
 
 Om ordets längd är ojämnt, kan du skriva ut det på valfritt mittställe.
 
@@ -496,7 +494,7 @@ Halvöppna intervall kan kännas jobbiga men i praktiken har de sina nyttiga sid
 
 </text-box>
 
-<in-browser-programming-exercise name="Osajonot 1" tmcname="osa03-07_osajonot1">
+<in-browser-programming-exercise name="Delsträngar 1" tmcname="osa03-07_osajonot1">
 
 Skapa ett program som ber användaren ange en sträng. Därefter skriver programmet ut alla delsträngar börjande med det första tecket, i storleksordning.
 
@@ -514,9 +512,7 @@ test
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Osajonot 2" tmcname="osa03-08_osajonot2">
-
-Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten kaikki sen viimeiseen merkkiin päättyvät osajonot pituusjärjestyksessä.
+<in-browser-programming-exercise name="Delsträngar 2" tmcname="osa03-08_osajonot2">
 
 Skapa ett program som ber användaren om en sträng. Därefter skriver man ut alla delsträngar som slutar med det sista tecknet, i storleksordning.
 
@@ -585,7 +581,7 @@ Hittades
 
 </sample-output>
 
-<in-browser-programming-exercise name="Löytyvätkö vokaalit" tmcname="osa03-13b_loytyvatko_vokaalit">
+<in-browser-programming-exercise name="Hittas vokaler?" tmcname="osa03-13b_loytyvatko_vokaalit">
 
 Skapa ett program som ber användaren ange en sträng. Programmet ska därefter meddela om vokalerna a, e eller o hittas i strängen.
 
@@ -672,7 +668,7 @@ Vi använde ovan metoden `find` hos strängar. Metoder fungerar ganska lika jäm
 
 </text-box>
 
-<in-browser-programming-exercise name="Ensimmäisen osajonon haku" tmcname="osa03-13c_osajonon_haku">
+<in-browser-programming-exercise name="Hitta första delsträngen" tmcname="osa03-13c_osajonon_haku">
 
 Skapa ett program som ber användaren ange en sträng samt ett tecken. Programmet ska skriva ut den första delsträngen på tre tecken som börjar med det tecknet användaren angett. Du kan anta att strängen består av minst tre tecken.
 
@@ -708,7 +704,7 @@ Tecken: **n**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Kaikkien osajonojen haku" tmcname="osa03-14_osajonojen_haku">
+<in-browser-programming-exercise name="Hitta alla delsträngar" tmcname="osa03-14_osajonojen_haku">
 
 Utveckla ditt föregående program, så att programmet skriver ut varje delsträng på tre tecken och som börjar med det angivna tecknet. Du kan anta att den angivna strängen består av minst tre tecken.
 
@@ -755,7 +751,7 @@ s
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Toinen esiintymä" tmcname="osa03-15_toinen_esiintyma">
+<in-browser-programming-exercise name="Andra förekomsten" tmcname="osa03-15_toinen_esiintyma">
 
 Skapa ett program som söker efter det andra av en given delsträng i en sträng. Om delsträngen inte hittas två gånger eller ens en gång, ska programmet meddela om detta.
 

@@ -283,7 +283,7 @@ Observera mellanslagen som automatiskt har lagts till mellan varje kommaseparera
 
 Kommanotationen kan vara till nytta ibland, men ofta orsakar den mera problem än vad den löser. F-strängar är i flera fall en pålitligare metod. I modul fyra kommer du att lära dig mera om nyttiga egenskaper som f-strängar har – de kan användas för att påverka den utskrivna textens format på flera sätt.
 
-<in-browser-programming-exercise name="Välilyönnillä vai ilman" tmcname="osa01-10b_valilyonnilla_vai_ilman" height=400px>
+<in-browser-programming-exercise name="Med mellanslag eller utan" tmcname="osa01-10b_valilyonnilla_vai_ilman" height=400px>
 
 Du får följande kodsnutt av en bekant:
 
@@ -357,7 +357,7 @@ Medelvärde: 1.6233333333333333
 
 </sample-output>
 
-<in-browser-programming-exercise name="Laskutoimitukset" tmcname="osa01-11_laskutoimitukset">
+<in-browser-programming-exercise name="Räkneoperationer" tmcname="osa01-11_laskutoimitukset">
 
 I den här övningen finns ett färdigt program med heltal tilldelade i variablerna `x` och `y`:
 
@@ -397,7 +397,7 @@ y = 9
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Korjaa ohjelma: Tulostukset samalle riville" tmcname="osa01-12_korjaa_ohjelma_tulostukset_samalle_riville">
+<in-browser-programming-exercise name="Fixa programmet: Utskrifterna på samma rad" tmcname="osa01-12_korjaa_ohjelma_tulostukset_samalle_riville">
 
 Om man ger `print`-kommandot parametern `end = ""`, kommer utskriften inte att avslutas med ett radbyte.
 
