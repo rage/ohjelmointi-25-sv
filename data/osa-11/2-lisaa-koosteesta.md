@@ -15,20 +15,20 @@ Efter den här delen
 </text-box>
 
 
-Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista.
+Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista. 
 
 ```python
 
-nimi = "Pekka Python"
+namn = "Peter Python"
 
-isot_kirjaimet = [merkki.upper() for merkki in nimi]
-print(isot_kirjaimet)
+stora_bokstaver = [tecken.upper() for tecken in namn]
+print(stora_bokstaver)
 
 ```
 
 <sample-output>
 
-['P', 'E', 'K', 'K', 'A', ' ', 'P', 'Y', 'T', 'H', 'O', 'N']
+['P', 'E', 'T', 'E', 'R', ' ', 'P', 'Y', 'T', 'H', 'O', 'N']
 
 </sample-output>
 
@@ -36,24 +36,24 @@ Resultatet är en lista, vilket dikteras av parentesnotationen runt comprehensio
 
 ```python
 
-nimi = "Pekka"
-lista = list(nimi)
+namn = "Peter"
+lista = list(namn)
 print(lista)
 
 print("".join(lista))
 print(" ".join(lista))
 print(",".join(lista))
-print(" ja ".join(lista))
+print(" och ".join(lista))
 
 ```
 
 <sample-output>
 
-['P', 'e', 'k', 'k', 'a']
-Pekka
-P e k k a
-P,e,k,k,a
-P ja e ja k ja k ja a
+['P', 'e', 't', 'e', 'r']
+Peter
+P e t e r
+P,e,t,e,r
+P och e och t och e och r
 
 </sample-output>
 
@@ -61,18 +61,18 @@ List comprehensions och `join`-metoden gör det enkelt att skapa nya strängar b
 
 ```python
 
-testijono = "Heippa vaan kaikki, tämä on testi"
+teststrang = "Halloj allihopa, det här är ett test"
 
-vokaalit = [merkki for merkki in testijono if merkki in "aeiouyåäö"]
-uusijono = "".join(vokaalit)
+vokaler = [tecken for tecken in teststrang if tecken in "aeiouyåäö"]
+nystrang = "".join(vokaler)
 
-print(uusijono)
+print(nystrang)
 
 ```
 
 <sample-output>
 
-eiaaaaiiääoei
+aoaioaeääee
 
 </sample-output>
 
@@ -80,11 +80,11 @@ I exemplet ovan står list comprehension och `join`-metoden på separata rader, 
 
 ```python
 
-testijono = "Heippa vaan kaikki, tämä on testi"
+teststrang = "Halloj allihopa, det här är ett test"
 
-vokaalijono = "".join([merkki for merkki in testijono if merkki in "aeiouyåäö"])
+vokalstrang = "".join([tecken for tecken in teststrang if tecken in "aeiouyåäö"])
 
-print(vokaalijono)
+print(vokalstrang)
 
 ```
 
@@ -92,16 +92,16 @@ Många Python-programmerare står trogna vid dessa oneliners, så det är väl v
 
 ```python
 
-lause = "Vesihiisi se kuulkaa vaan sihisi hississä"
+mening = "Sju sjösjuka sjömän på skeppet Shang Hai."
 
-lause_ilman_alkuja = " ".join([sana[1:] for sana in lause.split()])
-print(lause_ilman_alkuja)
+mening_utan_initialer = " ".join([ord[1:] for ord in mening.split()])
+print(mening_utan_initialer)
 
 ```
 
 <sample-output>
 
-esihiisi e uulkaa aan ihisi ississä
+ju jösjuka jömän å keppet hang ai
 
 </sample-output>
 
@@ -115,38 +115,38 @@ En mer traditionell iterativ metod skulle kunna se ut så här:
 
 ```python
 
-lause = "Vesihiisi se kuulkaa vaan sihisi hississä"
+mening = "Sju sjösjuka sjömän på skeppet Shang Hai."
 
-sanalista = []
-sanat = lause.split()
-for sana in sanat:
-    sana_ilman_alkua = sana[1:]
-    sanalista.append(sana_ilman_alkua)
+ordlista = []
+orden = mening.split()
+for ord in orden:
+    ord_utan_initialer = ord[1:]
+    ordlista.append(ord_utan_initialer)
 
-lause_ilman_alkuja = " ".join(sanalista)
+mening_utan_initialer = " ".join(ordlista)
 
 
-print(lause_ilman_alkuja)
+print(mening_utan_initialer)
 
 ```
 
 <programming-exercise name='Suodata kielletyt' tmcname='osa11-08_suodata_kielletyt'>
 
-Tee funktio `suodata_kielletyt(merkkijono: str, kielletyt: str)` joka palauttaa sen parametrina olevasta merkkijonosta version, joka ei sisällä yhtään merkkiä sen toisena parametrina olevasta "kiellettyjen merkkien" merkkijonosta.
+Skapa funktionen `filtrera_forbjudna(strang: str, forbjuden: str)` som tar två strängar som argument. Funktionen ska returnera en ny version av den första strängen. Den ska inte innehålla tecken från den andra strängen.
 
-Funktion tulee käyttää listakoostetta. Funktio saa sisältää `def`-rivi mukaanlukien maksimissaan 3 riviä.
+Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst tre rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
-Esimerkki funktion käytöstä
+Funktionen ska fungera på följande sätt:
 
 ```python
-lause = "Suo! kuokka, ja python: hieno yhdistelmä!??!?!"
-suodatettu = suodata_kielletyt(lause, "!?:,.")
-print(suodatettu)
+mening = "Det! var, en gång: en python!??!?!"
+filtrerad = filtrera_forbjudna(mening, "!?:,.")
+print(filtrerad)
 ```
 
 <sample-output>
 
-Suo kuokka ja python hieno yhdistelmä
+Det var en gång en python
 
 </sample-output>
 
@@ -160,31 +160,31 @@ Låt oss först ta en titt på klassen `Land` som är en enkel modell för ett e
 
 ```python
 
-class Maa:
-    """ Luokka mallintaa yhtä maata asukaslukuineen """
-    def __init__(self, nimi: str, asukasluku: int):
-        self.nimi = nimi
-        self.asukasluku = asukasluku
+class Land:
+    """ Denna klass modellerar ett enkelt land med befolkning """
+    def __init__(self, namn: str, befolkningsmangd: int):
+        self.namn = namn
+        self.befolkningsmangd = befolkningsmangd
 
 if __name__ == "__main__":
-    suomi = Maa("Suomi", 6000000)
-    malta = Maa("Malta", 500000)
-    ruotsi = Maa("Ruotsi", 10000000)
-    islanti = Maa("Islanti", 350000)
+    finland = Land("Finland", 6000000)
+    malta = Land("Malta", 500000)
+    sverige = Land("Sverige", 10000000)
+    island = Land("Island", 350000)
 
-    maat = [suomi, malta, ruotsi, islanti]
+    lander = [finland, malta, sverige, island]
 
-    isommat_maat = [maa.nimi for maa in maat if maa.asukasluku > 5000000]
-    for maa in isommat_maat:
-        print(maa)
+    storre_land = [land.namn for land in lander if land.befolkningsmangd > 5000000]
+    for land in storre_land:
+        print(land)
 
 
 ```
 
 <sample-output>
 
-Suomi
-Ruotsi
+Finland
+Sverige
 
 </sample-output>
 
@@ -193,53 +193,53 @@ I list comprehension ovan valde vi bara namnattributet från Land-objekten, så 
 ```python
 
 if __name__ == "__main__":
-    suomi = Maa("Suomi", 6000000)
-    malta = Maa("Malta", 500000)
-    ruotsi = Maa("Ruotsi", 10000000)
-    islanti = Maa("Islanti", 350000)
+    finland = Land("Finland", 6000000)
+    malta = Land("Malta", 500000)
+    sverige = Land("Sverige", 10000000)
+    island = Land("Island", 350000)
 
-    maat = [suomi, malta, ruotsi, islanti]
+    lander = [finland, malta, sverige, island]
 
-    isommat_maat = [maa for maa in maat if maa.asukasluku > 5000000]
-    for maa in isommat_maat:
-        print(maa.nimi)
+    storre_land = [land for land in lander if land.befolkningsmangd > 5000000]
+    for land in storre_land:
+        print(land.namn)
 ```
 
-I nästa exempel har vi en klass som heter `Springning` som modellerar ett enskilt lopp med attribut för loppets längd och namn. Vi kommer att använda list comprehension för att skapa `Springning`-objekt baserat på en lista med tävlingslängder.
+I nästa exempel har vi en klass som heter `Fotlopp` som modellerar ett enskilt lopp med attribut för loppets längd och namn. Vi kommer att använda list comprehension för att skapa `Fotlopp`-objekt baserat på en lista med tävlingslängder.
 
-Parametern `namn` har ett standardvärde i konstruktorn för `Springning`-klassen, vilket är varför vi inte behöver skicka namnet som ett argument.
+Parametern `namn` har ett standardvärde i konstruktorn för `Fotlopp`-klassen, vilket är varför vi inte behöver skicka namnet som ett argument.
 
 ```python
 
-class Juoksumatka:
-    """ Luokka mallintaa yhtä n metrin pituista juoksumatkaa """
-    def __init__(self, matka:int, nimi:str = "ei nimeä"):
-        self.matka = matka
-        self.nimi = nimi
+class Fotlopp:
+    """ Klassen modellerar ett fotloppsevenemang med längden n meter """
+    def __init__(self, stracka:int, namn:str = "inget namn"):
+        self.stracka = stracka
+        self.namn = namn
 
     def __repr__(self):
-        return f"{self.matka} m. ({self.nimi})"
+        return f"{self.stracka} m. ({self.namn})"
 
 if __name__ == "__main__":
-    pituudet = [100, 200, 1500, 3000, 42195]
-    matkat = [Juoksumatka(pituus) for pituus in pituudet]
+    langder = [100, 200, 1500, 3000, 42195]
+    strackor = [Fotlopp(langd) for langd in langder]
 
-    # tulostetaan kaikki
-    print(matkat)
+    # Skriv ut alla
+    print(strackor)
 
-    # Poimitaan yksi listasta ja nimetään se
-    maraton = matkat[-1] # viimeisenä listassa
-    maraton.nimi = "Maraton"
+    # Ta en från listan och ge den ett namn
+    maraton = strackor[-1] # sista föremålet i listan
+    maraton.namn = "Maraton"
 
-    # Tulostetaan vielä uudella nimellä
-    print(matkat)
+    # Skriv ut alla igen, inkluderandes det nya namnet
+    print(strackor)
 
 ```
 
 <sample-output>
 
-[100 m. (ei nimeä), 200 m. (ei nimeä), 1500 m. (ei nimeä), 3000 m. (ei nimeä), 42195 m. (ei nimeä)]
-[100 m. (ei nimeä), 200 m. (ei nimeä), 1500 m. (ei nimeä), 3000 m. (ei nimeä), 42195 m. (Maraton)]
+[100 m. (inget namn), 200 m. (inget namn), 1500 m. (inget namn), 3000 m. (inget namn), 42195 m. (inget namn)]
+[100 m. (inget namn), 200 m. (inget namn), 1500 m. (inget namn), 3000 m. (inget namn), 42195 m. (Maraton)]
 
 </sample-output>
 
@@ -247,86 +247,86 @@ Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehend
 
 ```python
 
-class Kirja:
-    def __init__(self, nimi: str, kirjailija: str, sivuja: int):
-        self.nimi = nimi
-        self.kirjailija = kirjailija
-        self.sivuja = sivuja
+class Bok:
+    def __init__(self, namn: str, forfattare: str, sidor: int):
+        self.namn = namn
+        self.forfattare = forfattare
+        self.sidor = sidor
 
-class Kirjahylly:
+class Bokhylla:
     def __init__(self):
-        self._kirjat = []
+        self._bocker = []
 
-    def lisaa_kirja(self, kirja: Kirja):
-        self._kirjat.append(kirja)
+    def tillsatt_bok(self, bok: Bok):
+        self._bocker.append(bok)
 
-    # Iteraattorin alustusmetodi
-    # Tässä tulee alustaa iteroinnissa käytettävä(t) muuttuja(t)
+    # Iteratorns initialiseringsmetod
+    # Här bör iterationsvariabeln(variablerna) initialiseras
     def __iter__(self):
         self.n = 0
-        # Metodi palauttaa viittauksen olioon itseensä, koska
-        # iteraattori on toteutettu samassa luokassa
+        # Metoden returnerar en referens till själva objektet 
+        # eftersom iteratorn är implementerad inom samma klassdefinition
         return self
 
-    # Metodi palauttaa seuraavan alkion
-    # Jos ei ole enempää alkioita, heitetään tapahtuma
-    # StopIteration
+    # Denna metod returnerar nästa föremål inom objektet
+    # Om alla föremål har genomgåtts åstadkomms StopIteration
     def __next__(self):
-        if self.n < len(self._kirjat):
-            # Poimitaan listasta nykyinen
-            kirja = self._kirjat[self.n]
-            # Kasvatetaan laskuria yhdellä
+        if self.n < len(self._bocker):
+            # Ta det aktuella föremålet från listan i objektet
+            bok = self._bocker[self.n]
+            # Öka räknaren med ett
             self.n += 1
-            # ...ja palautetaan
-            return kirja
+            # ...och returnera föremålet
+            return bok
         else:
-            # Ei enempää kirjoja
+            # Inga fler böcker
             raise StopIteration
 
-# Testataan
+# Testar
 if __name__ == "__main__":
-    k1 = Kirja("Elämäni Pythoniassa", "Pekka Python", 123)
-    k2 = Kirja("Vanhus ja Java", "Ernest Hemingjava", 204)
-    k3 = Kirja("C-itsemän veljestä", "Keijo Koodari", 997)
+    b1 = Bok("Livet av en Python", "Peter Python", 123)
+    b2 = Bok("Den gamle och Java", "Ernest Hemingjava", 204)
+    b3 = Bok("C-värdheter på nätet", "Karl Kodare", 997)
 
-    hylly = Kirjahylly()
-    hylly.lisaa_kirja(k1)
-    hylly.lisaa_kirja(k2)
-    hylly.lisaa_kirja(k3)
+    hylla = Bokhylla()
+    hylla.lisaa_bok(b1)
+    hylla.lisaa_bok(b2)
+    hylla.lisaa_bok(b3)
 
-    # Luodaan lista, jossa kaikkien kirjojen nimet
-    kirjojen_nimet = [kirja.nimi for kirja in hylly]
-    print(kirjojen_nimet)
+    # Skapa en lista innehållandes namnet på alla böcker
+    bockernas_namn = [bok.namn for bok in hylla]
+    print(bockernas_namn)
 
 ```
 
 <programming-exercise name='Kauppalistan tuotteet' tmcname='osa11-09_kauppalistan_tuotteet'>
 
-Osan 10 tehtävässä teimme [Kauppalista-luokasta iteroitavan](/osa-10/3-olio-ohjelmoinnin-tekniikoita#programming-exercise-iteroitava-kauppalista). Iteroitavan luokan oliota voidaan käyttää listakoosteiden yhteydessä. Tehtäväpohjassa on mukana luokasta typistetty versio, jonka toiminnallisuus riittää tähän tehtävään.
+I del 10 skapade du en [itererbar affärslista](/osa-10/3-olio-ohjelmoinnin-tekniikoita#programming-exercise-iteroitava-kauppalista). Objekt av en itererbar klass kan användas med list comprehensions. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
 
-Tee nyt funktio `kauppalistan_tuotteet(kauppalista, maara: int)` joka saa parametriksi kauppalista-olion. Funktio palauttaa kauppalistan ostoksista niiden tuotteiden nimet, joita on listalla vähintään parametrin `maara` verran.
+Skapa en funktion med namnet `affarslistans_produkter(affarslista, antal: int)` som tar som argument ett affarslista-objekt och ett heltalsvärde. Funktionen returnerar en lista av produktnamn. Listan borde inkludera endast produkter som har åtminstone ett lika stort antal som parametern `antal`.
 
-Funktio tulee toteuttaa listakoosteen avulla, ja sen pituus saa olla `def`-määrittelyriveineen yhteensä korkeintaan kaksi riviä. Luokan Kauppalista koodia ei saa muuttaa!
+Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`. Klassdefinitionen för `Affarslista` bör _inte_ modifieras.
 
-Funktio toimii seuraavasti
+
+Funktionen ska fungera enligt följande:
 
 ```python
-lista = Kauppalista()
-lista.lisaa("banaanit", 10)
-lista.lisaa("omenat", 5)
-lista.lisaa("alkoholiton olut", 24)
+lista = Affarslista()
+lista.lisaa("bananer", 10)
+lista.lisaa("äppel", 5)
+lista.lisaa("alkoholfri öl", 24)
 lista.lisaa("ananas", 1)
 
-print("kauppalistalla vähintään 8 seuraavia tuotteita:")
-for tuote in kauppalistan_tuotteet(lista, 8):
-    print(tuote)
+print("Affärslistan har minst 8 av följande:")
+for produkt in affarslistans_produkter(lista, 8):
+    print(produkt)
 ```
 
 <sample-output>
 
-kauppalistalla vähintään 8 seuraavia tuotteita:
-banaanit
-alkoholiton olut
+Affärslistan har minst 8 av följande:
+bananer
+alkoholfri öl
 
 </sample-output>
 
@@ -334,38 +334,38 @@ alkoholiton olut
 
 <programming-exercise name='Halvempien hintaero' tmcname='osa11-10_halvempien_hintaero'>
 
-Osan 9 tehtävässä teimme luokan [Asunto](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu). Tässä tehtävässä on käytössä hieman laajennettu versio luokasta.
+Denna övning innehåller en aning modifierad version av klassen[Bostad](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu) från del 9.
 
-Tee funktio `halvemmat(asunnot: list, verrattava: Asunto)`, joka saa parametriksi listan asuntoja sekä yksittäisen vertailtavan asunnon. Funktio palauttaa listan, jolla on asunnoista ne, jotka ovat hinnaltaan halvempia kuin vertailtava asunto, sekä näiden hintaeron. Palautettavan listan alkiot ovat tupleja, joiden ensimmäinen jäsen on asunto ja toisena sen hintaero vertailtavaan.
+Skapa en funktion med namnet `billigare(egenskaper: list, jamforelse: Bostad)` som tar en lista med egenskaper och ett enda Bostad-objekt som sina argument. Funktionen ska returnera en lista som endast innehåller de bostäder i den ursprungliga listan som är billigare än jämförelsebostaden, tillsammans med prisskillnaden. Föremålen i den returnerade listan bör vara tupler, där det första föremålet är själva bostaden och den andra är prisskillnaden.
 
-Funktio tulee toteuttaa listakoosteen avulla. Funktion maksimipituus `def`-määrittelyrivi mukaanluettuna on 2 riviä.
+Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
-Luokan `Asunto` koodia ei saa muuttaa!
+Koden för Bostad-klassen ingår i övningsmallen och ska inte ändras.
 
-Funktio toimii seuraavasti
+Ett exempel på funktionen i användning:
 
 ```python
-a1 = Asunto(1, 16, 5500, "Eira yksiö")
-a2 = Asunto(2, 38, 4200, "Kallio kaksio")
-a3 = Asunto(3, 78, 2500, "Jakomäki kolmio")
-a4 = Asunto(6, 215, 500, "Suomussalmi omakotitalo")
-a5 = Asunto(4, 105, 1700, "Kerava 4h ja keittiö")
-a6 = Asunto(25, 1200, 2500, "Haikon kartano")
+a1 = Bostad(1, 16, 5500, "Eira etta")
+a2 = Bostad(2, 38, 4200, "Berghäll tvåa")
+a3 = Bostad(3, 78, 2500, "Jakobacka trea")
+a4 = Bostad(6, 215, 500, "Suomussalmi egnahemshus")
+a5 = Bostad(4, 105, 1700, "Kerava 4r och kök")
+a6 = Bostad(25, 1200, 2500, "Haikon kartano")
 
 asunnot = [a1, a2, a3, a4, a5, a6]
 
-print(f"asuntoa {a3.kuvaus} halvemmat vaihtoehdot:")
-for alkio in halvemmat(asunnot, a3):
-    print(f"{alkio[0].kuvaus:30} hintaero {alkio[1]} euroa")
+print(f"billigare alternativ än {a3.kuvaus}:")
+for foremal in billigare(asunnot, a3):
+    print(f"{foremal[0].kuvaus:30} prisskillnad {foremal[1]} euro")
 ```
 
 <sample-output>
 
-asuntoa Jakomäki kolmio halvemmat vaihtoehdot:
-Eira yksiö                     hintaero 107000 euroa
-Kallio kaksio                  hintaero 35400 euroa
-Suomussalmi omakotitalo        hintaero 87500 euroa
-Kerava 4h ja keittiö           hintaero 16500 euroa
+billigare alternativ än Jakobacka trea:
+Eira etta                     prisskillnad 107000 euro
+Berghäll tvåa                  prisskillnad 35400 euro
+Suomussalmi egnahemshus        prisskillnad 87500 euro
+Kerava 4r och kök           prisskillnad 16500 euro
 
 </sample-output>
 
@@ -381,16 +381,16 @@ I följande exempel använder vi en sträng som bas för en ordlista. Ordlistan 
 
 ```python
 
-lause = "Hei kaikki"
+mening = "Hej alla"
 
-merkkimäärät = {kirjain : lause.count(kirjain) for kirjain in lause}
-print(merkkimäärät)
+tecken_antal = {bokstav : mening.count(bokstav) for bokstav in mening}
+print(tecken_antal)
 
 ```
 
 <sample-output>
 
-{'H': 1, 'e': 1, 'i': 3, ' ': 1, 'k': 3, 'a': 1}
+{'H': 1, 'e': 1, 'j': 1, ' ': 1, 'a': 2, 'l': 2}
 
 </sample-output>
 
@@ -402,8 +402,8 @@ Som avslutning på det här avsnittet tittar vi på faktorialtal igen. Den här 
 
 ```python
 
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n! """
+def fakultet(n: int):
+    """ Funktionen beräknar fakulteten n! för positiva heltal """
     k = 1
     while n >= 2:
         k *= n
@@ -412,8 +412,8 @@ def kertoma(n: int):
 
 if __name__ == "__main__":
     lista = [-2, 3, 2, 1, 4, -10, 5, 1, 6]
-    kertomat = {luku : kertoma(luku) for luku in lista if luku > 0}
-    print(kertomat)
+    fakultett = {tal : fakultet(tal) for tal in lista if tal > 0}
+    print(fakulteter)
 
 ```
 
@@ -425,22 +425,22 @@ if __name__ == "__main__":
 
 <programming-exercise name='Merkkijonojen pituudet' tmcname='osa11-11_merkkijonojen_pituudet'>
 
-Tee funktio `pituudet(merkkijonot: list)`, joka saa parametriksi listan merkkijonoja. Funktio palauttaa _sanakirjan_, jossa avaimina on listan merkkijonot ja arvoina merkkijonojen pituudet.
+Skapa en funktion med namnet `langder(strangar: list)` som tar en lista med strängar som sitt argument. Funktionen ska returnera en ordlista med strängarna i listan som nycklar och deras längder som värden.
 
-Funktio tulee toteuttaa sanakirjakoosteen avulla. Funktion maksimipituus def-määrittelyrivi mukaanlukien on kaksi riviä.
+Funktionen bör implementeras med en ordlistscomprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som inleds med nyckelordet `def`.
 
-Funktio toimii seuraavasti
+Funktionen ska fungera på följande sätt:
 
 ```python
-sanalista = ["suo", "kuokka" , "python", "ja", "koodari"]
+ordlista = ["det", "var" , "en", "gång", "python"]
 
-sanojen_pituudet = pituudet(sanalista)
-print(sanojen_pituudet)
+sanojen_langder = langder(ordlista)
+print(sanojen_langder)
 ```
 
 <sample-output>
 
-{'suo': 3, 'kuokka': 6, 'python': 6, 'ja': 2, 'koodari': 7}
+{'det': 3, 'var': 3, 'en': 2, 'gång': 4, 'python': 6}
 
 </sample-output>
 
@@ -449,9 +449,9 @@ print(sanojen_pituudet)
 
 <programming-exercise name='Yleisimmät sanat' tmcname='osa11-12_yleisimmat_sanat'>
 
-Tee funktio `yleisimmat_sanat(tiedoston_nimi: str, raja: int)`, joka saa parametrikseen tiedoston nimen. Funktio palauttaa sanakirjan, joka sisältää tiedostossa olevien sanojen esiintymislukumäärän niiden sanojen osalta, joilla on vähintään toisen parametrin `raja` verran esiintymiä.
+Skapa en funktion med namnet `vanligaste_orden(filnamn: str, nedre_grans: int)` som tar ett filnamn och ett heltalsvärde som en nedre gräns som sina argument. Funktionen ska returnera en ordlista som innehåller antalet förekomster av de ord som förekommer minst det antal gånger som anges i parametern `nedre_grans`.
 
-Esim. jos funktiolla tarkasteltaisiin tiedostoa _comprehensions.txt_ jonka sisältö on seuraava
+Anta t.ex. att funktionen används för att bearbeta en fil med namnet comprehensions.txt med följande innehåll:
 
 ```txt
 List comprehension is an elegant way to define and create lists based on existing lists.
@@ -460,7 +460,7 @@ However, we should avoid writing very long list comprehensions in one line to en
 Remember, every list comprehension can be rewritten in for loop, but every for loop can’t be rewritten in the form of list comprehension.
 ```
 
-Kutsuttaessa `yleisimmat_sanat("comprehensions.txt", 3)` funktion palauttama sanakirja näyttäisi seuraavalta:
+När funktionen anropas med argumenten `vanligaste_orden("comprehensions.txt", 3)` ska den returnera
 
 <sample-output>
 
@@ -468,8 +468,8 @@ Kutsuttaessa `yleisimmat_sanat("comprehensions.txt", 3)` funktion palauttama san
 
 </sample-output>
 
-Huomaa, että kirjainkoko vaikuttaa ja vain kokonaiset sanat lasketaan - sanat 'List' ja 'lists' eivät siis saa kasvattaa sanan 'list' lukumäärää. Lisäksi kaikki sanoissa olevat välimerkit tulee poistaa.
+Observera att bokstävernas versaler påverkar resultatet och att alla böjda former är unika ord i den här övningen. Det vill säga att orden `List`, `lists` och `list` är separata ord här, och endast `list` har tillräckligt många förekomster för att komma med i den returnerade listan. Alla skiljetecken ska tas bort innan du räknar upp förekomsterna.
 
-Funktion toteutustapa on vapaa, helpoimmalla pääset hyödyntämällä lista- ja sanakirjakoosteita.
+Det är upp till dig att bestämma hur detta ska implementeras. Det enklaste sättet skulle troligen vara att använda list- och ordlistsscomprehension.
 
 </programming-exercise>

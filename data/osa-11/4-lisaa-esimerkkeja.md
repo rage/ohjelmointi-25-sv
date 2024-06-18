@@ -33,12 +33,12 @@ Ett binärt träd är också lätt att modellera i Python-kod. Vi behöver bara 
 
 ```python
 
-class Alkio:
-    """ Luokka mallintaa yhtä alkiota binääripuussa """
-    def __init__(self, arvo, vasen_lapsi:'Alkio' = None, oikea_lapsi:'Alkio' = None):
-        self.arvo = arvo
-        self.vasen_lapsi = vasen_lapsi
-        self.oikea_lapsi = oikea_lapsi
+class Nod:
+    """ Klassen representerar en enkel nod i ett binärt träd """
+    def __init__(self, varde, vanster_barn:'Nod' = None, hoger_barn:'Nod' = None):
+        self.varde = varde
+        self.vanster_barn = vanster_barn
+        self.hoger_barn = hoger_barn
 ```
 
 Låt oss anta att vi vill modellera följande träd:
@@ -49,14 +49,14 @@ Vi kunde uppnå detta med följande kod:
 
 ```python
 if __name__ == "__main__":
-    puu = Alkio(2)
+    trad = Nod(2)
 
-    puu.vasen_lapsi = Alkio(3)
-    puu.vasen_lapsi.vasen_lapsi = Alkio(5)
-    puu.vasen_lapsi.oikea_lapsi = Alkio(8)
+    trad.vanster_barn = Nod(3)
+    trad.vanster_barn.vanster_barn = Nod(5)
+    trad.vanster_barn.hoger_barn = Nod(8)
 
-    puu.oikea_lapsi = Alkio(4)
-    puu.oikea_lapsi.oikea_lapsi = Alkio(11)
+    trad.hoger_barn = Nod(4)
+    trad.hoger_barn.hoger_barn = Nod(11)
 
 ```
 
@@ -68,14 +68,14 @@ Argumentet till utskriftsfunktionen är rotnoden i det binära trädet. Detta ä
 
 ```python
 
-def tulosta_alkiot(juuri: Alkio):
-    print(juuri.arvo)
+def skriv_ut_noder(rot: Nod):
+    print(rot.varde)
 
-    if juuri.vasen_lapsi is not None:
-        tulosta_alkiot(juuri.vasen_lapsi)
+    if rot.vanster_barn is not None:
+        skriv_ut_noder(rot.vanster_barn)
 
-    if juuri.oikea_lapsi is not None:
-        tulosta_alkiot(juuri.oikea_lapsi)
+    if rot.hoger_barn is not None:
+        skriv_ut_noder(rot.hoger_barn)
 
 ```
 
@@ -100,44 +100,44 @@ På samma sätt kan vi skriva en algoritm för att beräkna summan av alla de v�
 
 ```python
 
-def alkioiden_summa(juuri: Alkio):
-    summa = juuri.arvo
+def nodernas_summa(rot: Nod):
+    summa = rot.varde
 
-    if juuri.vasen_lapsi is not None:
-        summa += alkioiden_summa(juuri.vasen_lapsi)
+    if rot.vanster_barn is not None:
+        summa += nodernas_summa(rot.vanster_barn)
 
-    if juuri.oikea_lapsi is not None:
-        summa += alkioiden_summa(juuri.oikea_lapsi)
+    if rot.hoger_barn is not None:
+        summa += nodernas_summa(rot.hoger_barn)
 
     return summa
 
 ```
 
-Variabeln `nod_summa` initieras till att vara lika med värdet för den aktuella noden. Värdet i variabeln ökas sedan genom rekursiva anrop till nodens summor i det vänstra och högra underordnade trädet (först kontrolleras naturligtvis att de finns). Detta resultat returneras sedan.
+Variabeln `summa` initieras till att vara lika med värdet för den aktuella noden. Värdet i variabeln ökas sedan genom rekursiva anrop till nodens summor i det vänstra och högra underordnade trädet (först kontrolleras naturligtvis att de finns). Detta resultat returneras sedan.
 
 <programming-exercise name='Suurin alkio' tmcname='osa11-16_suurin_alkio'>
 
-Kirjoita funktio `suurin_alkio(juuri: Alkio)`, joka saa parametrikseen binääripuun juurialkion.
+Skapa funktionen `storsta_nod(rot: Nod)`, som tar rotnoden av ett binärt träd som argument.
 
-Funktion palauttaa puun suurimman alkion. Puun arvot tulee käydä läpi rekursiivisesti.
+Funktionen returnerar värdet på den nod som har det största värdet i trädet. Trädet ska genomkorsas rekursivt.
 
-Vinkki: voit hyödyntää ratkaisussasi ylempänä esitettyä `alkoiden_summa` -funktiota.
+Tips: funktionen `nodernas_summa` i exemplet ovan kan vara användbart.
 
-Esimerkki funktion kutsumisesta:
+Exempel på hur funktionen ska fungera:
 
 ```python
 
 if __name__ == "__main__":
-    puu = Alkio(2)
+    trad = Nod(2)
 
-    puu.vasen_lapsi = Alkio(3)
-    puu.vasen_lapsi.vasen_lapsi = Alkio(5)
-    puu.vasen_lapsi.oikea_lapsi = Alkio(8)
+    trad.vanster_barn = Nod(3)
+    trad.vanster_barn.vanster_barn = Nod(5)
+    trad.vanster_barn.hoger_barn = Nod(8)
 
-    puu.oikea_lapsi = Alkio(4)
-    puu.oikea_lapsi.oikea_lapsi = Alkio(11)
+    trad.hoger_barn = Nod(4)
+    trad.hoger_barn.hoger_barn = Nod(11)
 
-    print(suurin_alkio(puu))
+    print(storsta_nod(trad))
 
 ```
 
@@ -161,54 +161,54 @@ Nu kan vi skriva en rekursiv algoritm för att söka efter noder. Idén är myck
 
 ```python
 
-def etsi_alkio(juuri: Alkio, arvo):
-    if juuri is None:
+def sok_nod(rot: Nod, varde):
+    if rot is None:
         return False
 
-    if arvo == juuri.arvo:
+    if varde == rot.varde:
         return True
 
-    if arvo > juuri.arvo:
-        return etsi_alkio(juuri.oikea_lapsi, arvo)
+    if varde > rot.varde:
+        return sok_nod(rot.hoger_barn, varde)
 
-    return etsi_alkio(juuri.vasen_lapsi, arvo)
+    return sok_nod(rot.vanster_barn, varde)
 
 ```
 
 <programming-exercise name='Pomot ja alaiset' tmcname='osa11-17_pomot_ja_alaiset'>
 
-Luokka `Tyontekija` mallintaa yrityksen työntekijää:
+Klassen `Arbetare` modellerar en arbetare på ett företag:
 
 ```python
-class Tyontekija:
+class Arbetare:
     def __init__(self, nimi: str):
         self.nimi = nimi
-        self.alaiset = []
+        self.underordnade = []
 
-    def lisaa_alainen(self, tyontekija: 'Tyontekija'):
-        self.alaiset.append(tyontekija)
+    def tillsatt_underordnad(self, arbetare: 'Arbetare'):
+        self.underordnade.append(arbetare)
 ```
 
-Tee funktio `laske_alaiset(tyontekija: Tyontekija)`, joka laskee rekursiivisesti annetun työntekijän alaisten määrän.
+Skapa funktionen `rakna_underordnade(arbetare: Arbetare)`, som rekursivt räknar mängden underordnade som en arbetare har.
 
-Esimerkki funktion käyttämisestä:
+Exempel på funktionen i användning:
 
 ```python
 if __name__ == "__main__":
-    t1 = Tyontekija("Sasu")
-    t2 = Tyontekija("Erkki")
-    t3 = Tyontekija("Matti")
-    t4 = Tyontekija("Emilia")
-    t5 = Tyontekija("Antti")
-    t6 = Tyontekija("Kjell")
-    t1.lisaa_alainen(t4)
-    t1.lisaa_alainen(t6)
-    t4.lisaa_alainen(t2)
-    t4.lisaa_alainen(t3)
-    t4.lisaa_alainen(t5)
-    print(laske_alaiset(t1))
-    print(laske_alaiset(t4))
-    print(laske_alaiset(t5))
+    a1 = Arbetare("Sussi")
+    a2 = Arbetare("Erik")
+    a3 = Arbetare("Matte")
+    a4 = Arbetare("Emilia")
+    a5 = Arbetare("Anton")
+    a6 = Arbetare("Kjell")
+    a1.tillsatt_underordnad(a4)
+    a1.tillsatt_underordnad(a6)
+    a4.tillsatt_underordnad(a2)
+    a4.tillsatt_underordnad(a3)
+    a4.tillsatt_underordnad(a5)
+    print(rakna_underordnade(a1))
+    print(rakna_underordnade(a4))
+    print(rakna_underordnade(a5))
 ```
 
 <sample-output>
@@ -227,92 +227,91 @@ Låt oss avsluta denna del av materialet med en lite större övning som koncent
 
 <programming-exercise name='Tilauskirja' tmcname='osa11-18_tilauskirja'>
 
-Teemme tässä tehtävässä kaksi luokkaa, joitka toimivat rakennuspalikoina seuraavassa tehtävässä aiheena olevassa sovelluksessa.
+I den här övningen kommer du skriva två olika klasser, vilka i sin tur kommer att vara ryggraden för övningen som följer denna, i vilken du kommer att skapa en interaktiv applikation.
 
-## Tehtava
+## Del 1: Uppgift
 
-Toteuta luokka `Tehtava`, joka mallintaa ohjelmistoyritykselle annettavia työtehtäviä. Tehtävillä on
-- kuvaus
-- arvio sen viemästä työmäärästä
-- tieto koodarista, joka toteuttaa tehtävän
-- tieto siitä, onko tehtävä valmis vai ei
-- yksikäsitteinen tunniste eli id
+Förverkliga klassen `Uppgift`, som modellerar en uppgift i ett mjukvaruföretags lista av uppgifter. Uppgifterna har
+- en beskrivning
+- en beräkning av mängden timmar uppgiften tar
+- namnet på programmeraren som har fått uppgiften
+- ett fält som håller koll på ifall uppgiften är gjord
+- en unik id
 
-Luokka toimii seuraavasti:
+Klassen fungerar enligt följande:
 
 ```python
-t1 = Tehtava("koodaa hello world", "Erkki", 3)
-print(t1.id, t1.kuvaus, t1.koodari, t1.tyomaara)
-print(t1)
-print(t1.on_valmis())
-t1.merkkaa_valmiiksi()
-print(t1)
-print(t1.on_valmis())
-t2 = Tehtava("koodaa webbikauppa", "Antti", 10)
-t3 = Tehtava("tee mobiilisovellus työaikakirjanpitoon", "Erkki", 25)
-print(t2)
-print(t3)
+a1 = Uppgift("koda hello world", "Erik", 3)
+print(a1.id, a1.beskrivning, a1.programmerare, a1.arbetsmangd)
+print(a1)
+print(a1.ar_fardig())
+a1.markera_fardig()
+print(a1)
+print(a1.ar_fardig())
+a2 = Uppgift("koda webbutik", "Anton", 10)
+a3 = Uppgift("koda mobilapp för räknande av arbetsmängd", "Erik", 25)
+print(a2)
+print(a3)
 ```
 
 <sample-output>
 
-1 koodaa hello world Erkki 3
-1: koodaa hello world (3 tuntia), koodari Erkki EI VALMIS
+1 koda hello world Erik 3
+1: koda hello world (3 timmar), programmerare Erik INTE FÄRDIG
 False
-1: koodaa hello world (3 tuntia), koodari Erkki VALMIS
+1: koda hello world (3 timmar), programmerare Erik FÄRDIG
 True
-2: koodaa webbikauppa (10 tuntia), koodari Antti EI VALMIS
-3: tee mobiilisovellus työaikakirjanpitoon (25 tuntia), koodari Erkki EI VALMIS
+2: koda webbutik (10 timmar), programmerare Anton INTE FÄRDIG
+3: koda mobilapp för räknande av arbetsmängd (25 timmar), programmerare Erik INTE FÄRDIG
 
 </sample-output>
 
-Täsmennyksiä:
-- tehtävän tilan (valmis vai ei vielä valmis) voi tarkistaa metodilla `on_valmis(self)` joka palauttaa totuusarvon
-- tehtävä ei ole siinä vaiheessa valmis kun se luodaan
-- tehtävä merkataan valmiiksi kutsumalla metodia `merkkaa_valmiiksi(self)`
-- tehtävien id on juokseva numero, joka alkaa arvosta 1 (ensimmäisenä luotava tehtävä saa id:n 1, seuraava id:n 2 jne.)
+Klarifikationer:
+- uppgiftens läge (färdig eller inte färdig) kan kollas med funktionen `ar_fardig(self)`, som returnerar ett booleskt värde
+- uppgiften är inte färdig när den skapas
+- uppgiften markeras som färdig genom att anropa på metoden `markera_fardig(self)`
+- uppgifternas id är ett löpande nummer som börjar med 1. Id av första uppgiften är 1, andra uppgiften 2 osv.
 
-**Vihje**: id kannattaa toteuttaa [luokkamuuttujana](/osa-9/5-staattiset-piirteet#luokkamuuttujat).
+**Tips:** id kan implementeras med en [klassvariabel](/osa-9/5-staattiset-piirteet#luokkamuuttujat).
 
-## Tilauskirja
+## Del 2: Uppgiftsbok
 
-Tehdään nyt luokka `Tilauskirja`, joka kokoaa kaikki ohjelmistoyritykseltä tilatut työtehtävät, joita siis mallinnetaan luokan `Tehtava` olioilla.
+Skapa nu en klass med namnet `Uppgiftsbok`, som samlar ihop alla uppgifter som delegerats av mjukvaruföretaget. Uppgifterna ska modelleras med klassen `Uppgift` som du just gjorde.
 
-
-Tilauskirjan perusversiota käytetään seuraavasti:
+Basversionen av Uppgiftsboken används enligt följande:
 
 ```python
-tilaukset = Tilauskirja()
-tilaukset.lisaa_tilaus("koodaa webbikauppa", "Antti", 10)
-tilaukset.lisaa_tilaus("tee mobiilisovellus työaikakirjanpitoon", "Erkki", 25)
-tilaukset.lisaa_tilaus("tee ohjelma matematiikan harjoitteluun", "Antti", 100)
+bestallningar = Uppgiftsbok()
+bestallningar.tillsatt_bestallning("koda webbutik", "Anton", 10)
+bestallningar.tillsatt_bestallning("koda mobilapp för räknande av arbetsmängd", "Erik", 25)
+bestallningar.tillsatt_bestallning("koda app för övande av matematik", "Anton", 100)
 
-for tilaus in tilaukset.kaikki_tilaukset():
-    print(tilaus)
+for bestallning in bestallningar.alla_bestallningar():
+    print(bestallning)
 
 print()
 
-for koodari in tilaukset.koodarit():
-    print(koodari)
+for programmerare in bestallningar.kodare():
+    print(programmerare)
 ```
 
 <sample-output>
 
-1: koodaa webbikauppa (10 tuntia), koodari Antti EI VALMIS
-2: tee mobiilisovellus työaikakirjanpitoon (25 tuntia), koodari Erkki EI VALMIS
-3: tee ohjelma matematiikan harjoitteluun (100 tuntia), koodari Antti EI VALMIS
+1: koda webbutik (10 timmar), programmerare Anton INTE FÄRDIG
+2: koda mobilapp för räknande av arbetsmängd (25 timmar), programmerare Erik INTE FÄRDIG
+3: koda app för övande av matematik (100 timmar), programmerare Anton INTE FÄRDIG
 
-Antti
-Erkki
+Anton
+Erik
 
 </sample-output>
 
-Tässä vaiheessa `Tilauskirja` tarjoaa kolme metodia:
-- `lisaa_tilaus(self, kuvaus, koodari, tyomaara)` lisää uuden tilauksen tilauskirjaan. Tilauskirja tallettaa tilaukset sisäisesti `Tehtava`-olioina. Huomaa, että metodilla täytyy olla juuri nämä parametrit, muuten testit eivät hyväksy metodia!
-- `kaikki_tilaukset(self)` palauttaa listana kaikki tilauskirjalla olevat tehtävät
-- `koodarit(self)` palauttaa listana kaikki koodarit, joille on tehtävä tilauskirjassa, metodin palauttama lista ei saa sisältää yhtä koodia useampaan kertaan
+I detta skede borde din `Uppgiftsbok` erbjuda tre metoder:
+- `tillsatt_bestallning(self, beskrivning, programmerare, arbetsmangd)`, som lägger till en ny uppgift till Uppgiftsboken. En Uppgiftsbok förvarar uppgifterna internt som `Uppgift`-objekt. OBS: metoden ska ta exakt de argument som nämns eller så fungerar inte de automatiserade testerna korrekt.
+- `alla_bestallningar(self)` returnerar en lista på alla uppgifter som lagras i en Uppgiftsbok
+- `kodare(self)` returnerar en lista på namnen av alla kodare som har uppgifter lagrade i Uppgiftsboken. Listan ska innehålla varje programmerare endast en gång.
 
-**Vihje** Listalta on helppo poistaa duplikaatit siten että muutetaan ensin lista [set](https://docs.python.org/3.8/library/stdtypes.html#set)-tyyppiseksi. Set siis tarkoittaa joukkoa, ja joukossa kutakin alkiota voi olla vain yksi kappale. Tämän jälkeen `set` voidaan muuttaa takaisin listaksi, ja duplikaatit ovat kadonneet:
+**Tips:** En enkel metod för att göra sig av med multipler är att ursprungligen hantera listan som en [mängd](https://docs.python.org/3.8/library/stdtypes.html#set) (eng: set). En mängd är en samling av saker där varje unikt föremål endast förekommer en gång. En `set` kan sedan konverteras tillbaks till en lista, och vi kan då vara säkra på att varje föremål nu är unikt:
 
 ```python
 lista = [1,1,3,6,4,1,3]
@@ -328,52 +327,52 @@ print(lista2)
 
 </sample-output>
 
-## Tilauskirjan viimeistely
+## Del 3: Några fler funktioner för Uppgiftsboken
 
-Tehdään luokalle `Tilauskirja` vielä kolme uutta metodia.
+Skapa tre till metoder till din `Uppgiftsbok`-klass.
 
-Metodi `merkkaa_valmiiksi(self, id: int)` saa parametriksi tehtävän id:n ja merkkaa kyseisen tehtävän valmiiksi:
+Metoden `markera_fardig(self, id: int)` får som argument uppgiftens id och markerar den relevanta uppgiften som färdig:
 
 ```python
-tilaukset = Tilauskirja()
-tilaukset.lisaa_tilaus("koodaa webbikauppa", "Antti", 10)
-tilaukset.lisaa_tilaus("tee mobiilisovellus työaikakirjanpitoon", "Erkki", 25)
-tilaukset.lisaa_tilaus("tee ohjelma matematiikan harjoitteluun", "Antti", 100)
+bestallningar = Uppgiftsbok()
+bestallningar.tillsatt_bestallning("koda webbutik", "Anton", 10)
+bestallningar.tillsatt_bestallning("koda mobilapp för räknande av arbetsmängd", "Erik", 25)
+bestallningar.tillsatt_bestallning("koda app för övande av matematik", "Anton", 100)
 
-tilaukset.merkkaa_valmiiksi(1)
-tilaukset.merkkaa_valmiiksi(2)
+bestallningar.markera_fardig(1)
+bestallningar.markera_fardig(2)
 
-for tilaus in tilaukset.kaikki_tilaukset():
-    print(tilaus)
+for bestallning in bestallningar.alla_bestallningar():
+    print(bestallning)
 ```
 
 <sample-output>
 
-1: koodaa webbikauppa (10 tuntia), koodari Antti VALMIS
-2: tee mobiilisovellus työaikakirjanpitoon (25 tuntia), koodari Erkki VALMIS
-3: tee ohjelma matematiikan harjoitteluun (100 tuntia), koodari Antti EI VALMIS
+1: koda webbutik (10 timmar), programmerare Anton FÄRDIG
+2: koda mobilapp för räknande av arbetsmängd (25 timmar), programmerare Erik FÄRDIG
+3: koda app för övande av matematik (100 timmar), programmerare Anton INTE FÄRDIG
 
 </sample-output>
 
-Jos parametria vastaavaa tilausta ei löydy, tuottaa metodi poikkeuksen `ValueError`. Kertaa tarvittaessa [täältä](/osa-6/3-virheet#poikkeusten-tuottaminen), miten poikkeus tuotetaan.
+Ifall det inte finns någon uppgift med det givna id:t, ska metoden åstadkomma ett `ValueError`-undantag. Ifall du behöver en påminnelse om att åstadkomma undantag kan du kolla in [del 6](/osa-6/3-virheet#poikkeusten-tuottaminen).
 
-Metodit `valmiit_tilaukset(self)` ja `ei_valmiit_tilaukset(self)` toimivat kuten olettaa saattaa, ne palauttavat nimensä mukaisen osajoukon tilauskirjan tehtävistä listana.
+Metoderna `fardiga_bestallningar(self)` och `ofardiga_bestallningar(self)` fungerar som förväntat: båda returnerar en lista innehållande de relevanta uppgifterna från Uppgiftsboken.
 
-## Tilauskirjan loppusilaus
+## Del 4: Projektets sista detaljer
 
-Tehdään luokalle `Tilauskirja` vielä metodi `koodarin_status(self, koodari: str)`, joka palauttaa _tuplen_, joka kertoo koodarin valmistuneiden ja vielä valmistumattomien töiden määrän sekä näihin kuluneiden työtuntien summan.
+Vi skapar en sista metod `programmerarens_status(self, programmerare: str)` till `Uppgiftsbok`-klassen, vilken returnar en _tupel_. Tupeln ska innehålla antalet färdiga och ofärdiga uppgifter en programmerare har tilldelats samt den uppskattade mängden timmar i båda kategorierna.
 
 ```python
-tilaukset = Tilauskirja()
-tilaukset.lisaa_tilaus("koodaa webbikauppa", "Antti", 10)
-tilaukset.lisaa_tilaus("tee mobiilisovellus työaikakirjanpitoon", "Antti", 25)
-tilaukset.lisaa_tilaus("tee ohjelma matematiikan harjoitteluun", "Antti", 100)
-tilaukset.lisaa_tilaus("tee uusi facebook", "Erkki", 1000)
+bestallningar = Uppgiftsbok()
+bestallningar.tillsatt_bestallning("koda webbutik", "Anton", 10)
+bestallningar.tillsatt_bestallning("koda mobilapp för räknande av arbetsmängd", "Anton", 25)
+bestallningar.tillsatt_bestallning("koda app för övande av matematik", "Anton", 100)
+bestallningar.tillsatt_bestallning("koda nya facebook", "Erik", 1000)
 
-tilaukset.merkkaa_valmiiksi(1)
-tilaukset.merkkaa_valmiiksi(2)
+bestallningar.markera_fardig(1)
+bestallningar.markera_fardig(2)
 
-status = tilaukset.koodarin_status("Antti")
+status = bestallningar.programmerarens_status("Anton")
 print(status)
 ```
 
@@ -383,122 +382,122 @@ print(status)
 
 </sample-output>
 
-Tuplen ensimmäinen alkio siis kertoo valmiiden töiden määrän ja toinen valmistumattomien töiden määrän. Kolmas alkio on valmiiden töiden työaika-arvioiden summa ja neljäs alkio vielä valmistumattomien töiden työmääräarvioiden summan.
+Det första föremålet i tupeln är antalet _färdiga_ uppgifter, medan det andra föremålet är antalet _ofärdiga_ uppgifter. Det tredje och fjärde föremålet är summan av uppskattningarna av arbetsmängden för de färdiga respektive ofärdiga uppgifterna.
 
-Jos parametria vastaavaa koodaria ei löydy, tuottaa metodi poikkeuksen `ValueError`.
+Ifall det inte finns någon programmerare med det angivna namnet, ska metoden åstadkomma ett `ValueError`-undantag.
 
 
 </programming-exercise>
 
 <programming-exercise name='Tilauskirjasovellus' tmcname='osa11-19_tilauskirjasovellus'>
 
-Tässä tehtävässä tehdään interaktiivinen sovellus softafirmalta tilattujen tehtävien hallintaan. Tyyli on täysin vapaa, mutta voit hyödyntää sovelluksessa edellisen tehtävän aikana koodattuja rakennuspalikoita. Myös [edellisen osan viimeisen luvun](/osa-10/4-lisaa-esimerkkeja) materiaalin kertaaminen saattaa olla hyödyksi.
+I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av del 10](/osa-10/4-lisaa-esimerkkeja) kan också vara till hjälp.
 
-## Ei virheiden käsittelyä
+## Del 1: Utan felhantering
 
-Sovelluksen tulee toimia _täsmälleen_ seuraavasti:
+Applikationen ska fungera _exakt_ enligt följande:
 
 <sample-output>
 
 komennot:
-0 lopetus
-1 lisää tilaus
-2 listaa valmiit
-3 listaa ei valmiit
-4 merkitse tehtävä valmiiksi
-5 koodarit
-6 koodarin status
+0 avsluta
+1 tillsätt beställning
+2 lista färdiga
+3 lista ofärdiga
+4 markera uppgift färdig
+5 programmerare
+6 programmerarens status
 
-komento: **1**
-kuvaus: **koodaa uusi facebook**
-koodari ja työmääräarvio: **joona 1000**
-lisätty!
+instruktion: **1**
+beskrivning: **koda nya facebook**
+programmerare och uppskattad arbetsmängd: **jonas 1000**
+tillsatt!
 
-komento: **1**
-kuvaus: **tee sovellus ajanhallintaan**
-koodari ja työmääräarvio: **erkki 25**
-lisätty!
+instruktion: **1**
+beskrivning: **koda mobilapp för räknande av arbetsmängd**
+programmerare och uppskattad arbetsmängd: **erik 25**
+tillsatt!
 
-komento: **1**
-kuvaus: **ohjelma musiikin teorian harjoitteluun**
-koodari ja työmääräarvio: **niina 12**
-lisätty!
+instruktion: **1**
+beskrivning: **program för att öva musikteori**
+programmerare och uppskattad arbetsmängd: **nina 12**
+tillsatt!
 
-komento: **1**
-kuvaus: **koodaa uusi twitter**
-koodari ja työmääräarvio: **joona 55**
-lisätty!
+instruktion: **1**
+beskrivning: **koda nya twitter**
+programmerare och uppskattad arbetsmängd: **jonas 55**
+tillsatt!
 
-komento: **2**
-ei valmiita
+instruktion: **2**
+inga färdiga uppgifter
 
-komento: **3**
-1: koodaa uusi facebook (1000 tuntia), koodari joona EI VALMIS
-2: tee sovellus ajanhallintaan (25 tuntia), koodari erkki EI VALMIS
-3: ohjelma musiikin teorian  harjoitteluun (12 tuntia), koodari niina EI VALMIS
-4: koodaa uusi twitter (55 tuntia), koodari joona EI VALMIS
+instruktion: **3**
+1: koda nya facebook (1000 timmar), programmerare jonas INTE FÄRDIG
+2: koda mobilapp för räknande av arbetsmängd (25 timmar), programmerare erik INTE FÄRDIG
+3: ohjelma musiikin teorian  harjoitteluun (12 timmar), programmerare nina INTE FÄRDIG
+4: koda nya twitter (55 timmar), programmerare jonas INTE FÄRDIG
 
-komento: **4**
-tunniste: **2**
-merkitty valmiiksi
+instruktion: **4**
+id: **2**
+markerad som färdig
 
-komento: **4**
-tunniste: **4**
-merkitty valmiiksi
+instruktion: **4**
+id: **4**
+markerad som färdig
 
-komento: **2**
-2: tee sovellus ajanhallintaan (25 tuntia), koodari erkki VALMIS
-4: koodaa uusi twitter (55 tuntia), koodari joona VALMIS
+instruktion: **2**
+2: koda mobilapp för räknande av arbetsmängd (25 timmar), programmerare erik FÄRDIG
+4: koda nya twitter (55 timmar), programmerare jonas FÄRDIG
 
-komento: **3**
-1: koodaa uusi facebook (1000 tuntia), koodari joona EI VALMIS
-3: ohjelma musiikin teorian harjoitteluun (12 tuntia), koodari niina EI VALMIS
+instruktion: **3**
+1: koda nya facebook (1000 timmar), programmerare jonas INTE FÄRDIG
+3: program för att öva musikteori (12 timmar), programmerare nina INTE FÄRDIG
 
-komento: **5**
-joona
-erkki
-niina
+instruktion: **5**
+jonas
+erik
+nina
 
-komento: **6**
-koodari: **joona**
-työt: valmiina 2 ei valmiina 1, tunteja: tehty 55 tekemättä 1000
+instruktion: **6**
+programmerare: **jonas**
+uppgifter: färdiga 2 ofärdiga 1, timmar: gjorda 55 ogjorda 1000
 
 </sample-output>
 
-Ensimmäiseen tehtäväpisteeseen riittää, että sovellus toimii jos kaikki syötteet ovat virheettömiä.
+Den första övningspoängen ges för en fungerande applikation när alla användarinmatningar är felfria.
 
-## Virheiden käsittely
+## Del 2: Hantering av inamtningsfel
 
-Toiseen tehtäväpisteeseen edellytetään, että sovellus toipuu käyttäjän syötteessä olevista virheistä. Virheiden käsittelyn tulee toimia siten, että missä tahansa syötteessa annettu virheellinen syöte aiheuttaa virheilmoituksen _virheellinen syöte_, ja johtaa siihen, että komentoa pyydetään uudelleen:
+För att få den andra övningspoängen för denna övning förväntas din applikation återhämta sig från felaktig användarinmatning. All inmatning som inte följer det angivna formatet ska ge ett felmeddelande _felaktig inmatning_ och resultera i ännu en upprepning av loopen med begäran om en ny instruktion:
 
 <sample-output>
 
-komento: **1**
-kuvaus: **tee sovellus ajanhallintaan**
-koodari ja työmääräarvio: **erkki xxx**
-virheellinen syöte
+instruktion: **1**
+beskrivning: **koda mobilapp för räknande av arbetsmängd**
+programmerare och uppskattad arbetsmängd: **erik xxx**
+felaktig inmatning
 
-komento: **1**
-kuvaus: **tee sovellus ajanhallintaan**
-koodari ja työmääräarvio: **erkki**
-virheellinen syöte
+instruktion: **1**
+beskrivning: **koda mobilapp för räknande av arbetsmängd**
+programmerare och uppskattad arbetsmängd: **erik**
+felaktig inmatning
 
-komento: **4**
-tunniste: **1000000**
-virheellinen syöte
+instruktion: **4**
+id: **1000000**
+felaktig inmatning
 
-komento: **4**
-tunniste: **XXXX**
-virheellinen syöte
+instruktion: **4**
+id: **XXXX**
+felaktig inmatning
 
-komento: **6**
-koodari: **tuntematonkoodari**
-virheellinen syöte
+instruktion: **6**
+programmerare: **okändprogrammerare**
+felaktig inmatning
 
 </sample-output>
 
 </programming-exercise>
 
-Vastaa lopuksi osion loppukyselyyn:
+Svara slutligen på en snabb enkät:
 
 <quiz id="4acb2792-f51e-55f0-b482-addf1977c630"></quiz>

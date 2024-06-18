@@ -13,79 +13,79 @@ Efter den här delen
 
 </text-box>
 
-Följande exempel består av två klasser. Klassen `Punkt` är en modell för en punkt i ett tvådimensionellt rum. Klassen `Linje` är en modell för ett linjesegment mellan två punkter. Koden nedan är kommenterad, läs gärna kommentarerna för att förstå hur klasserna fungerar.
+Följande exempel består av två klasser. Klassen `Punkt` är en modell för en punkt i ett tvådimensionellt rum. Klassen `Stracka` är en modell för ett linjesegment mellan två punkter. Koden nedan är kommenterad, läs gärna kommentarerna för att förstå hur klasserna fungerar.
 
 ```python
 import math
 
-class Piste:
-    """ Luokka mallintaa pistettä kaksiulotteisessa koordinaatistossa """
+class Punkt:
+    """ Klassen representerar en punkt i ett tvådimensionellt rum """
 
     def __init__(self, x: float, y: float):
-        # Attribuutit ovat julkisia, koska mitkä tahansa arvot käyvät x:n ja y:n arvoiksi
+        # Attributen är offentliga, eftersom vilket värde som helst kan användas som värde för x och y.
         self.x = x
         self.y = y
 
-    # Luokkametodi palauttaa uuden pisteen paikassa (0, 0)
-    # Huomaa, että luokan sisältä voi palauttaa olion luokasta
+    # Denna klassmetod returnerar en ny punkt vid origo (0, 0)
+    # Det är möjligt att returnera en ny instans av klassen inifrån klassen
     @classmethod
     def origo(cls):
-        return Piste(0, 0)
+        return Punkt(0, 0)
 
-    # Luokkametodi muodostaa uuden pisteen annetun pisteen perusteella
-    # Uusi piste on peilikuva annetusta pisteestä jommankumman tai molempien akselien suhteen
-    # Esimerkiksi pisteen (1, 3) peilikuva x-akselin suhteen on (1, -3)
+    # Klassmetoden skapar en ny punkt baserad på den givna punkten
+    # Den nya punkten är en spegelbild av den givna punkten på en eller båda axlarna.
+    # Till exempel är punkten (1, 3) speglad på x-axeln (1, -3)
     @classmethod
-    def peilikuva(cls, piste, peilaa_x: bool, peilaa_y: bool):
-        x = piste.x
-        y = piste.y
-        if peilaa_x:
+    def spegelbild(cls, punkt, spegla_x: bool, spegla_y: bool):
+        x = punkt.x
+        y = punkt.y
+        if spegla_x:
             y = -y
-        if peilaa_y:
+        if spegla_y:
             x = -x
 
-        return Piste(x, y)
+        return Punkt(x, y)
 
     def __str__(self):
         return f"({self.x}, {self.y})"
 
-class Jana:
-    """ Luokka mallintaa janaa kaksiulotteisessa koordinaatistossa """
+class Stracka:
+    """ Klassen modellerar en sträcka i ett tvådimensionellt rum """
 
-    def __init__(self, alku: Piste, loppu: Piste):
-        # Attribuutit ovat julkisia, koska mitkä tahansa pisteet kelpaavat
-        self.alku = alku
-        self.loppu = loppu
+    def __init__(self, borjan: Punkt, slut: Punkt):
+        # Dessa attribut är offentliga eftersom två valfria punkter kan accepteras
+        self.borjan = borjan
+        self.slut = slut
 
-    # Metodi laskee janan pituuden Pythagoraan lauseella
-    def pituus(self):
-        summa = (self.loppu.x - self.alku.x) ** 2 + (self.loppu.y - self.alku.y) ** 2
+    # Denna metod använder Pythagoras sats för att beräkna längden på sträckan
+    def langd(self):
+        summa = (self.slut.x - self.borjan.x) ** 2 + (self.slut.y - self.borjan.y) ** 2
         return math.sqrt(summa)
 
-    # Metodi palauttaa janan keskipisteen
-    def keskipiste(self):
-        keskix = (self.alku.x + self.loppu.x) / 2
-        keskiy = (self.alku.y + self.loppu.y) / 2
-        return Piste(keskix, keskiy)
+    # Metoden returnerar mitten av sträckan
+    def medelpunkt(self):
+        medelx = (self.borjan.x + self.slut.x) / 2
+        medely = (self.borjan.y + self.slut.y) / 2
+        return Punkt(medelx, medely)
 
     def __str__(self):
-        return f"{self.alku} ... {self.loppu}"
+        return f"{self.borjan} ... {self.slut}"
 ```
 
 ```python
-piste = Piste(1,3)
-print(piste)
+punkt = Punkt(1,3)
+print(punkt)
 
-origo = Piste.origo()
+origo = Punkt.origo()
 print(origo)
 
-piste2 = Piste.peilikuva(piste, True, True)
-print(piste2)
+punkt2 = Punkt.spegelbild(punkt, True, True)
+print(punkt2)
 
-jana = Jana(piste, piste2)
-print(jana.pituus())
-print(jana.keskipiste())
-print(jana)
+stracka = Stracka(punkt, punkt2)
+print(stracka.langd())
+print(stracka.medelpunkt())
+print(stracka)
 ```
 
 <sample-output>
@@ -107,171 +107,171 @@ Om en parameter har ett standardvärde behöver du inte inkludera ett värde som
 
 Default-värden används ofta i konstruktörer. Om man kan förvänta sig att all information inte är tillgänglig när ett objekt skapas är det bättre att inkludera ett standardvärde i definitionen av konstruktörsmetoden än att tvinga klienten att ta hand om problemet. Detta gör det enklare att använda klassen ur klientens synvinkel, men det säkerställer också objektets integritet. Med ett fastställt standardvärde kan vi t.ex. vara säkra på att ett "tomt" värde alltid är detsamma, såvida inte klienten specifikt vill ange något annat. Om ett standardvärde inte anges är det upp till kunden att tillhandahålla ett "tomt" värde. Det kan t.ex. vara en tom sträng `""`, det speciella tomma objektet `None` eller strängen `"inte angivet"`.
 
-Låt oss ta en titt på ännu en klass som representerar en student. När ett nytt Student-objekt skapas måste klienten ange ett namn och ett studentnummer. Studentnumret är privat och ska inte ändras i efterhand. Dessutom har ett Student-objekt attribut för studiepoäng och anteckningar, vilka har standardvärden som anges i konstruktorn. Nya värden kan skickas som argument till konstruktören, men de kan också utelämnas så att standardvärdena används istället. Titta gärna på kommentarerna i koden för att bättre förstå vad varje metod gör.
+Låt oss ta en titt på ännu en klass som representerar en studerande. När ett nytt Studerande-objekt skapas måste klienten ange ett namn och ett studerandenummer. Studerandenumret är privat och ska inte ändras i efterhand. Dessutom har ett Studerande-objekt attribut för studiepoäng och anteckningar, vilka har standardvärden som anges i konstruktorn. Nya värden kan skickas som argument till konstruktören, men de kan också utelämnas så att standardvärdena används istället. Titta gärna på kommentarerna i koden för att bättre förstå vad varje metod gör.
 
 ```python
-class Opiskelija:
-    """ Mallintaa yhtä opiskelijaa """
+class Studerande:
+    """ Modellerar en endaste studerande """
 
-    def __init__(self, nimi: str, opiskelijanumero: str, opintopisteet:int = 0, muistiinpanot:str = ""):
-        # kutsuu asetusmetodia
-        self.nimi = nimi
+    def __init__(self, namn: str, studerandenummer: str, studiepoang:int = 0, anteckningar:str = ""):
+        # Kallar sättar-metoden
+        self.namn = namn
 
-        if len(opiskelijanumero) < 5:
-            raise ValueError("Opiskelijanumerossa tulee olla vähintään 5 merkkiä")
+        if len(studerandenummer) < 5:
+            raise ValueError("Studerandenumret ska ha minst 5 tecken")
 
-        self.__opiskelijanumero = opiskelijanumero
+        self.__studerandenummer = studerandenummer
 
-        # Kutsuu asetusmetodia
-        self.opintopisteet = opintopisteet
+        # Kallar sättar-metoden
+        self.studiepoang = studiepoang
 
-        self.__muistiinpanot = muistiinpanot
+        self.__anteckningar = anteckningar
 
     @property
-    def nimi(self):
-        return self.__nimi
+    def namn(self):
+        return self.__namn
 
-    @nimi.setter
-    def nimi(self, nimi):
-        if nimi != "":
-            self.__nimi = nimi
+    @namn.setter
+    def namn(self, namn):
+        if namn != "":
+            self.__namn = namn
         else:
-            raise ValueError("Nimi ei voi olla tyhjä")
+            raise ValueError("Namnet kan inte vara tomt")
 
     @property
-    def opiskelijanumero(self):
-        return self.__opiskelijanumero
+    def studerandenummer(self):
+        return self.__studerandenummer
 
     @property
-    def opintopisteet(self):
-        return self.__opintopisteet
+    def studiepoang(self):
+        return self.__studiepoang
 
-    @opintopisteet.setter
-    def opintopisteet(self, op):
-        if op >= 0:
-            self.__opintopisteet = op
+    @studiepoang.setter
+    def studiepoang(self, sp):
+        if sp >= 0:
+            self.__studiepoang = sp
         else:
-            raise ValueError("Opintopisteet ei voi olla negatiivinen luku")
+            raise ValueError("Studiepoäng kan inte vara ett negativt tal")
 
     @property
-    def muistiinpanot(self):
-        return self.__muistiinpanot
+    def anteckningar(self):
+        return self.__anteckningar
 
-    @muistiinpanot.setter
-    def muistiinpanot(self, muistiinpanot):
-        self.__muistiinpanot = muistiinpanot
+    @anteckningar.setter
+    def anteckningar(self, anteckningar):
+        self.__anteckningar = anteckningar
 
-    def yhteenveto(self):
-        print(f"Opiskelija {self.__nimi} ({self.opiskelijanumero}):")
-        print(f"- opintopisteitä {self.__opintopisteet}")
-        print(f"- muistiinpanot: {self.muistiinpanot}")
+    def sammanfattning(self):
+        print(f"Studerande {self.__namn} ({self.studerandenummer}):")
+        print(f"- studiepoäng {self.__studiepoang}")
+        print(f"- anteckningar: {self.anteckningar}")
 ```
 
 ```python
-# Annetaan pelkkä nimi ja op.nro
-opiskelija1 = Opiskelija("Olli Opiskelija", "12345")
-opiskelija1.yhteenveto()
+# Skickar endast namnet och studerandenumret
+studerande1 = Studerande("Sam Studerande", "12345")
+studerande1.sammanfattning()
 
-# Annetaan nimi, op.nro ja opintopisteet
-opiskelija2 = Opiskelija("Outi Opiskelija", "54321", 25)
-opiskelija2.yhteenveto()
+# Skickar namnet, studerandenummer och studiepoäng
+studerande2 = Studerande("Saul Studerande", "54321", 25)
+studerande2.sammanfattning()
 
-# Annetaan kaikki tiedot
-opiskelija3 = Opiskelija("Olavi Opiskelija", "99999", 140, "lisäaika tentissä")
-opiskelija3.yhteenveto()
+# Skickar alla uppgifter
+studerande3 = Studerande("Sara Studerande", "99999", 140, "tillägstid i tenter")
+studerande3.sammanfattning()
 
-# Ei anneta opintopisteitä, mutta annetaan muistiinpanot
-# Huomaa, että parametri pitää nyt nimetä, kun järjestys eroaa tavallisesta
-opiskelija4 = Opiskelija("Onerva Opiskelija", "98765", muistiinpanot="poissaoleva lukuvuonna 20-21")
-opiskelija4.yhteenveto()
+# Skickar anteckningar, men inte studiepoäng
+# Obs: parametern måste nu bli namngiven när argumenten inte är i ordning
+studerande4 = Studerande("Saga Studerande", "98765", anteckningar="avlägsen studieår 20-21")
+studerande4.sammanfattning()
 ```
 
 <sample-output>
 
-Opiskelija Olli Opiskelija (12345):
-- opintopisteitä 0
-- muistiinpanot:
-Opiskelija Outi Opiskelija (54321):
-- opintopisteitä 25
-- muistiinpanot:
-Opiskelija Olavi Opiskelija (99999):
-- opintopisteitä 140
-- muistiinpanot: lisäaika tentissä
-Opiskelija Onerva Opiskelija (98765):
-- opintopisteitä 0
-- muistiinpanot: poissaoleva lukuvuonna 20-21
+Studerande Sam Studerande (12345):
+- studiepoäng 0
+- anteckningar:
+Studerande Saul Studerande (54321):
+- studiepoäng 25
+- anteckningar:
+Studerande Sara Studerande (99999):
+- studiepoäng 140
+- anteckningar: tillägstid i tenter
+Studerande Saga Studerande (98765):
+- studiepoäng 0
+- anteckningar: avlägsen studieår 20-21
 
 </sample-output>
 
-OBS: Det finns ingen sättar-metod för attributet `student_nummer` eftersom det inte är meningen att studentnumret ska ändras.
+OBS: Det finns ingen sättar-metod för attributet `studerande_nummer` eftersom det inte är meningen att studerandenumret ska ändras.
 
-Det finns en ganska betydande hake när man använder standardvärden för parametrar. Följande exempel som modellerar ännu en typ av student kommer att belysa detta mer:
+Det finns en ganska betydande hake när man använder standardvärden för parametrar. Följande exempel som modellerar ännu en typ av studerande kommer att belysa detta mer:
 
 ```python
-class Opiskelija:
-    def __init__(self, nimi, tehdyt_kurssit=[]):
-        self.nimi = nimi
-        self.tehdyt_kurssit = tehdyt_kurssit
+class Studerande:
+    def __init__(self, namn, gjorda_kurser=[]):
+        self.namn = namn
+        self.gjorda_kurser = gjorda_kurser
 
-    def lisaa_suoritus(self, kurssi):
-        self.tehdyt_kurssit.append(kurssi)
+    def tillsatt_prestation(self, kurs):
+        self.gjorda_kurser.append(kurs)
 ```
 
 ```python
-opiskelija1 = Opiskelija("Olli Opiskelija")
-opiskelija2 = Opiskelija("Outi Opiskelija")
+studerande1 = Studerande("Sam Studerande")
+studerande2 = Studerande("Saul Studerande")
 
-opiskelija1.lisaa_suoritus("Ohpe")
-opiskelija1.lisaa_suoritus("Tira")
+studerande1.tillsatt_prestation("ItP")
+studerande1.tillsatt_prestation("Tira")
 
-print(opiskelija1.tehdyt_kurssit)
-print(opiskelija2.tehdyt_kurssit)
+print(studerande1.gjorda_kurser)
+print(studerande2.gjorda_kurser)
 ```
 
 <sample-output>
 
-['Ohpe', 'Tira']
-['Ohpe', 'Tira']
+['ItP', 'Tira']
+['ItP', 'Tira']
 
 </sample-output>
 
-Om du lägger till slutförda kurser i Sallys lista läggs dessa kurser också till i Sassys lista. Faktum är att dessa två är exakt samma lista, eftersom Python återanvänder referensen som lagras i standardvärdet. Att skapa de två nya Student-objekten i exemplet ovan är likvärdigt med följande:
+Om du lägger till slutförda kurser i Sams lista läggs dessa kurser också till i Sauls lista. Faktum är att dessa två är exakt samma lista, eftersom Python återanvänder referensen som lagras i standardvärdet. Att skapa de två nya Studerande-objekten i exemplet ovan är likvärdigt med följande:
 
 ```python
-kurssit = []
-opiskelija1 = Opiskelija("Olli Opiskelija", kurssit)
-opiskelija2 = Opiskelija("Outi Opiskelija", kurssit)
+kurser = []
+studerande1 = Studerande("Sam Studerande", kurser)
+studerande2 = Studerande("Saul Studerande", kurser)
 ```
 
-Standardvärdena för parametrar bör aldrig vara instanser av mer komplicerade, föränderliga datastrukturer, t.ex. listor. Problemet kan kringgås genom att göra följande ändringar i konstruktorn för klassen `Student`:
+Standardvärdena för parametrar bör aldrig vara instanser av mer komplicerade, föränderliga datastrukturer, t.ex. listor. Problemet kan kringgås genom att göra följande ändringar i konstruktorn för klassen `Studerande`:
 
 ```python
-class Opiskelija:
-    def __init__(self, nimi, tehdyt_kurssit=None):
-        self.nimi = nimi
-        if tehdyt_kurssit is None:
-            self.tehdyt_kurssit = []
+class Studerande:
+    def __init__(self, namn, gjorda_kurser=None):
+        self.namn = namn
+        if gjorda_kurser is None:
+            self.gjorda_kurser = []
         else:
-            self.tehdyt_kurssit = tehdyt_kurssit
+            self.gjorda_kurser = gjorda_kurser
 
-    def lisaa_suoritus(self, kurssi):
-        self.tehdyt_kurssit.append(kurssi)
+    def tillsatt_prestation(self, kurs):
+        self.gjorda_kurser.append(kurs)
 ```
 
 ```python
-opiskelija1 = Opiskelija("Olli Opiskelija")
-opiskelija2 = Opiskelija("Outi Opiskelija")
+studerande1 = Studerande("Sam Studerande")
+studerande2 = Studerande("Saul Studerande")
 
-opiskelija1.lisaa_suoritus("Ohpe")
-opiskelija1.lisaa_suoritus("Tira")
+studerande1.tillsatt_prestation("ItP")
+studerande1.tillsatt_prestation("Tira")
 
-print(opiskelija1.tehdyt_kurssit)
-print(opiskelija2.tehdyt_kurssit)
+print(studerande1.gjorda_kurser)
+print(studerande2.gjorda_kurser)
 ```
 
 <sample-output>
 
-['Ohpe', 'Tira']
+['ItP', 'Tira']
 []
 
 </sample-output>
@@ -282,252 +282,252 @@ Fastän följande övning avslutar den här delen av materialet, så har de tekn
 
 <programming-exercise name='Tavara, Matkalaukku ja Lastiruuma' tmcname='osa09-15_tavara_matkalaukku_lastiruuma'>
 
-Tässä tehtäväsarjassa tehdään luokat `Tavara`, `Matkalaukku` ja `Lastiruuma`, joiden avulla harjoitellaan lisää olioita, jotka sisältävät toisia olioita.
+I den här uppgiftsserien kommer du skapa klasserna `Sak`, `Resvaska` och `Lastutrymme`, vilka låter dig öva vidare på att jobba på objekt som innehåller referenser till andra objekt.
 
-## Tavara-luokka
+## Del 1: Sak
 
-Tee luokka `Tavara`, josta muodostetut oliot vastaavat erilaisia tavaroita. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).
+Skapa klassen `Sak`, som används för att skapa saker av olika sorter. Varje sak har ett namn och en vikt (i kg).
 
-Luokan tulee toimia seuraavasti
+Klassen ska fungera enligt följande:
 
 ```python
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
 
-print("Kirjan nimi:", kirja.nimi())
-print("Kirjan paino:", kirja.paino())
+print("Bokens namn:", bok.namn())
+print("Bokens vikt:", bok.vikt())
 
-print("Kirja:", kirja)
-print("Puhelin:", puhelin)
+print("Bok:", bok)
+print("Telefon:", telefon)
 ```
 
-Ohjelman tulostuksen tulisi olla seuraava:
+Programmets utskrift borde vara följande:
 
 <sample-output>
 
-Kirjan nimi: Aapiskukko
-Kirjan paino: 2
-Kirja: Aapiskukko (2 kg)
-Puhelin: Nokia 3210 (1 kg)
+Bokens namn: ABC bok
+Bokens vikt: 2
+Bok: ABC bok (2 kg)
+Telefon: Nokia 3210 (1 kg)
 
 </sample-output>
 
-Tavaralla on siis metodit `paino` ja `nimi` jotka palauttavat tavaran tiedot.
+En `Sak` ska alltså innehålla metoderna `vikt` och `namn`, som returnerar värden som lagras i dessa attribut.
 
-Luokan tulee tallentaa tieto nimestä ja painosta kapseloituna, eli seuraava ei saa onnistua:
-
-```python
-kirja = Tavara("Aapiskukko", 2)
-kirja.paino = 10
-```
-
-## Matkalaukku-luokka
-
-Tee luokka `Matkalaukku`. Matkalaukkuun liittyy tavaroita ja maksimipaino, joka määrittelee tavaroiden suurimman mahdollisen yhteispainon.
-
-Lisää luokkaan seuraavat:
-
-- konstruktori, jolle annetaan maksimipaino
-- metodi `lisaa_tavara`, joka lisää parametrina annettavan tavaran matkalaukkuun. Metodi ei palauta mitään arvoa.
-- metodi `__str__`, joka palauttaa merkkijonon muotoa "x tavaraa (y kg)"
-
-Luokan tulee valvoa, että sen sisältämien tavaroiden yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi lisättävän tavaran vuoksi, metodi `lisaa_tavara` ei saa lisätä uutta tavaraa laukkuun.
-
-Seuraavassa on luokan käyttöesimerkki:
+Namnet och vikten ska vara inkapslade inom klassen. Följande ska inte fungera:
 
 ```python
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
-tiiliskivi = Tavara("Tiiliskivi", 4)
-
-matkalaukku = Matkalaukku(5)
-print(matkalaukku)
-
-matkalaukku.lisaa_tavara(kirja)
-print(matkalaukku)
-
-matkalaukku.lisaa_tavara(puhelin)
-print(matkalaukku)
-
-matkalaukku.lisaa_tavara(tiiliskivi)
-print(matkalaukku)
+bok = Sak("ABC bok", 2)
+bok.vikt = 10
 ```
 
-Ohjelman tulostuksen tulisi olla seuraava:
+## Del 2: Resväska
+
+Skapa klassen `Resvaska`. Det ska vara möjligt att packa saker i resväskan. En räsväska har dessutom en maximal vikt för saker som lagras i den.
+
+Lägg till följande till klassen:
+
+- en konstruktor, som tar maximal vikt som ett argument
+- metoden `tillsatt_sak`, som lägger till saken givet som argument till resväskan. Metoden har inget returvärde.
+- metoden `__str__`, som returnerar en sträng i formatet "x saker (y kg)"
+
+Klassen ska se till att den sammanlagda vikten av de föremål som förvaras i en `Resvaska` inte överstiger den maximala vikt som har ställts in för den instansen. Om den maximala vikten skulle överskridas när `tillsatt_sak`-metoden anropas, ska det nya föremålet inte läggas till i resväskan.
+
+Klassen ska fungera enligt följande:
+
+```python
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
+tegelsten = Sak("Tegelsten", 4)
+
+resvaska = Resvaska(5)
+print(resvaska)
+
+resvaska.tillsatt_sak(bok)
+print(resvaska)
+
+resvaska.tillsatt_sak(telefon)
+print(resvaska)
+
+resvaska.tillsatt_sak(tegelsten)
+print(resvaska)
+```
+
+Programmets utskrift borde vara följande:
 
 <sample-output>
 
-0 tavaraa (0 kg)
-1 tavaraa (2 kg)
-2 tavaraa (3 kg)
-2 tavaraa (3 kg)
+0 saker (0 kg)
+1 saker (2 kg)
+2 saker (3 kg)
+2 saker (3 kg)
 
 </sample-output>
 
-## Kielenhuoltoa
+## Del 3: Språkvård
 
-Ilmoitus "1 tavaraa" ei ole kovin hyvää suomea, vaan olisi parempi sanoa "1 tavara". Tee tämä muutos luokassa sijaitsevaan `__str__`-metodiin.
+Meddelandet ”1 saker” är inte särskilt grammatiskt. Istället borde det stå ”1 sak”. Gör de ändringar som krävs i din `__str__`-metod.
 
-Nyt edellisen ohjelman tulostuksen tulisi olla seuraava:
+Föregående exempel borde nu skriva ut:
 
 <sample-output>
 
-0 tavaraa (0 kg)
-1 tavara (2 kg)
-2 tavaraa (3 kg)
-2 tavaraa (3 kg)
+0 saker (0 kg)
+1 sak (2 kg)
+2 saker (3 kg)
+2 saker (3 kg)
 
 </sample-output>
 
-## Kaikki tavarat
+## Del 4: Alla saker
 
-Lisää luokkaan seuraavat metodit:
+Tillägg följande metoder till definitionen av din `Resvaska`-klass:
 
-- `tulosta_tavarat`, joka tulostaa kaikki matkalaukussa olevat tavarat
-- `paino`, joka palauttaa matkalaukun yhteispainoa kuvaavan kokonaisluvun, joka on sen sisältävien tavaroiden painojen summa
+- `skriv_ut_saker`, som skriver ut alla saker som lagras i resväskan
+- `vikt`, som returnerar ett heltalsnummer som representerar den totala vikten av sakerna i resväskan
 
-Seuraavassa on luokan käyttöesimerkki:
+Klassen borde nu fungera med följande program:
 
 ```python
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
-tiiliskivi = Tavara("Tiiliskivi", 4)
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
+tegelsten = Sak("Tegelsten", 4)
 
-matkalaukku = Matkalaukku(10)
-matkalaukku.lisaa_tavara(kirja)
-matkalaukku.lisaa_tavara(puhelin)
-matkalaukku.lisaa_tavara(tiiliskivi)
+resvaska = Resvaska(10)
+resvaska.tillsatt_sak(bok)
+resvaska.tillsatt_sak(telefon)
+resvaska.tillsatt_sak(tegelsten)
 
-print("Matkalaukussa on seuraavat tavarat:")
-matkalaukku.tulosta_tavarat()
-paino_yht = matkalaukku.paino()
-print(f"Yhteispaino: {paino_yht} kg")
+print("I resväskan finns följande saker:")
+resvaska.skriv_ut_saker()
+vikt_tot = resvaska.vikt()
+print(f"Totalvikt: {vikt_tot} kg")
 ```
 
-Ohjelman tulostuksen tulisi olla seuraava:
+Ovanstående programs utskrift borde ge följande resultat:
 
 <sample-output>
 
-Matkalaukussa on seuraavat tavarat:
-Aapiskukko (2 kg)
+I resväskan finns följande saker:
+ABC bok (2 kg)
 Nokia 3210 (1 kg)
-Tiiliskivi (4 kg)
-Yhteispaino: 7 kg
+Tegelsten (4 kg)
+Totalvikt: 7 kg
 
 </sample-output>
 
-Muokkaa myös luokkaasi siten, että käytät vain kahta oliomuuttujaa. Toinen sisältää maksimipainon, toinen on lista laukussa olevista tavaroista.
+Om du har implementerat din `Resvaska`-klass med fler än två instansvariabler, gör de ändringar som krävs så att varje instans endast har två dataattribut: den maximala vikten och en lista över föremålen i den.
 
-## Raskain tavara
+## Del 5: Den tyngsta saken
 
-Lisää vielä luokkaan metodi `raskain_tavara`, joka palauttaa painoltaan suurimman tavaran. Jos yhtä raskaita tavaroita on useita, metodi voi palauttaa minkä tahansa niistä. Metodin tulee palauttaa olioviite. Jos laukku on tyhjä, palauta arvo `None`.
+Lägg till en ny metod i din `Resvaska`-klass: `tyngsta_saken` ska returnera den `sak` som är tyngst. Om det finns två eller flera föremål med samma vikt kan metoden returnera vilket som helst av dessa. Metoden ska returnera en referens till ett objekt. Om resväskan är tom ska metoden returnera `None`.
 
-Seuraavassa on luokan käyttöesimerkki:
+Din klass borde nu fungera med följande program:
 
 ```python
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
-tiiliskivi = Tavara("Tiiliskivi", 4)
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
+tegelsten = Sak("Tegelsten", 4)
 
-matkalaukku = Matkalaukku(10)
-matkalaukku.lisaa_tavara(kirja)
-matkalaukku.lisaa_tavara(puhelin)
-matkalaukku.lisaa_tavara(tiiliskivi)
+resvaska = Resvaska(10)
+resvaska.tillsatt_sak(bok)
+resvaska.tillsatt_sak(telefon)
+resvaska.tillsatt_sak(tegelsten)
 
-raskain = matkalaukku.raskain_tavara()
-print(f"Raskain tavara: {raskain}")
+tyngsta = resvaska.tyngsta_saken()
+print(f"Tyngsta saken: {tyngsta}")
 ```
 
-Ohjelman tulostuksen tulisi olla seuraava:
+Programmets utskrift borde nu vara följande:
 
 <sample-output>
 
-Raskain tavara: Tiiliskivi (4 kg)
+Tyngsta saken: Tegelsten (4 kg)
 
 </sample-output>
 
-## Lastiruuma-luokka
+## Del 6: Lastutrymme
 
-Tee luokka `Lastiruuma`, johon liittyvät seuraavat metodit:
+Skapa klassen `Lastutrymme`, som har följande metoder:
 
-- konstruktori, jolle annetaan maksimipaino
-- metodi `lisaa_matkalaukku`, joka lisää parametrina annetun matkalaukun lastiruumaan
-- metodi `__str__`, joka palauttaa merkkijonon muotoa "x matkalaukkua, tilaa y kg"
+- en konstruktor, som får en maximalvikt
+- metoden `tillsatt_resvaska`, som lägger till resväskan den får som argument till lastutrymmet
+- metoden `__str__`, som returnerar en sträng i formatet "x resväskor, rum för y kg"
 
-Luokan tulee valvoa, että sen matkalaukkujen yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi uuden matkalaukun vuoksi, metodi `lisaa_matkalaukku` ei saa lisätä uutta matkalaukkua.
+Klassen bör se till att den sammanlagda vikten av de föremål som lagras i ett `Lastutrymme` inte överstiger den maximala vikt som har ställts in för den instansen. Om den maximala vikten skulle överskridas när `tillsatt_resvaska`-metoden anropas, ska den nya resväskan inte läggas till i lastutrymmet.
 
-Seuraavassa on luokan käyttöesimerkki:
+Din klass borde nu fungera med följande program:
 
 ```python
-lastiruuma = Lastiruuma(1000)
-print(lastiruuma)
+lastutrymme = Lastutrymme(1000)
+print(lastutrymme)
 
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
-tiiliskivi = Tavara("Tiiliskivi", 4)
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
+tegelsten = Sak("Tegelsten", 4)
 
-adan_laukku = Matkalaukku(10)
-adan_laukku.lisaa_tavara(kirja)
-adan_laukku.lisaa_tavara(puhelin)
+adas_vaska = Resvaska(10)
+adas_vaska.tillsatt_sak(bok)
+adas_vaska.tillsatt_sak(telefon)
 
-pekan_laukku = Matkalaukku(10)
-pekan_laukku.lisaa_tavara(tiiliskivi)
+peters_vaska = Resvaska(10)
+peters_vaska.tillsatt_sak(tegelsten)
 
-lastiruuma.lisaa_matkalaukku(adan_laukku)
-print(lastiruuma)
+lastutrymme.tillsatt_resvaska(adas_vaska)
+print(lastutrymme)
 
-lastiruuma.lisaa_matkalaukku(pekan_laukku)
-print(lastiruuma)
+lastutrymme.tillsatt_resvaska(peters_vaska)
+print(lastutrymme)
 ```
 
 <sample-output>
 
-0 matkalaukkua, tilaa 1000 kg
-1 matkalaukku, tilaa 997 kg
-2 matkalaukkua, tilaa 993 kg
+0 resväskor, rum för 1000 kg
+1 resväska, rum för 997 kg
+2 resväskor, rum för 993 kg
 
 </sample-output>
 
-## Lastiruuman sisältö
+## Del 7: Lastutrymmets innehåll
 
-Lisää luokkaan metodi `tulosta_tavarat`, joka tulostaa kaikki lastiruuman matkalaukuissa olevat tavarat.
+Lägg till metoden `skriv_ut_saker`, till din `Lastutrymme`-klass. Metoden ska skriva ut alla saker i alla resväskor i lastutrymmet.
 
-Seuraavassa on luokan käyttöesimerkki:
+Din klass borde nu fungera med följande program:
 
 ```python
-kirja = Tavara("Aapiskukko", 2)
-puhelin = Tavara("Nokia 3210", 1)
-tiiliskivi = Tavara("Tiiliskivi", 4)
+bok = Sak("ABC bok", 2)
+telefon = Sak("Nokia 3210", 1)
+tegelsten = Sak("Tegelsten", 4)
 
-adan_laukku = Matkalaukku(10)
-adan_laukku.lisaa_tavara(kirja)
-adan_laukku.lisaa_tavara(puhelin)
+adas_vaska = Resvaska(10)
+adas_vaska.tillsatt_sak(bok)
+adas_vaska.tillsatt_sak(telefon)
 
-pekan_laukku = Matkalaukku(10)
-pekan_laukku.lisaa_tavara(tiiliskivi)
+peters_vaska = Resvaska(10)
+peters_vaska.tillsatt_sak(tegelsten)
 
-lastiruuma = Lastiruuma(1000)
-lastiruuma.lisaa_matkalaukku(adan_laukku)
-lastiruuma.lisaa_matkalaukku(pekan_laukku)
+lastutrymme = Lastutrymme(1000)
+lastutrymme.tillsatt_resvaska(adas_vaska)
+lastutrymme.tillsatt_resvaska(peters_vaska)
 
-print("Ruuman matkalaukuissa on seuraavat tavarat:")
-lastiruuma.tulosta_tavarat()
+print("Väskorna i lastutrymmet innehåller följande saker:")
+lastutrymme.skriv_ut_saker()
 ```
 
-Ohjelman tulostuksen tulisi olla seuraava:
+Utskriften för ovanstående program borde vara följande:
 
 
 <sample-output>
 
-Ruuman matkalaukuissa on seuraavat tavarat:
-Aapiskukko (2 kg)
+Väskorna i lastutrymmet innehåller följande saker:
+ABC bok (2 kg)
 Nokia 3210 (1 kg)
-Tiiliskivi (4 kg)
+Tegelsten (4 kg)
 
 </sample-output>
 
 </programming-exercise>
 
-Vastaa lopuksi osion loppukyselyyn:
+Svara avslutningsvis på följande frågeformulär:
 
 <quiz id="a85a3eb4-0bdf-5c7e-98f7-bbad2301c344"></quiz>

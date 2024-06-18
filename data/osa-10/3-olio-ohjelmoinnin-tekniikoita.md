@@ -9,102 +9,102 @@ hidden: false
 Tämän osion jälkeen
 
 - Känner du till några av de olika användningsområdena för variabelnamnet `self`
-- Vet du hur du överbelastar operatorer i dina egna klasser
+- Vet du hur du överlagrar operatorer i dina egna klasser
 - Kommer du att kunna skapa en iterabel klass
 
 </text-box>
 
-En klass kan innehålla en metod som returnerar ett objekt av samma klass. Nedan har vi t.ex. klassen `Produkt`, vars metod `produkt_på_rea` returnerar ett nytt Produkt-objekt med samma namn som det ursprungliga men med ett pris som är 25 % lägre:
+En klass kan innehålla en metod som returnerar ett objekt av samma klass. Nedan har vi t.ex. klassen `Produkt`, vars metod `reaprodukt` returnerar ett nytt Produkt-objekt med samma namn som det ursprungliga men med ett pris som är 25 % lägre:
 
 ```python
-class Tuote:
-    def __init__(self, nimi: str, hinta: float):
-        self.__nimi = nimi
-        self.__hinta = hinta
+class Produkt:
+    def __init__(self, namn: str, pris: float):
+        self.__namn = namn
+        self.__pris = pris
 
     def __str__(self):
-        return f"{self.__nimi} (hinta {self.__hinta})"
+        return f"{self.__namn} (pris {self.__pris})"
 
-    def alennustuote(self):
-        alennettu = Tuote(self.__nimi, self.__hinta * 0.75)
-        return alennettu
+    def reaprodukt(self):
+        nedsatt = Produkt(self.__namn, self.__pris * 0.75)
+        return nedsatt
 ```
 
 ```python
-omena1 = Tuote("Omena", 2.99)
-omena2 = omena1.alennustuote()
-print(omena1)
-print(omena2)
+banan1 = Produkt("Banan", 2.99)
+banan2 = banan1.reaprodukt()
+print(banan1)
+print(banan2)
 ```
 
 <sample-output>
 
-Omena (hinta 2.99)
-Omena (hinta 2.2425)
+Banan (pris 2.99)
+Banan (pris 2.2425)
 
 </sample-output>
 
 Låt oss gå igenom syftet med variabeln `self`: inom en klassdefinition hänvisar den till själva objektet. Vanligtvis används den för att hänvisa till objektets egna egenskaper, dess attribut och metoder. Variabeln kan också användas för att hänvisa till hela objektet, till exempel om själva objektet måste returneras till klientkoden. I exemplet nedan har vi lagt till metoden `billigare` i klassdefinitionen. Den tar en annan Produkt som sitt argument och returnerar det billigare av de två:
 
 ```python
-class Tuote:
-    def __init__(self, nimi: str, hinta: float):
-        self.__nimi = nimi
-        self.__hinta = hinta
+class Produkt:
+    def __init__(self, namn: str, pris: float):
+        self.__namn = namn
+        self.__pris = pris
 
     def __str__(self):
-        return f"{self.__nimi} (hinta {self.__hinta})"
+        return f"{self.__namn} (pris {self.__pris})"
 
     @property
-    def hinta(self):
-        return self.__hinta
+    def pris(self):
+        return self.__pris
 
-    def halvempi(self, tuote):
-        if self.__hinta < tuote.hinta:
+    def billigare(self, produkt):
+        if self.__pris < produkt.pris:
             return self
         else:
-            return tuote
+            return produkt
 ```
 
 ```python
-omena = Tuote("Omena", 2.99)
-appelsiini = Tuote("Appelsiini", 3.95)
-banaani = Tuote("Banaani", 5.25)
+banan = Produkt("Banan", 2.99)
+apelsin = Produkt("Apelsin", 3.95)
+ananas = Produkt("Ananas", 5.25)
 
-print(appelsiini.halvempi(omena))
-print(appelsiini.halvempi(banaani))
+print(apelsin.billigare(banan))
+print(apelsin.billigare(ananas))
 ```
 
 <sample-output>
 
-Omena (2.99)
-Appelsiini (3.95)
+Banan (2.99)
+Apelsin (3.95)
 
 </sample-output>
 
 Även om det här fungerar bra är det ett mycket specialiserat fall av att jämföra två objekt. Det skulle vara bättre om vi kunde använda Pythons jämförelseoperatorer direkt på dessa `Produkt`-objekt.
 
-## Överbelastande av operatorer
+## Överlagring av operatorer
 
-Python innehåller några speciellt namngivna inbyggda metoder för att arbeta med standardoperatorerna för aritmetik och jämförelse. Tekniken kallas operatörsöverbelastning. Om du vill kunna använda en viss operator på instanser av självdefinierade klasser kan du skriva en speciell metod som returnerar det korrekta resultatet av operatorn. Vi har redan använt den här tekniken med `__str__` metoden: Python vet att leta efter en metod som heter så här när en strängrepresentation av ett objekt efterfrågas.
+Python innehåller några speciellt namngivna inbyggda metoder för att arbeta med standardoperatorerna för aritmetik och jämförelse. Tekniken kallas operatörsöverlagring (eng. operator overloading). Om du vill kunna använda en viss operator på instanser av självdefinierade klasser kan du skriva en speciell metod som returnerar det korrekta resultatet av operatorn. Vi har redan använt den här tekniken med `__str__` metoden: Python vet att leta efter en metod som heter så här när en strängrepresentation av ett objekt efterfrågas.
 
 Låt oss börja med operatorn > som talar om för oss om den första operanden är större än den andra. Klassdefinitionen `Produkt` nedan innehåller metoden `__gt__`, som är en förkortning av greater than. Denna speciellt namngivna metod ska returnera det korrekta resultatet av jämförelsen. Specifikt ska den returnera `True` om och endast om det aktuella objektet är större än det objekt som skickas som ett argument. De kriterier som används kan bestämmas av programmeraren. Med aktuellt objekt menar vi det objekt som metoden anropas på med punkt `.` notationen
 
 ```python
-class Tuote:
-    def __init__(self, nimi: str, hinta: float):
-        self.__nimi = nimi
-        self.__hinta = hinta
+class Produkt:
+    def __init__(self, namn: str, pris: float):
+        self.__namn = namn
+        self.__pris = pris
 
     def __str__(self):
-        return f"{self.__nimi} (hinta {self.__hinta})"
+        return f"{self.__namn} (pris {self.__pris})"
 
     @property
-    def hinta(self):
-        return self.__hinta
+    def pris(self):
+        return self.__pris
 
-    def __gt__(self, toinen_tuote):
-        return self.hinta > toinen_tuote.hinta
+    def __gt__(self, annan_produkt):
+        return self.pris > annan_produkt.pris
 ```
 
 I implementationen ovan returnerar metoden `__gt__` `True` om priset på den aktuella produkten är högre än priset på den produkt som skickas som argument. I annat fall returnerar metoden `False`.
@@ -112,57 +112,57 @@ I implementationen ovan returnerar metoden `__gt__` `True` om priset på den akt
 Nu finns jämförelseoperatorn `>` tillgänglig för användning med objekt av typen Produkt:
 
 ```python
-appelsiini = Tuote("Appelsiini", 4.90)
-omena = Tuote("Omena", 3.95)
+apelsin = Produkt("Apelsin", 4.90)
+banan = Produkt("Banan", 3.95)
 
-if appelsiini > omena:
-    print("Appelsiini on suurempi")
+if apelsin > banan:
+    print("Apelsin är större")
 else:
-    print("Omena on suurempi")
+    print("Banan är större")
 ```
 
 <sample-output>
 
-Appelsiini on suurempi
+Apelsin är större
 
 </sample-output>
 
 Som nämnts ovan är det upp till programmeraren att bestämma vilka kriterier som ska gälla för att avgöra vad som är störst och vad som är minst. Vi kan t.ex. bestämma att ordningen inte ska baseras på pris, utan i stället ska vara alfabetisk enligt namn. Detta skulle innebära att `banan` nu skulle vara "större än" `apelsin`, eftersom "banan" kommer senare alfabetiskt.
 
 ```python
-class Tuote:
-    def __init__(self, nimi: str, hinta: float):
-        self.__nimi = nimi
-        self.__hinta = hinta
+class Produkt:
+    def __init__(self, namn: str, pris: float):
+        self.__namn = namn
+        self.__pris = pris
 
     def __str__(self):
-        return f"{self.__nimi} (hinta {self.__hinta})"
+        return f"{self.__namn} (pris {self.__pris})"
 
     @property
-    def hinta(self):
-        return self.__hinta
+    def pris(self):
+        return self.__pris
 
     @property
-    def nimi(self):
-        return self.__nimi
+    def namn(self):
+        return self.__namn
 
-    def __gt__(self, toinen_tuote):
-        return self.nimi > toinen_tuote.nimi
+    def __gt__(self, annan_produkt):
+        return self.namn > annan_produkt.namn
 ```
 
 ```python
-appelsiini = Tuote("Appelsiini", 4.90)
-omena = Tuote("Omena", 3.95)
+apelsin = Produkt("Apelsin", 4.90)
+banan = Produkt("Banan", 3.95)
 
-if appelsiini > omena:
-    print("Appelsiini on suurempi")
+if apelsin > banan:
+    print("Apelsin är större")
 else:
-    print("Omena on suurempi")
+    print("Banan är större")
 ```
 
 <sample-output>
 
-Omena on suurempi
+Banan är större
 
 </sample-output>
 
@@ -170,24 +170,24 @@ Omena on suurempi
 
 Här har vi en tabell som innehåller de vanliga jämförelseoperatorerna, tillsammans med de metoder som måste implementeras om vi vill göra dem tillgängliga för användning på våra objekt:
 
-Operaattori | Merkitys perinteisesti | Metodin nimi
+Operator | Traditionell mening | Metodens namn
 :--:|:--:|:--:
-`<` | Pienempi kuin | `__lt__(self, toinen)`
-`>` | Suurempi kuin | `__gt__(self, toinen)`
-`==` | Yhtä suuri kuin | `__eq__(self, toinen)`
-`!=` | Eri suuri kuin | `__ne__(self, toinen)`
-`<=` | Pienempi tai yhtäsuuri kuin | `__le__(self, toinen)`
-`>=` | Suurempi tai yhtäsuuri kuin | `__ge__(self, toinen)`
+`<` | Mindre än | `__lt__(self, annan)`
+`>` | Större än | `__gt__(self, annan)`
+`==` | Lika med | `__eq__(self, annan)`
+`!=` | Inte lika med | `__ne__(self, annan)`
+`<=` | Mindre eller lika med | `__le__(self, annan)`
+`>=` | Större eller lika med | `__ge__(self, annan)`
 
 Du kan också implementera några andra operatorer, inklusive följande aritmetiska operatorer:
 
-Operaattori | Merkitys perinteisesti | Metodin nimi
+Operator | Traditionell mening | Metodens namn
 :--:|:--:|:--:
-`+` | Yhdistäminen | `__add__(self, toinen)`
-`-` | Vähentäminen | `__sub__(self, toinen)`
-`*` | Monistaminen | `__mul__(self, toinen)`
-`/` | Jakaminen | `__truediv__(self, toinen)`
-`//` | Kokonaisjakaminen | `__floordiv__(self, toinen)`
+`+` | Addition | `__add__(self, annan)`
+`-` | Subtraktion | `__sub__(self, annan)`
+`*` | Multiplikation | `__mul__(self, annan)`
+`/` | Division (bråktal) | `__truediv__(self, annan)`
+`//` | Division (heltal) | `__floordiv__(self, annan)`
 
 Fler operatorer och metodnamn finns lätt att hitta på nätet. Kom också ihåg `dir`-instruktionen för att lista de metoder som är tillgängliga för användning på ett visst objekt.
 
@@ -198,33 +198,33 @@ Låt oss ta en titt på en klass som modellerar en enda anteckning. Om vi implem
 ```python
 from datetime import datetime
 
-class Muistiinpano:
-    def __init__(self, pvm: datetime, merkinta: str):
-        self.pvm = pvm
-        self.merkinta = merkinta
+class Anteckning:
+    def __init__(self, dtm: datetime, inlagg: str):
+        self.dtm = dtm
+        self.inlagg = inlagg
 
     def __str__(self):
-        return f"{self.pvm}: {self.merkinta}"
+        return f"{self.dtm}: {self.inlagg}"
 
-    def __add__(self, toinen):
-        # Uuden muistiinpanon ajaksi nykyinen aika
-        uusi_muistiinpano = Muistiinpano(datetime.now(), "")
-        uusi_muistiinpano.merkinta = self.merkinta + " ja " + toinen.merkinta
-        return uusi_muistiinpano
+    def __add__(self, annan):
+        # Datumet för den nya anteckningen är aktuell tid
+        nytt_inlagg = Anteckning(datetime.now(), "")
+        nytt_inlagg.inlagg = self.inlagg + "och " + annan.inlagg
+        return nytt_inlagg
 ```
 
 ```python
-merkinta1 = Muistiinpano(datetime(2016, 12, 17), "Muista ostaa lahjoja")
-merkinta2 = Muistiinpano(datetime(2016, 12, 23), "Muista hakea kuusi")
+inlagg1 = Anteckning(datetime(2016, 12, 17), "Kom ihåg att köpa presenter")
+inlagg2 = Anteckning(datetime(2016, 12, 23), "Kom ihåg att hämta en gran")
 
-# Nyt voidaan yhdistää plussalla - tämä kutsuu metodia __add__ luokassa Muistiipano
-molemmat = merkinta1 + merkinta2
-print(molemmat)
+# Nu kan dessa anteckningar bli sammanlagda med + operatorn - detta kallar metoden __add__ i Anteckning-klassen
+bada = inlagg1 + inlagg2
+print(bada)
 ```
 
 <sample-output>
 
-2020-09-09 14:13:02.163170: Muista ostaa lahjoja ja Muista hakea kuusi
+2020-09-09 14:13:02.163170: Kom ihåg att köpa presenter och Kom ihåg att hämta en gran
 
 </sample-output>
 
@@ -235,26 +235,26 @@ Du har redan implementerat en hel del `__str__`-metoder i dina klasser. Som du v
 Funktionen `repr` returnerar denna tekniska strängrepresentation av objektet. Den tekniska representationen används även när metoden `__str__` inte har definierats för objektet. Exemplet nedan kommer att göra detta tydligare:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, ika: int):
-        self.nimi = nimi
-        self.ika = ika
+class Person:
+    def __init__(self, namn: str, alder: int):
+        self.namn = namn
+        self.alder = alder
 
     def __repr__(self):
-        return f"Henkilo({repr(self.nimi)}, {self.ika})"
+        return f"Person({repr(self.namn)}, {self.alder})"
 ```
 
 ```python3
-henkilo1 = Henkilo("Anna", 25)
-henkilo2 = Henkilo("Pekka", 99)
-print(henkilo1)
-print(henkilo2)
+person1 = Person("Anna", 25)
+person2 = Person("Peter", 99)
+print(person1)
+print(person2)
 ```
 
 <sample-output>
 
-Henkilo('Anna', 25)
-Henkilo('Pekka', 99)
+Person('Anna', 25)
+Person('Peter', 99)
 
 </sample-output>
 
@@ -263,58 +263,58 @@ Lägg märke till hur metoden `__repr__` själv använder `repr`-funktionen för
 Följande klass har definitioner för både `__repr__` och `__str__`:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, ika: int):
-        self.nimi = nimi
-        self.ika = ika
+class Person:
+    def __init__(self, namn: str, alder: int):
+        self.namn = namn
+        self.alder = alder
 
     def __repr__(self):
-        return f"Henkilo({repr(self.nimi)}, {self.ika})"
+        return f"Person({repr(self.namn)}, {self.alder})"
 
     def __str__(self):
-        return f"{self.nimi} ({self.ika} vuotta)"
+        return f"{self.namn} ({self.alder} år)"
 ```
 
 ```python3
-henkilo = Henkilo("Anna", 25)
-print(henkilo)
-print(repr(henkilo))
+person = Person("Anna", 25)
+print(person)
+print(repr(person))
 ```
 
 <sample-output>
 
-Anna (25 vuotta)
-Henkilo('Anna', 25)
+Anna (25 år)
+Person('Anna', 25)
 
 </sample-output>
 
 Det är värt att nämna att med datastrukturer, såsom listor, använder Python alltid `__repr__`-metoden för strängrepresentationen av innehållet. Detta kan ibland se lite förvirrande ut:
 
 ```python3
-henkilot = []
-henkilot.append(Henkilo("Anna", 25))
-henkilot.append(Henkilo("Pekka", 99))
-henkilot.append(Henkilo("Maija", 55))
-print(henkilot)
+personer = []
+personer.append(Person("Anna", 25))
+personer.append(Person("Peter", 99))
+personer.append(Person("Maja", 55))
+print(personer)
 ```
 
 <sample-output>
 
-[Henkilo('Anna', 25), Henkilo('Pekka', 99), Henkilo('Maija', 55)]
+[Person('Anna', 25), Person('Peter', 99), Person('Maja', 55)]
 
 </sample-output>
 
 <programming-exercise name='Raha' tmcname='osa10-07_raha'>
 
-Tehtäväpohjasta löytyy luokan `Raha` runko. Tässä tehtävässä laajennetaan runkoa muutamilla operaattoreilla, ja korjataan pari rungossa olevaa pientä ongelmaa
+Övningsmallen innehåller en mall för en klass som heter `Pengar`. Den här övningen ber dig att implementera några ytterligare metoder och att åtgärda några små problem i mallen
 
-## Korjaa merkkijonoesitys
+## Del 1: Fixa strängrepresentationen
 
-Rahan merkkijonoesityksen muodostava metodi ei ole nyt ihan kunnossa. Seuraavassa esimerkissä muodostetaan kaksi raha-olioa, joista jälkimmäinen ei tulostu oikein:
+Metoden `__str__` i klassdefinitionen fungerar inte riktigt som den ska. Med följande två `Pengar`-objekt skrivs det senare ut på fel sätt:
 
 ```python
-e1 = Raha(4, 10)
-e2 = Raha(2, 5)  # kaksi euroa ja viisi senttiä
+e1 = Pengar(4, 10)
+e2 = Pengar(2, 5)  # två euro och 5 cent
 
 print(e1)
 print(e2)
@@ -327,7 +327,7 @@ print(e2)
 
 </sample-output>
 
-Korjaa luokan metodi `__str__(self)` siten, että tulostus on seuraava:
+Fixa metoden så att den skriver ut:
 
 <sample-output>
 
@@ -336,14 +336,14 @@ Korjaa luokan metodi `__str__(self)` siten, että tulostus on seuraava:
 
 </sample-output>
 
-## Yhtäsuuruus
+## Del 2: Lika stora mängder
 
-Määrittele raha-oliolle metodi  `__eq__(self, toinen)`, jonka avulla rahan yhtäsuuruusvertailu saadaan toimimaan:
+Definiera en ny metod med namnet `__eq__(self, annan)` som gör att du kan använda jämförelseoperatorn == på `Pengar`-objekt. Du kan testa din implementation med följande kod:
 
 ```python
-e1 = Raha(4, 10)
-e2 = Raha(2, 5)
-e3 = Raha(4, 10)
+e1 = Pengar(4, 10)
+e2 = Pengar(2, 5)
+e3 = Pengar(4, 10)
 
 print(e1)
 print(e2)
@@ -362,13 +362,13 @@ True
 
 </sample-output>
 
-## Muut vertailut
+## Del 3: Andra jämförelseoperatörer
 
-Toteuta rahalle myös seuraavat vertailuoperaattorit `<`, `>`, `!=`.
+Implementera även metoder för jämförelseoperatörerna `<`, `>` och `!=`.
 
 ```python
-e1 = Raha(4, 10)
-e2 = Raha(2, 5)
+e1 = Pengar(4, 10)
+e2 = Pengar(2, 5)
 
 print(e1 != e2)
 print(e1 < e2)
@@ -383,15 +383,15 @@ True
 
 </sample-output>
 
-## Plus ja miinus
+## Del 4: Addition och subtraktion
 
-Toteuta rahalle yhteen- ja vähennyslaskuoperaatiot. Molempien operaatioiden tulee palauttaa uusi rahaolio, ja ne eivät saa muuttaa olioa itseään tai parametrina olevaa olioa!
+Vänligen implementera additions- och subtraktionsoperatorerna `+` och `-` för Pengar-objekt. Båda ska returnera ett nytt objekt av typen Pengar. Varken objektet i sig eller det objekt som skickas som argument ska ändras som ett resultat.
 
-Huomaa, että rahan arvo ei voi olla negatiivinen. Negatiiviseen tulokseen päätyvän vähennyslaskuyrityksen tulee aiheuttaa ValueError-tyyppinen poikkeus.
+Obs: Värdet på ett Pengar-objekt kan inte vara negativt. Om ett försök att subtrahera skulle resultera i ett negativt resultat ska metoden ge upphov till ett `ValueError`-undantag.
 
 ```python
-e1 = Raha(4, 5)
-e2 = Raha(2, 95)
+e1 = Pengar(4, 5)
+e2 = Pengar(2, 95)
 
 e3 = e1 + e2
 e4 = e1 - e2
@@ -407,21 +407,21 @@ e5 = e2-e1
 7.00 eur
 1.10 eur
 Traceback (most recent call last):
-  File "tiedosto.py", line 416, in <module>
+  File "fil.py", line 416, in <module>
     e5 = e2-e1
-  File "tiedosto.py", line 404, in __sub__
-    raise ValueError(f"negatiivinen tulos ei sallittu")
-ValueError: negatiivinen tulos ei sallittu
+  File "fil.py", line 404, in __sub__
+    raise ValueError(f"negativt resultat inte tillåtet")
+ValueError: negativt resultat inte tillåtet
 
 </sample-output>
 
-## Arvoa ei voi muuttaa
+## Del 5: Värdet kan inte bli direkt åtkommet
 
-Luokassa on tällä hetkellä vielä pieni ongelma, koska käyttäjä voi "huijaamalla" muuttaa rahan arvoa:
+Klassen har fortfarande ett litet integritetsproblem. Användaren kan ”fuska” genom att komma åt attributen direkt och ändra det värde som lagras i `Pengar`-objektet:
 
 ```python
 print(e1)
-e1.eurot = 1000
+e1.euron = 1000
 print(e1)
 ```
 
@@ -432,32 +432,32 @@ print(e1)
 
 </sample-output>
 
-Muuta luokan toteutus [kapseloiduksi](/osa-9/3-kapselointi#kapselointi) siten, että yllä oleva huijaus ei onnistu. Luokalla ei siis saa olla kapseloimattomia attribuutteja eikä asetus- tai havainnointimetodeita euroille tai senteille!
+[Inkapsla](/osa-9/3-kapselointi#kapselointi) implementeringen av de attribut som definieras i klassen så att fusket ovan inte är möjligt. Klassen ska inte ha några offentliga attribut och inga getter- eller sätter-metoder för euro eller cent.
 
 </programming-exercise>
 
 <programming-exercise name='Päiväys' tmcname='osa10-08_paivays'>
 
-Tässä tehtävässä toteutetaan luokka `Paivays`, jonka avulla on mahdollista käsitellä päivämääriä. Oletetaan tässä tehtävässä yksinkertaisuuden vuoksi, että _jokaisessa kuussa on 30 päivää_.
+I den här övningen ska du implementera klassen `SimpelDatum` som gör att du kan hantera datum. För enkelhetens skull antar vi här att _varje månad har 30 dagar_.
 
-Huom! Edellisestä johtuen tehtävässä ei poikkeuksellisesti kannata käyttää Pythonin `datetime`-moduulia, vaan toteutetaan luokka itse.
+På grund av denna förenkling bör du inte använda `datetime`-modulen från Pythons standardbibliotek. Du kommer att implementera liknande funktionalitet själv istället.
 
-## Vertailut
+## Del 1: Jämförelse
 
-Toteuta luokan runko ja sille vertailuoperaattorit <, >, == ja !=. Käyttöesimerkki:
+Implementera mallen för klassen, såväl som metoder för jämförelseoperatörerna `<`, `>`, `==` och `!=`. Exempel på användning:
 
 ```python
-p1 = Paivays(4, 10, 2020)
-p2 = Paivays(28, 12, 1985)
-p3 = Paivays(28, 12, 1985)
+d1 = SimpelDatum(4, 10, 2020)
+d2 = SimpelDatum(28, 12, 1985)
+d3 = SimpelDatum(28, 12, 1985)
 
-print(p1)
-print(p2)
-print(p1 == p2)
-print(p1 != p2)
-print(p1 == p3)
-print(p1 < p2)
-print(p1 > p2)
+print(d1)
+print(d2)
+print(d1 == d2)
+print(d1 != d2)
+print(d1 == d3)
+print(d1 < d2)
+print(d1 > d2)
 ```
 
 <sample-output>
@@ -472,21 +472,21 @@ True
 
 </sample-output>
 
-## Kasvatus
+## Del 2: Ökning
 
-Toteuta päiväykselle operaattori +. Operaattori luo uuden päivämäärän joka on lisättävän lukeman päiviä verran suurempi kuin alkuperäinen päivämäärä. Alkuperäinen päivä ei saa muuttua.
+Vänligen implementera additionsoperatorn `+` som gör att du kan lägga till ett givet antal dagar till ett `SimpelDatum`-objekt. Operatorn ska returnera ett nytt `SimpelDatum`-objekt. Det ursprungliga objektet ska inte ändras.
 
 ```python
-p1 = Paivays(4, 10, 2020)
-p2 = Paivays(28, 12, 1985)
+d1 = SimpelDatum(4, 10, 2020)
+d2 = SimpelDatum(28, 12, 1985)
 
-p3 = p1 + 3
-p4 = p2 + 400
+d3 = d1 + 3
+d4 = d2 + 400
 
-print(p1)
-print(p2)
-print(p3)
-print(p4)
+print(d1)
+print(d2)
+print(d3)
+print(d4)
 ```
 
 <sample-output>
@@ -498,20 +498,20 @@ print(p4)
 
 </sample-output>
 
-## Erotus
+## Del 3: Skillnad
 
-Toteuta päiväykselle operaattori -, joka palauttaa päivämäärien eron päivissä laskettuna. Huomaa, että koska oletamme jokaisessa kuukaudessa olevan 30 päivää, tässä tehtävässä vuosien päivien lukumäärä on 12*30 eli 360.
+Vänligen implementera subtraktionsoperatorn `-` som gör att du kan ta reda på skillnaden i dagar mellan två SimpelDatum-objekt. Eftersom vi antar att varje månad har 30 dagar, är ett år inom ramen för denna övning 12*30 = 360 dagar långt.
 
-Operaattori toimii seuraavasti
+Operatorn fungerar enligt följande:
 
 ```python
-p1 = Paivays(4, 10, 2020)
-p2 = Paivays(2, 11, 2020)
-p3 = Paivays(28, 12, 1985)
+d1 = SimpelDatum(4, 10, 2020)
+d2 = SimpelDatum(2, 11, 2020)
+d3 = SimpelDatum(28, 12, 1985)
 
-print(p2-p1)
-print(p1-p2)
-print(p1-p3)
+print(d2-d1)
+print(d1-d2)
+print(d1-d3)
 ```
 
 <sample-output>
@@ -530,10 +530,10 @@ Vi vet att `for`-satsen kan användas för att iterera genom många olika datast
 
 ```python
 
-def laske_positiiviset(lista: list):
+def rakna_positiva(lista: list):
     n = 0
-    for alkio in lista:
-        if alkio > 0:
+    for foremal in lista:
+        if foremal > 0:
             n += 1
     return n
 
@@ -547,40 +547,39 @@ För att göra en klass itererbar måste du implementera iteratormetoderna `__it
 
 ```python
 
-class Kirja:
-    def __init__(self, nimi: str, kirjailija: str, sivuja: int):
-        self.nimi = nimi
-        self.kirjailija = kirjailija
-        self.sivuja = sivuja
+class Bok:
+    def __init__(self, namn: str, forfattare: str, sidor: int):
+        self.namn = namn
+        self.forfattare = forfattare
+        self.sidor = sidor
 
-class Kirjahylly:
+class Bokhylla:
     def __init__(self):
-        self._kirjat = []
+        self._bocker = []
 
-    def lisaa_kirja(self, kirja: Kirja):
-        self._kirjat.append(kirja)
+    def tillsatt_bok(self, bok: Bok):
+        self._bocker.append(bok)
 
-    # Iteraattorin alustusmetodi
-    # Tässä tulee alustaa iteroinnissa käytettävä(t) muuttuja(t)
+    # Initialiseringsmetoden för iteratorn
+    # Här bör iterationsvariabeln(eller variablerna) initialiseras
     def __iter__(self):
         self.n = 0
-        # Metodi palauttaa viittauksen olioon itseensä, koska
-        # iteraattori on toteutettu samassa luokassa
+        # Metoden returnerar en referens till själva objektet eftersom 
+        # iteratorn är implementerad inom samma klassdefinition
         return self
 
-    # Metodi palauttaa seuraavan alkion
-    # Jos ei ole enempää alkioita, heitetään tapahtuma
-    # StopIteration
+    # Metoden returnerar nästa föremål inom objektet
+    # Ifall inga föremål är kvar, åstadkomms StopIteration-händelsen
     def __next__(self):
-        if self.n < len(self._kirjat):
-            # Poimitaan listasta nykyinen
-            kirja = self._kirjat[self.n]
-            # Kasvatetaan laskuria yhdellä
+        if self.n < len(self._bocker):
+            # Väljer det aktuella föremålet från listan inom objektet
+            bok = self._bocker[self.n]
+            # Öka räknaren med ett
             self.n += 1
-            # ...ja palautetaan
-            return kirja
+            # ... och returnera det aktuella föremålet
+            return bok
         else:
-            # Ei enempää kirjoja
+            # Inga fler böcker
             raise StopIteration
 
 ```
@@ -594,52 +593,52 @@ Vår bokhylla är nu redo för iteration, till exempel med en `for`-loop:
 ```python
 
 if __name__ == "__main__":
-    k1 = Kirja("Elämäni Pythoniassa", "Pekka Python", 123)
-    k2 = Kirja("Vanhus ja Java", "Ernest Hemingjava", 204)
-    k3 = Kirja("C-itsemän veljestä", "Keijo Koodari", 997)
+    b1 = Bok("Livet av en Python", "Peter Python", 123)
+    b2 = Bok("Den gamle och Java", "Ernest Hemingjava", 204)
+    b3 = Bok("C-värdheter på nätet", "Karl Kodare", 997)
 
-    hylly = Kirjahylly()
-    hylly.lisaa_kirja(k1)
-    hylly.lisaa_kirja(k2)
-    hylly.lisaa_kirja(k3)
+    hylla = Bokhylla()
+    hylla.tillsatt_bok(b1)
+    hylla.tillsatt_bok(b2)
+    hylla.tillsatt_bok(b3)
 
-    # Tulostetaan kaikkien kirjojen nimet
-    for kirja in hylly:
-        print(kirja.nimi)
+    # Skriver ut namnet på alla böcker
+    for bok in hylla:
+        print(bok.namn)
 
 ```
 
 <sample-output>
 
-Elämäni Pythoniassa
-Vanhus ja Java
-C-itsemän veljestä
+Livet av en Python
+Den gamle och Java
+C-värdheter på nätet
 
 </sample-output>
 
 
 <programming-exercise name='Iteroitava kauppalista' tmcname='osa10-09_iteroitava_kauppalista'>
 
-Tehtäväpohjassa on [osan 8 tehtävästä ](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista) tuttu luokka `Kauppalista`. Tee luokasta iteroitava, siten että sitä voi käyttää seuraavasti:
+I uppgiftsbotten finns klassen `Affarslista` från [övningen i del 8](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
 
 ```python
-lista = Kauppalista()
-lista.lisaa("banaanit", 10)
-lista.lisaa("omenat", 5)
-lista.lisaa("ananas", 1)
+lista = Affarslista()
+lista.tillsatt("apelsiner", 10)
+lista.tillsatt("bananer", 5)
+lista.tillsatt("ananas", 1)
 
-for tuote in lista:
-    print(f"{tuote[0]}: {tuote[1]} kpl")
+for produkt in lista:
+    print(f"{produkt[0]}: {produkt[1]} kpl")
 ```
 
 <sample-output>
 
-banaanit: 10 kpl
-omenat: 5 kpl
+apelsiner: 10 kpl
+bananer: 5 kpl
 ananas: 1 kpl
 
 </sample-output>
 
-Iteraattorin metodin `__next__` tulee palauttaa tupleja, joiden ensimmäinen alkio on tuotteen nimi ja toisen listalla olevan tuotteen lukumäärä.
+Iteratormetoden `__next__` ska returnera tuplar, där det första föremålet är namnet på produkten och det andra är antalet.
 
 </programming-exercise>

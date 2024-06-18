@@ -19,27 +19,27 @@ Efter den här delen
 Låt oss ta en titt på en klass som modellerar en rektangel i ett tvådimensionellt rum:
 
 ```python
-class Suorakulmio:
-    def __init__(self, vasen_ylakulma: tuple, oikea_alakulma: tuple):
-        self.vasen_ylakulma = vasen_ylakulma
-        self.oikea_alakulma = oikea_alakulma
-        self.leveys = oikea_alakulma[0]-vasen_ylakulma[0]
-        self.korkeus = oikea_alakulma[1]-vasen_ylakulma[1]
+class Rektangel:
+    def __init__(self, vanster_ovre: tuple, hoger_nedre: tuple):
+        self.vanster_ovre = vanster_ovre
+        self.hoger_nedre = hoger_nedre
+        self.bredd = hoger_nedre[0]-vanster_ovre[0]
+        self.hojd = hoger_nedre[1]-vanster_ovre[1]
 
-    def pinta_ala(self):
-        return self.leveys * self.korkeus
+    def area(self):
+        return self.bredd * self.hojd
 
-    def piiri(self):
-        return self.leveys * 2 + self.korkeus * 2
+    def omkrets(self):
+        return self.bredd * 2 + self.hojd * 2
 
-    def siirra(self, x_muutos: int, y_muutos: int):
-        kulma = self.vasen_ylakulma
-        self.vasen_ylakulma = (kulma[0]+x_muutos, kulma[1]+y_muutos)
-        kulma = self.oikea_alakulma
-        self.oikea_alakulma = (kulma[0]+x_muutos, kulma[1]+y_muutos)
+    def flytta(self, x_andring: int, y_andring: int):
+        horn = self.vanster_ovre
+        self.vanster_ovre = (horn[0]+x_andring, horn[1]+y_andring)
+        horn = self.hoger_nedre
+        self.hoger_nedre = (horn[0]+x_andring, horn[1]+y_andring)
 ```
 
-En ny `Rektangel` skapas med två tupler som argument. Dessa tupler innehåller x- och y-koordinaterna för det övre vänstra hörnet och det nedre högra hörnet. Konstruktören beräknar rektangelns höjd och bredd baserat på dessa värden.
+En ny `Rektangel` skapas med två tuplar som argument. Dessa tuplar innehåller x- och y-koordinaterna för det övre vänstra hörnet och det nedre högra hörnet. Konstruktören beräknar rektangelns höjd och bredd baserat på dessa värden.
 
 Metoderna `area` och `omkrets` beräknar rektangelns area och omkrets baserat på höjd och bredd. Metoden `flytta` flyttar rektangeln med de x- och y-värden som anges som argument.
 
@@ -48,17 +48,17 @@ Rektangeln representeras i ett koordinatsystem där x-koordinaterna ökar från 
 Följande program testar klassen `Rektangel`:
 
 ```python
-suorakulmio = Suorakulmio((1, 1), (4, 3))
-print(suorakulmio.vasen_ylakulma)
-print(suorakulmio.oikea_alakulma)
-print(suorakulmio.leveys)
-print(suorakulmio.korkeus)
-print(suorakulmio.piiri())
-print(suorakulmio.pinta_ala())
+rektangel = Rektangel((1, 1), (4, 3))
+print(rektangel.vanster_ovre)
+print(rektangel.hoger_nedre)
+print(rektangel.bredd)
+print(rektangel.hojd)
+print(rektangel.omkrets())
+print(rektangel.area())
 
-suorakulmio.siirra(3, 3)
-print(suorakulmio.vasen_ylakulma)
-print(suorakulmio.oikea_alakulma)
+rektangel.flytta(3, 3)
+print(rektangel.vanster_ovre)
+print(rektangel.hoger_nedre)
 ```
 
 <sample-output>
@@ -79,15 +79,15 @@ print(suorakulmio.oikea_alakulma)
 När du har ett objekt som skapats från en klass som du själv definierat, är standardreaktionen på att anropa instruktionen `print` med objektet som argument inte särskilt informativt:
 
 ```python
-suorakulmio = Suorakulmio((1, 1), (4, 3))
-print(suorakulmio)
+rektangel = Rektangel((1, 1), (4, 3))
+print(rektangel)
 ```
 
 Utskriften borde se ut någorlunda så här:
 
 <sample-output>
 
-<__main__.Suorakulmio object at 0x000002D7BF148A90>
+<__main__.Rektangel object at 0x000002D7BF148A90>
 
 </sample-output>
 
@@ -96,39 +96,39 @@ Vi vill självklart ha mer kontroll över vad som skrivs ut. Det enklaste sätte
 Så låt oss lägga till en `__str__`-metoddefinition i vår `Rektangel`-klass:
 
 ```python
-class Suorakulmio:
+class Rektangel:
 
-    # Luokan muu sisältö tähän kuten ennenkin...
+    # Resten av klassen kommer här såsom ovan
 
-    # Metodi palauttaa olion tilan merkkijonona
+    # Metoden returnerar objektets tillstånd i strängformat
     def __str__(self):
-        return f"suorakulmio {self.vasen_ylakulma} ... {self.oikea_alakulma}"
+        return f"rektangel {self.vanster_ovre} ... {self.hoger_nedre}"
 ```
 
 Nu borde `print` instruktionen producera nånting mer användarvänligt:
 
 ```python
-suorakulmio = Suorakulmio((1, 1), (4, 3))
-print(suorakulmio)
+rektangel = Rektangel((1, 1), (4, 3))
+print(rektangel)
 ```
 
 <sample-output>
 
-suorakulmio (1, 1) ... (4, 3)
+rektangel (1, 1) ... (4, 3)
 
 </sample-output>
 
 Metoden `__str__` används kanske oftare för att formulera en strängrepresentation av objektet med `str`-funktionen, som i följande program:
 
 ```python
-suorakulmio = Suorakulmio((1, 1), (4, 3))
-kuvaus = str(suorakulmio)
-print(kuvaus)
+rektangel = Rektangel((1, 1), (4, 3))
+beskrivning = str(rektangel)
+print(beskrivning)
 ```
 
 <sample-output>
 
-suorakulmio (1, 1) ... (4, 3)
+rektangel (1, 1) ... (4, 3)
 
 </sample-output>
 
@@ -137,22 +137,22 @@ Det finns många fler speciella understrukna metoder som kan definieras för kla
 
 <programming-exercise name='Sekuntikello' tmcname='osa08-11a_sekuntikello'>
 
-Tehtäväpohjassa on mukana luokan `Sekuntikello` runko:
+Uppgiftsbotten innehåller följande ram för klassen `Stoppur`:
 
 ```python
-class Sekuntikello:
+class Stoppur:
     def __init__(self):
-        self.sekunnit = 0
-        self.minuutit = 0
+        self.sekunder = 0
+        self.minuter = 0
 ```
 
-Laajenna luokkaa siten, että se toimii seuraavasti:
+Bygg ut på klassdefinitionen så att den fungerar enligt följande:
 
 ```python
-kello = Sekuntikello()
+klocka = Stoppur()
 for i in range(3600):
-    print(kello)
-    kello.tick()
+    print(klocka)
+    klocka.tick()
 ```
 
 <sample-output>
@@ -160,11 +160,11 @@ for i in range(3600):
 00:00
 00:01
 00:02
-... tässä välissä monta riviä
+... många fler rader utskrivna
 00:59
 01:00
 01:01
-... tässä välissä erittäin monta riviä
+... många, många fler rader utskrivna
 59:58
 59:59
 00:00
@@ -172,34 +172,34 @@ for i in range(3600):
 
 </sample-output>
 
-Metodi `tick` vie siis kelloa sekunnin eteenpäin, ja sekä sekuntien että minuuttien arvo on suuruudeltaan korkeintaan 59. Lisäksi oliossa tulee olla metodi `__str__`, joka näyttää kellonajan yllä olevassa muodossa.
+Metoden `tick` innebär alltså att en sekund läggs till i stoppuret. Det maximala värdet för både sekunder och minuter är 59. Din klassdefinition bör också innehålla en `__str__`-metod, som returnerar en strängrepresentation av stoppurets tillstånd, som visas i exemplet ovan.
 
-**Vihje:** metodin `tick` testailua voi helpottaa asettamalla tilapäisesti konstruktorissa sekunneille ja minuuteille valmiiksi jonkin suuremman arvon kuin 0.
+**Tips:** Det kan göra det lättare att testa `tick`-metoden om du tillfälligt ställer in startvärdena för sekunder och minuter till något värde närmare 59 i konstruktorn. Om du ändrar de ursprungliga värdena, kom ihåg att ändra tillbaka dem innan du skickar in.
 
 </programming-exercise>
 
 <programming-exercise name='Kello' tmcname='osa08-12_kello'>
 
-Toteuta edellistä tehtävää laajentava luokka `Kello`, joka toimii seuraavaan tapaan:
+Definiera en ny klass `Klocka`, som bygger på Stoppur klassen. Den ska fungera enligt följande:
 
 ```python
-kello = Kello(23, 59, 55)
-print(kello)
-kello.tick()
-print(kello)
-kello.tick()
-print(kello)
-kello.tick()
-print(kello)
-kello.tick()
-print(kello)
-kello.tick()
-print(kello)
-kello.tick()
-print(kello)
+klocka = Klocka(23, 59, 55)
+print(klocka)
+klocka.tick()
+print(klocka)
+klocka.tick()
+print(klocka)
+klocka.tick()
+print(klocka)
+klocka.tick()
+print(klocka)
+klocka.tick()
+print(klocka)
+klocka.tick()
+print(klocka)
 
-kello.aseta(12, 5)
-print(kello)
+klocka.installning(12, 5)
+print(klocka)
 ```
 
 <sample-output>
@@ -213,179 +213,179 @@ print(kello)
 12:05:00
 </sample-output>
 
-Konstruktori siis antaa kellon tunneille, minuuteille ja sekunneille alkuarvot. Metodi `tick` vie kelloa sekunnin eteenpäin ja metodilla `aseta` voi asettaa kellon tunneille ja minuuteille uuden arvon ja _nollata sekunnit_.
+Konstruktorn tar alltså ursprungliga värden för timmar, minuter och sekunder som argument. Metoden `tick` för klockan framåt en sekond och metoden `installning` ställer in klockans timmar och minuter och _nollar sekunderna_.
 
 </programming-exercise>
 
 <programming-exercise name='Maksukortti' tmcname='osa08-13_maksukortti'>
 
-Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia.
+På Unicafe, studentkafeterian vid Helsingfors universitet, kan studenterna betala för sin lunch med ett särskilt betalkort.
 
-Tässä tehtäväsarjassa tehdään luokka `Maksukortti`, jonka tarkoituksena on jäljitellä Unicafeissa tapahtuvaa maksutoimintaa.
+I den här övningen kommer du att skriva en klass som heter Lunchkort, med syftet att emulera de funktioner som tillhandahålls av Unicafes betalkort.
 
-### Luokan runko
+### Del 1: Strukturen av klassen
 
-Tee ohjelmaan uusi luokka nimeltä `Maksukortti`.
+Skapa en ny klass med namnet `Lunchkort`.
 
-Tee ensin luokalle konstruktori, jolle annetaan kortin alkusaldo ja joka tallentaa sen olion sisäiseen muuttujaan. Tee sitten `__str__`-metodi, joka palauttaa kortin saldon muodossa "Kortilla on rahaa X euroa". Rahamäärä tulee tulostaa yhden desimaalin tarkkuudella.
+Skapa först konstruktorn för klassen. Den ska ta det ursprungliga saldot som finns på kortet som ett argument och spara det som ett attribut. Skapa sedan en `__str__`-metod som returnerar en sträng som innehåller saldot: ”Saldot är X euro”. Det tillgängliga saldot ska skrivas ut med en decimals noggrannhet. Se exemplet nedan för användning.
 
-Seuraavassa on luokan Maksukortti runko:
+Följande är en ram av klassen:
 
 ```python
-class Maksukortti:
-    def __init__(self, alkusaldo: float):
-        self.saldo = alkusaldo
+class Lunchkort:
+    def __init__(self, saldo: float):
+        self.saldo = saldo
 
     def __str__(self):
         pass
 ```
 
-Käyttöesimerkki
+Exempel av användning:
 
 ```python
-kortti = Maksukortti(50)
-print(kortti)
+kort = Lunchkort(50)
+print(kort)
 ```
 
-Ohjelman tulisi tuottaa seuraava tulostus:
+Programmet ovan borde producera följande utskrift:
 
 <sample-output>
 
-Kortilla on rahaa 50.0 euroa
+Kortets saldo är 50.0 euro
 
 </sample-output>
 
-### Kortilla maksaminen
+### Del 2: Betalning av lunch
 
-Täydennä Maksukortti-luokkaa seuraavilla metodeilla:
+Implementera följande metoder till din Lunchkort klass:
 
-- `syo_edullisesti` joka vähentää kortin saldoa 2.60 eurolla
-- `syo_maukkaasti` joka vähentää kortin saldoa 4.60 eurolla
+- `at_formanligt` som minskar saldot med 2.60 euro
+- `at_special` som minskar saldot med 4.60 euro
 
-Seuraava pääohjelma testaa luokkaa
+Följande huvudfunktion testar din klass:
 
 ```python
-kortti = Maksukortti(50)
-print(kortti)
+kort = Lunchkort(50)
+print(kort)
 
-kortti.syo_edullisesti()
-print(kortti)
+kort.at_formanligt()
+print(kort)
 
-kortti.syo_maukkaasti()
-kortti.syo_edullisesti()
-print(kortti)
+kort.at_special()
+kort.at_formanligt()
+print(kort)
 ```
 
-Ohjelman tulisi tuottaa seuraava tulostus:
+Detta borde ge följande utskrift:
 
 <sample-output>
 
-Kortilla on rahaa 50.0 euroa
-Kortilla on rahaa 47.4 euroa
-Kortilla on rahaa 40.2 euroa
+Kortets saldo är 50.0 euro
+Kortets saldo är 47.4 euro
+Kortets saldo är 40.2 euro
 
 </sample-output>
 
-Huomaa, että kortin saldo ei saa mennä negatiiviseksi:
+Se till att kortets saldo inte kan bli under 0:
 
 ```python
-kortti = Maksukortti(4)
-print(kortti)
+kort = Lunchkort(4)
+print(kort)
 
-kortti.syo_edullisesti()
-print(kortti)
+kort.at_formanligt()
+print(kort)
 
-kortti.syo_edullisesti()
-print(kortti)
+kort.at_formanligt()
+print(kort)
 ```
 
 <sample-output>
 
-Kortilla on rahaa 4.0 euroa
-Kortilla on rahaa 1.4 euroa
-Kortilla on rahaa 1.4 euroa
+Kortets saldo är 4.0 euro
+Kortets saldo är 1.4 euro
+Kortets saldo är 1.4 euro
 
 </sample-output>
 
-Eli kortin saldo ei enää vähene jos maksettaessa saldo ei ole riittävä.
+Kortets saldo får alltså inte minska ifall det inte finns tillräckligt med pengar på det.
 
-### Kortin lataaminen
+### Del 3: Sätta in pengar på kortet
 
-Lisää `Maksukortti`-luokkaan metodi `lataa_rahaa`.
+Lägg till metoden `tillsatt_pengar` till `Lunchkort`-klassen.
 
-Metodin tarkoituksena on kasvattaa kortin saldoa parametrina annetulla rahamäärällä.
+Metoden ska öka saldot på kortet med mängden angivet som argument.
 
 ```python
-kortti = Maksukortti(10)
-print(kortti)
-kortti.lataa_rahaa(15)
-print(kortti)
-kortti.lataa_rahaa(10)
-print(kortti)
-kortti.lataa_rahaa(200)
-print(kortti)
+kort = Lunchkort(10)
+print(kort)
+kort.tillsatt_pengar(15)
+print(kort)
+kort.tillsatt_pengar(10)
+print(kort)
+kort.tillsatt_pengar(200)
+print(kort)
 ```
 
 <sample-output>
 
-Kortilla on rahaa 10.0 euroa
-Kortilla on rahaa 25.0 euroa
-Kortilla on rahaa 35.0 euroa
-Kortilla on rahaa 235.0 euroa
+Kortets saldo är 10.0 euro
+Kortets saldo är 25.0 euro
+Kortets saldo är 35.0 euro
+Kortets saldo är 235.0 euro
 
 </sample-output>
 
-Jos kortille yritetään ladata negatiivinen summa, tulee metodin [tuottaa poikkeus](/osa-6/3-virheet#poikkeusten-tuottaminen) `ValueError`:
+Ifall kortet försöker laddas med en negativ mängd ska metoden [åstadkomma ett undantag](/osa-6/3-virheet#poikkeusten-tuottaminen) av typen `ValueError`:
 
 ```python
-kortti = Maksukortti(10)
-kortti.lataa_rahaa(-10)
+kort = Lunchkort(10)
+kort.tillsatt_pengar(-10)
 ```
 
 <sample-output>
 
-File "testi.py", line 3, in maksukortti
-ValueError: Kortille ei saa ladata negatiivista summaa
+File "testi.py", line 3, in lunchkort
+ValueError: Det går inte att lägga till mindre än noll
 
 </sample-output>
 
-**Huomaa** että metodin tulee _tuottaa_ poikkeus, katso [osan 6](/osa-6/3-virheet#poikkeusten-tuottaminen) materiaalista miten poikkeus tuotetaan. Metodi ei missään tilanteessa itse tulosta mitään!
+**OBS:** metoden ska _åstadkomma_ ett undantag, se [del 6](/osa-6/3-virheet#poikkeusten-tuottaminen) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
 
-### Monta korttia
+### Del 4: Flera kort
 
-Tee pääohjelma, joka sisältää seuraavan tapahtumasarjan:
+Skapa ett huvudprogram, som innehåller följande händelser:
 
-- Luo Pekan kortti. Kortin alkusaldo on 20 euroa
-- Luo Matin kortti. Kortin alkusaldo on 30 euroa
-- Pekka syö maukkaasti
-- Matti syö edullisesti
-- _Korttien arvot tulostetaan (molemmat omalle rivilleen, rivin alkuun kortin omistajan nimi)_
-- Pekka lataa rahaa 20 euroa
-- Matti syö maukkaasti
-- _Korttien arvot tulostetaan (molemmat omalle rivilleen, rivin alkuun kortin omistajan nimi)_
-- Pekka syö edullisesti
-- Pekka syö edullisesti
-- Matti lataa rahaa 50 euroa
-- _Korttien arvot tulostetaan (molemmat omalle rivilleen, rivin alkuun kortin omistajan nimi)_
+- Skapa Peters kort. Kortets ursprungliga saldo är 20 euro
+- Skapa Mattes kort. Kortets ursprungliga saldo är 30 euro
+- Peter äter en special
+- Matte äter förmånligt
+- _Kortens saldon skrivs ut (På varsin rad, med ägarens namn i början av raden)_
+- Peter tillsätter 20 euro på kortet
+- Matte äter en special
+- _Kortens saldon skrivs ut (På varsin rad, med ägarens namn i början av raden)_
+- Peter äter förmånligt
+- Peter äter förmånligt
+- Matte tillsätter 50 euro på kortet
+- _Kortens saldon skrivs ut (På varsin rad, med ägarens namn i början av raden)_
 
-Pääohjelman runko
+Huvudprogrammets ram:
 
 ```python
-pekan_kortti = Maksukortti(20)
-matin_kortti = Maksukortti(30)
-# tee koodi tänne
+peters_kort = Lunchkort(20)
+mattes_kort = Lunchkort(30)
+# resten av huvudprogrammet
 ```
 
-Tulostuksen tulee olla seuraava
+Utskriften borde vara följande:
 
 <sample-output>
 
-Pekka: Kortilla on rahaa 15.4 euroa
-Matti: Kortilla on rahaa 27.4 euroa
-Pekka: Kortilla on rahaa 35.4 euroa
-Matti: Kortilla on rahaa 22.8 euroa
-Pekka: Kortilla on rahaa 30.2 euroa
-Matti: Kortilla on rahaa 72.8 euroa
+Peter: Kortets saldo är 15.4 euro
+Matte: Kortets saldo är 27.4 euro
+Peter: Kortets saldo är 35.4 euro
+Matte: Kortets saldo är 22.8 euro
+Peter: Kortets saldo är 30.2 euro
+Matte: Kortets saldo är 72.8 euro
 
 </sample-output>
 
@@ -393,61 +393,61 @@ Matti: Kortilla on rahaa 72.8 euroa
 
 ## Exempel 2: Uppgiftslista
 
-Följande klass `UppgiftsLista` modellerar en lista med uppgifter:
+Följande klass `Uppgiftslista` modellerar en lista med uppgifter:
 
 ```python
-class Tehtavalista:
+class Uppgiftslista:
     def __init__(self):
-        self.tehtavat = []
+        self.uppgifter = []
 
-    def lisaa(self, nimi: str, prioriteetti: int):
-        self.tehtavat.append((prioriteetti, nimi))
+    def tillsatt(self, namn: str, prioritet: int):
+        self.uppgifter.append((prioritet, namn))
 
-    def hae_seuraava(self):
-        self.tehtavat.sort()
-        # Metodi pop poistaa ja palauttaa listan viimeisen alkion
-        tehtava = self.tehtavat.pop()
-        # Palautetaan tuplen jälkimmäinen osa eli tehtävän nimi
-        return tehtava[1]
+    def hamta_nasta(self):
+        self.uppgifter.sort()
+        # Metoden pop tar bort och returnerar sista föremålet på listan
+        uppgift = self.uppgifter.pop()
+        # Returnerar det andra föremålet i tupeln, alltså uppgiftens namn
+        return uppgift[1]
 
-    def yhteensa(self):
-        return len(self.tehtavat)
+    def sammanlagt(self):
+        return len(self.uppgifter)
 
-    def tyhjenna(self):
-        self.tehtavat = []
+    def rensa_uppgifter(self):
+        self.uppgifter = []
 ```
 
-Metoden `tillägg_uppgift` lägger till en ny uppgift på listan. Varje uppgift har också en prioritet, som används för att sortera uppgifterna. Metoden `hämta_nästa` tar bort och returnerar den uppgift som har högst prioritet i listan. Metoden `mängden_uppgifter` finns också, som returnerar antalet uppgifter i listan, och slutligen metoden `rensa_uppgifter`, som rensar uppgiftslistan.
+Metoden `tillagg_uppgift` lägger till en ny uppgift på listan. Varje uppgift har också en prioritet, som används för att sortera uppgifterna. Metoden `hamta_nasta` tar bort och returnerar den uppgift som har högst prioritet i listan. Metoden `sammanlagt` finns också, som returnerar antalet uppgifter i listan, och slutligen metoden `rensa_uppgifter`, som rensar uppgiftslistan.
 
 Inom objektet lagras uppgifterna i en lista. Varje uppgift består av en tupel som innehåller uppgiftens prioritet och dess namn. Prioritetsvärdet lagras först, så att den uppgift som har högst prioritet hamnar sist i listan då den sorteras. Därför kan vi sedan helt enkelt använda `pop`-metoden för att hämta och ta bort det högst prioriterade objektet.
 
 Ta en titt på följande program med uppgiftslistan i handling: 
 
 ```python
-lista = Tehtavalista()
-lista.lisaa("opiskelu", 50)
-lista.lisaa("ulkoilu", 60)
-lista.lisaa("siivous", 10)
-print(lista.yhteensa())
-print(lista.hae_seuraava())
-print(lista.yhteensa())
-lista.lisaa("treffit", 100)
-print(lista.yhteensa())
-print(lista.hae_seuraava())
-print(lista.hae_seuraava())
-print(lista.yhteensa())
-lista.tyhjenna()
-print(lista.yhteensa())
+lista = Uppgiftslista()
+lista.tillsatt("studier", 50)
+lista.tillsatt("motion", 60)
+lista.tillsatt("städning", 10)
+print(lista.sammanlagt())
+print(lista.hamta_nasta())
+print(lista.sammanlagt())
+lista.tillsatt("dejt", 100)
+print(lista.sammanlagt())
+print(lista.hamta_nasta())
+print(lista.hamta_nasta())
+print(lista.sammanlagt())
+lista.rensa_uppgifter()
+print(lista.sammanlagt())
 ```
 
 <sample-output>
 
 3
-ulkoilu
+motion
 2
 3
-treffit
-opiskelu
+dejt
+studier
 1
 0
 
@@ -455,31 +455,31 @@ opiskelu
 
 <programming-exercise name='Sarja' tmcname='osa08-14_sarja'>
 
-### Luokka Sarja
+### Del 1: Klassen Serie
 
-Tee luokka `Sarja`, joka toimii seuraavasti
+Skapa klassen `Serie`, som fungerar enligt följande:
 
 ```python
-dexter = Sarja("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
+dexter = Serie("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
 print(dexter)
 ```
 
 <sample-output>
 
-Dexter (8 esityskautta)
+Dexter (8 säsonger)
 genret: Crime, Drama, Mystery, Thriller
-ei arvosteluja
+inga betygsättningar
 
 </sample-output>
 
-Konstruktorissa siis asetetaan sarjan nimi, sen esityskausien lukumäärä sekä lista, joka kertoo mitä genrejä sarja edustaa.
+Konstruktorn ska ta titeln, antalet säsonger och en lista med genrer för serien som sina argument.
 
-**Vihje:** merkkijonotaulukko saadaan muutettua haluttuja välimerkkejä sisältäväksi merkkijonoksi metodin `join` avulla seuraavasti:
+**Tips:** när du behöver en sträng från en lista med strängar, där du vill separera med en karaktär av ditt val, kan du använda `join` metoden på följande sätt:
 
 ```python
 lista = ["Crime", "Drama", "Mystery", "Thriller"]
-merkkijono = ", ".join(lista)
-print(merkkijono)
+strang = ", ".join(lista)
+print(strang)
 ```
 
 <sample-output>
@@ -488,17 +488,17 @@ Crime, Drama, Mystery, Thriller
 
 </sample-output>
 
-### Arvostelujen lisääminen
+### Del 2: Betygsättningar
 
-Tee luokalle metodi `arvostele(arvosana: int)`, jonka avulla sarjalle voi lisätä arvosanan, joka on kokonaisluku väliltä 0–5. Myös metodia `__str__` tulee muuttaa niin, että se antaa arvostelujen määrän ja keskiarvon pyöristettynä yhden desimaalin tarkkuudelle (jos arvosteluja on annettu).
+Skapa en metod `betygsatt(betyg: int)`, med vilken man kan ge ett betyg mellan heltalen 0 och 5. Också metoden `__str__` ska ändras som så, att ifall det finns några betyg ska metoden skriva ut mängden betyg och deras medeltal med en decimals noggranhet.
 
 ```python
-dexter = Sarja("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
-dexter.arvostele(4)
-dexter.arvostele(5)
-dexter.arvostele(5)
-dexter.arvostele(3)
-dexter.arvostele(0)
+dexter = Serie("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
+dexter.betygsatt(4)
+dexter.betygsatt(5)
+dexter.betygsatt(5)
+dexter.betygsatt(3)
+dexter.betygsatt(0)
 print(dexter)
 ```
 
@@ -506,40 +506,40 @@ print(dexter)
 
 Dexter (8 esityskautta)
 genret: Crime, Drama, Mystery, Thriller
-arvosteluja 5, keskiarvo 3.4 pistettä
+Betyg 5, medeltal 3.4 poäng
 
 </sample-output>
 
-### Sarjojen haku
+### Del 3: Sökning av serier
 
-Tee kaksi funktiota `arvosana_vahintaan(arvosana: float, sarjat: list)` ja `sisaltaa_genren(genre: str, sarjat: list)`, joiden avulla on mahdollista etsiä listalla olevia sarjoja.
+Skapa två funktioner `betyg_minst(betyg: float, serier: list)` och `innehallar_genren(genre: str, serier: list)`, med vilka det är möjligt att hitta serier på listan.
 
-Metodit toimivat seuraavasti:
+Metoderna fungerar på följande sätt:
 
 ```python
-s1 = Sarja("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
-s1.arvostele(5)
+s1 = Serie("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
+s1.betygsatt(5)
 
-s2 = Sarja("South Park", 24, ["Animation", "Comedy"])
-s2.arvostele(3)
+s2 = Serie("South Park", 24, ["Animation", "Comedy"])
+s2.betygsatt(3)
 
-s3 = Sarja("Friends", 10, ["Romance", "Comedy"])
-s3.arvostele(2)
+s3 = Serie("Friends", 10, ["Romance", "Comedy"])
+s3.betygsatt(2)
 
-sarjat = [s1, s2, s3]
+serier = [s1, s2, s3]
 
-print("arvosana vähintään 4.5:")
-for sarja in arvosana_vahintaan(4.5, sarjat):
-    print(sarja.nimi)
+print("betyg minst 4.5:")
+for serie in betyg_minst(4.5, serier):
+    print(serie.namn)
 
 print("genre Comedy:")
-for sarja in sisaltaa_genren("Comedy", sarjat):
-    print(sarja.nimi)
+for serie in innehallar_genren("Comedy", serier):
+    print(serie.namn)
 ```
 
 <sample-output>
 
-arvosana vähintään 4.5:
+betyg minst 4.5:
 Dexter
 
 genre Comedy:
@@ -548,10 +548,10 @@ Friends
 
 </sample-output>
 
-Huomaa, että yllä oleva koodi ja testit olettavat, että luokassa on attribuutti `nimi`. Jos olet käyttänyt muuta nimeä, sinun kannattaa vaihtaa se nyt.
+Observera att ovanstående kod och testerna för denna övning antar att din klass innehåller attributet `namn`. Ifall du använder något annat attribut för att hänvisa till namnet på serien, bör du ändra det innan du skickar in uppgifterna.
 
 </programming-exercise>
 
-Vastaa lopuksi osion loppukyselyyn:
+Vänligen svara på en snabb enkät om veckans material:
 
 <quiz id="05b480cc-49ea-51e4-a971-d03209a54d5b"></quiz>

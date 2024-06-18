@@ -20,20 +20,20 @@ Vi är redan bekanta med metoden `sort` och funktionen `sorted`, som används f�
 Till exempel sorteras som standard en lista med tupler baserat på det första objektet i varje tupel:
 
 ```python
-tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
+produkter = [("banan", 5.95), ("äppel", 3.95), ("apelsin", 4.50), ("vattenmelon", 4.95)]
 
-tuotteet.sort()
+produkter.sort()
 
-for tuote in tuotteet:
-    print(tuote)
+for produkt in produkter:
+    print(produkt)
 ```
 
 <sample-output>
 
-('appelsiini', 4.5)
-('banaani', 5.95)
-('omena', 3.95)
-('vesimeloni', 4.95)
+('apelsin', 4.5)
+('banan', 5.95)
+('vattenmelon', 4.95)
+('äppel', 3.95)
 
 </sample-output>
 
@@ -46,76 +46,76 @@ En sorteringsmetod eller -funktion accepterar vanligtvis ett valfritt andra argu
 Låt oss ta en titt på ett exempel:
 
 ```python
-def hintajarjestys(alkio: tuple):
-    # Palautetaan tuplen toinen alkio eli hinta
-    return alkio[1]
+def prisordning(foremal: tuple):
+    # Returnerar tupelns andra föremål, alltså priset
+    return foremal[1]
 
 if __name__ == "__main__":
-    tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
+    produkter = [("banan", 5.95), ("äppel", 3.95), ("apelsin", 4.50), ("vattenmelon", 4.95)]
 
-    # Hyödynnetään funktiota hintajarjestys
-    tuotteet.sort(key=hintajarjestys)
+    # Använd funktionen prisordning för sortering
+    produkter.sort(key=prisordning)
 
-    for tuote in tuotteet:
-        print(tuote)
+    for produkt in produkter:
+        print(produkt)
 ```
 
 <sample-output>
 
-('omena', 3.95)
-('appelsiini', 4.5)
-('vesimeloni', 4.95)
-('banaani', 5.95)
+('äppel', 3.95)
+('apelsin', 4.5)
+('vattenmelon', 4.95)
+('banan', 5.95)
 
 </sample-output>
 
 Nu är listan sorterad utifrån artiklarnas priser, men vad händer egentligen i programmet?
 
-Funktionen `ordning_enligt_pris` är faktiskt ganska enkel. Den tar ett objekt som sitt argument och returnerar ett värde för det objektet. Mer specifikt returnerar den det andra objektet i tupeln, som representerar priset. Men sedan har vi den här kodraden, där `sort`-metoden anropas:
+Funktionen `prisordning` är faktiskt ganska enkel. Den tar ett objekt som sitt argument och returnerar ett värde för det objektet. Mer specifikt returnerar den det andra objektet i tupeln, som representerar priset. Men sedan har vi den här kodraden, där `sort`-metoden anropas:
 
-`produkter.sort(key=ordning_enligt_pris)`
+`produkter.sort(key=prisordning)`
 
 Här anropas `sort`-metoden med en funktion som argument. Detta är inte en referens till funktionens returvärde, utan en referens till själva funktionen. `Sort`-metoden anropar denna funktion flera gånger och använder varje objekt i listan som argument i tur och ordning.
 
-Om vi inkluderar en extra print-sats i funktionsdefinitionen för `ordning_enligt_pris` kan vi verifiera att funktionen verkligen anropas en gång för varje objekt i listan:
+Om vi inkluderar en extra print-sats i funktionsdefinitionen för `prisordning` kan vi verifiera att funktionen verkligen anropas en gång för varje objekt i listan:
 
 ```python
-def hintajarjestys(alkio: tuple):
-    # Tulostetaan alkio
-    print(f"Kutsuttiin hintajarjestys({alkio})")
+def prisordning(foremal: tuple):
+    # Skriver ut föremålet
+    print(f"Anropade prisordning({foremal})")
 
-    # Palautetaan tuplen toinen alkio eli hinta
-    return alkio[1]
+    # Returnerar tupelns andra föremål, alltså priset
+    return foremal[1]
 
 
-tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
+produkter = [("banan", 5.95), ("äppel", 3.95), ("apelsin", 4.50), ("vattenmelon", 4.95)]
 
-# Hyödynnetään funktiota hintajarjestys
-tuotteet.sort(key=hintajarjestys)
+# Använd funktionen prisordning för sortering
+produkter.sort(key=prisordning)
 
-for tuote in tuotteet:
-    print(tuote)
+for produkt in produkter:
+    print(produkt)
 ```
 
 <sample-output>
 
-Kutsuttiin hintajarjestys(('banaani', 5.95))
-Kutsuttiin hintajarjestys(('omena', 3.95))
-Kutsuttiin hintajarjestys(('appelsiini', 4.5))
-Kutsuttiin hintajarjestys(('vesimeloni', 4.95))
-('omena', 3.95)
-('appelsiini', 4.5)
-('vesimeloni', 4.95)
-('banaani', 5.95)
+Anropade prisordning(('banan', 5.95))
+Anropade prisordning(('äppel', 3.95))
+Anropade prisordning(('apelsin', 4.5))
+Anropade prisordning(('vattenmelon', 4.95))
+('äppel', 3.95)
+('apelsin', 4.5)
+('vattenmelon', 4.95)
+('banan', 5.95)
 
 </sample-output>
 
 Ordningen kan vändas med ett annat nyckelordsargument; `reverse`, som är tillgängligt med både `sort`-metoden och funktionen `sorted`:
 
 ```python
-tuotteet.sort(key=hintajarjestys, reverse=True)
+produkter.sort(key=prisordning, reverse=True)
 
-t2 = sorted(tuotteet, key=hintajarjestys, reverse=True)
+t2 = sorted(produkter, key=prisordning, reverse=True)
 ```
 
 ## En funktionsdefinition inom en funktionsdefinition
@@ -123,87 +123,87 @@ t2 = sorted(tuotteet, key=hintajarjestys, reverse=True)
 Vi kan också inkludera en namngiven funktion för den nya prisbaserade sorteringsfunktionen som vi har skapat. Låt oss lägga till en funktion med namnet `sortera_enligt_pris`:
 
 ```python
-def hintajarjestys(alkio: tuple):
-    return alkio[1]
+def prisordning(foremal: tuple):
+    return foremal[1]
 
-def jarjesta_hinnan_mukaan(alkiot: list):
-    # käytetään täällä funktiota hintajarjestys
-    return sorted(alkiot, key=hintajarjestys)
+def sortera_enligt_pris(foremalen: list):
+    # Använd funktionen prisordning här
+    return sorted(foremalen, key=prisordning)
 
-tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
+produkter = [("banan", 5.95), ("äppel", 3.95), ("apelsin", 4.50), ("vattenmelon", 4.95)]
 
-for tuote in jarjesta_hinnan_mukaan(tuotteet):
-    print(tuote)
+for produkt in sortera_enligt_pris(produkter):
+    print(produkt)
 ```
 
-Om vi vet att hjälpfunktionen `ordning_enligt_pris` inte används någonstans utanför funktionen `sortera_enligt_pris`, kan vi placera den första funktionsdefinitionen inom den senare:
+Om vi vet att hjälpfunktionen `prisordning` inte används någonstans utanför funktionen `sortera_enligt_pris`, kan vi placera den första funktionsdefinitionen inom den senare:
 
 ```python
-def jarjesta_hinnan_mukaan(alkiot: list):
-    # määritellään apufunktio tällä kertaa funktion sisällä
-    def hintajarjestys(alkio: tuple):
-        return alkio[1]
+def sortera_enligt_pris(foremalen: list):
+    # hjälpfunktion definierad inom funktionen
+    def prisordning(foremal: tuple):
+        return foremal[1]
 
-    return sorted(alkiot, key=hintajarjestys)
+    return sorted(foremalen, key=prisordning)
 ```
 
 <programming-exercise name='Järjestys varastosaldon mukaan' tmcname='osa12-01_varastosaldo'>
 
-Tee funktio `jarjesta_varastosaldon_mukaan(alkiot: list)`. Funktio saa parametrina listan tupleja, joissa kolmantena alkiona on tuotteiden varastosaldo. Funktio järjestää parametrinaan saamat tuotteet varastosaldojen  mukaiseen kasvavaan järjestykseen.  Funktio ei muuta parametrina olevaa listaa, vaan palauttaa uuden listan.
+Skapa en funktion med namnet `sortera_enligt_aterstaende_lager(foremal: list)`. Funktionen tar en lista med tupler som sitt argument. Tuplerna består av namn, pris och återstående lager för en produkt. Funktionen ska returnera en ny lista, där artiklarna är sorterade enligt återstående lager, med det lägsta värdet först. Den ursprungliga listan ska inte ändras.
 
-Funktio toimii seuraavasti:
+Funktionen ska fungera på följande sätt:
 
 ```python
-tuotteet = [("banaani", 5.95, 12), ("omena", 3.95, 3), ("appelsiini", 4.50, 2), ("vesimeloni", 4.95, 22)]
+produkter = [("banan", 5.95, 12), ("äppel", 3.95, 3), ("apelsin", 4.50, 2), ("vattenmelon", 4.95, 22)]
 
-for tuote in jarjesta_varastosaldon_mukaan(tuotteet):
-    print(f"{tuote[0]} {tuote[2]} kpl")
+for produkt in sortera_enligt_aterstaende_lager(produkter):
+    print(f"{produkt[0]} {produkt[2]} st")
 ```
 
 <sample-output>
-appelsiini 2 kpl
-omena 3 kpl
-banaani 12 kpl
-vesimeloni 22 kpl
+apelsin 2 st
+äppel 3 st
+banan 12 st
+vattenmelon 22 st
 </sample-output>
 
 </programming-exercise>
 
 <programming-exercise name='Järjestys tuotantokausien mukaan' tmcname='osa12-02_tuotantokaudet'>
 
-Tee funktio `jarjesta_tuotantokausien_mukaan(alkiot: list)`. Funktio saa parametrina listan sanakirjoja, jotka edustavat yksittäisiä TV-sarjoja, ja järjestää ne tuotantokausien lukumäärän mukaiseen kasvavaan järjestykseen. Funktio ei muuta parametrina olevaa listaa, vaan palauttaa uuden listan.
+Skapa en funktion med namnet `sortera_enligt_sasonger(foremal: list)` som tar en lista med ordlistor som sitt argument. Varje ordlista innehåller information om ett enda TV-program. Funktionen ska sortera listan efter antalet säsonger som varje program har, i stigande ordning. Funktionen ska inte ändra den ursprungliga listan, utan istället returnera en ny lista.
 
-Funktio toimii seuraavasti:
+Funktionen ska fungera på följande sätt:
 
 ```python
-sarjat = [{ "nimi": "Dexter", "pisteet" : 8.6, "kausia":9 }, { "nimi": "Friends", "pisteet" : 8.9, "kausia":10 },  { "nimi": "Simpsons", "pisteet" : 8.7, "kausia":32 }  ]
+serier = [{ "namn": "Dexter", "betyg" : 8.6, "säsonger":9 }, { "namn": "Friends", "betyg" : 8.9, "säsonger":10 },  { "namn": "Simpsons", "betyg" : 8.7, "säsonger":32 }  ]
 
-for sarja in jarjesta_tuotantokausien_mukaan(sarjat):
-    print(f"{sarja['nimi']}  {sarja['kausia']} tuotantokautta")
+for serie in sortera_enligt_sasonger(serier):
+    print(f"{serie['namn']}  {serie['säsonger']} säsonger")
 ```
 
 <sample-output>
-Dexter 9 tuotantokautta
-Friends 10 tuotantokautta
-Simpsons 32 tuotantokautta
+Dexter 9 säsonger
+Friends 10 säsonger
+Simpsons 32 säsonger
 </sample-output>
 
 </programming-exercise>
 
 <programming-exercise name='Järjestys pisteiden mukaan' tmcname='osa12-03_pisteiden_mukaan'>
 
-Tee funktio `jarjesta_pisteiden_mukaan(alkiot: list)`. Funktio saa parametrina listan sanakirjoja, jotka edustavat yksittäisiä TV-sarjoja, ja järjestää ne _pisteiden mukaiseen laskevaan järjestykseen_.  Funktio ei muuta parametrina olevaa listaa, vaan palauttaa uuden listan.
+Skapa en funktion med namnet `sortera_enligt_betyg(foremal: list)` som tar en lista med ordlistor som sitt argument. Ordlistornas struktur är identisk med den i den föregående övningen. Denna funktion ska sortera ordlistorna i fallande ordning baserat på programmens betyg. Funktionen ska inte ändra den ursprungliga listan, utan returnera en ny lista istället.
 
 ```python
-sarjat = [{ "nimi": "Dexter", "pisteet" : 8.6, "kausia":9 }, { "nimi": "Friends", "pisteet" : 8.9, "kausia":10 },  { "nimi": "Simpsons", "pisteet" : 8.7, "kausia":32 }  ]
+serier = [{ "namn": "Dexter", "betyg" : 8.6, "säsonger":9 }, { "namn": "Friends", "betyg" : 8.9, "säsonger":10 },  { "namn": "Simpsons", "betyg" : 8.7, "säsonger":32 }  ]
 
-print("IMDB:n mukainen pistemäärä")
-for sarja in jarjesta_pisteiden_mukaan(sarjat):
-    print(f"{sarja['nimi']}  {sarja['pisteet']}")
+print("Betygsättning enligt IMDB")
+for serie in sortera_enligt_betyg(serier):
+    print(f"{serie['namn']}  {serie['betyg']}")
 ```
 
 <sample-output>
-IMDB:n mukainen pistemäärä
+Betygsättning enligt IMDB
 Friends 8.9
 Simpsons 8.7
 Dexter 8.6
@@ -213,137 +213,138 @@ Dexter 8.6
 
 ## Sortering av samlingar av egna objekt
 
-Låt oss med samma princip skriva ett program som sorterar en lista med objekt från vår egen klass `Student` på två olika sätt:
+Låt oss med samma princip skriva ett program som sorterar en lista med objekt från vår egen klass `Studerande` på två olika sätt:
 
 ```python
-class Opiskelija:
-    """ Luokka mallintaa yhtä opiskelijaa """
-    def __init__(self, nimi: str, tunnus: str, pisteet: int):
-        self.nimi = nimi
-        self.tunnus = tunnus
-        self.pisteet = pisteet
+class Studerande:
+    """ Klassen modellerar en enkel studerande """
+    def __init__(self, namn: str, id: str, poang: int):
+        self.namn = namn
+        self.id = id
+        self.poang = poang
 
     def __str__(self):
-        return f"{self.nimi} ({self.tunnus}), {self.pisteet} op."
+        return f"{self.namn} ({self.id}), {self.poang} sp."
 
 
-def tunnuksen_mukaan(alkio: Opiskelija):
-    return alkio.tunnus
+def enligt_id(foremal: Studerande):
+    return foremal.id
 
-def pisteiden_mukaan(alkio: Opiskelija):
-    return alkio.pisteet
+def enligt_poang(foremal: Studerande):
+    return foremal.poang
 
 
 if __name__ == "__main__":
-    o1 = Opiskelija("Aapeli", "a123", 220)
-    o2 = Opiskelija("Maija", "m321", 210)
-    o3 = Opiskelija("Anna", "a999", 131)
+    s1 = Studerande("Anton", "a123", 220)
+    s2 = Studerande("Maja", "m321", 210)
+    s3 = Studerande("Anna", "a999", 131)
 
-    opiskelijat = [o1, o2, o3]
+    studeranden = [s1, s2, s3]
 
-    print("Tunnuksen mukaan:")
-    for opiskelija in sorted(opiskelijat, key=tunnuksen_mukaan):
-        print(opiskelija)
+    print("Enligt id:")
+    for studerande in sorted(studeranden, key=enligt_id):
+        print(studerande)
 
     print()
 
-    print("Pisteiden mukaan:")
-    for opiskelija in sorted(opiskelijat, key=pisteiden_mukaan):
-        print(opiskelija)
+    print("Enligt poäng:")
+    for studerande in sorted(studeranden, key=enligt_poang):
+        print(studerande)
 ```
 
 <sample-output>
 
-Aapeli (a123), 220 op.
-Anna (a999), 131 op.
-Maija (m321), 210 op.
+Enligt id:
+Anton (a123), 220 sp.
+Anna (a999), 131 sp.
+Maja (m321), 210 sp.
 
-Pisteiden mukaan:
-Anna (a999), 131 op.
-Maija (m321), 210 op.
-Aapeli (a123), 220 op.
+Enligt poäng:
+Anna (a999), 131 sp.
+Maja (m321), 210 sp.
+Anton (a123), 220 sp.
 
 </sample-output>
 
-Som du kan se ovan fungerar sortering efter olika kriterier precis som det är tänkt. Om funktionerna `enligt_id` och `enligt_studiepoäng` inte behövs någon annanstans finns det sätt att göra implementeringen enklare. Vi återkommer till detta ämne efter dessa övningar.
+Som du kan se ovan fungerar sortering efter olika kriterier precis som det är tänkt. Om funktionerna `enligt_id` och `enligt_studiepoang` inte behövs någon annanstans finns det sätt att göra implementeringen enklare. Vi återkommer till detta ämne efter dessa övningar.
 
 <programming-exercise name='Kiipeilyreitti' tmcname='osa12-04_kiipeilyreitti'>
 
-Tehtäväpohjan mukana tulee valmis luokka `Kiipeilyreitti`, jota käytetään seuraavasti:
+Uppgiftsbottnet innehåller en klassdefinition för `Klattringsrutt`, som fungerar enligt följande:
 
 ```python
-reitti1 = Kiipeilyreitti("Kantti", 38, "6A+")
-reitti2 = Kiipeilyreitti("Smooth operator", 11, "7A")
-reitti3 = Kiipeilyreitti("Syncro", 14, "8C+")
+rutt1 = Klattringsrutt("Kantti", 38, "6A+")
+rutt2 = Klattringsrutt("Smooth operator", 11, "7A")
+rutt3 = Klattringsrutt("Syncro", 14, "8C+")
 
 
-print(reitti1)
-print(reitti2)
-print(reitti3.nimi, reitti3.pituus, reitti3.grade)
+print(rutt1)
+print(rutt2)
+print(rutt3.namn, rutt3.langd, rutt3.grade)
 ```
 
 <sample-output>
 
-Kantti, pituus 38 metriä, grade 6A+
-Smooth operator, pituus 11 metriä, grade 7A
+Kantti, längd 38 meter, grade 6A+
+Smooth operator, längd 11 meter, grade 7A
 Syncro 14 8C+
 
 </sample-output>
 
-## Pituuden mukainen järjestys
+## Del 1: Sortera enligt längd
 
-Tee funktio `pituuden_mukaan(reitit: list)` joka palauttaa kiipeilyreitit pituuden mukaan käänteisessä järjestyksessä.
+Skapa funktionen `enligt_langd(rutter: list)`, som returnerar en ny lista av rutter sorterade enligt längd från längsta till kortaste.
 
-Funktio toimii seuraavasti:
+Funktionen ska fungera enligt följande:
 
 ```python
-r1 = Kiipeilyreitti("Kantti", 38, "6A+")
-r2 = Kiipeilyreitti("Smooth operator", 11, "7A")
-r3 = Kiipeilyreitti("Syncro", 14, "8C+")
-r4 = Kiipeilyreitti("Pieniä askelia", 12, "6A+")
+r1 = Klattringsrutt("Kantti", 38, "6A+")
+r2 = Klattringsrutt("Smooth operator", 11, "7A")
+r3 = Klattringsrutt("Syncro", 14, "8C+")
+r4 = Klattringsrutt("Små steg", 12, "6A+")
 
-reitit = [r1, r2, r3, r4]
+rutter = [r1, r2, r3, r4]
 
-for reitti in pituuden_mukaan(reitit):
-    print(reitti)
+for rutt in enligt_langd(rutter):
+    print(rutt)
 ```
 
 <sample-output>
 
-Kantti, pituus 38 metriä, grade 6A+
-Syncro, pituus 14 metriä, grade 8C+
-Pieniä askelia, pituus 12 metriä, grade 6A+
-Smooth operator, pituus 11 metriä, grade 7A
+Kantti, längd 38 meter, grade 6A+
+Syncro, längd 14 meter, grade 8C+
+Små steg, längd 12 meter, grade 6A+
+Smooth operator, längd 11 meter, grade 7A
 
 </sample-output>
 
-## Vaikeuden mukainen järjestys
+## Del 2: Sortera enligt svårighetsgrad
 
-Tee funktio `vaikeuden_mukaan(reitit: list)` joka palauttaa kiipeilyreitit vaikeuden (eli graden) mukaan laskevassa järjestyksessä. Jos reittien vaikeus on sama, ratkaisee pituus vaikeuden. Pidempi on vaikeampi. Kiipeilyreittien vaikeusasteikko on _4, 4+, 5, 5+, 6A, 6A+, ..._ eli käytännössä se seuraa aakkosjärjestystä.
+Skapa funktionen `enligt_svarighet(rutter: list)`, som returnerar en ny lista av rutter sorterade enligt svårighet från svåraste till lättaste. För rutter med samma svårighet är den längre svårare. Skalan för svårighet är _4, 4+, 5, 5+, 6A, 6A+, ..._ som i praktiken fungerar enligt alfabetiska ordningen för strängar.
 
-Funktio toimii seuraavasti:
+Funktionen ska fungera enligt följande:
 
 ```python
-r1 = Kiipeilyreitti("Kantti", 38, "6A+")
-r2 = Kiipeilyreitti("Smooth operator", 11, "7A")
-r3 = Kiipeilyreitti("Syncro", 14, "8C+")
-r4 = Kiipeilyreitti("Pieniä askelia", 12, "6A+")
+r1 = Klattringsrutt("Kantti", 38, "6A+")
+r2 = Klattringsrutt("Smooth operator", 11, "7A")
+r3 = Klattringsrutt("Syncro", 14, "8C+")
+r4 = Klattringsrutt("Små steg", 12, "6A+")
 
-reitit = [r1, r2, r3, r4]
-for reitti in vaikeuden_mukaan(reitit):
-    print(reitti)
+rutter = [r1, r2, r3, r4]
+for rutt in enligt_svarighet(rutter):
+    print(rutt)
 ```
 
 <sample-output>
 
-Syncro, pituus 14 metriä, grade 8C+
-Smooth operator, pituus 11 metriä, grade 7A
-Kantti, pituus 38 metriä, grade 6A+
-Pieniä askelia, pituus 12 metriä, grade 6A+
+Syncro, längd 14 meter, grade 8C+
+Smooth operator, längd 11 meter, grade 7A
+Kantti, längd 38 meter, grade 6A+
+Små steg, längd 12 meter, grade 6A+
 
 </sample-output>
 
-*Vihje* jos järjestysperusteena on lista tai tuple, järjestetään ensisijaiseti ensimmäisen alkion mukaan, toissijaisesti toisen:
+**Tips:** Ifall ordningen är baserad på en lista eller tupel, sorterar Python föremål per standard baserat på första föremålet, sedan baserat på det andra och så vidare:
 
 ```python
 lista = [("a", 4),("a", 2),("b", 30), ("b", 0) ]
@@ -360,73 +361,73 @@ print(sorted(lista))
 
 <programming-exercise name='Kiipeilykalliot' tmcname='osa12-05_kiipeilykalliot/'>
 
-Tehtäväpohjasta löytyy luokan `Kiipeilyreitti` lisäksi luokka `Kiipeilykallio`.
+I uppgiftsbotten finns förutom klassen `Klattringsrutt` dessutom klassen `Klättringsomrade`.
 
 ```python
-k1 = Kiipeilykallio("Olhava")
-k1.lisaa_reitti(Kiipeilyreitti("Kantti", 38, "6A+"))
-k1.lisaa_reitti(Kiipeilyreitti("Suuri leikkaus", 36, "6B"))
-k1.lisaa_reitti(Kiipeilyreitti("Ruotsalaisten reitti", 42, "5+"))
+o1 = Klättringsomrade("Olhava")
+o1.tillsatt_rutt(Klattringsrutt("Kantti", 38, "6A+"))
+o1.tillsatt_rutt(Klattringsrutt("Stora snittet", 36, "6B"))
+o1.tillsatt_rutt(Klattringsrutt("Svensk rutt", 42, "5+"))
 
-k2 = Kiipeilykallio("Nummi")
-k2.lisaa_reitti(Kiipeilyreitti("Syncro", 14, "8C+"))
+o2 = Klättringsomrade("Nummi")
+o2.tillsatt_rutt(Klattringsrutt("Syncro", 14, "8C+"))
 
-k3 = Kiipeilykallio("Nalkkilan släbi")
-k3.lisaa_reitti(Kiipeilyreitti("Pieniä askelia", 12, "6A+"))
-k3.lisaa_reitti(Kiipeilyreitti("Smooth operator", 11, "7A"))
-k3.lisaa_reitti(Kiipeilyreitti("Possu ei pidä", 12 , "6B+"))
-k3.lisaa_reitti(Kiipeilyreitti("Hedelmätarha", 8, "6A"))
+o3 = Klättringsomrade("Nalkkilan släbi")
+o3.tillsatt_rutt(Klattringsrutt("Små steg", 12, "6A+"))
+o3.tillsatt_rutt(Klattringsrutt("Smooth operator", 11, "7A"))
+o3.tillsatt_rutt(Klattringsrutt("Grisen gillar inte", 12 , "6B+"))
+o3.tillsatt_rutt(Klattringsrutt("Fruktträdgård", 8, "6A"))
 
-print(k1)
-print(k3.nimi, k3.reitteja())
-print(k3.vaikein_reitti())
+print(o1)
+print(o3.namn, o3.rutter())
+print(o3.svaraste_rutt())
 ```
 
 <sample-output>
 
-Olhava, 3 reittiä, vaikein 6B
-Nalkkilan slabi 4
-Smooth operator, pituus 9 metriä, grade 7A
+Olhava, 3 rutter, svåraste 6B
+Nalkkilan släbi 4
+Smooth operator, längd 9 meter, grade 7A
 
 </sample-output>
 
-## Reittien määrän mukaan
+## Del 1: Sortera enligt antalet rutter
 
-Tee funktio `reittien_maaran_mukaan`, joka järjestää kiipeilykalliot reittien määrän mukaiseen kasvavaan suuruusjärjestykseen.
+Skapa funktionen `enligt_antal_rutter`, som sorterar klättringsområdena enligt antalet rutter de har i ökande ordning.
 
 ```python
-# k1, k2 ja k3 määritelty kuten edellä
-kalliot = [k1, k2, k3]
-for kallio in reittien_maaran_mukaan(kalliot):
-    print(kallio)
+# o1, o2 och o3 definierade enligt ovan
+omraden = [o1, o2, o3]
+for omrade in enligt_antal_rutter(omraden):
+    print(omrade)
 
 ```
 
 <sample-output>
 
-Nummi, 1 reittiä, vaikein 8C+
-Olhava, 3 reittiä, vaikein 6B
-Nalkkilan slabi, 4 reittiä, vaikein 7A
+Nummi, 1 rutter, svåraste 8C+
+Olhava, 3 rutter, svåraste 6B
+Nalkkilan slabi, 4 rutter, svåraste 7A
 
 </sample-output>
 
-## Vaikeimman reitin mukaan
+## Del 2: Sortera enligt svåraste rutt
 
-Tee funktio `vaikeimman_reitin_mukaan`, joka järjestää kiipeilykalliot kalliolta löytyvän vaikeimman reitin mukaiseen _laskevaan_ suuruusjärjestykseen.
+Skapa funktionen `enligt_svaraste_rutt`, som sorterar klättringsområdena enligt högsta svårighetsgraden de har i _minskande_ ordning.
 
 ```python
-# k1, k2 ja k3 määritelty kuten edellä
-kalliot = [k1, k2, k3]
-for kallio in vaikeimman_reitin_mukaan(kalliot):
-    print(kallio)
+# o1, o2 och o3 definierade enligt ovan
+omraden = [o1, o2, o3]
+for omrade in enligt_svaraste_rutt(omraden):
+    print(omrade)
 
 ```
 
 <sample-output>
 
-Nummi, 1 reittiä, vaikein 8C+
-Nalkkilan slabi, 4 reittiä, vaikein 7A
-Olhava, 3 reittiä, vaikein 6B
+Nummi, 1 rutter, svåraste 8C+
+Nalkkilan slabi, 4 rutter, svåraste 7A
+Olhava, 3 rutter, svåraste 6B
 
 </sample-output>
 
@@ -443,21 +444,21 @@ Men ibland behöver man något som liknar en funktion som man bara använder en 
 Att sortera en lista med tupler efter det andra objektet i varje tupel skulle se ut så här implementerat med ett lambda-uttryck:
 
 ```python
-tuotteet = [("banaani", 5.95), ("omena", 3.95), ("appelsiini", 4.50), ("vesimeloni", 4.95)]
+produkter = [("banan", 5.95), ("äppel", 3.95), ("apelsin", 4.50), ("vattenmelon", 4.95)]
 
-# Funktio luodaan "lennosta" lambda-lausekkeella:
-tuotteet.sort(key=lambda alkio: alkio[1])
+# Funktionen skapas "i farten" med ett lambda-uttryck:
+produkter.sort(key=lambda foremal: foremal[1])
 
-for tuote in tuotteet:
-    print(tuote)
+for produkt in produkter:
+    print(produkt)
 ```
 
 <sample-output>
 
-('omena', 3.95)
-('appelsiini', 4.5)
-('vesimeloni', 4.95)
-('banaani', 5.95)
+('äppel', 3.95)
+('apelsin', 4.5)
+('vattenmelon', 4.95)
+('banan', 5.95)
 
 </sample-output>
 
@@ -469,8 +470,8 @@ Uttrycket
 
 ```python
 
-def hinta(alkio):
-    return alkio[1]
+def pris(foremal):
+    return foremal[1]
 ```
 
 förutom det faktum att en lambdafunktion inte har något namn. Det är därför lambda-funktioner kallas anonyma funktioner.
@@ -478,38 +479,38 @@ förutom det faktum att en lambdafunktion inte har något namn. Det är därför
 I alla andra avseenden skiljer sig inte en lambda-funktion från någon annan funktion, och de kan användas i alla samma sammanhang som en motsvarande namngiven funktion. Följande program sorterar till exempel en lista med strängar i alfabetisk ordning enligt det sista tecknet i varje sträng:
 
 ```python
-mjonot = ["Mikko", "Makke", "Maija", "Markku", "Mikki"]
+strangar = ["Mikael", "Makke", "Maja", "Markus", "Minna"]
 
-for jono in sorted(mjonot, key=lambda jono: jono[-1]):
-    print(jono)
+for strang in sorted(strangar, key=lambda strang: strang[-1]):
+    print(strang)
 ```
 
 <sample-output>
 
-Maija
+Maja
+Minna
 Makke
-Mikki
-Mikko
-Markku
+Mikael
+Markus
 
 </sample-output>
 
 Vi kan också kombinera list comprehensions, `join`-metoden och lambda-uttryck. Vi kan till exempel sortera strängar baserat på enbart vokalerna i dem och ignorera alla andra tecken:
 
 ```python
-mjonot = ["Mikko", "Makke", "Maija", "Markku", "Mikki"]
+strangar = ["Mikael", "Makke", "Maja", "Markus", "Minna"]
 
-for jono in sorted(mjonot, key=lambda jono: "".join([m for m in jono if m in "aeiouyäö"])):
-    print(jono)
+for strang in sorted(strangar, key=lambda strang: "".join([m for m in strang if m in "aeiouyäö"])):
+    print(strang)
 ```
 
 <sample-output>
 
+Maja
 Makke
-Maija
-Markku
-Mikki
-Mikko
+Markus
+Minna
+Mikael
 
 </sample-output>
 
@@ -519,97 +520,97 @@ I följande exempel handlar det om ljudinspelningar. Först väljer vi den älds
 
 ```python
 
-class Levy:
-    """Luokka mallintaa yhtä äänilevyä"""
-    def __init__(self, nimi: str, esittaja: str, vuosi: int, kesto: int):
-        self.nimi = nimi
-        self.esittaja = esittaja
-        self.vuosi = vuosi
-        self.kesto = kesto
+class Skiva:
+    """ Klassen modellerar en enkel skiva """
+    def __init__(self, namn: str, artist: str, ar: int, langd: int):
+        self.namn = namn
+        self.artist = artist
+        self.ar = ar
+        self.langd = langd
 
 
     def __str__(self):
-        return f"{self.nimi} ({self.esittaja}), {self.vuosi}. {self.kesto} min."
+        return f"{self.namn} ({self.artist}), {self.ar}. {self.langd} min."
 
 if __name__ == "__main__":
-    l1 = Levy("Nevermind", "Nirvana", 1991, 43)
-    l2 = Levy("Let It Be", "Beatles", 1969, 35)
-    l3 = Levy("Joshua Tree", "U2", 1986, 50)
+    l1 = Skiva("Nevermind", "Nirvana", 1991, 43)
+    l2 = Skiva("Let It Be", "Beatles", 1969, 35)
+    l3 = Skiva("Joshua Tree", "U2", 1986, 50)
 
-    levyt = [l1, l2, l3]
+    skivor = [l1, l2, l3]
 
 
-    print("Vanhin levy:")
-    print(min(levyt, key=lambda levy: levy.vuosi))
+    print("Äldsta skiva:")
+    print(min(skivor, key=lambda skiva: skiva.ar))
 
-    print("Pisin levy: ")
-    print(max(levyt, key=lambda levy: levy.kesto))
+    print("Längsta skiva: ")
+    print(max(skivor, key=lambda skiva: skiva.langd))
 ```
 
 <sample-output>
 
-Vanhin levy:
+Äldsta skiva:
 Let It Be (Beatles), 1969. 35 min.
-Pisin levy:
+Längsta skiva:
 U2 (Joshua Tree), 1986. 50 min.
 
 </sample-output>
 
 <programming-exercise name='Palloilijat' tmcname='osa12-06_palloilijat'>
 
-Tehtäväpohjasta löytyy luokka `Palloilija`, jolla on seuraavat julkiset piirteet:
+Uppgiftsbotten innehåller en definition för en klass med namnet `Bollspelare`, som har följande offentliga attribut:
 
-* nimi
-* pelinumero
-* tehtyjen maalien määrä `maalit`
-* annettujen syöttöjen määrä `syotot`
-* peliminuuttien määrä `minuutit`
+* namn
+* spelnummer
+* mängden gjorda mål `mal`
+* mängden målpassningar `malpassningar`
+* minuter spelade `minuter`
 
-Kirjoita seuraavien tehtävänantojen mukaiset funktiot. Huomaa, että jokaisessa funktiossa palautetaan erityyppiset tiedot.
+Implementera följande funktioner. OBS: varje funktion har olika typer av returvärden.
 
-## Eniten maaleja
+## Del 1: Flest mål
 
-Kirjoita funktio `eniten_maaleja`, joka saa parametrikseen listan palloilijoita.
+Skapa funktionen `flest_mal`, som får bollspelare som argument.
 
-Funktio palauttaa merkkijonona sen pelaajan nimen, joka on tehnyt eniten maaleja.
+Funktionen ska returnera namnet av spelaren som gjort flest mål, i strängformat.
 
-## Eniten pisteitä
+## Del 2: Flest poäng
 
-Kirjoita funktio `eniten_pisteita`, joka saa parametrikseen listan palloilijoita.
+Skapa funktionen `flest_poang`, som får en bollspelare som argument.
 
-Funktio palauttaa tuplena sen pelaajan nimen ja pelinumeron, joka on tehnyt yhteensä eniten pisteitä. Pisteisiin lasketaan siis sekä maalit että syötöt.
+Funktionen ska returnera en tupel som innehåller namnet och skjortnumret av spelaren som fått flest poäng. Den totala mängden av poäng är antalet mål och antalet målpassningar ihopslaget.
 
-## Vähiten peliminuutteja
+## Del 3: Minst minuter
 
-Kirjoita funktio `vahiten_minuutteja`, joka saa parametrikseen listan palloilijoita.
+Skapa funktionen `minst_minuter`, som får en bollspelare som argument.
 
-Funktio palauttaa sen `Palloilija`-olion, jolla on vähiten peliminuutteja kaikista pelaajista.
+Funktionen ska returnera `Bollspelare`-objektet som har den minsta mängden minuter spelade.
 
-## Testiohjelma
+## Del 4: Testprogram
 
-Voit testata koodisi toimintaa seuraavalla ohjelmalla:
+Du kan testa dina funktioner med följande program:
 
 ```python
 if __name__ == "__main__":
-    pelaaja1 = Palloilija("Kelju Kojootti", 13, 5, 12, 46)
-    pelaaja2 = Palloilija("Maantiekiitäjä", 7, 2, 26, 55)
-    pelaaja3 = Palloilija("Uka Naakka", 9, 1, 32, 26)
-    pelaaja4 = Palloilija("Pelle Peloton", 12, 1, 11, 41)
-    pelaaja5 = Palloilija("Hessu Hopo", 4, 3, 9, 12)
+    spelare1 = Bollspelare("Kalle Ankka", 13, 5, 12, 46)
+    spelare2 = Bollspelare("Långben", 7, 2, 26, 55)
+    spelare3 = Bollspelare("Musse Pigg", 9, 1, 32, 26)
+    spelare4 = Bollspelare("Peter Pan", 12, 1, 11, 41)
+    spelare5 = Bollspelare("Nalle Puh", 4, 3, 9, 12)
 
-    joukkue = [pelaaja1, pelaaja2, pelaaja3, pelaaja4, pelaaja5]
-    print(eniten_maaleja(joukkue))
-    print(eniten_pisteita(joukkue))
-    print(vahiten_minuutteja(joukkue))
+    lag = [spelare1, spelare2, spelare3, spelare4, spelare5]
+    print(flest_mal(lag))
+    print(flest_poang(lag))
+    print(minst_minuter(lag))
 ```
 
-Tulostuksen tulisi olla:
+Detta ska skriva ut:
 
 <sample-output>
 
-Kelju Kojootti
-('Uka Naakka', 9)
-Palloilija(nimi=Hessu Hopo, pelinumero=4, maalit=3, syotot=9, minuutit=12)
+Kalle Ankka
+('Musse Pigg', 9)
+Bollspelare(namn=Nalle Puh, spelnummer=4, mål=3, målpassningar=9, minuter=12)
 
 </sample-output>
 
@@ -620,22 +621,22 @@ Palloilija(nimi=Hessu Hopo, pelinumero=4, maalit=3, syotot=9, minuutit=12)
 Vi konstaterade ovan att det är möjligt att skicka en referens till en funktion som argument till en annan funktion. Som avslutning på detta avsnitt skriver vi en egen funktion som tar en funktion som argument.
 
 ```python
-# tyyppivihje callable viittaa funktioon
-def suorita_operaatio(operaatio: callable):
-    # Kutsutaan välitettyä funktiota
-    return operaatio(10, 5)
+# typledtråden callable refererar till en funktion
+def utfor_operation(operation: callable):
+    # Anropa funktionen som passerades som argument
+    return operation(10, 5)
 
 def summa(a: int, b: int):
     return a + b
 
-def tulo(a: int, b: int):
+def produkt(a: int, b: int):
     return a * b
 
 
 if __name__ == "__main__":
-    print(suorita_operaatio(summa))
-    print(suorita_operaatio(tulo))
-    print(suorita_operaatio(lambda x,y: x - y))
+    print(utfor_operation(summa))
+    print(utfor_operation(produkt))
+    print(utfor_operation(lambda x,y: x - y))
 
 ```
 
@@ -652,78 +653,78 @@ Det värde som returneras av funktionen `utfor_operation` beror på vilken funkt
 Att skicka referenser till funktioner som argument till andra funktioner är kanske inte något som du kommer att göra dagligen under din programmeringskarriär, men det kan vara en användbar teknik. Följande program väljer ut några rader från en fil och skriver dem till en annan fil. Hur raderna väljs ut bestäms av en funktion som returnerar True endast om raderna ska kopieras:
 
 ```python
-def kopioi_rivit(lahde_nimi: str, kohde_nimi: str, kriteeri= lambda x: True):
-    with open(lahde_nimi) as lahde, open(kohde_nimi, "w") as kohde:
-        for rivi in lahde:
-            # Poistetaan ensin tyhjät merkit alusta ja lopusta
-            rivi = rivi.strip()
+def kopiera_rader(kalla_namn: str, mal_namn: str, kriterie= lambda x: True):
+    with open(kalla_namn) as kalla, open(mal_namn, "w") as mal:
+        for rad in kalla:
+            # Ta bort all tomrum från början och slutet av raden
+            rad = rad.strip()
 
-            if kriteeri(rivi):
-                kohde.write(rivi + "\n")
+            if kriterie(rad):
+                mal.write(rad + "\n")
 
-# Esimerkkejä
+# Exempel
 if __name__ == "__main__":
-    # Jos kolmatta parametria ei ole määritelty, kopioidaan kaikki
-    kopioi_rivit("eka.txt", "toka.txt")
+    # Ifall tredje parametern inte är angiven, kopiera alla rader
+    kopiera_rader("första.txt", "andra.txt")
 
-    # Kopioidaan kaikki ei-tyhjät rivit
-    kopioi_rivit("eka.txt", "toka.txt", lambda rivi: len(rivi) > 0)
+    # Kopiera alla icke-tomma rader
+    kopiera_rader("första.txt", "andra.txt", lambda rad: len(rad) > 0)
 
-    # Kopioidaan kaikki rivit, joilla on sana "Python"
-    kopioi_rivit("eka.txt", "toka.txt", lambda rivi: "Python" in rivi)
+    # Kopierar alla rader som innehåller ordet "Python"
+    kopiera_rader("första.txt", "andra.txt", lambda rad: "Python" in rad)
 
-    # Kopioidaan kaikki rivit, jotka eivät pääty pisteeseen
-    kopioi_rivit("eka.txt", "toka.txt", lambda rivi: rivi[-1] != ".")
+    # Kopierar alla rader som inte slutar med en punkt
+    kopiera_rader("första.txt", "andra.txt", lambda rad: rad[-1] != ".")
 ```
 
 Funktionsdefinitionen innehåller ett standardvärde för nyckelordsparametern `kriterie`: `lambda x: True`. Denna anonyma funktion returnerar alltid `True` oavsett indata. Standardbeteendet är alltså att kopiera alla rader. Som vanligt gäller att om ett värde anges för en parameter med ett standardvärde, ersätter det nya värdet standardvärdet. 
 
 <programming-exercise name='Tuotteiden haku' tmcname='osa12-07_tuotteiden_haku'>
 
-Tässä tehtävässä käsitellään tupleina esitettäviä tuotteita, jotka on esimerkeissä alustettu muuttujaan `tuotteet` seuraavasti:
+Den här övningen hanterar produkter som förvaras som tupler. Exemplen antar en variabel med namnet `produkter` som förses med följande värde:
 
 ```python
-tuotteet = [("banaani", 5.95, 12), ("omena", 3.95, 3), ("appelsiini", 4.50, 2), ("vesimeloni", 4.95, 22), ("Kaali", 0.99, 1)]
+produkter = [("banan", 5.95, 12), ("äppel", 3.95, 3), ("apelsin", 4.50, 2), ("vattenmelon", 4.95, 22), ("kål", 0.99, 1)]
 ```
 
-Jokaisessa tuplessa ensimmäinen alkio siis edustaa nimeä, seuraava hintaa ja kolmas määrää.
+Varje tupel innehåller tre föremål: namn, pris och antal.
 
-Toteuta funktio `hae(tuotteet: list, kriteeri: callable)`, missä toisena parametrina on funktio, joka saa parametriksi yhden tuotetta edustavan tuplen ja palauttaa totuusarvon. Funktio palauttaa listassa parametrina annetuista tuotteista ne, jotka toteuttavat kriteerin.
+Skapa funktionen `sok(produkter: list, kriterie: callable)`. Det andra argumentet till funktionen är en funktion i sig, och den ska kunna bearbeta en tupel enligt definitionen ovan och returnera ett booleskt värde. Sökfunktionen ska returnera en ny lista som innehåller de tupler från originalet som uppfyller kriteriet.
 
-Sopiva kriteeri voisi olla esimerkiksi seuraavanlainen
+Ett passande kriterie kunde exempelvis vara följande:
 
 ```python
-def hinta_alle_4_euroa(tuote):
-    return tuote[1] < 4
+def pris_under_4(produkt):
+    return produkt[1] < 4
 ```
 
-Funktio siis palauttaa _True_ jos tuotteen hinta on alle 4 euroa.
+Funktionen returnerar alltså _True_ ifall produktens pris, tupelns andra föremål, är mindre än 4.
 
-Funktio `haku` toimii seuraavasti:
+Funktionen `sok` fungerar enligt följande:
 
 ```python
-for tuote in hae(tuotteet, hinta_alle_4_euroa):
-    print(tuote)
+for produkt in sok(produkter, pris_under_4):
+    print(produkt)
 ```
 
 <sample-output>
 
-('omena', 3.95, 3)
-('kaali', 0.99, 1)
+('äppel', 3.95, 3)
+('kål', 0.99, 1)
 
 </sample-output>
 
-Kriteerifunktion voi myös määritellä lambda-funktiona. Seuraava käyttää funktiota `haku` etsimään tuotteet, joita on vähintään 11 kappaletta:
+Kriteriefunktionen kan också vara en lambda-funktion. Om vi bara ville söka efter de produkter vars belopp är minst 11, skulle vi kunna skapa följande:
 
 ```python
-for tuote in hae(tuotteet, lambda t: t[2]>10):
-    print(tuote)
+for produkt in sok(produkter, lambda t: t[2]>10):
+    print(produkt)
 ```
 
 <sample-output>
 
-('banaani', 5.95, 12)
-('vesimeloni', 4.95, 22)
+('banan', 5.95, 12)
+('vattenmelon', 4.95, 22)
 
 </sample-output>
 

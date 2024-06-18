@@ -18,11 +18,11 @@ En av de situationer där programmering är som mest kraftfull är vid bearbetni
 Låt oss anta att vi har en lista med heltal och att vi skulle behöva samma lista med objekt i strängformat. Ett traditionellt sätt att utföra uppgiften skulle kunna se ut så här:
 
 ```python
-luvut = [1, 2, 3, 6, 5, 4, 7]
+talen = [1, 2, 3, 6, 5, 4, 7]
 
-merkkijonot = []
-for luku in luvut:
-    merkkijonot.append(str(luku))
+strangar = []
+for tal in talen:
+    strangar.append(str(tal))
 ```
 
 ## List comprehension
@@ -34,8 +34,8 @@ Tanken är att på en enda rad få plats med både beskrivningen av vad som ska 
 I exemplet ovan var operationen som utfördes på varje objekt i listan mycket enkel: varje heltal omvandlades till en sträng. Låt oss se hur detta skulle se ut implementerat med en list comprehension:
 
 ```python
-luvut = [1, 2, 3, 6, 5, 4, 7]
-merkkijonot = [str(luku) for luku in luvut]
+talen = [1, 2, 3, 6, 5, 4, 7]
+strangar = [str(tal) for tal in talen]
 ```
 
 Den andra raden ovan innehåller många av samma element som den mer traditionella iterativa metoden, men syntaxen är annorlunda. Ett sätt att generalisera en list comprehension skulle kunna vara
@@ -51,11 +51,11 @@ Hakparenteserna runt list comprehensionsatsen signalerar till Python att resulta
 List comprehensions kan också hantera mycket mer komplicerade operationer. Vi kan utföra beräkningar, till exempel multiplicera de ursprungliga objekten med tio:
 
 ```python
-luvut = list(range(1,10))
-print(luvut)
+talen = list(range(1,10))
+print(talen)
 
-luvut_kerrottuna = [luku * 10 for luku in luvut]
-print(luvut_kerrottuna)
+talen_multiplicerade = [tal * 10 for tal in talen]
+print(talen_multiplicerade)
 ```
 
 <sample-output>
@@ -68,8 +68,8 @@ print(luvut_kerrottuna)
 Faktum är att uttrycket i list comprehension-satsen kan vara vilket Python-uttryck som helst. Du kan till och med anropa funktioner som du själv har definierat:
 
 ```python
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n! """
+def fakultet(n: int):
+    """ Funktionen räknar fakulteten n! för positiva heltal """
     k = 1
     while n >= 2:
         k *= n
@@ -78,8 +78,8 @@ def kertoma(n: int):
 
 if __name__ == "__main__":
     lista = [5, 2, 4, 3, 0]
-    kertomat = [kertoma(luku) for luku in lista]
-    print(kertomat)
+    fakulteter = [fakultet(tal) for tal in lista]
+    print(fakulteter)
 ```
 
 <sample-output>
@@ -92,8 +92,8 @@ Med den mer välbekanta `for`-loopen skulle samma process kunna uttryckas så h�
 
 ```python
 
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n! """
+def fakultet(n: int):
+    """ Funktionen räknar fakulteten n! för positiva heltal """
     k = 1
     while n >= 2:
         k *= n
@@ -102,34 +102,36 @@ def kertoma(n: int):
 
 if __name__ == "__main__":
     lista = [5, 2, 4, 3, 0]
-    kertomat = []
-    for luku in lista:
-        kertomat.append(kertoma(luku))
-    print(kertomat)
+    fakulteter = []
+    for tal in lista:
+        fakulteter.append(fakultet(tal))
+    print(fakulteter)
 
 ```
 
 List Comprehensions gör att vi kan uttrycka samma funktionalitet på ett mer konsekvent sätt, vanligtvis utan att förlora något av läsbarheten.
 
-Vi kan också returnera en list comprehension-sats direkt från en funktion. Om vi behövde en funktion för att producera faktorialtal för listor med tal, skulle vi kunna göra det på ett mycket kortfattat sätt:
+Vi kan också returnera en list comprehension-sats direkt från en funktion. Om vi behövde en funktion för att producera fakultettal för listor med tal, skulle vi kunna göra det på ett mycket kortfattat sätt:
 
 ```python
-def kertomat(luvut: list):
-    return [kertoma(luku) for luku in luvut]
+def fakulteter(talen: list):
+    return [fakultet(tal) for tal in talen]
 ```
 
 <programming-exercise name='Neliojuuret' tmcname='osa11-01_neliojuuret'>
 
-Tee funktio `neliojuuret(luvut: list)`, joka saa parametriksi listan kokonaislukuja. Funktio palauttaa listan parametrina olevien lukujen neliöjuurista. Neliöjuuren laskemiseen löytyy sopiva funktio moduulista [math](https://docs.python.org/3/library/math.html)
+Skriv en funktion med namnet `kvadratrot(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller kvadratrötterna av de ursprungliga heltalen.
 
-Funktion tulee käyttää listakoostetta. Funktion maksimipituus on siis (mukaanlukien `def`-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Modulen [math](https://docs.python.org/3/library/math.html) från Pythons standardbibliotek innehåller en lämplig funktion för att räkna ut kvadratrötter.
 
-Funktio toimii seuraavasti:
+Funktionen bör använda en list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
+
+Funktionen ska fungera enligt följande:
 
 ```python
-rivit = neliojuuret([1,2,3,4])
-for rivi in rivit:
-    print(rivi)
+rader = kvadratrot([1,2,3,4])
+for rad in rader:
+    print(rad)
 ```
 
 <sample-output>
@@ -145,22 +147,22 @@ for rivi in rivit:
 
 <programming-exercise name='Tähtirivit' tmcname='osa11-02_tahtirivit'>
 
-Tee funktio `tahtirivit(luvut: list)`, joka saa parametriksi listan kokonaislukuja. Funktio palauttaa listan, joka koostuu tähtiriveistä, joiden pituus vastaa parametrina olevan listan lukuja. Funktion tulee käyttää listakoostetta.
+Skapa funktionen `stjarnrader(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller rader med stjärnor. Längden på varje rad ska motsvara heltalet på samma index i den ursprungliga listan. Funktionen bör använda en list comprehension för att uppnå detta.
 
-Funktion maksimipituus on siis (mukaanlukien `def`-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
-Funktio toimii seuraavasti:
+Funktionen ska fungera på följande sätt:
 
 ```python
-rivit = tahtirivit([1,2,3,4])
-for rivi in rivit:
-    print(rivi)
+rader = stjarnrader([1,2,3,4])
+for rad in rader:
+    print(rad)
 
 print()
 
-rivit = tahtirivit([4, 3, 2, 1, 10])
-for rivi in rivit:
-    print(rivi)
+rader = stjarnrader([4, 3, 2, 1, 10])
+for rad in rader:
+    print(rad)
 ```
 
 <sample-output>
@@ -184,27 +186,27 @@ for rivi in rivit:
 
 <programming-exercise name='Paras koetulos' tmcname='osa11-03_paras_koetulos'>
 
-Tehtäväpohjassa on valmiina luokka `Koesuoritus`, jolla on seuraavat julkiset attribuutit:
+I uppgiftsbotten finns färdigt en klassdefinition för `Provresultat`, som har följane offentliga attribut:
 
-* nimi
-* arvosana1
-* arvosana2
-* arvosana3
+* namn
+* vitsord1
+* vitsord2
+* vitsord3
 
-Kirjoita funktio `parhaat_tulokset(suoritukset: list)`. Funktio saa parametrikseen listan koesuoritusolioita.
+Skapa en funktion med namnet `bast_resultat(resultat: list)` som tar en lista med Provresultat-objekt som sitt argument.
 
-Funktio palauttaa listakoostetta käyttäen uuden listan, johon on tallennettu jokaisen suorituksen paras arvosana.
+Funktionen ska returnera en ny lista som endast innehåller det bästa resultatet från varje Provresultat-objekt. Funktionen bör använda en list comprehension för att uppnå detta.
 
-Funktion maksimipituus on siis (mukaanlukien def-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
-Esimerkki suorituksesta:
+Funktionen ska fungera på följande sätt:
 
 ```python
-suoritus1 = Koesuoritus("Pekka",5,3,4)
-suoritus2 = Koesuoritus("Pirjo",3,4,1)
-suoritus3 = Koesuoritus("Paavo",2,1,3)
-suoritukset = [suoritus1, suoritus2, suoritus3]
-print(parhaat_tulokset(suoritukset))
+resultat1 = Provresultat("Peter",5,3,4)
+resultat2 = Provresultat("Pernilla",3,4,1)
+resultat3 = Provresultat("Paulus",2,1,3)
+prestationer = [resultat1, resultat2, resultat3]
+print(bast_resultat(prestationer))
 ```
 
 <sample-output>
@@ -217,15 +219,17 @@ print(parhaat_tulokset(suoritukset))
 
 <programming-exercise name='Pituudet' tmcname='osa11-04_pituudet'>
 
-Tee funktio `pituudet(listat: list)` joka saa parametriksi listan, joka sisältää listoja, jotka sisältävät kokonaislukuja. Funktio palauttaa listan, joka sisältää parametrina olevien listojen pituudet.
+Skapa en funktion med namnet `langder(listor: list)` som tar en lista innehållande listor med heltal som argument. Funktionen ska returnera en ny lista som innehåller längderna på listorna i argumentlistan.
 
-Funktio tulee toteuttaa listakoosteen avulla. Funktion maksimipituus on siis (mukaanlukien `def`-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Funktionen bör använda en list comprehension för att uppnå detta.
 
-Funktio toimii seuraavasti
+Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
+
+Funktionen ska fungera på följande sätt:
 
 ```python
 listat = [[1,2,3,4,5], [324, -1, 31, 7],[]]
-print(pituudet(listat))
+print(langder(listat))
 ```
 
 <sample-output>
@@ -252,8 +256,8 @@ I exemplet nedan väljer vi alla jämna objekt från den ursprungliga listan som
 ```python
 lista = [1, 1, 2, 3, 4, 6, 4, 5, 7, 10, 12, 3]
 
-parilliset = [alkio for alkio in lista if alkio % 2 == 0]
-print(parilliset)
+jamna = [foremal for foremal in lista if foremal % 2 == 0]
+print(jamna)
 ```
 
 <sample-output>
@@ -267,8 +271,8 @@ Uttrycket i list comprehension-satsen ovan är bara ett enkelt `foremal`, vilket
 ```python
 lista = [1, 1, 2, 3, 4, 6, 4, 5, 7, 10, 12, 3]
 
-parilliset = [alkio * 10 for alkio in lista if alkio % 2 == 0]
-print(parilliset)
+jamna = [foremal * 10 for foremal in lista if foremal % 2 == 0]
+print(jamna)
 ```
 
 <sample-output>
@@ -279,11 +283,11 @@ print(parilliset)
 
 När du stöter på mer och mer komplicerade list comprehensions kan det vara bra att försöka läsa villkoret först. Föremålen bearbetas ändå bara om de klarar testet, så det är ofta vettigt att först ta reda på vilka objekt som klarar filtreringssteget. Ibland skulle uttrycket i en list comprehension-sats inte ens vara möjligt för alla föremål i den ursprungliga listan.
 
-Till exempel är faktorialtal bara definierat för icke-negativa heltal. Om vi inte kan vara säkra på att en lista bara innehåller värden på noll eller högre, måste innehållet filtreras innan det skickas vidare till den faktorialfunktion som vi skapade tidigare:
+Till exempel är fakultettal bara definierat för icke-negativa heltal. Om vi inte kan vara säkra på att en lista bara innehåller värden på noll eller högre, måste innehållet filtreras innan det skickas vidare till den fakultetfunktion som vi skapade tidigare:
 
 ```python
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n! """
+def fakultet(n: int):
+    """ Funktionen räknar fakulteten n! för positiva heltal """
     k = 1
     while n >= 2:
         k *= n
@@ -292,8 +296,8 @@ def kertoma(n: int):
 
 if __name__ == "__main__":
     lista = [-2, 3, -1, 4, -10, 5, 1]
-    kertomat = [kertoma(luku) for luku in lista if luku > 0]
-    print(kertomat)
+    fakulteter = [fakultet(tal) for tal in lista if tal > 0]
+    print(fakulteter)
 ```
 
 <sample-output>
@@ -302,12 +306,12 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Som vi såg i vårt allra första exempel på list comprehension, där heltal omvandlades till strängar, behöver föremålen i den nya listan inte vara av samma typ som föremålen i den ursprungliga listan. Om vi fortsätter från faktorialexemplet ovan kan vi skapa en tupel från varje originella föremål och dess bearbetade motsvarighet och lagra dessa i en lista, vilket kombinerar allt vi har lärt oss hittills i en enda list comprehension-sats:
+Som vi såg i vårt allra första exempel på list comprehension, där heltal omvandlades till strängar, behöver föremålen i den nya listan inte vara av samma typ som föremålen i den ursprungliga listan. Om vi fortsätter från fakultetexemplet ovan kan vi skapa en tupel från varje originella föremål och dess bearbetade motsvarighet och lagra dessa i en lista, vilket kombinerar allt vi har lärt oss hittills i en enda list comprehension-sats:
 
 ```python
 
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n! """
+def fakultet(n: int):
+    """ Funktionen räknar fakulteten n! för positiva heltal """
     k = 1
     while n >= 2:
         k *= n
@@ -316,8 +320,8 @@ def kertoma(n: int):
 
 if __name__ == "__main__":
     lista = [-2, 3, 2, 1, 4, -10, 5, 1, 6]
-    kertomat = [(luku, kertoma(luku)) for luku in lista if luku > 0 and luku % 2 == 0]
-    print(kertomat)
+    fakulteter = [(tal, fakultet(tal)) for tal in lista if tal > 0 and tal % 2 == 0]
+    print(fakulteter)
 
 ```
 
@@ -329,23 +333,23 @@ if __name__ == "__main__":
 
 Om vi plockar isär exemplet ovan har vi det booleska uttrycket `n > 0 and n % 2 == 0`. Detta innebär att endast föremål som är både positiva och delbara med två accepteras för vidare bearbetning från den ursprungliga listan.
 
-Dessa positiva, jämna tal bearbetas sedan i tur och ordning till formatet `(n, faktorial(n))`. Detta är en tupel, där det första objektet är själva talet och det andra objektet är resultatet som returneras av faktorialfunktionen.
+Dessa positiva, jämna tal bearbetas sedan i tur och ordning till formatet `(n, fakultet(n))`. Detta är en tupel, där det första objektet är själva talet och det andra objektet är resultatet som returneras av fakultetfunktionen.
 
 <programming-exercise name='Poista pienemmät' tmcname='osa11-05_poista_pienemmat'>
 
-Kirjoita funktio `poista_pienemmat(luvut: list, raja: int)`, joka saa parametrikseen listan kokonaislukuja sekä raja-arvon, joka on myös kokonaisluku.
+Skapa en funktion med namnet `ta_bort_mindre(tal: list, grans: int)` som tar en lista med heltal och ett gränsvärde (också i heltalsformat) som sina argument.
 
-Funktio muodostaa listakoostetta käyttäen uuden listan, josta on jätetty pois raja-arvoa pienemmät luvut.
+Funktionen bör använda en list comprehension för att producera en ny lista utan de värden som är mindre än gränsvärdet.
 
-Funktion maksimipituus on siis (mukaanlukien `def`-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
-Esimerkki funktion käytöstä:
+Funktionen ska fungera på följande sätt:
 
 ```python
-lukuja = [1,65, 32, -6, 9, 11]
-print(poista_pienemmat(lukuja, 10))
+talen = [1,65, 32, -6, 9, 11]
+print(ta_bort_mindre(talen, 10))
 
-print(poista_pienemmat([-4, 7, 8, -100], 0))
+print(ta_bort_mindre([-4, 7, 8, -100], 0))
 ```
 
 <sample-output>
@@ -359,26 +363,26 @@ print(poista_pienemmat([-4, 7, 8, -100], 0))
 
 <programming-exercise name='Vokaalilla alkavat' tmcname='osa11-06_vokaalilla_alkavat'>
 
-Kirjoita funktio `vokaalilla_alkavat(sanat: list)`, joka saa parametrikseen listan merkkijonoja.
+Skapa en funktion med namnet `borjar_med_vokal(ord: list)` som tar en lista med strängar som sitt argument.
 
-Tehtävänäsi on listakoostetta hyödyntäen muodostaa ja palauttaa uusi lista, joka sisältää vain alkuperäisen listan ne sanat, jotka alkavat vokaalilla (a, e, i, o, u, y, ä, ö). Sekä pienien että suurten kirjaimien pitää kelvata.
+Funktionen ska använda en list comprehension teknik för att skapa och returnera en ny lista som endast innehåller de ord från den ursprungliga listan som börjar med en vokal (a, e, i, o, u, y, å, ä, ö). Både små och stora bokstäver bör accepteras.
 
-Funktion maksimipituus on (mukaanlukien `def`-sanalla alkava otsikkorivi) kokonaisuudessaan kaksi riviä!
+Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
-Esimerkki funktion käytöstä:
+Funktionen ska fungera på följande sätt:
 
 ```python
-klista = ["auto","mopo","Etana","kissa","Koira","OMENA","appelsiini"]
-for vok in vokaalilla_alkavat(klista):
+ord_lista = ["automobil","moped","Enhörning","katt","Hund","ÄPPEL","appelsin"]
+for vok in borjar_med_vokal(ord_lista):
     print(vok)
 ```
 
 <sample-output>
 
-auto
-Etana
-OMENA
-appelsiini
+automobil
+Enhörning
+ÄPPEL
+appelsin
 
 </sample-output>
 
@@ -395,9 +399,9 @@ Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [del 7
 Som en uppfräschning av ämnet kan vi säga att om vi behöver skriva ut det större av två tal och vi bara vill använda en enda utskriftssats, kan vi få plats med allt på en enda rad:
 
 ```python
-luku1 = int(input("Anna luku 1:"))
-luku2 = int(input("Anna luku 2:"))
-print (luku1 if luku1 > luku2 else luku2)
+tal1 = int(input("Ange tal 1:"))
+tal2 = int(input("Ange tal 2:"))
+print (tal1 if tal1 > tal2 else tal2)
 ```
 
 Genom att kombinera den ternära operatorssyntaxen med en list comprehension-sats får man följande allmänna struktur:
@@ -412,9 +416,9 @@ I följande exempel kontrolleras om föremåleni en lista är noll eller högre.
 
 ```python
 
-luvut = [1, -3, 45, -110, 2, 9, -11]
-itseisarvot = [luku if luku >= 0 else -luku for luku in luvut]
-print(itseisarvot)
+talen = [1, -3, 45, -110, 2, 9, -11]
+absolut_varde = [tal if tal >= 0 else -tal for tal in talen]
+print(absolut_varde)
 
 ```
 
@@ -430,41 +434,41 @@ I följande exempel har vi funktionen `strang_langder` som tar en lista som sitt
 
 ```python
 
-def merkkijonojen_pituudet(lista: list):
-    """ Funktio palauttaa uudessa listassa merkkijonojen pituudet """
-    return [len(alkio) if type(alkio) == str else -1 for alkio in lista]
+def strang_langder(lista: list):
+    """ Funktionen returnerar längden på strängarna i en ny lista """
+    return [len(foremal) if type(foremal) == str else -1 for foremal in lista]
 
 if __name__ == "__main__":
-    testilista = ["moi", 3, True, "kaikki", -123.344, "heipparallaa", 2, False]
-    pituudet = merkkijonojen_pituudet(testilista)
-    print(pituudet)
+    testlista = ["hej", 3, True, "hejsan", -123.344, "hejsansvejsan", 2, False]
+    langder = strang_langder(testlista)
+    print(langder)
 
 ```
 
 <sample-output>
 
-[3, -1, -1, 6, -1, 12, -1, -1]
+[3, -1, -1, 6, -1, 13, -1, -1]
 
 </sample-output>
 
 
 <programming-exercise name='Lottorivi' tmcname='osa11-07_lottorivi'>
 
-## Lottorivi, osa 1
+## Del 1: LotteriNummer matchade
 
-Kirjoita luokka `Lottorivi`, joka saa konstruktorissaan parametrikseen kierroksen numeron (kokonaisluku) sekä seitsemänalkioisen kokonaislukulistan. Lista kuvaa kierroksen oikeita numeroita (eli oikeaa _riviä_). Kirjoita lisäksi luokalle metodi
+Skapa en klass med namnet `LotteriNummer` som tar veckonumret (ett heltalsvärde) och en lista med sju heltal som sina konstruktorsargument. Listan ska innehålla de korrekta lotterinumren för den givna veckan.
 
-`osumien_maara(pelattu_rivi: list)`
+Skapa också en metod med namnet `antalet_traffar(nummer: list)` som tar en lista med heltal som sitt argument. Metoden returnerar antalet korrekta inlägg i parameterlistan.
 
-...joka palauttaa kokonaislukuna tiedon siitä, kuinka monta osumaa rivissä oli. Metodin tulee käyttää listakoostetta! Metodin pituus kokonaisuudessaan (def-rivi mukaanlukien) saa olla korkeintaan 2 riviä.
+Metoden bör använda en list comprehension för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
-Esimerkki luokan käytöstä:
+Funktionen ska fungera på följande sätt:
 
 ```python
-oikea = Lottorivi(5, [1,2,3,4,5,6,7])
-oma_rivi = [1,4,7,11,13,19,24]
+ratta = LotteriNummer(5, [1,2,3,4,5,6,7])
+egen_rad = [1,4,7,11,13,19,24]
 
-print(oikea.osumien_maara(oma_rivi))
+print(ratta.antalet_traffar(egen_rad))
 ```
 
 <sample-output>
@@ -473,19 +477,19 @@ print(oikea.osumien_maara(oma_rivi))
 
 </sample-output>
 
-## Lottorivi, osa 2
+## Del 2: LotteriNummer matchade på plats
 
-Kirjoita luokkaan metodi `osumat_paikoillaan(pelattu_rivi)`, joka palauttaa uuden listan. Uudessa listassa on vanhoilla paikoillaan oikeat numerot (eli ne, jotka löytyvät myös oikeasta rivistä), muiden paikalla on -1.
+Skapa en metod med namnet `traffar_pa_plats(nummer)` som tar en lista med sju heltal som sitt argument och returnerar en ny lista med sju heltal. Den nya listan innehåller endast de inlägg från den ursprungliga listan som matchar veckans korrekta nummer. Dessa måste ligga kvar på samma index som de gjorde i den ursprungliga listan. Resten av indexen bör fyllas med värdena `-1`.
 
-Metodin tulee käyttää listakoostetta. Metodin pituus kokonaisuudessaan (def-rivi mukaanlukien) saa olla korkeintaan 2 riviä.
+Funktionen bör använda en list comprehension för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
-Esimerkki metodin käytöstä:
+Funktionen ska fungera på följande sätt:
 
 ```python
-oikea = Lottorivi(8, [1,2,3,10,20,30,33])
-oma_rivi = [1,4,7,10,11,20,30]
+ratta = LotteriNummer(8, [1,2,3,10,20,30,33])
+egen_rad = [1,4,7,10,11,20,30]
 
-print(oikea.osumat_paikoillaan(oma_rivi))
+print(ratta.traffar_pa_plats(egen_rad))
 ```
 
 <sample-output>

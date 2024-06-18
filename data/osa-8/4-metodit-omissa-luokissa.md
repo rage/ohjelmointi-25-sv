@@ -17,21 +17,21 @@ Efter den här delen:
 Klasser som endast innehåller dataattribut skiljer sig inte så mycket från ordlistor. Nedan kan du se två sätt att modellera ett bankkonto, först med en klassdefinition och sedan med hjälp av en ordlista.
 
 ```python
-# Esimerkki omaa luokkaa käyttäen
-class Pankkitili:
+# Exempel 1: bankkoto med klassdefinition
+class Bankkonto:
 
-    def __init__(self, tilinumero: str, omistaja: str, saldo: float, vuosikorko: float):
-        self.tilinumero = tilinumero
-        self.omistaja = omistaja
+    def __init__(self, kontonummer: str, agare: str, saldo: float, arsranta: float):
+        self.kontonummer = kontonummer
+        self.agare = agare
         self.saldo = saldo
-        self.vuosikorko = vuosikorko
+        self.arsranta = arsranta
 
-pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
+peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
 ```
 
 ```python
-# Esimerkki sanakirjaa käyttäen
-pekan_tili = {"tilinumero": "12345-678", "omistaja": "Pekka Python", "saldo": 1500.0, "vuosikorko": 0.0}
+# Exempel2: bankkonto med ordlista
+peters_konto = {"kontonummer": "12345-678", "agare": "Peter Python", "saldo": 1500.0, "arsranta": 0.0}
 ```
 
 Med en ordlista är implementeringen mycket kortare och enklare. Med en klass är strukturen däremot mer "hårt bunden", så vi kan förvänta oss att alla `Bankkonto`-objekt är strukturellt lika. Dessutom är en klass också namngiven. Klassen `Bankkonto` refereras till när ett nytt bankkonto skapas, och objektets typ är `Bankkonto`, inte dict.
@@ -45,22 +45,22 @@ En metod är ett underprogram eller en funktion som är knuten till en specifik 
 Låt oss fortsätta med klassen `Bankkonto` som introducerades ovan. Nedan har vi en ny metod som lägger till ränta på kontot:
 
 ```python
-class Pankkitili:
+class Bankkonto:
 
-    def __init__(self, tilinumero: str, omistaja: str, saldo: float, vuosikorko: float):
-        self.tilinumero = tilinumero
-        self.omistaja = omistaja
+    def __init__(self, kontonummer: str, agare: str, saldo: float, arsranta: float):
+        self.kontonummer = kontonummer
+        self.agare = agare
         self.saldo = saldo
-        self.vuosikorko = vuosikorko
+        self.arsranta = arsranta
 
-    # Metodi lisää koron tilin saldoon
-    def lisaa_korko(self):
-        self.saldo += self.saldo * self.vuosikorko
+    # Metoden lägger till den årliga räntat till saldot
+    def tillsatt_ranta(self):
+        self.saldo += self.saldo * self.arsranta
 
 
-pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
-pekan_tili.lisaa_korko()
-print(pekan_tili.saldo)
+peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
+peters_konto.tillsatt_ranta()
+print(peters_konto.saldo)
 ```
 
 <sample-output>
@@ -69,25 +69,25 @@ print(pekan_tili.saldo)
 
 </sample-output>
 
-Metoden `tillsätt_ränta` multiplicerar saldot på kontot med den årliga ränteprocenten och lägger sedan till resultatet till det aktuella saldot. Metoden verkar bara på det objekt som den anropas på.
+Metoden `tillsatt_ranta` multiplicerar saldot på kontot med den årliga ränteprocenten och lägger sedan till resultatet till det aktuella saldot. Metoden verkar bara på det objekt som den anropas på.
 
 Låt oss se hur detta fungerar när vi har skapat flera instanser av klassen:
 
 ```python
-# Luokka Pankkitili on määritelty edellisessä esimerkissä
+# Klassen Bankkonto är definierat såsom i förra exemplet
 
-pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
-pirjon_tili = Pankkitili("99999-999", "Pirjo Pythonen", 1500.0, 0.05)
-paulin_tili = Pankkitili("1111-222", "Pauli Paulinen", 1500.0, 0.001)
+peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
+pernillas_konto = Bankkonto("99999-999", "Pernilla Pythonson", 1500.0, 0.05)
+pers_konto = Bankkonto("1111-222", "Per Persson", 1500.0, 0.001)
 
-# Lisätään korko Pekalle ja Pirjolle, mutta ei Paulille
-pekan_tili.lisaa_korko()
-pirjon_tili.lisaa_korko()
+# Vi tillsätter ränta till Peters och Pernillas konton, men inte Pers
+peters_konto.tillsatt_ranta()
+pernillas_konto.tillsatt_ranta()
 
-# Tulostetaan kaikki
-print(pekan_tili.saldo)
-print(pirjon_tili.saldo)
-print(paulin_tili.saldo)
+# Vi skriver ut alla
+print(peters_konto.saldo)
+print(pernillas_konto.saldo)
+print(pers_konto.saldo)
 ```
 
 <sample-output>
@@ -98,7 +98,7 @@ print(paulin_tili.saldo)
 
 </sample-output>
 
-Som du kan se ovan läggs den årliga räntan endast till på de konton som metoden anropas på. Eftersom den årliga räntan är olika för Peters och Paulas konton, blir resultatet olika för dessa två konton. Saldot på Pippas konto ändras inte, eftersom metoden `tillsätt_ränta` inte anropas på objektet `pippas_konto`.
+Som du kan se ovan läggs den årliga räntan endast till på de konton som metoden anropas på. Eftersom den årliga räntan är olika för Peters och Paulas konton, blir resultatet olika för dessa två konton. Saldot på Pernillas konto ändras inte, eftersom metoden `tillsatt_ranta` inte anropas på objektet `pernillas_konto`.
 
 ## Inkapsling
 
@@ -107,45 +107,45 @@ Inom objektorienterad programmering dyker ordet klient upp då och då. Det anv�
 Ett exempel på hur detta skulle fungera:
 
 ```python
-class Pankkitili:
+class Bankkonto:
 
-    def __init__(self, tilinumero: str, omistaja: str, saldo: float, vuosikorko: float):
-        self.tilinumero = tilinumero
-        self.omistaja = omistaja
+    def __init__(self, kontonummer: str, agare: str, saldo: float, arsranta: float):
+        self.kontonummer = kontonummer
+        self.agare = agare
         self.saldo = saldo
-        self.vuosikorko = vuosikorko
+        self.arsranta = arsranta
 
-    # Metodi lisää koron tilin saldoon
-    def lisaa_korko(self):
-        self.saldo += self.saldo * self.vuosikorko
+    # Metoden tillsätter den årliga räntat till saldot av kontot
+    def tillsatt_ranta(self):
+        self.saldo += self.saldo * self.arsranta
 
-    # Metodilla "nostetaan" tililtä rahaa
-    # Metodi palauttaa true, jos nosto onnistuu, muuten False
-    def nosto(self, nostosumma: float):
-        if nostosumma <= self.saldo:
-            self.saldo -= nostosumma
+    # Den här metoden "tar ut" pengar från kontot
+    # Metoden returnerar True ifall det lyckades, och False ifall det misslyckades
+    def uttag(self, uttagssumma: float):
+        if uttagssumma <= self.saldo:
+            self.saldo -= uttagssumma
             return True
 
         return False
 
-pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
+peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
 
-if pekan_tili.nosto(1000):
-    print("Nosto onnistui, tilin saldo on nyt", pekan_tili.saldo)
+if peters_konto.uttag(1000):
+    print("Uttaget lyckades, kontots saldo är nu", peters_konto.saldo)
 else:
-    print("Nosto ei onnistunut, rahaa ei ole tarpeeksi.")
+    print("Uttaget lyckades inte, saldot var otillräckligt")
 
-# Yritetään uudestaan
-if pekan_tili.nosto(1000):
-    print("Nosto onnistui, tilin saldo on nyt", pekan_tili.saldo)
+# Vi försöker på nytt
+if peters_konto.uttag(1000):
+    print("Uttaget lyckades, kontots saldo är nu", peters_konto.saldo)
 else:
-    print("Nosto ei onnistunut, rahaa ei ole tarpeeksi.")
+    print("Uttaget lyckades inte, saldot var otillräckligt")
 ```
 
 <sample-output>
 
-Nosto onnistui, tilin saldo on nyt 500.0
-Nosto ei onnistunut, rahaa ei ole tarpeeksi.
+Uttaget lyckades, kontots saldo är nu 500.0
+Uttaget lyckades inte, saldot var otillräckligt
 
 </sample-output>
 
@@ -154,127 +154,127 @@ Att bibehålla objektets interna integritet och erbjuda lämpliga metoder för a
 Att lägga till en metod innebär inte att attributet automatiskt döljs. Även om klassdefinitionen `Bankkonto` innehåller metoden `uttag` för att ta ut pengar, kan klientkoden fortfarande komma åt och ändra attributet `saldo` direkt:
 
 ```python
-pekan_tili = Pankkitili("12345-678", "Pekka Python", 1500.0, 0.015)
+peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
 
-# Yritetään nostaa 2000
-if pekan_tili.nosto(2000):
-    print("Nosto onnistui, tilin saldo on nyt", pekan_tili.saldo)
+# Vi försöker lyfta 2000
+if peters_konto.uttag(2000):
+    print("Uttaget lyckades, kontots saldo är nu", peters_konto.saldo)
 else:
-    print("Nosto ei onnistunut, rahaa ei ole tarpeeksi.")
+    print("Uttaget lyckades inte, saldot var otillräckligt")
 
-    # Nostetaan "väkisin" 2000
-    pekan_tili.saldo -= 2000
+    # Vi "tvingar" ett uttag på 2000
+    peters_konto.saldo -= 2000
 
-print("Saldo nyt:", pekan_tili.saldo)
+print("Saldot är nu:", peters_konto.saldo)
 ```
 
 Det är möjligt att dölja dataattributen från klientkoden, vilket kan bidra till att lösa detta problem. Vi återkommer till detta ämne i nästa del.
 
 <programming-exercise name='Vähenevä laskuri' tmcname='osa08-10_vaheneva_laskuri'>
 
-Tässä tehtävässä on useampi osa. Jokainen osa vastaa yhtä tehtäväpistettä.
+Denna övning har flera delar. Varje del är värt ett poäng och kan lämnas in separat.
 
-Tehtäväpohjan mukana tulee osittain valmiiksi toteutettu luokka `VahenevaLaskuri`:
+Övningsmallen innehåller en delvis ifylld klass `MinskandeRaknare`:
 
 ```python
-class VahenevaLaskuri:
-    def __init__(self, arvo_alussa: int):
-        self.arvo = arvo_alussa
+class MinskandeRaknare:
+    def __init__(self, borjan_varde: int):
+        self.varde = borjan_varde
 
-    def tulosta_arvo(self):
-        print("arvo:", self.arvo)
+    def skriv_ut_varde(self):
+        print("värde:", self.varde)
 
-    def vahenna(self):
+    def minska(self):
         pass
 
-    # ja tänne muut metodit
+    # resten av metoderna här
 ```
 
-Luokkaa käytetään seuraavasti
+Klassen används på följande sätt:
 
 ```python
-laskuri = VahenevaLaskuri(10)
-laskuri.tulosta_arvo()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
+raknare = MinskandeRaknare(10)
+raknare.skriv_ut_varde()
+raknare.minska()
+raknare.skriv_ut_varde()
+raknare.minska()
+raknare.skriv_ut_varde()
 ```
 
 <sample-output>
 
-arvo: 10
-arvo: 9
-arvo: 8
+värde: 10
+värde: 9
+värde: 8
 
 </sample-output>
 
 
-### Laskurin vähentäminen
+### Del 1: Minska räknarens värde
 
-Täydennä luokan runkoon metodin `vahenna` toteutus sellaiseksi, että se vähentää kutsuttavan olion oliomuuttujan arvoa yhdellä. Kun olet toteuttanut metodin `vahenna`, äskeisen pääohjelman tulee toimia esimerkkitulosteen mukaan.
+Komplettera metoden `minska` som definieras i mallen, så att den minskar värdet som lagras i räknaren med ett. Se exemplet ovan för förväntat beteende.
 
-### Laskurin arvo ei saa olla negatiivinen
+### Del 2: Räknaren får inte ha ett negativt värde
 
-Täydennä metodin `vahenna` toteutus sellaiseksi, ettei laskurin arvo mene koskaan negatiiviseksi: jos laskurin arvo on jo 0, sitä ei enää vähennetä.
+Lägg till funktionalitet till din `minska`-metod, så att räknarens värde aldrig når negativa värden. Om värdet på räknaren är 0 kommer den inte att minskas ytterligare.
 
 ```python
-laskuri = VahenevaLaskuri(2)
-laskuri.tulosta_arvo()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
+raknare = MinskandeRaknare(2)
+raknare.skriv_ut_varde()
+raknare.minska()
+raknare.skriv_ut_varde()
+raknare.minska()
+raknare.skriv_ut_varde()
+raknare.minska()
+raknare.skriv_ut_varde()
 ```
 
 <sample-output>
 
-arvo: 2
-arvo: 1
-arvo: 0
-arvo: 0
+värde: 2
+värde: 1
+värde: 0
+värde: 0
 
 </sample-output>
 
-### Laskurin arvon nollaus
+### Del 3: Nollande av räknaren
 
-Tee laskurille metodi `nollaa`, joka nollaa laskurin arvon:
+Skapa en metod `nolla` som sätter värdet på räknaren till 0:
 
 ```python
-laskuri = VahenevaLaskuri(100)
-laskuri.tulosta_arvo()
-laskuri.nollaa()
-laskuri.tulosta_arvo()
+raknare = MinskandeRaknare(100)
+raknare.skriv_ut_varde()
+raknare.nolla()
+raknare.skriv_ut_varde()
 ```
 
 <sample-output>
 
-arvo: 100
-arvo: 0
+värde: 100
+värde: 0
 
 </sample-output>
 
-### Alkuperäisen arvon palautus
+### Del 4: Återställning av räknaren
 
-Tee laskurille metodi `palauta_alkuperainen_arvo()` joka palauttaa laskurille sen alkuperäisen arvon:
+Skapa en metod `aterstall_ursprungligt_varde()`, som återställer räknaren till sitt ursprungliga tillstånd:
 
 ```python
-laskuri = VahenevaLaskuri(55)
-laskuri.vahenna()
-laskuri.vahenna()
-laskuri.vahenna()
-laskuri.vahenna()
-laskuri.tulosta_arvo()
-laskuri.palauta_alkuperainen_arvo()
-laskuri.tulosta_arvo()
+raknare = MinskandeRaknare(55)
+raknare.minska()
+raknare.minska()
+raknare.minska()
+raknare.minska()
+raknare.skriv_ut_varde()
+raknare.aterstall_ursprungligt_varde()
+raknare.skriv_ut_varde()
 ```
 
 <sample-output>
 
-arvo: 51
-arvo: 55
+värde: 51
+värde: 55
 
 </sample-output>
 
@@ -285,58 +285,58 @@ Som avslutning på detta avsnitt tittar vi på en klass som modellerar en spelar
 ```python
 from datetime import date
 
-class Ennatystulos:
+class PersonligtRekord:
 
-    def __init__(self, pelaaja: str, paiva: int, kuukausi: int, vuosi: int, pisteet: int):
-        # Oletusarvot
-        self.pelaaja = ""
-        self.paivamaara = date(1900, 1, 1)
-        self.pisteet = 0
+    def __init__(self, spelare: str, dag: int, manad: int, ar: int, poang: int):
+        # Standardvärden
+        self.spelare = ""
+        self.datum = date(1900, 1, 1)
+        self.poang = 0
 
-        if self.nimi_ok(pelaaja):
-            self.pelaaja = pelaaja
+        if self.namn_ok(spelare):
+            self.spelare = spelare
 
-        if self.pvm_ok(paiva, kuukausi, vuosi):
-            self.paivamaara = date(vuosi, kuukausi, paiva)
+        if self.dtm_ok(dag, manad, ar):
+            self.datum = date(ar, manad, dag)
 
-        if self.pisteet_ok(pisteet):
-            self.pisteet = pisteet
+        if self.poang_ok(poang):
+            self.poang = poang
 
-    # Apumetodit, joilla tarkistetaan ovatko syötteet ok
-    def nimi_ok(self, nimi: str):
-        return len(nimi) >= 2 # Nimessä vähintään kaksi merkkiä
+    # Hjälparmetoder som kollar att argumenten är giltiga
+    def namn_ok(self, namn: str):
+        return len(namn) >= 2 # Namnet ska vara minst två tecken
 
-    def pvm_ok(self, paiva, kuukausi, vuosi):
+    def dtm_ok(self, dag, manad, ar):
         try:
-            date(vuosi, kuukausi, paiva)
+            date(ar, manad, dag)
             return True
         except:
-            # Poikkeus, jos yritetään muodostaa epäkelpo päivämäärä
+            # Ett undantag ifall datumet inte är giltigt
             return False
 
-    def pisteet_ok(self, pisteet):
-        return pisteet >= 0
+    def poang_ok(self, poang):
+        return poang >= 0
 
 if __name__ == "__main__":
-    tulos1 = Ennatystulos("Pekka", 1, 11, 2020, 235)
-    print(tulos1.pisteet)
-    print(tulos1.pelaaja)
-    print(tulos1.paivamaara)
+    resultat1 = PersonligtRekord("Peter", 1, 11, 2020, 235)
+    print(tulos1.poang)
+    print(tulos1.spelare)
+    print(tulos1.datum)
 
-    # Epäkelpo arvo päivämäärälle
-    tulos2 = Ennatystulos("Piia", 4, 13, 2019, 4555)
-    print(tulos2.pisteet)
-    print(tulos2.pelaaja)
-    print(tulos2.paivamaara) # Tulostaa oletusarvon 1900-01-01
+    # Datumet är inte giltigt
+    resultat2 = PersonligtRekord("Pernilla", 4, 13, 2019, 4555)
+    print(tulos2.poang)
+    print(tulos2.spelare)
+    print(tulos2.datum) # Skriver ut standardvärdet 1900-01-01
 ```
 
 <sample-output>
 
 235
-Pekka
+Peter
 2020-11-01
 4555
-Piia
+Pernilla
 1900-01-01
 
 </sample-output>
@@ -350,59 +350,59 @@ Det är också möjligt att skapa lokala variabler inom metoddefinitioner utan a
 Så här skulle det till exempel fungera: 
 
 ```python
-class Bonuskortti:
-    def __init__(self, nimi: str, saldo: float):
-        self.nimi = nimi
+class Bonuskort:
+    def __init__(self, namn: str, saldo: float):
+        self.namn = namn
         self.saldo = saldo
 
-    def lisaa_bonus(self):
-        # Nyt muuttuja bonus on paikallinen muuttuja,
-        # eikä olion attribuutti - siihen siis ei voi
-        # viitata olion kautta
+    def tillsatt_bonus(self):
+        # Nu är variabeln bonus en lokal variabel, inte ett
+        # data attribut till objektet
+        # Den kan inte nås genom ett objekt
         bonus = self.saldo * 0.25
         self.saldo += bonus
 
-    def lisaa_superbonus(self):
-        # Myös muuttuja superbonus on paikallinen muuttuja
-        # Yleensä apumuuttujina käytetään paikallisia
-        # muuttujia, koska niihin ei ole tarvetta
-        # viitatata muissa metodeissa tai olion kautta
+    def tillsatt_superbonus(self):
+        # Variabeln superbonus är också en lokal variabel.
+        # Vanligtvis är hjälpvariabler lokala variabler eftersom
+        # det inte finns något behov av att komma åt dem från andra
+        # metoder i klassen eller direkt via ett objekt.
         superbonus = self.saldo * 0.5
         self.saldo += superbonus
 
     def __str__(self):
-        return f"Bonuskortti(nimi={self.nimi}, saldo={self.saldo})"
+        return f"Bonuskort(namn={self.namn}, saldo={self.saldo})"
 ```
 
 <programming-exercise name="Etu- ja sukunimi" tmcname='osa08-10b_etu_ja_sukunimi'>
 
-Kirjoita luokka `Henkilo`, jolla on _ainoastaan yksi attribuutti_ `nimi`, joka asetetaan konstruktorissa.
+Skapa en klass `Person`, som får _endast ett attribut_ `namn`, som ges till konstruktorn.
 
-Lisäksi luokalle tule kirjoitaa kaksi metodia:
+Skapa dessutom två metoder:
 
-Metodi `anna_etunimi` palauttaa henkilön etunimen ja metodi `anna_sukunimi` vastaavasti henkilön sukunimen.
+Metoden `ge_fornamn` returnerar personens förnamn och metoden `ge_efternamn` på samma sätt personens efternamn.
 
-Voit olettaa metodeissa, että konstruktroissa annetussa nimessä on etu- ja sukunimi välilyönnillä erotettuna eikä muita nimiä.
+Du kan anta att det namn som skickas till konstruktorn kommer att innehålla endast för- och efternamn åtskilda med ett mellanslag.
 
-Esimerkki luokan käytöstä:
+Exempel på användning:
 
 ```python
 if __name__ == "__main__":
-    pekka = Henkilo("Pekka Python")
-    print(pekka.anna_etunimi())
-    print(pekka.anna_sukunimi())
+    peter = Person("Peter Python")
+    print(peter.ge_fornamn())
+    print(peter.ge_efternamn())
 
-    pauli = Henkilo("Pauli Pythonen")
-    print(pauli.anna_etunimi())
-    print(pauli.anna_sukunimi())
+    pauli = Person("Pernilla Pythonson")
+    print(pernilla.ge_fornamn())
+    print(pernilla.ge_efternamn())
 ```
 
 <sample-output>
 
-Pekka
+Peter
 Python
-Pauli
-Pythonen
+Pernilla
+Pythonson
 
 </sample-output>
 
@@ -411,117 +411,117 @@ Pythonen
 
 <programming-exercise name='Lukutilasto' tmcname='osa08-11_lukutilasto'>
 
-Tässä tehtävässä toteutetaan olio-ohjelmointia hyödyntäen samantapainen käyttäjän syöttämiä lukuja käsittelevä ohjelma kuin Ohjelmoinnin perusteiden [osan 2 lopussa](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya).
+I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av del 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet. 
 
-### Lukujen määrä
+### Del 1: Mängden nummer
 
-Tee luokka `Lukutilasto`, joka tuntee seuraavat toiminnot:
+Skapa en klass med namnet `Nummerstatistik`, med följande metoder:
 
-- metodi `lisaa_luku` lisää uuden luvun tilastoon
-- metodi `lukujen_maara` kertoo lisättyjen lukujen määrän
+- metoden `tillsatt_nummer` lägger till ett nytt nummer till statistiken
+- metoden `mangden_nummer` returnerar mängden nummer som har tillsatts
 
-Luokan ei tarvitse tallentaa mihinkään lisättyjä lukuja vaan riittää, että se muistaa niiden määrän. Metodin `lisaa_luku` ei tässä vaiheessa tarvitse edes ottaa huomioon, mikä luku lisätään tilastoon, koska ainoa tallennettava asia on lukujen määrä.
+I det här skedet finns det inget behov av att lagra själva siffrorna i någon datastruktur. Det räcker att bara komma ihåg hur många som har lagts till. Metoden `tillsatt_nummer` tar emot ett argument, men det finns inget behov av att bearbeta det faktiska värdet på något sätt ännu.
 
-Luokan runko on seuraava:
+Funktionen borde ha följande struktur:
 
 ```python
-class  Lukutilasto:
+class  NummerStatistik:
     def __init__(self):
-        self.lukuja = 0
+        self.nummer = 0
 
-    def lisaa_luku(self, luku:int):
+    def tillsatt_nummer(self, nummer:int):
         pass
 
-    def lukujen_maara(self):
+    def mangden_nummer(self):
         pass
 ```
 
 ```python
-tilasto = Lukutilasto()
-tilasto.lisaa_luku(3)
-tilasto.lisaa_luku(5)
-tilasto.lisaa_luku(1)
-tilasto.lisaa_luku(2)
-print("Lukujen määrä:", tilasto.lukujen_maara())
+statistik = NummerStatistik()
+statistik.tillsatt_nummer(3)
+statistik.tillsatt_nummer(5)
+statistik.tillsatt_nummer(1)
+statistik.tillsatt_nummer(2)
+print("Mängden nummer:", statistik.mangden_nummer())
 ```
 
 <sample-output>
 
-Lukujen määrä: 4
+Mängden nummer: 4
 
 </sample-output>
 
-### Summa ja keskiarvo
+### Del 2: Summa och medeltal
 
-Laajenna luokkaa seuraavilla toiminnoilla:
+Tillsätt följande metoder till klassdefinitionen:
 
-- metodi `summa` kertoo lisättyjen lukujen summan (tyhjän lukutilaston summa on 0)
-- metodi `keskiarvo` kertoo lisättyjen lukujen keskiarvon (tyhjän lukutilaston keskiarvo on 0)
+- metoden `summa` returnerar summan av talen som satts till (en tom statistik returnerar 0)
+- metoden `medeltat` returnerar medeltalet av numren (en tom statistiks medeltal är 0)
 
 ```python
-tilasto = Lukutilasto()
-tilasto.lisaa_luku(3)
-tilasto.lisaa_luku(5)
-tilasto.lisaa_luku(1)
-tilasto.lisaa_luku(2)
-print("Lukujen määrä:", tilasto.lukujen_maara())
-print("Summa:", tilasto.summa())
-print("Keskiarvo:", tilasto.keskiarvo())
+statistik = NummerStatistik()
+statistik.tillsatt_nummer(3)
+statistik.tillsatt_nummer(5)
+statistik.tillsatt_nummer(1)
+statistik.tillsatt_nummer(2)
+print("Mängden nummer:", statistik.mangden_nummer())
+print("Summa:", statistik.summa())
+print("Medeltal:", statistik.medeltal())
 ```
 
 <sample-output>
 
-Määrä: 4
+Mängd: 4
 Summa: 11
-Keskiarvo: 2.75
+Medeltal: 2.75
 
 </sample-output>
 
-### Summa käyttäjältä
+### Del 3: Användarinmatning
 
-Tee ohjelma, joka kysyy lukuja käyttäjältä, kunnes käyttäjä antaa luvun -1. Sitten ohjelma ilmoittaa lukujen summan.
+Skriv ett huvudprogram som fortsätter att fråga användaren om heltal tills användaren skriver in -1. Programmet ska sedan skriva ut summan och medelvärdet av de inmatade talen.
 
-Ohjelmassa tulee käyttää `Lukutilasto`-oliota summan laskemiseen.
+Ditt program ska använda `NummerStatistik`-objekt för att hålla koll på numren som läggs till.
 
-HUOM: Älä muuta tässä osassa luokkaa `Lukutilasto`, vaan toteuta sitä hyödyntäen summan laskemiseen käytetty ohjelma.
+OBS: Du behöver inte ändra `NummerStatistik`-klassen, i denna del, använd en instans av klassen för att slutföra denna del.
 
-HUOM2: Älä kirjoita pääohjelmaa `if __name__ == "__main__"`-lohkon sisään, jotta testit toimivat!
+OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block, annars fungerar inte testen.
 
 <sample-output>
 
-Anna lukuja:
+Ange nummer:
 **4**
 **2**
 **5**
 **2**
 **-1**
 Summa: 13
-Keskiarvo: 3.25
+Medeltal: 3.25
 
 </sample-output>
 
-### Monta summaa
+### Del 4: Flera summor
 
-Muuta edellistä ohjelmaa niin, että ohjelma laskee myös parillisten ja parittomien lukujen summaa.
+Bygg på ditt huvudprogram så att det också separat räknar summan av de jämna och udda tal som läggs till.
 
-HUOM: Älä edelleenkään muuta luokkaa `Lukutilasto`, vaan määrittele ohjelmassa kolme `Lukutilasto`-oliota. Laske ensimmäisen avulla kaikkien lukujen summa ja keskiarvo, toisen avulla parillisten lukujen summa ja kolmannen avulla parittomien lukujen summa.
+OBS: Ändra inte din `NummerStatistik`-klassdefinition i denna del av övningen heller. Definiera i stället tre `NummerStatistik`-objekt. Ett av dem ska hålla reda på alla siffror, ett annat ska hålla reda på de jämna siffrorna och det tredje ska hålla reda på de udda siffror som skrivs in.
 
-HUOM2: Älä kirjoita pääohjelmaa `if __name__ == "__main__"`-lohkon sisään, jotta testit toimivat!
+OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block, annars fungerar inte testen.
 
-Ohjelman tulee toimia seuraavasti:
+Programmet ska fungera så här:
 
 <sample-output>
 
-Anna lukuja:
+Ange nummer:
 **4**
 **2**
 **5**
 **2**
 **-1**
 Summa: 13
-Keskiarvo: 3.25
-Parillisten summa: 8
-Parittomien summa: 5
+Medeltal: 3.25
+Jämna talens summa: 8
+Udda talens summa: 5
 
 </sample-output>
 

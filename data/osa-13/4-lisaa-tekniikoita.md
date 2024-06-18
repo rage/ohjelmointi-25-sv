@@ -19,7 +19,7 @@ Efter den här delen
 Dina program kommer att se mer professionella ut om fönstertiteln istället för "pygame window" innehåller det faktiska namnet på programmet. Titeln ställs in med funktionen `pygame.display.set_caption`:
 
 ```python
-pygame.display.set_caption("Suuri seikkailu")
+pygame.display.set_caption("Det stora äventyret")
 ```
 
 ## Att rita former
@@ -30,18 +30,18 @@ Följande program ritar en rektangel, en cirkel och en linje på skärmen:
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
-naytto.fill((0, 0, 0))
+fonster = pygame.display.set_mode((640, 480))
+fonster.fill((0, 0, 0))
 
-pygame.draw.rect(naytto, (0, 255, 0), (50, 100, 200, 250))
-pygame.draw.circle(naytto, (255, 0, 0), (200, 150), 40)
-pygame.draw.line(naytto, (0, 0, 255), (80, 120), (300, 160), 2)
+pygame.draw.rect(fonster, (0, 255, 0), (50, 100, 200, 250))
+pygame.draw.circle(fonster, (255, 0, 0), (200, 150), 40)
+pygame.draw.line(fonster, (0, 0, 255), (80, 120), (300, 160), 2)
 
 pygame.display.flip()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -57,17 +57,17 @@ Text i pygame ritas i två steg: först skapar vi en bild som innehåller den ö
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
-naytto.fill((0, 0, 0))
+fonster = pygame.display.set_mode((640, 480))
+fonster.fill((0, 0, 0))
 
-fontti = pygame.font.SysFont("Arial", 24)
-teksti = fontti.render("Moikka!", True, (255, 0, 0))
-naytto.blit(teksti, (100, 50))
+font = pygame.font.SysFont("Arial", 24)
+text = font.render("<Moikka!>", True, (255, 0, 0))
+fonster.blit(text, (100, 50))
 pygame.display.flip()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -85,7 +85,7 @@ Här är några mer avancerade övningar för att öva på det du har lärt dig 
 
 <programming-exercise name='Kello' tmcname='osa13-16_kello'>
 
-Tee ohjelma, joka näyttää graafisesti kellonajan. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program som visar en urtavla som visar systemtiden. Slutresultatet ska se ut så här:
 
 <img src="pygame_kello.gif">
 
@@ -93,15 +93,15 @@ Tee ohjelma, joka näyttää graafisesti kellonajan. Ohjelman suorituksen tulee 
 
 <programming-exercise name='Asteroidit' tmcname='osa13-17_asteroidit'>
 
-Tee peli, jossa pelaaja ohjaa robottia vasemmalle ja oikealle ja tavoitteena on kerätä taivaalta putoavia asteroideja. Pelaaja saa pisteen jokaisesta kerätystä asteroidista, ja pistemäärä näytetään ikkunan ylälaidassa. Peli päättyy, kun pelaaja ei saa kiinni asteroidia. Pelin tulisi näyttää tältä:
+Skapa ett spel där asteroider faller från himlen. Spelaren flyttar en robot till höger och vänster och försöker samla upp de fallande stenarna. Spelaren får ett poäng för varje asteroid som samlas in och den totala poängen visas högst upp i fönstret. Spelet tar slut när spelaren missar en asteroid. Slutresultatet bör se ut så här:
 
 <img src="pygame_asteroidit.gif">
 
-Tehtäväpohjassa on asteroidia varten kuvatiedosto `kivi.png`.
+I uppgiftsbotten finns bilden `kivi.png` för asteroiden.
 
 </programming-exercise>
 
 
-Vastaa lopuksi osion loppukyselyyn:
+Svara vänligen på en snabb enkät om denna del av kursen:
 
 <quiz id="d16c5c09-a375-57da-a51b-22470587f95d"></quiz>

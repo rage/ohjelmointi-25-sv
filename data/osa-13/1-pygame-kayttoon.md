@@ -67,14 +67,14 @@ Här är ett enkelt program för att kontrollera att din pygame-installation fun
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-naytto.fill((0,0,0))
+fonster.fill((0,0,0))
 pygame.display.flip()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -88,7 +88,7 @@ Låt oss ta en närmare titt på de steg som krävs för att uppnå detta. Den f
 
 ```python
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 ```
 
 Funktionen `set_mode` tar fönstrets dimensioner som ett argument. Tupeln `(640, 480)` anger att fönstret är 640 pixlar brett och 480 pixlar högt. Variabelnamnet `fonster` kan senare användas för att komma åt fönstret, t.ex. för att rita något i det.
@@ -96,7 +96,7 @@ Funktionen `set_mode` tar fönstrets dimensioner som ett argument. Tupeln `(640,
 De följande två instruktionerna gör just detta:
 
 ```python
-naytto.fill((0, 0, 0))
+fonster.fill((0, 0, 0))
 pygame.display.flip()
 ```
 
@@ -106,8 +106,8 @@ Efter dessa initialiseringsinstruktioner börjar programmets huvudloop:
 
 ```python
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -125,17 +125,17 @@ Låt oss lägga till en bild i fönstret:
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
-naytto.fill((0, 0, 0))
-naytto.blit(robo, (100, 50))
+fonster.fill((0, 0, 0))
+fonster.blit(robot, (100, 50))
 pygame.display.flip()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -156,9 +156,9 @@ I pygame ligger origo-punkten `(0, 0)` i fönstrets övre vänstra hörn. X-koor
 När du har laddat en bild kan du använda den många gånger i samma fönster. I följande kod ritas bilden av roboten på tre olika platser:
 
 ```python
-naytto.blit(robo, (0, 0))
-naytto.blit(robo, (300, 0))
-naytto.blit(robo, (100, 200))
+fonster.blit(robot, (0, 0))
+fonster.blit(robot, (300, 0))
+fonster.blit(robot, (100, 200))
 ```
 
 Resultatet borde vara att fönstret ser ut så här:
@@ -168,9 +168,9 @@ Resultatet borde vara att fönstret ser ut så här:
 Här sätter vi lokationen av bilden så, att den ligger i mitten av fönstret:
 
 ```python
-leveys = robo.get_width()
-korkeus = robo.get_height()
-naytto.blit(robo, (320-leveys/2, 240-korkeus/2))
+bredd = robot.get_width()
+hojd = robot.get_height()
+fonster.blit(robot, (320-bredd/2, 240-hojd/2))
 ```
 
 Fönstret borde nu se ut så här:
@@ -190,7 +190,7 @@ Om din lösning helt klart inte stämmer överens med övningsbeskrivningen kan 
 
 <programming-exercise name='Neljä robottia' tmcname='osa13-01_nelja_robottia'>
 
-Tee ohjelma, joka piirtää robotin jokaiseen ikkunan neljään nurkkaan. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program som ritar en robot i vart och ett av de fyra hörnen av fönstret. Slutresultatet ska se ut så här:
 
 <img src="pygame_nelja.gif">
 
@@ -198,7 +198,7 @@ Tee ohjelma, joka piirtää robotin jokaiseen ikkunan neljään nurkkaan. Ohjelm
 
 <programming-exercise name='Robotit rivissä' tmcname='osa13-02_robotit_rivissa'>
 
-Tee ohjelma, joka piirtää kymmenen robottia riviin. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program som ritar tio robotar i rad. Slutresultatet ska se ut så här:
 
 <img src="pygame_rivi.gif">
 
@@ -206,7 +206,7 @@ Tee ohjelma, joka piirtää kymmenen robottia riviin. Ohjelman suorituksen tulee
 
 <programming-exercise name='Sata robottia' tmcname='osa13-03_sata_robottia'>
 
-Tee ohjelma, joka piirtää sata robottia: kymmenen riviä ja joka rivissä kymmenen robottia. Ohjelman suorituksen tulee näyttää tältä:
+Var snäll och skriv ett program som ritar hundra robotar: tio rader med tio robotar i varje rad. Slutresultatet ska se ut så här:
 
 <img src="pygame_sata.gif">
 
@@ -214,7 +214,7 @@ Tee ohjelma, joka piirtää sata robottia: kymmenen riviä ja joka rivissä kymm
 
 <programming-exercise name='Satunnaiset robotit' tmcname='osa13-04_satunnaiset_robotit'>
 
-Tee ohjelma, joka piirtää _tuhat_ robottia satunnaisiin paikkoihin. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program som ritar _tusen_ robotar på slumpmässiga platser. Slutresultatet ska se ut så här:
 
 <img src="pygame_tuhat.gif">
 

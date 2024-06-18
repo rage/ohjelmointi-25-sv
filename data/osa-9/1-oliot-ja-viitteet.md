@@ -18,66 +18,66 @@ Varje värde i Python är ett objekt. Alla objekt som du skapar baserat på en k
 ```python
 from datetime import date
 
-class Kurssisuoritus:
+class SlutfördKurs:
 
-    def __init__(self, kurssi: str, opintopisteet: int, suorituspvm: date):
-        self.kurssi = kurssi
-        self.opintopisteet = opintopisteet
-        self.suorituspvm = suorituspvm
+    def __init__(self, kurs: str, studiepoang: int, slutforsdatum: date):
+        self.kurs = kurs
+        self.studiepoang = studiepoang
+        self.slutforsdatum = slutforsdatum
 
 
 if __name__ == "__main__":
-    # Luodaan pari kurssisuoritusta ja lisätään listaan
-    suoritukset = []
+    # Vi skapar några slutförda kurser och lägger dessa i en lista
+    prestationer = []
 
-    mat1 = Kurssisuoritus("Matematiikka 1", 5, date(2020, 3, 11))
-    ohj1 = Kurssisuoritus("Ohjelmointi 1", 6, date(2019, 12, 17))
+    mat1 = SlutfördKurs("Matematik 1", 5, date(2020, 3, 11))
+    prg1 = SlutfördKurs("Programmering 1", 6, date(2019, 12, 17))
 
-    suoritukset.append(mat1)
-    suoritukset.append(ohj1)
+    prestationer.append(mat1)
+    prestationer.append(prg1)
 
-    # Lisätään suoraan listaan muutama
-    suoritukset.append(Kurssisuoritus("Fysiikka 2", 4, date(2019, 11, 10)))
-    suoritukset.append(Kurssisuoritus("Ohjelmointi 2", 5, date(2020, 5, 19)))
+    # Vi lägger några till rakt till listan
+    prestationer.append(SlutfördKurs("Fysik 2", 4, date(2019, 11, 10)))
+    prestationer.append(SlutfördKurs("Programmering 2", 5, date(2020, 5, 19)))
 
-    # Käydään läpi kaikki suoritukset, tulostetaan nimet ja lasketaan opintopisteet yhteen
-    opintopisteet = 0
-    for suoritus in suoritukset:
-        print(suoritus.kurssi)
-        opintopisteet += suoritus.opintopisteet
+    # Vi går igenom alla slutförda kurser, skriver ut deras namn och räknar ihop den totala mängden studiepoäng
+    studiepoang = 0
+    for prestation in prestationer:
+        print(prestation.kurs)
+        studiepoang += prestation.studiepoang
 
-    print("Opintopisteitä yhteensä:", opintopisteet)
+    print("Studiepoäng totalt:", studiepoang)
 ```
 
 <sample-output>
 
-Matematiikka 1
-Ohjelmointi 1
-Fysiikka 2
-Ohjelmointi 2
-Opintopisteitä yhteensä: 20
+Matematik 1
+Programmering 1
+Fysik 2
+Programmering 2
+Studiepoäng totalt: 20
 
 </sample-output>
 
 <programming-exercise name='Nopein auto' tmcname='osa09-01_nopein_auto'>
 
-Tehtäväpohjassa oleva luokka `Auto` mallintaa autoa kahden attribuutin avulla: `merkki (str)` ja `huippunopeus (int)`.
+Uppgiftsbotten har en klass med namnet `Bil` som representerar en bil genom två attribut: `marke (str)` och `topphastighet (int)`.
 
-Kirjoita funktio `nopein_auto(autot: list)`, joka saa parametrikseen listan `Auto`-luokan olioita.
+Skapa funktionen `snabbaste_bil(bilar: list)`, som får en lista av `Bil`-objekt som argument.
 
-Funktio palauttaa listassa olevista autoista nopeimman auton merkin. Voit olettaa, että nopein auto on yksikäsitteinen. Älä muuta alkuperäistä listaa tai luokkaa `Auto`.
+Funktionen ska returnera märket på den snabbaste bilen. Du kan anta att det alltid kommer att finnas en enda bil med den högsta topphastigheten. Ändra inte listan som ges som argument, gör heller inte några ändringar i klassdefinitionen för `Bil`.
 
-Esimerkki funktion testauksesta:
+Du kan använda följande kod för att testa din funktion:
 
 ```python
 if __name__ == "__main__":
-    auto1 = Auto("Mersu", 195)
-    auto2 = Auto("Lada", 110)
-    auto3 = Auto("Ferrari", 280)
-    auto4 = Auto("Trabant", 85)
+    bil1 = Bil("Mersu", 195)
+    bil2 = Bil("Lada", 110)
+    bil3 = Bil("Ferrari", 280)
+    bil4 = Bil("Trabant", 85)
 
-    autot = [auto1, auto2, auto3, auto4]
-    print(nopein_auto(autot))
+    bilar = [bil1, bil2, bil3, bil4]
+    print(snabbaste_bil(bilar))
 ```
 
 <sample-output>
@@ -90,51 +90,51 @@ Ferrari
 
 <programming-exercise name='Hyväksytyt suoritukset' tmcname='osa09-02_hyvaksytyt_suoritukset'>
 
-Tehtäväpohjasta löytyy luokka `Koesuoritus`, joka mallintaa nimensä mukaisesti koesuoritusta. Sillä on kaksi attribuuttia, `suorittaja (str)` ja `pisteet (int)`.
+I uppgiftsbotten hittas klassen `Provprestation`, som, liksom namnet anger, tar modell av en provtagares prestation i ett prov. Den har två attribut, `presterare (str)` och `poang (int)`.
 
-Kirjoita funktio `hyvaksytyt(suoritukset: list, pisteraja: int)`, joka saa parametrikseen listan koesuorituksia ja alimman hyväksytyn pistemäärän kokonaislukuna.
+Skapa funktionen `godkanda(prestationer: list, poanggrans: int)`, som får som parametrar en lista av provprestationer och ett heltal som representerar det minsta poängantalet för att bli godkänd.
 
-Funktio muodostaa ja palauttaa uuden listan, johon on tallennettu ainoastaan hyväksytyt suoritukset listalta. Älä muuta alkuperäistä listaa tai luokkaa `Koesuoritus`.
+Funktionen ska skapa och returnera en ny lista, som innehåller endast de prov som kom över poänggränsen i den ursprungliga listan. Ändra inte listan som ges som argument, ändra heller inte definitionen för klassen `Provprestation`.
 
-Esimerkki funktion käytöstä:
+Du kan använda följande kod för att testa funktionen:
 
 ```python
 if __name__ == "__main__":
-    s1 = Koesuoritus("Pekka", 12)
-    s2 = Koesuoritus("Pirjo", 19)
-    s3 = Koesuoritus("Pauli", 15)
-    s4 = Koesuoritus("Pirkko", 9)
-    s5 = Koesuoritus("Petriina", 17)
+    s1 = Provprestation("Peter", 12)
+    s2 = Provprestation("Pernilla", 19)
+    s3 = Provprestation("Per", 15)
+    s4 = Provprestation("Pia", 9)
+    s5 = Provprestation("Petra", 17)
 
-    hyv = hyvaksytyt([s1, s2, s3, s4, s5], 15)
-    for hyvaksytty in hyv:
-        print(hyvaksytty)
+    klarade = godkanda([s1, s2, s3, s4, s5], 15)
+    for godkand in klarade:
+        print(klarade)
 ```
 
 <sample-output>
 
-Koesuoritus (suorittaja: Pirjo, pisteet: 19)
-Koesuoritus (suorittaja: Pauli, pisteet: 15)
-Koesuoritus (suorittaja: Petriina, pisteet: 17)
+Provprestation (presterare: Pernilla, poang: 19)
+Provprestation (presterare: Per, poang: 15)
+Provprestation (presterare: Petra, poang: 17)
 
 </programming-exercise>
 
 Du kanske minns att listor inte innehåller några objekt i sig själva. De innehåller referenser till objekt. Exakt samma objekt kan förekomma flera gånger i en och samma lista, och det kan refereras till flera gånger i listan eller utanför den. Låt oss ta en titt på ett exempel:
 
 ```python
-class Tuote:
-    def __init__(self, nimi: int, yksikko: str):
-        self.nimi = nimi
-        self.yksikko = yksikko
+class Produkt:
+    def __init__(self, namn: int, enhet: str):
+        self.namn = namn
+        self.enhet = enhet
 
 
 if __name__ == "__main__":
-    kauppalista = []
-    maito = Tuote("Maito", "litra")
+    affarslista = []
+    mjolk = Produkt("Mjölk", "liter")
 
-    kauppalista.append(maito)
-    kauppalista.append(maito)
-    kauppalista.append(Tuote("Kurkku", "kpl"))
+    affarslista.append(mjolk)
+    affarslista.append(mjolk)
+    affarslista.append(Produkt("Gurka", "st"))
 ```
 
 <img src="9_1_1.png">
@@ -142,47 +142,47 @@ if __name__ == "__main__":
 Om det finns mer än en referens till samma objekt spelar det ingen roll vilken av referenserna som används:
 
 ```python
-class Koira:
-    def __init__(self, nimi):
-        self.nimi = nimi
+class Hund:
+    def __init__(self, namn):
+        self.namn = namn
 
     def __str__(self):
-        return self.nimi
+        return self.namn
 
-koirat = []
-musti = Koira("Musti")
-koirat.append(musti)
-koirat.append(musti)
-koirat.append(Koira("Musti"))
+hundar = []
+molly = Hund("Molly")
+hundar.append(molly)
+hundar.append(molly)
+hundar.append(Hund("Molly"))
 
-print("Koirat alussa:")
-for koira in koirat:
-    print(koira)
+print("Hundar i början:")
+for hund in hundar:
+    print(hund)
 
-print("Kohdan 0 koira saa uuden nimen:")
-koirat[0].nimi = "Rekku"
-for koira in koirat:
-    print(koira)
+print("Hunden på index 0 får ett nytt namn:")
+hundar[0].namn = "Rex"
+for hund in hundar:
+    print(hund)
 
-print("Kohdan 2 koira saa uuden nimen:")
-koirat[2].nimi = "Fifi"
-for koira in koirat:
-    print(koira)
+print("Hunden på index 2 får ett nytt namn:")
+hundar[2].namn = "Fifi"
+for hund in hundar:
+    print(hund)
 ```
 
 <sample-output>
 
 Koirat alussa:
-Musti
-Musti
-Musti
-Kohdan 0 koira saa uuden nimen:
-Rekku
-Rekku
-Musti
-Kohdan 2 koira saa uuden nimen:
-Rekku
-Rekku
+Molly
+Molly
+Molly
+Hunden på index 0 får ett nytt namn::
+Rex
+Rex
+Molly
+Hunden på index 2 får ett nytt namn:
+Rex
+Rex
 Fifi
 
 </sample-output>
@@ -223,16 +223,16 @@ True
 Alla Python-objekt kan också lagras i en ordlista eller någon annan datastruktur. Detta gäller även objekt som är av en klass som du själv har definierat.
 
 ```python
-class Opiskelija:
-    def __init__(self, nimi: str, op: int):
-        self.nimi = nimi
-        self.op = op
+class Studerande:
+    def __init__(self, namn: str, sp: int):
+        self.namn = namn
+        self.sp = sp
 
 if __name__ == "__main__":
-    # Käytetään avaimena opiskelijanumeroa ja arvona Opiskelija-oliota
-    opiskelijat = {}
-    opiskelijat["12345"] = Opiskelija("Olli Opiskelija", 10)
-    opiskelijat["54321"] = Opiskelija("Outi Opiskelija", 67)
+    # Vi använder studerandenummer som nyckel och värdet som fås är ett objekt av typen Studerande
+    studeranden = {}
+    studeranden["12345"] = Studerande("Olle Studerande", 10)
+    studeranden["54321"] = Studerande("Ove Studerande", 67)
 ```
 
 [Visualiseringsverktyget](http://www.pythontutor.com/visualize.html#mode=edit) kan hjälpa dig att förstå exemplet ovan:
@@ -244,86 +244,86 @@ if __name__ == "__main__":
 
 Hittills har vi bara snuddat vid ytan när det gäller att använda parameternamnet `self`. Låt oss titta närmare på när det bör eller inte bör användas.
 
-Nedan har vi en enkel klass som låter oss skapa ett vocabulary-objekt som innehåller några ord:
+Nedan har vi en enkel klass som låter oss skapa ett ordförråd-objekt som innehåller några ord:
 
 ```python
-class Sanasto:
+class Ordforrad:
     def __init__(self):
-        self.sanat = []
+        self.ord = []
 
-    def lisaa_sana(self, sana: str):
-        if not sana in self.sanat:
-            self.sanat.append(sana)
+    def tillsatt_ord(self, ord: str):
+        if not ord in self.ord:
+            self.ord.append(ord)
 
-    def tulosta(self):
-        for sana in sorted(self.sanat):
-            print(sana)
+    def utskrift(self):
+        for ord in sorted(self.ord):
+            print(ord)
 
-sanasto = Sanasto()
-sanasto.lisaa_sana("python")
-sanasto.lisaa_sana("olio")
-sanasto.lisaa_sana("olio-ohjelmointi")
-sanasto.lisaa_sana("olio")
-sanasto.lisaa_sana("nörtti")
+ordforrad = Ordforrad()
+ordforrad.tillsatt_ord("python")
+ordforrad.tillsatt_ord("objekt")
+ordforrad.tillsatt_ord("objekt-orienterad programmering")
+ordforrad.tillsatt_ord("objekt")
+ordforrad.tillsatt_ord("nörd")
 
-sanasto.tulosta()
+ordforrad.utskrift()
 ```
 
 <sample-output>
 
-nörtti
-olio
-olio-ohjelmointi
+nörd
+objekt
+objekt-orienterad programmering
 python
 
 </sample-output>
 
 Listan med ord lagras i ett attribut med namnet `self.ord`. I det här fallet är parameternamnet `self` obligatoriskt både i klassens konstruktormetod och i alla andra metoder som använder variabeln. Om `self` utelämnas kommer de olika metoderna inte att få tillgång till samma lista med ord.
 
-Låt oss lägga till en ny metod i vår klassdefinition. Metoden `längsta_ordet(self)` returnerar (ett av) de längsta orden i vokabulären.
+Låt oss lägga till en ny metod i vår klassdefinition. Metoden `langsta_ord(self)` returnerar (ett av) de längsta orden i ordförrådet.
 
 Följande är ett sätt att utföra denna uppgift, men vi kommer snart att se att det inte är ett särskilt bra sätt:
 
 ```python
-class Sanasto:
+class Ordforrad:
     def __init__(self):
-        self.sanat = []
+        self.ord = []
 
     # ...
 
-    def pisin_sana(self):
-        # määritellään kaksi apumuuttujaa
-        self.pisin = ""
-        self.pisimman_pituus = 0
+    def langsta_ord(self):
+        # vi definierar två hjälpvariabler
+        self.langsta = ""
+        self.langsta_langd = 0
 
-        for sana in self.sanat:
-            if len(sana) > self.pisimman_pituus:
-                self.pisimman_pituus = len(sana)
-                self.pisin = sana
+        for ord in self.ord:
+            if len(ord) > self.langsta_langd:
+                self.langsta_langd = len(ord)
+                self.langsta = ord
 
-        return self.pisin
+        return self.langsta
 ```
 
-Den här metoden använder två hjälpvariabler som deklareras med parameternamnet `self`. Kom ihåg att namnen på variablerna inte spelar någon roll i funktionell mening, så dessa variabler kan också namnges mer förvirrande som till exempel `hjälpare` och `hjälpare2`. Koden börjar se lite kryptisk ut:
+Den här metoden använder två hjälpvariabler som deklareras med parameternamnet `self`. Kom ihåg att namnen på variablerna inte spelar någon roll i funktionell mening, så dessa variabler kan också namnges mer förvirrande som till exempel `hjalpare` och `hjalpare2`. Koden börjar se lite kryptisk ut:
 
 ```python
-class Sanasto:
+class Ordforrad:
     def __init__(self):
-        self.sanat = []
+        self.ord = []
 
     # ...
 
-    def pisin_sana(self):
-        # määritellään kaksi apumuuttujaa
-        self.apu = ""
-        self.apu2 = 0
+    def langsta_ord(self):
+        # vi definierar två hjälpvariabler
+        self.hjalpare = ""
+        self.hjalpare2 = 0
 
-        for sana in self.sanat:
-            if len(sana) > self.apu2:
-                self.apu2 = len(sana)
-                self.apu = sana
+        for ord in self.ord:
+            if len(ord) > self.hjalpare2:
+                self.hjalpare2 = len(ord)
+                self.hjalpare = ord
 
-        return self.apu
+        return self.hjalpare
 ```
 
 När en variabel deklareras med parameternamnet `self` blir den ett attribut till objektet. Detta innebär att variabeln kommer att existera så länge objektet existerar. Specifikt kommer variabeln att fortsätta existera även efter att metoden som deklarerar den har avslutat sin exekvering (engelska “Execution”). I exemplet ovan är detta helt onödigt, eftersom hjälpvariablerna endast är avsedda att användas inom metoden `longest_word(self)`. Så att deklarera hjälpvariabler med parameternamnet `self` är inte en särskilt bra idé här.
@@ -333,25 +333,25 @@ Förutom att variabler kan existera efter sitt "utgångsdatum" kan användning a
 Om t.ex. en hjälpvariabel deklareras som ett attribut och tilldelas ett ursprungligt värde i konstruktorn, men variabeln sedan används i ett orelaterat sammanhang i en annan metod, blir resultatet ofta oförutsägbart:
 
 ```python
-class Sanasto:
+class Ordforrad:
     def __init__(self):
-        self.sanat = []
-        # määritellään apumuuttujia
-        self.apu = ""
-        self.apu2 = ""
-        self.apu3 = ""
-        self.apu4 = ""
+        self.ord = []
+        # vi definierar hjälparvariabler
+        self.hjalpare = ""
+        self.hjalpare2 = ""
+        self.hjalpare3 = ""
+        self.hjalpare4 = ""
 
     # ...
 
-    def pisin_sana(self):
-        for sana in self.sanat:
-            # tämä ei toimi sillä apu2:n tyyppi on väärä
-            if len(sana) > self.apu2:
-                self.apu2 = len(sana)
-                self.apu = sana
+    def langsta_ord(self):
+        for ord in self.ord:
+            # detta fungerar inte eftersom hjalpare2 har fel typ
+            if len(ord) > self.hjalpare2:
+                self.hjalpare2 = len(ord)
+                self.hjalpare = ord
 
-        return self.apu
+        return self.hjalpare
 ```
 
 Man skulle kunna tro att detta skulle lösas genom att bara deklarera attributen där de används, utanför konstruktorn, men detta resulterar i en situation där de attribut som är tillgängliga via ett objekt är beroende av vilka metoder som har utförts. I föregående del såg vi att fördelen med att deklarera attribut i konstruktorn är att alla instanser av klassen då kommer att ha exakt samma attribut. Om så inte är fallet kan det lätt leda till fel om man använder olika instanser av klassen.
@@ -359,23 +359,24 @@ Man skulle kunna tro att detta skulle lösas genom att bara deklarera attributen
 Sammanfattningsvis, om du behöver hjälpvariabler för användning inom en enda metod, är det korrekta sättet att göra det utan `self`. För att göra din kod lättare att förstå, använd också informativa variabelnamn:
 
 ```python
-class Sanasto:
+class Ordforrad:
     def __init__(self):
-        self.sanat = []
+        self.ord = []
 
     # ...
 
-    def pisin_sana(self):
-        # tämä on oikea tapa määritellä yhden metodin sisäiset apumuuttujat
-        pisin = ""
-        pisimman_pituus = 0
+    def langsta_ord(self):
+        # detta är det korrekta sättet att definiera 
+        # hjälpvariabler för användning i en enda metod
+        langsta = ""
+        langsta_langd = 0
 
-        for sana in self.sanat:
-            if len(sana) > pisimman_pituus:
-                pisimman_pituus = len(sana)
-                pisin = sana
+        for ord in self.ord:
+            if len(ord) > langsta_langd:
+                langsta_langd = len(ord)
+                langsta = ord
 
-        return pisin
+        return langsta
 ```
 
 I implementeringen ovan är hjälpvariablerna endast tillgängliga när metoden utförs. De värden som lagras i dem kan inte orsaka komplikationer i andra delar av programmet.
@@ -384,33 +385,33 @@ I implementeringen ovan är hjälpvariablerna endast tillgängliga när metoden 
 
 De objekt som skapas baserat på våra egna klasser är vanligtvis mutabla. Du kanske kommer ihåg att till exempel Python-listor är föränderliga: när de passeras som argument till funktioner kan deras innehåll ändras som ett resultat av exekveringen.
 
-Låt oss titta på ett enkelt exempel där en funktion får en referens till ett objekt av typen `Student` som sitt argument. Funktionen ändrar sedan namnet på studenten. Både funktionen och huvudfunktionen som anropar den har åtkomst till samma objekt, så ändringen syns även i huvudfunktionen.
+Låt oss titta på ett enkelt exempel där en funktion får en referens till ett objekt av typen `Studerande` som sitt argument. Funktionen ändrar sedan namnet på studenten. Både funktionen och huvudfunktionen som anropar den har åtkomst till samma objekt, så ändringen syns även i huvudfunktionen.
 
 ```python
-class Opiskelija:
-    def __init__(self, nimi: str, opiskelijanumero: str):
-        self.nimi = nimi
-        self.opiskelijanumero = opiskelijanumero
+class Studerande:
+    def __init__(self, namn: str, studerandenummer: str):
+        self.namn = namn
+        self.studerandenummer = studerandenummer
 
     def __str__(self):
-        return f"{self.nimi} ({self.opiskelijanumero})"
+        return f"{self.namn} ({self.studerandenummer})"
 
-# Huomaa, että tyyppivihjeenä käytetään nyt oman luokan nimeä
-def muuta_nimi(opiskelija: Opiskelija):
-    opiskelija.nimi = "Olli Opiskelija"
+# observera att typledtråden använder namnet på klassen definierad ovan
+def andra_namn(studerande: Studerande):
+    studerande.namn = "Olle Studerande"
 
-# Luodaan opiskelijaolio
-olli = Opiskelija("Olli Oppilas", "12345")
+# skapa ett Studerande-objekt
+olle = Studerande("Olle Elev", "12345")
 
-print(olli)
-muuta_nimi(olli)
-print(olli)
+print(olle)
+andra_namn(olle)
+print(olle)
 ```
 
 <sample-output>
 
-Olli Oppilas (12345)
-Olli Opiskelija (12345)
+Olle Elev (12345)
+Olle Studerande (12345)
 
 </sample-output>
 
@@ -419,48 +420,49 @@ Det är också möjligt att skapa objekt inom funktioner. Om en funktion returne
 ```python
 from random import randint, choice
 
-class Opiskelija:
-    def __init__(self, nimi: str, opiskelijanumero: str):
-        self.nimi = nimi
-        self.opiskelijanumero = opiskelijanumero
+class Studerande:
+    def __init__(self, namn: str, studerandenummer: str):
+        self.namn = namn
+        self.studerandenummer = studerandenummer
 
     def __str__(self):
-        return f"{self.nimi} ({self.opiskelijanumero})"
+        return f"{self.namn} ({self.studerandenummer})"
 
 
-# Funktio luo ja palauttaa Opiskelija-olion, jolla on satunnainen nimi ja opiskelijanumero
-def uusi_opiskelija():
-    etunimet = ["Arto","Pekka","Minna","Mari"]
-    sukunimet = ["Virtanen", "Lahtinen", "Leinonen", "Pythonen"]
+# Denna funktion skapar och returnerar ett nytt Studerande-objekt.
+# Den väljer slumpmässigt värden för namnet och studerandenumret.
+def ny_studerande():
+    fornamn = ["Atte","Peter","Minna","Maria"]
+    efternamn = ["Virtanen", "Lahtinen", "Leinonen", "Pythonson"]
 
-    # arvo nimi
-    nimi = choice(etunimet) + " " + choice(sukunimet)
+    # Slumpmässigt namn
+    namn = choice(fornamn) + " " + choice(efternamn)
 
-    # Arvo opiskelijanumero
-    opiskelijanumero = str(randint(10000,99999))
+    # Slumpmässigt studerandenummer
+    studerandenummer = str(randint(10000,99999))
 
-    # Luo ja palauta opiskelijaolio
-    return Opiskelija(nimi, opiskelijanumero)
+    # Skapa och returnera ett Studerande-objekt
+    return Studerande(namn, studerandenummer)
 
 if __name__ == "__main__":
-    # Kutsutaan metodia viidesti, tallennetaan tulokset listaan
-    opiskelijat = []
+    # Kalla funktionen fem gånger och spara resultatet i en lista
+    studeranden = []
     for i in range(5):
-        opiskelijat.append(uusi_opiskelija())
+        studeranden.append(ny_studerande())
 
-    # Tulostetaan
-    for opiskelija in opiskelijat:
-        print(opiskelija)
+    # Skriv ut resultatet
+    for studerande in studeranden:
+        print(studerande)
 ```
 Om du kör ovanstående kan det resultera i följande utskrift (OBS: eftersom slumpen är inblandad kommer resultaten sannolikt att bli annorlunda om du testar koden själv).
 
 <sample-output>
 
-Mari Lahtinen (36213)
-Arto Virtanen (11859)
-Mari Pythonen (77330)
-Arto Pythonen (86451)
-Minna Pythonen (86211)
+Maria Lahtinen (36213)
+Atte Virtanen (11859)
+Maria Pythonen (77330)
+Atte Pythonson (86451)
+Minna Pythonson (86211)
 
 </sample-output>
 
@@ -469,151 +471,151 @@ Minna Pythonen (86211)
 På liknande sätt kan objekt fungera som argument till metoder. Låt oss ta en titt på ett exempel från en nöjespark:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, pituus: int):
-        self.nimi = nimi
-        self.pituus = pituus
+class Person:
+    def __init__(self, namn: str, langd: int):
+        self.namn = namn
+        self.langd = langd
 
-class Huvipuistolaite:
-    def __init__(self, nimi: str, pituusraja: int):
-        self.kavijoita = 0
-        self.nimi = nimi
-        self.pituusraja = pituusraja
+class Akattraktion:
+    def __init__(self, namn: str, langdgrans: int):
+        self.besokare = 0
+        self.namn = namn
+        self.langdgrans = langdgrans
 
-    def ota_kyytiin(self, henkilo: Henkilo):
-        if henkilo.pituus >= self.pituusraja:
-            self.kavijoita += 1
-            print(f"{henkilo.nimi} pääsi kyytiin")
+    def ta_ombord(self, person: Person):
+        if person.langd >= self.langdgrans:
+            self.besokare += 1
+            print(f"{person.namn} kom ombord")
         else:
-            print(f"{henkilo.nimi} liian lyhyt :(")
+            print(f"{person.namn} var för kort :(")
 
     def __str__(self):
-        return f"{self.nimi} ({self.kavijoita} kävijää)"
+        return f"{self.namn} ({self.besokare} besökare)"
 ```
 
 Attraktionen innehåller en metod `motta_besökare`, som tar ett objekt av typen `Person` som argument. Om besökaren är tillräckligt lång släpps denne ombord och antalet besökare ökas. Klasserna kan testas på följande sätt:
 
 ```python
-hurjakuru = Huvipuistolaite("Hurjakuru", 120)
-jarkko = Henkilo("Jarkko", 172)
-venla = Henkilo("Venla", 105)
+berg_och_dalbana = Akattraktion("Berg_och_dalbana", 120)
+jakob = Person("Jakob", 172)
+vilma = Person("Vilma", 105)
 
-hurjakuru.ota_kyytiin(jarkko)
-hurjakuru.ota_kyytiin(venla)
+berg_och_dalbana.ta_ombord(jakob)
+berg_och_dalbana.ta_ombord(vilma)
 
-print(hurjakuru)
+print(berg_och_dalbana)
 ```
 
 <sample-output>
 
-Jarkko pääsi kyytiin
-Venla liian lyhyt :(
-Hurjakuru (1 kävijää)
+Jakob kom ombord
+Venla var för kort :(
+Berg_och_dalbana (1 besökare)
 
 </sample-output>
 
 <programming-exercise name='Kasvatuslaitos' tmcname='osa09-03_kasvatuslaitos'>
 
-Tehtäväpohjassasi on valmiina jo luokka `Henkilo` sekä runko luokalle `Kasvatuslaitos`. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan `Henkilo` koodiin ei tehtävässä ole tarkoitus koskea!
+I uppgiftsbotten finns färdigt redan en klass `Person` såväl som en ram för klassen `BebisCenter`. Ett `BebisCenter`-objekt utför olika handlingar såsom mäter eller matar personer. I denna uppgift implementerar du resten av `BebisCenter`-klassen. Koden för klassen `Person` ska inte ändras överhuvudtaget!
 
-## Henkilöiden punnitseminen
+## Del 1: Vägning av person
 
-Kasvatuslaitoksen luokkarungossa on valmiina runko metodille punnitse:
+I `BebisCenter`-klassens definitione finns en ram för funktionen `vagning`
 
 ```python
-class Kasvatuslaitos:
-    def punnitse(self, henkilo: Henkilo):
-        # palautetaan parametrina annetun henkilön paino
+class BebisCenter:
+    def vagning(self, person: Person):
+        # returnera vikten av personen som passerades som argument
         return -1
 ```
 
-Metodi saa parametrina henkilön ja metodin on tarkoitus palauttaa kutsujalleen parametrina olevan henkilön paino. Paino selviää pyytämällä parametrina olevalta henkilöltä `henkilo` sopiva attribuutti. Sinun tulee täydentää `punnitse`-metodin koodia.
+Metoden tar ett `Person`-objekt som sitt argument. Den ska returnera personens vikt. Du kan komma åt en persons vikt genom attributet som definieras i `Person`-klassen. Vänligen fyll i resten av implementationen för metoden `vagning`.
 
-Seuraavassa on pääohjelma jossa kasvatuslaitos punnitsee kaksi henkilöä:
+Nedan finns ett exempel på en huvudfunktion där ett `BebisCenter` väger två olika `Person`-objekt:
 
 ```python
-haagan_neuvola = Kasvatuslaitos()
+haga_barnvard = BebisCenter()
 
-eero = Henkilo("Eero", 1, 110, 7)
-pekka = Henkilo("Pekka", 33, 176, 85)
+erik = Person("Erik", 1, 110, 7)
+peter = Person("Peter", 33, 176, 85)
 
-print(f"{eero.nimi} painaa {haagan_neuvola.punnitse(eero)} kg")
-print(f"{pekka.nimi} painaa {haagan_neuvola.punnitse(pekka)} kg")
+print(f"{erik.namn} väger {haga_barnvard.vagning(erik)} kg")
+print(f"{peter.namn} väger {haga_barnvard.vagning(peter)} kg")
 ```
 
 <sample-output>
 
-Eero painaa 7 kg
-Pekka painaa 85 kg
+Erik väger 7 kg
+Peter väger 85 kg
 
 </sample-output>
 
-## Syöttäminen
+## Del 2: Matning
 
-Parametrina olevan olion tilaa on mahdollista muuttaa. Tee kasvatuslaitokselle metodi `syota(henkilo: Henkilo)` joka kasvattaa parametrina olevan henkilön painoa yhdellä.
+Det är möjligt att ändra tillståndet för ett objekt som skickas som ett argument. Implementera metoden `mata(person: Person)` som ökar vikten på den person som skickas som argument med ett.
 
-Seuraavassa on esimerkki, jossa henkilöt ensin punnitaan ja tämän jälkeen neuvolassa syötetään Eeroa kolme kertaa. Tämän jälkeen henkilöt taas punnitaan:
+I följande exempel vägs två personer, och sedan matas en av dem tre gånger. Därefter vägs personerna igen:
 
 ```python
-haagan_neuvola = Kasvatuslaitos()
+haga_barnvard = BabyCenter()
 
-eero = Henkilo("Eero", 1, 110, 7)
-pekka = Henkilo("Pekka", 33, 176, 85)
+erik = Person("Erik", 1, 110, 7)
+peter = Person("Peter", 33, 176, 85)
 
-print(f"{eero.nimi} painaa {haagan_neuvola.punnitse(eero)} kg")
-print(f"{pekka.nimi} painaa {haagan_neuvola.punnitse(pekka)} kg")
+print(f"{erik.namn} väger {haga_barnvard.vagning(erik)} kg")
+print(f"{peter.namn} väger {haga_barnvard.vagning(peter)} kg")
 print()
 
-haagan_neuvola.syota(eero)
-haagan_neuvola.syota(eero)
-haagan_neuvola.syota(eero)
+haga_barnvard.mata(erik)
+haga_barnvard.mata(erik)
+haga_barnvard.mata(erik)
 
-print(f"{eero.nimi} painaa {haagan_neuvola.punnitse(eero)} kg")
-print(f"{pekka.nimi} painaa {haagan_neuvola.punnitse(pekka)} kg")
+print(f"{erik.namn} väger {haga_barnvard.vagning(erik)} kg")
+print(f"{peter.namn} väger {haga_barnvard.vagning(peter)} kg")
 ```
 
-Tulostuksen pitäisi paljastaa, että Eeron paino on noussut kolmella:
+Utskriften borde visa att Eriks vikt har stigit med tre:
 
 <sample-output>
 
-Eero painaa 7 kg
-Pekka painaa 85 kg
+Erik väger 7 kg
+Peter väger 85 kg
 
-Eero painaa 10 kg
-Pekka painaa 85 kg
+Erik väger 10 kg
+Peter väger 85 kg
 
 </sample-output>
 
-## Punnitusten laskeminen
+## Del 3: Räknande av vägningar
 
-Tee kasvatuslaitokselle metodi `punnitukset()` joka kertoo, kuinka monta punnitusta kasvatuslaitos on ylipäätään tehnyt. Huom! Tarvitset uuden oliomuuttujan punnitusten lukumäärän laskemiseen. Testipääohjelma:
+Implementera metoden `vagningar`() som returnerar det totala antalet vägningar som ett `BabyCenter`-objekt har utfört. OBS: Du kommer att behöva ett nytt attribut för att hålla reda på antalet vägningar. Du kan använda följande kod för att testa din metod:
 
 ```python
-haagan_neuvola = Kasvatuslaitos()
+haga_barnvard = BabyCenter()
 
-eero = Henkilo("Eero", 1, 110, 7)
-pekka = Henkilo("Pekka", 33, 176, 85)
+erik = Person("Erik", 1, 110, 7)
+peter = Person("Peter", 33, 176, 85)
 
-print(f"Punnituksia tehty {haagan_neuvola.punnitukset()}")
+print(f"Vägningar utförda {haga_barnvard.vagningar()}")
 
-haagan_neuvola.punnitse(eero)
-haagan_neuvola.punnitse(eero)
+haga_barnvard.vagning(erik)
+haga_barnvard.vagning(erik)
 
-print(f"Punnituksia tehty {haagan_neuvola.punnitukset()}")
+print(f"Vägningar utförda {haga_barnvard.vagningar()}")
 
-haagan_neuvola.punnitse(eero)
-haagan_neuvola.punnitse(eero)
-haagan_neuvola.punnitse(eero)
-haagan_neuvola.punnitse(eero)
+haga_barnvard.vagning(erik)
+haga_barnvard.vagning(erik)
+haga_barnvard.vagning(erik)
+haga_barnvard.vagning(erik)
 
-print(f"Punnituksia tehty {haagan_neuvola.punnitukset()}")
+print(f"Vägningar utförda {haga_barnvard.vagningar()}")
 ```
 
 <sample-output>
 
-Punnituksia tehty 0
-Punnituksia tehty 2
-Punnituksia tehty 6
+Vägningar utförda 0
+Vägningar utförda 2
+Vägningar utförda 6
 
 </sample-output>
 
@@ -621,207 +623,210 @@ Punnituksia tehty 6
 
 <programming-exercise name='Maksukortti ja kassapääte' tmcname='osa09-04_maksukortti_ja_kassapaate'>
 
-Teimme edellisessä osan [tehtävässä](/osa-8/5-lisaa-esimerkkeja#programming-exercise-maksukortti) luokan `Maksukortti`. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.
+I föregående del fanns en [övning](/osa-8/5-lisaa-esimerkkeja#programming-exercise-maksukortti) där du implementerade klassen `Lunchkort`. Kortet hade separata metoder för att äta en vanlig och en speciell lunch, samt en metod för att sätta in pengar på kortet.
 
-Edellisen osan tyylillä tehdyssä `Maksukortti`-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uudet hinnat tuntevilla korteilla.
+Klassen `Lunchkort`, så som du ombads implementera den, har dock vissa problem. Kortet självt hade kunskap om priserna på de olika lunchalternativen och visste att subtrahera rätt mängd pengar från saldot baserat på dessa. Men tänk dig att priserna ändrades eller att nya varor infördes i systemet, men att flera kort redan var registrerade i systemet. Detta skulle innebära att alla befintliga kort skulle behöva ersättas med versioner med kunskap om de nya priserna.
 
-Parempi ratkaisu on tehdä kortit "tyhmiksi", hinnoista ja myytävistä tuotteista tietämättömiksi pelkän saldon säilyttäjiksi. Kaikki äly kannattaakin laittaa erillisiin olioihin, kassapäätteisiin.
+En bättre lösning skulle vara att göra korten ”dumma”, okunniga om priserna på olika produkter. Syftet med kortet skulle vara att helt enkelt hålla reda på det tillgängliga saldot. Alla mer komplicerade funktioner bör rymmas inom en annan klass: betalterminalen.
 
-## "Tyhmä" maksukortti
+## Del 1: Ett simplare Lunchkort
 
-Toteutetaan ensin `Maksukortti`-luokasta "tyhmä" versio. Kortilla on ainoastaan metodit saldon kysymiseen, rahan lataamiseen ja rahan ottamiseen. Täydennä alla ja tehtäväpohjassa olevaan luokkaan metodin `ota_rahaa(maara)` ohjeen mukaan:
+Vi förverkligar först en dummare version av `Lunchkort`-klassen. Kortet borde endast ha funktioner för att få reda på det tillfälliga saldot, lägga till pengar på kortet och subtrahera pengar från saldot. Fyll i metoden `subtrahera_saldo(mangd)` enligt kommentarerna i övningsfältet:
 
 ```python
-class Maksukortti:
+class Lunchkort:
     def __init__(self, saldo: float):
         self.saldo = saldo
 
-    def lataa_rahaa(self, lisays: float):
+    def tillsatt_pengar(self, mangd: float):
         self.saldo += lisays
 
-    def ota_rahaa(self, maara: float):
+    def subtrahera_saldo(self, mangd: float):
         pass
-        # Toteuta metodi siten, että se ottaa kortilta rahaa vain, jos saldoa riittää
-        # Onnistuessaan metodi palauttaa True ja muuten False
+        # Metoden ska endast kunna subtrahera från saldot 
+        # ifall det finns tillräckligt med pengar på kortet
+        # Lyckad betalning returnerar True, icke-lyckad False.
 ```
 
 Testipääohjelma:
 
 ```python
 if __name__ == "__main__":
-    kortti = Maksukortti(10)
-    print("Rahaa", kortti.saldo)
-    tulos = kortti.ota_rahaa(8)
-    print("Onnistuiko otto:", tulos)
-    print("Rahaa", kortti.saldo)
-    tulos = kortti.ota_rahaa(4)
-    print("Onnistuiko otto:", tulos)
-    print("Rahaa", kortti.saldo)
+    kort = Lunchkort(10)
+    print("Saldo", kort.saldo)
+    resultat = kort.subtrahera_saldo(8)
+    print("Betalningen lyckades:", resultat)
+    print("Saldo", kort.saldo)
+    resultat = kort.subtrahera_saldo(4)
+    print("Betalningen lyckads:", resultat)
+    print("Saldo", kort.saldo)
 ```
 
 <sample-output>
 
-Rahaa 10
-Onnistuiko otto: True
-Rahaa 2
-Onnistuiko otto: False
-Rahaa 2
+Saldo 10
+Betalningen lyckades: True
+Saldo 2
+Betalningen lyckades: False
+Saldo 2
 
 </sample-output>
 
-## Kassapääte ja käteiskauppa
+## Del 2: Betalningsterminalen och hanterandet av kontantbetalning
 
-Unicafessa asioidessa asiakas maksaa joko käteisellä tai maksukortilla. Myyjä käyttää kassapäätettä kortin veloittamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio.
+I studentkafeterian går det att betala med kontanter eller Lunchkort. En betalterminal används för att hantera både kontant- och korttransaktioner. Låt oss börja med kontanttransaktionerna.
 
-Kassapäätteen runko on seuraavanlainen. Metodien kommentit kertovat halutun toiminnallisuuden.
+Här har vi en ram för en `Betalterminal`-klass. Implementera metoderna enligt beskrivningen i kommentarerna:
 
 ```python
 class Kassapaate:
     def __init__(self):
-        # Kassassa on aluksi 1000 euroa rahaa
-        self.rahaa = 1000
-        self.edulliset = 0
-        self.maukkaat = 0
+        # I kassan finns det ursprungligen 1000 euro i kontanter
+        self.pengar = 1000
+        self.formanliga = 0
+        self.special = 0
 
-    def syo_edullisesti(self, maksu: float):
-        # Edullinen lounas maksaa 2.50 euroa.
-        # Kasvatetaan kassan rahamäärää edullisen lounaan hinnalla ja palautetaan vaihtorahat
-        # Jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+    def at_formanligt(self, maksu: float):
+        # En formånlig lunch kostar 2.50 euro
+        # Öka värdet på pengarna som finns i terminalen med en förmånlig lunchs pris,
+        # öka mängden förmånliga luncher och returnera rätt mängd växel.
+        # Ifall betalningen inte är tillräckligt stor säljs ingen lunch och hela summan returneras
 
-    def syo_maukkaasti(self, maksu: float):
-        # Maukas lounas maksaa 4.30 euroa.
-        # Kasvatetaan kassan rahamäärää maukkaan lounaan hinnalla ja palautetaan vaihtorahat
-        # Jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+    def at_special(self, maksu: float):
+        # En formånlig lunch kostar 4.30 euro
+        # Öka värdet på pengarna som finns i terminalen med en special lunchs pris,
+        # öka mängden special luncher och returnera rätt mängd växel.
+        # Ifall betalningen inte är tillräckligt stor säljs ingen lunch och hela summan returneras
 ```
 
-Käyttöesimerkki
+Exempel på användning:
 
 ```python
-exactum = Kassapaate()
+exactum = Betalterminal()
 
-vaihtorahaa = exactum.syo_edullisesti(10)
-print("Vaihtorahaa jäi", vaihtorahaa)
+vaxel = exactum.at_formanligt(10)
+print("Mängden växel", vaxel)
 
-vaihtorahaa = exactum.syo_edullisesti(5)
-print("Vaihtorahaa jäi", vaihtorahaa)
+vaxel = exactum.at_formanligt(5)
+print("Mängden växel", vaxel)
 
-vaihtorahaa = exactum.syo_maukkaasti(4.3)
-print("Vaihtorahaa jäi", vaihtorahaa)
+vaxel = exactum.at_special(4.3)
+print("Mängden växel", vaxel)
 
-print("Kassassa rahaa", exactum.rahaa)
-print("Edullisia lounaita myyty", exactum.edulliset)
-print("Maukkaita lounaita myyty", exactum.maukkaat)
+print("Pengar i kassan", exactum.pengar)
+print("Förmånliga luncher sålda", exactum.formanliga)
+print("Special luncher sålda", exactum.special)
 ```
 
 <sample-output>
 
-Vaihtorahaa jäi 7.5
-Vaihtorahaa jäi 2.5
-Vaihtorahaa jäi 0.0
-Kassassa rahaa 1009.3
-Edullisia lounaita myyty 2
-Maukkaita lounaita myyty 1
+Mängden växel 7.5
+Mängden växel 2.5
+Mängden växel 0.0
+Pengar i kassan 1009.3
+Förmånliga luncher sålda 2
+Special luncher sålda 1
 
 </sample-output>
 
-## Kortilla maksaminen
+## Del 3: Betalning med kort
 
-Laajennetaan kassapäätettä siten, että myös kortilla voi maksaa. Teemme kassapäätteelle siis metodit, joiden parametrina kassapääte saa maksukortin, jolta se vähentää valitun lounaan hinnan. Seuraavassa ovat uusien metodien rungot ja ohje niiden toteuttamiseksi:
+Låt oss nu implementera korttransaktioner. Vi kommer att behöva metoder som tar ett `Lunchkort` som argument och minskar saldot på kortet med lunchens pris. Nedan hittar du ramar av dessa funktioner. Vänligen fyll i metoderna enligt beskrivningen i kommentarerna:
 
 ```python
-class Kassapaate:
+class Betalterminal:
     # ...
 
-    def syo_edullisesti_kortilla(self, kortti: Maksukortti):
-        # Edullinen lounas maksaa 2.50 euroa
-        # Jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan True
-        # Muuten palautetaan False
+    def at_formanligt_kort(self, kort: Lunchkort):
+        # En förmånlig lunch kostar 2.50 euro.
+        # Om kortet har tillräckligt med pengar, subtrahera lunchens pris och returnera True.
+        # Annars returnera False
 
 
-    def syo_maukkaasti_kortilla(self, kortti: Maksukortti):
-        # Maukas lounas maksaa 4.30 euroa.
-        # Jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan True
-        # Muuten palautetaan False
+    def at_special_kort(self, kort: Lunchkort):
+        # En förmånlig lunch kostar 4.30 euro.
+        # Om kortet har tillräckligt med pengar, subtrahera lunchens pris och returnera True.
+        # Annars returnera False
 ```
 
-**Huom:** kortilla maksaminen ei lisää kassapäätteessä olevan käteisen määrää.
+**OBS:** betalningar med Lunchkort ändrar inte på mängden pengar i terminalen. Luncher säljes däremot fortfarande så länge pengarna på saldot räcker till, alltså kom ihåg att öka mängden luncher som sålts.
 
-Seuraavassa on testipääohjelma ja haluttu tulostus:
+Följande kod kan du använda för att testa din klass:
 
 ```python
-exactum = Kassapaate()
+exactum = Betalterminal()
 
-vaihtorahaa = exactum.syo_edullisesti(10)
-print("Vaihtorahaa jäi", vaihtorahaa)
+vaxel = exactum.at_formanligt(10)
+print("Mängden växel", vaxel)
 
-kortti = Maksukortti(7)
+kort = Lunchkort(7)
 
-tulos = exactum.syo_maukkaasti_kortilla(kortti)
-print("Riittikö raha:", tulos)
-tulos = exactum.syo_maukkaasti_kortilla(kortti)
-print("Riittikö raha:", tulos)
-tulos = exactum.syo_edullisesti_kortilla(kortti)
-print("Riittikö raha:", tulos)
+resultat = exactum.at_special_kort(kort)
+print("Betalningen lyckades:", resultat)
+resultat = exactum.at_special_kort(kort)
+print("Betalningen lyckades:", resultat)
+resultat = exactum.at_formanligt_kort(kort)
+print("Betalningen lyckades:", resultat)
 
-print("Kassassa rahaa", exactum.rahaa)
-print("Edullisia lounaita myyty", exactum.edulliset)
-print("Maukkaita lounaita myyty", exactum.maukkaat)
+print("Pengar i kassan", exactum.pengar)
+print("Förmånliga luncher sålda", exactum.formanliga)
+print("special luncher sålda", exactum.special)
 ```
 
 <sample-output>
 
-Vaihtorahaa jäi 7.5
-Riittikö raha: True
-Riittikö raha: False
-Riittikö raha: True
-Kassassa rahaa 1002.5
-Edullisia lounaita myyty 2
-Maukkaita lounaita myyty 1
+Mängden växel 7.5
+Betalningen lyckades: True
+Betalningen lyckades: False
+Betalningen lyckades: True
+Pengar i kassan 1002.5
+Förmånliga luncher sålda 2
+special luncher sålda 1
 
 </sample-output>
 
-## Rahan lataaminen
+## Del 4: Tillsättning av pengar på kortet
 
-Lisätään vielä kassapäätteelle metodi jonka avulla kortille voidaan ladata lisää rahaa. Muista, että rahan lataamisen yhteydessä ladattava summa viedään kassapäätteeseen. Metodin runko:
+Slutligen lägger vi till en metod som gör att du kan sätta in pengar på kortet. Kortägaren betalar detta kontant, så att den insatta summan läggs till de pengar som finns tillgängliga i terminalen. Här är en ram för metoden:
 
 ```python
-def lataa_rahaa_kortille(self, kortti: Maksukortti, summa: float):
+def tillsatt_pengar_kortet(self, kort: Lunchkort, summa: float):
     pass
 ```
 
-Testipääohjelma ja esimerkkisyöte:
+Du kan använda följande kod för att testa din metod:
 
 ```python
-exactum = Kassapaate()
+exactum = Betalterminal()
 
-antin_kortti = Maksukortti(2)
-print(f"Kortilla rahaa {antin_kortti.saldo} euroa")
+antons_kort = Lunchkort(2)
+print(f"Kortets saldo {antons_kort.saldo} euro")
 
-tulos = exactum.syo_maukkaasti_kortilla(antin_kortti)
-print("Riittikö raha:", tulos)
+resultat = exactum.at_special_kort(antons_kort)
+print("Betalningen lyckades:", resultat)
 
-exactum.lataa_rahaa_kortille(antin_kortti, 100)
-print(f"Kortilla rahaa {antin_kortti.saldo} euroa")
+exactum.tillsatt_pengar_kortet(antons_kort, 100)
+print(f"Kortets saldo {antons_kort.saldo} euro")
 
-tulos = exactum.syo_maukkaasti_kortilla(antin_kortti)
-print("Riittikö raha:", tulos)
-print(f"Kortilla rahaa {antin_kortti.saldo} euroa")
+resultat = exactum.at_special_kort(antons_kort)
+print("Betalningen lyckades:", resultat)
+print(f"Kortets saldo {antons_kort.saldo} euro")
 
-print("Kassassa rahaa", exactum.rahaa)
-print("Edullisia lounaita myyty", exactum.edulliset)
-print("Maukkaita lounaita myyty", exactum.maukkaat)
+print("Pengar i kassan", exactum.pengar)
+print("Förmånliga luncher sålda", exactum.formanliga)
+print("special luncher sålda", exactum.special)
 ```
 
 <sample-output>
 
-Kortilla rahaa 2 euroa
-Riittikö raha: False
-Kortilla rahaa 102 euroa
-Riittikö raha: True
-Kortilla rahaa 97.7 euroa
-Kassassa rahaa 1100
-Edullisia lounaita myyty 0
-Maukkaita lounaita myyty 1
+Kortets saldo 2 euro
+Betalningen lyckades: False
+Kortets saldo 102 euro
+Betalningen lyckades: True
+Kortets saldo 97.7 euro
+Pengar i kassan 1100
+Förmånliga luncher sålda 0
+special luncher sålda 1
 
 </sample-output>
 
@@ -832,134 +837,134 @@ Maukkaita lounaita myyty 1
 Nedan har vi ytterligare en version av klassen `Person`:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, syntynyt: int):
-        self.nimi = nimi
-        self.syntynyt = syntynyt
+class Person:
+    def __init__(self, namn: str, fodelsear: int):
+        self.namn = namn
+        self.fodelsear = fodelsear
 ```
 
 Låt oss anta att vi vill skriva ett program som jämför åldern på objekt av typen Person. Vi kan skriva en separat funktion för detta ändamål:
 
 ```python
-def vanhempi_kuin(henkilo1: Henkilo, henkilo2: Henkilo):
-    if henkilo1.syntynyt < henkilo2.syntynyt:
+def aldre_an(person1: Person, person2: Person):
+    if person1.fodelsear < person2.fodelsear:
         return True
     else:
         return False
 
-muhammad = Henkilo("Muhammad ibn Musa al-Khwarizmi", 780)
-pascal = Henkilo("Blaise Pascal", 1623)
-grace = Henkilo("Grace Hopper", 1906)
+muhammad = Person("Muhammad ibn Musa al-Khwarizmi", 780)
+pascal = Person("Blaise Pascal", 1623)
+grace = Person("Grace Hopper", 1906)
 
-if vanhempi_kuin(muhammad, pascal):
-    print(f"{muhammad} on vanhempi kuin {pascal}")
+if aldre_an(muhammad, pascal):
+    print(f"{muhammad} är äldre än {pascal}")
 else:
-    print(f"{muhammad} ei ole vanhempi kuin {pascal}")
+    print(f"{muhammad} är inte äldre än {pascal}")
 
-if vanhempi_kuin(grace, pascal):
-    print(f"{grace} on vanhempi kuin {pascal}")
+if aldre_an(grace, pascal):
+    print(f"{grace} är äldre än {pascal}")
 else:
-    print(f"{grace} ei ole vanhempi kuin {pascal}")
+    print(f"{grace} är inte äldre än {pascal}")
 ```
 
 <sample-output>
 
-Muhammad ibn Musa al-Khwarizmi on vanhempi kuin Blaise Pascal
-Grace Hopper ei ole vanhempi kuin  Blaise Pascal
+Muhammad ibn Musa al-Khwarizmi är äldre än Blaise Pascal
+Grace Hopper är inte äldre än Blaise Pascal
 
 </sample-output>
 
 En av principerna för objektorienterad programmering är att all funktionalitet som hanterar objekt av en viss typ ska inkluderas i klassdefinitionen, som metoder. I stället för en funktion kan vi alltså skriva en metod som gör det möjligt att jämföra åldern på ett Person-objekt med ett annat Person-objekt:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, syntynyt: int):
-        self.nimi = nimi
-        self.syntynyt = syntynyt
+class Person:
+    def __init__(self, namn: str, fodelsear: int):
+        self.namn = namn
+        self.fodelsear = fodelsear
 
-    # huomaa, että tyyppivihje pitää antaa hipsuissa jos parametri on saman luokan olio!
-    def vanhempi_kuin(self, toinen: "Henkilo"):
-        if self.syntynyt < toinen.syntynyt:
+    # OBS! Typledtrådar måste vara inom citationstecken ifall parametern är av samma typ som klassen självt!
+    def aldre_an(self, annat: "Person"):
+        if self.fodelsear < annat.fodelsear:
             return True
         else:
             return False
 ```
 
-Här kallas det objekt som metoden anropas på för `self`, medan det andra Person-objektet kallas för `annan`.
+Här kallas det objekt som metoden anropas på för `self`, medan det andra Person-objektet kallas för `annat`.
 
 Kom ihåg att anrop av en metod skiljer sig från anrop av en funktion. En metod är kopplad till ett objekt med punktnotationen:
 
 ```python
-muhammad = Henkilo("Muhammad ibn Musa al-Khwarizmi", 780)
-pascal = Henkilo("Blaise Pascal", 1623)
-grace = Henkilo("Grace Hopper", 1906)
+muhammad = Person("Muhammad ibn Musa al-Khwarizmi", 780)
+pascal = Person("Blaise Pascal", 1623)
+grace = Person("Grace Hopper", 1906)
 
-if muhammad.vanhempi_kuin(pascal):
-    print(f"{muhammad.nimi} on vanhempi kuin {pascal.nimi}")
+if muhammad.aldre_an(pascal):
+    print(f"{muhammad.namn} är äldre än {pascal.namn}")
 else:
-    print(f"{muhammad.nimi} ei ole vanhempi kuin {pascal.nimi}")
+    print(f"{muhammad.namn} är inte äldre än {pascal.namn}")
 
-if grace.vanhempi_kuin(pascal):
-    print(f"{grace.nimi} on vanhempi kuin {pascal.nimi}")
+if grace.aldre_an(pascal):
+    print(f"{grace.namn} är äldre än {pascal.namn}")
 else:
-    print(f"{grace.nimi} ei ole vanhempi kuin {pascal.nimi}")
+    print(f"{grace.namn} är inte äldre än {pascal.namn}")
 ```
 
-Till vänster om punkten finns själva objektet, som kallas `self` i metoddefinitionen. Inom parentes står argumentet till metoden, vilket är det objekt som kallas `annan`.
+Till vänster om punkten finns själva objektet, som kallas `self` i metoddefinitionen. Inom parentes står argumentet till metoden, vilket är det objekt som kallas `annat`.
 
 Utskriften från programmet är exakt densamma som med funktionsimplementeringen ovan.
 
 Till sist, en ganska kosmetisk punkt: `if...else`-strukturen i metoden `aldre_an` är i stort sett onödig. Värdet på det booleska uttrycket i villkoret är redan exakt samma sanningsvärde som returneras. Metoden kan alltså förenklas:
 
 ```python
-class Henkilo:
-    def __init__(self, nimi: str, syntynyt: int):
-        self.nimi = nimi
-        self.syntynyt = syntynyt
+class Person:
+    def __init__(self, namn: str, fodelsear: int):
+        self.namn = namn
+        self.fodelsear = fodelsear
 
-    # huomaa, että tyyppivihje pitää antaa hipsuissa jos parametri on saman luokan olio!
-    def vanhempi_kuin(self, toinen: "Henkilo"):
-        return self.syntynyt < toinen.syntynyt:
+    # OBS! Typledtrådar måste vara inom citationstecken ifall parametern är av samma typ som klassen självt!
+    def aldre_an(self, annat: "Person"):
+        return self.fodelsear < annat.fodelsear:
 ```
 
-Liksom det framkommer av kommentarerna i exemplen ovan, så måste typhintet omslutas av citattecken ifall parametern i en metoddefinition är av samma typ som klassen själv. Om citattecknen utelämnas uppstår ett fel, vilket du kommer att se om du försöker med följande: 
+Liksom det framkommer av kommentarerna i exemplen ovan, så måste typledtråden omslutas av citattecken ifall parametern i en metoddefinition är av samma typ som klassen själv. Om citattecknen utelämnas uppstår ett fel, vilket du kommer att se om du försöker med följande: 
 
 ```python
-class Henkilo:
+class Person:
     # ...
 
-    # tämä ei toimi, Henkilo pitaa olla hipsuissa
-    def vanhempi_kuin(self, toinen: Henkilo):
-        return self.syntynyt < toinen.syntynyt:
+    # Detta fungerar inte, Person måste vara innanför citationstecken
+    def aldre_an(self, annat: Person):
+        return self.fodelsear < annat.fodelsear:
 ```
 
 <programming-exercise name='Asuntovertailu' tmcname='osa09-05_asuntovertailu'>
 
-Asuntovälitystoimiston tietojärjestelmässä kuvataan myynnissä olevaa asuntoa seuraavasta luokasta tehdyillä olioilla:
+Databasen hos en fastighetsmäklare innehåller register över tillgängliga fastigheter med objekt som definieras av följande klass:
 
 ```python
-class Asunto:
-    def __init__(self, huoneita: int, nelioita: int, neliohinta: int):
-        self.huoneita = huoneita
-        self.nelioita = nelioita
-        self.neliohinta = neliohinta
+class Bostad:
+    def __init__(self, rum: int, kvadratmeter: int, kvadratpris: int):
+        self.rum = rum
+        self.kvadratmeter = kvadratmeter
+        self.kvadratpris = kvadratpris
 ```
 
-Tehtävänä on toteuttaa metodeita, joiden avulla myynnissä olevia asuntoja voidaan vertailla.
+Din uppgift är att implementera metoder som gör det möjligt att jämföra tillgängliga egenskaper.
 
-## Onko suurempi
+## Del 1: Är den större?
 
-Tee metodi `suurempi(self, verrattava)`, joka palauttaa `True`, jos asunto-olio itse on pinta-alaltaan suurempi kuin verrattava asunto-olio.
+Skapa metoden `storre(self, jamforelse)`, som returnerar `True`, ifall `Bostad`-objektet är större än objektet det jämförs med.
 
-Esimerkki metodin toiminnasta:
+Exempel på hur funktionen borde fungera:
 
 ```python
-eira_yksio = Asunto(1, 16, 5500)
-kallio_kaksio = Asunto(2, 38, 4200)
-jakomaki_kolmio = Asunto(3, 78, 2500)
+eira_etta = Bostad(1, 16, 5500)
+berghall_tvaa = Bostad(2, 38, 4200)
+jakobacka_trea = Bostad(3, 78, 2500)
 
-print(eira_yksio.suurempi(kallio_kaksio))
-print(jakomaki_kolmio.suurempi(kallio_kaksio))
+print(eira_etta.storre(berghall_tvaa))
+print(jakobacka_trea.storre(berghall_tvaa))
 ```
 
 <sample-output>
@@ -969,19 +974,19 @@ True
 
 </sample-output>
 
-## Hintaero
+## Del 2: Prisskillnad
 
-Tee metodi `hintaero(self, verrattava)`, joka palauttaa asunto-olion ja verrattavan asunto-olion hintaeron. Hintaero on asuntojen hintojen erotuksen (hinta lasketaan kertomalla neliöhinta neliöillä) itseisarvo.
+Skapa metoden `prisskillnad(self, jamforelse)`, som returnerar skillnaden i pris mellan `Bostad`-objektet självt och det som det jämförs med. Prisskillnaden är det absoluta värdet av skillnaden mellan de två fastigheternas totalpriser. Det totala priset för en fastighet är dess kvadratmeterpris multiplicerat med antalet kvadratmeter i fastigheten.
 
-Esimerkki metodin toiminnasta:
+Exempel på hur funktionen borde fungera:
 
 ```python
-eira_yksio = Asunto(1, 16, 5500)
-kallio_kaksio = Asunto(2, 38, 4200)
-jakomaki_kolmio = Asunto(3, 78, 2500)
+eira_etta = Bostad(1, 16, 5500)
+berghall_tvaa = Bostad(2, 38, 4200)
+jakobacka_trea = Bostad(3, 78, 2500)
 
-print(eira_yksio.hintaero(kallio_kaksio))
-print(jakomaki_kolmio.hintaero(kallio_kaksio))
+print(eira_etta.prisskillnad(berghall_tvaa))
+print(jakobacka_trea.prisskillnad(berghall_tvaa))
 ```
 
 <sample-output>
@@ -991,19 +996,19 @@ print(jakomaki_kolmio.hintaero(kallio_kaksio))
 
 </sample-output>
 
-## Onko kalliimpi?
+## Del 3: Dyrare?
 
-Tee metodi `kalliimpi(self, verrattava)` joka palauttaa `True`, jos asunto-olio on kalliimpi kuin verrattavana oleva asunto-olio.
+Skapa metoden `dyrare(self, jamforelse)` som returnerar `True`, ifall `Bostad`-objektet är dyrare än objektet som det jämförs med.
 
-Esimerkki metodin toiminnasta:
+Exempel på hur funktionen borde fungera:
 
 ```python
-eira_yksio = Asunto(1, 16, 5500)
-kallio_kaksio = Asunto(2, 38, 4200)
-jakomaki_kolmio = Asunto(3, 78, 2500)
+eira_etta = Bostad(1, 16, 5500)
+berghall_tvaa = Bostad(2, 38, 4200)
+jakobacka_trea = Bostad(3, 78, 2500)
 
-print(eira_yksio.kalliimpi(kallio_kaksio))
-print(jakomaki_kolmio.kalliimpi(kallio_kaksio))
+print(eira_etta.dyrare(berghall_tvaa))
+print(jakobacka_trea.dyrare(berghall_tvaa))
 ```
 
 <sample-output>

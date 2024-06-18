@@ -65,14 +65,14 @@ Nu när vi har en översikt över de grundläggande komponenterna i vårt progra
 Låt oss börja med klassen Telefonkatalog. En skelettimplementering skulle kunna se ut så här:
 
 ```python
-class Puhelinluettelo:
+class Telefonkatalog:
     def __init__(self):
-        self.__henkilot = []
+        self.__personer = []
 
-    def lisaa_numero(self, nimi: str, numero: str):
+    def tillsatt_nummer(self, namn: str, nummer: str):
         pass
 
-    def hae_numerot(self, nimi: str):
+    def hamta_nummer(self, namn: str):
         pass
 
 ```
@@ -84,28 +84,28 @@ Varje person kan vara kopplad till flera nummer, så låt oss implementera den i
 Låt oss implementera de metoder som listas ovan och testa vår telefonkatalog:
 
 ```python
-class Puhelinluettelo:
+class Telefonkatalog:
     def __init__(self):
-        self.__henkilot = {}
+        self.__personer = {}
 
-    def lisaa_numero(self, nimi: str, numero: str):
-        if not nimi in self.__henkilot:
-            # henkilöön liittyy lista puhelinnumeroja
-            self.__henkilot[nimi] = []
+    def tillsatt_nummer(self, namn: str, nummer: str):
+        if not namn in self.__personer:
+            # till personen är en lista med nummer anknyten
+            self.__personer[namn] = []
 
-        self.__henkilot[nimi].append(numero)
+        self.__personer[namn].append(nummer)
 
-    def hae_numerot(self, nimi: str):
-        if not nimi in self.__henkilot:
+    def hamta_nummer(self, namn: str):
+        if not namn in self.__personer:
             return None
 
-        return self.__henkilot[nimi]
+        return self.__personer[namn]
 
-# testikoodi
-luettelo = Puhelinluettelo()
-luettelo.lisaa_numero("Erkki", "02-123456")
-print(luettelo.hae_numerot("Erkki"))
-print(luettelo.hae_numerot("Emilia"))
+# testkod
+katalog = Telefonkatalog()
+katalog.tillsatt_nummer("Erik", "02-123456")
+print(katalog.hamta_nummer("Erik"))
+print(katalog.hamta_nummer("Emilia"))
 ```
 
 Detta borde utskriva följande:
@@ -128,24 +128,24 @@ En bugg i programmet bör fångas upp och åtgärdas så snart som möjligt. Om 
 Med den grundläggande applikationslogiken ur vägen är det dags att implementera ett textbaserat användargränssnitt. Vi kommer att behöva en ny klass, `TelefonkatalogApplikation`, med följande inledande funktionalitet:
 
 ```python
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
+        self.__katalog = Telefonkatalog()
 
-    def ohje(self):
-        print("komennot: ")
-        print("0 lopetus")
+    def hjalp(self):
+        print("instruktioner: ")
+        print("0 avsluta")
 
-    def suorita(self):
-        self.ohje()
+    def exekvera(self):
+        self.hjalp()
         while True:
             print("")
-            komento = input("komento: ")
-            if komento == "0":
+            instruktion = input("instruktion: ")
+            if instruktion == "0":
                 break
 
-sovellus = PuhelinluetteloSovellus()
-sovellus.suorita()
+applikation = TelefonkatalogApplikation()
+applikation.exekvera()
 ```
 
 Det här programmet gör inte så mycket ännu, men låt oss gå igenom innehållet. Konstruktormetoden skapar en ny Telefonkatalog, som lagras i ett privat attribut. Metoden `exekvera(self)` startar programmets textbaserade användargränssnitt, vars kärna är `while`-loopen, som fortsätter att be användaren om instruktioner tills de skriver in instruktionen för att avsluta. Det finns också en metod för instruktioner, `hjalp(self)`, som anropas innan man går in i loopen, så att instruktionerna skrivs ut.
@@ -153,142 +153,142 @@ Det här programmet gör inte så mycket ännu, men låt oss gå igenom innehål
 Låt oss nu lägga till lite faktisk funktionalitet. Först implementerar vi att kunna lägga till nya data i telefonkatalogen:
 
 ```python
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
+        self.__katalog = Telefonkatalog()
 
-    def ohje(self):
-        print("komennot: ")
-        print("0 lopetus")
-        print("1 lisäys")
+    def hjalp(self):
+        print("instruktioner: ")
+        print("0 avsluta")
+        print("1 tillsätt inlägg")
 
-    def suorita(self):
-        self.ohje()
+    def exekvera(self):
+        self.hjalp()
         while True:
             print("")
-            komento = input("komento: ")
-            if komento == "0":
+            instruktion = input("instruktion: ")
+            if instruktion == "0":
                 break
-            elif komento == "1":
-                nimi = input("nimi: ")
-                numero = input("numero: ")
-                self.__luettelo.lisaa_numero(nimi, numero)
+            elif instruktion == "1":
+                namn = input("namn: ")
+                nummer = input("nummer: ")
+                self.__katalog.tillsatt_nummer(namn, nummer)
 
-sovellus = PuhelinluetteloSovellus()
-sovellus.suorita()
+applikation = TelefonkatalogApplikation()
+applikation.exekvera()
 ```
 
 Om användaren skriver in 1 för att lägga till ett nytt nummer, frågar användargränssnittet efter ett namn och ett nummer och lägger till dessa i telefonkatalogen med hjälp av den lämpliga metod som definieras i klassen.
 
 Användargränssnittets enda ansvar är att kommunicera med användaren. All annan funktionalitet, t.ex. att lagra ett nytt namn- och nummerpar, är Telefonkatalog-objektets ansvar.
 
-Det finns utrymme för förbättringar i strukturen i vår användargränssnittsklass. Låt oss skapa en metod `tillägg_inlägg(self)` som hanterar instruktionen för att lägga till ett nytt inlägg:
+Det finns utrymme för förbättringar i strukturen i vår användargränssnittsklass. Låt oss skapa en metod `inlagg(self)` som hanterar instruktionen för att lägga till ett nytt inlägg:
 
 ```python
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
+        self.__katalog = Telefonkatalog()
 
-    def ohje(self):
-        print("komennot: ")
-        print("0 lopetus")
-        print("1 lisäys")
+    def hjalp(self):
+        print("instruktioner: ")
+        print("0 avsluta")
+        print("1 tillsätt inlägg")
 
-    # eriytetään uusien tietojen lisääminen omaksi metodiksi
-    def lisays(self):
-        nimi = input("nimi: ")
-        numero = input("numero: ")
-        self.__luettelo.lisaa_numero(nimi, numero)
+    # separation of concerns i praktiken: en ny metod för att lägga till ett inlägg
+    def inlagg(self):
+        namn = input("namn: ")
+        nummer = input("nummer: ")
+        self.__katalog.tillsatt_nummer(namn, nummer)
 
-    def suorita(self):
-        self.ohje()
+    def exekvera(self):
+        self.hjalp()
         while True:
             print("")
-            komento = input("komento: ")
-            if komento == "0":
+            instruktion = input("instruktion: ")
+            if instruktion == "0":
                 break
-            elif komento == "1":
-                self.lisays()
+            elif instruktion == "1":
+                self.inlagg()
 
-sovellus = PuhelinluetteloSovellus()
-sovellus.suorita()
+applikation = TelefonkatalogApplikation()
+applikation.exekvera()
 ```
 
-Separation of concerns-principen sträcker sig även till metodnivå. Vi skulle kunna ha hela användargränssnittets funktionalitet i en enda komplicerad `while`-loop, men det är bättre att separera varje funktionalitet i en egen metod. Ansvaret för `exekvera()`-metoden är bara att delegera de instruktioner som användaren skriver in till relevanta metoder. Detta hjälper till att hantera den växande komplexiteten i vårt program. Om vi till exempel senare vill ändra hur det fungerar att lägga till inlägg, är det omedelbart klart att vi då måste fokusera våra ansträngningar på `tillägg_inlägg()`-metoden.
+Separation of concerns-principen sträcker sig även till metodnivå. Vi skulle kunna ha hela användargränssnittets funktionalitet i en enda komplicerad `while`-loop, men det är bättre att separera varje funktionalitet i en egen metod. Ansvaret för `exekvera()`-metoden är bara att delegera de instruktioner som användaren skriver in till relevanta metoder. Detta hjälper till att hantera den växande komplexiteten i vårt program. Om vi till exempel senare vill ändra hur det fungerar att lägga till inlägg, är det omedelbart klart att vi då måste fokusera våra ansträngningar på `inlagg()`-metoden.
 
 Låt oss inkludera funktionalitet för att söka efter inlägg i vårt användargränssnitt. Detta bör också ha sin egen metod:
 
 ```python
 
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
+        self.__katalog = Telefonkatalog()
 
-    def ohje(self):
-        print("komennot: ")
-        print("0 lopetus")
-        print("1 lisäys")
-        print("2 haku")
+    def hjalp(self):
+        print("instruktioner: ")
+        print("0 avsluta")
+        print("1 tillsätt inlägg")
+        print("2 sök")
 
-    def lisays(self):
-        nimi = input("nimi: ")
-        numero = input("numero: ")
-        self.__luettelo.lisaa_numero(nimi, numero)
+    def inlagg(self):
+        namn = input("namn: ")
+        nummer = input("nummer: ")
+        self.__katalog.tillsatt_nummer(namn, nummer)
 
-    def haku(self):
-        nimi = input("nimi: ")
-        numerot = self.__luettelo.hae_numerot(nimi)
-        if numerot == None:
-            print("numero ei tiedossa")
+    def sok(self):
+        namn = input("namn: ")
+        numren = self.__katalog.hamta_nummer(namn)
+        if numren == None:
+            print("nummer okänd")
             return
-        for numero in numerot:
-            print(numero)
+        for nummer in numren:
+            print(nummer)
 
-    def suorita(self):
-        self.ohje()
+    def exekvera(self):
+        self.hjalp()
         while True:
             print("")
-            komento = input("komento: ")
-            if komento == "0":
+            instruktion = input("instruktion: ")
+            if instruktion == "0":
                 break
-            elif komento == "1":
-                self.lisays()
-            elif komento == "2":
-                self.haku()
+            elif instruktion == "1":
+                self.inlagg()
+            elif instruktion == "2":
+                self.sok()
             else:
-                self.ohje()
+                self.hjalp()
 
-sovellus = PuhelinluetteloSovellus()
-sovellus.suorita()
+applikation = TelefonkatalogApplikation()
+applikation.exekvera()
 ```
 
-Vi har nu en enkel fungerande telefonkatalogsapplikation som är redo för testning. Följande är ett exempel på en körning:
+Vi har nu en enkel fungerande telefonkatalogsapplikation som är redo för testning. Följande är ett exempel på en exekvering:
 
 <sample-output>
 
-komennot:
-0 lopetus
-1 lisäys
-2 haku
+instruktioner:
+0 avsluta
+1 tillsätt inlägg
+2 sök
 
-komento: **1**
-nimi: **Erkki**
-numero: **02-123456**
+instruktion: **1**
+namn: **Erik**
+nummer: **02-123456**
 
-komento: **1**
-nimi: **Erkki**
-numero: **045-4356713**
+instruktion: **1**
+namn: **Erik**
+nummer: **045-4356713**
 
-komento: **2**
-nimi: **Erkki**
+instruktion: **2**
+namn: **Erik**
 02-123456
 045-4356713
 
-komento: **2**
-nimi: Emilia
-numero ei tiedossa
+instruktion: **2**
+namn: Emilia
+nummer okänd
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
@@ -299,38 +299,38 @@ För en så enkel applikation har vi skrivit ganska mycket kod. Om vi hade skriv
 Låt oss anta att vi redan har några telefonnummer lagrade i en fil, och att vi vill läsa detta när programmet startar. Datafilen är i följande CSV-format:
 
 ```csv
-Erkki;02-1234567;045-4356713
+Erik;02-1234567;045-4356713
 Emilia;040-324344
 ```
 
 Hantering av filer är helt klart ett eget ansvarsområde, så det förtjänar en klass för sig:
 
 ```python
-class Tiedostonkasittelija():
-    def __init__(self, tiedosto):
-        self.__tiedosto = tiedosto
+class FilHanterare():
+    def __init__(self, filhanterare):
+        self.__filhanterare = filhanterare
 
-    def lataa(self):
-        nimet = {}
-        with open(self.__tiedosto) as f:
-            for rivi in f:
-                osat = rivi.strip().split(';')
-                nimi, *numerot = osat
-                nimet[nimi] = numerot
+    def ladda(self):
+        namnen = {}
+        with open(self.__filhanterare) as f:
+            for rad in f:
+                delar = rad.strip().split(';')
+                namn, *numren = delar
+                namnen[namn] = numren
 
-        return nimet
+        return namnen
 ```
 
-Konstruktörsmetoden tar namnet på filen som sitt argument. Metoden `ladda_fil(self)` läser innehållet i filen. Varje rad delas upp i två delar: ett namn och en lista med siffror. Sedan läggs dessa till i en ordbok, med namnet som nyckel och listan som värde.
+Konstruktormetoden tar namnet på filen som sitt argument. Metoden `ladda(self)` läser innehållet i filen. Varje rad delas upp i två delar: ett namn och en lista med siffror. Sedan läggs dessa till i en ordbok, med namnet som nyckel och listan som värde.
 
 Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [del 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) att strängmetoden `split` returnerar en lista.
 
 ```python
 lista = [1, 2, 3, 4, 5]
-eka, toka, *loput = lista
-print(eka)
-print(toka)
-print(loput)
+forsta, andra, *resten = lista
+print(forsta)
+print(andra)
+print(resten)
 ```
 
 <sample-output>
@@ -346,30 +346,30 @@ Tecknet `*` framför variabelnamnet `resten` i ovanstående exempel betyder att 
 Vi bör absolut testa filhanteraren separat innan vi inkluderar den i vår applikation:
 
 ```python
-t = Tiedostonkasittelija("luettelo.txt")
-print(t.lataa())
+t = FilHanterare("katalog.txt")
+print(t.ladda())
 ```
 
 <sample-output>
 
-{'Erkki': ['02-1234567', '045-4356713'], 'Emilia': ['040-324344']}
+{'Erik': ['02-1234567', '045-4356713'], 'Emilia': ['040-324344']}
 
 </sample-output>
 
 Eftersom filhanteraren verkar fungera bra kan vi lägga till den i vår applikation. Låt oss anta att vi vill läsa filen som det första varje gång programmet körs. Den logiska platsen för att läsa filen skulle vara konstruktören för klassen `TelefonkatalogApplikation`:
 
 ```python
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
-        self.__tiedosto = Tiedostonkasittelija("luettelo.txt")
+        self.__katalog = Telefonkatalog()
+        self.__filhanterare = FilHanterare("katalog.txt")
 
-        # listään tiedostossa olevat nimet luetteloon
-        for nimi, numerot in self.__tiedosto.lataa().items():
-            for numero in numerot:
-                self.__luettelo.lisaa_numero(nimi, numero)
+        # lägg till namn och nummer från filen till telefonkatalogen
+        for namn, numren in self.__filhanterare.ladda().items():
+            for nummer in numren:
+                self.__katalog.tillsatt_nummer(namn, nummer)
 
-    # muu koodi
+    # annan kod
 ```
 
 Denna funktionalitet bör också testas. När vi har försäkrat oss om att filens innehåll är tillgängligt via användargränssnittet i vår applikation kan vi gå vidare till nästa steg.
@@ -381,95 +381,97 @@ Den sista funktionen i vår grundversion av applikationen är att spara innehål
 Detta innebär en förändring av `Telefonkatalog`-klassen. Vi måste kunna exportera innehållet i telefonkatalogen:
 
 ```python
-class Puhelinluettelo:
+class Telefonkatalog:
     def __init__(self):
-        self.__henkilot = {}
+        self.__personer = {}
 
     # ...
 
-    # palautetaan tiedostoon tallentamista varten kaikki tiedot
-    def kaikki_tiedot(self):
-        return self.__henkilot
+    # returnera alla inlägg (i ordlistsformat)
+    def alla_uppgifter(self):
+        return self.__personer
 ```
 
-Själva sparandet till filen bör hanteras av `FilHanterare`-klassen. Låt oss lägga till metoden `spara_fil` som tar en ordlistsrepresentation av telefonkatalogen som argument:
+Själva sparandet till filen bör hanteras av `FilHanterare`-klassen. Låt oss lägga till metoden `spara` som tar en ordlistsrepresentation av telefonkatalogen som argument:
 
 ```python
-class Tiedostonkasittelija():
-    def __init__(self, tiedosto):
-        self.__tiedosto = tiedosto
+class FilHanterare():
+    def __init__(self, filhanterare):
+        self.__filhanterare = filhanterare
 
-    def lataa(self):
+    def ladda(self):
         # ...
 
-    def talleta(self, luettelo: dict):
-        with open(self.__tiedosto, "w") as f:
-            for nimi, numerot in luettelo.items():
-                rivi = [nimi] + numerot
-                f.write(";".join(rivi) + "\n")
+    def spara(self, katalog: dict):
+        with open(self.__filhanterare, "w") as f:
+            for namn, numren in katalog.items():
+                rad = [namn] + numren
+                f.write(";".join(rad) + "\n")
 ```
 
 Sparandet bör ske när programmet avslutas. Låt oss lägga till en metod för detta ändamål i användargränssnittet och anropa den innan vi bryter ut ur `while`-loopen:
 
 ```python
 
-class PuhelinluetteloSovellus:
-    # muu koodi
+class TelefonkatalogApplikation:
+    # resten av koden för användargränssnittet
 
-    # metodi, joka suoritetaan lopetettaessa sovelluksen käyttö
-    def lopetus(self):
-        self.__tiedosto.talleta(self.__luettelo.kaikki_tiedot())
+    # metod som exekveras till programmet avslutas
+    def avsluta(self):
+        self.__filhanterare.spara(self.__katalog.alla_uppgifter())
 
-    def suorita(self):
-        self.ohje()
+    def exekvera(self):
+        self.hjalp()
         while True:
             print("")
-            komento = input("komento: ")
-            if komento == "0":
+            instruktion = input("instruktion: ")
+            if instruktion == "0":
 
-                self.lopetus()
+                self.avsluta()
                 break
-            elif komento == "1":
-                self.lisays()
-            elif komento == "2":
-                self.haku()
+            elif instruktion == "1":
+                self.inlagg()
+            elif instruktion == "2":
+                self.sok()
             else:
-                self.ohje()
+                self.hjalp()
 ```
 
 <programming-exercise name='Puhelinluettelon laajennus, osa 1' tmcname='osa10-10_puhelinluettelo_osa1'>
 
-Tässä tehtävässä tehdään pieni laajennus puhelinluettelosovellukseen. Yllä kehitetty koodi löytyy tehtäväpohjasta. Laajenna ratkaisuasi komennolla, joka mahdollistaa nimen etsimisen numeron perusteella. Laajennuksen jälkeen sovelluksen pitäisi toimia seuraavasti:
+I den här övningen kommer du att skapa en liten utvidgning av telefonkatalogapplikationen. Koden från exemplet ovan finns i övningsmallen. Lägg till ett kommando som låter användaren söka  efter nummer i telefonkatalogen. Efter tillägget ska applikationen fungera på följande sätt:
 
 <sample-output>
 
-komennot:
-0 lopetus
-1 lisäys
-2 haku
-3 haku numeron perusteella
+instruktioner:
+0 avsluta
+1 tillsätt inlägg
+2 sök
+3 sök enligt nummer
 
-komento: **1**
-nimi: **Erkki**
-numero: **02-123456**
+instruktion: **1**
+namn: **Erik**
+nummer: **02-123456**
 
-komento: **1**
-nimi: **Erkki**
-numero: **045-4356713**
+instruktion: **1**
+namn: **Erik**
+nummer: **045-4356713**
 
-komento: **3**
-numero: **02-123456**
-Erkki
+instruktion: **3**
+nummer: **02-123456**
+Erik
 
-komento: **3**
-numero: **0100100**
-tuntematon numero
+instruktion: **3**
+nummer: **0100100**
+okänt nummer
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
-Tee laajennus sitten, että kunnioitat ohjelman rakennetta. Eli lisää luokkaan `PuhelinluetteloSovellus` uutta ominaisuutta varten sopiva apumetodi sekä oma haara while-silmukkaan. Lisää myös sovelluslogiikkaan eli luokkaan `Puhelinluettelo` metodi, joka mahdollistaa nimen hakemisen numeron perusteella.
+Implementera detta tillägg med hänsyn till den nuvarande strukturen i programmet. Detta innebär att du i klassen `TelefonkatalogApplikation` bör lägga till en lämplig hjälpmetod för att möjliggöra den nya funktionaliteten, och även lägga till en ny gren i while-loopen. I `Telefonkatalog`-klassen bör du lägga till en metod som gör det möjligt att söka med ett nummer.
+
+
 
 </programming-exercise>
 
@@ -482,83 +484,83 @@ Det är inget konstigt med det i sig, men det är första gången på den här k
 Här har vi en applikation som håller reda på hur många övningar som studenterna har gjort på en kurs. Varje elevs antal övningar lagras i ett enkelt objekt:
 
 ```python
-class Tehtavalaskuri:
+class Uppgiftsraknare:
     def __init__(self):
-        self.__tehtavia = 0
+        self.__uppgifter = 0
 
-    def merkkaa(self):
-        self.__tehtavia += 1
+    def klar(self):
+        self.__uppgifter += 1
 
-    def tehtyja(self):
-        return self.__tehtavia
+    def gjorda(self):
+        return self.__uppgifter
 ```
 
 Följande huvudfunktion använder klassen ovan:
 
 ```python
-opiskelijat = {}
+studeranden = {}
 
-print("merkataan tehtäviä")
+print("markerar uppgifter")
 while True:
-    nimi = input("opiskelija: ")
-    if len(nimi) == 0:
+    namn = input("studerande: ")
+    if len(namn) == 0:
         break
 
-    # luodaan tarvittaessa olio tehtävämäärän laskemista varten
-    if not nimi in opiskelijat:
-        opiskelijat[nimi] = Tehtavalaskuri()
+    # skapa ett nytt objekt ifall det inte finns ännu
+    if not namn in studeranden:
+        studeranden[namn] = Uppgiftsraknare()
 
-    # merkataan tehdyksi nimeä vastaavaan olioon
-    opiskelijat[nimi].merkkaa()
+    # lägg till en ny utförd uppgift i räknaren
+    studeranden[namn].klar()
 
 print()
-print("tehdyt tehtävät:")
+print("gjorda uppgifter:")
 
-for opiskelija, tehtavat in opiskelijat.items():
-    print(f"{opiskelija} tehtäviä {tehtavat.tehtyja()} kpl")
+for studerande, uppgifter in studeranden.items():
+    print(f"{studerande} uppgifter {uppgifter.gjorda()} st")
 ```
 
 Att exekvera koden ovan kunde se ut enligt följande:
 
 <sample-output>
 
-merkataan tehtäviä
-opiskelija: **pekka**
-opiskelija: **sara**
-opiskelija: **antti**
-opiskelija: **sara**
-opiskelija: **juuso**
-opiskelija: **juuso**
-opiskelija: **antti**
-opiskelija: **sara**
-opiskelija:
+markerar uppgifter
+studerande: **peter**
+studerande: **sara**
+studerande: **anton**
+studerande: **sara**
+studerande: **jonas**
+studerande: **jonas**
+studerande: **anton**
+studerande: **sara**
+studerande:
 
-tehdyt tehtävät:
-pekka tehtäviä 1 kpl
-antti tehtäviä 2 kpl
-sara tehtäviä 3 kpl
-juuso tehtäviä 2 kpl
+gjorda uppgifter:
+peter uppgifter 1 st
+anton uppgifter 2 st
+sara uppgifter 3 st
+jonas uppgifter 2 st
 
 </sample-output>
 
 Det finns ett par saker att tänka på i exemplet ovan. När användaren matar in ett namn kontrollerar programmet först om namnet redan är en nyckel i ordlistan. Om namnet inte finns skapas ett nytt objekt som läggs till som en post i ordlistan:
 
 ```python
-if not nimi in opiskelijat:
-    opiskelijat[nimi] = Tehtavalaskuri()
+if not namn in studeranden:
+    studeranden[namn] = Uppgiftsraknare()
 ```
 
 Efter detta kan vi vara säkra på att objektet existerar, kopplat till namnet på den student som används som nyckel. Antingen skapades det precis, eller så fanns det redan från en tidigare iteration av loopen. I vilket fall som helst kan vi nu hämta objektet med nyckeln och kalla metoden `klar`:
 
 ```python
-opiskelijat[nimi].merkkaa()
+studeranden[namn].klar()
 ```
 
 Raden ovan innehåller egentligen två separata händelser. Vi kan lika gärna använda en hjälpvariabel och skriva den på två separata kodrader:
 
 ```python
-opiskelijan_laskuri = opiskelijat[nimi]
-opiskelijan_laskuri.merkkaa()
+studerandes_raknare = studeranden[namn]
+studerandes_raknare.klar()
 ```
 
 OBS: Även om objektet här tilldelas en hjälpvariabel, så finns objektet kvar i ordlistan precis som tidigare. Hjälparvariabeln innehåller en referens till objektet i ordlistan.
@@ -567,27 +569,27 @@ Om du inte är helt säker på vad som egentligen händer i koden ovan kan du pr
 
 <programming-exercise name='Puhelinluettelon laajennus, osa 2' tmcname='osa10-11_puhelinluettelo_osa2'>
 
-Tässä tehtävässä laajennetaan puhelinluettelosovellusta siten, että henkilöihin voi liittyä myös osoite. Yksinkertaisuuden vuoksi koodista on kuitenkin poistettu tiedostoon tallentaminen. Myös muutama metodi on uudelleennimetty vastaamaan paremmin laajennuksen jälkeistä tilannetta.
+I denna övning kommer du att skapa en annan version av `TelefonkatalogApplikation`. Du kommer att lägga till adresser i datan som kan kopplas till ett namn. För enkelhetens skull har funktionaliteten för att spara till fil tagits bort, och vissa andra metoder har bytt namn för att bättre passa in i förändringen.
 
-## Luokka henkilön tietojen esittämiseen
+## Del 1: En separat klass för en persons data
 
-Siirretään henkilön tietojen (eli puhelinnumerojen sekä osoitteen) esittäminen oman luokkansa `Henkilo` vastuulle. Toteuta luokka siten, että se toimii seuraavasti:
+Ändra hur data om en person hanteras. Implementera en klass med namnet `Person`, som tar hand om personers telefonnummer och adresser. Klassen ska fungera på följande sätt:
 
 
 ```python
-henkilo = Henkilo("Erkki")
-print(henkilo.nimi())
-print(henkilo.numerot())
-print(henkilo.osoite())
-henkilo.lisaa_numero("040-123456")
-henkilo.lisaa_osoite("Mannerheimintie 10 Helsinki")
-print(henkilo.numerot())
-print(henkilo.osoite())
+person = Person("Erik")
+print(person.namn())
+print(person.numren())
+print(person.adress())
+person.tillsatt_nummer("040-123456")
+person.tillsatt_adress("Mannerheimintie 10 Helsinki")
+print(person.numren())
+print(person.adress())
 ```
 
 <sample-output>
 
-Erkki
+Erik
 []
 None
 ['040-123456']
@@ -595,74 +597,76 @@ Mannerheimintie 10 Helsinki
 
 </sample-output>
 
-## Puhelinluettelo käyttämään luokkaa Henkilo
+## Del 2: Telefonkatalogs användning av klassen Person
 
-Muuta koodiasi siten, että se toimii käyttäjän näkökulmasta täysin samoin kuin aiemmin, mutta luokka `Puhelinluettelo` tallettaakin henkilöt sisäisesti käyttäen luokan `Henkilo` olioita. Käytännössä siis oliomuuttujana `__henkilot` tulee olla sanakirja, johon listojen sijaan talletetaan henkilö-olioita.
+Ändra den interna implementeringen av din applikation så att din `Telefonkatalog`-klass använder objekt av klassen `Person` för att lagra data i telefonkatalogen. Det vill säga, attributet `__personer` ska fortfarande innehålla en ordlista, men värdena ska vara Person-objekt och inte listor. Användaren av din applikation ska inte märka någon skillnad; ändringarna får inte påverka användargränssnittet.
 
-**VAROITUS:** kun teet koodiin tämän tehtävän kaltaista rakenteellista muutosta, etene pienin askelin. Älä missään tapauksessa yritä tehdä kaikkea kerrallaan, se on **varma keino ajautua pahoihin ongelmiin**.
+**VARNING:** när du gör strukturella ändringar i din kod, som beskrivs i den här övningen, ska du alltid ta små steg och testa i varje möjligt skede. Försök inte att göra alla ändringar på en gång. Det är ett säkert sätt att **stöta på allvarliga problem med din kod**.
 
-Sopiva pieni askel nyt voi olla se, että tarkastat ensin erikseen luokan `Puhelinluettelo` toimivuuden. Esimerkiksi seuraavan koodin tulee toimia kuten olettaa saattaa:
+Ett lämpligt första steg kan vara att skriva lite kod för att kontrollera funktionaliteten i `Telefonkatalog`-klassen direkt. Till exempel bör följande åtminstone inte orsaka några fel:
 
 ```python
-luettelo = Puhelinluettelo()
-luettelo.lisaa_numero("Erkki", "02-123456")
-print(luettelo.hae_tiedot("Erkki"))
-print(luettelo.hae_tiedot("Emilia"))
+katalog = Telefonkatalog()
+katalog.tillsatt_nummer("Erik", "02-123456")
+print(katalog.hamta_uppgifter("Erik"))
+print(katalog.hamta_uppgifter("Emilia"))
 ```
 
-Tehtävässä ei tarkisteta, millainen tulostusasu `hae_tiedot`-metodin palauttamalla tuloksella on, mutta varmista ettei koodi aiheuta virheitä, ja että tulos on järkevä. Kun olet 100% varma, että kaikki toimii luokan `Puhelinluettelo` osalta, voit edetä varmistamaan, että kaikki toimii edelleen entiseen tapaan käyttöliittymää käytettäessä.
+Lägg märke till det nya namnet på metoden för att hämta ett inlägg från telefonkatalogen. De automatiska testerna kontrollerar inte vad utskriften från din `hamta_uppgifter`-metod är, utan ser till att inga fel uppstår av ovanstående kod och att resultatet är logiskt inom din implementation.
 
-## Osoitteen lisääminen
+När du har gjort de nödvändiga ändringarna i ditt program och absolut har verifierat funktionaliteten i `Telefonkatalog`-klassen kan du gå vidare till användargränssnittet och se om allt fortfarande fungerar som förväntat.
 
-Laajenna nyt sovellusta siten, että puhelinluetteloon on mahdollista tallettaa myös henkilöiden osoitteet. Ohjelman tulisi toimia seuraavasti:
+## Del 3: Tillägg av adress
+
+Vänligen implementera funktionaliteten för att lägga till en adress till ett inlägg i din telefonkatalog. Programmet ska fungera på följande sätt:
 
 <sample-output>
 
-komennot:
-0 lopetus
-1 nimen lisäys
-2 haku
-3 osoitteen lisäys
+instruktioner:
+0 avsluta
+1 tillsätt namn
+2 sök
+3 tillsätt adress
 
-komento: **1**
-nimi: **Erkki**
-numero: **02-123456**
+instruktion: **1**
+namn: **Erik**
+nummer: **02-123456**
 
-komento: **3**
-nimi: **Emilia**
-osoite: **Viherlaaksontie 7, Espoo**
+instruktion: **3**
+namn: **Emilia**
+adress: **Viherlaaksontie 7, Espoo**
 
-komento: **2**
-nimi: **Erkki**
+instruktion: **2**
+namn: **Erik**
 02-123456
-osoite ei tiedossa
+adress okänd
 
-komento: **2**
-nimi: **Emilia**
-numero ei tiedossa
+instruktion: **2**
+namn: **Emilia**
+nummer okänd
 Viherlaaksontie 7, Espoo
 
-komento: **3**
-nimi: **Erkki**
-osoite: **Linnankatu 75, Turku**
+instruktion: **3**
+namn: **Erik**
+adress: **Linnankatu 75, Turku**
 
-komento: 2
-nimi: **Erkki**
+instruktion: 2
+namn: **Erik**
 02-123456
 Linnankatu 75, Turku
 
-komento: **2**
-nimi: **Wilhelm**
-osoite ei tiedossa
-numero ei tiedossa
+instruktion: **2**
+namn: **Wilhelm**
+adress okänd
+nummer okänd
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
-**VAROITUS ja vihje:** kuten tehtävän edellisessä osassa sanottiin, älä missään tapauksessa yritä tehdä kaikkea kerrallaan, se on **varma keino ajautua pahoihin ongelmiin**.
+**VARNING och tips:** som nämndes ovan i den föregående övningen, försök inte att göra alla ändringar på en gång. Det är ett säkert sätt att **stöta på allvarliga problem med din kod**.
 
-Varmista ensin että voit lisätä osoitteita luokkaan `Puhelinluettelo` ja kun olet 100% varma, että se toimii, voit laajentaa sovelluksen käyttöliittymää uuden toiminnallisuuden osalta.
+Kontrollera först att du på ett tillförlitligt sätt kan lägga till adresser med hjälp av `Telefonkatalog`-klassen direkt. När du har verifierat detta kan du gå vidare till de nödvändiga ändringarna i användargränssnittet.
 
 </programming-exercise>
 
@@ -684,85 +688,85 @@ För att avsluta denna del av materialet kommer du att implementera ytterligare 
 
 <programming-exercise name='Opintorekisteri' tmcname='osa10-12_opintorekisteri'>
 
-Tee interaktiivinen ohjelma, jonka avulla voit pitää kirjaa opintomenestyksestäsi. Sovelluksen rakenteen saat päättää itse, mutta nyt on hyvä tilaisuus harjoitella Puhelinluettelo-esimerkin kaltaisen oliorakenteen muodostamista.
+Skriv en interaktiv applikation för att hålla koll på dina studier. Den interna strukturen är upp till dig, men det här skulle vara ett bra tillfälle att öva på att skapa en liknande struktur som i Telefonkatalog-exemplet ovan.
 
-Ohjelman tulee toimia seuraavasti:
+Ditt program bör fungera på följande sätt:
 
 <sample-output>
 
-1 lisää suoritus
-2 hae suoritus
-3 tilastot
-0 lopetus
+1 tillsätt prestation
+2 hämta prestation
+3 statistik
+0 avsluta
 
-komento: **1**
-kurssi: **Ohpe**
-arvosana: **3**
-opintopisteet: **5**
+instruktion: **1**
+kurs: **ItP**
+vitsord: **3**
+studiepoäng: **5**
 
-komento: **2**
-kurssi: **Ohpe**
-Ohpe (5 op) arvosana 3
+instruktion: **2**
+kurs: **ItP**
+ItP (5 sp) vitsord 3
 
-komento: **1**
-kurssi: **Ohpe**
-arvosana: **5**
-opintopisteet: **5**
+instruktion: **1**
+kurs: **ItP**
+vitsord: **5**
+studiepoäng: **5**
 
-komento: **2**
-kurssi: **Ohpe**
-Ohpe (5 op) arvosana 5
+instruktion: **2**
+kurs: **ItP**
+ItP (5 sp) vitsord 5
 
-komento: **1**
-kurssi: **Ohpe**
-arvosana: **1**
-opintopisteet: **5**
+instruktion: **1**
+kurs: **ItP**
+vitsord: **1**
+studiepoäng: **5**
 
-komento: **2**
-kurssi: **Ohpe**
-Ohpe (5 op) arvosana 5
+instruktion: **2**
+kurs: **ItP**
+ItP (5 sp) vitsord 5
 
-komento: **2**
-kurssi: **Java-ohjelmointi**
+instruktion: **2**
+kurs: **Introduktion till Java**
 ei suoritusta
 
-komento: **1**
-kurssi: **Tira**
-arvosana: **1**
-opintopisteet: **10**
+instruktion: **1**
+kurs: **Tira**
+vitsord: **1**
+studiepoäng: **10**
 
-komento: **1**
-kurssi: **Tilpe**
-arvosana: **2**
-opintopisteet: **5**
+instruktion: **1**
+kurs: **Tilpe**
+vitsord: **2**
+studiepoäng: **5**
 
-komento: **1**
-kurssi: **Lapio**
-arvosana: **4**
-opintopisteet: **1**
+instruktion: **1**
+kurs: **Lapio**
+vitsord: **4**
+studiepoäng: **1**
 
-komento: **1**
-kurssi: **Lama**
-arvosana: **5**
-opintopisteet: **8**
+instruktion: **1**
+kurs: **Lama**
+vitsord: **5**
+studiepoäng: **8**
 
-komento: **3**
-suorituksia 5 kurssilta, yhteensä 29 opintopistettä
-keskiarvo 3.4
-arvosanajakauma
+instruktion: **3**
+5 avklarade kurser, totalt 29 studiepoäng
+medeltal 3.4
+vitsordsdistribution
 5: xx
 4: x
 3:
 2: x
 1: x
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
-Muutama huomio: kultakin kurssilta tallentuu ainoastaan yksi arvosana. Arvosanaa voi korottaa, mutta se ei voi laskea.
+Varje kursnamn ska resultera i ett enda tillägg i registret. Ett betyg kan höjas genom att kursuppgifterna skrivs in på nytt, men betyget får aldrig sänkas.
 
-Tehtävästä on tarjolla kaksi tehtäväpistettä. Ensimmäisen pisteen saa jos toiminnot 1 ja 2 sekä lopetus toimivat. Toisen pisteen saa jos myös toiminto 3 on toteutettu.
+Denna övning är värd två övningspoäng. Den första ges om kommandona 1, 2 och 0 fungerar korrekt i ditt program. Det andra ges om även kommando 3 fungerar som förväntat.
 
 </programming-exercise>
 
@@ -771,15 +775,15 @@ Tehtävästä on tarjolla kaksi tehtäväpistettä. Ensimmäisen pisteen saa jos
 För att avsluta den här delen av materialet återvänder vi till användargränssnittet i telefonkatalogsexemplet för en stund.
 
 ```python
-class PuhelinluetteloSovellus:
+class TelefonkatalogApplikation:
     def __init__(self):
-        self.__luettelo = Puhelinluettelo()
-        self.__tiedosto = Tiedostonkasittelija("luettelo.txt")
+        self.__katalog = Telefonkatalog()
+        self.__filhanterare = FilHanterare("katalog.txt")
 
-    # muu koodi
+    # annan kod
 
-sovellus = PuhelinluetteloSovellus()
-sovellus.suorita()
+applikation = TelefonkatalogApplikation()
+applikation.exekvera()
 ```
 
 Ett `TelefonkatalogApplikation`-objekt innehåller både ett `Telefonkatalog`-objekt och ett `FilHanterare`-objekt. Namnet på den fil som skickas till FilHanterare är för närvarande hårdkodat i `TelefonkatalogApplikation`-klassen. Detta är en helt irrelevant detalj när det gäller applikationens användargränssnitt. Faktum är att den bryter mot principen om separation of concerns: var ett `Telefonkatalog`-objekt sparar sitt innehåll ska inte vara en angelägenhet för en `TelefonkatalogApplikation`, men om vi vill ändra platsen måste vi ändra koden för `TelefonkatalogApplikation`.
@@ -787,35 +791,35 @@ Ett `TelefonkatalogApplikation`-objekt innehåller både ett `Telefonkatalog`-ob
 Det skulle vara en bättre idé att skapa ett FilHanterare-objekt någonstans utanför `TelefonkatalogApplikation`-klassen och skicka det som ett argument till applikationen:
 
 ```python
-class PuhelinluetteloSovellus:
-    def __init__(self, tiedosto):
-        self.__luettelo = Puhelinluettelo()
-        self.__tiedosto = tiedosto
+class TelefonkatalogApplikation:
+    def __init__(self, filhanterare):
+        self.__katalog = Telefonkatalog()
+        self.__filhanterare = filhanterare
 
-    # muu koodi
+    # annan kod
 
-# luodaan tallennuksen hoitava olio
-tallennuspalvelu = Tiedostonkasittelija("luettelo.txt")
-# ja annetaan se PuhelinluetteloSovellus-oliolle konsturuktorin parametrina
-sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
-sovellus.suorita()
+# skapar ett objekt för att hantera sparning av filen
+forvaringstjanst = FilHanterare("katalog.txt")
+# och passerar det som argument till TelefonkatalogApplikation-objektets konstruktor
+applikation = TelefonkatalogApplikation(forvaringstjanst)
+applikation.exekvera()
 ```
 
 Detta tar bort ett onödigt beroende från `TelefonkatalogApplikation`-klassen. Om namnet på filen ändras behöver användargränssnittet inte längre ändras. Vi behöver bara skicka ett annat argument till konstruktören:
 
 
 ```python
-class PuhelinluetteloSovellus:
-    def __init__(self, tiedosto):
-        self.__luettelo = Puhelinluettelo()
-        self.__tiedosto = tiedosto
+class TelefonkatalogApplikation:
+    def __init__(self, filhanterare):
+        self.__katalog = Telefonkatalog()
+        self.__filhanterare = filhanterare
 
-    # muu koodi
+    # annan kod
 
-# vaihdetaan tiedostoa
-tallennuspalvelu = Tiedostonkasittelija("uusi_luettelotiedosto.txt")
-sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
-sovellus.suorita()
+# använd ett annat filnamn
+forvaringstjanst = FilHanterare("ny_katalog.txt")
+applikation = TelefonkatalogApplikation(forvaringstjanst)
+applikation.exekvera()
 ```
 
 Denna förändring gör det också möjligt för oss att överväga mer exotiska lagringsplatser, till exempel en molntjänst på internet. Vi behöver bara implementera en klass som använder molntjänsten och erbjuder `TelefonkatalogApplikation` exakt samma metoder som `FilHanterare`.
@@ -823,12 +827,12 @@ Denna förändring gör det också möjligt för oss att överväga mer exotiska
 En instans av denna nya "moln hanterar"-klass kan skickas som ett argument till konstruktören och inte en enda rad kod behöver ändras i användargränssnittet:
 
 ```python
-class InternetTallennin:
-    # koodi joka tallentaa luettelon tiedot internetissä olevaan pilvipalveluun
+class MolnHanterare:
+    # kod som sparar innehållet av telefonkatalogen i en molntjänst på internet
 
-tallennuspalvelu = InternetTallennin("amazon-cloud", "mluukkai", "passwrd")
-sovellus = PuhelinluetteloSovellus(tallennuspalvelu)
-sovellus.suorita()
+forvaringstjanst = MolnHanterare("amazon-cloud", "anvandarnamn", "losenord")
+applikation = TelefonkatalogApplikation(forvaringstjanst)
+applikation.exekvera()
 ```
 
 Som du har sett tidigare har den här typen av tekniker ett pris, eftersom det blir mer kod att skriva, så en programmerare måste överväga om det är en acceptabel avvägning.

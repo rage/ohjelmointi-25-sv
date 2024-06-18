@@ -24,25 +24,25 @@ Följande kod skapar en animation där en robot rör sig från vänster till hö
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
 x = 0
 y = 0
-kello = pygame.time.Clock()
+klocka = pygame.time.Clock()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 
     x += 1
-    kello.tick(60)
+    klocka.tick(60)
 ```
 
 När detta exekveras, borde resultatet se ut så här:
@@ -59,14 +59,14 @@ y = 0
 Vi har även en klocka, som vi använder för att se till att animationens hastighet är korrekt:
 
 ```python
-kello = pygame.time.Clock()
+klocka = pygame.time.Clock()
 ```
 
 Huvudloopen ritar bilden på sin aktuella plats vid varje iteration:
 
 ```python
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 ```
 
@@ -83,7 +83,7 @@ Slutligen ökas värdet som lagras i x, vilket gör att bilden flyttas en pixel 
 Klock-metoden `tick` kallas i slutet:
 
 ```python
-    kello.tick(60)
+    klocka.tick(60)
 ```
 
 Metoden `tick` tar hand om hastigheten på animationen. Argumentet 60 anger att loopen ska exekveras `60` gånger per sekund, vilket innebär att bilden förflyttas 60 pixlar åt höger varje sekund. Detta motsvarar ungefär det värde för FPS eller bilder per sekund som används i spel.
@@ -98,31 +98,31 @@ Den föregående animationen var annars utmärkt, men när roboten nådde en vä
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
 x = 0
 y = 0
-nopeus = 1
-kello = pygame.time.Clock()
+hastighet = 1
+klocka = pygame.time.Clock()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 
-    x += nopeus
-    if nopeus > 0 and x+robo.get_width() >= 640:
-        nopeus = -nopeus
-    if nopeus < 0 and x <= 0:
-        nopeus = -nopeus
+    x += hastighet
+    if hastighet > 0 and x+robot.get_width() >= 640:
+        hastighet = -hastighet
+    if hastighet < 0 and x <= 0:
+        hastighet = -hastighet
 
-    kello.tick(60)
+    klocka.tick(60)
 ```
 
 Exekvering av koden ovan borde se ut så här:
@@ -134,10 +134,10 @@ Det finns en ny variabel, `hastighet`, som bestämmer rörelseriktningen. Om vä
 Följande rader gör att roboten studsar mot sidoväggarna:
 
 ```python
-    if nopeus > 0 and x+robo.get_width() >= 640:
-        nopeus = -nopeus
-    if nopeus < 0 and x <= 0:
-        nopeus = -nopeus
+    if hastighet > 0 and x+robot.get_width() >= 640:
+        hastighet = -hastighet
+    if hastighet < 0 and x <= 0:
+        hastighet = -hastighet
 ```
 
 Om hastigheten är över noll så att roboten rör sig åt höger, och högerkanten på bilden går utanför fönstrets högra kant, vänds riktningen och roboten börjar röra sig åt vänster. På samma sätt, om hastigheten är under noll så att roboten rör sig åt vänster, och bildens vänstra kant når fönstrets vänstra kant, vänds riktningen igen och roboten börjar röra sig åt höger igen.
@@ -153,27 +153,27 @@ import pygame
 import math
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
-kulma = 0
-kello = pygame.time.Clock()
+vinkel = 0
+klocka = pygame.time.Clock()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.QUIT:
             exit()
 
-    x = 320+math.cos(kulma)*100-robo.get_width()/2
-    y = 240+math.sin(kulma)*100-robo.get_height()/2
+    x = 320+math.cos(vinkel)*100-robot.get_width()/2
+    y = 240+math.sin(vinkel)*100-robot.get_height()/2
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 
-    kulma += 0.01
-    kello.tick(60)
+    vinkel += 0.01
+    klocka.tick(60)
 ```
 
 Exekvering av koden ovan borde se ut så här:
@@ -183,8 +183,8 @@ Exekvering av koden ovan borde se ut så här:
 Rotation i en relativt exakt cirkel uppnås med hjälp av några grundläggande trigonometriska funktioner. Variabeln `vinkel` innehåller vinkeln för robotens position i förhållande till fönstrets mittpunkt och den horisontella linjen som går genom fönstret. Sinus- och cosinusfunktionerna från Pythons matematikbibliotek används här för att beräkna koordinaterna för robotens position:
 
 ```python
-        x = 320+math.cos(kulma)*100-robo.get_width()/2
-        y = 240+math.sin(kulma)*100-robo.get_height()/2
+        x = 320+math.cos(vinkel)*100-robot.get_width()/2
+        y = 240+math.sin(vinkel)*100-robot.get_height()/2
 ```
 
 Roboten roterar runt en cirkel med radien 100 runt fönstrets mittpunkt. Hypotenusan i detta scenario är cirkelns radie. Cosinusfunktionen anger längden på den angränsande sidan i en rätvinklig triangel i förhållande till hypotenusan, vilket innebär att den ger oss platsens `x`-koordinat. Sinusfunktionen ger längden på den motsatta sidan, dvs. `y`-koordinaten. Platsen justeras sedan för bildens storlek, så att cirkelns mittpunkt ligger i fönstrets mittpunkt.
@@ -193,7 +193,7 @@ För varje iteration ökar storleken på `vinkel` med 0,01. Eftersom vi använde
 
 <programming-exercise name='Pystyliike' tmcname='osa13-05_pystyliike'>
 
-Tee animaatio, jossa robotti liikkuu vuorotellen ylös ja alas. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där roboten rör sig upp och ner i en ändlös loop. Slutresultatet ska se ut så här:
 
 <img src="pygame_pysty.gif">
 
@@ -201,7 +201,7 @@ Tee animaatio, jossa robotti liikkuu vuorotellen ylös ja alas. Ohjelman suoritu
 
 <programming-exercise name='Reunan kierto' tmcname='osa13-06_reunan_kierto'>
 
-Tee animaatio, jossa robotti kiertää ympäri ikkunan reunaa. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där roboten följer fönstrets omkrets. Slutresultatet ska se ut så här:
 
 <img src="pygame_kierto.gif">
 
@@ -209,7 +209,7 @@ Tee animaatio, jossa robotti kiertää ympäri ikkunan reunaa. Ohjelman suorituk
 
 <programming-exercise name='Kaksi robottia' tmcname='osa13-07_kaksi_robottia'>
 
-Tee animaatio, jossa kaksi robottia kulkee näytöllä vuorotellen oikealle ja vasemmalle. Alempi robotti kulkee tuplavauhtia. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där två robotar rör sig fram och tillbaka till vänster och höger. Den nedre roboten ska röra sig med dubbelt så hög hastighet som den övre. Slutresultatet ska se ut så här:
 
 <img src="pygame_liike2.gif">
 
@@ -217,7 +217,7 @@ Tee animaatio, jossa kaksi robottia kulkee näytöllä vuorotellen oikealle ja v
 
 <programming-exercise name='Piirileikki' tmcname='osa13-08_piirileikki'>
 
-Tee animaatio, jossa on kymmenen robottia piirileikissä. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där tio robotar går runt i en cirkel. Slutresultatet ska se ut så här:
 
 <img src="pygame_piiri.gif">
 
@@ -225,17 +225,17 @@ Tee animaatio, jossa on kymmenen robottia piirileikissä. Ohjelman suorituksen t
 
 <programming-exercise name='Pomppiva pallo' tmcname='osa13-09_pomppiva_pallo'>
 
-Tee animaatio, jossa pallo kimpoaa ikkunan reunoilta. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där en boll studsar från fönstrets kanter. Slutresultatet ska se ut så här:
 
 <img src="pygame_pallo.gif">
 
-Tehtäväpohjassa on palloa varten kuvatiedosto `pallo.png`.
+Övningsmallen innehåller bilden `pallo.png`.
 
 </programming-exercise>
 
 <programming-exercise name='Robotti-invaasio' tmcname='osa13-10_robotti_invaasio'>
 
-Tee animaatio, jossa taivaalta tippuu satunnaisesti robotteja. Kun robotti laskeutuu maahan, se lähtee joko vasemmalle tai oikealle ja katoaa lopuksi ruudulta. Ohjelman suorituksen tulee näyttää tältä:
+Skapa en animation där robotar faller från himlen slumpmässigt. När en robot når marken börjar den röra sig åt vänster eller höger och försvinner till slut från skärmen. Slutresultatet ska se ut så här:
 
 <img src="pygame_invaasio.gif">
 

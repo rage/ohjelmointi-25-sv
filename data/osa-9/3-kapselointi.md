@@ -21,48 +21,48 @@ I objektorienterad programmering avser termen klient ett program som använder e
 
 Ett objekts integritet innebär att objektets tillstånd alltid förblir acceptabelt. I praktiken innebär detta att värdena på objektets attribut alltid är acceptabla. Ett objekt som representerar ett datum ska till exempel aldrig ha 13 som värde för månaden, ett objekt som representerar en student ska aldrig ha ett negativt tal som värde för uppnådda studiepoäng och så vidare.
 
-Låt oss ta en titt på en klass som heter Student:
+Låt oss ta en titt på en klass som heter Studerande:
 
 ```python
-class Opiskelija:
-    def __init__(self, nimi: str, opiskelijanumero: str):
-        self.nimi = nimi
-        self.opiskelijanumero = opiskelijanumero
-        self.opintopisteet = 0
+class Studerande:
+    def __init__(self, namn: str, studerandenummer: str):
+        self.namn = namn
+        self.studerandenummer = studerandenummer
+        self.studiepoang = 0
 
-    def lisaa_suoritus(self, opintopisteet):
-        if opintopisteet > 0:
-            self.opintopisteet += opintopisteet
+    def tillagg_poang(self, studiepoang):
+        if studiepoang > 0:
+            self.studiepoang += studiepoang
 ```
 
-`Student`objektet erbjuder sina klienter metoden `tillägg_poäng`, som gör det möjligt för klienten att lägga till ett angivet antal studiepoäng till studentens totala antal. Metoden säkerställer att värdet som skickas som argument är över noll. Följande kod lägger till studiepoäng vid tre tillfällen:
+`Studerande` objektet erbjuder sina klienter metoden `tillagg_poang`, som gör det möjligt för klienten att lägga till ett angivet antal studiepoäng till studentens totala antal. Metoden säkerställer att värdet som skickas som argument är över noll. Följande kod lägger till studiepoäng vid tre tillfällen:
 
 ```python
-oskari = Opiskelija("Oskari Opiskelija", "12345")
-oskari.lisaa_suoritus(5)
-oskari.lisaa_suoritus(5)
-oskari.lisaa_suoritus(10)
-print("Opintopisteet:", oskari.opintopisteet)
+oskar = Studerande("Oskar Studerande", "12345")
+oskar.tillagg_poang(5)
+oskar.tillagg_poang(5)
+oskar.tillagg_poang(10)
+print("Studiepoäng:", oskar.studiepoang)
 ```
 
 <sample-output>
 
-Opintopisteet: 20
+Studiepoäng: 20
 
 </sample-output>
 
 
-Trots metoddefinitionen är det fortfarande möjligt att komma åt attributet `studie_poäng` direkt. Detta kunde resultera i ett felaktigt tillstånd där objektets integritet går förlorad:
+Trots metoddefinitionen är det fortfarande möjligt att komma åt attributet `studiepoang` direkt. Detta kunde resultera i ett felaktigt tillstånd där objektets integritet går förlorad:
 
 ```python
-oskari = Opiskelija("Oskari Opiskelija", "12345")
-oskari.opintopisteet = -100
-print("Opintopisteet:", oskari.opintopisteet)
+oskar = Studerande("Oskar Studerande", "12345")
+oskar.studiepoang = -100
+print("Studiepoäng:", oskar.studiepoang)
 ```
 
 <sample-output>
 
-Opintopisteet: -100
+Studiepoäng: -100
 
 </sample-output>
 
@@ -71,39 +71,39 @@ Opintopisteet: -100
 Ett vanligt inslag i objektorienterade programmeringsspråk är att klasserna kan dölja sina attribut för eventuella kunder. Dolda attribut kallas vanligtvis privata. I Python uppnås denna sekretess genom att lägga till två understreck `__` i början av attributnamnet:
 
 ```python
-class Pankkikortti:
-    # Attribuutti numero on piilotettu, nimi on näkyvissä
-    def __init__(self, numero: str, nimi: str):
-        self.__numero = numero
-        self.nimi = nimi
+class Bankkort:
+    # Attributet nummer är gömt, attributet namn är åtkombart
+    def __init__(self, nummer: str, namn: str):
+        self.__nummer = nummer
+        self.namn = namn
 ```
 
 Ett privat attribut är inte direkt synligt för klienten. Försök att referera till det orsakar ett fel. I exemplet ovan är attributet namn lätt att komma åt och ändra:
 
 ```python
-kortti = Pankkikortti("123456","Reijo Rahakas")
-print(kortti.nimi)
-kortti.nimi = "Reijo Rutiköyhä"
-print(kortti.nimi)
+kort = Bankkort("123456","Robert Rik")
+print(kort.namn)
+kort.namn = "Peter Pank"
+print(kort.namn)
 ```
 
 <sample-output>
 
-Reijo Rahakas
-Reijo Rutiköyhä
+Robert Rik
+Peter Pank
 
 </sample-output>
 
 Ifall man provar få en utskrift av kortnumret så orsakar det däremot ett fel:
 
 ```python
-kortti = Pankkikortti("123456","Reijo Rahakas")
-print(kortti.__numero)
+kort = Bankkort("123456","Robert Rik")
+print(kort.__nummer)
 ```
 
 <sample-output>
 
-AttributeError: 'Pankkikortti' object has no attribute '__numero'
+AttributeError: 'Bankkort' object has no attribute '__nummer'
 
 </sample-output>
 
@@ -112,34 +112,34 @@ Att dölja attribut från klienter kallas inkapsling. Som namnet antyder är att
 Låt oss lägga till ett annat inkapslat attribut: saldot på kreditkortet. Den här gången lägger vi också till offentligt synliga metoder som gör det möjligt för klienten att komma åt och ändra saldot:
 
 ```python
-class Pankkikortti:
-    def __init__(self, numero: str, nimi: str, saldo: float):
-        self.__numero = numero
-        self.nimi = nimi
+class Bankkort:
+    def __init__(self, nummer: str, namn: str, saldo: float):
+        self.__nummer = nummer
+        self.namn = namn
         self.__saldo = saldo
 
-    def lisaa_rahaa(self, maara: float):
-        if maara > 0:
-            self.__saldo += maara
+    def tillsatt_pengar(self, mangd: float):
+        if mangd > 0:
+            self.__saldo += mangd
 
-    def kayta_rahaa(self, maara: float):
-        if maara > 0 and maara <= self.__saldo:
-            self.__saldo -= maara
+    def anvand_pengar(self, mangd: float):
+        if mangd > 0 and mangd <= self.__saldo:
+            self.__saldo -= mangd
 
-    def hae_saldo(self):
+    def hamta_saldo(self):
         return self.__saldo
 ```
 
 ```python
-kortti = Pankkikortti("123456", "Reijo Rahakas", 5000)
-print(kortti.hae_saldo())
-kortti.lisaa_rahaa(100)
-print(kortti.hae_saldo())
-kortti.kayta_rahaa(500)
-print(kortti.hae_saldo())
-# Tämä ei onnistu, koska saldo ei riitä
-kortti.kayta_rahaa(10000)
-print(kortti.hae_saldo())
+kort = Bankkort("123456", "Robert Rik", 5000)
+print(kort.hamta_saldo())
+kort.tillsatt_pengar(100)
+print(kort.hamta_saldo())
+kort.anvand_pengar(500)
+print(kort.hamta_saldo())
+# Detta lyckas inte, eftersom saldot inte är tillräckligt
+kort.anvand_pengar(10000)
+print(kort.hamta_saldo())
 ```
 
 <sample-output>
@@ -155,44 +155,44 @@ Saldot kan inte ändras direkt eftersom attributet är privat, men vi har inklud
 
 <programming-exercise name='Auto' tmcname='osa09-09_auto'>
 
-Toteuta luokka `Auto`, jossa on _kapseloituina attribuutteina_ tieto bensatankin sisällöstä (0-60 litraa) sekä ajetuista kilometreista. Auto kuluttaa litran bensaa kilometrillä.
+Implementera en klass som heter `Bil` och som har två privata, _inkapslade_ variabler: mängden bensin i tanken (0 till 60 liter) och vägmätarställningen (i kilometer). Bilen förbrukar en liter bensin per kilometer.
 
-Luokalla on seuraavat metodit:
+Klassen ska ha följande metoder:
 
-- `tankkaa()`, joka täyttää bensatankin
-- `aja(km:int)`, joka ajaa parametrina olevan kilometrimäärän tai niin pitkälle kuin bensaa riittää
-- `__str__`, joka näyttää esimerkin mukaisen kuvauksen autosta
+- `tanka()`, som fyller bensintanken
+- `kor(km:int)`, som kör bilen enligt den angivna distansen eller för så länge bensinen i tanken räcker
+- `__str__`, som visar en strängrepresentation av bilen enligt exemplet nedan
 
-Esimerkki luokan käyttämisestä:
+Exempel på hur klassen fungerar:
 
 ```python
-auto = Auto()
-print(auto)
-auto.tankkaa()
-print(auto)
-auto.aja(20)
-print(auto)
-auto.aja(50)
-print(auto)
-auto.aja(10)
-print(auto)
-auto.tankkaa()
-auto.tankkaa()
-print(auto)
+bil = Bil()
+print(bil)
+bil.tanka()
+print(bil)
+bil.kor(20)
+print(bil)
+bil.kor(50)
+print(bil)
+bil.kor(10)
+print(bil)
+bil.tanka()
+bil.tanka()
+print(bil)
 ```
 
 <sample-output>
 
-Auto: ajettu 0 km, bensaa 0 litraa
-Auto: ajettu 0 km, bensaa 60 litraa
-Auto: ajettu 20 km, bensaa 40 litraa
-Auto: ajettu 60 km, bensaa 0 litraa
-Auto: ajettu 60 km, bensaa 0 litraa
-Auto: ajettu 60 km, bensaa 60 litraa
+Bil: har kört 0 km, bensin 0 liter
+Bil: har kört 0 km, bensin 60 liter
+Bil: har kört 20 km, bensin 40 liter
+Bil: har kört 60 km, bensin 0 liter
+Bil: har kört 60 km, bensin 0 liter
+Bil: har kört 60 km, bensin 60 liter
 
 </sample-output>
 
-**Huomaa**, että bensan ja ajettujen kilometrien määrä on kapseloitava, niihin ei tule pystyä vaikuttamaan muuten kuin auton metodeja kutsumalla.
+**OBS:** Du ombeds att kapsla in mängden bensin som finns kvar och vägmätarställningen. Det ska inte vara möjligt att komma åt dem direkt utanför klassens egna metoder.
 
 </programming-exercise>
 
@@ -204,46 +204,46 @@ Det finns sätt att kringgå understryknings `__`-notationen för att dölja att
 
 I objektorienterad programmering kallas metoder som är avsedda för att komma åt och ändra attribut vanligtvis för getter och sättare (eng: setters). Inte alla Python-programmerare använder termerna "getter" och "sättare", men konceptet med egenskaper som beskrivs nedan är mycket liknande, vilket är varför vi kommer att använda den allmänt accepterade objektorienterade programmeringsterminologin här.
 
-Ovan skapade vi några offentliga metoder för att komma åt privata attribut, men det finns ett enklare, "pythoniskt" sätt att komma åt attribut. Låt oss ta en titt på en enkel klass som heter `Plånbok` med ett enda privat attribut `pengar`:
+Ovan skapade vi några offentliga metoder för att komma åt privata attribut, men det finns ett enklare, "pythoniskt" sätt att komma åt attribut. Låt oss ta en titt på en enkel klass som heter `Planbok` med ett enda privat attribut `pengar`:
 
 ```python
-class Lompakko:
+class Planbok:
     def __init__(self):
-        self.__rahaa = 0
+        self.__pengar = 0
 ```
 
 Vi kan tillägga getter och sättar metoder för att komma åt det privata attributet genom att använda `@property` dekoratorn:
 
 ```python
-class Lompakko:
+class Planbok:
     def __init__(self):
-        self.__rahaa = 0
+        self.__pengar = 0
 
-    # Havainnointimetodi
+    # Gettermetod
     @property
-    def rahaa(self):
-        return self.__rahaa
+    def pengar(self):
+        return self.__pengar
 
-    # Asetusmetodi
-    @rahaa.setter
-    def rahaa(self, rahaa):
-        if rahaa >= 0:
-            self.__rahaa = rahaa
+    # Sättarmetod
+    @pengar.setter
+    def pengar(self, pengar):
+        if pengar >= 0:
+            self.__pengar = pengar
 ```
 
-Först definierar vi en getter-metod som returnerar den summa pengar som för närvarande finns i plånboken. Sedan definierar vi en sättar-metod som sätter ett nytt värde för money-attributet och samtidigt ser till att det nya värdet inte är negativt.
+Först definierar vi en getter-metod som returnerar den summa pengar som för närvarande finns i plånboken. Sedan definierar vi en sättar-metod som sätter ett nytt värde för pengar-attributet och samtidigt ser till att det nya värdet inte är negativt.
 
 De nya metoderna kan användas på följande sätt:
 
 ```python
-lompsa = Lompakko()
-print(lompsa.rahaa)
+planbok = Planbok()
+print(planbok.pengar)
 
-lompsa.rahaa = 50
-print(lompsa.rahaa)
+planbok.pengar = 50
+print(planbok.pengar)
 
-lompsa.rahaa = -30
-print(lompsa.rahaa)
+planbok.pengar = -30
+print(planbok.pengar)
 ```
 
 <sample-output>
@@ -254,39 +254,39 @@ print(lompsa.rahaa)
 
 </sample-output>
 
-För klienten är det ingen skillnad att använda dessa nya metoder jämfört med att direkt komma åt ett attribut. Parenteser är inte nödvändiga, utan det är helt acceptabelt att ange `plånbok.pengar = 50`, som om vi helt enkelt tilldelar ett värde till en variabel. Syftet var faktiskt att dölja (dvs. kapsla in) den interna implementeringen av attributet och samtidigt erbjuda ett enkelt sätt att komma åt och ändra den data som lagras i objektet.
+För klienten är det ingen skillnad att använda dessa nya metoder jämfört med att direkt komma åt ett attribut. Parenteser är inte nödvändiga, utan det är helt acceptabelt att ange `planbok.pengar = 50`, som om vi helt enkelt tilldelar ett värde till en variabel. Syftet var faktiskt att dölja (dvs. kapsla in) den interna implementeringen av attributet och samtidigt erbjuda ett enkelt sätt att komma åt och ändra den data som lagras i objektet.
 
 I det föregående exemplet finns dock ett litet problem: klienten meddelas inte om att det inte går att ange ett negativt värde för attributet pengar. När ett värde som anges är uppenbart felaktigt är det vanligtvis en bra idé att skapa ett undantag och på så sätt informera klienten. I det här fallet bör undantaget förmodligen vara av typen `ValueError` för att visa att det angivna värdet var oacceptabelt.
 
 Här har vi en förbättrad version av klassen, tillsammans med lite kod för att testa den:
 
 ```python
-class Lompakko:
+class Planbok:
     def __init__(self):
-        self.__rahaa = 0
+        self.__pengar = 0
 
-    # Havainnointimetodi
+    # Gettermetod
     @property
-    def rahaa(self):
-        return self.__rahaa
+    def pengar(self):
+        return self.__pengar
 
-    # Asetusmetodi
-    @rahaa.setter
-    def rahaa(self, rahaa):
-        if rahaa >= 0:
-            self.__rahaa = rahaa
+    # Sättarmetod
+    @pengar.setter
+    def pengar(self, pengar):
+        if pengar >= 0:
+            self.__pengar = pengar
         else:
-            raise ValueError("Rahasumma ei saa olla negatiivinen")
+            raise ValueError("Mängden får inte vara under 0")
 ```
 
 ```python
-lompsa.rahaa = -30
-print(lompsa.rahaa)
+planbok.pengar = -30
+print(planbok.pengar)
 ```
 
 <sample-output>
 
-ValueError: Rahasumma ei saa olla negatiivinen
+ValueError: Mängden får inte vara under 0
 
 </sample-output>
 
@@ -294,21 +294,21 @@ OBS: getter-metoden, dvs `@property-dekoratorn`, måste introduceras före sätt
 
 <programming-exercise name='Äänite' tmcname='osa09-10_aanite'>
 
-Kirjoita luokka `Aanite`, joka mallintaa yksittäistä äänitettä. Luokalla on yksi piilotettu attribuutti, kokonaislukutyyppinen `__pituus`.
+Skapa en klass med namnet `Inspelning` som modellerar en enda inspelning. Klassen ska ha en privat variabel: `__langd` av typen heltal.
 
-Kirjoita luokalle
+Implementera följande:
 
-* konstruktori, joka saa parametrikseen pituuden
-* havainnointimetodi `pituus`, joka palauttaa pituuden
-* asetusmetodi, joka asettaa pituuden arvon
+* konstruktorn, som får längden som argument
+* en gettermetod `langd`, som returnerar längden av inspelningen
+* en sättarmetod, som sätter längden på inspelningen
 
-Luokkaa siis käytetään seuraavasti:
+Klassen används på följande sätt:
 
 ```python
-the_wall = Aanite(43)
-print(the_wall.pituus)
-the_wall.pituus = 44
-print(the_wall.pituus)
+the_wall = Inspelning(43)
+print(the_wall.langd)
+the_wall.langd = 44
+print(the_wall.langd)
 ```
 
 <sample-output>
@@ -318,60 +318,60 @@ print(the_wall.pituus)
 
 </sample-output>
 
-Jos pituudeksi yritetään asettaa nollaa pienempää arvoa joko konstruktorissa tai asetusmetodissa, tulee tuottaa virhe `ValueError`.
+Om argumentet för antingen konstruktorn eller sättar-metoden är under noll, bör detta åstadkomma ett `ValueError`.
 
-Jos et muista miten poikkeus tuotetaan, kertaa
-[osan 6](/osa-6/3-virheet#poikkeusten-tuottaminen) materiaalista.
+Ifall du inte minns hur man åstadkommer undantag, kan du kolla in
+[del 6](/osa-6/3-virheet#poikkeusten-tuottaminen) av materialet.
 
 </programming-exercise>
 
 Följande exempel har en klass med två privata attribut, tillsammans med getter och sättare för båda. Prova programmet med olika värden som skickas som argument:
 
 ```python
-class Pelaaja:
-    def __init__(self, nimi: str, pelinumero: int):
-        self.__nimi = nimi
-        self.__pelinumero = pelinumero
+class Spelare:
+    def __init__(self, namn: str, spelnummer: int):
+        self.__namn = namn
+        self.__spelnummer = spelnummer
 
     @property
-    def nimi(self):
-        return self.__nimi
+    def namn(self):
+        return self.__namn
 
-    @nimi.setter
-    def nimi(self, nimi: str):
-        if nimi != "":
-            self.__nimi = nimi
+    @namn.setter
+    def namn(self, namn: str):
+        if namn != "":
+            self.__namn = namn
         else:
-            raise ValueError("Nimi ei voi olla tyhjä")
+            raise ValueError("Namnet kan inte vara tomt")
 
     @property
-    def pelinumero(self):
-        return self.__pelinumero
+    def spelnummer(self):
+        return self.__spelnummer
 
-    @pelinumero.setter
-    def pelinumero(self, pelinumero: int):
-        if pelinumero > 0:
-            self.__pelinumero = pelinumero
+    @spelnummer.setter
+    def spelnummer(self, spelnummer: int):
+        if spelnummer > 0:
+            self.__spelnummer = spelnummer
         else:
-            raise ValueError("Pelinumeron täytyy olla positiviinen kokonaisluku")
+            raise ValueError("Spelnumret måste vara ett positivt heltal")
 ```
 
 ```python
-pelaaja = Pelaaja("Pekka Palloilija", 10)
-print(pelaaja.nimi)
-print(pelaaja.pelinumero)
+spelare = Spelare("Fredrik Fotare", 10)
+print(spelare.namn)
+print(spelare.spelnummer)
 
-pelaaja.nimi = "Paula Palloilija"
-pelaaja.pelinumero = 11
-print(pelaaja.nimi)
-print(pelaaja.pelinumero)
+spelare.namn = "Fia Futis"
+spelare.spelnummer = 11
+print(spelare.namn)
+print(spelare.spelnummer)
 ```
 
 <sample-output>
 
-Pekka Palloilija
+Fredrik Fotare
 10
-Paula Palloilija
+Fia Futis
 11
 
 </sample-output>
@@ -381,81 +381,81 @@ Som avslutning på detta avsnitt ska vi titta på en klass som modellerar en enk
 Inkapsling säkerställer också att den interna implementeringen av klassen kan ändras när som helst, förutsatt att det offentliga gränssnittet förblir intakt. Klienten behöver inte veta eller bry sig om huruvida den interna datastrukturen är baserad på listor, ordlistor eller något helt annat. 
 
 ```python
-class Paivakirja:
-    def __init__(self, omistaja: str):
-        self.__omistaja = omistaja
-        self.__merkinnat = []
+class Dagbok:
+    def __init__(self, agare: str):
+        self.__agare = agare
+        self.__inlagg = []
 
     @property
-    def omistaja(self):
-        return self.__omistaja
+    def agare(self):
+        return self.__agare
 
-    @omistaja.setter
-    def omistaja(self, omistaja):
-        if omistaja != "":
-            self.__omistaja = omistaja
+    @agare.setter
+    def agare(self, agare):
+        if agare != "":
+            self.__agare = agare
         else:
-            raise ValueError("Omistaja ei voi olla tyhjä")
+            raise ValueError("Ägaren kan inte vara tom")
 
-    def lisaa_merkinta(self, merkinta: str):
-        self.__merkinnat.append(merkinta)
+    def tillsatt_inlagg(self, inlagg: str):
+        self.__inlagg.append(inlagg)
 
-    def tulosta(self):
-        print("Yhteensä", len(self.__merkinnat), "merkintää")
-        for merkinta in self.__merkinnat:
-            print("- " + merkinta)
+    def skriv_ut(self):
+        print("Totalt", len(self.__inlagg), "inlägg")
+        for inlagg in self.__inlagg:
+            print("- " + inlagg)
 ```
 
 ```python
-paivakirja = Paivakirja("Pekka")
-paivakirja.lisaa_merkinta("Tänään söin puuroa")
-paivakirja.lisaa_merkinta("Tänään opettelin olio-ohjelmointia")
-paivakirja.lisaa_merkinta("Tänään menin ajoissa nukkumaan")
-paivakirja.tulosta()
+dagbok = Dagbok("Peter")
+dagbok.tillsatt_inlagg("Idag åt jag gröt")
+dagbok.tillsatt_inlagg("Idag lärde jag mig objekt-orienterad programmering")
+dagbok.tillsatt_inlagg("Idag lade jag mig tidigt")
+dagbok.skriv_ut()
 ```
 
 <sample-output>
 
-Yhteensä 3 merkintää
-- Tänään söin puuroa
-- Tänään opettelin olio-ohjelmointia
-- Tänään menin ajoissa nukkumaan
+Totalt 3 inlägg
+- Idag åt jag gröt
+- Idag lärde jag mig objekt-orienterad programmering
+- Idag lade jag mig tidigt
 
 </sample-output>
 
 <programming-exercise name='Säähavaintoasema' tmcname='osa09-11_havaintoasema'>
 
-Kirjoita luokka `Havaintoasema`, johon voidaan tallentaa säähavaintoja. Luokalla on seuraavat julkiset piirteet:
+Skapa en klass med namnet Vaderstation som används för att lagra observationer om vädret. Klassen bör ha följande offentliga attribut:
 
-* konstruktori, joka saa parametriksen aseman nimen
-* metodi `lisaa_havainto(havainto: str)`, joka lisää havainnon listan peräään
-* metodi `viimeisin_havainto()`, joka palauttaa viimeksi lisätyn havainnon. Jos havaintoja ei ole tehty, metodi palauttaa _tyhjän merkkijonon_.
-* metodi `havaintojen_maara()`, joka palauttaa havaintojen yhteismäärän
-* metodi `__str__`, joka palauttaa aseman nimen ja havaintojen yhteismäärän alla olevan esimerkin mukaisessa muodossa.
+* en konstruktor som tar namnet på stationen som sitt argument
+* metoden `tillsatt_observation(observation: str)`, som lägger till en observation till slutet av listan
+* metoden `senaste_observation()`, som returnerar den senaste observationen som lagts till i listan. Om det ännu inte finns några observationer bör metoden returnera en _tom sträng_.
+* metoden `observationernas_antal()`, som returnerar det totala antalet observationer
+* metoden `__str__`, som returnertar stationens namn och det totala antalet observationer liksom exemplet nedan. 
 
-Luokan kaikkien attribuuttien pitää olla asiakkaalta piilossa. Saat itse päättää luokan sisäisen toteutuksen.
+Alla attribut ska vara inkapslade, så att de inte kan nås direkt. Det är upp till dig hur du implementerar klassen, så länge som det allmänna gränssnittet är exakt som beskrivet ovan.
 
-Esimerkki luokan käytöstä:
+Exempel på hur klassen ska fungera:
 
 ```python
-asema = Havaintoasema("Kumpula")
-asema.lisaa_havainto("Sadetta 10mm")
-asema.lisaa_havainto("Aurinkoista")
-print(asema.viimeisin_havainto())
+station = Vaderstation("Gumtäkt")
+station.tillsatt_observation("Regn 10mm")
+station.tillsatt_observation("Soligt")
+print(station.senaste_observation())
 
-asema.lisaa_havainto("Ukkosta")
-print(asema.viimeisin_havainto())
+station.tillsatt_observation("Åskväder")
+print(station.senaste_observation())
 
-print(asema.havaintojen_maara())
-print(asema)
+print(station.observationernas_antal())
+print(station)
 ```
 
 <sample-output>
 
-Aurinkoista
-Ukkosta
+Soligt
+Åskväder
 3
-Kumpula, 3 havaintoa
+Gumtäkt, 3 observationer
 
 </sample-output>
 

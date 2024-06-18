@@ -15,34 +15,34 @@ Räknaren kräver några ändringar i koden. Först ändrar vi konstruktorn så 
 ```python
     def __init__(self):
         ...
-        self.naytto = pygame.display.set_mode((nayton_leveys, nayton_korkeus + self.skaala))
+        self.fonster = pygame.display.set_mode((fonster_bredd, fonster_hojd + self.skala))
 
-        self.fontti = pygame.font.SysFont("Arial", 24)
+        self.font = pygame.font.SysFont("Arial", 24)
         ...
 ```
 
 Dragräknaren ställs in till noll i början av spelet. Varje drag ökar den med ett:
 
 ```python
-    def uusi_peli(self):
+    def nytt_spel(self):
         ...
-        self.siirrot = 0
+        self.drag = 0
 ```
 
 ```python
-    def liiku(self, liike_y, liike_x):
+    def flytta(self, flytta_y, flytta_x):
         ...
-        self.siirrot += 1
+        self.drag += 1
 
 ```
 
 Varje gång innehållet i fönstret uppdateras, bör även antalet drag som visas på skärmen uppdateras:
 
 ```python
-    def piirra_naytto(self):
+    def rita_fonster(self):
         ...
-        teksti = self.fontti.render("Siirrot: " + str(self.siirrot), True, (255, 0, 0))
-        self.naytto.blit(teksti, (25, self.korkeus * self.skaala + 10))
+        speltext = self.font.render("Drag: " + str(self.drag), True, (255, 0, 0))
+        self.fonster.blit(speltext, (25, self.hojd * self.skala + 10))
         ...
 ```
 
@@ -51,11 +51,11 @@ Varje gång innehållet i fönstret uppdateras, bör även antalet drag som visa
 Nu ska vi lägga till tangentbordsinstruktioner för att starta ett nytt spel med F2 och avsluta spelet med Esc. Båda är ganska enkla att implementera:
 
 ```python
-    def tutki_tapahtumat(self):
+    def kolla_handelser(self):
         ...
-                if tapahtuma.key == pygame.K_F2:
-                    self.uusi_peli()
-                if tapahtuma.key == pygame.K_ESCAPE:
+                if handelse.key == pygame.K_F2:
+                    self.nytt_spel()
+                if handelse.key == pygame.K_ESCAPE:
                     exit()
         ...
 ```
@@ -63,13 +63,13 @@ Nu ska vi lägga till tangentbordsinstruktioner för att starta ett nytt spel me
 Vi bör också lägga till information om den här funktionen så att spelaren kan se den:
 
 ```python
-    def piirra_naytto(self):
+    def rita_fonster(self):
         ...
-        teksti = self.fontti.render("F2 = uusi peli", True, (255, 0, 0))
-        self.naytto.blit(teksti, (200, self.korkeus * self.skaala + 10))
+        speltext = self.font.render("F2 = nytt spel", True, (255, 0, 0))
+        self.fonster.blit(speltext, (200, self.hojd * self.skala + 10))
 
-        teksti = self.fontti.render("Esc = sulje peli", True, (255, 0, 0))
-        self.naytto.blit(teksti, (400, self.korkeus * self.skaala + 10))
+        speltext = self.font.render("Esc = stäng spel", True, (255, 0, 0))
+        self.fonster.blit(speltext, (400, self.hojd * self.skala + 10))
         ...
 ```
 
@@ -78,10 +78,10 @@ Vi bör också lägga till information om den här funktionen så att spelaren k
 Spelaren har vunnit spelet när varje låda befinner sig i en av målrutorna. Följande metod tar hand om att kontrollera detta:
 
 ```python
-    def peli_lapi(self):
-        for y in range(self.korkeus):
-            for x in range(self.leveys):
-                if self.kartta[y][x] in [2, 6]:
+    def spelet_lost(self):
+        for y in range(self.hojd):
+            for x in range(self.bredd):
+                if self.karta[y][x] in [2, 6]:
                     return False
         return True
 ```
@@ -91,22 +91,22 @@ Metoden går igenom alla rutor i rutnätet. Om någon av rutorna är en 2:a (en 
 Om spelaren löser spelet bör vi visa ett lämpligt meddelande med metoden `rita_fonster`:
 
 ```python
-    def piirra_naytto(self):
+    def rita_fonster(self):
         ...
-        if self.peli_lapi():
-            teksti = self.fontti.render("Onnittelut, läpäisit pelin!", True, (255, 0, 0))
-            teksti_x = self.skaala * self.leveys / 2 - teksti.get_width() / 2
-            teksti_y = self.skaala * self.korkeus / 2 - teksti.get_height() / 2
-            pygame.draw.rect(self.naytto, (0, 0, 0), (teksti_x, teksti_y, teksti.get_width(), teksti.get_height()))
-            self.naytto.blit(teksti, (teksti_x, teksti_y))
+        if self.spelet_lost():
+            speltext = self.font.render("Gratulerar, du löste spelet!", True, (255, 0, 0))
+            speltext_x = self.skala * self.bredd / 2 - speltext.get_width() / 2
+            speltext_y = self.skala * self.hojd / 2 - speltext.get_height() / 2
+            pygame.draw.rect(self.fonster, (0, 0, 0), (speltext_x, speltext_y, speltext.get_width(), speltext.get_height()))
+            self.fonster.blit(speltext, (speltext_x, speltext_y))
         ...
 ```
 
 För fullständighetens skull ändrar vi också `flytta`-metoden så att spelaren inte längre kan flytta när han eller hon har löst spelet:
 
 ```python
-    def liiku(self, liike_y, liike_x):
-        if self.peli_lapi():
+    def flytta(self, flytta_y, flytta_x):
+        if self.spelet_lost():
             return
         ...
 ```
@@ -120,7 +120,7 @@ När man utvecklar spel händer det ofta att man vill kontrollera vad som hände
 Det kan vara svårt att testa att en sådan situation fungerar korrekt, eftersom man normalt sett måste lösa spelet för att komma till den punkten i spelet. Som programmerare kan vi göra några tillfälliga underlättningar i våra spel, för att göra det lättare att testa dem. Vi skulle till exempel kunna lägga till följande för att göra det tillfälligt lättare att lösa spelet:
 
 ```python
-    def peli_lapi(self):
+    def spelet_lost(self):
         return True
 ```
 

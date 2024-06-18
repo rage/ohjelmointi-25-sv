@@ -16,20 +16,20 @@ Efter den här delen
 Som vi har sett många gånger tidigare kan funktioner anropa andra funktioner. Till exempel:
 
 ```python
-def tervehdi(nimi : str):
-    print("Moikka,", nimi)
+def hej(namn : str):
+    print("Hejsan,", namn)
 
-def tervehdi_monesti(nimi : str, kerrat : int):
-    for i in range(kerrat):
-        tervehdi(nimi)
+def hej_flera(namn : str, ganger : int):
+    for i in range(ganger):
+        hej(namn)
 ```
 
-En funktion kan också anropa sig själv, men vi som programmerare måste vara försiktiga när vi gör det. Det är lätt att hamna i en oändlig loop av funktionsanrop, precis som vi hamnade i en oändlig loop av upprepningar med `while`-loopar om vi utelämnade lämpliga brytvillkor. Så om man försöker anropa en `hello`-funktion med följande definition
+En funktion kan också anropa sig själv, men vi som programmerare måste vara försiktiga när vi gör det. Det är lätt att hamna i en oändlig loop av funktionsanrop, precis som vi hamnade i en oändlig loop av upprepningar med `while`-loopar om vi utelämnade lämpliga brytvillkor. Så om man försöker anropa en `hej`-funktion med följande definition
 
 ```python
-def tervehdi(nimi : str):
-    print("Moikka,", nimi)
-    tervehdi(nimi)
+def hej(namn : str):
+    print("Hejsan,", namn)
+    hej(namn)
 ```
 
 skulle skapa ett nytt sort av fel:
@@ -47,18 +47,18 @@ Den rekursion som nämns i felet ovan innebär att man definierar något i terme
 Låt oss ta en titt på en enkel funktion som lägger till nollor i en lista så länge det finns färre än 10 objekt i listan. Den här gången använder vi dock inte en loop. Om villkoret ännu inte är uppfyllt anropar funktionen sig själv
 
 ```python
-def tayta_lista(luvut: list):
-    """ Lisää listaan alkoita jos sen pituus on alle 10 """
-    if len(luvut) < 10:
-        luvut.append(0)
-        # Kutsutaan uudestaaan
-        tayta_lista(luvut)
+def fyll_lista(tal: list):
+    """ Lägger till föremål till listan ifall listans längd är kortare än 10 """
+    if len(tal) < 10:
+        tal.append(0)
+        # anropa funktionen igen
+        fyll_lista(tal)
 
 
 if __name__ == "__main__":
-    testi = [1,2,3,4]
-    tayta_lista(testi)
-    print(testi)
+    test = [1,2,3,4]
+    fyll_lista(test)
+    print(test)
 ```
 
 <sample-output>
@@ -71,15 +71,15 @@ Denna funktionalitet kunde lika väl bli uppnådd genom en vanlig `while`-loop:
 
 ```python
 
-def tayta_lista(luvut: list):
-    """ Lisää listaan alkoita jos sen pituus on alle 10 """
-    while len(luvut) < 10:
-        luvut.append(0)
+def fyll_lista(tal: list):
+    """ Lägger till föremål till listan ifall listans längd är kortare än 10 """
+    while len(tal) < 10:
+        tal.append(0)
 
 if __name__ == "__main__":
-    testi = [1,2,3,4]
-    tayta_lista(testi)
-    print(testi)
+    test = [1,2,3,4]
+    fyll_lista(test)
+    print(test)
 
 ```
 
@@ -95,16 +95,16 @@ I princip borde det vara möjligt att lösa alla problem med antingen iterativa 
 
 <programming-exercise name='Suurempia lukuja' tmcname='osa11-13_listaan_lukuja'>
 
-Kirjoita _rekursiivinen funktio_ `listaan_lukuja(luvut: list)`, joka lisää listaan lukuja niin kauan, kunnes listan pituus on viidellä jaollinen. Jokainen listaan lisättävä luku on aina yhden suurempi kuin listan viimeinen luku.
+Skapa en _rekursiv funktion_ `tal_till_listan(tal: list)`. Funktionen tar en lista med tal som sitt argument och lägger till nya tal i listan tills längden på listan är delbar med fem. Varje tal som läggs till i listan ska vara ett större tal än det sista talet i listan.
 
-Funktion pitää kutsua itseään rekursiivisesti.
+Funktionen måste anropa sig själv rekursivt.
 
-Esimerkki funktion kutsusta:
+Fxempel på funktionen i användning:
 
 ```python
-luvut = [1,3,4,5,10,11]
-listaan_lukuja(luvut)
-print(luvut)
+tal = [1,3,4,5,10,11]
+tal_till_listan(tal)
+print(tal)
 ```
 
 <sample-output>
@@ -117,38 +117,38 @@ print(luvut)
 
 ## Rekursion och returvärden
 
-Rekursiva funktioner kan också ha returvärden. I de senaste avsnitten har vi arbetat med faktorialtal, så låt oss skriva en rekursiv faktorialfunktion:
+Rekursiva funktioner kan också ha returvärden. I de senaste avsnitten har vi arbetat med fakultettal, så låt oss skriva en rekursiv fakultetfunktion:
 
 ```python
 
-def kertoma(n: int):
-    """ Funktio laskee positiivisen luvun n kertoman n!, eli n * (n-1) ... * 2 * 1 """
+def fakultet(n: int):
+    """ Funktionen räknar ut fakulteten n! för n>= 0 """
     if n < 2:
-        # Lukujen 0 ja 1 kertoma on 1
+        # Fakulteten av 0 och 1 är 1
         return 1
 
-    # Kutsuu funktiota uudestaan
-    return n * kertoma(n - 1)
+    # anropa funktionen igen
+    return n * fakultet(n - 1)
 
 if __name__ == "__main__":
-    # Testataan
+    # Testar
     for i in range(1, 7):
-        print(f"Luvun {i} kertoma on {kertoma(i)}")
+        print(f"Fakulteten av {i} är {fakultet(i)}")
 
 ```
 
 <sample-output>
 
-Luvun 1 kertoma on 1
-Luvun 2 kertoma on 2
-Luvun 3 kertoma on 6
-Luvun 4 kertoma on 24
-Luvun 5 kertoma on 120
-Luvun 6 kertoma on 720
+Fakulteten av 1 är 1
+Fakulteten av 2 är 2
+Fakulteten av 3 är 6
+Fakulteten av 4 är 24
+Fakulteten av 5 är 120
+Fakulteten av 6 är 720
 
 </sample-output>
 
-Om parametern för den rekursiva faktoriella funktionen är 0 eller 1, returnerar funktionen 1, eftersom det är så faktoriell operation definieras. I alla andra fall returnerar funktionen värdet `n * faktorial(n - 1)`, vilket är värdet av dess parameter n multiplicerat med returvärdet av funktionsanropet `faktorial(n - 1)`.
+Om parametern för den rekursiva faktoriella funktionen är 0 eller 1, returnerar funktionen 1, eftersom det är så faktoriell operation definieras. I alla andra fall returnerar funktionen värdet `n * fakultet(n - 1)`, vilket är värdet av dess parameter n multiplicerat med returvärdet av funktionsanropet `fakultet(n - 1)`.
 
 Det avgörande här är att funktionsdefinitionen innehåller ett stoppvillkor. Om detta uppfylls avslutas rekursionen. I det här fallet är villkoret `n < 2`. Vi vet att det kommer att nås så småningom, eftersom det värde som skickas som argument till funktionen minskas med ett på varje nivå i rekursionen.
 
@@ -157,15 +157,15 @@ Det avgörande här är att funktionsdefinitionen innehåller ett stoppvillkor. 
 Exemplet ovan skulle kanske bli lite tydligare om vi använde oss av hjälpvariabler:
 
 ```python
-def kertoma(n: int):
+def fakultet(n: int):
     if n < 2:
         return 1
 
-    edellisen_luvun_kertoma = kertoma(n - 1)
-    luvun_n_kertoma = n * edellisen_luvun_kertoma
-    return luvun_n_kertoma
+    forra_talets_fakultet = fakultet(n - 1)
+    fakultet_nu = n * forra_talets_fakultet
+    return fakultet_nu
 
-kertoma(5)
+fakultet(5)
 ```
 
 Ta en titt på hur[visualiseringsverktyget](http://www.pythontutor.com/visualize.html#code=def%20kertoma%28n%3A%20int%29%3A%0A%20%20%20%20if%20n%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20edellisen_luvun_kertoma%20%3D%20kertoma%28n%20-%201%29%0A%20%20%20%20luvun_n_kertoma%20%3D%20n%20*%20edellisen_luvun_kertoma%0A%20%20%20%20return%20luvun_n_kertoma%0A%20%20%20%20%0Akertoma%285%29&cumulative=false&curInstr=5&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false) visar hur rekursionen fortskrider.
@@ -174,7 +174,7 @@ Visualiseringsverktyget har en liten finess i hur det hanterar anropsstacken, ef
 
 När den rekursiva faktorfunktionen anropas byggs anropsstapeln upp tills den gräns som utgörs av `n < 2` nås. Då återkommer det sista funktionsanropet i stacken med ett värde - det är `1`, eftersom `n` nu är mindre än 2. Detta återkomstvärde skickas till det föregående funktionsanropet i stacken, där det används för att beräkna det funktionsanropets återkomstvärde, och så vidare tillbaka ut ur stacken.
 
-Returvärdet för varje funktionsanrop lagras i hjälpvariabeln `faktorial_nu`. Gå igenom visualiseringen noggrant tills du förstår vad som händer i varje steg, och var särskilt uppmärksam på det värde som returneras i varje steg.
+Returvärdet för varje funktionsanrop lagras i hjälpvariabeln `fakultet_nu`. Gå igenom visualiseringen noggrant tills du förstår vad som händer i varje steg, och var särskilt uppmärksam på det värde som returneras i varje steg.
 
 <img src="11_1_1.png">
 
@@ -182,33 +182,33 @@ Låt oss ta en titt på ett annat vanligt rekursivt exempel: Fibonacci-talen. I 
 
 ```python
 def fibonacci(n: int):
-    """ Funktio palauttaa n:nen luvun Fibonaccin sarjasta (1, 1, 2, 3, 5, 8 jne.); n > 0"""
+    """ Funktionen returnerar det n:e talet i Fibonaccis talföljd """
 
     if n <= 2:
-        # Kaksi ekaa lukua ovat ykkösiä
+        # de första två är ettor
         return 1
 
-    # Muuten luku saadaan laskemalla kaksi edellistä yhteen
+    # Alla andra tal blir summan av de två föregående talen
     return fibonacci(n - 1) + fibonacci(n - 2)
 
-# Testataan, että toimii
+# Testar att allting fungerar
 if __name__ == "__main__":
     for i in range(1, 11):
-        print(f"Fibonaccin {i}. luku on {fibonacci(i)}")
+        print(f"Fibonaccis {i}. tal är {fibonacci(i)}")
 ```
 
 <sample-output>
 
-Fibonaccin 1. luku on 1
-Fibonaccin 2. luku on 1
-Fibonaccin 3. luku on 2
-Fibonaccin 4. luku on 3
-Fibonaccin 5. luku on 5
-Fibonaccin 6. luku on 8
-Fibonaccin 7. luku on 13
-Fibonaccin 8. luku on 21
-Fibonaccin 9. luku on 34
-Fibonaccin 10. luku on 55
+Fibonaccis 1. tal är 1
+Fibonaccis 2. tal är 1
+Fibonaccis 3. tal är 2
+Fibonaccis 4. tal är 3
+Fibonaccis 5. tal är 5
+Fibonaccis 6. tal är 8
+Fibonaccis 7. tal är 13
+Fibonaccis 8. tal är 21
+Fibonaccis 9. tal är 34
+Fibonaccis 10. tal är 55
 
 </sample-output>
 
@@ -230,22 +230,22 @@ Vi kan i varje steg verifiera att funktionen ger rätt resultat, vilket ofta är
 
 <programming-exercise name='Rekursiivinen summa' tmcname='osa11-14_rekursiivinen_summa'>
 
-Tee rekursiivinen funktio `summa(luku: int)` summan `1 + 2 + ... + luku` laskemiseen. Funktion runko on seuraava:
+Skapa en rekursiv funktion med namnet `summa(tal: int)`, som räknar summan `1 + 2 + ... + tal`. Funktionens mall är följande:
 
 ```python
-def summa(luku: int):
-    # kun luku on 1, ei ole muita summattavia...
-    if luku <= 1:
-        return luku
+def summa(tal: int):
+    # ifall talet är 1, finns det inget att tillägga
+    if tal <= 1:
+        return tal
 
-    # täydennä koodi...
+    # fyll i resten
 ```
 
-Muutama käyttöesimerkki:
+Några exempel:
 
 ```python
-tulos = summa(3)
-print(tulos)
+resultat = summa(3)
+print(resultat)
 
 print(summa(5))
 print(summa(10))
@@ -263,31 +263,31 @@ print(summa(10))
 
 <programming-exercise name='Sulut tasapainossa' tmcname='osa11-15_sulut_tasapainossa'>
 
-Tehtäväpohjassa on valmiina funktio `sulut_tasapainossa`, joka tarkastaa, onko sen parametrina olevassa merkkijonossa sulut tasapainossa, eli onko jokaista "aukeavaa" sulkumerkkiä ( kohti on oma "sulkeutuva" sulkumerkki ), ja että sulut eivät mene ristiin.
+I uppgiftsbotten finns den färdiga funtkionen `balanserade_parenteser` som tar en sträng som argument. Funktionen kollar ifall _runda_ parenteser inom strängen är balanserade. Med andra ord, för varje öppnande parentes `(` ska det finnas en stängande parentes `)`, och alla parenteser ska vara i matchande ordning, alltså får parentesparen inte korsas.
 
 ```python
-def sulut_tasapainossa(merkkijono: str):
-    if len(merkkijono) == 0:
+def balanserade_parenteser(strang: str):
+    if len(strang) == 0:
         return True
-    if not (merkkijono[0] == '(' and merkkijono[-1] == ')'):
+    if not (strang[0] == '(' and strang[-1] == ')'):
         return False
 
-    # poistetaan ensimmäinen ja viimeinen merkki
-    return sulut_tasapainossa(merkkijono[1:-1])
+    # ta bort första och sista tecknet
+    return balanserade_parenteser(strang[1:-1])
 
-ok = sulut_tasapainossa("(((())))")
+ok = balanserade_parenteser("(((())))")
 print(ok)
 
-# ei kelpaa sillä yksi loppusulku liikaa
-ok = sulut_tasapainossa("()())")
+# finns en parentes för mycket, alltså False
+ok = balanserade_parenteser("()())")
 print(ok)
 
-# ei kelpaa sillä alussa virheellinen loppusulku
-ok = sulut_tasapainossa(")()")
+# börjar med en stängande parentes, alltså False igen
+ok = balanserade_parenteser(")()")
 print(ok)
 
-# ei kelpaa, sillä funktio ei osaa käsitellä kuin sisäkkäisiä sulkuja
-ok = sulut_tasapainossa("()(())")
+# är inte giltig, eftersom funktionen bara kan hantera helt inkapslade parenteser
+ok = balanserade_parenteser("()(())")
 print(ok)
 ```
 
@@ -300,28 +300,28 @@ False
 
 </sample-output>
 
-Laajenna funktiota siten, että se jättää huomiotta kaikki muut kuin sulkumerkit, ja että se osaa kaarisulkujen lisäksi myös hakasulut. Haka- ja kaarisulut eivät saa mennä ristiin!
+Utöka funktionen så att den även fungerar med hakparenteser `[]`. Funktionen bör också ignorera alla tecken som inte är parenteser `()` eller `[]`. De olika typerna av parenteser måste matchas korrekt i tur och ordning.
 
-Seuraavassa muutama käyttöesimerkki:
+Ett par exempel:
 
 ```python
-ok = sulut_tasapainossa("([([])])")
+ok = balanserade_parenteser("([([])])")
 print(ok)
 
-ok = sulut_tasapainossa("(python versio [3.7]) käytä tätä!")
+ok = balanserade_parenteser("(python version [3.7]) använd denna!")
 print(ok)
 
-# ei kelpaa sillä virheellinen loppusulku
-ok = sulut_tasapainossa("(()]")
+# felaktigt stängande parentes
+ok = balanserade_parenteser("(()]")
 print(ok)
 
 
-# ei kelpaa sillä erityyppiset sulut menevät ristiin
-ok = sulut_tasapainossa("([huono)]")
+# felaktiga matchningar av parenteser
+ok = balanserade_parenteser("([dåligt)]")
 print(ok)
 ```
 
-Huomaa, että funktion ei tarvitse osata kuin yksi sisäkkäinen sulutus - sen ei siis tarvitse ymmärtää esimerkiksi jonoa (x + 1)(y + 1).
+Obs: Funktionen behöver endast hantera helt inkapslade parenteser. Strängen `(x+1)(y+1)` ska producera `False`, eftersom parenteserna inte är inkapslade inom varandra.
 
 <sample-output>
 
@@ -352,34 +352,34 @@ I följande bild kan vi se hur en binär sökning fortskrider när den letar eft
 Här är en rekursiv algoritm för en binär sökning:
 
 ```python
-def binaarihaku(lista: list, alkio: int, vasen : int, oikea : int):
-    """ Funktio palauttaa True tai False sen mukaan, onko listalla alkiota """
-    # Jos hakualue on tyhjä, ei löydy
-    if vasen > oikea:
+def binarsokning(lista: list, foremal: int, vanster : int, hoger : int):
+    """ Funktionen returnerar True ifall föremålet finns i listan, annars False """
+    # Om sökfältet är tomt hittas inget föremål
+    if vanster > hoger:
         return False
 
-    # Lasketaan hakualueen keskikohta
-    keski = (vasen+oikea)//2
+    # Kalkylerar mitten av sökområdet
+    mitten = (vanster+hoger)//2
 
-    # Jos keskellä on etsittävä alkio
-    if lista[keski] == alkio:
+    # Ifall föremålet hittas i mitten
+    if lista[mitten] == foremal:
         return True
 
-    # Jos pienempi, etsi jälkipuoliskolta
-    if lista[keski] < alkio:
-        return binaarihaku(lista, alkio, keski+1, oikea)
-    # Muuten täytyy olla suurempi, etsitään alkupuoliskolta
+    # Ifall föremålet är större, sök andra halvan
+    if lista[mitten] < foremal:
+        return binarsokning(lista, foremal, mitten+1, hoger)
+    # Annars måste föremålet vara mindre, sök mindre halvan
     else:
-        return binaarihaku(lista, alkio, vasen, keski-1)
+        return binarsokning(lista, foremal, vanster, mitten-1)
 
 
 if __name__ == "__main__":
-    # Testataan
+    # Testar
     lista = [1, 2, 4, 5, 7, 8, 11, 13, 14, 18]
-    print(binaarihaku(lista, 2, 0, len(lista)-1))
-    print(binaarihaku(lista, 13, 0, len(lista)-1))
-    print(binaarihaku(lista, 6, 0, len(lista)-1))
-    print(binaarihaku(lista, 15, 0, len(lista)-1))
+    print(binarsokning(lista, 2, 0, len(lista)-1))
+    print(binarsokning(lista, 13, 0, len(lista)-1))
+    print(binarsokning(lista, 6, 0, len(lista)-1))
+    print(binarsokning(lista, 15, 0, len(lista)-1))
 ```
 
 <sample-output>
@@ -391,7 +391,7 @@ False
 
 </sample-output>
 
-Funktionen `binar_sokning` tar fyra argument: mållistan, det objekt som söks samt vänster och höger kant på sökområdet. När funktionen anropas första gången täcker sökområdet hela mållistan. Den vänstra kanten ligger på index `0` och den högra kanten ligger på index `len(mål)-1`. Funktionen beräknar det centrala indexet och kontrollerar den positionen på listan. Antingen har objektet hittats eller så fortsätter sökningen till den mindre eller större halvan av mållistan.
+Funktionen `binar_sokning` tar fyra argument: mållistan, det objekt som söks samt vänster och höger kant på sökområdet. När funktionen anropas första gången täcker sökområdet hela mållistan. Den vänstra kanten ligger på index `0` och den högra kanten ligger på index `len(lista)-1`. Funktionen beräknar det centrala indexet och kontrollerar den positionen på listan. Antingen har objektet hittats eller så fortsätter sökningen till den mindre eller större halvan av mållistan.
 
 Låt oss jämföra detta med en enkel linjär sökning. Vid en linjär sökning är sökområdet från början och framåt, tills antingen objektet hittas eller sökområdet tar slut. Antalet steg som behövs för att täcka hela sökområdet växer linjärt i samma takt som sökområdets storlek. Varje söksteg täcker endast en sökkandidat från början av sökområdet. Låt oss anta att det sökta objektet inte hittas. Om sökområdet är en miljon objekt långt måste vi ta en miljon söksteg för att försäkra oss om att objektet inte finns i sökområdet.
 

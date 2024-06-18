@@ -24,19 +24,19 @@ Låt oss börja med ett enkelt exempel innan vi dyker djupare in i syntaxen:
 ```python
 import re
 
-sanat = ["Python", "Ponneton", "Ponttooni", "Pullero", "Pallon"]
+orden = ["Python", "Population", "Pantomi", "Perfekt", "Prestation"]
 
-for sana in sanat:
-    # merkkijonon tulee alkaa "P" ja päättyä "on"
-    if re.search("^P.*on$", sana):
-        print(sana, "löytyy!")
+for ord in orden:
+    # Ifall strängen börjar med "P" och slutar med "on"
+    if re.search("^P.*on$", ord):
+        print(ord, "hittad!")
 ```
 
 <sample-output>
 
-Python löytyy!
-Ponneton löytyy!
-Pallon löytyy!
+Python hittad!
+Population hittad!
+Prestation hittad!
 
 </sample-output>
 
@@ -47,12 +47,12 @@ I det här andra exemplet letar man efter alla siffror i en sträng. Funktionen 
 ```python
 import re
 
-lause = "Eka, 2 !#kolmas 44 viisi 678xyz962"
+mening = "Först, 2 !#tredje 44 fem 678xyz962"
 
-luvut = re.findall("\d+", lause)
+numren = re.findall("\d+", mening)
 
-for luku in luvut:
-    print(luku)
+for nummer in numren:
+    print(nummer)
 ```
 
 <sample-output>
@@ -71,37 +71,37 @@ Låt oss bekanta oss med den grundläggande syntaxen för reguljära uttryck. De
 ```python
 import re
 
-lauseke = input("Anna lauseke: ")
+uttryck = input("Ange uttryck: ")
 
 while True:
-    mjono = input("Anna merkkijono: ")
-    if mjono == "":
+    strang = input("Ange sträng: ")
+    if strang == "":
         break
-    if re.search(lauseke, mjono):
-        print("Osuma!")
+    if re.search(uttryck, strang):
+        print("Hittad!")
     else:
-        print("Ei osumaa.")
+        print("Hittades inte.")
 ```
 
 ### Alternativa delsträngar
 
-Lodstrecket  (eng. vertical bar) `|`, gör att du kan matcha alternativa delsträngar. Dess betydelse är alltså eller. Uttrycket `911|112` matchar t.ex. strängar som innehåller antingen delsträngen `911` eller delsträngen `112`.
+Lodstrecket (eng. vertical bar) `|`, gör att du kan matcha alternativa delsträngar. Dess betydelse är alltså eller. Uttrycket `911|112` matchar t.ex. strängar som innehåller antingen delsträngen `911` eller delsträngen `112`.
 
 Ett exempel med testprogrammet:
 
 <sample-output>
 
-Anna lauseke: **aa|ee|ii**
-Anna testijono: **saapas**
-Osuma!
-Anna testijono: **teema**
-Osuma!
-Anna testijono: **iilimato**
-Osuma!
-Anna testijono: **ooppera**
-Ei osumaa.
-Anna testijono: **uuttera**
-Ei osumaa.
+Ange uttryck: **aa|ee|ii**
+Ange sträng: **kassaaparat**
+Hittad!
+Ange sträng: **beteende**
+Hittad!
+Ange sträng: **friidrott**
+Hittad!
+Ange sträng: **kooperation**
+Hittades inte.
+Ange sträng: **bastuugn**
+Hittades inte.
 
 </sample-output>
 
@@ -118,19 +118,19 @@ Ett exempel med testprogrammet:
 
 <sample-output>
 
-Anna lauseke: **[C-FRSÖ]**
-Anna testijono: **C**
-Osuma!
-Anna testijono: **E**
-Osuma!
-Anna testijono: **G**
-Ei osumaa.
-Anna testijono: **R**
-Osuma!
-Anna testijono: **Ö**
-Osuma!
-Anna testijono: **T**
-Ei osumaa.
+Ange uttryck: **[C-FRSÖ]**
+Ange sträng: **C**
+Hittad!
+Ange sträng: **E**
+Hittad!
+Ange sträng: **G**
+Hittades inte.
+Ange sträng: **R**
+Hittad!
+Ange sträng: **Ö**
+Hittad!
+Ange sträng: **T**
+Hittades inte.
 
 </sample-output>
 
@@ -148,19 +148,19 @@ Ett exempel med testprogrammet:
 
 <sample-output>
 
-Anna lauseke: **1[234]\*5**
-Anna testijono: **15**
-Osuma!
-Anna testijono: **125**
-Osuma!
-Anna testijono: **145**
-Osuma!
-Anna testijono: **12342345**
-Osuma!
-Anna testijono: **126**
-Ei osumaa.
-Anna testijono: **165**
-Ei osumaa.
+Ange uttryck: **1[234]\*5**
+Ange sträng: **15**
+Hittad!
+Ange sträng: **125**
+Hittad!
+Ange sträng: **145**
+Hittad!
+Ange sträng: **12342345**
+Hittad!
+Ange sträng: **126**
+Hittades inte.
+Ange sträng: **165**
+Hittades inte.
 
 </sample-output>
 
@@ -173,13 +173,13 @@ Tecknet `^` anger att matchningen måste ske i början av strängen och `$` ange
 
 <sample-output>
 
-Anna lauseke: **\^[123]\*$**
-Anna testijono: **4**
-Ei osumaa.
-Anna testijono: **1221**
-Osuma!
-Anna testijono: **333333333**
-Osuma!
+Ange uttryck: **\^[123]\*$**
+Ange sträng: **4**
+Hittades inte.
+Ange sträng: **1221**
+Hittad!
+Ange sträng: **333333333**
+Hittad!
 
 </sample-output>
 
@@ -187,13 +187,13 @@ Ibland behöver du matcha för specialtecken som är reserverade för syntaxen f
 
 <sample-output>
 
-Anna lauseke: **^\\\***
-Anna testijono: **moi\***
-Ei osumaa.
-Anna testijono: **m\*o\*i**
-Ei osumaa.
-Anna testijono: **\*moi**
-Osuma!
+Ange uttryck: **^\\\***
+Ange sträng: **hej\***
+Hittades inte.
+Ange sträng: **h\*e\*j**
+Hittades inte.
+Ange sträng: **\*hej**
+Hittad!
 
 </sample-output>
 
@@ -201,32 +201,32 @@ Runda parenteser kan användas för att gruppera ihop olika delar av uttrycket. 
 
 <sample-output>
 
-Anna lauseke: **^(jabba).\*(hut)$**
-Anna testijono: **jabba the hut**
-Osuma!
-Anna testijono: **jabba a hut**
-Osuma!
-Anna testijono: **jarmo the hut**
-Ei osumaa.
-Anna testijono: **jabba the smut**
-Ei osumaa.
+Ange uttryck: **^(jabba).\*(hut)$**
+Ange sträng: **jabba the hut**
+Hittad!
+Ange sträng: **jabba a hut**
+Hittad!
+Ange sträng: **jarmo the hut**
+Hittades inte.
+Ange sträng: **jabba the smut**
+Hittades inte.
 
 </sample-output>
 
 <programming-exercise name='Säännölliset lausekkeet' tmcname='osa12-14_saannolliset_lausekkeet'>
 
-Harjoitellaan hieman säännöllisten lausekkeiden käyttöä.
+Här följer några övningar för att bekanta dig med syntaxen för reguljära uttryck.
 
-## Viikonpäivät
+## Del 1: Veckodagar
 
-Tee säännöllisen lausekkeen avulla funktio `on_viikonpaiva(merkkijono: str)` joka palauttaa `True`, jos sen parametrina saama merkkijono sisältää viikonpäivän lyhenteen (ma, ti, ke, to, pe, la tai su).
+Använd ett reguljärt uttryck för att skapa en funktion med namnet ar_veckodag(strang: str). Funktionen ska returnera True om strängen som skickas som argument innehåller en förkortning av en veckodag (mån, tis, ons, tors, fre, lör, sön).
 
-Esimerkki funktion kutsumisesta:
+Exempel på hur funktionen ska fungera
 
 ```python
-print(on_viikonpaiva("ma"))
-print(on_viikonpaiva("pe"))
-print(on_viikonpaiva("tu"))
+print(ar_veckodag("mån"))
+print(ar_veckodag("fre"))
+print(ar_veckodag("turs"))
 ```
 
 <sample-output>
@@ -237,15 +237,15 @@ False
 
 </sample-output>
 
-## Vokaalitarkistus
+## Del 2: Vokalcheck
 
-Tee funktio `kaikki_vokaaleja(merkkijono: str)`, joka tarkistaa säännöllisen lausekkeen avulla, ovatko parametrina annetun merkkijonon kaikki merkit vokaaleja.
+Skapa en funktion med namnet alla_vokaler(strang: str) som använder ett reguljärt uttryck för att kontrollera om alla tecken i den givna strängen är vokaler.
 
-Esimerkki funktion kutsumisesta:
+Exempel på hur funktionen ska fungera:
 
 ```python
-print(kaikki_vokaaleja("eioueioieoieouyyyy"))
-print(kaikki_vokaaleja("autoooo"))
+print(alla_vokaler("eioueioieoieouyyyy"))
+print(alla_vokaler("biiiiil"))
 ```
 
 <sample-output>
@@ -255,17 +255,17 @@ False
 
 </sample-output>
 
-## Kellonaika
+## Del 3: Klockans tid
 
-Tee funktio `kellonaika(merkkijono: str)`, joka tarkistaa säännöllisen lausekkeen avulla, onko parametrina oleva merkkijono muotoa `tt:mm:ss` oleva kellonaika (tunnit, minuutit ja sekunnit kaksinumeroisina).
+Skapa funktionen `klocktid(strang: str)`, som använder ett reguljärt uttryck för att granska ifall en sträng av formatet `tt:mm:ss` är en giltig tid i ett 24-timmars format, med två siffror var för timmar, minuter och sekunder.
 
-Esimerkki funktion kutsumisesta:
+Exempel på hur funktionen ska fungera:
 
 ```python
-print(kellonaika("12:43:01"))
-print(kellonaika("AB:01:CD"))
-print(kellonaika("17:59:59"))
-print(kellonaika("33:66:77"))
+print(klocktid("12:43:01"))
+print(klocktid("AB:01:CD"))
+print(klocktid("17:59:59"))
+print(klocktid("33:66:77"))
 ```
 
 <sample-output>
@@ -287,11 +287,11 @@ Du kan också ha nytta av de exempel som finns i [del 10](/osa-10/4-lisaa-esimer
 
 <programming-exercise name='Tilastot ojennukseen' tmcname='osa12-15_tilastot_ojennukseen'>
 
-Tässä tehtävässä tehdään sovellus, jonka avulla on mahdollista tarkastella NHL-jääkiekkoliigan tilastoja muutamassa hieman erilaisessa muodossa.
+I den här övningen kommer du att bygga en applikation för att undersöka hockeyligastatistik från NHL på ett par olika sätt.
 
-Tehtäväpohjan mukana tulee kaksi json-muodossa olevaa tiedostoa `osa.json` ja `kaikki.json`, näistä ensimmäinen on tarkoitettu lähinnä testailun avuksi. Jälkimmäinen sisältää kaikkien kaudella 2019-20 pelanneiden pelaajien statistiikat.
+Övningsmallen innehåller två JSON-filer: del.json och alla.json. Den första av dessa är mest avsedd för testning. Den senare innehåller en hel del data, eftersom all NHL-spelarstatistik för säsongen 2019-20 ingår i filen.
 
-Yksittäisen pelaajan tiedot ovat muodossa
+Inlägget för en enskild spelare är i följande format:
 
 ```json
 {
@@ -305,40 +305,42 @@ Yksittäisen pelaajan tiedot ovat muodossa
 },
 ```
 
-ja molemmat tiedostoista sisältävät yksittäisten pelaajien tiedot taulukossa.
+Båda filerna innehållar en lista av inlägg enligt ovanstående format.
 
-Jos et muista, miten json-muotoinen tiedosto saadaan luettua Python-ohjelmaan, voit kerrata tämän [osan 7 materiaalista](/osa-7/4-datan-kasittely#json-tiedoston-lukeminen).
+Ifall du behöver en uppfriskare när det gäller hantering av JOSN-filer, kan du ta en titt på [del 7 i kursmaterialet](/osa-7/4-datan-kasittely#json-tiedoston-lukeminen).
 
-Tee nyt ohjelma, joka kysyy aluksi tiedoston nimeä ja tarjoaa sitten seuraavat toiminnot:
+## Del 1: Sök och lista
 
-- yksittäisen pelaajan tietojen haku nimen perusteella
-- listaus joukkueiden nimien lyhenteistä (aakkosjärjestyksessä)
-- listaus maiden nimien lyhenteistä (aakkosjärjestyksessä)
+Skapa en interaktiv applikation som först frågar efter namnet på filen och sedan erbjuder följande funktioner:
 
-Näistä toiminnoista saa yhden pisteen. Ohjelman tulee toimia seuraavasti:
+- sök enligt namn för en enskild spelares statistik
+- lista alla förkortningar för lagnamn i alfabetisk ordning
+- lista alla förkortningar för länder i alfabetisk ordning
+
+Dessa funktioner ger dig totalt ett övningspoäng. Din applikation ska nu fungera enligt följande:
 
 <sample-output>
 
-tiedosto: **osa.json**
-luettiin 14 pelaajan tiedot
+fil: **del.json**
+läste 14 spelares data
 
-komennot:
-0 lopeta
-1 hae pelaaja
-2 joukkueet
-3 maat
-4 joukkueen pelaajat
-5 maan pelaajat
-6 eniten pisteitä
-7 eniten maaleja
+instruktioner:
+0 avsluta
+1 sök spelare
+2 lag
+3 länder
+4 lagets spelare
+5 landets spelare
+6 flest poäng
+7 flest mål
 
-komento: **1**
-nimi: **Travis Zajac**
+instruktion: **1**
+namn: **Travis Zajac**
 <pre>
 Travis Zajac         NJD   9 + 16 =  25
 </pre>
 
-komento: **2**
+instruktion: **2**
 BUF
 CGY
 DAL
@@ -349,18 +351,18 @@ PIT
 WPG
 WSH
 
-komento: **3**
+instruktion: **3**
 CAN
 CHE
 CZE
 SWE
 USA
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
-Huomaa, että pelaajien tulostusasun pitää olla täsmälleen seuraavanlainen:
+Obs: Utskriftens format för en spelare måste vara exakt enligt följande:
 
 <sample-output>
 
@@ -375,41 +377,45 @@ Markus Granlund      EDM   3 +  1 =   4
 
 </sample-output>
 
-Alimman rivin numerot on lisätty helpottamaan oikean merkkimäärän laskemista. Joukkueen nimen lyhenne siis tulostetaan alkaen rivin 22. merkistä. Plus on rivin 30. merkki ja = rivin 35. merkki. Kaikki luvut tulee tasata oikeaan reunaan omaa tulostusaluettaan. Tyhjät kohdat ovat välilyöntejä.
+Den sista raden i exemplet ovan är till för att hjälpa dig att beräkna bredden på de olika fälten i utskriften; du ska inte skriva ut nummerraden själv i din slutliga inlämning.
 
-Tulostuksen muotoilu kannattaa hoitaa f-merkkijonoina samaan tapaan kuin [tässä](/osa-6/1-tiedostojen-lukeminen#programming-exercise-kurssin-tulokset-osa-3) osan 6 tehtävässä.
+Förkortningen för teamet skrivs ut från det 22:a tecknet och framåt. `+`-tecknet är det 30:e tecknet och `=`-tecknet är det 35:e tecknet. Alla fält ska vara justifierade till högerkanten. Alla blanksteg är mellanslagstecken.
 
-Seuraavat toiminnot tuovat toisen pisteen:
+F-strängar är förmodligen det enklaste sättet att uppnå den önskade utskriften. Processen är liknande som [denna övning](/osa-6/1-tiedostojen-lukeminen#programming-exercise-kurssin-tulokset-osa-3) från del 6.
 
-- joukkueen pelaajien listaaminen pisteiden (joka saadaan laskemalla _goals_ + _assits_) mukaisessa järjestyksessä
-- tietyn maan pelaajien listaaminen pisteiden mukaisessa järjestyksessä
+## Del 2: Lista spelare enligt poäng
 
-Toiminnallisuus on seuraava:
+Följande funktionalitet ger dig ditt andra övningspoäng:
+
+- lista spelare i ett specifikt lag enligt ordningen flest poäng, från högst till lägst. Poäng är mängden _mål_ + _assistanser_
+- lista spelare från ett specifikt land enligt ordningen flest poäng, från högst till lägst
+
+Din applikation ska nu fungera enligt följande:
 
 <sample-output>
 
-tiedosto: **osa.json**
-luettiin 14 pelaajan tiedot
+fil: **del.json**
+läste 14 spelares data
 
-komennot:
-0 lopeta
-1 hae pelaaja
-2 joukkueet
-3 maat
-4 joukkueen pelaajat
-5 maan pelaajat
-6 eniten pisteitä
-7 eniten maaleja
+instruktioner:
+0 avsluta
+1 sök spelare
+2 lag
+3 länder
+4 lagets spelare
+5 landets spelare
+6 flest poäng
+7 flest mål
 
-komento: **4**
-joukkue: **OTT**
+instruktion: **4**
+lag: **OTT**
 <pre>
 Drake Batherson      OTT   3 +  7 =  10
 Jonathan Davidsson   OTT   0 +  1 =   1
 </pre>
 
-komento: **5**
-maa: **CAN**
+instruktion: **5**
+land: **CAN**
 <pre>
 Jared McCann         PIT  14 + 21 =  35
 Travis Zajac         NJD   9 + 16 =  25
@@ -418,43 +424,45 @@ Mark Jankowski       CGY   5 +  2 =   7
 Logan Shaw           WPG   3 +  2 =   5
 </pre>
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
-Kolmannen pisteen saa seuraavilla toiminnoilla:
+## Del 3: Mest framgångsrika spelare
 
-- n eniten pistettä saanutta pelaajaa
-  - jos kahden pelaajan pistemäärä on sama, ratkaisee maalimäärä
-- n eniten maaleja (_goals_) tehnyttä pelaajaa
-  - jos kahden pelaajan maalimäärä on sama, järjestyksen ratkaisee se kummalla on vähemmän otteluja (_games_)
+Det tredje övningspoänget får du från följande två funktionaliteter:
 
-Toiminnallisuus on seuraava:
+- lista av `n` mängd spelare som fått flest poäng
+  - ifall två spelare har samma mängd poäng, ska den som har flera mål komma först
+- lista av `n` mängd spelare som har gjort flest mål
+  - ifall två spelare har samma mängd mål, ska den som spelat färre spel komma först
+
+Applikationen ska nu fungera enligt följande:
 
 <sample-output>
 
-tiedosto: **osa.json**
-luettiin 14 pelaajan tiedot
+fil: **del.json**
+läste 14 spelares data
 
-komennot:
-0 lopeta
-1 hae pelaaja
-2 joukkueet
-3 maat
-4 joukkueen pelaajat
-5 maan pelaajat
-6 eniten pisteitä
-7 eniten maaleja
+instruktioner:
+0 avsluta
+1 sök spelare
+2 lag
+3 länder
+4 lagets spelare
+5 landets spelare
+6 flest poäng
+7 flest mål
 
-komento: **6**
-kuinka monta: **2**
+instruktion: **6**
+hur många: **2**
 <pre>
 Jakub Vrana          WSH  25 + 27 =  52
 Jared McCann         PIT  14 + 21 =  35
 </pre>
 
-komento: **6**
-kuinka monta: **5**
+instruktion: **6**
+hur många: **5**
 
 <pre>
 Jakub Vrana          WSH  25 + 27 =  52
@@ -464,8 +472,8 @@ Travis Zajac         NJD   9 + 16 =  25
 Conor Sheary         BUF  10 + 13 =  23
 </pre>
 
-komento: **7**
-kuinka monta: **6**
+instruktion: **7**
+hur många: **6**
 
 <pre>
 Jakub Vrana          WSH  25 + 27 =  52
@@ -476,12 +484,12 @@ John Klingberg       DAL   6 + 26 =  32
 Mark Jankowski       CGY   5 +  2 =   7
 </pre>
 
-komento: **0**
+instruktion: **0**
 
 </sample-output>
 
 </programming-exercise>
 
-Vastaa lopuksi osion loppukyselyyn:
+Svara till sist på en snabb enkät:
 
 <quiz id="2249a8d3-9455-5228-bd15-d5328d147b19"></quiz>

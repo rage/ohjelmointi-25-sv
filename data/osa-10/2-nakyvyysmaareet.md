@@ -17,50 +17,49 @@ Om en egenskap definieras som privat i basklassen är den inte direkt åtkomlig 
 
 ```python
 
-class Muistikirja:
-    """ Muistikirjaan voidaan tallentaa muistiinpanoja merkkijonoina """
+class Anteckningsbok:
+    """ En Anteckningsbok förvarar anteckningar i strängformat """
 
     def __init__(self):
-        # yksityinen attribuutti
-        self.__muistiinpanot = []
+        # privat attribut
+        self.__anteckningar = []
 
-    def lisaa_muistiinpano(self, muistiinpano):
-        self.__muistiinpanot.append(muistiinpano)
+    def tillsatt_anteckning(self, anteckning):
+        self.__anteckningar.append(anteckning)
 
-    def palauta_muistiinpano(self, indeksi):
-        return self.__muistiinpanot[indeksi]
+    def hamta_anteckning(self, index):
+        return self.__anteckningar[index]
 
-    def kaikki_muistiinpanot(self):
-        return ",".join(self.__muistiinpanot)
+    def alla_anteckningar(self):
+        return ",".join(self.__anteckningar)
 
 ```
 
-Om klassens integritet är viktig är det vettigt att göra listattributen `anteckningar` privat. Klassen förser trots allt klienten med lämpliga metoder för att lägga till och bläddra i anteckningar. Detta tillvägagångssätt blir problematiskt om vi definierar en ny klass `AnteckningsbokPro`, som ärver `Anteckningsbok`-klassen. Det privata listattributet är inte tillgängligt för klienten, men det är inte heller tillgängligt för de härledda klasserna. Om vi försöker komma åt det, som i metoden `hitta_anteckningar` nedan, får vi ett felmeddelande:
+Om klassens integritet är viktig är det vettigt att göra listattributen `anteckningar` privat. Klassen förser trots allt klienten med lämpliga metoder för att lägga till och bläddra i anteckningar. Detta tillvägagångssätt blir problematiskt om vi definierar en ny klass `AnteckningsbokPro`, som ärver `Anteckningsbok`-klassen. Det privata listattributet är inte tillgängligt för klienten, men det är inte heller tillgängligt för de härledda klasserna. Om vi försöker komma åt det, som i metoden `hamta_anteckningar` nedan, får vi ett felmeddelande:
 
 ```python
-class MuistikirjaPro(Muistikirja):
-    """ Parempi muistikirja haku- ja järjestystoiminnoilla """
+class AnteckningsbokPro(Anteckningsbok):
+    """ En bättre Anteckningsbok med sökfunktionalitet """
     def __init__(self):
-        # Tämä on ok, koska luokan Muistikirja konstruktori
-        # on julkinen
+        # Detta är ok, eftersom konstruktorn är offentlig trots understrykning
         super().__init__()
 
-    # Tämä antaa virheen
-    def etsi_muistiinpanot(self, hakusana):
-        loydetty = []
-        # Attribuutti __muistiinpanot on yksityinen, eikä näy
-        # aliluokalle
-        for muistiinpano in self.__muistiinpanot:
-            if hakusana in muistiinpano:
-                loydetty.append(muistiinpano)
+    # Detta orsakar ett fel
+    def hitta_anteckningar(self, sokord):
+        hittade = []
+        # Attributet __anteckningar är privat, den härledda 
+        # klassen kan inte komma åt den direkt
+        for anteckning in self.__anteckningar:
+            if sokord in anteckning:
+                hittade.append(anteckning)
 
-        return loydetty
+        return hittade
 
 ```
 
 <sample-output>
 
-AttributeError: 'MuistikirjaPro' object has no attribute '_MuistikirjaPro__muistiinpanot'
+AttributeError: 'AnteckningsbokPro' object has no attribute '_AnteckningsbokPro__anteckningar'
 
 </sample-output>
 
@@ -75,7 +74,7 @@ Kom ihåg att en egenskap kan döljas genom att prefixera dess namn med två und
 ```python
 
 def __init__(self):
-    self.__muistiinpanot = []
+    self.__anteckningar = []
 
 ```
 
@@ -84,7 +83,7 @@ Den överenskomna konventionen för att skydda en egenskap är att prefixera nam
 ```python
 
 def __init__(self):
-    self._muistiinpanot = []
+    self._anteckningar = []
 
 ```
 
@@ -92,173 +91,172 @@ Nedan har vi hela Anteckningsbok-exemplet, med skyddade `_anteckningar` iställe
 
 ```python
 
-class Muistikirja:
-    """ Muistikirjaan voidaan tallentaa muistiinpanoja merkkijonoina """
+class Anteckningsbok:
+    """ En Anteckningsbok förvarar anteckningar i strängformat """
 
     def __init__(self):
-        # suojattu attribuutti
-        self._muistiinpanot = []
+        # Skyddade attribut
+        self._anteckningar = []
 
-    def lisaa_muistiinpano(self, muistiinpano):
-        self._muistiinpanot.append(muistiinpano)
+    def tillsatt_anteckning(self, anteckning):
+        self._anteckningar.append(anteckning)
 
-    def palauta_muistiinpano(self, indeksi):
-        return self._muistiinpanot[indeksi]
+    def hamta_anteckning(self, index):
+        return self._anteckningar[index]
 
-    def kaikki_muistiinpanot(self):
-        return ",".join(self._muistiinpanot)
+    def alla_anteckningar(self):
+        return ",".join(self._anteckningar)
 
-class MuistikirjaPro(Muistikirja):
-    """ Parempi muistikirja haku- ja järjestystoiminnoilla """
+class AnteckningsbokPro(Anteckningsbok):
+    """ En bättre Anteckningsbok med sökfunktionalitet """
     def __init__(self):
-        # Tämä on ok, koska luokan Muistikirja konstruktori
-        # on julkinen
+        # Detta är ok, eftersom konstruktorn är offentlig trots understrykning
         super().__init__()
 
-    # Nyt metodi toimii, koska suojattu attribuutti näkyy
-    # aliluokalle
-    def etsi_muistiinpanot(self, hakusana):
-        loydetty = []
-        for muistiinpano in self._muistiinpanot:
-            if hakusana in muistiinpano:
-                loydetty.append(muistiinpano)
+    # Nu fungerar metoden, eftersom den skyddadde attributen är
+    # ankomstbar till den härledda klassen 
+    def hitta_anteckningar(self, sokord):
+        hittade = []
+        for anteckning in self._anteckningar:
+            if sokord in anteckning:
+                hittade.append(anteckning)
 
-        return loydetty
+        return hittade
 
 ```
 
 Nedan har vi en praktisk tabell för synligheten av attribut med olika åtkomstmodifierare:
 
-Näkyvyysmääre	| Esimerkki | Näkyy asiakkaalle | Näkyy aliluokalle
+Åtkomstmodifierare	| Exempel | Synlig till klienten | Synlig till härledd klass
 :--:|:----:|:----:|:----:
-Julkinen | `self.nimi` | kyllä | kyllä
-Suojattu | `self._nimi` | ei | kyllä
-Yksityinen | `self.__nimi` | ei | ei
+Offentlig | `self.namn` | ja | ja
+Skyddad | `self._namn` | nej | ja
+Privat | `self.__namn` | nej | nej
 
-Åtkomstmodifierare fungerar på samma sätt med alla egenskaper. I klassen `Person` nedan har vi till exempel den skyddade metoden `kapitalisera_initialer` Den kan användas från den härledda klassen `Fotbollsspelare`: 
+Åtkomstmodifierare fungerar på samma sätt med alla egenskaper. I klassen `Person` nedan har vi till exempel den skyddade metoden `versalisera_initialer` Den kan användas från den härledda klassen `Fotbollsspelare`: 
 
 ```python
 
-class Henkilo:
-    def __init__(self, nimi: str):
-        self._nimi = self._isot_alkukirjaimet(nimi)
+class Person:
+    def __init__(self, namn: str):
+        self._namn = self._versalisera_initialer(namn)
 
-    def _isot_alkukirjaimet(self, nimi):
-        nimi_isoilla = []
-        for n in nimi.split(" "):
-            nimi_isoilla.append(n.capitalize())
+    def _versalisera_initialer(self, namn):
+        namn_versaliserat = []
+        for n in namn.split(" "):
+            namn_versaliserat.append(n.capitalize())
 
-        return " ".join(nimi_isoilla)
-
-    def __repr__(self):
-        return self.__nimi
-
-class Jalkapalloilija(Henkilo):
-
-    def __init__(self, nimi: str, lempinimi: str, pelipaikka: str):
-        super().__init__(nimi)
-        # metodia voi kutsua, koska se on suojattu yliluokassa
-        self.__lempinimi = self._isot_alkukirjaimet(lempinimi)
-        self.__pelipaikka = pelipaikka
+        return " ".join(namn_versaliserat)
 
     def __repr__(self):
-        r =  f"Jalkapalloilija - nimi:{self._nimi}, lempinimi: {self.__lempinimi}"
-        r += f", pelipaikka: {self.__pelipaikka}"
+        return self.__namn
+
+class Fotbollsspelare(Person):
+
+    def __init__(self, namn: str, smeknamn: str, position: str):
+        super().__init__(namn)
+        # metoden är ankomstbar eftersom den är skyddad i basklassen
+        self.__smeknamn = self._versalisera_initialer(smeknamn)
+        self.__position = position
+
+    def __repr__(self):
+        r =  f"Fotbollsspelare - namn:{self._namn}, smeknamn: {self.__smeknamn}"
+        r += f", position: {self.__position}"
         return r
 
-# Testataan
+# Testar klasserna
 if __name__ == "__main__":
-    jp = Jalkapalloilija("petri pythonen", "pyttis", "hyökkääjä")
-    print(jp)
+    fs = Fotbollsspelare("peter pythonson", "putte", "anfallare")
+    print(fs)
 
 ```
 
 <sample-output>
 
-Jalkapalloilija - nimi:Petri Pythonen, lempinimi: Pyttis, pelipaikka: hyökkääjä
+Fotbollsspelare - namn:Peter Pythonson, smeknamn: Putte, position: anfallare
 
 </sample-output>
 
 
 <programming-exercise name='Superryhmä' tmcname='osa10-05_superryhma'>
 
-Tehtäväpohjassa on valmiina luokka `SuperSankari`.
+I uppgiftsbotten finns färdigt klassdefinitionen för en `Superhjalte`.
 
-Kirjoita luokka `SuperRyhma`, joka mallintaa supersankareista koostuvaa ryhmää. Luokalla pitää olla seuraava piirteet:
+Skapa klassen `Supergrupp`, som representerar en grupp av superhjältar. Klassen ska innehålla följande:
 
-* **Suojatut** attribuutit nimi (merkkijono), kotipaikka (merkkijono) ja jasenet (lista)
-* Konstruktori, joka saa parametrikseen tässä järjestyksessä nimen ja kotipaikan
-* Havainnointimetodit nimelle ja kotipaikalle
-* Metodi `lisaa_jasen(sankari: SuperSankari)`, joka lisää uuden jäsenen ryhmään
-* Metodi `tulosta_ryhma`, joka tulostaa ryhmän ja sen jäsenten tiedot alla olevan esimerkin mukaisesti
+* **Skyddade** attributen namn (sträng), lokation (sträng) och medlemmar (lista)
+* En konstruktor, som får namn och lokation av gruppen som argument, i den ordningen
+* Getter-metoden för namn- och lokation-attributen
+* Metoden `tillsatt_medlem(hjalte: Superhjalte)`, som lägger till en ny medlem till gruppen
+* Metoden `skriv_ut_grupp`, som skriver ut information om gruppen och dess medlemmer, enligt formatet nedan
 
-Esimerkki luokan käytöstä:
+Exempel av klassen:
 
 ```python
-supermiekkonen = SuperSankari("Supermiekkonen", "Supernopeus, supervoimakkuus")
-nakymaton = SuperSankari("Näkymätön Makkonen", "Näkymättömyys")
-ryhma_z = SuperRyhma("Ryhmä Z", "Kälviä")
+superperson = Superhjalte("SuperPerson", "Supersnabbhet, superstyrka")
+osynlig = Superhjalte("Osynliga Olle", "Osynlighet")
+revengers = Supergrupp("Revengers", "Åland")
 
-ryhma_z.lisaa_jasen(supermiekkonen)
-ryhma_z.lisaa_jasen(nakymaton)
-ryhma_z.tulosta_ryhma()
+revengers.tillsatt_medlem(superperson)
+revengers.tillsatt_medlem(osynlig)
+revengers.skriv_ut_grupp()
 ```
 
 <sample-output>
 
-Ryhmä Z, Kälviä
-Jäsenet:
-Supermiekkonen, superkyvyt: Supernopeus, supervoimakkuus
-Näkymätön Makkonen, superkyvyt: Näkymättömyys
+Revengers, Åland
+Medlemmar:
+SuperPerson, specialförmågor:: Supersnabbhet, superstyrka
+Osynliga Olle, specialförmågor:: Osynlighet
 
 </sample-output>
 
-[Tämän](/osa-9/3-kapselointi#asetus--ja-havainnointimetodit) luvun kertaaminen voi olla hyödyksi.
+[Detta](/osa-9/3-kapselointi#asetus--ja-havainnointimetodit) kapitel kan vara användbart.
 
 </programming-exercise>
 
 <programming-exercise name='Salainen taikajuoma' tmcname='osa10-06_salainen_taikajuoma'>
 
-Tehtäväpohjassa on luokka `Taikajuoma`, johon käyttäjä voi tallentaa reseptin. Luokasta löytyy konstruktorin lisäksi metodit
+Övningsmallen innehåller klassdefinitionen för en `Trolldryck` som gör att du kan spara ett recept på en trolldryck. Klassdefinitionen innehåller en konstruktor tillsammans med metoderna
 
-* `lisaa_aines(ainesosa: str, maara: float)` ja
-* `tulosta_resepti()`
+* `tillsatt_ingrediens(ingrediens: str, mängd: float)` och
+* `skriv_ut_recept()`
 
-Kirjoita `Taikajuoma`-luokan perivä luokka `SalainenTaikajuoma`, jolla resepti voidaan suojata salasanalla.
+Definiera en klass med namnet `HemligTrolldryck` som ärver `Trolldryck`-klassen och som gör att du också kan skydda receptet med ett lösenord.
 
-Uusi luokka saa konstruktorissa taikajuoman nimen lisäksi salasanan.
+Den nya klassen ska ha en konstruktor som dessutom tar en lösenordssträng som argument.
 
-Lisäksi luokalla on metodit
+Klassen ska dessutom innehålla följande metoder:
 
-* `lisaa_aines(ainesosa: str, maara: float, salasana: str)` ja
-* `tulosta_resepti(salasana: str)`
+* `tillsatt_ingrediens(ingrediens: str, mängd: float, lösenord: str)` och
+* `skriv_ut_recept(lösenord: str)`
 
-Jos metodeja kutsutaan väärällä salasanalla, ne antavat `ValueError`-poikkeuksen.
+Om lösenordsargumentet som ges till någon av dessa metoder är felaktigt ska metoderna ge upphov till ett `ValueError`-undantag.
 
-Uudet metodit kutsuvat perityn luokan metodeja, jos salasana on oikein! Älä siis leikkaa ja liimaa toteutuksia luokasta Taikajuoma.
+Om lösenordet är korrekt ska varje metod anropa den relevanta metoden i den överordnade klassen. Kopiera och klistra inte in något från `Trolldryck`-klassen.
 
-Esimerkki luokan käytöstä:
+Exempel på hur detta ska fungera:
 
 ```python
-kutistus = SalainenTaikajuoma("Kutistus maksimus", "hokkuspokkus")
-kutistus.lisaa_aines("Kärpässieni", 1.5, "hokkuspokkus")
-kutistus.lisaa_aines("Taikahiekka", 3.0, "hokkuspokkus")
-kutistus.lisaa_aines("Sammakonkutu", 4.0, "hokkuspokkus")
-kutistus.tulosta_resepti("hokkuspokkus")
+krympning = HemligTrolldryck("Krympning maximus", "hocuspocus")
+krympning.tillsatt_ingrediens("Granrot", 1.5, "hocuspocus")
+krympning.tillsatt_ingrediens("Magisk sand", 3.0, "hocuspocus")
+krympning.tillsatt_ingrediens("Grodyngel", 4.0, "hocuspocus")
+krympning.skriv_ut_recept("hocuspocus")
 
-kutistus.tulosta_resepti("pokkushokkus") # VÄÄRÄ SALASANA!
+krympning.skriv_ut_recept("pocushocus") # FEL LÖSENORD
 ```
 
 <sample-output>
 
-Kutistus maksimus:
-Kärpässieni 1.5 grammaa
-Taikahiekka 3.0 grammaa
-Sammakonkutu 4.0 grammaa
+Krympning maximus:
+Granrot 1.5 grammaa
+Magisk sand 3.0 grammaa
+Grodyngel 4.0 grammaa
 Traceback (most recent call last):
-  File "salaiset_taikajuomat.py", line 98, in <module>
-    raise ValueError("Väärä salasana!")
-ValueError: Väärä salasana!
+  File "hemlig_trolldryck.py", line 98, in <module>
+    raise ValueError("Fel lösenord!")
+ValueError: Fel lösenord!
 
 </sample-output>
 

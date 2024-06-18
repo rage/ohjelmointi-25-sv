@@ -4,7 +4,7 @@ title: 'Objekt och metoder'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
 Efter den här delen
 
@@ -16,34 +16,34 @@ Efter den här delen
 
 Detta är första delen av den Avancerade Kursen inom Programmering. Materialet är designat för att bli använt med Visual Studio Code editeraren, liksom den föregående kursen Introduktion till Programming. Ifall du inte använt Visual Studio Code tidigare, så hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://programming-24.mooc.fi/part-4/1-vscode).
 
-I introduktion till Programmering kursen så lade vi märke till att det ofta är logiskt att gruppera relaterad data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tuple eller en ordlista för att organisera datan till en enskild datastruktur.
+I introduktion till Programmering kursen så lade vi märke till att det ofta är logiskt att gruppera relaterad data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tupel eller en ordlista för att organisera datan till en enskild datastruktur.
 
-Lösningen kunde se ut så här när man använder en tuple:
+Lösningen kunde se ut så här när man använder en tupel:
 
 ```python
-nimi = "Nuoruuteni näppäilyt"
-kirjailija = "Pekka Python"
-vuosi = 1992
+namn = "Kodningsboken"
+författare = "Peter Python"
+ar = 1992
 
-# Yhdistetään yhdeksi tupleksi
-kirja = (nimi, kirjailija, vuosi)
+# Vi sammanställer dessa i en ordlista
+bok = (namn, författare, ar)
 
-# Tulostetaan kirjan nimi
-print(kirja[0])
+# Vi skriver ut bokens namn
+print(bok[0])
 ```
 
 I ett fall som detta är fördelen med att använda en ordlista att vi kan använda strängar istället för indexar som nycklar. Alltså, kan vi ge deskriptiva namn till sakerna som förvaras datastrukturen:
 
 ```python
-nimi = "Nuoruuteni näppäilyt"
-kirjailija = "Pekka Python"
-vuosi = 1992
+namn = "Kodningsboken"
+forfattare = "Peter Python"
+ar = 1992
 
 # Yhdistetään yhdeksi sanakirjaksi
-kirja = {"nimi": nimi, "kirjailija": kirjailija, "vuosi": vuosi}
+bok = {"namn": namn, "författare": forfattare, "år": ar}
 
-# Tulostetaan kirjan nimi
-print(kirja["nimi"])
+# Vi skriver ut bokens namn
+print(bok["namn"])
 ```
 
 I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen specifikt betydelsen av en oberoende helhet, i detta fall innehållande några bitar av data som på något vis är relaterade. Att vara oberoende betyder att ändringar till ett objekt inte påverkar andra objekt.
@@ -51,24 +51,24 @@ I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen sp
 Ifall vi skulle skapa två strukturellt identiska representationer av böcker, användandes ordlistor och identiska nycklar, skulle ändringar som görs till en av dem inte påverka den andra:
 
 ```python
-kirja1 = {"nimi": "Vanhus ja Python", "kirjailija": "Ernest Pythonen", "vuosi": 1952}
-kirja2 = {"nimi": "Seitsemän Pythonia", "kirjailija": "Aleksis Python", "vuosi": 1894}
+bok1 = {"namn": "Den gamle och Python", "författare": "Ernest Pythonson", "år": 1952}
+bok2 = {"namn": "Sju Python", "författare": "Aleksis Python", "år": 1894}
 
-print(kirja1["nimi"])
-print(kirja2["nimi"])
+print(bok1["namn"])
+print(bok2["namn"])
 
-kirja1["nimi"] = "Jäähyväiset aaseille"
+bok1["namn"] = "Ett nytt namn"
 
-print(kirja1["nimi"])
-print(kirja2["nimi"])
+print(bok1["namn"])
+print(bok2["namn"])
 ```
 
 <sample-output>
 
-Vanhus ja Python
-Seitsemän Pythonia
-Jäähyväiset aaseille
-Seitsemän Pythonia
+Den gamle och Python
+Sju Python
+Ett nytt namn
+Sju Python
 
 </sample-output>
 
@@ -89,20 +89,20 @@ De flesta andra programmeringsspråk (i varje fall de som stöder objekt-oriente
 Datan som lagras i ett objekt kan kommas åt genom olika _metoder_. En metod är en funktion som opererar på ett specifikt objekt som den är kopplad till. Sättet att åtskilja mellan metoder och andra funktioner ligger i hur de är kallade: först skriver man namnet på objektet som avses, sedan en punkt och till sist metodens namn, åtföljt av argument ifall sådana finns. Till exempel returnerar metoden `values` alla värden som är lagrade i ett objekt av typen ordlista eller `dict`:
 
 ```python
-# muodostetaan sanakirjatyyppinen kirjaolio
-kirja = {"nimi": "Vanhus ja Python", "kirjailija": "Ernest Pythonen", "vuosi": 1952}
+# detta skapar ett objekt av typen ordlista med namnet bok
+bok = {"namn": "Den gamle och Python", "författare": "Ernest Pythonson", "år": 1952}
 
-# Tulostetaan kaikki arvot
-# Metodikutsu values() kirjoitetaan muuttujan perään
-# pisteellä erotettuna
-for arvo in kirja.values():
-    print(arvo)
+# Vi skriver ut alla värden
+# Metodkallelsen values() skrivs efter namnet på variabeln
+# Kom ihåg punktnotation!
+for varde in bok.values():
+    print(varde)
 ```
 
 <sample-output>
 
-Vanhus ja Python
-Ernest Pythonen
+Den gamel och Python
+Ernest Pythonson
 1952
 
 </sample-output>
@@ -110,26 +110,26 @@ Ernest Pythonen
 På samma sätt opererar en strängmetod på det strängobjekt som den kallas på. Några exempel av strängmetoder är `count` och `find`:
 
 ```python
-nimi = "Keijo Keksitty"
+namn = "Påhittige Per"
 
-# Tulostetaan K-kirjaimien määrä
-print(nimi.count("K"))
+# Skriv ut mängden P som förekommer
+print(namn.count("P"))
 
-# K-kirjaimien määrä toisessa jonossa
-print("Karkkilan Kolisevat Karjut".count("K"))
+# Mängden P som hittas i en annan sträng
+print("Påhittade Praktiska Prepositioner".count("P"))
 
-# Osajonon Keksitty indeksi
-print(nimi.find("Keksitty"))
+# Indexen av delsträngen Per
+print(namn.find("Per"))
 
-# Tästä merkkijonosta osajonoa ei löydy
-print("Ihan eri jono".find("Keksitty"))
+# Denna sträng har ingen matchande delsträng
+print("Helt annan sträng".find("Per"))
 ```
 
 <sample-output>
 
 2
 3
-6
+10
 -1
 
 </sample-output>
@@ -139,13 +139,13 @@ Strängmetoder returnerar värden, men ändrar inte innehållet av en sträng. L
 ```python
 lista = [1,2,3]
 
-# Lisätään pari alkiota
+# Vi lägger till några element
 lista.append(5)
 lista.append(1)
 
 print(lista)
 
-# Poistetaan alkio alusta
+# Vi tar bort ett element från början
 lista.pop(0)
 
 print(lista)
@@ -160,32 +160,32 @@ print(lista)
 
 <programming-exercise name='Pienin keskiarvo' tmcname='osa08-01_pienin_keskiarvo'>
 
-Tee funktio `pienin_keskiarvo(henkilo1: dict, henkilo2: dict, henkilo3: dict)`, joka saa parametrikseen kolme sanakirjaoliota.
+Skapa funktionen `minsta_medeltalet(person1: dict, person2: dict, person3: dict)`, som får tre ordlistor som argument.
 
-Jokaisessa sanakirjaoliossa on alkiot, joihin viittaavat nämä avaimet:
+Varje ordlistsobjekt innehåller värden som refererar till följande nycklar:
 
-* `"nimi"`: kilpailijan nimi
-* `"tulos1"`: kilpailijan ensimmäinen tulos (kokonaisluku väliltä 1...10)
-* `"tulos2"`: kilpailijan toinen tulos (kuten yllä)
-* `"tulos3"`: kilpailijan kolmas tulos (kuten yllä)
+* `"namn"`: tävlarens namn
+* `"resultat1"`: tävlarens första resultat (heltal mellan 1...10)
+* `"resultat2"`: tävlarens andra resultat (liksom ovan)
+* `"resultat3"`: tävlarens tredje resultat (liksom ovan)
 
-Funktio laskee kaikkien kilpailijoiden tulosten keskiarvot ja palauttaa sen kilpailijan, jonka keskiarvo on pienin. Funktion palautusarvona on sanakirjaolio.
+Funktionen ska beräkna genomsnittet av de tre resultaten för varje tävlande och sedan returnera den tävlande vars genomsnittliga resultat var det minsta. Returvärdet bör vara hela ordlistsobjektet som innehåller information om deltagaren.
 
-Voit olettaa, että vain yhdellä henkilöllä on pienin keskiarvo.
+Du kan anta att endast en tävlare har det minsta medeltalet.
 
-Esimerkki funktion kutsumisesta:
+Ett exempel på funktionen:
 
 ```python
-henkilo1 = {"nimi": "Keijo", "tulos1": 2, "tulos2": 3, "tulos3": 3}
-henkilo2 = {"nimi": "Reijo", "tulos1": 5, "tulos2": 1, "tulos3": 8}
-henkilo3 = {"nimi": "Veijo", "tulos1": 3, "tulos2": 1, "tulos3": 1}
+person1 = {"namn": "Ella", "resultat1": 2, "resultat2": 3, "resultat3": 3}
+person2 = {"namn": "Bella", "resultat1": 5, "resultat2": 1, "resultat3": 8}
+person3 = {"namn": "Stella", "resultat1": 3, "resultat2": 1, "resultat3": 1}
 
-print(pienin_keskiarvo(henkilo1, henkilo2, henkilo3))
+print(minsta_medeltalet(person1, person2, person3))
 ```
 
 <sample-output>
 
-{'nimi': 'Veijo', 'tulos1': 3, 'tulos2': 1, 'tulos3': 1}
+{'namn': 'Stella', 'resultat1': 3, 'resultat2': 1, 'resultat3': 1}
 
 </sample-output>
 
@@ -193,18 +193,18 @@ print(pienin_keskiarvo(henkilo1, henkilo2, henkilo3))
 
 <programming-exercise name='Rivien summat' tmcname='osa08-02_rivien_summmat '>
 
-Listan alkioiden arvot ovat viittauksia olioihin. Tämä pätee myös silloin, kun mallinnetaan matriisia: jokainen päälistan alkion arvo on viittaus toiseen listaan (jonka alkiot taas ovat viittauksia arvoihin).
+I Python är varje värde som lagras i en variabel en referens till ett objekt, så varje värde som lagras i en lista är också en referens till ett objekt. Detta gäller även vid modellering av en matrisdatastruktur: varje värde i listan på högsta nivån är en referens till en annan lista, som i sin tur innehåller referenser till de objekt som representerar elementen i matrisen.
 
-Tee funktio `rivien_summat(matriisi: list)`, joka saa parametrikseen kokonaislukuja sisältävän matriisin.
+Skapa funktionen `radernas_summor(matris: list)`, som tar en heltalsmatris som argument.
 
-Funktio lisää jokaiselle matriisin riville uuden alkion, jonka arvo on rivin alkioiden summa. Funktio ei palauta mitään, vaan muokkaa parametrinaan saamaansa matriisia.
+Funktionen ska lägga till ett nytt element på varje rad i matrisen. Detta element innehåller summan av de andra elementen på den raden. Funktionen har inget returvärde. Den bör modifiera matrisen i parametern.
 
-Esimerkki funktion kutsumisesta:
+Ett exempel på funktionen i användning:
 
 ```python
-matriisi = [[1, 2], [3, 4]]
-rivien_summat(matriisi)
-print(matriisi)
+matris = [[1, 2], [3, 4]]
+radernas_summor(matris)
+print(matris)
 ```
 
 <sample-output>

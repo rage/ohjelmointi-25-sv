@@ -11,19 +11,19 @@ Det svåraste att implementera i ett Sokoban-spel brukar vara att flytta roboten
 Spelaren styr roboten med de fyra piltangenterna, så vår händelsehanterare ska också kunna reagera på lämpliga tangenthändelser:
 
 ```python
-    def tutki_tapahtumat(self):
-        for tapahtuma in pygame.event.get():
-            if tapahtuma.type == pygame.KEYDOWN:
-                if tapahtuma.key == pygame.K_LEFT:
-                    self.liiku(0, -1)
-                if tapahtuma.key == pygame.K_RIGHT:
-                    self.liiku(0, 1)
-                if tapahtuma.key == pygame.K_UP:
-                    self.liiku(-1, 0)
-                if tapahtuma.key == pygame.K_DOWN:
-                    self.liiku(1, 0)
+    def granska_handelser(self):
+        for handelse in pygame.event.get():
+            if handelse.type == pygame.KEYDOWN:
+                if handelse.key == pygame.K_LEFT:
+                    self.flytta(0, -1)
+                if handelse.key == pygame.K_RIGHT:
+                    self.flytta(0, 1)
+                if handelse.key == pygame.K_UP:
+                    self.flytta(-1, 0)
+                if handelse.key == pygame.K_DOWN:
+                    self.flytta(1, 0)
 
-            if tapahtuma.type == pygame.QUIT:
+            if handelse.type == pygame.QUIT:
                 exit()
 ```
 
@@ -34,10 +34,10 @@ När spelaren nu trycker på en piltangent anropas metoden `flytta` med ett läm
 Spelet måste veta var roboten befinner sig för att kunna förflytta den på rätt sätt. Låt oss lägga till metoden `hitta_robot` som räknar ut var roboten befinner sig:
 
 ```python
-    def etsi_robo(self):
+    def hitta_robot(self):
         for y in range(self.korkeus):
             for x in range(self.leveys):
-                if self.kartta[y][x] in [4, 6]:
+                if self.karta[y][x] in [4, 6]:
                     return (y, x)
 ```
 
@@ -52,26 +52,26 @@ Vi har redan anropat metoden `flytta` ovan, men vi har inte definierat den än. 
 Metoden `flytta` tar som argument den riktning som spelaren vill förflytta sig till. Den uppdaterar sedan rutnätet i enlighet med detta, eller fastställer att förflyttningen inte är tillåten och lämnar rutnätet oförändrad.
 
 ```python
-    def liiku(self, liike_y, liike_x):
-        robon_vanha_y, robon_vanha_x = self.etsi_robo()
-        robon_uusi_y = robon_vanha_y + liike_y
-        robon_uusi_x = robon_vanha_x + liike_x
+    def flytta(self, flytta_y, flytta_x):
+        robot_tidigare_y, robot_tidigare_x = self.hitta_robot()
+        robot_nya_y = robot_tidigare_y + flytta_y
+        robot_nya_x = robot_tidigare_x + flytta_x
 
-        if self.kartta[robon_uusi_y][robon_uusi_x] == 1:
+        if self.karta[robot_nya_y][robot_nya_x] == 1:
             return
 
-        if self.kartta[robon_uusi_y][robon_uusi_x] in [3, 5]:
-            laatikon_uusi_y = robon_uusi_y + liike_y
-            laatikon_uusi_x = robon_uusi_x + liike_x
+        if self.karta[robot_nya_y][robot_nya_x] in [3, 5]:
+            lada_ny_y = robot_nya_y + flytta_y
+            lada_ny_x = robot_nya_x + flytta_x
 
-            if self.kartta[laatikon_uusi_y][laatikon_uusi_x] in [1, 3, 5]:
+            if self.karta[lada_ny_y][lada_ny_x] in [1, 3, 5]:
                 return
 
-            self.kartta[robon_uusi_y][robon_uusi_x] -= 3
-            self.kartta[laatikon_uusi_y][laatikon_uusi_x] += 3
+            self.karta[robot_nya_y][robot_nya_x] -= 3
+            self.karta[lada_ny_y][lada_ny_x] += 3
 
-        self.kartta[robon_vanha_y][robon_vanha_x] -= 4
-        self.kartta[robon_uusi_y][robon_uusi_x] += 4
+        self.karta[robot_tidigare_y][robot_tidigare_x] -= 4
+        self.karta[robot_nya_y][robot_nya_x] += 4
 ```
 
 Metoden har en hel del olika steg, så låt oss ta en titt på vart och ett i tur och ordning:
@@ -79,9 +79,9 @@ Metoden har en hel del olika steg, så låt oss ta en titt på vart och ett i tu
 ### Robotens gamla och nya plats
 
 ```python
-        robon_vanha_y, robon_vanha_x = self.etsi_robo()
-        robon_uusi_y = robon_vanha_y + liike_y
-        robon_uusi_x = robon_vanha_x + liike_x
+        robot_tidigare_y, robot_tidigare_x = self.hitta_robot()
+        robot_nya_y = robot_tidigare_y + flytta_y
+        robot_nya_x = robot_tidigare_x + flytta_x
 ```
 
 Först anropas metoden `hitta_robot` för att ta reda på robotens aktuella position innan förflyttningen. Detta lagras i variablerna `robot_tidigare_y` och `robot_tidigare_x`.
@@ -91,7 +91,7 @@ Därefter lagras robotens nya position efter den tänkta förflyttningen i varia
 ### Gick roboten in i en vägg?
 
 ```python
-        if self.kartta[robon_uusi_y][robon_uusi_x] == 1:
+        if self.karta[robot_nya_y][robot_nya_x] == 1:
             return
 ```
 
@@ -100,15 +100,15 @@ Därefter lagras robotens nya position efter den tänkta förflyttningen i varia
 ### Flyttning av låda
 
 ```python
-        if self.kartta[robon_uusi_y][robon_uusi_x] in [3, 5]:
-            laatikon_uusi_y = robon_uusi_y + liike_y
-            laatikon_uusi_x = robon_uusi_x + liike_x
+        if self.karta[robot_nya_y][robot_nya_x] in [3, 5]:
+            lada_ny_y = robot_nya_y + flytta_y
+            lada_ny_x = robot_nya_x + flytta_x
 
-            if self.kartta[laatikon_uusi_y][laatikon_uusi_x] in [1, 3, 5]:
+            if self.karta[lada_ny_y][lada_ny_x] in [1, 3, 5]:
                 return
 
-            self.kartta[robon_uusi_y][robon_uusi_x] -= 3
-            self.kartta[laatikon_uusi_y][laatikon_uusi_x] += 3
+            self.karta[robot_nya_y][robot_nya_x] -= 3
+            self.karta[lada_ny_y][lada_ny_x] += 3
 ```
 
 Om robotens nytänkta position innehåller siffran 3 (en egen låda) eller siffran 5 (en låda i en målruta) försöker roboten flytta lådan till nästa ruta. För detta ändamål behöver vi två nya variabler: `lada_ny_y` och `lada_ny_x`, som innehåller lådans placering efter flytten.
@@ -120,8 +120,8 @@ I alla andra fall kan lådan röra sig. Värdet på lådans nuvarande rutnätspl
 ### Förflyttning av roboten
 
 ```python
-        self.kartta[robon_vanha_y][robon_vanha_x] -= 4
-        self.kartta[robon_uusi_y][robon_uusi_x] += 4
+        self.karta[robot_tidigare_y][robot_tidigare_x] -= 4
+        self.karta[robot_nya_y][robot_nya_x] += 4
 ```
 
 Om metoden har nått denna punkt utan att återvända, är det dags att flytta roboten också. Proceduren är densamma som när lådan flyttas, men det värde som dras från och läggs till på de aktuella platserna i rutnätet är 4 den här gången. Detta säkerställer, återigen genom den smarta ordningen av objekten i bildlistan, att slutresultatet i rutnätet blir korrekt både när golv- och målrutor är inblandade i förflyttningen.
@@ -133,7 +133,7 @@ Att endast använda rutnätet för att lagra spelets tillstånd hela tiden är m
 Nackdelen är att det kan vara en aning svårt att förstå spelets programkod. Om någon som inte är bekant med den logik som används såg följande kodrad skulle de troligen bli lite förvirrade:
 
 ```python
-            if self.kartta[laatikon_uusi_y][laatikon_uusi_x] in [1, 3, 5]:
+            if self.karta[lada_ny_y][lada_ny_x] in [1, 3, 5]:
 ```
 
 Kodsnutten ovan använder magiska siffror för att representera rutorna i rutnätet. Den som läser koden måste veta att 1 betyder vägg, 3 betyder en låda och 5 betyder en låda i en målruta.
@@ -141,7 +141,7 @@ Kodsnutten ovan använder magiska siffror för att representera rutorna i rutnä
 Raderna med de smarta subtraktionerna och adderingarna skulle se ännu mer förvirrande ut:
 
 ```python
-            self.kartta[robon_uusi_y][robon_uusi_x] -= 3
+            self.karta[robot_nya_y][robot_nya_x] -= 3
 ```
 
 Siffran 3 betydde en ruta precis som tidigare, men nu subtraheras den från värdet på en ruta i rutnätet. Detta fungerar inom ramen för vårt numreringssystem, eftersom det ändrar en låda (3) till en normal golvruta (0) eller en målruta med en låda (5) till en tom målruta (2), men för att förstå detta krävs kännedom i det numreringssystem som används.

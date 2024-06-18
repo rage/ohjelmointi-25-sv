@@ -21,51 +21,51 @@ class Sokoban:
     def __init__(self):
         pygame.init()
 
-        self.lataa_kuvat()
-        self.uusi_peli()
+        self.ladda_bilder()
+        self.nytt_spel()
 
-        self.korkeus = len(self.kartta)
-        self.leveys = len(self.kartta[0])
-        self.skaala = self.kuvat[0].get_width()
+        self.hojd = len(self.karta)
+        self.bredd = len(self.karta[0])
+        self.skala = self.bilder[0].get_width()
 
-        nayton_korkeus = self.skaala * self.korkeus
-        nayton_leveys = self.skaala * self.leveys
-        self.naytto = pygame.display.set_mode((nayton_leveys, nayton_korkeus))
+        fonster_hojd = self.skala * self.hojd
+        fonster_bredd = self.skala * self.bredd
+        self.fonster = pygame.display.set_mode((fonster_bredd, fonster_hojd))
 
         pygame.display.set_caption("Sokoban")
 
-        self.silmukka()
+        self.huvudloop()
 
-    def lataa_kuvat(self):
-        self.kuvat = []
-        for nimi in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
-            self.kuvat.append(pygame.image.load(nimi + ".png"))
+    def ladda_bilder(self):
+        self.bilder = []
+        for namn in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
+            self.bilder.append(pygame.image.load(namn + ".png"))
 
-    def uusi_peli(self):
-        self.kartta = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    def nytt_spel(self):
+        self.karta = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                        [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
                        [1, 2, 3, 0, 0, 0, 1, 0, 0, 1, 2, 3, 0, 0, 0, 0, 1],
                        [1, 0, 0, 1, 2, 3, 0, 2, 3, 0, 0, 0, 1, 0, 0, 0, 1],
                        [1, 0, 4, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
-    def silmukka(self):
+    def huvudloop(self):
         while True:
-            self.tutki_tapahtumat()
-            self.piirra_naytto()
+            self.kolla_handelser()
+            self.rita_fonster()
 
-    def tutki_tapahtumat(self):
-        for tapahtuma in pygame.event.get():
-            if tapahtuma.type == pygame.QUIT:
+    def kolla_handelser(self):
+        for handelse in pygame.event.get():
+            if handelse.type == pygame.QUIT:
                 exit()
 
-    def piirra_naytto(self):
-        self.naytto.fill((0, 0, 0))
+    def rita_fonster(self):
+        self.fonster.fill((0, 0, 0))
 
-        for y in range(self.korkeus):
-            for x in range(self.leveys):
-                ruutu = self.kartta[y][x]
-                self.naytto.blit(self.kuvat[ruutu], (x * self.skaala, y * self.skaala))
+        for y in range(self.hojd):
+            for x in range(self.bredd):
+                ruta = self.karta[y][x]
+                self.fonster.blit(self.bilder[ruta], (x * self.skala, y * self.skala))
 
         pygame.display.flip()
 
@@ -83,20 +83,20 @@ Klassens konstruktor initierar pygame-modulerna och de väsentliga variabler och
     def __init__(self):
         pygame.init()
 
-        self.lataa_kuvat()
-        self.uusi_peli()
+        self.ladda_bilder()
+        self.nytt_spel()
 
-        self.korkeus = len(self.kartta)
-        self.leveys = len(self.kartta[0])
-        self.skaala = self.kuvat[0].get_width()
+        self.hojd = len(self.karta)
+        self.bredd = len(self.karta[0])
+        self.skala = self.bilder[0].get_width()
 
-        nayton_korkeus = self.skaala * self.korkeus
-        nayton_leveys = self.skaala * self.leveys
-        self.naytto = pygame.display.set_mode((nayton_leveys, nayton_korkeus))
+        fonster_hojd = self.skala * self.hojd
+        fonster_bredd = self.skala * self.bredd
+        self.fonster = pygame.display.set_mode((fonster_bredd, fonster_hojd))
 
         pygame.display.set_caption("Sokoban")
 
-        self.silmukka()
+        self.huvudloop()
 ```
 
 Metoden `ladda_bilder` laddar de bilder som används i spelet till en lista med namnet `bilder`. Metoden `nytt_spel` skapar en tvådimensionell lista med namnet karta, som innehåller spelrutnätets tillstånd i början av spelet.
@@ -108,10 +108,10 @@ Variablerna `hojd` och `bredd` sätts baserat på spelrutnätets dimensioner. Va
 Metoden `ladda_bilder` laddar alla bilder som används i spelet:
 
 ```python
-    def lataa_kuvat(self):
-        self.kuvat = []
-        for nimi in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
-            self.kuvat.append(pygame.image.load(nimi + ".png"))
+    def ladda_bilder(self):
+        self.bilder = []
+        for namn in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
+            self.bilder.append(pygame.image.load(namn + ".png"))
 ```
 
 Spelet använder följande bilder:
@@ -173,8 +173,8 @@ Spelet använder följande bilder:
 Metoden `nytt_spel` skapar den ursprungliga spelrutan:
 
 ```python
-    def uusi_peli(self):
-        self.kartta = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    def nytt_spel(self):
+        self.karta = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                        [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
                        [1, 2, 3, 0, 0, 0, 1, 0, 0, 1, 2, 3, 0, 0, 0, 0, 1],
                        [1, 0, 0, 1, 2, 3, 0, 2, 3, 0, 0, 0, 1, 0, 0, 0, 1],
@@ -188,26 +188,26 @@ OBS: I början innehåller alla rutor på spelplanen ett nummer mellan 0 och 4. 
 
 ## Huvudloopen
 
-Metoden `huvud_loop` är ganska kort. Vid varje iteration anropar den två metoder: `kolla_handelser` går igenom alla händelser som samlats in sedan föregående iteration, och metoden `rita_fonster` uppdaterar innehållet i fönstret.
+Metoden `huvudloop` är ganska kort. Vid varje iteration anropar den två metoder: `kolla_handelser` går igenom alla händelser som samlats in sedan föregående iteration, och metoden `rita_fonster` uppdaterar innehållet i fönstret.
 
 ```python
-    def silmukka(self):
+    def huvudloop(self):
         while True:
-            self.tutki_tapahtumat()
-            self.piirra_naytto()
+            self.kolla_handelser()
+            self.rita_fonster()
 
-    def tutki_tapahtumat(self):
-        for tapahtuma in pygame.event.get():
-            if tapahtuma.type == pygame.QUIT:
+    def kolla_handelser(self):
+        for handelse in pygame.event.get():
+            if handelse.type == pygame.QUIT:
                 exit()
 
-    def piirra_naytto(self):
-        self.naytto.fill((0, 0, 0))
+    def rita_fonster(self):
+        self.fonster.fill((0, 0, 0))
 
-        for y in range(self.korkeus):
-            for x in range(self.leveys):
-                ruutu = self.kartta[y][x]
-                self.naytto.blit(self.kuvat[ruutu], (x * self.skaala, y * self.skaala))
+        for y in range(self.hojd):
+            for x in range(self.bredd):
+                ruta = self.karta[y][x]
+                self.fonster.blit(self.bilder[ruta], (x * self.skala, y * self.skala))
 
         pygame.display.flip()
 ```

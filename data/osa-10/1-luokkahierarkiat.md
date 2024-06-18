@@ -18,25 +18,25 @@ Efter den här delen
 
 Ibland stöter man på en situation där man redan har definierat en klass, men sedan inser att man behöver speciella egenskaper i vissa, men inte alla, instanser av klassen. Och ibland inser man att man har definierat två stycken mycket liknande klasser med bara små skillnader. Som programmerare strävar vi efter att alltid upprepa oss så lite som möjligt, medan vi behåller tydlighet och läsbarhet. Så hur kan vi ta hänsyn till olika implementeringar av liknande objekt?
 
-Låt oss ta en titt på två klassdefinitioner: `Student` och `Larare`. Getter- och sättar-metoder har utelämnats tills vidare för att hålla exemplet kort.
+Låt oss ta en titt på två klassdefinitioner: `Studerande` och `Larare`. Getter- och sättar-metoder har utelämnats tills vidare för att hålla exemplet kort.
 
 ```python
 
-class Opiskelija:
+class Studerande:
 
-    def __init__(self, nimi: str, opnro: str, sposti: str, opintopisteet: str):
-        self.nimi = nimi
-        self.opnro = opnro
-        self.sposti = sposti
-        self.opintopisteet = opintopisteet
+    def __init__(self, namn: str, id: str, epost: str, studiepoang: str):
+        self.namn = namn
+        self.id = id
+        self.epost = epost
+        self.studiepoang = studiepoang
 
-class Opettaja:
+class Larare:
 
-    def __init__(self, nimi: str, sposti: str, huone: str, opetusvuosia: int):
-        self.nimi = nimi
-        self.sposti = sposti
-        self.huone = huone
-        self.opetusvuosia = opetusvuosia
+    def __init__(self, namn: str, epost: str, rum: str, larande_ar: int):
+        self.namn = namn
+        self.epost = epost
+        self.rum = rum
+        self.larande_ar = larande_ar
 
 ```
 
@@ -46,11 +46,11 @@ Tänk dig till exempel att skolans e-postadress ändras. Alla adresser skulle be
 
 ```python
 
-def korjaa_email(o: Opiskelija):
-    o.sposti = o.sposti.replace(".com", ".edu")
+def uppdatera_epost(s: Studerande):
+    s.epost = s.epost.replace(".com", ".edu")
 
-def korjaa_email2(o: Opettaja):
-    o.sposti = o.sposti.replace(".com", ".edu")
+def uppdatera_epost2(s: Larare):
+    s.epost = s.epost.replace(".com", ".edu")
 
 ```
 
@@ -62,152 +62,152 @@ Båda klasserna har också attribut som är unika för dem. Att bara kombinera a
 
 Objektorienterade programmeringsspråk innehåller vanligtvis en teknik som kallas arv (eng. inheritance). En klass kan ärva egenskaper från en annan klass. Förutom dessa ärvda egenskaper kan en klass också innehålla egenskaper som är unika för den.
 
-Med detta i åtanke är det rimligt att klasserna `Larare` och `Student` har en gemensam bas eller föräldraklass `Person`:
+Med detta i åtanke är det rimligt att klasserna `Larare` och `Studerande` har en gemensam bas eller föräldraklass `Person`:
 
  ```python
 
-class Henkilo:
+class Person:
 
-    def __init__(self, nimi: str, sposti: str):
-        self.nimi = nimi
-        self.sposti = sposti
+    def __init__(self, namn: str, epost: str):
+        self.namn = namn
+        self.epost = epost
 
  ```
 
-Den nya klassen innehåller de egenskaper som delas av de andra två klasserna. Nu kan `Student` och `Larare` ärva dessa egenskaper och dessutom lägga till sina egna. :
+Den nya klassen innehåller de egenskaper som delas av de andra två klasserna. Nu kan `Studerande` och `Larare` ärva dessa egenskaper och dessutom lägga till sina egna. :
 
 Syntaxen för arv innebär helt enkelt att basklassens namn läggs till inom parentes på rubrikraden:
 
  ```python
 
-class Henkilo:
+class Person:
 
-    def __init__(self, nimi: str, sposti: str):
-        self.nimi = nimi
-        self.sposti = sposti
+    def __init__(self, namn: str, epost: str):
+        self.namn = namn
+        self.epost = epost
 
-    def vaihda_spostitunniste(self, uusi_tunniste: str):
-        vanha = self.sposti.split("@")[1]
-        self.sposti = self.sposti.replace(vanha, uusi_tunniste)
+    def uppdatera_epost_doman(self, ny_doman: str):
+        gammal_doman = self.epost.split("@")[1]
+        self.epost = self.epost.replace(gammal_doman, ny_doman)
 
-class Opiskelija(Henkilo):
+class Studerande(Person):
 
-    def __init__(self, nimi: str, opnro: str, sposti: str, opintopisteet: str):
-        self.nimi = nimi
-        self.opnro = opnro
-        self.sposti = sposti
-        self.opintopisteet = opintopisteet
+    def __init__(self, namn: str, id: str, epost: str, studiepoang: str):
+        self.namn = namn
+        self.id = id
+        self.epost = epost
+        self.studiepoang = studiepoang
 
-class Opettaja(Henkilo):
+class Larare(Person):
 
-    def __init__(self, nimi: str, sposti: str, huone: str, opetusvuosia: int):
-        self.nimi = nimi
-        self.sposti = sposti
-        self.huone = huone
-        self.opetusvuosia = opetusvuosia
+    def __init__(self, namn: str, epost: str, rum: str, larande_ar: int):
+        self.namn = namn
+        self.epost = epost
+        self.rum = rum
+        self.larande_ar = larande_ar
 
-# Testi
+# Test
 if __name__ == "__main__":
-    olli = Opiskelija("Olli Opiskelija", "1234", "olli@example.com", 0)
-    olli.vaihda_spostitunniste("example.edu")
-    print(olli.sposti)
+    sam = Studerande("Sam Studerande", "1234", "sam@example.com", 0)
+    sam.uppdatera_epost_doman("example.edu")
+    print(sam.epost)
 
-    outi = Opettaja("Outi Ope", "outi@example.fi", "A123", 2)
-    outi.vaihda_spostitunniste("example.ex")
-    print(outi.sposti)
+    lars = Larare("Lars Lärare", "lars@example.fi", "A123", 2)
+    lars.uppdatera_epost_doman("example.ex")
+    print(lars.epost)
 
  ```
 
-Både `Student` och `Larare` ärver klassen `Person`, så båda har de egenskaper som definieras i klassen Person, inklusive metoden `uppdatera_epost_doman`. Samma metod fungerar för instanser av båda de härledda klasserna.
+Både `Studerande` och `Larare` ärver klassen `Person`, så båda har de egenskaper som definieras i klassen Person, inklusive metoden `uppdatera_epost_doman`. Samma metod fungerar för instanser av båda de härledda klasserna.
 
  Låt oss titta på ett annat exempel. Vi har en `Bokhylla` som ärver klassen `BokLada`:
 
  ```python
-class Kirja:
-    """ Luokka mallintaa yksinkertaista kirjaa """
-    def __init__(self, nimi: str, kirjailija: str):
-        self.nimi = nimi
-        self.kirjailija = kirjailija
+class Bok:
+    """ Klassen modellerar en enkel bok """
+    def __init__(self, namn: str, forfattare: str):
+        self.namn = namn
+        self.forfattare = forfattare
 
 
-class Kirjalaatikko:
-    """ Luokka mallintaa laatikkoa, johon voidaan tallentaa kirjoja """
+class BokLada:
+    """ Klassen modellerar en låda för böcker """
 
     def __init__(self):
-        self.kirjat = []
+        self.bocker = []
 
-    def lisaa_kirja(self, kirja: Kirja):
-        self.kirjat.append(kirja)
+    def tillsatt_bok(self, bok: Bok):
+        self.bocker.append(bok)
 
-    def listaa_kirjat(self):
-        for kirja in self.kirjat:
-            print(f"{kirja.nimi} ({kirja.kirjailija})")
+    def lista_bocker(self):
+        for bok in self.bocker:
+            print(f"{bok.namn} ({bok.forfattare})")
 
-class Kirjahylly(Kirjalaatikko):
-    """ Luokka mallintaa yksinkertaista kirjahyllyä """
+class Bokhylla(BokLada):
+    """ Klassen modellerar en hylla för böcker """
 
     def __init__(self):
         super().__init__()
 
-    def lisaa_kirja(self, kirja: Kirja, paikka: int):
-        self.kirjat.insert(paikka, kirja)
+    def tillsatt_bok(self, bok: Bok, paikka: int):
+        self.bocker.insert(paikka, bok)
 
 
  ```
 
- Klassen `Bokhylla` innehåller metoden `tillägg_bok`. En metod med samma namn finns definierad i basklassen `BokLada`. Detta kallas överstyrning (eng. override): om en härledd klass har en metod med samma namn som basklassen, överstyr den härledda versionen originalet i instanser av den härledda klassen.
+ Klassen `Bokhylla` innehåller metoden `tillsatt_bok`. En metod med samma namn finns definierad i basklassen `BokLada`. Detta kallas överstyrning (eng. overriding): om en härledd klass har en metod med samma namn som basklassen, överstyr den härledda versionen originalet i instanser av den härledda klassen.
 
- Tanken i exemplet ovan är att en ny bok som läggs till i en BokLada alltid hamnar högst upp, men med en Bokhylla kan du själv ange platsen. Metoden `lista_böcker` fungerar likadant för båda klasserna, eftersom det inte finns någon överordnad metod i den härledda klassen.
+ Tanken i exemplet ovan är att en ny bok som läggs till i en Bok låda alltid hamnar högst upp, men med en Bokhylla kan du själv ange platsen. Metoden `lista_bocker` fungerar likadant för båda klasserna, eftersom det inte finns någon överordnad metod i den härledda klassen.
 
  Låt oss prova dessa klasser:
 
  ```python
 
 if __name__ == "__main__":
-    # Luodaan pari kirjaa testiksi
-    k1 = Kirja("7 veljestä", "Aleksis Kivi")
-    k2 = Kirja("Sinuhe", "Mika Waltari")
-    k3 = Kirja("Tuntematon sotilas", "Väinö Linna")
+    # Vi skapar några böcker för testning
+    b1 = Bok("7 bröder", "Aleksis Kivi")
+    b2 = Bok("Sinuhe", "Mika Waltari")
+    b3 = Bok("Okänd soldat", "Väinö Linna")
 
-    # Luodaan kirjalaatikko ja lisätään kirjat sinne
-    laatikko = Kirjalaatikko()
-    laatikko.lisaa_kirja(k1)
-    laatikko.lisaa_kirja(k2)
-    laatikko.lisaa_kirja(k3)
+    # Vi skapar en BokLada och tillsätter böckerna
+    lada = BokLada()
+    lada.tillsatt_bok(b1)
+    lada.tillsatt_bok(b2)
+    lada.tillsatt_bok(b3)
 
-    # Luodaan kirjahylly ja lisätään kirjat sinne (aina hyllyn alkupäähän)
-    hylly = Kirjahylly()
-    hylly.lisaa_kirja(k1, 0)
-    hylly.lisaa_kirja(k2, 0)
-    hylly.lisaa_kirja(k3, 0)
+    # Vi skapar en Bokhylla och tillsätter böckerna (alltid till början av hyllan)
+    hylla = Bokhylla()
+    hylla.tillsatt_bok(b1, 0)
+    hylla.tillsatt_bok(b2, 0)
+    hylla.tillsatt_bok(b3, 0)
 
 
-    # Tulostetaan
-    print("Laatikossa:")
-    laatikko.listaa_kirjat()
+    # Skriver ut
+    print("I lådan:")
+    lada.lista_bocker()
 
     print()
 
-    print("Hyllyssä:")
-    hylly.listaa_kirjat()
+    print("I hyllan:")
+    hylla.lista_bocker()
 
  ```
 
  <sample-output>
 
-Laatikossa:
-7 veljestä (Aleksis Kivi)
+I lådan:
+7 bröder (Aleksis Kivi)
 Sinuhe (Mika Waltari)
-Tuntematon sotilas (Väinö Linna)
+Okänd soldat (Väinö Linna)
 
-Hyllyssä:
-Tuntematon sotilas (Väinö Linna)
+I hyllan:
+Okänd soldat (Väinö Linna)
 Sinuhe (Mika Waltari)
-7 veljestä (Aleksis Kivi)
+7 bröder (Aleksis Kivi)
 
  </sample-output>
 
-Klassen Bokhylla har alltså också tillgång till metoden `lista_böcker`. Genom ärvning är metoden medlem i alla klasser som kommer från klassen `BokLada`.
+Klassen Bokhylla har alltså också tillgång till metoden `lista_bocker`. Genom ärvning är metoden medlem i alla klasser som kommer från klassen `BokLada`.
 
 ## Arv och räckvidd av egenskaper
 
@@ -217,7 +217,7 @@ Klassen Bokhylla har alltså också tillgång till metoden `lista_böcker`. Geno
 
  ```python
 
- class Kirjahylly(Kirjalaatikko):
+ class Bokhylla(BokLada):
 
     def __init__(self):
         super().__init__()
@@ -230,20 +230,20 @@ Men vad händer om attributen inte är identiska; kan vi fortfarande använda ba
 
 ```python
 
-class Kirja:
-    """ Luokka mallintaa yksinkertaista kirjaa """
+class Bok:
+    """ Klassen modellerar en enkel bok """
 
-    def __init__(self, nimi: str, kirjailija: str):
-        self.nimi = nimi
-        self.kirjailija = kirjailija
+    def __init__(self, namn: str, forfattare: str):
+        self.namn = namn
+        self.forfattare = forfattare
 
 
-class Gradu(Kirja):
-    """ Luokka mallintaa gradua eli ylemmän korkeakoulututkinnon lopputyötä """
+class Avhandling(Bok):
+    """ Klassen modellerar en magisteravhandling """
 
-    def __init__(self, nimi: str, kirjailija: str, arvosana: int):
-        super().__init__(nimi, kirjailija)
-        self.arvosana = arvosana
+    def __init__(self, namn: str, forfattare: str, vitsord: int):
+        super().__init__(namn, forfattare)
+        self.vitsord = vitsord
 
 ```
 
@@ -254,79 +254,79 @@ Ovanstående klass kan användas på följande sätt:
 
 ```python
 
-# Testataan
+# Testar
 if __name__ == "__main__":
-    gradu = Gradu("Python ja maailmankaikkeus", "Pekka Python", 3)
+    avhandling = Avhandling("Python och Universum", "Peter Python", 3)
 
-    # Tulostetaan kenttien arvot
-    print(gradu.nimi)
-    print(gradu.kirjailija)
-    print(gradu.arvosana)
+    # Skriv ut attributens värden
+    print(avhandling.namn)
+    print(avhandling.forfattare)
+    print(avhandling.vitsord)
 
 ```
 
 <sample-output>
 
-Python ja maailmankaikkeus
-Pekka Python
+Python och Universum
+Peter Python
 3
 
 </sample-output>
 
-Även om en härledd klass åsidosätter en metod i sin basklass kan den härledda klassen fortfarande anropa den åsidosatta metoden i basklassen. I följande exempel har vi ett grundläggande `BonusKort` och ett särskilt `PlatinumKort` för särskilt lojala kunder. Metoden `rakna_bonus` är åsidosatt i den härledda klassen, men den åsidosatta metoden anropar basmetoden:
+Även om en härledd klass överstyr en metod i sin basklass kan den härledda klassen fortfarande anropa den åsidosatta metoden i basklassen. I följande exempel har vi ett grundläggande `Bonuskort` och ett särskilt `Platinumkort` för särskilt lojala kunder. Metoden `rakna_bonus` är åsidosatt i den härledda klassen, men den åsidosatta metoden anropar basmetoden:
 
 ```python
 
-class Tuote:
+class Produkt:
 
-    def __init__(self, nimi: str, hinta: float):
-        self.nimi = nimi
-        self.hinta = hinta
+    def __init__(self, namn: str, pris: float):
+        self.namn = namn
+        self.pris = pris
 
-class Bonuskortti:
+class Bonuskort:
 
     def __init__(self):
-        self.ostetut_tuotteet = []
+        self.kopta_produkter = []
 
-    def lisaa_tuote(self, tuote: Tuote):
-        self.ostetut_tuotteet.append(tuote)
+    def tillsatt_produkt(self, produkt: Produkt):
+        self.kopta_produkter.append(produkt)
 
-    def laske_bonus(self):
+    def rakna_bonus(self):
         bonus = 0
-        for tuote in self.ostetut_tuotteet:
-            bonus += tuote.hinta * 0.05
+        for produkt in self.kopta_produkter:
+            bonus += produkt.pris * 0.05
 
         return bonus
 
-class Platinakortti(Bonuskortti):
+class Platinumkort(Bonuskort):
 
     def __init__(self):
         super().__init__()
 
-    def laske_bonus(self):
-        # Kutsutaan yliluokan metodia...
-        bonus = super().laske_bonus()
+    def rakna_bonus(self):
+        # Anropar metoden i basklassen...
+        bonus = super().rakna_bonus()
 
-        # ...ja lisätään vielä viisi prosenttia päälle
+        # ...och tillsätter ännu fem procent till totalet
         bonus = bonus * 1.05
         return bonus
 
 
 ```
 
-Bonusen för ett PlatinumKort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används: 
+Bonusen för ett Platinumkort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används: 
 
 ```python
 if __name__ == "__main__":
-    kortti = Bonuskortti()
-    kortti.lisaa_tuote(Tuote("Banaanit", 6.50))
-    kortti.lisaa_tuote(Tuote("Mandariinit", 7.95))
-    bonus = kortti.laske_bonus()
+    kort = Bonuskort()
+    kort.tillsatt_produkt(Produkt("Bananer", 6.50))
+    kort.tillsatt_produkt(Produkt("Mandariner", 7.95))
+    bonus = kort.rakna_bonus()
 
-    kortti2 = Platinakortti()
-    kortti2.lisaa_tuote(Tuote("Banaanit", 6.50))
-    kortti2.lisaa_tuote(Tuote("Mandariinit", 7.95))
-    bonus2 = kortti2.laske_bonus()
+    kort2 = Platinumkort()
+    kort2.tillsatt_produkt(Produkt("Bananer", 6.50))
+    kort2.tillsatt_produkt(Produkt("Mandariner", 7.95))
+    bonus2 = kort2.rakna_bonus()
 
     print(bonus)
     print(bonus2)
@@ -341,22 +341,22 @@ if __name__ == "__main__":
 
 <programming-exercise name='Kannettava tietokone' tmcname='osa10-01_kannettava_tietokone'>
 
-Tehtäväpohjassa on määritelty luokka `Tietokone`, jolla on attribuutit `malli` ja `nopeus`.
+I uppgiftsbotten finns en klassdefinition för en `Dator`, som har attributen `modell` och `snabbhet`.
 
-Kirjoita luokka `KannettavaTietokone`, joka _perii luokan Tietokone_. Luokka saa konstruktorissa luokan Tietokone attribuuttien lisäksi kolmannen kokonaislukutyyppisen attribuutin `paino`.
+Skapa klassen `BarbarDator`, som _ärver_ klassen `Dator`. Den nya klassens konstruktor ska ta ett tredgje argument, `vikt`, av typen heltal.
 
-Kirjoita luokkaan lisäksi metodi `__str__`, jonka avulla voi tulostaa esimerkkisuorituksen mukaisen tulosteen olion tilasta.
+Skapa också en `__str__`-metod i klassdefinitionen. Se exemplet nedan för det förväntade formatet av strängen som skrivs ut.
 
-Esimerkki:
+Exempel:
 
 ```python
-ipm = KannettavaTietokone("IPM MikroMauri", 1500, 2)
-print(ipm)
+barbar = BarbarDator("NoteBook Pro15", 1500, 2)
+print(barbar)
 ```
 
 <sample-output>
 
-IPM MikroMauri, 1500 MHz, 2 kg
+NoteBook Pro15, 1500 MHz, 2 kg
 
 </sample-output>
 
@@ -364,23 +364,23 @@ IPM MikroMauri, 1500 MHz, 2 kg
 
 <programming-exercise name='Pelimuseo' tmcname='osa10-02_pelimuseo'>
 
-Tehtäväpohjassa on määritelty luokat `Tietokonepeli` ja `Pelivarasto`. Pelivarastoon voidaan säilöä tietokonepelejä.
+I uppgiftsbotten finns klassdefinitioner för `Datorspel` och `Spelforrad`. Spelforrads-objekt används för att förvara Datorspel-objekt.
 
-Tutustu luokkien ohjelmakoodiin ja kirjoita sitten uusi luokka `Pelimuseo`, joka perii luokan `Pelivarasto`.
+Bekanta dig med dessa klasser. Definiera sedan klassen `Spelmuseum`, som ärver klassen `Spelforrad`.
 
-Pelimuseo-luokassa _uudelleentoteutetaan_ metodi `anna_pelit()` niin, että se palauttaa listassa ainoastaan ne pelit, jotka on tehty ennen vuotta 1990.
+Spelmuseum-klassen ska _överstyra_ metoden `lista_spel()`, så att den returnerar en lista av endast de spel som är gjorda innan år 1990.
 
-Lisäksi luokassa tulee olla konstruktori, josta _kutsutaan yliluokan Pelivarasto konstruktoria_. Konstruktorilla ei ole parametreja.
+Dessutom ska den nya klassen ha en konstruktor som _anropar konstruktorn från överklassen Spelforrad_. Konstruktorn tar inga argument.
 
-Esimerkiksi:
+Exempel:
 
 ```python
-museo = Pelimuseo()
-museo.lisaa_peli(Tietokonepeli("Pacman", "Namco", 1980))
-museo.lisaa_peli(Tietokonepeli("GTA 2", "Rockstar", 1999))
-museo.lisaa_peli(Tietokonepeli("Bubble Bobble", "Taito", 1986))
-for peli in museo.anna_pelit():
-    print(peli.nimi)
+museum = Spelmuseum()
+museum.tillsatt_spel(Datorspel("Pacman", "Namco", 1980))
+museum.tillsatt_spel(Datorspel("GTA 2", "Rockstar", 1999))
+museum.tillsatt_spel(Datorspel("Bubble Bobble", "Taito", 1986))
+for spel in museum.lista_spel():
+    print(spel.namn)
 ```
 
 <sample-output>
@@ -394,37 +394,37 @@ Bubble Bobble
 
 <programming-exercise name='Pinta-alat' tmcname='osa10-03_pinta_alat'>
 
-Tehtäväpohjan mukana tulee luokka `Suorakulmio` joka nimensä mukaisesti mallintaa [suorakulmiota](https://fi.wikipedia.org/wiki/Suorakulmio). Luokkaa käytetään seuraavasti:
+I uppgiftsbotten finns en klassdefinition för `Rektangel` som representerar en [rektangelform](https://sv.wikipedia.org/wiki/Rektangel). Klassen används på följande sätt:
 
 ```python
-suorakulmio = Suorakulmio(2, 3)
-print(suorakulmio)
-print("pinta-ala:", suorakulmio.pinta_ala())
+rektangel = Rektangel(2, 3)
+print(rektangel)
+print("area:", rektangel.area())
 ```
 
 <sample-output>
 
-suorakulmio 2x3
-pinta-ala: 6
+rektangel 2x3
+area: 6
 
 </sample-output>
 
-## Neliö
+## Kvadrat
 
-Toteuta luokka `Nelio` joka perii luokan `Suorakulmio`. Suorakulmiosta poiketen [neliön](https://fi.wikipedia.org/wiki/Neli%C3%B6_(geometria)) kaikki sivut ovat saman pituisia, eli neliö on eräänlainen yksinkertaisempi erikoistapaus suorakulmiosta. Luokka ei saa määritellä uusia attribuutteja!
+Skapa en klass `Kvadrat` som ärver klassen `Rektangel`. Sidorna på en [kvadrat](https://sv.wikipedia.org/wiki/Kvadrat) har alla samma längd, alltså är den en speciell sort av rektangel. Den nya klassen ska inte innehålla nya attribut!
 
-Luokkaa käytetään seuraavasti:
+Kvadrat-objekt används på följande sätt:
 
 ```python
-nelio = Nelio(4)
-print(nelio)
-print("pinta-ala:", nelio.pinta_ala())
+kvadrat = Kvadrat(4)
+print(kvadrat)
+print("area:", kvadrat.area())
 ```
 
 <sample-output>
 
-neliö 4x4
-pinta-ala: 16
+kvadrat 4x4
+area: 16
 
 </sample-output>
 
@@ -432,160 +432,160 @@ pinta-ala: 16
 
 <programming-exercise name='Sanapeli' tmcname='osa10-04_sanapeli'>
 
-Tehtäväpohja sisältää valmiin luokan `Sanapeli`, joka tarjoaa perustoiminnallisuuden erilaisten sanapelien pelaamiseen:
+Uppgiftsbotten innehåller klassdefinitionen för en `Ordspel`, som erbjuder enkel funktionalitet för att spela olika ordbaserade spel:
 
 ```python
 import random
 
-class Sanapeli():
-    def __init__(self, kierrokset: int):
-        self.voitot1 = 0
-        self.voitot2 = 0
-        self.kierrokset = kierrokset
+class Ordspel():
+    def __init__(self, rundor: int):
+        self.vinster1 = 0
+        self.vinster2 = 0
+        self.rundor = rundor
 
-    def kierroksen_voittaja(self, pelaaja1_sana: str, pelaaja2_sana: str):
-        # arvotaan voittaja
-        return random.randint(1, 2)
+    def rundans_vinnare(self, spelare1_ord: str, spelare2_ord: str):
+        # vi lottar ut en vinnare
+        return random.randint(1, 2) 
 
-    def pelaa(self):
-        print("Sanapeli:")
-        for i in range(1, self.kierrokset+1):
-            print(f"kierros {i}")
-            vastaus1 = input("pelaaja1: ")
-            vastaus2 = input("pelaaja2: ")
+    def spela(self):
+        print("Ordspel:")
+        for i in range(1, self.rundor+1):
+            print(f"runda {i}")
+            svar1 = input("spelare1: ")
+            svar2 = input("spelare2: ")
 
-            if self.kierroksen_voittaja(vastaus1, vastaus2) == 1:
-                self.voitot1 += 1
-                print("pelaaja 1 voitti")
-            elif self.kierroksen_voittaja(vastaus1, vastaus2) == 2:
-                self.voitot2 += 1
-                print("pelaaja 2 voitti")
+            if self.rundans_vinnare(svar1, svar2) == 1:
+                self.vinster1 += 1
+                print("spelare 1 vann")
+            elif self.rundans_vinnare(svar1, svar2) == 2:
+                self.vinster2 += 1
+                print("spelare 2 vann")
             else:
-                pass # tasapeli
+                pass # oavgjort
 
-        print("peli päättyi, voitot:")
-        print(f"pelaaja 1: {self.voitot1}")
-        print(f"pelaaja 2: {self.voitot2}")
+        print("spelet är över, vinster:")
+        print(f"spelare 1: {self.vinster1}")
+        print(f"spelare 2: {self.vinster2}")
 ```
 
-Peliä käytetään seuraavasti:
+Spelet spelas enligt följande:
 
 ```python
-p = Sanapeli(3)
-p.pelaa()
+s = Ordspel(3)
+s.spela()
 ```
 
-Esimerkkitulostus
+Exempel:
 
 <sample-output>
 
-Sanapeli:
-kierros 1
-pelaaja1: **pitkäsana**
-pelaaja2: **??**
-pelaaja 2 voitti
-kierros 2
-pelaaja1: **olen paras**
-pelaaja2: **mitä?**
-pelaaja 1 voitti
-kierros 3
-pelaaja1: **kuka voittaa**
-pelaaja2: **minä**
-pelaaja 1 voitti
-peli päättyi voitot:
-pelaaja 1: 2
-pelaaja 2: 1
+Ordspel:
+runda 1
+spelare1: **långtord**
+spelare2: **??**
+spelare 2 vann
+runda 2
+spelare1: **jag är bäst**
+spelare2: **va?**
+spelare 1 vann
+runda 3
+spelare1: **vem vinner**
+spelare2: **jag**
+spelare 1 vann
+spelet är över, vinster:
+spelare 1: 2
+spelare 2: 1
 
 </sample-output>
 
-Tässä pelin "perusversiossa" voittaja ratkaistaan arpomalla, pelaajien antamilla syötteillä ei ole tulokseen vaikutusta.
+I denna ”grundläggande” version av spelet avgörs vinnaren slumpmässigt. Spelarnas insatser har ingen inverkan på resultatet.
 
-## Pisin sana voittaa
+## Del 1: Längsta ordet vinner
 
-Tee nyt luokka `PisinSana` eli pelin versio, missä kunkin kierroksen voittaja on sen kierroksen aikana pidemmän sanan syöttänyt käyttäjä.
+Definiera en klass som heter `LangstaOrdet`. Det är en version av spelet där den som skriver in det längsta ordet i varje omgång vinner.
 
-Uusi versio toteuteaan _perimällä_ luokka `Sanapeli` ja ylikirjoittamalla sen metodi `kierroksen_voittaja` sopivalla tavalla. Uuden luokan runko on siis seuraavanlainen
+Den nya versionen av spelet implementeras genom att ärva `Ordspel`-klassen. Metoden `rundans_vinnare` bör också överstyras på lämpligt sätt. Den nya klassen är uppbyggd på följande sätt:
 
 ```python
-class PisinSana(Sanapeli):
-    def __init__(self, kierrokset: int):
-        super().__init__(kierrokset)
+class LangstaOrdet(Ordspel):
+    def __init__(self, rundor: int):
+        super().__init__(rundor)
 
-    def kierroksen_voittaja(self, pelaaja1_sana: str, pelaaja2_sana: str):
-        # tänne voittajan ratkaiseva koodi
+    def rundans_vinnare(self, spelare1_ord: str, spelare2_ord: str):
+        # koden som avgör vinnaren här
 ```
 
-Esimerkki toiminnasta:
+Exempel på hur spelet fungerar:
 
 ```python
-p = PisinSana(3)
-p.pelaa()
+s = LangstaOrdet(3)
+s.spela()
 ```
 
 <sample-output>
 
-Sanapeli:
-kierros 1
-pelaaja1: **lyhyt**
-pelaaja2: **pitkäsana**
-pelaaja 2 voitti
-kierros 2
-pelaaja1: **sana**
-pelaaja2: **vat?**
-kierros 3
-pelaaja1: **olen paras**
-pelaaja2: **minäpäs**
-pelaaja 1 voitti
-peli päättyi, voitot:
-pelaaja 1: 1
-pelaaja 2: 1
+Ordspel:
+runda 1
+spelare1: **kort**
+spelare2: **långtord**
+spelare 2 vann
+runda 2
+spelare1: **ord**
+spelare2: **va?**
+runda 3
+spelare1: **jag är bäst**
+spelare2: **nej jag!**
+spelare 1 vann
+spelet är över, vinster:
+spelare 1: 1
+spelare 2: 1
 
 </sample-output>
 
-## Eniten vokaaleja voittaa
+## Del 2: Flest vokaler vinner
 
-Tee nyt luokka `EnitenVokaaleja` eli pelin versio, missä kunkin kierroksen voittaja on se pelaaja, jonka sanassa oli enemmän vokaaleja.
+Definiera en annan Ordspel-klass med namnet `FlestVokaler`. I den här versionen av spelet vinner den som har klämt in flest vokaler i sitt ord.
 
-## Kivi, paperi, sakset
+## Del 3: Sten sax påse
 
-Tee nyt luokka `KiviPaperiSakset` joka mallintaa nimensä mukaisesti [kivi, paperi ja sakset](https://fi.wikipedia.org/wiki/Kivi,_paperi_ja_sakset) -peliä.
+Definiera slutligen klassen `StenSaxPase` som låter dig spela ett spel av [Sten, sax, påse](https://sv.wikipedia.org/wiki/Sten,_sax,_p%C3%A5se).
 
-Pelin säännöt ovat seuraavat:
+Spelets regler är följande:
 
-- kivi voittaa sakset (kivellä voi rikkoa sakset eikä saksilla voi leikata kiveä)
-- paperi voittaa kiven (kiven voi peittää paperilla)
-- sakset voittaa paperin (saksilla voi leikata paperia)
+- sten vinner påse (stenen kan förstöra saxen men saxen kan inte klippa stenen)
+- påse vinner sten (påsen kan omsluta stenen)
+- sax vinner påse (saxen kan klippa påsen)
 
-Jos pelaajan syöte on epäkelpo, eli se ei ole mikään sanoista _kivi, paperi, sakset_ pelaaja häviää kierroksen, ellei molempien syöte ole epäkelpo.
+Om inmatningen från en spelare är ogiltig förlorar den omgången. Om båda spelarna skriver in något annat än sten, sax eller påse blir resultatet oavgjort.
 
-Esimerkki toiminnasta:
+Exempel på hur spelet spelas:
 
 ```python
-p = KiviPaperiSakset(4)
-p.pelaa()
+s = StenSaxPase(4)
+s.spela()
 ```
 
 <sample-output>
 
-Sanapeli:
-kierros 1
-pelaaja1: **kivi**
-pelaaja2: **kivi**
-kierros 2
-pelaaja1: **kivi**
-pelaaja2: **paperi**
-pelaaja 2 voitti
-kierros 3
-pelaaja1: **sakset**
-pelaaja2: **paperi**
-pelaaja 1 voitti
-kierros 4
-pelaaja1: **paperi**
-pelaaja2: **dynamiitti**
-pelaaja 1 voitti
-peli päättyi, voitot:
-pelaaja 1: 2
-pelaaja 2: 1
+Ordspel:
+runda 1
+spelare1: **sten**
+spelare2: **sten**
+runda 2
+spelare1: **sten**
+spelare2: **påse**
+spelare 2 vann
+runda 3
+spelare1: **sax**
+spelare2: **påse**
+spelare 1 vann
+runda 4
+spelare1: **påse**
+spelare2: **dynamit**
+spelare 1 vann
+spelet är över, vinster:
+spelare 1: 2
+spelare 2: 1
 
 </sample-output>
 

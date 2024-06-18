@@ -26,30 +26,30 @@ En generatorfunktion måste innehålla nyckelordet `yield`, som markerar det vä
 
 ```python
 
-def laskuri(maksimi: int):
-    luku = 0
-    while luku <= maksimi:
-        yield luku
-        luku += 1
+def raknare(maximum: int):
+    tal = 0
+    while tal <= maximum:
+        yield tal
+        tal += 1
 
 ```
 
-Nu kan `raknare`-funktionen skickas som argument till funktionen `nasta()`
+Nu kan `raknare`-funktionen skickas som argument till funktionen `next()`
 
 ```python
 if __name__ == "__main__":
-    luvut = laskuri(10)
-    print("Eka arvo:")
-    print(next(luvut))
-    print("Toka arvo:")
-    print(next(luvut))
+    talen = raknare(10)
+    print("Första värde:")
+    print(next(talen))
+    print("Andra värde:")
+    print(next(talen))
 ```
 
 <sample-output>
 
-Eka arvo:
+Första värde:
 0
-Toka arvo:
+Andra värde:
 1
 
 </sample-output>
@@ -60,10 +60,10 @@ Den här generatorn kräver också ett maxvärde, i exemplet ovan var det `10`. 
 
 ```python
 if __name__ == "__main__":
-    luvut = laskuri(1)
-    print(next(luvut))
-    print(next(luvut))
-    print(next(luvut))
+    talen = raknare(1)
+    print(next(talen))
+    print(next(talen))
+    print(next(talen))
 ```
 
 <sample-output>
@@ -71,8 +71,8 @@ if __name__ == "__main__":
 0
 1
 Traceback (most recent call last):
-  File "generaattoriesimerkki.py", line 11, in <module>
-    print(next(luvut))
+  File "generatorexempel.py", line 11, in <module>
+    print(next(talen))
 StopIteration
 
 </sample-output>
@@ -81,20 +81,20 @@ Undantaget kan bli fångat med ett `try`- `except` block:
 
 ```python
 if __name__ == "__main__":
-    luvut = laskuri(1)
+    talen = raknare(1)
     try:
-        print(next(luvut))
-        print(next(luvut))
-        print(next(luvut))
+        print(next(talen))
+        print(next(talen))
+        print(next(talen))
     except StopIteration:
-        print("Luvut loppuivat kesken")
+        print("Talen tog slut")
 ```
 
 <sample-output>
 
 0
 1
-Luvut loppuivat kesken
+Talen tog slut
 
 </sample-output>
 
@@ -102,9 +102,9 @@ Att gå igenom alla objekt i en generator görs enkelt med en `for`-loop:
 
 ```python
 if __name__ == "__main__":
-    luvut = laskuri(5)
-    for luku in luvut:
-        print(luku)
+    talen = raknare(5)
+    for tal in talen:
+        print(tal)
 ```
 
 <sample-output>
@@ -124,14 +124,14 @@ Tänk dock på att det bara fungerar att genomkorsa en generator med en `for`-lo
 
 <programming-exercise name='Parilliset luvut' tmcname='osa12-08_parilliset'>
 
-Kirjoita generaattorifunktio `parilliset(alku: int, maksimi: int)`, joka saa parametrikseen alkuarvon ja maksimin. Funktio tuottaa alkuarvosta lähtien parillisia lukuja. Kun saavutetaan maksimi, generaattori pysähtyy.
+Skapa generatorfunktionen `jamna(borjan: int, maximum: int)`, som tar två heltal som argument. Funktionen ska producera jämna tal börjandes från `borjan` och slutandes vid, senast, `maximum`.
 
-Kaksi esimerkkiä funktion käytöstä:
+Två exempel på användning av funktionen:
 
 ```python
-luvut = parilliset(2, 10)
-for luku in luvut:
-    print(luku)
+talen = jamna(2, 10)
+for tal in talen:
+    print(tal)
 ```
 
 <sample-output>
@@ -145,9 +145,9 @@ for luku in luvut:
 </sample-output>
 
 ```python
-luvut = parilliset(11, 21)
-for luku in luvut:
-    print(luku)
+talen = jamna(11, 21)
+for tal in talen:
+    print(tal)
 ```
 
 <sample-output>
@@ -164,16 +164,16 @@ for luku in luvut:
 
 <programming-exercise name='Alkuluvut' tmcname='osa12-09_alkuluvut'>
 
-Alkuluvuksi sanotaan kokonaislukua, joka on vähintään 2 ja jaollinen ainoastaan 1:llä ja itsellään. Ensimmäiset alkuluvut ovat 2, 3, 5, 7, 11 ja 13.
+Ett primtal är ett tal som är delbart endast med sig självt och talet 1. Enligt konvention definieras primtal som positiva heltal från talet 2 och uppåt. De sex första primtalen är 2, 3, 5, 7, 11 och 13.
 
-Kirjota generaattorifunktio `alkuluvut()`, joka luo uuden generaattorin. Generaattori palauttaa yksi kerrallaan alkulukuja järjestyksessä 2:sta alkaen. Huomaa, että generaattori ei pysähdy koskaan, vaan palauttaa lisää lukuja niin kauan kuin niitä pyydetään.
+Skapa en generatorfunktion `primtal()` som skapar en ny generator. Generatorn ska returnera nya primtal, ett efter ett i sekvens, från 2 framåt. OBS: den här generatorn avslutas aldrig. Den kommer att generera tal så länge som de behövs.
 
-Esimerkiksi:
+Till exempel
 
 ```python
-luvut = alkuluvut()
+talen = primtal()
 for i in range(8):
-    print(next(luvut))
+    print(next(talen))
 ```
 
 <sample-output>
@@ -189,7 +189,7 @@ for i in range(8):
 
 </sample-output>
 
-Vinkki: Voit tarkastaa, onko luku _x_ alkuluku, silmukalla, joka käy läpi luvut 2:sta lukuun _x_–1 asti. Jos jokin näistä luvuista jakaa _x_:n, niin se ei ole alkuluku.
+**Tips:** du kan använda en loop för att granska ifall ett tal är ett primtal. Ifall vi granskar talet `x` skulle loopen gå igenom talen `2` till `x-1`. Ifall `x` är dividerbart med någon av dessa, är det inte ett primtal.
 
 </programming-exercise>
 
@@ -199,13 +199,13 @@ Vinkki: Voit tarkastaa, onko luku _x_ alkuluku, silmukalla, joka käy läpi luvu
 Du behöver inte nödvändigtvis en funktionsdefinition för att skapa en generator. Vi kan använda en struktur som liknar en list comprehension istället. Den här gången använder vi runda parenteser för att beteckna en generator i stället för en lista eller en ordlista: 
 
 ```python
-# Generaattori palauttaa 2:n potensseja
-neliot = (x ** 2 for x in range(1, 64))
+# Generatorn returnerar kvadraten av heltal
+kvadrat = (x ** 2 for x in range(1, 64))
 
-print(neliot)
+print(kvadrat)
 
 for i in range(5):
-    print(next(neliot))
+    print(next(kvadrat))
 ```
 
 <sample-output>
@@ -222,11 +222,11 @@ for i in range(5):
 I följande exempel skriver vi ut delsträngar av det engelska alfabetet, var och en tre tecken lång. Detta skriver ut de första 10 objekten i generatorn:
 
 ```python
-alijonot = ("abcdefghijklmnopqrstuvwxyz"[i : i + 3] for i in range(24))
+delstrangar = ("abcdefghijklmnopqrstuvwxyz"[i : i + 3] for i in range(24))
 
-# tulostetaan ensimmäiset 10 alijonoa
+# skriver ut 10 första delsträngarna
 for i in range(10):
-    print(next(alijonot))
+    print(next(delstrangar))
 ```
 
 <sample-output>
@@ -246,18 +246,18 @@ jkl
 
 <programming-exercise name='Satunnaiset sanat' tmcname='osa12-10_satunnaiset_sanat'>
 
-Tee funktio `sanageneraattori(kirjaimet: str, pituus: int, maara: int)`, joka muodostaa ja palauttaa annettujen parametrien avulla satunnaisia sanoja tuottavan generaattorin.
+Skapa funktionen `ordgenerator(bokstaver: str, langd: int, antal: int)`, som returnerar en ny generator som genererar nya, slumpmässiga ord baserat på de angiva parametrarna.
 
-Satunnainen sana muodostetaan valitsemalla `pituus` kappaletta kirjaimia valikoimasta `kirjaimet`. Sama kirjain saa esiintyä sanassa monta kertaa.
+Ett slumpmässigt ord är genererat genom att välja från en sträng av `bokstaver` så många bokstäver som är indikerade av argumentet `langd`. Samma bokstav kan förekomma flera gånger i ett slumpmässigt ord.
 
-Generaattori palauttaa `maara` kappaletta sanoja ennen kuin se pysähtyy.
+Generatorn returnerar så många ord som specifierades i argumentet `antal` innan dess terminering.
 
-Esimerkki funktion kutsumisesta:
+Exempel på användning av generatorn:
 
 ```python
-sanagen = sanageneraattori("abcdefg", 3, 5)
-for sana in sanagen:
-    print(sana)
+ordgen = ordgenerator("abcdefg", 3, 5)
+for ord in ordgen:
+    print(ord)
 ```
 
 <sample-output>
@@ -270,6 +270,6 @@ ccc
 
 </sample-output>
 
-Huom! Voit ratkaista tehtävän itse valitsemallasi tavalla (eli käyttäen joko generaattorikoostetta tai "perinteistä" generaattoria).
+OBS: Det är upp till dig hur du implementerar denna funktion. Du kan använda en "traditionell" generator eller en generator comprehension lika väl.
 
 </programming-exercise>

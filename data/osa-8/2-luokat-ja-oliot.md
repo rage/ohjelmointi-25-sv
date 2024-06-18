@@ -14,42 +14,42 @@ Efter detta avsnitt
 
 </text-box>
 
-I föregående avsnitt arbetade vi med listor, tupler, ordlistor och strängar. Dessa är alla ganska speciella fall i Python-programmering. Pythons syntax har en unik, fördefinierad metod för att deklarera ett objekt som tillhör var och en av dessa typer:
+I föregående avsnitt arbetade vi med listor, tuplar, ordlistor och strängar. Dessa är alla ganska speciella fall i Python-programmering. Pythons syntax har en unik, fördefinierad metod för att deklarera ett objekt som tillhör var och en av dessa typer:
 
 ```python
-# Lista luodaan antamalla arvot hakasuluissa
+# Listor deklareras med hakparenteser
 lista = [1,2,3]
 
-# Merkkijonovakio tunnistetaan lainausmerkeistä
-mjono = "Moi kaikki!"
+# Strängar deklareras med citationstecken
+strang = "Hej alla!"
 
-# Sanakirja luodaan aaltosulkeilla
-sanakirja = {"yksi": 1, "kaksi:": 2}
+# Ordlistor deklareras med klammerparenteser
+ordlista = {"ett": 1, "två:": 2}
 
-# Tuplessa arvot ovat sulkeissa
-oma_tuple = (1,2,3)
+# tuplar deklareras med parenteser
+tupel = (1,2,3)
 ```
 
 När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk genom Fraction-klassen.
 
 ```python
-# Tuodaan käyttöön luokka Fraction modulista fractions
+# vi använder klassen Fraction från modulen fractions
 from fractions import Fraction
 
-# Luodaan pari uutta murtolukuoliota
-puolikas = Fraction(1,2)
+# vi skapar några nya bråktal
+halv = Fraction(1,2)
 
-kolmasosa = Fraction(1,3)
+tredjedel = Fraction(1,3)
 
-kolmas = Fraction(3,11)
+tredje = Fraction(3,11)
 
 # Tulostetaan
-print(puolikas)
-print(kolmasosa)
-print(kolmas)
+print(halv)
+print(tredjedel)
+print(tredje)
 
 # Murtoluvuilla voi myös laskea
-print(puolikas + kolmasosa)
+print(halv + tredjedel)
 ```
 
 <sample-output>
@@ -79,13 +79,13 @@ Vi kan alltså använda ett objekt av typen `Fraction` för att komma åt tälja
 ```python
 from fractions import Fraction
 
-luku = Fraction(2,5)
+tal = Fraction(2,5)
 
-# Tulostetaan osoittaja
-print(luku.numerator)
+# Skriv ut täljaren
+print(tal.numerator)
 
-# ...ja sitten nimittäjä
-print(luku.denominator)
+# ... och sedan nämnaren
+print(tal.denominator)
 ```
 
 <sample-output>
@@ -102,12 +102,12 @@ På samma sätt innehåller objekt som skapats baserat på klassen `date` sina e
 ```python
 from datetime import date
 
-joulu = date(2020, 12, 24)
-juhannus = date(2020, 6, 20)
+jul = date(2020, 12, 24)
+midsommar = date(2020, 6, 20)
 
-# Tulostetaan kuukaudet molemmista
-print(joulu.month)
-print(juhannus.month)
+# Vi skriver ut bägges månad
+print(jul.month)
+print(midsommar.month)
 ```
 
 <sample-output>
@@ -124,19 +124,19 @@ Definitionen av klassen `date` innehåller deklarationer av variablerna `year`, 
 Att passera ett objekt som ett argument till en funktion borde vara bekant för dig vid det här laget eftersom vi har gjort det redan många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som passeras som argument infaller på en helg:
 
 ```python
-def onko_viikonloppu(paiva: date):
-    viikonpaiva = paiva.isoweekday()
-    return viikonpaiva == 6 or viikonpaiva == 7
+def redan_veckoslut(dag: date):
+    veckodag = dag.isoweekday()
+    return veckodag == 6 or veckodag == 7
 ```
 
 Denna funktion använder metoden [isoweekday](https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday), som definieras i klassdefinitionen för klassen date, och returnerar ett heltalsvärde på det sättet att om det angivna datumet är en måndag returnerar den 1, och om det är en tisdag returnerar den 2, och så vidare.
 
 ```python
-joulu = date(2020, 12, 24)
-juhannus = date(2020, 6, 20)
+jul = date(2020, 12, 24)
+midsommar = date(2020, 6, 20)
 
-print(onko_viikonloppu(joulu))
-print(onko_viikonloppu(juhannus))
+print(redan_veckoslut(jul))
+print(redan_veckoslut(midsommar))
 ```
 
 <sample-output>
@@ -151,54 +151,54 @@ True
 När du arbetar med ett objekt av typen `date` kanske du märker att det finns en liten skillnad mellan hur variablerna i objektet åtkoms jämfört med hur metoderna som är kopplade till objekten åtkoms:
 
 ```python
-paiva = date(2020, 12, 24)
+dag = date(2020, 12, 24)
 
-# kutsutaan metodia
-viikonpaiva = paiva.isoweekday()
+# vi kallar metoden
+veckodag = dag.isoweekday()
 
-# viitataan olion muuttujaan
-kuukausi = paiva.month
+# vi använder en variabel
+manad = dag.month
 
-print("Viikonpäivä:", viikonpaiva)
-print("Kuukausi:", kuukausi)
+print("Veckodag:", veckodag)
+print("Månad:", kuukausi)
 ```
 
 <sample-output>
 
-Viikonpäivä: 4
-Kuukausi: 12
+Veckodag: 4
+Månad: 12
 
 </sample-output>
 
 Veckodagen som datumet infaller på är tillgänglig via metoden isoweekday:
 
 ```python
-viikonpaiva = paiva.isoweekday()
+veckodag = dag.isoweekday()
 ```
 
 Detta är en metodkallelse, alltså finns det parenteser efter namnet på metoden. Om du lämnar bort parenteserna uppstår det inte något fel, men resultatet blir konstigt:
 
 ```python
-viikonpaiva =  paiva.isoweekday
-print("Viikonpäivä:", viikonpaiva)
+veckodag =  dag.isoweekday
+print("Veckodag:", veckodag)
 ```
 
 <sample-output>
 
-Viikonpäivä: <built-in method isoweekday of datetime.date object at 0x10ed66450>
+Veckodag: <built-in method isoweekday of datetime.date object at 0x10ed66450>
 
 </sample-output>
 
 Månaden av ett date-objekt är en variabel, alltså kan det tillgivna värdet kommas åt med en referens.
 
 ```python
-kuukausi = paiva.month
+manad = dag.month
 ```
 
 Lägg märke till att det inte finns parenteser här. Att sätta in parenteser skulle orsaka ett fel:
 
 ```python
-kuukausi = paiva.month()
+manad = dag.month()
 ```
 
 <sample-output>
@@ -211,17 +211,17 @@ TypeError: 'int' object is not callable
 
 <programming-exercise name='Vuodet listaan' tmcname='osa08-03_vuodet_listaan'>
 
-Tee funktio `vuodet_listaan(paivamaarat: list)`, joka saa parametrikseen listan, joka sisältää `date`-tyyppisiä olioita. Funktio palauttaa uuden listan, jossa on päivämäärien _vuodet suuruusjärjestyksessä pienimmästä suurimpaan_.
+Skapa funktionen `lista_ar(datum: list)`, som får en lista med `date`-objekt som argument. Funktionen returnerar en ny lista, som innehåller _åren i den originella listan i kronologisk ordning_, från tidigast till äldst.
 
-Esimerkki funktion kutsumisesta:
+Ett exempel av funktionen:
 
 ```python
-paiva1 = date(2019, 2, 3)
-paiva2 = date(2006, 10, 10)
-paiva3 = date(1993, 5, 9)
+dag1 = date(2019, 2, 3)
+dag2 = date(2006, 10, 10)
+dag3 = date(1993, 5, 9)
 
-vuodet = vuodet_listaan([paiva1, paiva2, paiva3])
-print(vuodet)
+ar = lista_ar([dag1, dag2, dag3])
+print(ar)
 ```
 
 <sample-output>
@@ -235,62 +235,62 @@ print(vuodet)
 
 <programming-exercise name='Kauppalista' tmcname='osa08-04_kauppalista'>
 
-Tehtäväpohjassa on määritelty valmiiksi `Kauppalista`-luokka, jolla voidaan mallintaa yhtä kauppalistaa.
+I denna övningsbotten finns en färdigt definierad `Affarslista`-klass, som kan användas för att modellera en affärslista.
 
-Jos kauppalistaolio on tallennettu esimerkiksi muuttujaan `kauppalista`, sitä voidaan käsitellä seuraavan esimerkin mukaisesti:
+Antagandes att vi har ett `Affarslista`-objekt som refereras till i en variabel med namnet affarslista, kan objektet hanteras med följande metoder:
 
 ```python
 
-print(kauppalista.tuotteita())
-print(kauppalista.tuote(1))
-print(kauppalista.maara(1))
-print(kauppalista.tuote(2))
-print(kauppalista.maara(2))
+print(affarslista.mangden_foremal())
+print(affarslista.foremal(1))
+print(affarslista.mangd(1))
+print(affarslista.foremal(2))
+print(affarslista.mangd(2))
 
 ```
 
 <sample-output>
 
 2
-Banaanit
+Bananer
 4
-Maito
+Mjölk
 1
 
 </sample-output>
 
-Myös seuraava onnistuu:
+Även följande går:
 
 ```python
-# kauppalistalla tuotteet on indeksöity ykkösestä alkaen
-for i in range(1, kauppalista.tuotteita()+1):
-    tuote = kauppalista.tuote(i)
-    maara = kauppalista.maara(i)
-    print(f"{tuote}: {maara} kpl")
+# Föremålen på affärslistan är indexerade från 1
+for i in range(1, affarslista.mangden_foremal()+1):
+    foremal = affarslista.foremal(i)
+    mangd = affarslista.mangd(i)
+    print(f"{foremal}: {mangd} kpl")
 ```
 
 
 <sample-output>
 
-banaanit 4 kpl
-maito 1 kpl
+Bananer 4 st
+Mjölk 1 st
 
 </sample-output>
 
-Kauppalistat siis käyttäytyvät hieman listojen tavoin, mutta niitä käsitellään kuitenkin kauppalistan tarjoamien metodien kautta. Toisin kuin listoissa, kauppalistan tuotteet on numeroitu ykkösestä alkaen.
+Som du kan se fungerar en `Affarslista` ungefär som en vanlig lista, men den nås via de metoder som tillhandahålls av Affarslista-klassen. Till skillnad från vanliga Python-listor börjar indexeringen från 1, inte 0.
 
-Tee esimerkkejä hyödyntäen funktio `tuotteita_yhteensa(lista: Kauppalista)`, joka saa parametrikseen `Kauppalista`-tyyppisen olion. Funktio laskee listalla yhteensä olevien tuotteiden määrän ja palauttaa sen.
+Skapa en funktion med namnet `totala_mangd(lista: Affarslista)`, som tar ett objekt av typen `Affarslista` som sitt argument. Funktionen ska beräkna det totala antalet enheter i listan och returnera värdet.
 
-Huomaa, että kauppalistalla tuotteet indeksoidaan ykkösestä alkaen, ei nollasta. Voit testata ohjelmaasi esim. tällä esimerkkikoodilla:
+Du kan använda följande kod för att testa din funktion:
 
 ```python
 if __name__ == "__main__":
-    lista = Kauppalista()
-    lista.lisaa("banaanit", 10)
-    lista.lisaa("omenat", 5)
-    lista.lisaa("ananas", 1)
+    lista = Affarslista()
+    lista.tillagg("banaaner", 10)
+    lista.tillagg("appel", 5)
+    lista.tillagg("ananas", 1)
 
-    print(tuotteita_yhteensa(lista))
+    print(totala_mangd(lista))
 ```
 
 <sample-output>
@@ -299,6 +299,6 @@ if __name__ == "__main__":
 
 </sample-output>
 
-**Huom** koska luokan `Kauppalista` koodi on tehtäväpohjassa valmiina, ei koodissa tarvitse käyttää `import`-lausetta kuten edellisissä esimerkeissä, tehtävissä, jotka käyttävät Pythonin valmiita luokkia `Fraction` ja `date`.
+**OBS:** Definitionen av klassen Affarslista ingår redan i övningsmallen. Du behöver inte använda en `import`-sats för att importera den, till skillnad från i exemplen ovan med Python standardbiblioteksklasserna `Fraction` och `date`.
 
 </programming-exercise>

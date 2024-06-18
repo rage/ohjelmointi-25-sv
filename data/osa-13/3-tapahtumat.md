@@ -24,12 +24,12 @@ Det här programmet skriver ut information om alla händelser som skickas från 
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
 while True:
-    for tapahtuma in pygame.event.get():
-        print(tapahtuma)
-        if tapahtuma.type == pygame.QUIT:
+    for handelse in pygame.event.get():
+        print(handelse)
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -63,17 +63,17 @@ Detta program kan behandla händelser där användaren trycker på piltangenten 
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.KEYDOWN:
-            if tapahtuma.key == pygame.K_LEFT:
-                print("vasemmalle")
-            if tapahtuma.key == pygame.K_RIGHT:
-                print("oikealle")
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.KEYDOWN:
+            if handelse.key == pygame.K_LEFT:
+                print("vänster")
+            if handelse.key == pygame.K_RIGHT:
+                print("höger")
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -82,10 +82,10 @@ Konstanterna `pygame.K_LEFT` och `pygame.K_RIGHT` avser piltangenterna till vän
 Om användaren t.ex. trycker på piltangenten till höger två gånger, sedan den vänstra en gång och sedan den högra en gång till, skriver programmet ut
 
 ```x
-oikealle
-oikealle
-vasemmalle
-oikealle
+höger
+höger
+vänster
+höger
 ```
 
 Vi har nu alla verktyg som behövs för att flytta en karaktär, eller sprite, på skärmen till höger och vänster med piltangenterna. Följande kod kommer att uppnå detta:
@@ -94,25 +94,25 @@ Vi har nu alla verktyg som behövs för att flytta en karaktär, eller sprite, p
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 x = 0
-y = 480-robo.get_height()
+y = 480-robot.get_height()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.KEYDOWN:
-            if tapahtuma.key == pygame.K_LEFT:
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.KEYDOWN:
+            if handelse.key == pygame.K_LEFT:
                 x -= 10
-            if tapahtuma.key == pygame.K_RIGHT:
+            if handelse.key == pygame.K_RIGHT:
                 x += 10
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit()
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 ```
 
@@ -128,53 +128,53 @@ Programmet fungerar i övrigt ganska bra, men tangenten måste tryckas in igen v
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 x = 0
-y = 480-robo.get_height()
+y = 480-robot.get_height()
 
-oikealle = False
-vasemmalle = False
+hoger = False
+vanster = False
 
-kello = pygame.time.Clock()
+klocka = pygame.time.Clock()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.KEYDOWN:
-            if tapahtuma.key == pygame.K_LEFT:
-                vasemmalle = True
-            if tapahtuma.key == pygame.K_RIGHT:
-                oikealle = True
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.KEYDOWN:
+            if handelse.key == pygame.K_LEFT:
+                vanster = True
+            if handelse.key == pygame.K_RIGHT:
+                hoger = True
 
-        if tapahtuma.type == pygame.KEYUP:
-            if tapahtuma.key == pygame.K_LEFT:
-                vasemmalle = False
-            if tapahtuma.key == pygame.K_RIGHT:
-                oikealle = False
+        if handelse.type == pygame.KEYUP:
+            if handelse.key == pygame.K_LEFT:
+                vanster = False
+            if handelse.key == pygame.K_RIGHT:
+                hoger = False
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit()
 
-    if oikealle:
+    if hoger:
         x += 2
-    if vasemmalle:
+    if vanster:
         x -= 2
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (x, y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (x, y))
     pygame.display.flip()
 
-    kello.tick(60)
+    klocka.tick(60)
 ```
 
-Koden innehåller nu variablerna `till_hoger` och `till_vanster`. Dessa innehåller vetskap om huruvida spriten ska röra sig åt höger eller vänster vid ett givet tillfälle. När användaren trycker ner en piltangent blir värdet som lagras i den relevanta variabeln `True`. När tangenten släpps ändras värdet till `False`.
+Koden innehåller nu variablerna `hoger` och `vanster`. Dessa innehåller vetskap om huruvida spriten ska röra sig åt höger eller vänster vid ett givet tillfälle. När användaren trycker ner en piltangent blir värdet som lagras i den relevanta variabeln `True`. När tangenten släpps ändras värdet till `False`.
 
 Klockan används för att tidsbestämma spritens rörelser, så att de potentiellt sker 60 gånger per sekund. Om en piltangent trycks ned förflyttas spriten två pixlar åt höger eller vänster. Detta innebär att spriten rör sig 120 pixlar per sekund om tangenten hålls nedtryckt.
 
 <programming-exercise name='Neljä suuntaa' tmcname='osa13-11_nelja_suuntaa'>
 
-Tee ohjelma, jossa pelaaja pystyy ohjaamaan robottia neljään suuntaan nuolinäppäimillä. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program där spelaren kan flytta en robot i fyra riktningar med piltangenterna på tangentbordet. Slutresultatet ska se ut så här:
 
 <img src="pygame_nelja_suuntaa.gif">
 
@@ -182,7 +182,7 @@ Tee ohjelma, jossa pelaaja pystyy ohjaamaan robottia neljään suuntaan nuolinä
 
 <programming-exercise name='Neljä seinää' tmcname='osa13-12_nelja_seinaa'>
 
-Paranna edellistä ohjelmaa niin, että robotti ei pysty menemään ikkunan ulkopuolelle mistään reunasta. Ohjelman suorituksen tulee näyttää tältä:
+Förbättra programmet i den föregående övningen så att roboten inte kan passera utanför fönstret i någon av de fyra riktningarna. Slutresultatet ska se ut så här:
 
 <img src="pygame_nelja_seinaa.gif">
 
@@ -190,7 +190,7 @@ Paranna edellistä ohjelmaa niin, että robotti ei pysty menemään ikkunan ulko
 
 <programming-exercise name='Kaksi pelaajaa' tmcname='osa13-13_kaksi_pelaajaa'>
 
-Tee ohjelma, jossa kaksi pelaajaa voi ohjata omia robottejaan. Toinen pelaaja käyttää nuolinäppäimiä ja toinen esimerkiksi w-s-a-d. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program där två spelare styr var sin robot. En av spelarna ska använda piltangenterna medan den andra kan använda t.ex. w-a-s-d-tangenterna. Slutresultatet ska se ut så här:
 
 <img src="pygame_kaksi_pelaajaa.gif">
 
@@ -204,24 +204,24 @@ Följande kod reagerar på händelser där en musknapp trycks ned medan marköre
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.MOUSEBUTTONDOWN:
-            print("painoit nappia", tapahtuma.button, "kohdassa", tapahtuma.pos)
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.MOUSEBUTTONDOWN:
+            print("du tryckte knappen", handelse.button, "på lokationen", handelse.pos)
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
 Exekveringen av detta program borde mer eller mindre se ut så här:
 
 ```x
-painoit nappia 1 kohdassa (82, 135)
-painoit nappia 1 kohdassa (369, 135)
-painoit nappia 1 kohdassa (269, 297)
-painoit nappia 3 kohdassa (515, 324)
+du tryckte knappen 1 på lokationen (82, 135)
+du tryckte knappen 1 på lokationen (369, 135)
+du tryckte knappen 1 på lokationen (269, 297)
+du tryckte knappen 3 på lokationen (515, 324)
 ```
 
 Knapp nummer 1 avser vänster musknapp och knapp nummer 3 avser höger musknapp.
@@ -232,21 +232,21 @@ Nästa program kombinerar hantering av mushändelser och ritning av en bild på 
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.MOUSEBUTTONDOWN:
-            x = tapahtuma.pos[0]-robo.get_width()/2
-            y = tapahtuma.pos[1]-robo.get_height()/2
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.MOUSEBUTTONDOWN:
+            x = handelse.pos[0]-robot.get_width()/2
+            y = handelse.pos[1]-robot.get_height()/2
 
-            naytto.fill((0, 0, 0))
-            naytto.blit(robo, (x, y))
+            fonster.fill((0, 0, 0))
+            fonster.blit(robot, (x, y))
             pygame.display.flip()
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit()
 ```
 
@@ -260,40 +260,40 @@ Följande program innehåller en animation där robotspriten följer muspekaren.
 import pygame
 
 pygame.init()
-naytto = pygame.display.set_mode((640, 480))
+fonster = pygame.display.set_mode((640, 480))
 
-robo = pygame.image.load("robo.png")
+robot = pygame.image.load("robo.png")
 
-robo_x = 0
-robo_y = 0
-kohde_x = 0
-kohde_y = 0
+robot_x = 0
+robot_y = 0
+mal_x = 0
+mal_y = 0
 
-kello = pygame.time.Clock()
+klocka = pygame.time.Clock()
 
 while True:
-    for tapahtuma in pygame.event.get():
-        if tapahtuma.type == pygame.MOUSEMOTION:
-            kohde_x = tapahtuma.pos[0]-robo.get_width()/2
-            kohde_y = tapahtuma.pos[1]-robo.get_height()/2
+    for handelse in pygame.event.get():
+        if handelse.type == pygame.MOUSEMOTION:
+            mal_x = handelse.pos[0]-robot.get_width()/2
+            mal_y = handelse.pos[1]-robot.get_height()/2
 
-        if tapahtuma.type == pygame.QUIT:
+        if handelse.type == pygame.QUIT:
             exit(0)
 
-    if robo_x > kohde_x:
-        robo_x -= 1
-    if robo_x < kohde_x:
-        robo_x += 1
-    if robo_y > kohde_y:
-        robo_y -= 1
-    if robo_y < kohde_y:
-        robo_y += 1
+    if robot_x > mal_x:
+        robot_x -= 1
+    if robot_x < mal_x:
+        robot_x += 1
+    if robot_y > mal_y:
+        robot_y -= 1
+    if robot_y < mal_y:
+        robot_y += 1
 
-    naytto.fill((0, 0, 0))
-    naytto.blit(robo, (robo_x, robo_y))
+    fonster.fill((0, 0, 0))
+    fonster.blit(robot, (robot_x, robot_y))
     pygame.display.flip()
 
-    kello.tick(60)
+    klocka.tick(60)
 ```
 
 Exekveringen av programmet borde se ut så här: 
@@ -302,7 +302,7 @@ Exekveringen av programmet borde se ut så här:
 
 <programming-exercise name='Robotti ja hiiri' tmcname='osa13-14_robotti_ja_hiiri'>
 
-Tee ohjelma, jossa robotti seuraa hiirtä niin, että robotin keskikohta on aina hiiren kohdalla. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program där roboten följer muspekaren så att robotens mittpunkt alltid är direkt vid muspekaren. Slutresultatet ska se ut så här:
 
 <img src="pygame_robotti_hiiri.gif">
 
@@ -310,7 +310,7 @@ Tee ohjelma, jossa robotti seuraa hiirtä niin, että robotin keskikohta on aina
 
 <programming-exercise name='Robotin paikka' tmcname='osa13-15_robotin_paikka'>
 
-Tee ohjelma, jossa robotti on satunnaisessa paikassa ikkunassa. Kun pelaaja painaa hiirellä robotista, se siirtyy aina uuteen paikkaan. Ohjelman suorituksen tulee näyttää tältä:
+Skriv ett program där roboten dyker upp på en slumpmässig plats i fönstret. När spelaren klickar på roboten med musen förflyttar sig roboten till en ny plats. Slutresultatet ska se ut så här:
 
 <img src="pygame_robotti_paikka.gif">
 
