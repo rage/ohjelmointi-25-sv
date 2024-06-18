@@ -1,5 +1,5 @@
 ---
-path: '/osa-7/6-lisaa-pythonista'
+path: '/osa-7/6-funktionaliteter-python'
 title: 'Flera funktionaliteter i Python'
 hidden: false
 ---

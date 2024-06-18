@@ -1,5 +1,5 @@
 ---
-path: '/osa-1/2-tietoa-kayttajalta'
+path: '/osa-1/2-info-fran-anvandaren'
 title: 'Information från användaren'
 hidden: false
 ---

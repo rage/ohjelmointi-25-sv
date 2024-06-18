@@ -1,5 +1,5 @@
 ---
-path: '/osa-7/2-satunnaisuus'
+path: '/osa-7/2-slumpmassighet'
 title: 'Slumpmässighet'
 hidden: false
 ---

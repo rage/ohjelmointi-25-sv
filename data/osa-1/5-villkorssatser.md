@@ -1,5 +1,5 @@
 ---
-path: "/osa-1/5-ehtorakenne"
+path: "/osa-1/5-villkorssatser"
 title: "If-satser"
 hidden: false
 ---

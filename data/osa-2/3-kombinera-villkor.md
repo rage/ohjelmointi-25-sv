@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/3-ehtojen-yhdistäminen'
+path: '/osa-2/3-kombinera-villkor'
 title: 'Kombinera villkor'
 hidden: false
 ---

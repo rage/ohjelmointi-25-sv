@@ -1,5 +1,5 @@
 ---
-path: '/osa-3/1-ehdot-silmukoissa'
+path: '/osa-3/1-loopar-med-villkor'
 title: 'Loopar med villkor'
 hidden: false
 ---

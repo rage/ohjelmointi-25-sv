@@ -1,5 +1,5 @@
 ---
-path: "/osa-1/3-lisaa-muuttujista"
+path: "/osa-1/3-mer-om-variabler"
 title: "Mer om variabler"
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-7/3-aikojen-kasittely'
+path: '/osa-7/3-tid-datum'
 title: 'Tid och datum'
 hidden: false
 ---

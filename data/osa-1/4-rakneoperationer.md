@@ -1,5 +1,5 @@
 ---
-path: "/osa-1/4-laskentaa-luvuilla"
+path: "/osa-1/4-rakneoperationer"
 title: "Räkneoperationer"
 hidden: false
 ---

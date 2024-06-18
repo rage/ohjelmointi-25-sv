@@ -1,5 +1,5 @@
 ---
-path: '/osa-4/4-silmukat-ja-iterointi'
+path: '/osa-4/4-iteration'
 title: 'Iteration'
 hidden: false
 ---

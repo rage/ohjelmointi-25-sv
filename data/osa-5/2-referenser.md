@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/2-viittaukset'
+path: '/osa-5/2-referenser'
 title: 'Referenser'
 hidden: false
 ---

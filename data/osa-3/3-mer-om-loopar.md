@@ -1,5 +1,5 @@
 ---
-path: '/osa-3/3-lisaa-silmukoista'
+path: '/osa-3/3-mer-om-loopar'
 title: 'Mera om loopar'
 hidden: false
 ---

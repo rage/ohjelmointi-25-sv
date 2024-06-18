@@ -1,5 +1,5 @@
 ---
-path: '/osa-6/1-tiedostojen-lukeminen'
+path: '/osa-6/1-lasa-filer'
 title: 'Läsa filer'
 hidden: false
 ---

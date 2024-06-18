@@ -1,5 +1,5 @@
 ---
-path: '/osa-4/5-tulostuksen-muotoilu'
+path: '/osa-4/5-utskrift'
 title: 'Formatera utskrift'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/4-yksinkertainen-silmukka'
+path: '/osa-2/4-loopar'
 title: 'Enkla loopar'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/1-lisaa-listoja'
+path: '/osa-5/1-mer-om-listor'
 title: 'Mer om listor'
 hidden: false
 ---

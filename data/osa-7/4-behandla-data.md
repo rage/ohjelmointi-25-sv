@@ -1,5 +1,5 @@
 ---
-path: '/osa-7/4-datan-kasittely'
+path: '/osa-7/4-behandla-data'
 title: 'Behandla data'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-6/2-tiedostojen-kirjoittaminen'
+path: '/osa-6/2-skriva-filer'
 title: 'Skriva filer'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-7/5-omat-moduulit'
+path: '/osa-7/5-egna-moduler'
 title: 'Skapa dina egna moduler'
 hidden: false
 ---

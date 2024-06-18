@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/1-ohjelmoinnin-termeja'
+path: '/osa-2/1-terminologi'
 title: 'Programmeringsterminologi'
 ---
 

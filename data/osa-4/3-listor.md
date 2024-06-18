@@ -1,5 +1,5 @@
 ---
-path: '/osa-4/3-listat'
+path: '/osa-4/3-listor'
 title: 'Listor'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-3/4-omat-funktiot'
+path: '/osa-3/4-definiera-funktioner'
 title: 'Definiera funktioner'
 hidden: false
 ---

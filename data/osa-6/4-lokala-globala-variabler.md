@@ -1,5 +1,5 @@
 ---
-path: '/osa-6/4-paikalliset-muuttujat'
+path: '/osa-6/4-lokala-globala-variabler'
 title: 'Lokala och globala variabler'
 hidden: false
 ---

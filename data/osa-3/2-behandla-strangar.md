@@ -1,5 +1,5 @@
 ---
-path: '/osa-3/2-merkkijonojen-kasittely'
+path: '/osa-3/2-behandla-strangar'
 title: 'Behandla strängar'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/3-dictionary'
+path: '/osa-5/3-lexikon'
 title: 'Lexikon'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/osa-1/1-ohjelmoinnin-aloittaminen'
+path: '/osa-1/1-introduktion'
 title: 'Introduktion'
 hidden: false
 ---

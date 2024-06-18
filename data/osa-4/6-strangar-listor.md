@@ -1,5 +1,5 @@
 ---
-path: '/osa-4/6-lisaa-rakenteista'
+path: '/osa-4/6-strangar-listor'
 title: 'Mera strängar och listor'
 hidden: false
 ---

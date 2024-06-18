@@ -1,5 +1,5 @@
 ---
-path: '/osa-6/3-virheet'
+path: '/osa-6/3-fel'
 title: 'Förbered dig på fel'
 hidden: false
 ---
