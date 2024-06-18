@@ -239,7 +239,7 @@ Basidén är att huvudfunktionen "lagrar" den data som behandlas av programmet. 
 
 Om siffrorna behövs i någon funktion, ger vi variabeln som argument, vilket vi ser med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen ger upphov till ett resultat som behövs på ett annat ställe i programmet, returneras det – så som i funktionerna `indata_fran_anvandare` och `analysera`.
 
-Som alltid när man programmerar, finns det flera sätt att uppnå likadan funktionalitet. Det skulle vara möjligt att använda nyckelordet `global` och låta funktionerna direkt komma åt variabeln `siffror` som tilldelats i huvudfunktionen. Det finns bra orsaker till att det här inte är en god idé. Om flera funktioner kan komma åt och möjligtvis ändra på en variabel, blir det snabbt svårt att hålla koll på programmets status och programmet blir oförutsägbart. Det här märks speciellt då antalet funktioner ökar, vilket det gör oundvikligen i större programmeringsprojekt.
+Som alltid när man programmerar, finns det flera sätt att uppnå likadan funktionalitet. Det skulle vara möjligt att använda nyckelordet `global` och låta funktionerna direkt komma åt variabeln `siffror` som tilldelats i huvudfunktionen. Det finns bra orsaker till att det här [inte är en god idé](https://softwareengineering.stackexchange.com/q/148108). Om flera funktioner kan komma åt och möjligtvis ändra på en variabel, blir det snabbt svårt att hålla koll på programmets status och programmet blir oförutsägbart. Det här märks speciellt då antalet funktioner ökar, vilket det gör oundvikligen i större programmeringsprojekt.
 
 Sammanfattningsvis kan man konstatera att det är bäst att använda argument och returnera värden när man arbetar med funktioner.
 

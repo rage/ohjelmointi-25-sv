@@ -523,7 +523,7 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopieras och vart man slutligen lagrar värdet som getts till funktionen. Visualiseringsverktyget kan hjälpa. P.g.a. storleken av sudokut kan vyn dock vara mer råddig än vanligtvis.
+Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopieras och vart man slutligen lagrar värdet som getts till funktionen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) kan hjälpa. P.g.a. storleken av sudokut kan vyn dock vara mer råddig än vanligtvis.
 
 </programming-exercise>
 

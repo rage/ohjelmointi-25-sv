@@ -13,13 +13,13 @@ Efter den här delen
 
 </text-box>
 
-I den här delen ser vi på modulen `random` i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet med ett slumpmässigt element.
+I den här delen ser vi på [modulen `random`](https://docs.python.org/3/library/random.html) i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet med ett slumpmässigt element.
 
-Delarna i den här modulen innehåller flera länkar till standardbibliotekets dokumentation. Vi rekommenderar att du följer länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
+Delarna i den här modulen innehåller flera länkar till [standardbibliotekets dokumentation](https://docs.python.org/3/library/). Vi rekommenderar att du följer länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
 
 ## Skapa ett slumpmässigt tal
 
-Funktionen `randint(a, b)` returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Till exempel det här programmet fungerar som en normal tärning:
+Funktionen [`randint(a, b)`](https://docs.python.org/3/library/random.html#random.randint) returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Till exempel det här programmet fungerar som en normal tärning:
 
 ```python
 from random import randint
@@ -65,7 +65,7 @@ Obs! Det är värt att notera att funktionen `randint` fungerar lite olikt än t
 
 ## Flera slumpmässighetsfunktioner
 
-Funktionen `shuffle` blandar elementen i den datastruktur som ges som argument. Till exempel följande program blandar en lista med ord:
+Funktionen [`shuffle`](https://docs.python.org/3/library/random.html#random.shuffle) blandar elementen i den datastruktur som ges som argument. Till exempel följande program blandar en lista med ord:
 
 ```python
 from random import shuffle
@@ -138,7 +138,7 @@ print(rad)
 
 Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Listan blandas sedan, varefter de första sju siffrorna utgör veckans vinnande rad. Nu behöver vi ingen loop.
 
-Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen `sample`. Den returnerar ett slumpmässigt val av en specifik storlek från en given datastruktur:
+Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen [`sample`](https://docs.python.org/3/library/random.html#random.sample). Den returnerar ett slumpmässigt val av en specifik storlek från en given datastruktur:
 
 ```python
 from random import sample
@@ -177,9 +177,9 @@ for siffra in lottorad(7, 1, 40):
 
 ## Varifrån kommer dessa slumpmässiga siffror ifrån?
 
-Funktionaliteten i `random`-modulen är baserad på en algoritm som skapar slumpmässiga siffror på basis av ett specifikt startvärde och några matematiska operationer. Startvärdet kallas ofta seed value.
+Funktionaliteten i [`random`-modulen](https://docs.python.org/3/library/random.html) är baserad på en algoritm som skapar slumpmässiga siffror på basis av ett specifikt startvärde och några matematiska operationer. Startvärdet kallas ofta seed value.
 
-Vi kan själva ge ett sådant värde med `seed`-funktionen:
+Vi kan själva ge ett sådant värde med [`seed`](https://docs.python.org/3/library/random.html#random.seed)-funktionen:
 
 ```python
 from random import randint, seed
@@ -195,7 +195,7 @@ Om vi har funktioner som baserar sig på slumpmässighet och har valt ett seed-v
 
 För att vara korrekt, är de siffor som `random`-modulen ger inte i verkligheten slumpmässiga. Istället är de skenbart slumpmässiga (pseudorandom). Datorers funktionalitet är förutsebar och i en ideal situation kan man exakt bestämma hur de fungerar. Därmed är det mycket svårt att skapa sant slumpmässiga tal med en dator. I flera situationer räcket skenbart slumpmässiga tal. När sant slumpmässiga tal behövs skapas seed-värdet på basis av någon yttre källa som radioaktiv bakgrundsstrålning, ljudnivå eller lavalampor.
 
-För ytterligare information om slumpmässighet, se random.org.
+För ytterligare information om slumpmässighet, se [random.org](https://www.random.org/randomness/).
 
 </text-box>
 
@@ -264,7 +264,7 @@ n?b0a7ey
 
 Vi skapar nu några funktioner som vi kan använda i spel som kräver en tärning.
 
-Istället för en normal tärning använder vi icke-transitiva tärningar.
+Istället för en normal tärning använder vi icke-transitiva tärningar. Se den här [artikeln](https://singingbanana.com/dice/article.htm) och [videon](https://youtu.be/LrIp6CKUlH8) vid behov.
 
 Vi har tre tärningar:
 

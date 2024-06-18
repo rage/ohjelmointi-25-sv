@@ -476,7 +476,7 @@ Idén är att huvudfunktionen "lagrar" all data som behandlas av programmet. I d
 
 Om det här behövs i en funktion ges det som ett argument. Det här sker med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen resulterar i data som behövs på annat håll i programmet, returnerar funktionen det. Det här sparas i en variabel i huvudfunktionen. Det här sker med funktionerna `indata_fran_anvandare` och `analysera`.
 
-Du kunde använda den globala variabeln siffror från huvudfunktionen direkt i hjälpfunktionerna. Vi har redan gått igenom varför det är en dålig idé, men här följer ännu en annan förklaring. Om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
+Du kunde använda den globala variabeln `siffror` från huvudfunktionen direkt i hjälpfunktionerna. Vi har redan gått igenom varför det är en [dålig idé](https://softwareengineering.stackexchange.com/q/148108), men här följer ännu en annan förklaring. Om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
 
 Att skicka data ut och in från funktioner gör man alltså helst med hjälp av argument och return-värden.
 

@@ -258,7 +258,7 @@ Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för 
 
 I och med att värdet på `siffra` minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
 
-Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors visualiseringsverktyg för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
+Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors [visualiseringsverktyg](https://pythontutor.com/visualize.html) för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
 
 <in-browser-programming-exercise name="Multiplikationstabell" tmcname="osa03-15b_kertotaulut">
 

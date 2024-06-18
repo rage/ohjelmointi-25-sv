@@ -346,9 +346,9 @@ Den mellersta bokstaven är B
 
 <in-browser-programming-exercise name="Gåvoskatt" tmcname="osa02-14_lahjaverolaskuri" height="500px">
 
-Enligt skattemyndigheten är en gåva sådan egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
+[Enligt skattemyndigheten](https://www.vero.fi/sv/privatpersoner/egendom/gava/) är en gåva sådan egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
 
-När gåvan kommer från en nära släkting, räknas gåvoskatten enligt följande tabell:
+När gåvan kommer från en nära släkting, räknas gåvoskatten [enligt följande tabell](https://www.vero.fi/sv/privatpersoner/egendom/gava/g%C3%A5voskatter%C3%A4knaren/):
 
 Gåvans värde        | Skatt vid nedre gränsen | Skatteprocent för överstigande andel
 :------------------:|:-----------------------:|:-----------------------------------:

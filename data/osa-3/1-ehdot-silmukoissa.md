@@ -304,7 +304,7 @@ Debuggning med hjälp av `print`-satsen nämndes några gånger under förra mod
 
 Därför är det nu dags att använda dig av `print`-satser för att debugga – om du inte redan har gjort det. Du hittar instruktioner i den första och fjärde delen av den föregående modulen.
 
-Vid sidan om `print`-satser finns även andra verktyg som kan använda för debuggning. Ett av dem är visualiseringsverktyget på Python Tutor -webbsidan. Verktyget låter dig köra din kod rad för rad och visar också de värden som är lagrade i variabler vid varje steg.
+Vid sidan om `print`-satser finns även andra verktyg som kan använda för debuggning. Ett av dem är [visualiseringsverktyget](https://pythontutor.com/visualize.html) på [Python Tutor](https://pythontutor.com/) -webbsidan. Verktyget låter dig köra din kod rad för rad och visar också de värden som är lagrade i variabler vid varje steg.
 
 Koden – med några problem – från den förra delen visualiseras med Python Tutor i följande bild:
 
@@ -312,7 +312,7 @@ Koden – med några problem – från den förra delen visualiseras med Python 
 
 Den röda pilen visar var programmet körs för tillfället. Verktyget visar vad som har skrivits ut fram till pilen och visar också vilka värden varje variabel har i varje steg.
 
-Det enda du behöver för att köra visualiseringsverktyget är att kopiera och klistra in din kod i verktygets kodfönster. Verktyget har en del begränsningar jämfört med den Python-version som används under den här kursen. Om du stöter på konstiga felmeddelanden kan det löna sig att använda någon annan metod för att debugga.
+Det enda du behöver för att köra visualiseringsverktyget är att kopiera och klistra in din kod i verktygets [kodfönster](https://pythontutor.com/visualize.html). Verktyget har en del begränsningar jämfört med den Python-version som används under den här kursen. Om du stöter på konstiga felmeddelanden kan det löna sig att använda någon annan metod för att debugga.
 
 De som har sysslat med programmering en längre tid använder sällan visualiseringsverktyg men för en nybörjare kan verktyget verkligen vara till hjälp. Det är osannolikt att man av en slump får något program att fungera. Det är nödvändigt att man som programmerare förstår vilka värden ens programkod skapar vid ett visst skede medan programmet körs. Om de värden som lagras i variabler inte är sådana som man förväntar sig, finns det högst sannolikt en bugg i programmet.
 

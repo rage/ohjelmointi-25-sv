@@ -727,9 +727,9 @@ I vanliga fall är strängar vänsterjusterade, men med tecknet `>` kan man just
 När siffror skrivs ut är logiken motsatt:
 
 ```python
-luku = 42
-print(f"{luku:10}fortsätter")
-print(f"{luku:<10}fortsätter")
+siffra = 42
+print(f"{siffra:10}fortsätter")
+print(f"{siffra:<10}fortsätter")
 ```
 
 <sample-output>
@@ -893,7 +893,7 @@ Bulldeg, tillagningstid 60 min
 
 <programming-exercise name='Stadscyklar' tmcname='osa06-09_kaupunkipyorat'>
 
-I den här uppgiften skapar vi några funktioner, med vilka vi kan inspektera en fil med information om stadscyklars parkeringsstationer.
+I den här uppgiften skapar vi några funktioner, med vilka vi kan inspektera en fil med information om [stadscyklars](https://www.hsl.fi/sv/stadscyklar) parkeringsstationer.
 
 Så här ser filerna ut:
 

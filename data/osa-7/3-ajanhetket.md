@@ -16,7 +16,7 @@ Efter den här delen
 
 ## Objektet datetime
 
-Pythons `datetime`-modul innehåller funktionen `now`, som returnerar ett `datetime`-objekt med det nuvarande datumet och tidpunkten. Så här ser det normalt ut när man skriver ut ett `datetime`-objekt:
+Pythons [`datetime`-modul](https://docs.python.org/3/library/datetime.html) innehåller funktionen [`now`](https://docs.python.org/3/library/datetime.html#datetime.datetime.now), som returnerar ett `datetime`-objekt med det nuvarande datumet och tidpunkten. Så här ser det normalt ut när man skriver ut ett `datetime`-objekt:
 
 ```python
 from datetime import datetime
@@ -118,7 +118,7 @@ Det är ännu 37 dagar till midsommar
 
 </sample-output>
 
-Obs! Resultatet för en subtraktion med `datetime`-objekt är ett `timedelta`-objekt. Det är inte lika flexibelt som `datetime`-objektet. Du kan till exempel komma åt antalet dagar i ett `timedelta`-objekt, men inte antalet år, eftersom längden på ett år varierar. Ett `timedelta`-objekt innehåller attributen `days`, `seconds` och `microseconds`. Andra storheter kan ges som argument och de konverteras automatiskt till korrekt format.
+Obs! Resultatet för en subtraktion med `datetime`-objekt är ett [`timedelta`](https://docs.python.org/3/library/datetime.html#timedelta-objects)-objekt. Det är inte lika flexibelt som `datetime`-objektet. Du kan till exempel komma åt antalet dagar i ett `timedelta`-objekt, men inte antalet år, eftersom längden på ett år varierar. Ett `timedelta`-objekt innehåller attributen `days`, `seconds` och `microseconds`. Andra storheter kan ges som argument och de konverteras automatiskt till korrekt format.
 
 Addition med `datetime`- och `timedelta`-objekt är också möjligt. Resultatet är ett `datetime`-objekt där det specificerade antalet dagar (eller veckor, sekunder o.s.v.) är adderade:
 
@@ -198,7 +198,7 @@ Programmet ska kontrollera att
 
 Kontrolltecknet får man genom att dividera den siffra som består av födelsetiden och -numret med 31. Resten av denna operationen indikerar från vilket index i strängen `0123456789ABCDEFHJKLMNPRSTUVWXY` kontrolltecknet tas ifrån. Om resten är t.ex. 12, är kontrolltecknet vid index 12, dvs. `C`.
 
-Se mer på webbplatsen för Myndigheten för digitalisering och befolkningsdata.
+Se mer på webbplatsen för [Myndigheten för digitalisering och befolkningsdata](https://dvv.fi/sv/personbeteckning).
 
 Obs! Se till att du inte delar din egen personbeteckning av misstag, t.ex. om du frågar om hjälp när du löser den här uppgiften.
 
@@ -212,7 +212,7 @@ För att underlätta testandet listas några valida personbeteckningar nedan:
 
 ## Formatera tid och datum
 
-Modulen `datetime` innehåller metoden `strftime` som kan användas för att formatera hur ett datum representeras som sträng. Till exempel följande kodsnutt kommer att skriva ut det nuvarande datumet i formatet `dd.mm.åååå` och därefter datumet och tiden i ett annat format:
+Modulen `datetime` innehåller metoden [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime) som kan användas för att formatera hur ett datum representeras som sträng. Till exempel följande kodsnutt kommer att skriva ut det nuvarande datumet i formatet `dd.mm.åååå` och därefter datumet och tiden i ett annat format:
 
 ```python
 from datetime import datetime
@@ -227,7 +227,7 @@ print(tid.strftime("%d.%m.%Y"))
 
 </sample-output>
 
-Tidsformatering använder specifika tecken för att indikera ett visst format. Här är ett antal tecken (flera finns i Pythons dokumentation):
+Tidsformatering använder specifika tecken för att indikera ett visst format. Här är ett antal tecken (flera finns i [Pythons dokumentation](https://docs.python.org/3/library/time.html#time.strftime)):
 
 Förkortning | Betydelse
 :-----------|:---------
@@ -240,7 +240,7 @@ Förkortning | Betydelse
 
 Du kan också specificera vilket tecken som används för att skilja elementen i ett datum, så som du såg i exemplet ovan.
 
-Formatering för `datetime` fungerar också åt det andra hållet, det vill säga om du tar emot ett datum som en sträng från en användare och vill få det i `datetime`-format. Använd då metoden `strptime`:
+Formatering för `datetime` fungerar också åt det andra hållet, det vill säga om du tar emot ett datum som en sträng från en användare och vill få det i `datetime`-format. Använd då metoden [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime):
 
 ```python
 from datetime import datetime

@@ -536,7 +536,7 @@ print(s)
 
 Observera att det här också gäller för lexikon som getts som argument.
 
-Använd visualiseringsverktyget om du stöter på problem.
+Använd [visualiseringsverktyget](https://pythontutor.com/visualize.html) om du stöter på problem.
 
 </programming-exercise>
 

@@ -685,6 +685,6 @@ svar 4
 
 ## Mer om att behandla listor
 
-Det finns flera sätt till att använda listor i Python. Om du vill läsa mera är Pythons dokumentation ett bra ställe att börja med.
+Det finns flera sätt till att använda listor i Python. Om du vill läsa mera är [Pythons dokumentation](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) ett bra ställe att börja med.
 
 <quiz id="3974e1bb-cd83-52b3-85d2-a16223773ce7"></quiz>

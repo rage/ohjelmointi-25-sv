@@ -16,7 +16,7 @@ Efter den här delen
 
 ## Läsa CSV-filer
 
-CSV är ett så enkelt format att vi tills vidare har behandlat dessa filer med självskriven kod. Det finns däremot en färdig modul för CSV-filer i Pythons standardbibliotek: `csv`. Modulen fungerar så här:
+CSV är ett så enkelt format att vi tills vidare har behandlat dessa filer med självskriven kod. Det finns däremot en färdig modul för CSV-filer i Pythons standardbibliotek: [`csv`](https://docs.python.org/3/library/csv.html). Modulen fungerar så här:
 
 ```python
 import csv
@@ -62,7 +62,7 @@ Om vi skulle använda `split`-funktionen, skulle själva strängarna också dela
 
 ## Läsa JSON-filer
 
-CSV är bara ett maskinläsbart dataformat. JSON är ett annat sådant format och det används ofta när data överförs mellan olika program.
+CSV är bara ett maskinläsbart dataformat. [JSON](https://www.json.org/json-sv.html) är ett annat sådant format och det används ofta när data överförs mellan olika program.
 
 JSON-filer är textfiler som följer en strikt syntax, som eventuellt är lite mindre människovänligt än CSV-formatet. Följande exempel använder filen `kurser.json`, som innehåller information om några kurser:
 
@@ -89,7 +89,7 @@ JSON-filer är textfiler som följer en strikt syntax, som eventuellt är lite m
 
 Strukturen hos en JSON-fil kanske ser bekant ut. JSON-filen ser ut som en Python-lista som innehåller tre Python-lexikon.
 
-Standardbiblioteket innehåller `json`-modulen som kan användas för att behandla JSON-filer. Funktionen `loads` tar emot ett argument som innehåller data i JSON-format och konverterar den till Pythons egen datastruktur. När vi använder `kurser.json` i koden nedan…
+Standardbiblioteket innehåller [`json`-modulen](https://docs.python.org/3/library/json.html) som kan användas för att behandla JSON-filer. Funktionen `loads` tar emot ett argument som innehåller data i JSON-format och konverterar den till Pythons egen datastruktur. När vi använder `kurser.json` i koden nedan…
 
 ```python
 import json
@@ -164,7 +164,7 @@ Hobbyerna ska vara i samma ordning som i JSON-filen.
 
 ## Hämta en fil från internet
 
-Standardbiblioteket i Python innehåller också moduler som kan användas för att hantera innehåll på internet. En nyttig funktion är `urllib.request.urlopen`. Det lönar sig att bekanta sig med modulen som helhet, men följande exempel borde räcka till för att få en insikt i hur funktionen fungerar. Den kan användas för att hämta data från internet, för vidare behandling i ditt program.
+Standardbiblioteket i Python innehåller också moduler som kan användas för att hantera innehåll på internet. En nyttig funktion är [`urllib.request.urlopen`](https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen). Det lönar sig att bekanta sig med modulen som helhet, men följande exempel borde räcka till för att få en insikt i hur funktionen fungerar. Den kan användas för att hämta data från internet, för vidare behandling i ditt program.
 
 Följande kodstunn skriver ut innehållet från huvudsidan för Helsingfors universitet:
 
@@ -226,7 +226,7 @@ sudo "./Install Certificates.command
 
 Sökvägen i `cd`-kommandot beror på din Python-version.
 
-Här hittar du flera möjliga lösningar.
+[Här](https://stackoverflow.com/q/27835619) hittar du flera möjliga lösningar.
 
 Du kan testa på följande:
 
@@ -291,7 +291,7 @@ Värdena bestäms enligt följande:
 
 Obs! Alla `Obs!` ovan gäller också här.
 
-Obs! I `math`-modulen hittar du en funktion som gör det lätt att avrunda nedåt.
+Obs! I [`math`-modulen](https://docs.python.org/3/library/math.html) hittar du en funktion som gör det lätt att avrunda nedåt.
 
 </programming-exercise>
 
@@ -376,7 +376,7 @@ usefull: usefully, useful, museful
 
 </sample-output>
 
-Korrigeringsförslagen söks med hjälp av modulen `difflib` i standardbiblioteket: använd funktionen `get_close_matches`.
+Korrigeringsförslagen söks med hjälp av [modulen `difflib`](https://docs.python.org/3/library/difflib.html) i standardbiblioteket: använd funktionen [`get_close_matches`](https://docs.python.org/3/library/difflib.html#difflib.get_close_matches).
 
 Obs! För att testen ska fungera ska du använda funktionen med dess förinställda val – ge alltså bara två argument: felaktiga ordet och listan med korrekta ord.
 

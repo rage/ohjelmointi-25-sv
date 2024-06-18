@@ -16,9 +16,9 @@ Efter den här delen
 
 ## Lite mera om debuggande
 
-Vi har redan bekantat oss med en hel del olika debuggningsmetoder under den här kursen. Visualiseringsverktyget och `print`-satser för debuggning är redan bekanta för dig. Du har kanske också testat på det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från den förra modulen.
+Vi har redan bekantat oss med en hel del olika debuggningsmetoder under den här kursen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) och `print`-satser för debuggning är redan bekanta för dig. Du har kanske också testat på det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från den förra modulen.
 
-Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: kommandot `breakpoint()`.
+Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: kommandot [`breakpoint()`](https://docs.python.org/3/library/functions.html#breakpoint).
 
 Du kan lägga till det här kommandot på valfritt ställe i din kod (kom dock ihåg att följa reglerna som gäller syntax). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-kommandot finns. Här är ett exempel där vi debuggar en uppgiftslösning från den förra modulen:
 
@@ -32,7 +32,7 @@ Det är också möjligt att fortsätta körandet av programmet där det stannat 
 
 <img src="7_1_2.png">
 
-Det finns också några andra kommandon tillgängliga i debuggningsterminalen. Du kan hitta dem här eller så kan du skriva `help` i debuggningsterminalen:
+Det finns också några andra kommandon tillgängliga i debuggningsterminalen. Du kan hitta dem [här](https://docs.python.org/3/library/pdb.html#debugger-commands) eller så kan du skriva `help` i debuggningsterminalen:
 
 <img src="7_1_3.png">
 
@@ -94,7 +94,7 @@ Det här sättet att importera moduler kan vara nyttigt då man testar på någo
 
 Skapa funktionen `hypotenusa(katet1: float, katet2: float)` som får som argument kateternas längder i en rätvinklig triangel. Funktionen ska returnera hypotenusans längd.
 
-Använd Pythagoras sats. Kvadratroten kan du räkna med den relevanta funktionen i `math`-modulen.
+Använd [Pythagoras sats](https://sv.wikipedia.org/wiki/Pythagoras_sats). Kvadratroten kan du räkna med den relevanta funktionen i `math`-modulen.
 
 Exempel:
 
@@ -130,7 +130,7 @@ Den här funktionen returnerar en lista av namn definierade av modulen. Det kan 
 
 <programming-exercise name='Specialtecken' tmcname='osa07-02_erikoismerkit'>
 
-I modulen `string` finns strängkonstanter som definiar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som får som argument en sträng som ska returneras uppdelad i tre delar:
+I [modulen `string`](https://docs.python.org/3/library/string.html) finns strängkonstanter som definiar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som får som argument en sträng som ska returneras uppdelad i tre delar:
 
 1. en sträng med alla gemener och versaler (enligt engelska alfabetet), konstanten `ascii_letters`
 1. en sträng med tecknen som definieras i konstanten `punctuation`

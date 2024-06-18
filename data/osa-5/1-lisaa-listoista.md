@@ -228,7 +228,7 @@ resultat = siffrorna_olika([1, 2, 2])
 print(resultat) # False
 ```
 
-Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller visualiseringsverktyget. Det lönar sig verkligen att lära sig använda dessa effektivt.
+Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller [visualiseringsverktyget](https://pythontutor.com/visualize.html). Det lönar sig verkligen att lära sig använda dessa effektivt.
 
 <programming-exercise name='Längsta strängen' tmcname='osa05-01a_pisin_merkkijono'>
 
@@ -383,7 +383,7 @@ ny rad
 
 ## Visualisering av kod som innehåller listor inom listor
 
-Program som består av listor inom listor kan vara svåra att greppa om i början. Visualiseringsverktyget av Python Tutor är ett bra sätt att bekanta sig med hur de fungerar. Det följande är en visualisering av exemplet ovan:
+Program som består av listor inom listor kan vara svåra att greppa om i början. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) av Python Tutor är ett bra sätt att bekanta sig med hur de fungerar. Det följande är en visualisering av exemplet ovan:
 
 <img src="5_1_0a.png">
 
@@ -432,7 +432,7 @@ print(summa) # 39 (dvs. 3 + 12 + 9 + 15)
 
 Kolumnen som söks här består av elementen vid index 2 på varje rad.
 
-Visualiseringsverktyget rekommenderas varmt för att bättre förstå hur de här funktionerna fungerar.
+[Visualiseringsverktyget](https://pythontutor.com/visualize.html) rekommenderas varmt för att bättre förstå hur de här funktionerna fungerar.
 
 Att ändra på ett värde hos ett specifikt element inom en matris är enkelt. Välj en rad i matrisen och sedan en kolumn inom raden:
 

@@ -15,11 +15,11 @@ Efter den här delen
 
 Hittills har alla övningar i den här kursen gjorts direkt på kurssidorna i de inbäddade kodeditorerna. Att programmera i webbläddraren fungerar bra när man börjar lära sig att programmering. Nu är det ändå dags att börja använda en separat kodeditor som är anpassad just för att redigera kod.
 
-Det finns en hel del olika editorer som är skräddarsydda för programmering. På den här kursen kommer vi att använda Visual Studio Code – en editor som under de senaste åren fått allt större fotfäste på marknaden.
+Det finns en hel del olika editorer som är skräddarsydda för programmering. På den här kursen kommer vi att använda [Visual Studio Code](https://code.visualstudio.com/) – en editor som under de senaste åren fått allt större fotfäste på marknaden.
 
 Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hända att du också måste installera Python och Python-tillägget (plugin) i Visual Studio Code. Du behöver också TMC-tillägget som tar hand om att köra de tester som finns i samband med övningarna. I TMC:s inställningar ska du välja MOOC som organisation och Python-programmering 2024 som kurs.
 
-Här hittar du en guide som berättar hur du kan installera allt som nämnts ovan. Läs instruktionerna och gör sedan uppgiften nedan:
+[Här hittar du en guide](https://www.mooc.fi/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Läs instruktionerna och gör sedan uppgiften nedan:
 
 <programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_hello_visualstudio_code'>
 
