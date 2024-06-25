@@ -463,10 +463,10 @@ Programmet ska skapa två filer. Filen `resultat.txt` ska följa det här format
 <pre>
 Introkurs i programmering, 5 studiepoäng
 ========================================
-namn                          uppg_ant  uppg_poang  provpoang  tot_poang  vitsord
-pekka peloton                 21        5           9          14         0
-jaana javanainen              27        6           11         17         1
-liisa virtanen                35        8           14         22         3
+namn                          uppg_ant  uppg_p    prov_p    tot_p     vitsord
+pekka peloton                 21        5         9         14        0
+jaana javanainen              27        6         11        17        1
+liisa virtanen                35        8         14        22        3
 </pre>
 
 </sample-data>

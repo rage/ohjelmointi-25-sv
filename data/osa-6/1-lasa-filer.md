@@ -692,10 +692,10 @@ Studerande (CSV): **studerande1.csv**
 Uppgifter (CSV): **uppgifter1.csv**
 Provpoäng (CSV): **provpoang1.csv**
 <pre>
-namn                          uppg_ant  uppg_poang  provpoang  tot_poang  vitsord
-pekka peloton                 21        5           9          14         0
-jaana javanainen              27        6           11         17         1
-liisa virtanen                35        8           14         22         3
+namn                          uppg_ant  uppg_p    prov_p    tot_p     vitsord
+pekka peloton                 21        5         9         14        0
+jaana javanainen              27        6         11        17        1
+liisa virtanen                35        8         14        22        3
 </pre>
 
 </sample-output>
