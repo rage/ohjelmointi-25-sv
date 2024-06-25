@@ -8,12 +8,12 @@ hidden: false
 
 Efter den här delen
 
-* kan du använda argument för att påverka formatet på `print`-kommandots resultat
+* kan du använda argument för att påverka formatet på `print`-instruktionens resultat
 * kan du använda dig av f-strängar för att formatera utskrift.
 
 </text-box>
 
-Vi har redan lärt oss tre metoder för att ge argument till `print`-kommandot.
+Vi har redan lärt oss tre metoder för att ge argument till `print`-instruktionen.
 
 Det första är `+`-operatorn för strängar. Den tillåter enkel kombination av strängar:
 
@@ -31,7 +31,7 @@ Den andra metoden är att ge alla delar av strängen som skilda argument, skilja
 print("Hej", namn, "med din ålder på", alder, "år" )
 ```
 
-Den här koden ger likadant resultat som den föregående versionen. `print`-kommandot lägger vanligtvis ett mellanslag mellan varje argument. Det positiva är att olika segment kan ha olika datatyper, så man behöver inte konvertera någonting till en sträng.
+Den här koden ger likadant resultat som den föregående versionen. `print`-instruktionen lägger vanligtvis ett mellanslag mellan varje argument. Det positiva är att olika segment kan ha olika datatyper, så man behöver inte konvertera någonting till en sträng.
 
 Om du vill avlägsna mellanslagen som läggs till automatiskt, kan du ge ett argument med namnet `sep`:
 
@@ -64,7 +64,7 @@ med din ålder på
 
 </sample-output>
 
-Vanligtvis avslutas `print`-kommandot med en radbrytning, men du kan också ändra på det här. Det namngivna argumentet `end` bestämmer vad som ska finnas i slutet av en rad. Om end är en tom sträng, kommer ingen radbrytning att skrivas ut i slutet av utskriften:
+Vanligtvis avslutas `print`-instruktionen med en radbrytning, men du kan också ändra på det här. Det namngivna argumentet `end` bestämmer vad som ska finnas i slutet av en rad. Om end är en tom sträng, kommer ingen radbrytning att skrivas ut i slutet av utskriften:
 
 ```python
 print("Hej ", end="")
@@ -128,7 +128,7 @@ Johan           mittplats           Johan
 Maja            mittplats            Maja
 ```
 
-Man kan också använda f-strängar utanför print-kommandon. De kan tilldelas till variabler och kombineras med andra strängar:
+Man kan också använda f-strängar utanför print-instruktioner. De kan tilldelas till variabler och kombineras med andra strängar:
 
 ```python
 namn = "Leffe"

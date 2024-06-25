@@ -14,9 +14,9 @@ Efter den här delen
 
 </text-box>
 
-Indata (input) syftar till information som en användare ger till ett program. I Python används kommandot `input` för att läsa in en rad text skriven av användaren. Kommandot kan också användas för att skriva ut ett meddelande till användaren för att be om någon specifik information.
+Indata (input) syftar till information som en användare ger till ett program. I Python används instruktionen `input` för att läsa in en rad text skriven av användaren. Instruktionen kan också användas för att skriva ut ett meddelande till användaren för att be om någon specifik information.
 
-Det här programmet läser in användarens namn med hjälp av `input`-kommandot. Därefter skriver programmet ut namnet med `print`-kommandot:
+Det här programmet läser in användarens namn med hjälp av `input`-instruktionen. Därefter skriver programmet ut namnet med `print`-instruktionen:
 
 ```python
 namn = input("Ange ditt namn: ")
@@ -88,7 +88,7 @@ Paulus Python är ett ganska fint namn.
 
 </sample-output>
 
-Låt oss undersöka närmare hur `print`-kommandot används ovan. Mellan parenteserna i kommandot finns det både text inom citattecken och namn på variabler, som hänvisar till indata från användaren. De har kombinerats med `+`-operatorn, som kombinerar två strängar till en sträng.
+Låt oss undersöka närmare hur `print`-instruktionen används ovan. Mellan parenteserna i instruktionen finns det både text inom citattecken och namn på variabler, som hänvisar till indata från användaren. De har kombinerats med `+`-operatorn, som kombinerar två strängar till en sträng.
 
 
 Strängar och variabler kan kombineras ganska fritt:
@@ -125,7 +125,7 @@ Ange ditt namn: **Sandrine**
 
 ## Samla mera data
 
-Ett program kan be användaren att ge data flera gånger. Observera att `input`-kommandot lagrar varje givet värde i en skild variabel.
+Ett program kan be användaren att ge data flera gånger. Observera att `input`-instruktionen lagrar varje givet värde i en skild variabel.
 
 ```python
 namn = input("Ange ditt namn: ")

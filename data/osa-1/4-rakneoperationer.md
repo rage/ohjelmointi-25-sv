@@ -214,15 +214,15 @@ print(f"Summan av siffrorna: {summa}")
 
 Nu läses alla siffor som användaren ges in i en och samma variabel, `nummer`. Värdet på variabeln `summa` ökas med värdet på variabeln nummer varje gång användaren skriver in ett nytt nummer.
 
-Vi tar en lite närmare titt på kommandot:
+Vi tar en lite närmare titt på instruktionen:
 
 ```python
 summa = summa + nummer
 ```
 
-Här adderas värdena i variablerna `summa` och `nummer` ihop – för att lagras i variabeln summa. Till exempel om värdet på `summa` är `3` och värdet på `nummer` är `2`, kommer värdet på summa att vara `5` efter att kommandot körts.
+Här adderas värdena i variablerna `summa` och `nummer` ihop – för att lagras i variabeln summa. Till exempel om värdet på `summa` är `3` och värdet på `nummer` är `2`, kommer värdet på summa att vara `5` efter att instruktionen körts.
 
-Att öka på värdet hos en variabel är en vanlig operation. Därför finns det en liten genväg till förfogande. Den här notationen fungerar i praktiken som kommandot ovan:
+Att öka på värdet hos en variabel är en vanlig operation. Därför finns det en liten genväg till förfogande. Den här notationen fungerar i praktiken som instruktionen ovan:
 
 ```python
 summa += nummer

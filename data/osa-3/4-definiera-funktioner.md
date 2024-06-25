@@ -90,7 +90,7 @@ def halsa():
 halsa()
 ```
 
-Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudfunktion är tom. Inga kommandon bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
+Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudfunktion är tom. Inga instruktioner bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
 
 ```python
 def halsa():
@@ -171,7 +171,7 @@ def halsa(sak):
     print("Hej", sak)
 ```
 
-På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till en variabel med namnet `sak`. Inom funktionen använder `print`-kommandot det värde som finns lagrat i variabeln `sak`.
+På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till en variabel med namnet `sak`. Inom funktionen använder `print`-instruktionen det värde som finns lagrat i variabeln `sak`.
 
 När funktionen anropas får parametern sak det värde som getts som argument i funktionsanropet. Till exempel följande funktionsanrop…
 

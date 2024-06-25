@@ -294,7 +294,7 @@ a är mindre än 5
 
 </sample-output>
 
-Pythons nyckelord `True` och `False` kan också användas direkt som sådana. I det följande exemplet körs `print`-kommandot alltid, eftersom värdet på villkoret är `True`:
+Pythons nyckelord `True` och `False` kan också användas direkt som sådana. I det följande exemplet körs `print`-instruktionen alltid, eftersom värdet på villkoret är `True`:
 
 ```python
 villkor = True

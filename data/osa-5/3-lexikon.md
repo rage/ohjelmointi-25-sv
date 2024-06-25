@@ -415,7 +415,7 @@ avslutar...
 
 ## Att ta bort nycklar och värden från ett lexikon
 
-Det är naturligtvis möjligt att ta bort nyckel-värdepar från ett lexikon. Det finns två sätt att göra det här. Det första sättet är att använda kommandot `del`:
+Det är naturligtvis möjligt att ta bort nyckel-värdepar från ett lexikon. Det finns två sätt att göra det här. Det första sättet är att använda instruktionen `del`:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
@@ -429,7 +429,7 @@ print(personal)
 
 </sample-output>
 
-Om du försöker använda `del`-kommandot för att ta bort en nyckel som inte finns i listan, kommer ett fel att uppstå:
+Om du försöker använda `del`-instruktionen för att ta bort en nyckel som inte finns i listan, kommer ett fel att uppstå:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}

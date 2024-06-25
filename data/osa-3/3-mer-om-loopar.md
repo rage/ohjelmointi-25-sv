@@ -8,20 +8,20 @@ hidden: false
 
 Efter den här delen
 
-* vet du när `break`-kommandot behövs för att avsluta en loop
-* kan du använda `continue`-kommandot för att fortsätta till nästa iteration
+* vet du när `break`-instruktionen behövs för att avsluta en loop
+* kan du använda `continue`-instruktionen för att fortsätta till nästa iteration
 * förstår du hur kapslade loopar fungerar.
 
 </text-box>
 
-## `break`-kommandot
+## `break`-instruktionen
 
-Du har redan bekantat dig med `break`-kommandot. Det kan användas för att direkt avsluta en loop. Ett exempel på ett användningsområde för `break`-kommandot är då man ber användaren om någon information och loopen ska avslutas när ett visst värde ges.
+Du har redan bekantat dig med `break`-instruktionen. Det kan användas för att direkt avsluta en loop. Ett exempel på ett användningsområde för `break`-instruktionen är då man ber användaren om någon information och loopen ska avslutas när ett visst värde ges.
 
-Samma funktionalitet kan skapas utan `break`-kommandot med ett passligt villkor. De här två programmen ber användaren ge siffor som adderas ihop tills användaren skriver siffran -1.
+Samma funktionalitet kan skapas utan `break`-instruktionen med ett passligt villkor. De här två programmen ber användaren ge siffor som adderas ihop tills användaren skriver siffran -1.
 
 ```python
-# version 1 med break-kommando
+# version 1 med break-instruktion
 
 summa = 0
 
@@ -35,7 +35,7 @@ print (f"Summan är {summa}")
 ```
 
 ```python
-# version 2 utan break-kommando
+# version 2 utan break-instruktion
 
 summa = 0
 siffra = 0
@@ -63,7 +63,7 @@ Summan är 14
 
 Båda programmen är alltså identiska till deras funktion men den första metoden är ofta enklare eftersom villkoret `siffra == 1` endast finns på ett ställe och variabeln `siffra` behöver inte initieras utanför loopen.
 
-`break`-kommandot kan kombineras med ett passligt villkor. Till exempel följande loop upprepas så länge summan av siffrorna är högst 100, men avslutas också då man ger siffran -1.
+`break`-instruktionen kan kombineras med ett passligt villkor. Till exempel följande loop upprepas så länge summan av siffrorna är högst 100, men avslutas också då man ger siffran -1.
 
 Så här kan det se ut när programmet körs:
 
@@ -120,9 +120,9 @@ while True:
 print (f"Summan är {summa}")
 ```
 
-## `continue`-kommandot
+## `continue`-instruktionen
 
-Ett annat sätt att påverka hur en loop körs är `continue`-kommandot. Det får loopen att hoppa till början, där villkoret för loopen finns. Loopen fortsätter köra normalt därifrån börjandes från att kolla villkoret:
+Ett annat sätt att påverka hur en loop körs är `continue`-instruktionen. Det får loopen att hoppa till början, där villkoret för loopen finns. Loopen fortsätter köra normalt därifrån börjandes från att kolla villkoret:
 
 <img src="3_3.png">
 
@@ -203,7 +203,7 @@ while True:
         siffra -= 1
 ```
 
-Här avslutar det andra `break`-kommandot endast den inre loopen som används för att skriva ut siffrorna.
+Här avslutar den andra `break`-instruktionen endast den inre loopen som används för att skriva ut siffrorna.
 
 ## Hjälpvariabler med loopar
 
@@ -255,7 +255,7 @@ Ge ett tal: **5**
 
 I programmet använder den yttre loopen hjälpvariabeln `siffra` som minskar med ett tills det når till noll. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
 
-Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `siffra`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-kommandot i den yttre loopen en ny rad.
+Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `siffra`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-instruktionen i den yttre loopen en ny rad.
 
 I och med att värdet på `siffra` minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
 

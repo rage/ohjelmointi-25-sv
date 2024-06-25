@@ -179,7 +179,7 @@ resultat = siffra_i_listan([1, 2, 3, 4], 3)
 print(resultat) # False
 ```
 
-Problemet här är att funktionen returnerar ett värde för tidigt, utan att kolla igenom alla siffror i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att en siffra inte finns i listan förrän vi har gått igenom hela listan. Kommandot `return False` måste alltså placeras utanför for-loopen:
+Problemet här är att funktionen returnerar ett värde för tidigt, utan att kolla igenom alla siffror i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att en siffra inte finns i listan förrän vi har gått igenom hela listan. Instruktionen `return False` måste alltså placeras utanför for-loopen:
 
 ```python
 def siffra_i_listan(siffror: list, siffra_som_soks: int):

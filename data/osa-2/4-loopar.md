@@ -10,7 +10,7 @@ Efter den här delen
 
 * vet du vad en loop betyder i programmeringssammanhang
 * kan du använda dig av en `while True` -loop i dina program
-* kommer du att kunna använda dig av `break`-kommandot för att avbryta loopen.
+* kommer du att kunna använda dig av `break`-instruktionen för att avbryta loopen.
 
 </text-box>
 
@@ -47,7 +47,7 @@ Tack och hej!
 
 </sample-output>
 
-Som du ser ovan, frågar programmet om ett nummer flera gånger. Detta tack vare while-satsen. När användaren anger siffran -1 kommer `break`-kommandot att köras. Loopen avbryts och programmet fortsätter efter while-blocket.
+Som du ser ovan, frågar programmet om ett nummer flera gånger. Detta tack vare while-satsen. När användaren anger siffran -1 kommer `break`-instruktionen att köras. Loopen avbryts och programmet fortsätter efter while-blocket.
 
 När man arbetar med loopar är det viktigt att loopen avslutas vid något skede. Om man inte tar det här i beaktande kan loopen fortsätta för evigt. Vi ändrar lite på ovanstående exempel för att åstadkomma en sådan här situation:
 

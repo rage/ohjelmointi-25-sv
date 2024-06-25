@@ -9,14 +9,14 @@ hidden: false
 Efter den här delen
 
 * har du skrivit och kört ditt första Python-program
-* vet du hur man använder print-kommandot
+* vet du hur man använder print-instruktionen
 * kan du utföra räkneoperationer genom att programmera.
 
 </text-box>
 
-Datorprogram består av kommandon. Varje kommando instruerar datorn att göra en viss sak. Datorn utför varje kommando ett för ett. Kommandona kan till exempel användas för att utföra räkneoperationer, jämföra saker i datorns minne, göra ändringar i hur programmet fungerar, förmedla meddelanden eller fråga något av programmets användare.
+Datorprogram består av instruktioner eller kommandon. Varje kommando instruerar datorn att göra en viss sak. Datorn utför varje instruktion ett för ett. Instruktionerna kan till exempel användas för att utföra räkneoperationer, jämföra saker i datorns minne, göra ändringar i hur programmet fungerar, förmedla meddelanden eller fråga något av programmets användare.
 
-Låt oss börja programmera genom att bekanta oss med `print`-kommandot som skriver ut (print) text. I praktiken betyder det att programmet visar någon text på skärmen.
+Låt oss börja programmera genom att bekanta oss med `print`-instruktionen som skriver ut (print) text. I praktiken betyder det att programmet visar någon text på skärmen.
 
 Det följande programmet skriver ut texten "Hej!":
 
@@ -59,13 +59,13 @@ Gör ett program som skriver ut ett leende: :-)
 
 </in-browser-programming-exercise>
 
-## Ett program med flera kommandon
+## Ett program med flera instruktioner
 
-Flera kommandon som skrivs efter varandra körs i ordning från det första till det sista. Till exempel följande program…
+Flera instruktioner som skrivs efter varandra körs i ordning från det första till det sista. Till exempel följande program…
 
 ```python
 print("Välkommen till vår programmeringskurs!")
-print("För att börja ska vi testa på print-kommandot.")
+print("För att börja ska vi testa på print-instruktionen.")
 print("Det här programmet skriver ut tre rader text.")
 ```
 
@@ -74,7 +74,7 @@ print("Det här programmet skriver ut tre rader text.")
 <sample-output>
 
 Välkommen till vår programmeringskurs!
-För att börja ska vi testa på print-kommandot.
+För att börja ska vi testa på print-instruktionen.
 Det här programmet skriver ut tre rader text.
 
 </sample-output>
@@ -113,7 +113,7 @@ Gubben Noak, gubben Noak var en hedersman.
 
 ## Räkneoperationer
 
-Du kan också utföra räkneoperationer i `print`-kommandot. När kommandot körs, kommer resultatet av operationen att skrivas ut på skärmen. Till exempel detta program…
+Du kan också utföra räkneoperationer i `print`-instruktionen. När instruktionen körs, kommer resultatet av operationen att skrivas ut på skärmen. Till exempel detta program…
 
 ```python
 print(2 + 5)
@@ -131,7 +131,7 @@ print(2 + 2 * 10)
 
 </sample-output>
 
-Observera att citattecknen fattas från kommandona med räkneoperationer. Citattecknen används för att markera strängar. Inom programmering är strängar en serie bestående av tecken. Strängar kan innehålla bokstäver, siffror och alla andra typer av tecken – till exempel skiljetecken. Strängar är inte nödvändigtvis bara ord utan kan vara flera meningar långa. Strängar skrivs vanligtvis ut exakt så som de är skrivna. Därmed ger dessa två kommandon mycket olika resultat:
+Observera att citattecknen fattas från instruktionerna med räkneoperationer. Citattecknen används för att markera strängar. Inom programmering är strängar en serie bestående av tecken. Strängar kan innehålla bokstäver, siffror och alla andra typer av tecken – till exempel skiljetecken. Strängar är inte nödvändigtvis bara ord utan kan vara flera meningar långa. Strängar skrivs vanligtvis ut exakt så som de är skrivna. Därmed ger dessa två instruktioner mycket olika resultat:
 
 ```python
 print(2 + 2 * 10)
@@ -147,7 +147,7 @@ Programmet skriver ut:
 
 </sample-output>
 
-I kommandot på den andra raden utför Python inte några räkneoperationer utan skriver ut operationen som sådan, en sträng. Strängar skrivs alltså ut som sådana oavsett deras innehåll.
+I instruktionen på den andra raden utför Python inte några räkneoperationer utan skriver ut operationen som sådan, en sträng. Strängar skrivs alltså ut som sådana oavsett deras innehåll.
 
 ## Kommentarer
 

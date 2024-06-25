@@ -28,7 +28,7 @@ I Python skapas variabler på följande sätt:
 
 `...` ovan syftar till värdet som sparas i variabeln.
 
-Till exempel när du använde kommandot `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
+Till exempel när du använde instruktionen `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
 
 ```python
 namn = input("Ange ditt namn: ")
@@ -198,7 +198,7 @@ TypeError: unsupported operand type(s) for +: 'str' and 'int'
 
 I felet berättar Python att kombination av två olika typer av värden inte går så här enkelt. I den här situationen är `"Resultatet är "` av typen sträng medan värdet i variabeln `resultat` är ett heltal.
 
-Om vi vill skriva ut en sträng och ett heltal i ett och samma kommando kan vi konvertera heltalet till en sträng med `str`-funktionen. Därefter kan de två strängarna kombineras normalt. Till exempel så här:
+Om vi vill skriva ut en sträng och ett heltal i en och samma instruktion kan vi konvertera heltalet till en sträng med `str`-funktionen. Därefter kan de två strängarna kombineras normalt. Till exempel så här:
 
 ```python
 resultat = 10 * 25
@@ -211,7 +211,7 @@ Resultatet är: 250
 
 </sample-output>
 
-`print`-kommandot har också inbyggd funktionalitet som stödjer kombination av olika typer av värden. Det enklaste sättet är att lägga in ett komma mellan värdena. Alla värden kommer då att skrivas ut – oavsett typ:
+`print`-instruktionen har också inbyggd funktionalitet som stödjer kombination av olika typer av värden. Det enklaste sättet är att lägga in ett komma mellan värdena. Alla värden kommer då att skrivas ut – oavsett typ:
 
 ```python
 resultat = 10 * 25
@@ -262,7 +262,7 @@ Hej Joline, du är 24 år. Du bor i Kyrkslätt.
 
 </sample-output>
 
-Det är svårt att åstadkomma en likadan utskrift med hjälp av kommanotationen i `print`-kommandot. Exempelvis programmet…
+Det är svårt att åstadkomma en likadan utskrift med hjälp av kommanotationen i `print`-instruktionen. Exempelvis programmet…
 
 ```python
 namn = "Joline"
@@ -279,7 +279,7 @@ Hej Joline , du är 24  år. Du bor i Kyrkslätt .
 
 </sample-output>
 
-Observera mellanslagen som automatiskt har lagts till mellan varje kommaseparerade del i kommandot. Det är tekniskt sett möjligt att förhindra `print`-kommandot från att lägga till mellanslag, men det är inte värt det eftersom vi kan använda oss av f-strängar.
+Observera mellanslagen som automatiskt har lagts till mellan varje kommaseparerade del i instruktionen. Det är tekniskt sett möjligt att förhindra `print`-instruktionen från att lägga till mellanslag, men det är inte värt det eftersom vi kan använda oss av f-strängar.
 
 Kommanotationen kan vara till nytta ibland, men ofta orsakar den mera problem än vad den löser. F-strängar är i flera fall en pålitligare metod. I modul fyra kommer du att lära dig mera om nyttiga egenskaper som f-strängar har – de kan användas för att påverka den utskrivna textens format på flera sätt.
 
@@ -326,11 +326,11 @@ jag söker efter ett jobb vars lön är 2000-3000 euro i månaden
 
 Koden fungerar ungefär korrekt. Din uppgift är att korrigera koden. Testen i den här uppgiften är noggranna. Till och med ett litet mellanslag på fel ställe kommer att orsaka problem.
 
-Koden ska alltså korrigeras så att utskriften ser korrekt ut. Observera att framför allt kommanotationen i `print`-kommandot ofta orsakar mellanslag på ställen där de är oönskade.
+Koden ska alltså korrigeras så att utskriften ser korrekt ut. Observera att framför allt kommanotationen i `print`-instruktionen ofta orsakar mellanslag på ställen där de är oönskade.
 
 Det enklaste sättet att korrigera koden är att använda f-strängar.
 
-Tips: Du kan lägga till ett radbyte med hjälp av `print`-kommandot eller genom att inkludera `\n` på det stället i en sträng där radbytet ska vara.
+Tips: Du kan lägga till ett radbyte med hjälp av `print`-instruktionen eller genom att inkludera `\n` på det stället i en sträng där radbytet ska vara.
 
 Observera också utskriftsformatet i kommande övningar under kursens lopp. Vissa uppgifter kräver att utskriften från programmet är exakt densamma som i de givna exemplen.
 
@@ -399,7 +399,7 @@ y = 9
 
 <in-browser-programming-exercise name="Fixa programmet: Utskrifterna på samma rad" tmcname="osa01-12_utskrifter_pa_samma_rad">
 
-Om man ger `print`-kommandot parametern `end = ""`, kommer utskriften inte att avslutas med ett radbyte.
+Om man ger `print`-instruktionen parametern `end = ""`, kommer utskriften inte att avslutas med ett radbyte.
 
 Exempel:
 
@@ -414,7 +414,7 @@ Hej allesammans!
 
 </sample-output>
 
-Korrigera programmet så att räkneoperationen och resultatet skrivs ut på en rad. Antalet `print`-kommandon får dock inte ändras.
+Korrigera programmet så att räkneoperationen och resultatet skrivs ut på en rad. Antalet `print`-instruktioner får dock inte ändras.
 
 ```python
 print(5)

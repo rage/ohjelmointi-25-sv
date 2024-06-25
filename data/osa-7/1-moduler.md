@@ -18,15 +18,15 @@ Efter den här delen
 
 Vi har redan bekantat oss med en hel del olika debuggningsmetoder under den här kursen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) och `print`-satser för debuggning är redan bekanta för dig. Du har kanske också testat på det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från den förra modulen.
 
-Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: kommandot [`breakpoint()`](https://docs.python.org/3/library/functions.html#breakpoint).
+Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: instruktionen [`breakpoint()`](https://docs.python.org/3/library/functions.html#breakpoint).
 
-Du kan lägga till det här kommandot på valfritt ställe i din kod (kom dock ihåg att följa reglerna som gäller syntax). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-kommandot finns. Här är ett exempel där vi debuggar en uppgiftslösning från den förra modulen:
+Du kan lägga till den här instruktionen på valfritt ställe i din kod (kom dock ihåg att följa reglerna som gäller syntax). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-instruktionen finns. Här är ett exempel där vi debuggar en uppgiftslösning från den förra modulen:
 
 <img src="7_1_1.png">
 
-När programmet stannar upp vid ett `breakpoint`-kommando kommer ett interaktivt terminalfönster att öppnas. Här kan du skriva kod på samma sätt som i en normal Pythonterminal. Du ser hur koden fungerar exakt vid den här punkten i ditt program.
+När programmet stannar upp vid en `breakpoint`-instruktion kommer ett interaktivt terminalfönster att öppnas. Här kan du skriva kod på samma sätt som i en normal Pythonterminal. Du ser hur koden fungerar exakt vid den här punkten i ditt program.
 
-Kommandot `breakpoint` är speciellt nyttigt då du vet att någon kodrad orsakar ett fel, men du är osäker på orsaken till det. Lägg till en breakpoint just före den problematiska kodraden och kör ditt program. Nu kan du testa på olika saker i den interaktiva terminalen och lista ut vad som måste ändras på i ditt program.
+Instruktionen `breakpoint` är speciellt nyttig då du vet att någon kodrad orsakar ett fel, men du är osäker på orsaken till det. Lägg till en breakpoint just före den problematiska kodraden och kör ditt program. Nu kan du testa på olika saker i den interaktiva terminalen och lista ut vad som måste ändras på i ditt program.
 
 Det är också möjligt att fortsätta körandet av programmet där det stannat upp. Kommandot `continue` (kort `c`) i terminalen får programmet att fortsätta tills nästa breakpoint nås. Den här bilden illustrerar en situation där en loop har upprepat några gånger:
 
@@ -38,7 +38,7 @@ Det finns också några andra kommandon tillgängliga i debuggningsterminalen. D
 
 Kommandot `exit` avslutar programmet.
 
-När du är klar med debuggandet ska du minnas att ta bort `breakpoint`-kommandona från din kod!
+När du är klar med debuggandet ska du minnas att ta bort `breakpoint`-instruktionerna från din kod!
 
 ## Använda moduler
 
@@ -46,7 +46,7 @@ Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar l
 
 Standardbiblioteket består av moduler. De innehåller funktioner och klasser som är grupperade kring olika teman och funktionaliteter. I den här modulen kommer vi att bekanta oss med några nyttiga Python-moduler. Vi lär oss också att skapa egna moduler.
 
-Kommandot `import` gör innehållet i en given modul tillgängligt i ett program. Vi tar en närmare titt på hur vi kan använda modulen `math`. Den innehåller matematiska funktioner som `sqrt` för kvadratrot och `log` för logaritm.
+Instruktionen `import` gör innehållet i en given modul tillgängligt i ett program. Vi tar en närmare titt på hur vi kan använda modulen `math`. Den innehåller matematiska funktioner som `sqrt` för kvadratrot och `log` för logaritm.
 
 ```python
 import math
@@ -68,7 +68,7 @@ Funktionerna är definierade i modulen `math`, så de måste hänvisas till med 
 
 ## Välja specifika delar från en modul
 
-Ett annat sätt att använda moduler är att välja specifika delar av modulen med `from`-kommandot. Om vi endast vill använda funktionerna `sqrt` och `log` från modulen `math`, kan vi göra på följande sätt:
+Ett annat sätt att använda moduler är att välja specifika delar av modulen med `from`-instruktionen. Om vi endast vill använda funktionerna `sqrt` och `log` från modulen `math`, kan vi göra på följande sätt:
 
 ```python
 from math import sqrt, log

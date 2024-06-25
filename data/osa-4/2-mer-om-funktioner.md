@@ -476,7 +476,7 @@ Summan är 10
 
 </sample-output>
 
-Return-värdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-kommandot:
+Return-värdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-instruktionen:
 
 ```python
 print("Summan är", summa(4, 6))
@@ -550,7 +550,7 @@ svar = max1(3, 5)
 print(svar)
 ```
 
-Den andra versionen, `max2`, använder sig av `print`-kommandot inom funktionen. Om vi vill se värdet, kan vi helt enkelt anropa funktionen…
+Den andra versionen, `max2`, använder sig av `print`-instruktionen inom funktionen. Om vi vill se värdet, kan vi helt enkelt anropa funktionen…
 
 ```python
 max2(7, 5)

@@ -18,7 +18,7 @@ Under den första modulen fokuserade vi inte så mycket på terminologi. Nu är 
 
 ## Sats
 
-En sats (statement) är en del av ett program som kör någonting. En sats syftar ofta, men inte alltid, till ett enstaka kommando.
+En sats (statement) är en del av ett program som kör någonting. En sats syftar ofta, men inte alltid, till en enstaka instruktion.
 
 Till exempel `print("Hej")` är en sats som skriver ut en rad text. På samma sätt är `nummer = 2` en sats som lagrar ett värde i en variabel.
 
@@ -187,7 +187,7 @@ Ibland märker man en bugg eftersom det resultat som koden ger är fel. Att obse
 
 Programmerare använder ofta termen debugga – att söka efter orsaker till fel som uppstår i koden. Det här är ett ytterst viktigt verktyg i en programmerares verktygslåda. I yrkeslivet använder programmerare ofta mera tid till att debugga än för att skriva ny kod.
 
-Ett enkelt – men desto nyttigare – sätt att debugga sitt program är att lägga till `print`-satser i sin kod. Att verifiera vad som sker i koden med hjälp av print-kommandon ger en bekräftelse att programmet gör det som du vill.
+Ett enkelt – men desto nyttigare – sätt att debugga sitt program är att lägga till `print`-satser i sin kod. Att verifiera vad som sker i koden med hjälp av print-instruktioner ger en bekräftelse att programmet gör det som du vill.
 
 Det här är ett exempel på ett försök att lösa en av föregående modulens uppgifter:
 
@@ -278,7 +278,7 @@ Lön 276.0 euro
 
 </sample-output>
 
-Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "söndagg" i Boolean-uttrycket är skrivet med två g medan det i indatat inte är det. Vi korrigerar felet – både i if-satsen och `print`-kommandot:
+Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "söndagg" i Boolean-uttrycket är skrivet med två g medan det i indatat inte är det. Vi korrigerar felet – både i if-satsen och `print`-instruktionen:
 
 ```python
 # ...
@@ -304,13 +304,13 @@ Lön 276.0 euro
 
 </sample-output>
 
-Det verkar som att värdet lagrat i `lon` är korrekt i början: `timlon = 20.0` och `timmar = 12`, 20,0 * 6 = 120,0. Kommandot som ska multiplicera det här med två fungerar dock inte. Det måste alltså vara ett problem med det kommandot:
+Det verkar som att värdet lagrat i `lon` är korrekt i början: `timlon = 20.0` och `timmar = 12`, 20,0 * 6 = 120,0. Instruktionen som ska multiplicera det här med två fungerar dock inte. Det måste alltså vara ett problem med den instruktionen:
 
 ```python
 lon * 2
 ```
 
-Kommandot multiplicerar nog värdet, men resultatet lagras ingenstans. Vi ändrar på det:
+Instruktionen multiplicerar nog värdet, men resultatet lagras ingenstans. Vi ändrar på det:
 
 ```python
 lon *= 2
@@ -331,7 +331,7 @@ När programmet fungerar som det ska, är det viktigt att ta bort `print`-satser
 
 Det här var ett ganska enkelt exempel och i fall som det här kan man eventuellt hitta buggar genom att läsa igenom koden med omtanke. Att använda `print`-satser för att debugga är ändå ofta ett snabbt sätt att få en ledtråd för var problemet kan ligga. `print`-satser kan också användas för att fastställa vilka delar av koden som fungerar korrekt. Då kan man fokusera på andra ställen där buggar med större sannolikhet gömmer sig.
 
-`print`-satser är bara ett sätt att debugga program. Vi återkommer till det här ämnet senare under kursen. Nu ska du bli van vid att debugga, med hjälp av `print`-kommandon, för att hitta problematiska delar i din kod. Proffs klarar sig inte utan `print`-satser i debuggningssyfte – det är alltså en viktig resurs redan som nybörjare.
+`print`-satser är bara ett sätt att debugga program. Vi återkommer till det här ämnet senare under kursen. Nu ska du bli van vid att debugga, med hjälp av `print`-instruktioner, för att hitta problematiska delar i din kod. Proffs klarar sig inte utan `print`-satser i debuggningssyfte – det är alltså en viktig resurs redan som nybörjare.
 
 <in-browser-programming-exercise name="Fixa felen" tmcname="osa02-01_fixa_felen" height="400px">
 

@@ -142,7 +142,7 @@ def las_litet_heltal():
             if siffra < 100:
                 return siffra
         except ValueError:
-            pass # det här kommandot gör inget
+            pass # den här instruktionen gör inget
 
         print("Felaktiga indata")
 
@@ -162,7 +162,7 @@ Tack!
 
 </sample-output>
 
-Nu innehåller except-blocket endast kommandot `pass`, som inte gör något. Python tillåter inte tomma block, så kommandot är nödvändigt.
+Nu innehåller except-blocket endast instruktionen `pass`, som inte gör något. Python tillåter inte tomma block, så instruktionen är nödvändig.
 
 <programming-exercise name='Läsa indata' tmcname='osa06-17_lasa_indata'>
 
@@ -279,7 +279,7 @@ Något gick fel
 
 ## Åstadkomma undantag
 
-Du kan åstadkomma undantag med kommandot `raise`. Det kan verka som en konstig idé att själv åstadkomma fel i ditt program, men det kan vara nyttigt i olika situationer.
+Du kan åstadkomma undantag med instruktionen `raise`. Det kan verka som en konstig idé att själv åstadkomma fel i ditt program, men det kan vara nyttigt i olika situationer.
 
 Det kan till exempel löna sig att åstadkomma ett fel när man märker icke-valida parametrar. Hittills har vi skrivit ut meddelanden när vi har validerat indata, men om vi gör en funktion som ska köras från något annat ställe så kan det hända att en utskrift inte noteras när funktionen anropas. Att åstadkomma ett fel kan göra debuggande enklare.
 

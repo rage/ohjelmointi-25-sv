@@ -48,14 +48,14 @@ y = y + 1 if x%2 == 0 else 0
 
 ## Ett "tomt" block
 
-Du minns kanske att block inte kan vara tomma i Python. Om du behöver ett block som inte gör någonting – till exempel då du testar någon annan funktionalitet – kan du använda `pass`-kommandot. Du kan till exempel skapa en funktion som inte gör någonting:
+Du minns kanske att block inte kan vara tomma i Python. Om du behöver ett block som inte gör någonting – till exempel då du testar någon annan funktionalitet – kan du använda `pass`-instruktionen. Du kan till exempel skapa en funktion som inte gör någonting:
 
 ```python
 def test():
     pass
 ```
 
-Funktionen kommer att returnera direkt. Om `pass`-kommandot lämnas bort, kommer koden att ge ett fel, eftersom block inte kan vara tomma.
+Funktionen kommer att returnera direkt. Om `pass`-instruktionen lämnas bort, kommer koden att ge ett fel, eftersom block inte kan vara tomma.
 
 ```python
 def test():
@@ -163,11 +163,11 @@ Ett `[ställe]` består av bokstäverna `a` till `z` och siffrorna 0-9. Olika st
 
 `[villkor]` ges i formatet `[värde] [jämförelse] [värde]`. `[jämförelse]` är något av de följande: `==`, `!=`, `<`, `<=`, `>` eller `>=`.
 
-Skapa funktionen `kor(program)` som tar emot programmet som en lista. Ett element i listan representerar en rad kod. Funktionen ska returnera resultaten från alla `PRINT`-kommandon.
+Skapa funktionen `kor(program)` som tar emot programmet som en lista. Ett element i listan representerar en rad kod. Funktionen ska returnera resultaten från alla `PRINT`-instruktioner.
 
 Du kan anta att det program som ges till funktionen har korrekt syntax. Funktionen behöver inte alltså kunna behandla sådana här fel.
 
-Du kan få två poäng av den här uppgiften: ett poäng om kommandona `PRINT`, `MOV`, `ADD`, `SUB`, `MUL` och `END` fungerar, och ett poäng om resterande kommandon fungerar.
+Du kan få två poäng av den här uppgiften: ett poäng om instruktionerna `PRINT`, `MOV`, `ADD`, `SUB`, `MUL` och `END` fungerar, och ett poäng om resterande instruktioner fungerar.
 
 Exempel 1:
 

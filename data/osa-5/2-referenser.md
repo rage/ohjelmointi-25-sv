@@ -63,7 +63,7 @@ siffra = 2
 siffra += 10
 ```
 
-Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är det inte så. Istället skapar varje kommando en ny siffra.
+Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är det inte så. Istället skapar varje instruktion en ny siffra.
 
 Utskriften från det här programmet är intressant:
 
@@ -441,7 +441,7 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-Tips: Du kan dra nytta av att `print`-kommandot kan användas så att radbyten inte görs:
+Tips: Du kan dra nytta av att `print`-instruktionen kan användas så att radbyten inte görs:
 
 ```python
 print("tecken ", end="")

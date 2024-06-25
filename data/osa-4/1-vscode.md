@@ -179,9 +179,9 @@ Vi testar på några av dem – `reverse` och `clear` verkar lovande:
 
 Som du kan notera, gör dessa metoder just det man skulle kunna anta.
 
-Märk att tolken inte skriver ut någonting när du kör kommandot `siffror.reverse()`. Detta beror på att tolken endast skriver ut något då kodraden har ett värde. Metoden `reverse()` här returnerar inget värde.
+Märk att tolken inte skriver ut någonting när du kör instruktionen `siffror.reverse()`. Detta beror på att tolken endast skriver ut något då kodraden har ett värde. Metoden `reverse()` här returnerar inget värde.
 
-I det ovanstående exemplet skrev vi ut värdet på listan `siffor` med att skriva namnet på variabeln. I tolken behöver man sällan använda sig av `print`-kommandon. Det är däremot inte förbjudet att använda dem.
+I det ovanstående exemplet skrev vi ut värdet på listan `siffor` med att skriva namnet på variabeln. I tolken behöver man sällan använda sig av `print`-instruktionen. Det är däremot inte förbjudet att använda dem.
 
 Kom ihåg att stänga tolken när du är klar. Kommandona `quit()` och `exit()` fungerar bra för det här ändamålet. Även tangentkombinationerna Control + D (Linux/Mac) och Control + Z (Windows) har samma funktion. Speciellt i Visual Studio Code är det här viktigt. Om du nämligen försöker köra ett annat Python-program medan tolken är igång, kommer du att få ett ganska konstigt felmeddelande:
 

@@ -19,13 +19,13 @@ Tills nu har vi lagrat data med variabler i våra program, så att varje sak har
 
 I Python är en lista en samling av värden som finns lagrade under samma variabelnamn. Listans element skrivs mellan hakparenteser. Listans värden kallas element.
 
-Följande kommando skapar en ny tom lista…
+Följande instruktion skapar en ny tom lista…
 
 ```python
 lista = []
 ```
 
-…medan det här kommandot skapar en lista med fem element:
+…medan det här instruktionen skapar en lista med fem element:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -606,7 +606,7 @@ print("Största siffran är", max(siffror))
 print("Medianvärdet är", median)
 ```
 
-I den här versionen är det svårare att uppfatta logiken bakom programmet, eftersom det inte mera är enkelt att se vilka kommandon som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, räkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
+I den här versionen är det svårare att uppfatta logiken bakom programmet, eftersom det inte mera är enkelt att se vilka instruktioner som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, räkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
 
 Att dela din kod i flera funktioner kommer att förbättra läsbarheten av koden och hjälper att uppfatta logiska helheter. Det här är till nytta när du ska verifiera att programmet fungerar som det ska, eftersom varje funktion kan testas separat.
 

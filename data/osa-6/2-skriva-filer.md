@@ -250,9 +250,9 @@ with open("fil_som_ska_tommas.txt", "w") as fil:
     pass
 ```
 
-Observera att `with`-blocket nu bara innehåller kommandot `pass`, som inte gör något. Python tillåter inte tomma block, så därför använder vi det här kommandot här.
+Observera att `with`-blocket nu bara innehåller instruktionen `pass`, som inte gör något. Python tillåter inte tomma block, så därför använder vi den här instruktionen här.
 
-Det är också möjligt att undvika `with`-blocket och istället använda följande kommando:
+Det är också möjligt att undvika `with`-blocket och istället använda följande instruktion:
 
 ```python
 open('fil_som_ska_tommas.txt', 'w').close()

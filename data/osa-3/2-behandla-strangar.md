@@ -72,7 +72,7 @@ Så här ser utskriften ut:
  *******************
 ```
 
-Kommandot `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde subtraheras med ett.
+Instruktionen `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde subtraheras med ett.
 
 <in-browser-programming-exercise name="Flera strängar" tmcname="osa03-05a_flera_strangar">
 
