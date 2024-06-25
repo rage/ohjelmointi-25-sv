@@ -1,0 +1,12 @@
+{
+  "gotPoints": "Tjänade poäng: ",
+  "maxPoints": "Maxpoäng: ",
+  "programmingService": "Programmeringsuppgifter",
+  "quizService": "Quiz",
+  "totalPoints": "Totalpoäng",
+  "noTimeLimit": "Du kan inte ansöka om studieplats då du gör kursen utan deadline.",
+  "canApplyForStudyRight": "För att ansöka om studieplats ska du tjäna minst 90 % av kurspoängen i den tidsbegränsade varianten. Dina poäng: ",
+  "progress": "Poängstatus",
+  "close": "stäng ",
+  "error": "Kunde inte behandla data, fel: "
+}
