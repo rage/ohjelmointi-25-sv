@@ -360,7 +360,7 @@ Observera att antalet mellanslag till vänster om granen ska vara exakt korrekt.
 
 </programming-exercise>
 
-## Return-värdet hos en funktion
+## Returvärdet hos en funktion
 
 Funktioner kan också returnera värden. Till exempel Pythons inbyggda funktion `input` returnerar en sträng som användaren angett. Värdet som returneras av en funktion kan lagras i en variabel:
 
@@ -458,7 +458,7 @@ Hej, Mårten
 
 </sample-output>
 
-## Att använda return-värden från funktioner
+## Att använda returvärden från funktioner
 
 Vi känner redan till att värden som returneras från funktioner kan lagras i variabler:
 
@@ -476,13 +476,13 @@ Summan är 10
 
 </sample-output>
 
-Return-värdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-instruktionen:
+Returvärdet hos en funktion kan jämföras med vilket som helst annat värde. Det är inte nödvändigt att lagra värdet i en variabel för att ge det som argument till `print`-instruktionen:
 
 ```python
 print("Summan är", summa(4, 6))
 ```
 
-Return-värdet hos en funktion kan vara ett argument för en funktion:
+Returvärdet hos en funktion kan vara ett argument för en funktion:
 
 ```python
 def summa(a, b):
@@ -543,7 +543,7 @@ Båda versionerna verkar fungera i och med att det större av värdena skrivs ut
 max1(3, 5)
 ```
 
-…verkar ingenting hända. Funktionens return-värde måste användas på något sätt i den kod som anropar funktionen. Det kan till exempel lagras i en variabel och skrivas ut:
+…verkar ingenting hända. Funktionens returvärde måste användas på något sätt i den kod som anropar funktionen. Det kan till exempel lagras i en variabel och skrivas ut:
 
 ```python
 svar = max1(3, 5)
@@ -685,7 +685,7 @@ def skriv_ut_flera_ganger(meddelande : str, ganger : int):
 
 Det här berättar för alla användare av funktionen att argumentet som lagras i `meddelande` ska vara en sträng medan argumentet som lagras i `ganger` ska vara ett heltal.
 
-Också typen av return-värdet kan specificeras när funktionen definieras:
+Också typen av returvärdet kan specificeras när funktionen definieras:
 
 ```python
 def fraga_namn() -> str:

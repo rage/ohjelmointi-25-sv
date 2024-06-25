@@ -124,7 +124,7 @@ Nu påverkar tilldelningen `x = 3` inom funktionen också i huvudfunktionen. All
 
 ## När borde man använda globala variabler?
 
-Globala variabler är inte ett sätt att undvika parametrar eller return-värden hos funktioner. De ska inte användas för det ändamålet. Det är dock möjligt att skriva en funktion som lagrar sina resultat direkt i en global variabel:
+Globala variabler är inte ett sätt att undvika parametrar eller returvärden hos funktioner. De ska inte användas för det ändamålet. Det är dock möjligt att skriva en funktion som lagrar sina resultat direkt i en global variabel:
 
 ```python
 def rakna_summa(a, b):

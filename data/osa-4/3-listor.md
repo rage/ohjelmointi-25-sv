@@ -517,7 +517,7 @@ Listan pituus: 4
 
 </sample-output>
 
-## Lista som argument eller return-värde
+## Lista som argument eller returvärde
 
 Som de inbyggda funktionerna ovan kan också våra egna funktioner ta listor som argument och returnera listor. Den följande funktionen tar reda på det mellersta – median – värdet i en ordnad lista:
 

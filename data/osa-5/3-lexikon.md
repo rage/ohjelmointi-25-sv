@@ -476,7 +476,7 @@ Avlägsnade lektor
 
 Metoden `pop` returnerar också värdet på elementet som togs bort.
 
-Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som ett andra argument ge till funktionen ett return-värde som funktionen kan returnera då en nyckel saknas. Värdet `None` kan till exempel användas här:
+Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som ett andra argument ge till funktionen ett returvärde som funktionen kan returnera då en nyckel saknas. Värdet `None` kan till exempel användas här:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}

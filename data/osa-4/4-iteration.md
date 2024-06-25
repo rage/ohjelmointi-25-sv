@@ -359,7 +359,7 @@ svar 9
 
 </programming-exercise>
 
-I dessa uppgifter kommer vi att använda listor som argument och return-värden. Det här såg vi på i den förra delen.
+I dessa uppgifter kommer vi att använda listor som argument och returvärden. Det här såg vi på i den förra delen.
 
 <programming-exercise name='Jämna' tmcname='osa04-16_jamna'>
 

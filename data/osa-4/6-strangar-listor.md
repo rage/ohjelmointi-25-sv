@@ -478,7 +478,7 @@ Om det här behövs i en funktion ges det som ett argument. Det här sker med fu
 
 Du kunde använda den globala variabeln `siffror` från huvudfunktionen direkt i hjälpfunktionerna. Vi har redan gått igenom varför det är en [dålig idé](https://softwareengineering.stackexchange.com/q/148108), men här följer ännu en annan förklaring. Om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
 
-Att skicka data ut och in från funktioner gör man alltså helst med hjälp av argument och return-värden.
+Att skicka data ut och in från funktioner gör man alltså helst med hjälp av argument och returvärden.
 
 Du kunde också göra huvudfunktionen till sin egen funktion. Då skulle variabeln siffor inte längre vara en global variabel, utan en lokal variabel i `main`-funktionen:
 

@@ -207,7 +207,7 @@ Minsta talet är 5 och största är 312
 
 </sample-output>
 
-Funktionen returnerar två värden i en tuple. Return-värdet kan tilldelas till två variabler samtidigt:
+Funktionen returnerar två värden i en tuple. Returvärdet kan tilldelas till två variabler samtidigt:
 
 ```python
 minst, storst = minmax(lista)
