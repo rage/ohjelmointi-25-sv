@@ -319,7 +319,7 @@ Här är ett exempel på en funktion som använder en global variabel "av missta
 # global variabel
 namn = "Beatrice"
 
-def halsa(etunimi):
+def halsa(fornamn):
     # vi skriver av misstag ut den globala variabelns värde istället för parametern
     print("Hej", namn)
 

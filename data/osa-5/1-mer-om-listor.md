@@ -16,15 +16,15 @@ Efter den här delen
 </text-box>
 
 <!--vastaava teksti löytyy osioista 3-1, 5-1 ja 6-1, tsekkaa kaikki jos muokkaat tätä-->
-<text-box variant='hint' name='Kurssin tehtävien tekemisestä'>
+<text-box variant='hint' name='Om uppgifterna i den här kursen'>
 
-Ohjelmointitaidon kehittyminen edellyttää vahvaa rutiinia ja myös omaa soveltavaa oivaltamista. Tämän takia kurssilla on paljon tehtäviä. Osa tehtävistä on kohtuullisen suoraviivaisesti materiaalia hyödyntäviä ja osa taas aivan tarkoituksella haastavampia soveltavia tehtäviä.
+Att bli en skicklig programmerare kräver mycket övning. Man måste utveckla en problemlösningsförmåga och ha en förmåga att intuition komma fram till korrekta lösningar. Därför finns det massor av övningar av olika typer i den här kursen. Vissa övningar är enklare och baserar sig mera eller mindre direkt på materialet medan andra uppgifter är svårare och kräver tillämpande av kunskaper som man lärt sig under kursen.
 
-Ei kannata huolestua, vaikka osa kurssin tehtävistä tuntuisikin ensiyrittämällä liian vaikealta. Kaikkia tehtäviä ei ole pakko tehdä, kuten [arvosteluperusteet](/arvostelu-ja-kokeet) toteavat, _kurssin läpipääsyyn vaaditaan vähintään 25 % jokaisen osan ohjelmointitehtävien pisteistä._
+En del uppgifter kan kännas svåra, men det är inte något att oroa sig över. Ingen av uppgifterna är obligatorisk och du behöver bara 25 % av poängen från varje modul för att klara den här kursen. Du kan läsa mera på kursens bedömningssida.
 
-**Kurssin osien tehtävät eivät etene vaikeusjärjestyksessä.** Jokaisessa aliosassa esitellään yleensä muutama uusi konsepti, joita harjoitellaan sekä helpommilla että soveltavimmilla tehtävillä. **Jos törmäät liian haastavan tuntuiseen tehtävään, hyppää seuraavaan**. Voit palata vaikeimpiin tehtäviin osan lopuksi, jos aikaa vielä jää.
+Uppgifterna är inte i svårighetsordning. Varje del introducerar vanligtvis några nya saker inom programmering och i samband finns relaterade uppgifter – både enklare och svårare. Om du stöter på en uppgift som känns oöverkomlig ska du fortsätta till nästa uppgift. Du kan alltid senare återkomma till tidigare uppgifter.
 
-Lohdutuksen sanana todettakoon, että tällä viikolla mahdottomalta vaikuttava tehtävä näyttää melko varmasti neljän viikon päästä melko helpolta.
+En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel om en månad.
 
 </text-box>
 
@@ -84,27 +84,27 @@ Medelvärde: 10.15
 </sample-output>
 
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat tätä-->
-## Muistutus: globaalin muuttujan käytön sudenkuoppa
+## Varning: globala variabler inom funktioner
 
-Kuten olemme nähneet, funktioiden sisällä on mahdollista määritellä muuttujia. Kannattaa myös huomata se, että funktio näkee sen ulkopuolella, eli pääohjelmassa määritellyt muuttujat. Tälläisia muuttujia sanotaan _globaaleiksi_ muuttujiksi.
+Vi har observerat att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Globalien muuttujien käyttämistä funktioista käsin ei useimmiten pidetä hyvänä asiana muun muassa siksi, että ne saattavat johtaa ikäviin bugeihin.
+Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
 
-Seuraavassa on esimerkki funktiosta, joka käyttää "vahingossa" globaalia muuttujaa:
+Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
 ```python
-def tulosta_vaarinpain(namn: list):
-    # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
-    i = len(nimilista) - 1
-    while i>=0:
-        print(nimilista[i])
+def svangd_utskrift(namn: list):
+    # använder av misstag den globala variabeln namnlista
+    i = len(namnlista) - 1
+    while i >= 0:
+        print(namnlista[i])
         i -= 1
 
-# globaali muuttuja
-nimilista = ["August", "Emilia", "Erkki", "Margaret"]
-tulosta_vaarinpain(nimilista)
+# global variabel
+namnlista = ["Antti", "Emilia", "Erkki", "Margaret"]
+svangd_utskrift(namnlista)
 print()
-tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
+svangd_utskrift(["Louise", "Ophelia", "Lotta"])
 ```
 
 <sample-output>
@@ -112,39 +112,39 @@ tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
 Margaret
 Erkki
 Emilia
-August
+Antti
 
 Margaret
 Erkki
 Emilia
-August
+Antti
 
 </sample-output>
 
-Vaikka funktiota kutsutaan oikein, se tulostaa aina globaalissa muuttujassa _nimilista_ olevat namn.
+Även om funktionen anropas korrekt skrivs alltid namnen i den globala variabeln `namnlista` ut.
 
-Kuten olemme nähneet, kaikki funktioita testaava koodi on kirjoitettava erillisen lohkon sisälle, jotta TMC-testit hyväksyisivät koodin. Edellinen esimerkki siis tulisi toteuttaa seuraavasti:
+All kod som testar funktioner ska skrivas inom ett separat block så att TMC-testen accepterar koden. Föregående exempel ska alltså skrivas så här:
 
 ```python
-def tulosta_vaarinpain(namn: list):
-    # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
-    i = len(nimilista) - 1
-    while i>=0:
-        print(nimilista[i])
+def svangd_utskrift(namn: list):
+    # använder av misstag den globala variabeln namnlista
+    i = len(namnlista) - 1
+    while i >= 0:
+        print(namnlista[i])
         i -= 1
 
-# kaikki funktiota testaava koodi tämän lohkon sisälle
+# kod som testar funktionen placeras här
 if __name__ == "__main__":
-    # globaali muuttuja
-    nimilista = ["August", "Emilia", "Erkki", "Margaret"]
-    tulosta_vaarinpain(nimilista)
+    # global variabel
+    namnlista = ["Antti", "Emilia", "Erkki", "Margaret"]
+    svangd_utskrift(namnlista)
     print()
-    tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
+    svangd_utskrift(["Louise", "Ophelia", "Lotta"])
 ```
 
-Nyt myös globaalin muuttujan määrittely on siirtynyt `if`-lohkoon.
+Nu definieras också den globala variabeln i if-blocket.
 
-TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa koodia ei huomioida. Tämän takia funktio ei voi edes teoriassa toimia, sillä se viittaa muuttujaan `nimilista` mitä ei testejä suoritettaessa ole ollenkaan olemassa.
+TMC-testen körs alltid så att koden inom dessa if-block inte körs. Därför fungerar funktionen inte ens i teorin eftersom variabeln `namnlista` inte finns då testen körs.
 
 ## Varning: att skriva över en parameter och returnera för tidigt
 

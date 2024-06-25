@@ -73,27 +73,27 @@ lepmexe
 </sample-output>
 
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat-->
-## Varoitus: globaalin muuttujan käyttö funktion sisällä
+## Varning: globala variabler inom funktioner
 
-Funktioiden sisällä on mahdollista määritellä muuttujia, mutta tämän lisäksi funktio näkee sen ulkopuolella pääohjelmassa määritellyt muuttujat. Tälläisia muuttujia sanotaan _globaaleiksi_ muuttujiksi.
+Vi har observerat att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Globaalien muuttujien käyttämistä funktioista käsin ei useimmiten pidetä hyvänä asiana muun muassa siksi, että ne saattavat johtaa ikäviin bugeihin.
+Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
 
-Seuraavassa on esimerkki funktiosta, joka käyttää "vahingossa" globaalia muuttujaa:
+Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
 ```python
-def tulosta_vaarinpain(nimet: list):
-    # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
-    i = len(nimilista) - 1
+def svangd_utskrift(namn: list):
+    # använder av misstag den globala variabeln namnlista
+    i = len(namnlista) - 1
     while i >= 0:
-        print(nimilista[i])
+        print(namnlista[i])
         i -= 1
 
-# globaali muuttuja
-nimilista = ["Antti", "Emilia", "Erkki", "Margaret"]
-tulosta_vaarinpain(nimilista)
+# global variabel
+namnlista = ["Antti", "Emilia", "Erkki", "Margaret"]
+svangd_utskrift(namnlista)
 print()
-tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
+svangd_utskrift(["Louise", "Ophelia", "Lotta"])
 ```
 
 <sample-output>
@@ -110,30 +110,30 @@ Antti
 
 </sample-output>
 
-Vaikka funktiota kutsutaan oikein, se tulostaa aina globaalissa muuttujassa _nimilista_ olevat nimet.
+Även om funktionen anropas korrekt skrivs alltid namnen i den globala variabeln `namnlista` ut.
 
-Kaikki funktioita testaava koodi on kirjoitettava erillisen lohkon sisälle, jotta TMC-testit hyväksyisivät koodin. Edellinen esimerkki siis tulisi toteuttaa seuraavasti:
+All kod som testar funktioner ska skrivas inom ett separat block så att TMC-testen accepterar koden. Föregående exempel ska alltså skrivas så här:
 
 ```python
-def tulosta_vaarinpain(nimet: list):
-    # käytetään vahingossa parametrin sijaan globaalia muuttujaa nimilista
-    i = len(nimilista) - 1
-    while i>=0:
-        print(nimilista[i])
+def svangd_utskrift(namn: list):
+    # använder av misstag den globala variabeln namnlista
+    i = len(namnlista) - 1
+    while i >= 0:
+        print(namnlista[i])
         i -= 1
 
-# kaikki funktiota testaava koodi tämän lohkon sisälle
+# kod som testar funktionen placeras här
 if __name__ == "__main__":
-    # globaali muuttuja
-    nimilista = ["Antti", "Emilia", "Erkki", "Margaret"]
-    tulosta_vaarinpain(nimilista)
+    # global variabel
+    namnlista = ["Antti", "Emilia", "Erkki", "Margaret"]
+    svangd_utskrift(namnlista)
     print()
-    tulosta_vaarinpain(["Tupu", "Hupu", "Lupu"])
+    svangd_utskrift(["Louise", "Ophelia", "Lotta"])
 ```
 
-Nyt myös globaalin muuttujan määrittely on siirtynyt `if`-lohkoon.
+Nu definieras också den globala variabeln i if-blocket.
 
-TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa koodia ei suoriteta. Tämän takia funktio ei voi edes teoriassa toimia, sillä se viittaa muuttujaan `nimilista`, jota ei testejä suoritettaessa ole lainkaan olemassa.
+TMC-testen körs alltid så att koden inom dessa if-block inte körs. Därför fungerar funktionen inte ens i teorin eftersom variabeln `namnlista` inte finns då testen körs.
 
 <programming-exercise name='Allt omvänt' tmcname='osa04-21_allt_omvant'>
 
