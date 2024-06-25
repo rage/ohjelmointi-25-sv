@@ -119,6 +119,7 @@ while True:
 
 print (f"Summan är {summa}")
 ```
+
 ## `continue`-kommandot
 
 Ett annat sätt att påverka hur en loop körs är `continue`-kommandot. Det får loopen att hoppa till början, där villkoret för loopen finns. Loopen fortsätter köra normalt därifrån börjandes från att kolla villkoret:

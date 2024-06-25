@@ -622,7 +622,6 @@ Den egentliga funktionaliteten är nu "gömd" bakom en `False`-förgrening som a
 Om vi vill testa inmatning av information (på "normalt" sätt), kan vi ändra `False` till `True`:
 
 ```python
-
 if True:
     studerande = input("Studerande (CSV): ")
     uppgifter = input("Uppgifter (CSV): ")

@@ -230,14 +230,12 @@ except PermissionError:
 Ibland är det inte nödvändigt att specificera det fel som programmet förbereder sig för. Speciellt då man arbetar med filer, räcker det med att veta att något fel har skett och därmed avsluta programmet på ett säkert sätt. Man behöver inte alltid veta varför ett fel har uppstått. Om vi vill vara förberedda på alla möjliga undantag kan vi använda `except`-blocket utan att specificera felet:
 
 ```python
-
 try:
     with open("exempel.txt") as fil:
         for rad in fil:
             print(rad)
 except:
     print("Fel i läsandet av filen")
-
 ```
 
 Obs! Den här `except`-satsen körs nu i alla möjliga felsituationer – det här gäller också misstag som programmeraren gjort. Endast syntaxfel kommer att orsaka fel som förhindrar programmet från att köras – detta eftersom den här typen av fel inte låter koden köras över huvud taget.

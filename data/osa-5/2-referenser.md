@@ -322,7 +322,6 @@ Egentligen finns det ingen orsak att skapa en ny lista inom funktionen. Vi kan h
 def oka_pa_alla(lista: list):
     for i in range(len(lista)):
         lista[i] += 10
-
 ```
 
 
@@ -341,6 +340,7 @@ if __name__ == "__main__":
     print("ursprunglig:", siffror)
     print("fördubblade:", fordubblade)
 ```
+
 <sample-output>
 
 ursprunglig: [2, 4, 5, 3, 11, -4]
@@ -367,6 +367,7 @@ if __name__ == "__main__":
     avlagsna_minsta(siffror)
     print(siffror)
 ```
+
 <sample-output>
 
 [2, 4, 6, 3, 5]

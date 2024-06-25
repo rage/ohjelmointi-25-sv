@@ -28,7 +28,7 @@ with open("test.csv") as fil:
 
 Koden ovan läser alla rader i CSV-filen `test.csv`, skiljer innehåller på varje rad med separatorn `;` och skriver ut varje lista. Om innehållet i filen är det följande…
 
-```x
+```
 012121212;5
 012345678;2
 015151515;4
@@ -46,7 +46,7 @@ Koden ovan läser alla rader i CSV-filen `test.csv`, skiljer innehåller på var
 
 Eftersom CSV-formatet är så enkelt, kan vi fråga oss vad nyttan med en skild modul är då vi bara kunde använda `split`-funktionen. Det finns några bra orsaker. En orsak är att `csv`-modulen klarar av strängar som innehåller skiljetecknet:
 
-```x
+```
 "aaa;bbb";"ccc;ddd"
 ```
 
@@ -66,7 +66,7 @@ CSV är bara ett maskinläsbart dataformat. [JSON](https://www.json.org/json-sv.
 
 JSON-filer är textfiler som följer en strikt syntax, som eventuellt är lite mindre människovänligt än CSV-formatet. Följande exempel använder filen `kurser.json`, som innehåller information om några kurser:
 
-```x
+```json
 [
     {
         "namn": "Introkurs i programmering",

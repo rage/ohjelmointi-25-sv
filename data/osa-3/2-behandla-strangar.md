@@ -59,7 +59,7 @@ while n > 0:
 
 Så här ser utskriften ut:
 
-```x
+```
           *
          ***
         *****
@@ -154,12 +154,10 @@ Indexet syftar till ett ställe i strängen och börjar från talet noll. Det f�
 Det här programmet…
 
 ```python
-
 strang = input("Ange sträng: ")
 print(strang[0])
 print(strang[1])
 print(strang[3])
-
 ```
 
 …skulle skriva ut följande:

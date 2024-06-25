@@ -430,7 +430,6 @@ def hamta_vitsord(person, veckopoang):
 
 veckopoang = las_veckopoang("veckopoang.csv")
 print(hamta_vitsord("Paula", veckopoang))
-
 ```
 
 <sample-data>
@@ -529,9 +528,7 @@ Tips: Pythons strängmetoder `startswith()` och `endswith()` kan vara händiga. 
 Exempel:
 
 ```python
-
 print(sok_ord("*vokes"))
-
 ```
 
 <sample-output>

@@ -105,6 +105,7 @@ indata = input("Vilket är ditt födelseår? ")
 ar = int(indata)
 print(f"Din ålder i slutet av 2020: {2020 - ar}" )
 ```
+
 <sample-output>
 
 Vilket är ditt födelseår? **1995**

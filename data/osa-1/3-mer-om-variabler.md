@@ -417,7 +417,6 @@ Hej allesammans!
 Korrigera programmet så att räkneoperationen och resultatet skrivs ut på en rad. Antalet `print`-kommandon får dock inte ändras.
 
 ```python
-
 print(5)
 print(" + ")
 print(8)

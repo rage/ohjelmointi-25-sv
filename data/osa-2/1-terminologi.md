@@ -434,13 +434,11 @@ Tack!
 I Python kan man ofta konvertera ett värde från en datatyp till en annan. Ett flyttal kan till exempel konverteras till ett heltal med funktionen `int`:
 
 ```python
-
 temperatur = float(input("Ange temperatur: "))
 
 print("Temperaturen är", temperatur)
 
 print("Alltså ungefär", int(temperatur))
-
 ```
 
 <sample-output>

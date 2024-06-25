@@ -68,6 +68,7 @@ print("Välkommen till vår programmeringskurs!")
 print("För att börja ska vi testa på print-kommandot.")
 print("Det här programmet skriver ut tre rader text.")
 ```
+
 …skriver ut dessa textrader på skärmen:
 
 <sample-output>
@@ -119,6 +120,7 @@ print(2 + 5)
 print(3 * 3)
 print(2 + 2 * 10)
 ```
+
 …skriver ut följande textrader:
 
 <sample-output>
@@ -188,9 +190,7 @@ Istället för dubbla citattecken (`"`) kan man i Python också använda enkla c
 Det här kan vara nyttigt till exempel i situationer där man vill skriva ut citattecken:
 
 ```python
-
 print('"Kom tillbaka direkt!", vrålade polisen.')
-
 ```
 
 <sample-output>

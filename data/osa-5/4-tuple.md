@@ -65,10 +65,8 @@ Skapa funktionen `skapa_tuple(x: int, y: int, z: int)` som skapar och returnerar
 Exempel:
 
 ```python
-
 if __name__ == "__main__":
     print(skapa_tuple(5, 3, -1))
-
 ```
 
 <sample-output>

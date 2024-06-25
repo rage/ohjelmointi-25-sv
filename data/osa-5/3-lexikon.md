@@ -206,7 +206,6 @@ värde: cembalo
 Ibland behöver du gå igenom allt innehåll i ett lexikon. Då kan du använda metoden `items` som returnerar alla nycklar och värden, ett par i sänder:
 
 ```python
-
 for nyckel, varde in lexikon.items():
     print("nyckel:", nyckel)
     print("värde:", varde)

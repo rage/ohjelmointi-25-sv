@@ -367,6 +367,7 @@ merkkijono = "Allt började då grannbondens gamla traktor började ryka..."
 kertaa = 3
 skriv_ut_flera_ganger(merkkijono, kertaa)
 ```
+
 <sample-output>
 
 hej!!

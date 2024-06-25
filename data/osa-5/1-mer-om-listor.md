@@ -239,11 +239,9 @@ Skapa funktionen `langst(strangar: list)` som får som argument en lista med str
 Exempel:
 
 ```python
-
 if __name__ == "__main__":
     lista = ["hej", "hejsan", "morjens", "tjolahoppsan", "tjenare"]
     print(langst(lista))
-
 ```
 
 <sample-output>
@@ -264,6 +262,7 @@ print(lista)
 print(lista[1])
 print(lista[1][0])
 ```
+
 <sample-output>
 
 [[5, 2, 3], [4, 1], [2, 2, 5, 1]]
@@ -543,8 +542,7 @@ skriv_ut(sudoku)
 
 Utskriften borde se ut så här:
 
-```x
-
+```
  9 _ _ _ 8 _ 3 _ _
  _ _ _ 2 5 _ 7 _ _
  _ 2 _ 3 _ _ _ _ 4
@@ -554,7 +552,6 @@ Utskriften borde se ut så här:
  _ _ 7 8 _ 3 9 _ _
  _ _ 1 _ _ _ _ _ 3
  3 _ _ _ _ _ _ _ 2
-
 ```
 
 Flera andra spel kan också representeras på liknande sätt: till exempel schack, minröj, sänka skepp och Mastermind. I sudoku fungerar siffor väl för att representera spelets läge, medan för andra spel kan andra metoder vara bättre.
