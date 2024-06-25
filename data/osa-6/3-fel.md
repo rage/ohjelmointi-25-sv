@@ -164,7 +164,7 @@ Tack!
 
 Nu innehåller except-blocket endast kommandot `pass`, som inte gör något. Python tillåter inte tomma block, så kommandot är nödvändigt.
 
-<programming-exercise name='Läsa indata' tmcname='osa06-17_syotteen_luku'>
+<programming-exercise name='Läsa indata' tmcname='osa06-17_lasa_indata'>
 
 Skapa funktionen `las` som ber användaren ange ett tal, tills användaren anger ett tal som är inom intervallet som angivits. Funktionen ska returnera talet användaren gett.
 
@@ -315,7 +315,7 @@ ValueError: Negativt värde: -1
 </sample-output>
 
 
-<programming-exercise name='Validera givna argument' tmcname='osa06-18_parametrien_validointi'>
+<programming-exercise name='Validera givna argument' tmcname='osa06-18_validera_argument'>
 
 Skapa funktionen `ny_person(namn: str, alder: int)` som skapar och returnerar en tuple som representerar en person. Det första elementet är ett namn och det andra en ålder.
 
@@ -331,7 +331,7 @@ Felaktiga argument är:
 
 </programming-exercise>
 
-<programming-exercise name='Felaktiga lottorader' tmcname='osa06-19_virheelliset_lottonumerot'>
+<programming-exercise name='Felaktiga lottorader' tmcname='osa06-19_lottorader'>
 
 I filen `lottorader.csv` har man lagrat lottorader enligt följande exempel:
 

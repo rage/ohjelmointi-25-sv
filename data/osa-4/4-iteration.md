@@ -95,7 +95,7 @@ r
 
 </sample-output>
 
-<programming-exercise name='Utskrift med asterisker' tmcname='osa04-11a_tulostus_tahdilla'>
+<programming-exercise name='Utskrift med asterisker' tmcname='osa04-11a_utskrift_asterisker'>
 
 Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att dess tecken kommer under varandra.
 
@@ -194,7 +194,7 @@ for i in range(6, 2, -1):
 
 </sample-output>
 
-<programming-exercise name='Från negativ till positiv' tmcname='osa04-11b_negatiivisesta_positiiviseen'>
+<programming-exercise name='Från negativ till positiv' tmcname='osa04-11b_negativ_till_positiv'>
 
 Skapa ett program som ber användaren ge ett positivt heltal `n`. Programmet ska därefter skriva ut siffrorna i intervallet `-n ... n`, exklusive noll. Varje siffra skrivs ut på en skild rad.
 
@@ -266,7 +266,7 @@ Från och med nu kommer det inte längre att finnas påminnelser om att använda
 
 Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktionen du gjort. Den här koden bör inte läggas i `if __name__ == "__main__"` -blocket. De automatiska testen kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
 
-<programming-exercise name='Asterisker' tmcname='osa04-12_tahdet'>
+<programming-exercise name='Asterisker' tmcname='osa04-12_asterisker'>
 
 Skapa funktionen `lista_som_asterisker` som får som argument en lista med heltal. Funktionen ska skriva ut rader med asterisker så att siffrorna i listan indikerar antalet asterisker på en rad.
 
@@ -298,7 +298,7 @@ Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
 
 </programming-exercise>
 
-<programming-exercise name='Anagram' tmcname='osa04-13_anagrammi'>
+<programming-exercise name='Anagram' tmcname='osa04-13_anagram'>
 
 Skapa funktionen `anagram` som får två strängar som argument. Funktionen ska returnera `True` om strängarna är anagram – dvs. de bildas av exakt samma bokstäver.
 
@@ -316,7 +316,7 @@ Tips: Funktionen `sorted` fungerar även för strängar.
 
 </programming-exercise>
 
-<programming-exercise name='Palindrom' tmcname='osa04-14_palindromit'>
+<programming-exercise name='Palindrom' tmcname='osa04-14_palindrom'>
 
 Skapa funktionen `palindrom` som får en sträng som argument. Funktionen ska returnera `True` om strängen är ett palindrom – dvs. den är den samma oberoende om man börjar läsa från vänster eller höger.
 
@@ -339,7 +339,7 @@ Obs! Huvudprogrammet ska inte vara i `if __name__ == "__main__"` -blocket.
 
 </programming-exercise>
 
-<programming-exercise name='Summan av de positiva' tmcname='osa04-15_positiivisten_summa'>
+<programming-exercise name='Summan av de positiva' tmcname='osa04-15_positivas_summa'>
 
 Skapa funktionen `positiv_summa` som tar emot en lista med heltal som argument.
 
@@ -361,7 +361,7 @@ svar 9
 
 I dessa uppgifter kommer vi att använda listor som argument och return-värden. Det här såg vi på i den förra delen.
 
-<programming-exercise name='Jämna' tmcname='osa04-16_parilliset'>
+<programming-exercise name='Jämna' tmcname='osa04-16_jamna'>
 
 Skapa funktionen `jamna` som får som argument en lista med heltal.
 
@@ -399,7 +399,7 @@ print(summa(a, b)) # [8, 10, 12]
 
 </programming-exercise>
 
-<programming-exercise name='Unika' tmcname='osa04-18_uniikit'>
+<programming-exercise name='Unika' tmcname='osa04-18_unika'>
 
 Skapa funktionen `unika` som får som argument en lista med heltal.
 
@@ -431,7 +431,7 @@ Detaljerna kring den slutliga koden beror på typen av elementen i listan och kr
 
 Låt oss öva på den här metoden.
 
-<programming-exercise name='Längden av den längsta' tmcname='osa04-18a_listan_pimman_pituus'>
+<programming-exercise name='Längden av den längsta' tmcname='osa04-18a_langsta_langden'>
 
 Skapa funktionen `langsta_langden` som får som argument en lista med strängar. Funktionen ska returnera längden på den längsta strängen i listan.
 
@@ -458,7 +458,7 @@ print(resultat)
 
 </programming-exercise>
 
-<programming-exercise name='Listans kortaste' tmcname='osa04-18b_listan_lyhin'>
+<programming-exercise name='Listans kortaste' tmcname='osa04-18b_listans_kortaste'>
 
 Skapa funktionen `kortast` som får som argument en lista med strängar. Funktionen ska returnera listans kortaste sträng. Om det finns flera strängar med samma längd kan man returnera vilken som helst av dessa. Man kan anta at det inte finns tomma strängar (längd noll) i listan.
 
@@ -486,7 +486,7 @@ eva
 
 </programming-exercise>
 
-<programming-exercise name='Listans längsta' tmcname='osa04-19_listan_pisimmat'>
+<programming-exercise name='Listans längsta' tmcname='osa04-19_listans_langsta'>
 
 Skapa funktionen `langsta` som får som argument en lista med strängar. Funktionen ska returnera en lista som innehåller den längsta strängen i listan. Om de finns flera strängar med samma längd skrivs de alla ut i listan, i den ordning som de förekommer i den ursprungliga listan.
 

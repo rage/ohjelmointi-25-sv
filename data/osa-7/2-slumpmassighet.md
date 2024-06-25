@@ -148,7 +148,7 @@ rad = sample(alla, 7)
 print(rad)
 ```
 
-<programming-exercise name='Lottorader' tmcname='osa07-04_lottonumerot'>
+<programming-exercise name='Lottorader' tmcname='osa07-04_lottorader'>
 
 Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en ordnad lista (börjandes med det minsta talet).
 
@@ -199,7 +199,7 @@ För ytterligare information om slumpmässighet, se [random.org](https://www.ran
 
 </text-box>
 
-<programming-exercise name='Lösenordsgenerator, del 1' tmcname='osa07-05_salasanan_arpoja_1'>
+<programming-exercise name='Lösenordsgenerator, del 1' tmcname='osa07-05_losenord_1'>
 
 Skapa en funktion som genererar slumpmässiga lösenord, av vald längd, bestående av bokstäverna a-z.
 
@@ -227,7 +227,7 @@ rjkoacib
 
 </programming-exercise>
 
-<programming-exercise name='Lösenordsgenerator, del 2' tmcname='osa07-06_salasanan_arpoja_2'>
+<programming-exercise name='Lösenordsgenerator, del 2' tmcname='osa07-06_losenord_2'>
 
 Förbättra förra uppgiftens funktion. Nu tar den emot tre argument:
 
@@ -260,7 +260,7 @@ n?b0a7ey
 
 </programming-exercise>
 
-<programming-exercise name='Tärningssimulation' tmcname='osa07-07_noppasimulaatio'>
+<programming-exercise name='Tärningssimulation' tmcname='osa07-07_tarningar'>
 
 Vi skapar nu några funktioner som vi kan använda i spel som kräver en tärning.
 
@@ -315,7 +315,7 @@ print(resultat)
 
 </programming-exercise>
 
-<programming-exercise name='Slumpmässiga ord' tmcname='osa07-08_satunnaiset_sanat'>
+<programming-exercise name='Slumpmässiga ord' tmcname='osa07-08_slumpmassiga_ord'>
 
 I den här uppgiften har du filen `ord.txt` till ditt förfogande. Filen innehåller engelska ord, ett ord på varsin rad.
 

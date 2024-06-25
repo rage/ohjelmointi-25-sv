@@ -146,7 +146,7 @@ Hej Leffe, du är 59 år, du bor i Villmanstrand
 
 Du kan tänka att f-strängen är en slags funktion som skapar en normal sträng baserat på "argumenten" mellan klammerparenteserna.
 
-<programming-exercise name='Från sifferlista till stränglista' tmcname='osa04-20_lukulistasta_merkkijonolistaksi'>
+<programming-exercise name='Från sifferlista till stränglista' tmcname='osa04-20_sifferlista_till_stranglista'>
 
 Skapa funktionen `formatera` som får som argument en lista med flyttal. Funktionen ska returnera en ny lista som innehåller strängar med flyttalen avrundade till närmaste två decimaler. Ordningen av siffrorna ska vara den samma.
 

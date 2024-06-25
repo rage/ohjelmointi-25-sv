@@ -99,7 +99,7 @@ Det riktiga problemet får vi reda på när vi kör det funktionsanrop som stod 
 
 De sista raderna som uppstår när programmet körs (markerade i bilden ovan) berättar att rad fyra i koden orsakar felet `IndexError`. I den förra modulen fanns det ett liknande exempel, där vi försökte använda ett index som inte var en del av en sträng. Den här gången orsakas problemet av att vi försöker hämta den första bokstaven hos en tom sträng – dvs. en sträng med längden noll.
 
-<programming-exercise name='Streck' tmcname='osa04-02_viiva'>
+<programming-exercise name='Streck' tmcname='osa04-02_streck'>
 
 Skapa funktionen `streck` som får två argument (bredd, sträng). Funktionen skapar ett steck genom att skriva ut det första tecknet i den angivna strängen så många gånger som angetts i den första parametern. Om den andra parametern är tom, används asterisker.
 
@@ -148,7 +148,7 @@ Hej, Emilia
 </sample-output>
 
 
-<programming-exercise name='Fyrkant (igen)' tmcname='osa04-02a_risulaatikko'>
+<programming-exercise name='Fyrkant (igen)' tmcname='osa04-02a_fyrkant'>
 
 Skapa funktionen `fyrkant` som skriver ut en tio tecken bred fyrkant med den höjd som getts som argument.
 
@@ -179,7 +179,7 @@ fyrkant(2)
 
 </programming-exercise>
 
-<programming-exercise name='Kvadrat' tmcname='osa04-02b_risunelio'>
+<programming-exercise name='Kvadrat' tmcname='osa04-02b_kvadrat'>
 
 Skapa funktionen `kvadrat`, som skriver ut en kvadrat med den storlek som angetts som argument.
 
@@ -211,7 +211,7 @@ kvadrat(3)
 
 </programming-exercise>
 
-<programming-exercise name='Speciell kvadrat' tmcname='osa04-02c_nelio'>
+<programming-exercise name='Speciell kvadrat' tmcname='osa04-02c_speciell_kvadrat'>
 
 Skapa funktionen `speciell_kvadrat` som tar emot två argument – storleken samt det tecken som används för att rita kvadraten.
 
@@ -243,7 +243,7 @@ ooo
 
 </programming-exercise>
 
-<programming-exercise name='Triangel' tmcname='osa04-02d_kolmio'>
+<programming-exercise name='Triangel' tmcname='osa04-02d_triangel'>
 
 Skapa funktionen `triangel` som skriver ut en triangel med den höjd/bredd som angetts via argumentet.
 
@@ -276,7 +276,7 @@ triangel(3)
 
 </programming-exercise>
 
-<programming-exercise name='Figur' tmcname='osa04-03_kuvio'>
+<programming-exercise name='Figur' tmcname='osa04-03_figur'>
 
 Skapa funktionen `figur` som tar emot fyra argument. Funktionen skapar en figur som består av en triangel och en fyrkant enligt de givna argumenten. Se exemplen.
 
@@ -322,7 +322,7 @@ Tips: Försök inte lösa allt på en gång. Fokusera på en sak åt gången –
 
 </programming-exercise>
 
-<programming-exercise name='Julgran' tmcname='osa04-04_joulukuusi'>
+<programming-exercise name='Julgran' tmcname='osa04-04_julgran'>
 
 Skapa funktionen `julgran` som tar emot ett argument. Funktionen ska skriva ut texten "julgran!" samt en julgran med den angivna höjden.
 
@@ -558,7 +558,7 @@ max2(7, 5)
 
 …och det större värdet kommer att skrivas ut. Det dåliga med den här funktionen är att värdet som funktionen räknar ut inte kan användas av själva programmet. Därför är funktioner som returnerar ett värde ofta ett bättre alternativ.
 
-<programming-exercise name='Störst av talen' tmcname='osa04-05_luvuista_suurin'>
+<programming-exercise name='Störst av talen' tmcname='osa04-05_storst'>
 
 Skapa funktionen `storst` som returnerar den största siffran av de tre givna argumenten.
 
@@ -572,7 +572,7 @@ print(storst(0, 0, 0)) # 0
 
 </programming-exercise>
 
-<programming-exercise name='Lika tecken' tmcname='osa04-06_merkit_samat'>
+<programming-exercise name='Lika tecken' tmcname='osa04-06_lika'>
 
 Skapa funktionen `lika` som får som argument en sträng och två heltal som syftar till index. Funktionen ska returnera `True` eller `False` beroende på om tecknen vid dessa index i strängen är lika eller inte. Om något av indexen inte finns i strängen ska funktionen returnera `False`.
 
@@ -591,7 +591,7 @@ print(lika("kodexpert", 0, 20)) # False
 
 </programming-exercise>
 
-<programming-exercise name='Första, andra och sista' tmcname='osa04-07_eka_toka_vika_sana'>
+<programming-exercise name='Första, andra och sista' tmcname='osa04-07_forsta_andra_sista'>
 
 Skapa tre funktioner: `ord_ett`, `ord_tva` och `sista_ordet`. Alla funktioner får som argument en sträng som består av en mening.
 

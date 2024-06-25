@@ -101,7 +101,7 @@ Radernas totallängd: 63
 
 Det finns en radbrytning `\n` i slutet av varje rad i filen, men `print`-funktionen lägger också automatiskt till en rad i slutet av utskriften. Det finns inga extra radbyten i utskriften ovan eftersom radbrytningarna avlägsnats med hjälp av `replace`-metoden. Metoden ersätter alla radbrytningstecken med en tom sträng. I och med detta räknas radernas längder också korrekt.
 
-<programming-exercise name='Största siffran' tmcname='osa06-01_suurin_luku'>
+<programming-exercise name='Största siffran' tmcname='osa06-01_storsta_siffran'>
 
 I filen `siffror.txt` finns siffror listade på olika rader enligt exemplet nedan:
 
@@ -213,7 +213,7 @@ Vitsord: ['4', '5', '5', '4', '5', '5', '4', '5', '4', '4']
 
 </sample-output>
 
-<programming-exercise name='Fruktaffär' tmcname='osa06-02_hedelmakauppa'>
+<programming-exercise name='Fruktaffär' tmcname='osa06-02_fruktaffar'>
 
 I filen `frukter.csv` finns frukter med deras pris enligt exemplet nedan:
 
@@ -234,7 +234,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Matris' tmcname='osa06-03_matriisi'>
+<programming-exercise name='Matris' tmcname='osa06-03_matris'>
 
 I filen `matris.txt` finns en matris enligt exemplet nedan:
 
@@ -570,7 +570,7 @@ Programmet kan också ta i beaktande situationer där pic saknas för en arbetst
 
 Kom ihåg att ordningen som elementen är lagrade i lexikon inte har någon skillnad, eftersom nycklarna behandlas med hjälp av hashvärden.
 
-<programming-exercise name='Kursresultat, del 1' tmcname='osa06-04_kurssin_tulokset_osa1'>
+<programming-exercise name='Kursresultat, del 1' tmcname='osa06-04_resultat_1'>
 
 Programmet behandlar två CSV-filen. I den ena finns information om studerande:
 
@@ -640,7 +640,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Kursresultat, del 2' tmcname='osa06-05_kurssin_tulokset_osa2'>
+<programming-exercise name='Kursresultat, del 2' tmcname='osa06-05_resultat_2'>
 
 Vi utvidgar nu föregående uppgift så att de studerandes provpoäng också läses från en CSV-fil. Filens struktur är den följande:
 
@@ -683,7 +683,7 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 </programming-exercise>
 
-<programming-exercise name='Kursresultat, del 3' tmcname='osa06-06_kurssin_tulokset_osa3'>
+<programming-exercise name='Kursresultat, del 3' tmcname='osa06-06_resultat_3'>
 
 I den här uppgiften formaterar vi utskriften från den föregående uppgiften:
 
@@ -747,7 +747,7 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 </programming-exercise>
 
-<programming-exercise name='Spell checker' tmcname='osa06-07_spellchecker'>
+<programming-exercise name='Spell checker' tmcname='osa06-07_spellcheck'>
 
 Skapa ett program som ber användaren ange text på engelska. Programmet ska utföra en språkkontroll och skriva ut texten så att felstavade ord är markerade med asterisker. Exempel:
 
@@ -779,7 +779,7 @@ Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet
 
 </programming-exercise>
 
-<programming-exercise name='Receptsök' tmcname='osa06-08_reseptihaku'>
+<programming-exercise name='Receptsök' tmcname='osa06-08_receptsok'>
 
 I den här uppgiften skapar vi ett program som låter användaren söka efter ett recept på basis av dess namn, tillagningstid eller ingrediens. Programmets recept finns lagrade i en fil.
 
@@ -891,7 +891,7 @@ Bulldeg, tillagningstid 60 min
 
 </programming-exercise>
 
-<programming-exercise name='Stadscyklar' tmcname='osa06-09_kaupunkipyorat'>
+<programming-exercise name='Stadscyklar' tmcname='osa06-09_stadscyklar'>
 
 I den här uppgiften skapar vi några funktioner, med vilka vi kan inspektera en fil med information om [stadscyklars](https://www.hsl.fi/sv/stadscyklar) parkeringsstationer.
 

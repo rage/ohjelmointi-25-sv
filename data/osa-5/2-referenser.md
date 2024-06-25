@@ -326,7 +326,7 @@ def oka_pa_alla(lista: list):
 ```
 
 
-<programming-exercise name='Elementen fördubblade' tmcname='osa05-06a_alkiot_tuplana'>
+<programming-exercise name='Elementen fördubblade' tmcname='osa05-06a_elementen_x2'>
 
 Skapa funktionen `elementen_fordubblade(siffror: list)` som får som argument en lista med siffror.
 
@@ -351,7 +351,7 @@ fördubblade: [4, 8, 10, 6, 22, -8]
 </programming-exercise>
 
 
-<programming-exercise name='Bort med minsta' tmcname='osa05-06b_poista_pienin'>
+<programming-exercise name='Bort med minsta' tmcname='osa05-06b_minsta_bort'>
 
 Skapa funktionen `avlagsna_minsta(siffror: list)` som får som argument en lista med siffror.
 
@@ -376,7 +376,7 @@ if __name__ == "__main__":
 </programming-exercise>
 
 
-<programming-exercise name='Sudoku: Utskrift och att lägga till en siffra' tmcname='osa05-07_sudoku_osa5'>
+<programming-exercise name='Sudoku: Utskrift och att lägga till en siffra' tmcname='osa05-07_sudoku_utskrift_ny_siffra'>
 
 I den här uppgiften skapar vi ännu två funktioner för ett sudoku: `skriv_ut` och `lagg_till`.
 
@@ -461,7 +461,7 @@ print()
 
 </programming-exercise>
 
-<programming-exercise name='Sudoku: Lägga till en siffra i en kopia av sudokut' tmcname='osa05-08_sudoku_osa6'>
+<programming-exercise name='Sudoku: Lägga till en siffra i en kopia av sudokut' tmcname='osa05-08_sudoku_ny_siffra_kopia'>
 
 I den här uppgiften skapar vi en lite annorlunda version av funktionen som lägger till nya tal i ett sudoku.
 
@@ -527,7 +527,7 @@ Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopier
 
 </programming-exercise>
 
-<programming-exercise name='Tre i rad' tmcname='osa05-09_ristinolla'>
+<programming-exercise name='Tre i rad' tmcname='osa05-09_tre_i_rad'>
 
 Tre i rad spelas med ett 3 x 3 -rutnät, där spelarna turvis markerar ett kryss eller en ring. Spelaren som får tre markeringar i rad, vågrätt, lodrätt eller diagonalt, vinner. Om ingendera av spelarna får det, är spelet oavgjort.
 
@@ -560,7 +560,7 @@ True
 
 </programming-exercise>
 
-<programming-exercise name='Transponera' tmcname='osa05-10_matriisin_kaanto'>
+<programming-exercise name='Transponera' tmcname='osa05-10_transponera'>
 
 Skapa funktionen `transponera(matris: lista)` som får som argument en matris. Funktionen ska transponera matrisen, alltså byta om rader till kolumner och tvärtom.
 

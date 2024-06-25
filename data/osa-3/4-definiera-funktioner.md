@@ -109,7 +109,7 @@ Det lönar sig också att märka att testen inte kör kod i `if __name__ == "__m
 
 </text-box>
 
-<in-browser-programming-exercise name="Sju bröder" tmcname="osa03-21_seitseman_veljesta">
+<in-browser-programming-exercise name="Sju bröder" tmcname="osa03-21_sju_broder">
 
 Skapa funktionen `sju_broder` som skriver ut namnet på sju bröder i alfabetisk ordning:
 
@@ -184,7 +184,7 @@ halsa(namn)
 
 Namnet på en funktion ges enligt samma principer som variabelnamn. De ska vara beskrivande, i regel innehålla små bokstäver och understreck. Undantag finns igen, men vi ignorerar dem tills vidare.
 
-<in-browser-programming-exercise name="Första tecknet" tmcname="osa03-22_ensimmainen_merkki">
+<in-browser-programming-exercise name="Första tecknet" tmcname="osa03-22_forsta_tecknet">
 
 Gör så att funktionen `forsta` i den här uppgiften skriver ut det första tecknet i den sträng som ges som argument.
 
@@ -336,7 +336,7 @@ Hej Beatrice
 
 Oavsett vilka argument vi anropar funktionen med skrivs värdet "Beatrice" från den globala variabeln ut.
 
-<in-browser-programming-exercise name="Medelvärde" tmcname="osa03-25_keskiarvo">
+<in-browser-programming-exercise name="Medelvärde" tmcname="osa03-25_medelvarde">
 
 Skapa funktionen `medeltal` som tar emot tre heltal som argument. Funktionen ska skriva ut medelvärdet av dessa tal.
 
@@ -354,7 +354,7 @@ medeltal(10, 1, 1)
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Flera utskrifter" tmcname="osa03-24_monta_tulostusta">
+<in-browser-programming-exercise name="Flera utskrifter" tmcname="osa03-24_flera_utskrifter">
 
 Skapa funktionen `skriv_ut_flera_ganger(strang, ganger)`, som får en sträng och ett heltal som argument. Strängen ska skrivas ut så många gånger som heltalet indikerar:
 
@@ -383,7 +383,7 @@ Allt började då grannbondens gamla traktor började ryka....
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Fyrkant" tmcname="osa03-23_risunelio">
+<in-browser-programming-exercise name="Fyrkant" tmcname="osa03-23_fyrkant">
 
 Skapa funktionen `fyrkant(langd)`, som får som argument ett heltal som indikerar hur stor fyrkant programmet ska skriva ut:
 
@@ -411,7 +411,7 @@ fyrkant(5)
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Schackbräde" tmcname="osa03-26_shakkilauta">
+<in-browser-programming-exercise name="Schackbräde" tmcname="osa03-26_schackbrade">
 
 Skapa funktionen `schackbrade` som skapar ett schackbräde av siffrorna noll och ett enligt exemplen nedan.
 
@@ -441,7 +441,7 @@ schackbrade(6)
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Ordkvadrat" tmcname="osa03-27_sananelio">
+<in-browser-programming-exercise name="Ordkvadrat" tmcname="osa03-27_ordkvadrat">
 
 Skapa funktionen `kvadrat` som skriver ut en "ordkvadrat" enligt exemplen nedan.
 

@@ -53,7 +53,7 @@ SyntaxError: invalid syntax
 
 Sammanfattningsvis: För att skriva ut text, måste den vara inom citattecken för att Python ska kunna tolka den korrekt.
 
-<in-browser-programming-exercise name="Leende" tmcname="osa01-01_hymio" height="300px">
+<in-browser-programming-exercise name="Leende" tmcname="osa01-01_leende" height="300px">
 
 Gör ett program som skriver ut ett leende: :-)
 
@@ -78,7 +78,7 @@ Det här programmet skriver ut tre rader text.
 
 </sample-output>
 
-<in-browser-programming-exercise name="Fixa programmet: Sju bröder" tmcname="osa01-03_korjaa_ohjelma_7_veljesta">
+<in-browser-programming-exercise name="Fixa programmet: Sju bröder" tmcname="osa01-03_sju_broder">
 
 Det här programmet borde skriva ut namnet på sju bröder i alfabetisk ordning. Det finns ändå några fel i programmet. Korrigera dem, så att namnen skrivs ut i korrekt ordning.
 
@@ -95,7 +95,7 @@ print("Timo")
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Gubben Noak" tmcname="osa01-02_ukko_nooa">
+<in-browser-programming-exercise name="Gubben Noak" tmcname="osa01-02_gubben_noak">
 
 Gör ett program som skriver ut följande textrader (exakt som de står nedan):
 
@@ -175,13 +175,13 @@ print("Antal timmar i ett år:")
 print(365*24) # 365 dagar, 24 timmar per dag
 ```
 
-<in-browser-programming-exercise name="Minuter i ett år" tmcname="osa01-04_minuuttien_maara_vuodessa">
+<in-browser-programming-exercise name="Minuter i ett år" tmcname="osa01-04_minuter_per_ar">
 
 Gör ett program som skriver ut antalet minuter i ett år. Låt Python utföra räkneoperationen som i exemplet ovan.
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Kod som skriver ut kod" tmcname="osa01-05_ohjelma_tulostaa_koodia">
+<in-browser-programming-exercise name="Kod som skriver ut kod" tmcname="osa01-05_skriv_ut_kod">
 
 Istället för dubbla citattecken (`"`) kan man i Python också använda enkla citattecken ( `'`).
 

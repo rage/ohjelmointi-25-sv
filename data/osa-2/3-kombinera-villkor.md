@@ -103,7 +103,7 @@ Ge siffra 4: **1**
 
 I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre "delvillkor" är sanna.
 
-<in-browser-programming-exercise name="Kontroll av ålder" tmcname="osa02-08_ian_tarkistus">
+<in-browser-programming-exercise name="Kontroll av ålder" tmcname="osa02-08_alderskoll">
 
 Skapa ett program som frågar om användarens ålder. Om åldern är under fem, ska programmet kommentera det här.
 
@@ -132,7 +132,7 @@ Du måste ha skrivit fel.
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Brorsöner" tmcname="osa02-09_veljenpojat">
+<in-browser-programming-exercise name="Brorsöner" tmcname="osa02-09_brorsoner">
 
 Skapa ett program som frågar efter användarens namn. Om namnet är Knatte, Fnatte eller Tjatte, antar programmet att användaren är Kalle Ankas brorson.
 
@@ -163,7 +163,7 @@ Jag vet inte vems brorson du är.
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Vitsord och poäng" tmcname="osa02-10_arvosana_ja_pisteet">
+<in-browser-programming-exercise name="Vitsord och poäng" tmcname="osa02-10_vitsord_poang">
 
 Följande tabell beskriver hur vitsordet på en kurs räknas. Skapa ett program som meddelar vitsordet på basis av den här tabellen.
 
@@ -286,7 +286,7 @@ else:
 
 Man kan inte på rak arm säga vilkendera lösning är bättre. Situationen bestämmer ofta hur det lönar sig att bygga upp if-satsen på ett logiskt sätt. I det här exemplet tycker flera personer att versionen med kapsling är mera intuitiv.
 
-<in-browser-programming-exercise name="Skottår" tmcname="osa02-12_karkausvuosi">
+<in-browser-programming-exercise name="Skottår" tmcname="osa02-12_skottar">
 
 Ett år är ett skottår om det är delbart med fyra. Om ett år är delbart med 100 är det ett skottår bara då det är delbart med 400.
 
@@ -315,7 +315,7 @@ Ange år: **1800**
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="I mitten av alfabetet" tmcname="osa02-13_aakkosjarjestyksessa_keskimmainen">
+<in-browser-programming-exercise name="I mitten av alfabetet" tmcname="osa02-13_mellerst_i_alfabetet">
 
 Skapa ett program som frågar användaren efter tre bokstäver. Programmet skriver ut bokstaven som är mellerst i alfabetisk ordning.
 
@@ -344,7 +344,7 @@ Den mellersta bokstaven är B
 </in-browser-programming-exercise>
 
 
-<in-browser-programming-exercise name="Gåvoskatt" tmcname="osa02-14_lahjaverolaskuri" height="500px">
+<in-browser-programming-exercise name="Gåvoskatt" tmcname="osa02-14_gavoskatt" height="500px">
 
 [Enligt skattemyndigheten](https://www.vero.fi/sv/privatpersoner/egendom/gava/) är en gåva sådan egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
 

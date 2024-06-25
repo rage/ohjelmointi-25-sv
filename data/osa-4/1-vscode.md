@@ -21,7 +21,7 @@ Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hän
 
 [Här hittar du en guide](https://www.mooc.fi/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Läs instruktionerna och gör sedan uppgiften nedan:
 
-<programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_hello_visualstudio_code'>
+<programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_vs_code'>
 
 Skapa ett program som frågar vilken kodeditor användaren har. Programmet fortsätter köra tills användaren svarar Visual Studio Code.
 

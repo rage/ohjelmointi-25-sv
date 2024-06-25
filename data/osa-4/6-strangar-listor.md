@@ -135,7 +135,7 @@ Nyt myös globaalin muuttujan määrittely on siirtynyt `if`-lohkoon.
 
 TMC-testit suoritetaan aina siten, että mitään `if`-lohkon sisällä olevaa koodia ei suoriteta. Tämän takia funktio ei voi edes teoriassa toimia, sillä se viittaa muuttujaan `nimilista`, jota ei testejä suoritettaessa ole lainkaan olemassa.
 
-<programming-exercise name='Allt omvänt' tmcname='osa04-21_kaikki_vaarinpain'>
+<programming-exercise name='Allt omvänt' tmcname='osa04-21_allt_omvant'>
 
 Skapa funktionen `allt_omvant` som får som argument en lista med strängar. Funktionen ska skapa och returnera en ny lista där alla strängar i den ursprungliga listan är omvända. Elementen ska också komma i omvänd ordning i listan.
 
@@ -276,7 +276,7 @@ Jag gillar Java
 
 </sample-output>
 
-<programming-exercise name='Vanligaste bokstaven' tmcname='osa04-22_eniten_kirjaimia'>
+<programming-exercise name='Vanligaste bokstaven' tmcname='osa04-22_vanligaste_bokstaven'>
 
 Skapa funktionen `vanligaste_bokstaven` som får som argument en sträng. Funktionen ska returnera den bokstav som förekommer mest i strängen. Om det finns flera kandidater ska man returnera den bokstav som förekommer först.
 
@@ -300,7 +300,7 @@ s
 </programming-exercise>
 
 
-<programming-exercise name='Utan vokaler' tmcname='osa04-23_vokaalit_pois'>
+<programming-exercise name='Utan vokaler' tmcname='osa04-23_utan_vokaler'>
 
 Skapa funktionen `utan_vokaler` som får som argument en sträng. Funktionen ska returnera en ny sträng där vokalerna i den ursprungliga strängen fattas.
 
@@ -322,7 +322,7 @@ dt hr r tt xmpl
 </programming-exercise>
 
 
-<programming-exercise name='Versaler bort' tmcname='osa04-24_poista_isot'>
+<programming-exercise name='Versaler bort' tmcname='osa04-24_versaler_bort'>
 
 Pythons strängmetod `isupper()` returnerar `True` om strängen består av enbart versaler.
 
@@ -360,7 +360,7 @@ print(filtrerad_lista)
 
 </programming-exercise>
 
-<programming-exercise name='Grannar i en lista' tmcname='osa04-25_naapureita_listassa'>
+<programming-exercise name='Grannar i en lista' tmcname='osa04-25_grannar'>
 
 Vi definierar att två element i en lista är grannar då skillnaden mellan deras värden är ett. Dvs. t.ex. elementen `1` och `2` samt `56` och `55`.
 
@@ -495,7 +495,7 @@ def main():
 main()
 ```
 
-<programming-exercise name='Vitsordsstatistik' tmcname='osa04-26_arvosanatilasto'>
+<programming-exercise name='Vitsordsstatistik' tmcname='osa04-26_vitsordsstatistik'>
 
 I den här uppgiften skapar vi ett program vars uppgift är att skriva ut vitsordsstatistik för en kurs.
 

@@ -123,7 +123,7 @@ Databasapplikation
 
 </sample-output>
 
-<programming-exercise name='JSON-fil' tmcname='osa07-12_jsontiedostot'>
+<programming-exercise name='JSON-fil' tmcname='osa07-12_json'>
 
 Vi inspekterar en JSON-fil med innehåll om studerande i följande format:
 
@@ -177,7 +177,7 @@ print(begaran.read())
 
 Sidor som är skräddarsydda för människoögon ser inte vanligtvis trevliga ut när deras kod skrivs ut. I de kommande exemplen kommer vi däremot att läsa in data i maskinformat från internet. En stor del maskinläsbara data på internet är i JSON-format.
 
-<programming-exercise name='Kursstatistik' tmcname='osa07-13_kurssistatistiikka'>
+<programming-exercise name='Kursstatistik' tmcname='osa07-13_kursstatistik'>
 
 #### Info om kurser
 
@@ -295,7 +295,7 @@ Obs! I [`math`-modulen](https://docs.python.org/3/library/math.html) hittar du e
 
 </programming-exercise>
 
-<programming-exercise name='Vem lurade' tmcname='osa07-14_kuka_huijasi'>
+<programming-exercise name='Vem lurade' tmcname='osa07-14_lurade'>
 
 I filen `start.csv` finns starttider för tentor i formatet `id;hh:mm`:
 
@@ -320,7 +320,7 @@ Skapa funktionen `fuskare()` som returnerar en lista över fuskarnas id:n.
 
 </programming-exercise>
 
-<programming-exercise name='Vem lurade, andra versionen' tmcname='osa07-15_kuka_huijasi_2'>
+<programming-exercise name='Vem lurade, andra versionen' tmcname='osa07-15_lurade_v2'>
 
 Du har till ditt förfogande de filer som presenterades i den förra uppgiften. Skapa funktionen `officiella_poang()`, som returnerar studerandenas provpoäng i ett lexikon enligt följande regler:
 
@@ -345,7 +345,7 @@ Förutom standardbiblioteket är internet fullproppat med andra Python-moduler f
 
 * https://wiki.python.org/moin/UsefulModules
 
-<programming-exercise name='Spell checker, andra versionen' tmcname='osa07-16_spellchecker_versio2'>
+<programming-exercise name='Spell checker, andra versionen' tmcname='osa07-16_spellcheck_v2'>
 
 I den här uppgiften förbättrar vi lite vårt språkkontrollverktyg.
 
