@@ -272,7 +272,7 @@ except:
 
 <sample-output>
 
-Ange siffra: **kolme**
+Ange siffra: **tre**
 Något gick fel
 
 </sample-output>
