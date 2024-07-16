@@ -223,7 +223,7 @@ På Unicafe, studentkafeterian vid Helsingfors universitet, kan studenterna beta
 
 I den här övningen kommer du att skriva en klass som heter Lunchkort, med syftet att emulera de funktioner som tillhandahålls av Unicafes betalkort.
 
-### Del 1: Strukturen av klassen
+### Strukturen av klassen
 
 Skapa en ny klass med namnet `Lunchkort`.
 
@@ -255,7 +255,7 @@ Kortets saldo är 50.0 euro
 
 </sample-output>
 
-### Del 2: Betalning av lunch
+### Betalning av lunch
 
 Implementera följande metoder till din Lunchkort klass:
 
@@ -309,7 +309,7 @@ Kortets saldo är 1.4 euro
 
 Kortets saldo får alltså inte minska ifall det inte finns tillräckligt med pengar på det.
 
-### Del 3: Sätta in pengar på kortet
+### Sätta in pengar på kortet
 
 Lägg till metoden `tillsatt_pengar` till `Lunchkort`-klassen.
 
@@ -349,9 +349,9 @@ ValueError: Det går inte att lägga till mindre än noll
 
 </sample-output>
 
-**OBS:** metoden ska _åstadkomma_ ett undantag, se [del 6](/osa-6/3-virheet#poikkeusten-tuottaminen) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
+**OBS:** metoden ska _åstadkomma_ ett undantag, se [modul 6](/osa-6/3-virheet#poikkeusten-tuottaminen) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
 
-### Del 4: Flera kort
+### Flera kort
 
 Skapa ett huvudprogram, som innehåller följande händelser:
 
@@ -455,7 +455,7 @@ studier
 
 <programming-exercise name='Sarja' tmcname='osa08-14_sarja'>
 
-### Del 1: Klassen Serie
+### Klassen Serie
 
 Skapa klassen `Serie`, som fungerar enligt följande:
 
@@ -488,7 +488,7 @@ Crime, Drama, Mystery, Thriller
 
 </sample-output>
 
-### Del 2: Betygsättningar
+### Betygsättningar
 
 Skapa en metod `betygsatt(betyg: int)`, med vilken man kan ge ett betyg mellan heltalen 0 och 5. Också metoden `__str__` ska ändras som så, att ifall det finns några betyg ska metoden skriva ut mängden betyg och deras medeltal med en decimals noggranhet.
 
@@ -510,7 +510,7 @@ Betyg 5, medeltal 3.4 poäng
 
 </sample-output>
 
-### Del 3: Sökning av serier
+### Sökning av serier
 
 Skapa två funktioner `betyg_minst(betyg: float, serier: list)` och `innehallar_genren(genre: str, serier: list)`, med vilka det är möjligt att hitta serier på listan.
 

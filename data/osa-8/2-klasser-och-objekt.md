@@ -266,7 +266,7 @@ Mjölk
 for i in range(1, affarslista.mangden_foremal()+1):
     foremal = affarslista.foremal(i)
     mangd = affarslista.mangd(i)
-    print(f"{foremal}: {mangd} kpl")
+    print(f"{foremal}: {mangd} st")
 ```
 
 

@@ -125,7 +125,7 @@ from person import Person
 # kod
 ```
 
-är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import` deklarationen för första gången i [del 7](/osa-7/1-moduulit/) av kursmaterialet.
+är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import` deklarationen för första gången i [modul 7](/osa-7/1-moduulit/) av kursmaterialet.
 
 <programming-exercise name='Husdjur' tmcname='osa09-06_husdjur'>
 
@@ -204,7 +204,7 @@ Spelarnas målmängd: [10, 22, 1]
 
 I den här övningen får du öva på att slå in presenter. Du kommer att skriva två klasser: `Present` och `Lada`. En present har ett namn och en vikt, och en låda innehåller presenter.
 
-## Del 1: Presentklassen
+## Presentklassen
 
 Definiera klassen `Present` som kan användas för att representera olika typer av presenter. Klassdefinitionen bör innehålla attribut för presentens namn och vikt (i kg). Instanser av klassen ska fungera på följande sätt:
 
@@ -226,7 +226,7 @@ Present: ABC bok (2 kg)
 
 </sample-output>
 
-## Del 2: Lådklassen
+## Lådklassen
 
 Definiera klassen `Lada`. Du ska kunna lägga presenter i lådan och lådan ska hålla reda på den sammanlagda vikten av presenterna i den. Klassdefinitionen bör innehålla dessa metoder:
 
@@ -350,7 +350,7 @@ Johan spelar inte i Gumtäkts boll :(
 
 Övningsmallen innehåller klassen `Person`. En person har ett namn och en höjd. I denna övning kommer du att implementera klassen `Rum`. Du kan lägga till valfritt antal personer i ett rum, och du kan också söka efter och ta bort den kortaste personen i rummet.
 
-## Del 1: Rum
+## Rum
 
 Skapa klassen `Rum`, som har en lista på personer som attribut och har följande metoder:
 
@@ -385,7 +385,7 @@ Tom (185 cm)
 
 </sample-output>
 
-## Del 2: kortaste personen
+## Kortaste personen
 
 Definiera metoden kortast() inom klassdefinitionen `Rum`. Metoden ska returnera den kortaste personen i det rum som den anropas i. Om rummet är tomt ska metoden returnera `None`. Metoden ska _inte_ ta bort personen från rummet.
 
@@ -426,7 +426,7 @@ Alex (186 cm)
 
 </sample-output>
 
-## Del 3: Ta bort en person från rummet
+## Ta bort en person från rummet
 
 Definiera metoden `ta_bort_kortaste`() inom klassdefinitionen för `Rum`. Metoden ska ta bort det kortaste `Person`-objektet från rummet och returnera referensen till objektet. Om rummet är tomt ska metoden returnera `None`.
 
@@ -466,7 +466,7 @@ Alex (186 cm)
 
 </sample-output>
 
-**Tips**: [i del 4](/osa-4/3-listat#alkioiden-lisaaminen-ja-poistaminen) hittar du instruktioner för att ta bort föremål från en lista
+**Tips**: [i modul 4](/osa-4/3-listat#alkioiden-lisaaminen-ja-poistaminen) hittar du instruktioner för att ta bort föremål från en lista
 
 **Tips2**: det är alltid möjligt att kalla en annan metod från samma klass inuti en metod. Följande borde fungera helt bra:
 

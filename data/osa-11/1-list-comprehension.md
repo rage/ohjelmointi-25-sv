@@ -394,7 +394,7 @@ Ofta när vi har en villkorlig sats inkluderar vi också en else-gren. Eftersom 
 
 `<uttryck 1> if <villkor> else <uttryck 2>`
 
-Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [del 7](https://programming-24.mooc.fi/part-7/6-more-features). Uttrycket ovan utvärderas till antingen `uttryck 1` eller `uttryck 2`, beroende på om villkoret är sant eller falskt.
+Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [modul 7](https://programming-24.mooc.fi/part-7/6-more-features). Uttrycket ovan utvärderas till antingen `uttryck 1` eller `uttryck 2`, beroende på om villkoret är sant eller falskt.
 
 Som en uppfräschning av ämnet kan vi säga att om vi behöver skriva ut det större av två tal och vi bara vill använda en enda utskriftssats, kan vi få plats med allt på en enda rad:
 
@@ -454,7 +454,7 @@ if __name__ == "__main__":
 
 <programming-exercise name='Lotterinummer' tmcname='osa11-07_lotterinummer'>
 
-## Del 1: LotteriNummer matchade
+## LotteriNummer matchade
 
 Skapa en klass med namnet `LotteriNummer` som tar veckonumret (ett heltalsvärde) och en lista med sju heltal som sina konstruktorsargument. Listan ska innehålla de korrekta lotterinumren för den givna veckan.
 
@@ -477,7 +477,7 @@ print(ratta.antalet_traffar(egen_rad))
 
 </sample-output>
 
-## Del 2: LotteriNummer matchade på plats
+## LotteriNummer matchade på plats
 
 Skapa en metod med namnet `traffar_pa_plats(nummer)` som tar en lista med sju heltal som sitt argument och returnerar en ny lista med sju heltal. Den nya listan innehåller endast de inlägg från den ursprungliga listan som matchar veckans korrekta nummer. Dessa måste ligga kvar på samma index som de gjorde i den ursprungliga listan. Resten av indexen bör fyllas med värdena `-1`.
 

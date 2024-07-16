@@ -518,7 +518,7 @@ Berg_och_dalbana (1 besökare)
 
 I uppgiftsbotten finns färdigt redan en klass `Person` såväl som en ram för klassen `BebisCenter`. Ett `BebisCenter`-objekt utför olika handlingar såsom mäter eller matar personer. I denna uppgift implementerar du resten av `BebisCenter`-klassen. Koden för klassen `Person` ska inte ändras överhuvudtaget!
 
-## Del 1: Vägning av person
+## Vägning av person
 
 I `BebisCenter`-klassens definitione finns en ram för funktionen `vagning`
 
@@ -550,7 +550,7 @@ Peter väger 85 kg
 
 </sample-output>
 
-## Del 2: Matning
+## Matning
 
 Det är möjligt att ändra tillståndet för ett objekt som skickas som ett argument. Implementera metoden `mata(person: Person)` som ökar vikten på den person som skickas som argument med ett.
 
@@ -586,7 +586,7 @@ Peter väger 85 kg
 
 </sample-output>
 
-## Del 3: Räknande av vägningar
+## Räknande av vägningar
 
 Implementera metoden `vagningar`() som returnerar det totala antalet vägningar som ett `BabyCenter`-objekt har utfört. OBS: Du kommer att behöva ett nytt attribut för att hålla reda på antalet vägningar. Du kan använda följande kod för att testa din metod:
 
@@ -629,7 +629,7 @@ Klassen `Lunchkort`, så som du ombads implementera den, har dock vissa problem.
 
 En bättre lösning skulle vara att göra korten ”dumma”, okunniga om priserna på olika produkter. Syftet med kortet skulle vara att helt enkelt hålla reda på det tillgängliga saldot. Alla mer komplicerade funktioner bör rymmas inom en annan klass: betalterminalen.
 
-## Del 1: Ett simplare Lunchkort
+## Ett simplare Lunchkort
 
 Vi förverkligar först en dummare version av `Lunchkort`-klassen. Kortet borde endast ha funktioner för att få reda på det tillfälliga saldot, lägga till pengar på kortet och subtrahera pengar från saldot. Fyll i metoden `subtrahera_saldo(mangd)` enligt kommentarerna i övningsfältet:
 
@@ -672,7 +672,7 @@ Saldo 2
 
 </sample-output>
 
-## Del 2: Betalningsterminalen och hanterandet av kontantbetalning
+## Betalningsterminalen och hanterandet av kontantbetalning
 
 I studentkafeterian går det att betala med kontanter eller Lunchkort. En betalterminal används för att hantera både kontant- och korttransaktioner. Låt oss börja med kontanttransaktionerna.
 
@@ -729,7 +729,7 @@ Special luncher sålda 1
 
 </sample-output>
 
-## Del 3: Betalning med kort
+## Betalning med kort
 
 Låt oss nu implementera korttransaktioner. Vi kommer att behöva metoder som tar ett `Lunchkort` som argument och minskar saldot på kortet med lunchens pris. Nedan hittar du ramar av dessa funktioner. Vänligen fyll i metoderna enligt beskrivningen i kommentarerna:
 
@@ -785,7 +785,7 @@ special luncher sålda 1
 
 </sample-output>
 
-## Del 4: Tillsättning av pengar på kortet
+## Tillsättning av pengar på kortet
 
 Slutligen lägger vi till en metod som gör att du kan sätta in pengar på kortet. Kortägaren betalar detta kontant, så att den insatta summan läggs till de pengar som finns tillgängliga i terminalen. Här är en ram för metoden:
 
@@ -952,7 +952,7 @@ class Bostad:
 
 Din uppgift är att implementera metoder som gör det möjligt att jämföra tillgängliga egenskaper.
 
-## Del 1: Är den större?
+## Är den större?
 
 Skapa metoden `storre(self, jamforelse)`, som returnerar `True`, ifall `Bostad`-objektet är större än objektet det jämförs med.
 
@@ -974,7 +974,7 @@ True
 
 </sample-output>
 
-## Del 2: Prisskillnad
+## Prisskillnad
 
 Skapa metoden `prisskillnad(self, jamforelse)`, som returnerar skillnaden i pris mellan `Bostad`-objektet självt och det som det jämförs med. Prisskillnaden är det absoluta värdet av skillnaden mellan de två fastigheternas totalpriser. Det totala priset för en fastighet är dess kvadratmeterpris multiplicerat med antalet kvadratmeter i fastigheten.
 
@@ -996,7 +996,7 @@ print(jakobacka_trea.prisskillnad(berghall_tvaa))
 
 </sample-output>
 
-## Del 3: Dyrare?
+## Dyrare?
 
 Skapa metoden `dyrare(self, jamforelse)` som returnerar `True`, ifall `Bostad`-objektet är dyrare än objektet som det jämförs med.
 

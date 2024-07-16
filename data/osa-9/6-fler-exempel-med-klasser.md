@@ -284,7 +284,7 @@ Fastän följande övning avslutar den här delen av materialet, så har de tekn
 
 I den här uppgiftsserien kommer du skapa klasserna `Sak`, `Resvaska` och `Lastutrymme`, vilka låter dig öva vidare på att jobba på objekt som innehåller referenser till andra objekt.
 
-## Del 1: Sak
+## Sak
 
 Skapa klassen `Sak`, som används för att skapa saker av olika sorter. Varje sak har ett namn och en vikt (i kg).
 
@@ -321,7 +321,7 @@ bok = Sak("ABC bok", 2)
 bok.vikt = 10
 ```
 
-## Del 2: Resväska
+## Resväska
 
 Skapa klassen `Resvaska`. Det ska vara möjligt att packa saker i resväskan. En räsväska har dessutom en maximal vikt för saker som lagras i den.
 
@@ -364,7 +364,7 @@ Programmets utskrift borde vara följande:
 
 </sample-output>
 
-## Del 3: Språkvård
+## Språkvård
 
 Meddelandet ”1 saker” är inte särskilt grammatiskt. Istället borde det stå ”1 sak”. Gör de ändringar som krävs i din `__str__`-metod.
 
@@ -379,7 +379,7 @@ Föregående exempel borde nu skriva ut:
 
 </sample-output>
 
-## Del 4: Alla saker
+## Alla saker
 
 Tillägg följande metoder till definitionen av din `Resvaska`-klass:
 
@@ -418,7 +418,7 @@ Totalvikt: 7 kg
 
 Om du har implementerat din `Resvaska`-klass med fler än två instansvariabler, gör de ändringar som krävs så att varje instans endast har två dataattribut: den maximala vikten och en lista över föremålen i den.
 
-## Del 5: Den tyngsta saken
+## Den tyngsta saken
 
 Lägg till en ny metod i din `Resvaska`-klass: `tyngsta_saken` ska returnera den `sak` som är tyngst. Om det finns två eller flera föremål med samma vikt kan metoden returnera vilket som helst av dessa. Metoden ska returnera en referens till ett objekt. Om resväskan är tom ska metoden returnera `None`.
 
@@ -446,7 +446,7 @@ Tyngsta saken: Tegelsten (4 kg)
 
 </sample-output>
 
-## Del 6: Lastutrymme
+## Lastutrymme
 
 Skapa klassen `Lastutrymme`, som har följande metoder:
 
@@ -488,7 +488,7 @@ print(lastutrymme)
 
 </sample-output>
 
-## Del 7: Lastutrymmets innehåll
+## Lastutrymmets innehåll
 
 Lägg till metoden `skriv_ut_saker`, till din `Lastutrymme`-klass. Metoden ska skriva ut alla saker i alla resväskor i lastutrymmet.
 

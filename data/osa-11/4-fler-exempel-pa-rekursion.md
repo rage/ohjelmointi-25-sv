@@ -229,7 +229,7 @@ Låt oss avsluta denna del av materialet med en lite större övning som koncent
 
 I den här övningen kommer du skriva två olika klasser, vilka i sin tur kommer att vara ryggraden för övningen som följer denna, i vilken du kommer att skapa en interaktiv applikation.
 
-## Del 1: Uppgift
+## Uppgift
 
 Förverkliga klassen `Uppgift`, som modellerar en uppgift i ett mjukvaruföretags lista av uppgifter. Uppgifterna har
 - en beskrivning
@@ -274,7 +274,7 @@ Klarifikationer:
 
 **Tips:** id kan implementeras med en [klassvariabel](/osa-9/5-staattiset-piirteet#luokkamuuttujat).
 
-## Del 2: Uppgiftsbok
+## Uppgiftsbok
 
 Skapa nu en klass med namnet `Uppgiftsbok`, som samlar ihop alla uppgifter som delegerats av mjukvaruföretaget. Uppgifterna ska modelleras med klassen `Uppgift` som du just gjorde.
 
@@ -327,7 +327,7 @@ print(lista2)
 
 </sample-output>
 
-## Del 3: Några fler funktioner för Uppgiftsboken
+## Några fler funktioner för Uppgiftsboken
 
 Skapa tre till metoder till din `Uppgiftsbok`-klass.
 
@@ -354,11 +354,11 @@ for bestallning in bestallningar.alla_bestallningar():
 
 </sample-output>
 
-Ifall det inte finns någon uppgift med det givna id:t, ska metoden åstadkomma ett `ValueError`-undantag. Ifall du behöver en påminnelse om att åstadkomma undantag kan du kolla in [del 6](/osa-6/3-virheet#poikkeusten-tuottaminen).
+Ifall det inte finns någon uppgift med det givna id:t, ska metoden åstadkomma ett `ValueError`-undantag. Ifall du behöver en påminnelse om att åstadkomma undantag kan du kolla in [modul 6](/osa-6/3-virheet#poikkeusten-tuottaminen).
 
 Metoderna `fardiga_bestallningar(self)` och `ofardiga_bestallningar(self)` fungerar som förväntat: båda returnerar en lista innehållande de relevanta uppgifterna från Uppgiftsboken.
 
-## Del 4: Projektets sista detaljer
+## Projektets sista detaljer
 
 Vi skapar en sista metod `programmerarens_status(self, programmerare: str)` till `Uppgiftsbok`-klassen, vilken returnar en _tupel_. Tupeln ska innehålla antalet färdiga och ofärdiga uppgifter en programmerare har tilldelats samt den uppskattade mängden timmar i båda kategorierna.
 
@@ -391,9 +391,9 @@ Ifall det inte finns någon programmerare med det angivna namnet, ska metoden å
 
 <programming-exercise name='Uppgiftsboksapplikation' tmcname='osa11-19_uppgiftsboksapplikation'>
 
-I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av del 10](/osa-10/4-lisaa-esimerkkeja) kan också vara till hjälp.
+I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av modul 10](/osa-10/4-lisaa-esimerkkeja) kan också vara till hjälp.
 
-## Del 1: Utan felhantering
+## Utan felhantering
 
 Applikationen ska fungera _exakt_ enligt följande:
 
@@ -466,7 +466,7 @@ uppgifter: färdiga 2 ofärdiga 1, timmar: gjorda 55 ogjorda 1000
 
 Den första övningspoängen ges för en fungerande applikation när alla användarinmatningar är felfria.
 
-## Del 2: Hantering av inamtningsfel
+## Hantering av inamtningsfel
 
 För att få den andra övningspoängen för denna övning förväntas din applikation återhämta sig från felaktig användarinmatning. All inmatning som inte följer det angivna formatet ska ge ett felmeddelande _felaktig inmatning_ och resultera i ännu en upprepning av loopen med begäran om en ny instruktion:
 

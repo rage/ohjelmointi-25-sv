@@ -210,11 +210,11 @@ värde: 8
 </sample-output>
 
 
-### Del 1: Minska räknarens värde
+### Minska räknarens värde
 
 Komplettera metoden `minska` som definieras i mallen, så att den minskar värdet som lagras i räknaren med ett. Se exemplet ovan för förväntat beteende.
 
-### Del 2: Räknaren får inte ha ett negativt värde
+### Räknaren får inte ha ett negativt värde
 
 Lägg till funktionalitet till din `minska`-metod, så att räknarens värde aldrig når negativa värden. Om värdet på räknaren är 0 kommer den inte att minskas ytterligare.
 
@@ -238,7 +238,7 @@ värde: 0
 
 </sample-output>
 
-### Del 3: Nollande av räknaren
+### Nollande av räknaren
 
 Skapa en metod `nolla` som sätter värdet på räknaren till 0:
 
@@ -256,7 +256,7 @@ värde: 0
 
 </sample-output>
 
-### Del 4: Återställning av räknaren
+### Återställning av räknaren
 
 Skapa en metod `aterstall_ursprungligt_varde()`, som återställer räknaren till sitt ursprungliga tillstånd:
 
@@ -411,9 +411,9 @@ Pythonson
 
 <programming-exercise name='Nummerstatistik' tmcname='osa08-11_nummerstatistik'>
 
-I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av del 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
+I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
 
-### Del 1: Mängden nummer
+### Mängden nummer
 
 Skapa en klass med namnet `Nummerstatistik`, med följande metoder:
 
@@ -451,7 +451,7 @@ Mängden nummer: 4
 
 </sample-output>
 
-### Del 2: Summa och medeltal
+### Summa och medeltal
 
 Tillsätt följande metoder till klassdefinitionen:
 
@@ -477,7 +477,7 @@ Medeltal: 2.75
 
 </sample-output>
 
-### Del 3: Användarinmatning
+### Användarinmatning
 
 Skriv ett huvudprogram som fortsätter att fråga användaren om heltal tills användaren skriver in -1. Programmet ska sedan skriva ut summan och medelvärdet av de inmatade talen.
 
@@ -500,7 +500,7 @@ Medeltal: 3.25
 
 </sample-output>
 
-### Del 4: Flera summor
+### Flera summor
 
 Bygg på ditt huvudprogram så att det också separat räknar summan av de jämna och udda tal som läggs till.
 

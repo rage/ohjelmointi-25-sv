@@ -291,7 +291,7 @@ Syncro 14 8C+
 
 </sample-output>
 
-## Del 1: Sortera enligt längd
+## Sortera enligt längd
 
 Skapa funktionen `enligt_langd(rutter: list)`, som returnerar en ny lista av rutter sorterade enligt längd från längsta till kortaste.
 
@@ -318,7 +318,7 @@ Smooth operator, längd 11 meter, grade 7A
 
 </sample-output>
 
-## Del 2: Sortera enligt svårighetsgrad
+## Sortera enligt svårighetsgrad
 
 Skapa funktionen `enligt_svarighet(rutter: list)`, som returnerar en ny lista av rutter sorterade enligt svårighet från svåraste till lättaste. För rutter med samma svårighet är den längre svårare. Skalan för svårighet är _4, 4+, 5, 5+, 6A, 6A+, ..._ som i praktiken fungerar enligt alfabetiska ordningen för strängar.
 
@@ -391,7 +391,7 @@ Smooth operator, längd 9 meter, grade 7A
 
 </sample-output>
 
-## Del 1: Sortera enligt antalet rutter
+## Sortera enligt antalet rutter
 
 Skapa funktionen `enligt_antal_rutter`, som sorterar klättringsområdena enligt antalet rutter de har i ökande ordning.
 
@@ -411,7 +411,7 @@ Nalkkilan slabi, 4 rutter, svåraste 7A
 
 </sample-output>
 
-## Del 2: Sortera enligt svåraste rutt
+## Sortera enligt svåraste rutt
 
 Skapa funktionen `enligt_svaraste_rutt`, som sorterar klättringsområdena enligt högsta svårighetsgraden de har i _minskande_ ordning.
 
@@ -568,25 +568,25 @@ Uppgiftsbotten innehåller en definition för en klass med namnet `Bollspelare`,
 
 Implementera följande funktioner. OBS: varje funktion har olika typer av returvärden.
 
-## Del 1: Flest mål
+## Flest mål
 
 Skapa funktionen `flest_mal`, som får bollspelare som argument.
 
 Funktionen ska returnera namnet av spelaren som gjort flest mål, i strängformat.
 
-## Del 2: Flest poäng
+## Flest poäng
 
 Skapa funktionen `flest_poang`, som får en bollspelare som argument.
 
 Funktionen ska returnera en tupel som innehåller namnet och skjortnumret av spelaren som fått flest poäng. Den totala mängden av poäng är antalet mål och antalet målpassningar ihopslaget.
 
-## Del 3: Minst minuter
+## Minst minuter
 
 Skapa funktionen `minst_minuter`, som får en bollspelare som argument.
 
 Funktionen ska returnera `Bollspelare`-objektet som har den minsta mängden minuter spelade.
 
-## Del 4: Testprogram
+## Testprogram
 
 Du kan testa dina funktioner med följande program:
 

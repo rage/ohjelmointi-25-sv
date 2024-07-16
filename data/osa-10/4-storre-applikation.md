@@ -18,7 +18,7 @@ Hittills i detta kursmaterial har vi gått igenom ett stort antal Python-funktio
 
 I Introduktion till programmering-kursen introducerades kontrollstrukturer som while och for, funktioner samt grundläggande datastrukturer som listor, tupler och ordlistor. I princip är dessa verktyg allt som behövs för att uttrycka vad som helst som en programmerare kan tänka sig vilja uttrycka med Python.
 
-På denna avancerade kurs i programmering, med början i del 8 av materialet, har du blivit bekant med klasser och objekt. Låt oss ta en stund att fundera på när och varför de är nödvändiga, ifall de grundläggande verktygen från del 1 till 7 borde räcka.
+På denna avancerade kurs i programmering, med början i modul 8 av materialet, har du blivit bekant med klasser och objekt. Låt oss ta en stund att fundera på när och varför de är nödvändiga, ifall de grundläggande verktygen från modul 1 till 7 borde räcka.
 
 ## Att hantera komplexitet
 
@@ -323,7 +323,7 @@ class FilHanterare():
 
 Konstruktormetoden tar namnet på filen som sitt argument. Metoden `ladda(self)` läser innehållet i filen. Varje rad delas upp i två delar: ett namn och en lista med siffror. Sedan läggs dessa till i en ordbok, med namnet som nyckel och listan som värde.
 
-Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [del 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) att strängmetoden `split` returnerar en lista.
+Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [modul 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) att strängmetoden `split` returnerar en lista.
 
 ```python
 lista = [1, 2, 3, 4, 5]
@@ -571,7 +571,7 @@ Om du inte är helt säker på vad som egentligen händer i koden ovan kan du pr
 
 I denna övning kommer du att skapa en annan version av `TelefonkatalogApplikation`. Du kommer att lägga till adresser i datan som kan kopplas till ett namn. För enkelhetens skull har funktionaliteten för att spara till fil tagits bort, och vissa andra metoder har bytt namn för att bättre passa in i förändringen.
 
-## Del 1: En separat klass för en persons data
+## En separat klass för en persons data
 
 Ändra hur data om en person hanteras. Implementera en klass med namnet `Person`, som tar hand om personers telefonnummer och adresser. Klassen ska fungera på följande sätt:
 
@@ -597,7 +597,7 @@ Mannerheimintie 10 Helsinki
 
 </sample-output>
 
-## Del 2: Telefonkatalogs användning av klassen Person
+## Telefonkatalogs användning av klassen Person
 
 Ändra den interna implementeringen av din applikation så att din `Telefonkatalog`-klass använder objekt av klassen `Person` för att lagra data i telefonkatalogen. Det vill säga, attributet `__personer` ska fortfarande innehålla en ordlista, men värdena ska vara Person-objekt och inte listor. Användaren av din applikation ska inte märka någon skillnad; ändringarna får inte påverka användargränssnittet.
 
@@ -616,7 +616,7 @@ Lägg märke till det nya namnet på metoden för att hämta ett inlägg från t
 
 När du har gjort de nödvändiga ändringarna i ditt program och absolut har verifierat funktionaliteten i `Telefonkatalog`-klassen kan du gå vidare till användargränssnittet och se om allt fortfarande fungerar som förväntat.
 
-## Del 3: Tillägg av adress
+## Tillägg av adress
 
 Vänligen implementera funktionaliteten för att lägga till en adress till ett inlägg i din telefonkatalog. Programmet ska fungera på följande sätt:
 

@@ -36,7 +36,7 @@ Du kan kopiera länken genom att klicka på knappen `Open URL` i meddelandet. En
 
 Det här är länken som du ska klistra in i formuläret nedan.
 
-## Hur del 14 betygsätts
+## Hur modul 14 betygsätts
 
 Målet med den här delen är att bygga ett litet, fungerande spel. Eftersom den här delen bara innehåller en enda uppgift får du poäng för ansträngning. Skicka in ditt spel även om du inte kan få det att fungera riktigt som du ville.
 
@@ -46,7 +46,7 @@ Om ett spel som du recenserar är ofullständigt eller inte fungerar riktigt som
 
 ## Några spelidéer
 
-Det är helt upp till dig vad ditt spel ska handla om, men här är några idéer som kan hjälpa dig att komma igång. Kom ihåg materialet i del 13; de exemplen kan också hjälpa dig att arbeta med dina idéer.
+Det är helt upp till dig vad ditt spel ska handla om, men här är några idéer som kan hjälpa dig att komma igång. Kom ihåg materialet i modul 13; de exemplen kan också hjälpa dig att arbeta med dina idéer.
 
 ### Ett samlingsspel
 

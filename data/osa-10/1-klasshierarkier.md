@@ -500,7 +500,7 @@ spelare 2: 1
 
 I denna ”grundläggande” version av spelet avgörs vinnaren slumpmässigt. Spelarnas insatser har ingen inverkan på resultatet.
 
-## Del 1: Längsta ordet vinner
+## Längsta ordet vinner
 
 Definiera en klass som heter `LangstaOrdet`. Det är en version av spelet där den som skriver in det längsta ordet i varje omgång vinner.
 
@@ -542,11 +542,11 @@ spelare 2: 1
 
 </sample-output>
 
-## Del 2: Flest vokaler vinner
+## Flest vokaler vinner
 
 Definiera en annan Ordspel-klass med namnet `FlestVokaler`. I den här versionen av spelet vinner den som har klämt in flest vokaler i sitt ord.
 
-## Del 3: Sten sax påse
+## Sten sax påse
 
 Definiera slutligen klassen `StenSaxPase` som låter dig spela ett spel av [Sten, sax, påse](https://sv.wikipedia.org/wiki/Sten,_sax,_p%C3%A5se).
 

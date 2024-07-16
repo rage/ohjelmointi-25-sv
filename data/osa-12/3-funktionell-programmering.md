@@ -247,7 +247,7 @@ Peter Python, vitsord från kursen Introduktion till programmering 5
 
 </sample-output>
 
-## Del 1: Namnet på studeranden
+## Namnet på studeranden
 
 Skapa funktionen `presterarnas_namn(prestationer: list)` som tar en lista av Prestation-objekt som argument. Funktionen ska returnera en ny lista med namnen på studeranden som genomför kursen.
 
@@ -270,7 +270,7 @@ Peter Python
 
 Implementera funktionen användandes `map`-funktionen!
 
-## Del 2: Kurser
+## Kurser
 
 Skapa funktionen `kursnamn(prestationer: list)` som tar en lista av Prestation-objekt som argument. Funktionen ska returnera en ny lista som innehåller namnet på kurserna i den ursprungliga listan i alfabetisk ordning. Varje kursnamn ska förekomma endast en gång på listan.
 
@@ -425,7 +425,7 @@ over_kilot = list(filter(lambda fisk : fisk.vikt >= 1000, fiskar))
 
 I denna övning fortsätter vi med `Prestation`-klassen.
 
-## Del 1: Godkända försök
+## Godkända försök
 
 Skapa funktionen `godkanda(prestationer: list)`, som tar en lista av Prestation-objekt som argument. Funktionen ska returnera en ny lista av Prestation-objekt, inkluderandes endast de föremål från den ursprungliga listan vars vitsord är åtminstone 1.
 
@@ -447,7 +447,7 @@ Patrik Programmerare vitsord från kursen Introduktion till programmering 5
 
 Implementera funktionen användandes `filter`-funktionen!
 
-## Del 2: Prestationer med vitsord
+## Prestationer med vitsord
 
 Skapa funktionen `prestationer_med_vitsord(prestationer: list, vitsord: int)`, som tar en lista av Prestation-objekt och ett heltal som argument. Funktionen ska returnera en ny lista som innehåller endast de Prestation-objekt från den ursprungliga listan vars vitsord matchar det andra argumentet.
 
@@ -471,7 +471,7 @@ Patrik Programmerare, vitsord från kursen Introduktion till universitetsmatemat
 
 Implementera funktionen användandes `filter`-funktionen!
 
-## Del 3: Studeranden som klarat kursen
+## Studeranden som klarat kursen
 
 Skapa funktionen `kursens_deltagare(prestationer: list, kurs: str)`, som tar en lista av Prestation-objekt och ett kursnamn som argument. Funktionen ska returnera en _alfabetiskt sorterad_ lista av namn på de studeranden som klarat av kursen, d.v.s. deras vitsord för den givna kursen är högre än 0.
 
@@ -686,7 +686,7 @@ Datastrukturer och algoritmer
 
 </sample-output>
 
-## Del 1: Totala antalet studiepoäng
+## Totala antalet studiepoäng
 
 Skapa funktionen `studiepoangens_summa`, som tar en lista av prestationer som argument. Funktionen adderar ihop det totala antalet studiepoäng som fås av kurserna. Den ska fungera enligt följande:
 
@@ -706,7 +706,7 @@ print(summa)
 
 Implementera funktionen användandes `reduce`-funktionen!
 
-## Del 2: Summan av avklarade studiepoäng
+## Summan av avklarade studiepoäng
 
 Skapa funktionen `godkanda_studiepoangens_summa`, som tar en lista av prestationer som argument. Funktionen adderar ihop studiepoängen för prestationerna med vitsordet 1 eller högre. Den ska fungera enligt följande:
 
@@ -726,7 +726,7 @@ print(summa)
 
 Implementera funktionen användandes `reduce`- och `filter`-funktionerna!
 
-## Del 3: Avklarade kursers medelvitsord
+## Avklarade kursers medelvitsord
 
 Skapa funktionen `medeltal`, som tar en lista av suorits som argument. Funktionen räknar ut medelvitsordet för prestationerna med vitsord 1 eller högre. Den ska fungera enligt följande:
 

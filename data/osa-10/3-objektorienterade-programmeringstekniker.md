@@ -4,9 +4,9 @@ title: 'Objektorienterade programmeringstekniker'
 hidden: false
 ---
 
-<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+<text-box variant='learningObjectives' name='Inlärningsmål'>
 
-Tämän osion jälkeen
+Efter den här delen
 
 - Känner du till några av de olika användningsområdena för variabelnamnet `self`
 - Vet du hur du överlagrar operatorer i dina egna klasser
@@ -308,7 +308,7 @@ print(personer)
 
 Övningsmallen innehåller en mall för en klass som heter `Pengar`. Den här övningen ber dig att implementera några ytterligare metoder och att åtgärda några små problem i mallen
 
-## Del 1: Fixa strängrepresentationen
+## Fixa strängrepresentationen
 
 Metoden `__str__` i klassdefinitionen fungerar inte riktigt som den ska. Med följande två `Pengar`-objekt skrivs det senare ut på fel sätt:
 
@@ -336,7 +336,7 @@ Fixa metoden så att den skriver ut:
 
 </sample-output>
 
-## Del 2: Lika stora mängder
+## Lika stora mängder
 
 Definiera en ny metod med namnet `__eq__(self, annan)` som gör att du kan använda jämförelseoperatorn == på `Pengar`-objekt. Du kan testa din implementation med följande kod:
 
@@ -362,7 +362,7 @@ True
 
 </sample-output>
 
-## Del 3: Andra jämförelseoperatörer
+## Andra jämförelseoperatörer
 
 Implementera även metoder för jämförelseoperatörerna `<`, `>` och `!=`.
 
@@ -383,7 +383,7 @@ True
 
 </sample-output>
 
-## Del 4: Addition och subtraktion
+## Addition och subtraktion
 
 Vänligen implementera additions- och subtraktionsoperatorerna `+` och `-` för Pengar-objekt. Båda ska returnera ett nytt objekt av typen Pengar. Varken objektet i sig eller det objekt som skickas som argument ska ändras som ett resultat.
 
@@ -415,7 +415,7 @@ ValueError: negativt resultat inte tillåtet
 
 </sample-output>
 
-## Del 5: Värdet kan inte bli direkt åtkommet
+## Värdet kan inte bli direkt åtkommet
 
 Klassen har fortfarande ett litet integritetsproblem. Användaren kan ”fuska” genom att komma åt attributen direkt och ändra det värde som lagras i `Pengar`-objektet:
 
@@ -442,7 +442,7 @@ I den här övningen ska du implementera klassen `SimpelDatum` som gör att du k
 
 På grund av denna förenkling bör du inte använda `datetime`-modulen från Pythons standardbibliotek. Du kommer att implementera liknande funktionalitet själv istället.
 
-## Del 1: Jämförelse
+## Jämförelse
 
 Implementera mallen för klassen, såväl som metoder för jämförelseoperatörerna `<`, `>`, `==` och `!=`. Exempel på användning:
 
@@ -472,7 +472,7 @@ True
 
 </sample-output>
 
-## Del 2: Ökning
+## Ökning
 
 Vänligen implementera additionsoperatorn `+` som gör att du kan lägga till ett givet antal dagar till ett `SimpelDatum`-objekt. Operatorn ska returnera ett nytt `SimpelDatum`-objekt. Det ursprungliga objektet ska inte ändras.
 
@@ -498,7 +498,7 @@ print(d4)
 
 </sample-output>
 
-## Del 3: Skillnad
+## Skillnad
 
 Vänligen implementera subtraktionsoperatorn `-` som gör att du kan ta reda på skillnaden i dagar mellan två SimpelDatum-objekt. Eftersom vi antar att varje månad har 30 dagar, är ett år inom ramen för denna övning 12*30 = 360 dagar långt.
 
@@ -619,7 +619,7 @@ C-värdheter på nätet
 
 <programming-exercise name='Itererbar affärslista' tmcname='osa10-09_itererbar_affarslista'>
 
-I uppgiftsbotten finns klassen `Affarslista` från [övningen i del 8](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
+I uppgiftsbotten finns klassen `Affarslista` från [övningen i modul 8](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
 
 ```python
 lista = Affarslista()

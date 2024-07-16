@@ -243,7 +243,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehendible”). I föregående del lärde vi oss hur vi kan göra våra egna klasser itererbara. Det är exakt samma funktion som också möjliggör list comprehension. Om din egen klass är itererbar kan den användas som grund för en list comprehension. Följande klassdefinitioner är kopierade direkt från [del 10](https://programming-24.mooc.fi/part-10/3-oo-programming-techniques#iterators):
+Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehendible”). I föregående del lärde vi oss hur vi kan göra våra egna klasser itererbara. Det är exakt samma funktion som också möjliggör list comprehension. Om din egen klass är itererbar kan den användas som grund för en list comprehension. Följande klassdefinitioner är kopierade direkt från [modul 10](https://programming-24.mooc.fi/part-10/3-oo-programming-techniques#iterators):
 
 ```python
 
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
 <programming-exercise name='Affärslistans produkter' tmcname='osa11-09_affarslistans_produkter'>
 
-I del 10 skapade du en [itererbar affärslista](/osa-10/3-olio-ohjelmoinnin-tekniikoita#programming-exercise-iteroitava-kauppalista). Objekt av en itererbar klass kan användas med list comprehensions. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
+I modul 10 skapade du en [itererbar affärslista](/osa-10/3-olio-ohjelmoinnin-tekniikoita#programming-exercise-iteroitava-kauppalista). Objekt av en itererbar klass kan användas med list comprehensions. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
 
 Skapa en funktion med namnet `affarslistans_produkter(affarslista, antal: int)` som tar som argument ett affarslista-objekt och ett heltalsvärde. Funktionen returnerar en lista av produktnamn. Listan borde inkludera endast produkter som har åtminstone ett lika stort antal som parametern `antal`.
 
@@ -334,7 +334,7 @@ alkoholfri öl
 
 <programming-exercise name='Billigare prisskillnad' tmcname='osa11-10_billigare_prisskillnad'>
 
-Denna övning innehåller en aning modifierad version av klassen [Bostad](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu) från del 9.
+Denna övning innehåller en aning modifierad version av klassen [Bostad](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu) från modul 9.
 
 Skapa en funktion med namnet `billigare(bostader: list, jamforelse: Bostad)` som tar en lista med bostäder och ett enda Bostad-objekt som sina argument. Funktionen ska returnera en lista som endast innehåller de bostäder i den ursprungliga listan som är billigare än jämförelsebostaden, tillsammans med prisskillnaden. Föremålen i den returnerade listan bör vara tupler, där det första föremålet är själva bostaden och den andra är prisskillnaden.
 
