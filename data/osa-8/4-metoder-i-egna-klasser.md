@@ -319,15 +319,15 @@ class PersonligtRekord:
 
 if __name__ == "__main__":
     resultat1 = PersonligtRekord("Peter", 1, 11, 2020, 235)
-    print(tulos1.poang)
-    print(tulos1.spelare)
-    print(tulos1.datum)
+    print(resultat1.poang)
+    print(resultat1.spelare)
+    print(resultat1.datum)
 
     # Datumet är inte giltigt
     resultat2 = PersonligtRekord("Pernilla", 4, 13, 2019, 4555)
-    print(tulos2.poang)
-    print(tulos2.spelare)
-    print(tulos2.datum) # Skriver ut standardvärdet 1900-01-01
+    print(resultat2.poang)
+    print(resultat2.spelare)
+    print(resultat2.datum) # Skriver ut standardvärdet 1900-01-01
 ```
 
 <sample-output>
