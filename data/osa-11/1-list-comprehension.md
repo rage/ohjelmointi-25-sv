@@ -1,5 +1,5 @@
 ---
-path: '/osa-11/1-koosteet'
+path: '/osa-11/1-list-comprehension'
 title: 'List comprehension'
 hidden: false
 ---
@@ -118,7 +118,7 @@ def fakulteter(talen: list):
     return [fakultet(tal) for tal in talen]
 ```
 
-<programming-exercise name='Neliojuuret' tmcname='osa11-01_neliojuuret'>
+<programming-exercise name='Kvadratrötter' tmcname='osa11-01_kvadratrotter'>
 
 Skriv en funktion med namnet `kvadratrot(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller kvadratrötterna av de ursprungliga heltalen.
 
@@ -145,7 +145,7 @@ for rad in rader:
 
 </programming-exercise>
 
-<programming-exercise name='Tähtirivit' tmcname='osa11-02_tahtirivit'>
+<programming-exercise name='Stjärnrader' tmcname='osa11-02_stjarnrader'>
 
 Skapa funktionen `stjarnrader(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller rader med stjärnor. Längden på varje rad ska motsvara heltalet på samma index i den ursprungliga listan. Funktionen bör använda en list comprehension för att uppnå detta.
 
@@ -184,7 +184,7 @@ for rad in rader:
 
 </programming-exercise>
 
-<programming-exercise name='Paras koetulos' tmcname='osa11-03_paras_koetulos'>
+<programming-exercise name='Bäst provresultat' tmcname='osa11-03_bast_provresultat'>
 
 I uppgiftsbotten finns färdigt en klassdefinition för `Provresultat`, som har följane offentliga attribut:
 
@@ -217,7 +217,7 @@ print(bast_resultat(prestationer))
 
 </programming-exercise>
 
-<programming-exercise name='Pituudet' tmcname='osa11-04_pituudet'>
+<programming-exercise name='Längder' tmcname='osa11-04_langder'>
 
 Skapa en funktion med namnet `langder(listor: list)` som tar en lista innehållande listor med heltal som argument. Funktionen ska returnera en ny lista som innehåller längderna på listorna i argumentlistan.
 
@@ -335,7 +335,7 @@ Om vi plockar isär exemplet ovan har vi det booleska uttrycket `n > 0 and n % 2
 
 Dessa positiva, jämna tal bearbetas sedan i tur och ordning till formatet `(n, fakultet(n))`. Detta är en tupel, där det första objektet är själva talet och det andra objektet är resultatet som returneras av fakultetfunktionen.
 
-<programming-exercise name='Poista pienemmät' tmcname='osa11-05_poista_pienemmat'>
+<programming-exercise name='Ta bort mindre' tmcname='osa11-05_ta_bort_mindre'>
 
 Skapa en funktion med namnet `ta_bort_mindre(tal: list, grans: int)` som tar en lista med heltal och ett gränsvärde (också i heltalsformat) som sina argument.
 
@@ -361,7 +361,7 @@ print(ta_bort_mindre([-4, 7, 8, -100], 0))
 
 </programming-exercise>
 
-<programming-exercise name='Vokaalilla alkavat' tmcname='osa11-06_vokaalilla_alkavat'>
+<programming-exercise name='Börjar med vokal' tmcname='osa11-06_borjar_med_vokal'>
 
 Skapa en funktion med namnet `borjar_med_vokal(ord: list)` som tar en lista med strängar som sitt argument.
 
@@ -430,7 +430,7 @@ print(absolut_varde)
 
 Vi upprepar vad som händer ovan: om villkoret `nummer >= 0` är sant, genomgår föremålet uttrycket `nummer`, och resultatet är själva föremålet. Om villkoret är falskt genomgår föremålet uttrycket `–nummer`, så att det får ett positivt värde.
 
-I följande exempel har vi funktionen `strang_langder` som tar en lista som sitt argument och returnerar en annan lista med längderna på alla strängar i den ursprungliga listan. Den här funktionen är dock okej med listföremål av alla typer. Om föremålet är en sträng beräknar den dess längd. Om objektet är något annat infogar den -1 i listan som den returnerar. 
+I följande exempel har vi funktionen `strang_langder` som tar en lista som sitt argument och returnerar en annan lista med längderna på alla strängar i den ursprungliga listan. Den här funktionen är dock okej med listföremål av alla typer. Om föremålet är en sträng beräknar den dess längd. Om objektet är något annat infogar den -1 i listan som den returnerar.
 
 ```python
 
@@ -452,7 +452,7 @@ if __name__ == "__main__":
 </sample-output>
 
 
-<programming-exercise name='Lottorivi' tmcname='osa11-07_lottorivi'>
+<programming-exercise name='Lotterinummer' tmcname='osa11-07_lotterinummer'>
 
 ## Del 1: LotteriNummer matchade
 

@@ -1,5 +1,5 @@
 ---
-path: '/osa-8/4-metodit-omissa-luokissa'
+path: '/osa-8/4-metoder-i-egna-klasser'
 title: 'Metoder i egna klasser'
 hidden: false
 ---
@@ -170,7 +170,7 @@ print("Saldot är nu:", peters_konto.saldo)
 
 Det är möjligt att dölja dataattributen från klientkoden, vilket kan bidra till att lösa detta problem. Vi återkommer till detta ämne i nästa del.
 
-<programming-exercise name='Vähenevä laskuri' tmcname='osa08-10_vaheneva_laskuri'>
+<programming-exercise name='Minskande räknare' tmcname='osa08-10_minskande_raknare'>
 
 Denna övning har flera delar. Varje del är värt ett poäng och kan lämnas in separat.
 
@@ -347,7 +347,7 @@ Parameternamnet `self` används endast när man hänvisar till /objektets egensk
 
 Det är också möjligt att skapa lokala variabler inom metoddefinitioner utan att hänvisa till `self`. Detta bör du göra om det inte finns något behov av att komma åt variablerna utanför metoden. Lokala variabler inom metoder har inga speciella nyckelord; de används precis som alla vanliga variabler som du har stött på hittills. .
 
-Så här skulle det till exempel fungera: 
+Så här skulle det till exempel fungera:
 
 ```python
 class Bonuskort:
@@ -374,7 +374,7 @@ class Bonuskort:
         return f"Bonuskort(namn={self.namn}, saldo={self.saldo})"
 ```
 
-<programming-exercise name="Etu- ja sukunimi" tmcname='osa08-10b_etu_ja_sukunimi'>
+<programming-exercise name="För- och efternamn" tmcname='osa08-10b_for_och_efternamn'>
 
 Skapa en klass `Person`, som får _endast ett attribut_ `namn`, som ges till konstruktorn.
 
@@ -409,9 +409,9 @@ Pythonson
 
 </programming-exercise>
 
-<programming-exercise name='Lukutilasto' tmcname='osa08-11_lukutilasto'>
+<programming-exercise name='Nummerstatistik' tmcname='osa08-11_nummerstatistik'>
 
-I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av del 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet. 
+I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av del 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
 
 ### Del 1: Mängden nummer
 

@@ -1,5 +1,5 @@
 ---
-path: '/osa-10/3-olio-ohjelmoinnin-tekniikoita'
+path: '/osa-10/3-objektorienterade-programmeringstekniker'
 title: 'Objektorienterade programmeringstekniker'
 hidden: false
 ---
@@ -304,7 +304,7 @@ print(personer)
 
 </sample-output>
 
-<programming-exercise name='Raha' tmcname='osa10-07_raha'>
+<programming-exercise name='Pengar' tmcname='osa10-07_pengar'>
 
 Övningsmallen innehåller en mall för en klass som heter `Pengar`. Den här övningen ber dig att implementera några ytterligare metoder och att åtgärda några små problem i mallen
 
@@ -436,7 +436,7 @@ print(e1)
 
 </programming-exercise>
 
-<programming-exercise name='Päiväys' tmcname='osa10-08_paivays'>
+<programming-exercise name='SimpelDatum' tmcname='osa10-08_simpeldatum'>
 
 I den här övningen ska du implementera klassen `SimpelDatum` som gör att du kan hantera datum. För enkelhetens skull antar vi här att _varje månad har 30 dagar_.
 
@@ -564,7 +564,7 @@ class Bokhylla:
     # Här bör iterationsvariabeln(eller variablerna) initialiseras
     def __iter__(self):
         self.n = 0
-        # Metoden returnerar en referens till själva objektet eftersom 
+        # Metoden returnerar en referens till själva objektet eftersom
         # iteratorn är implementerad inom samma klassdefinition
         return self
 
@@ -588,7 +588,7 @@ Metoden `__iter__` initialiserar iterationsvariabeln eller variablerna. I det h�
 
 När alla objekt har genomgåtts utlöser metoden `__next__` undantaget `StopIteration`. Processen skiljer sig inte från andra undantag, men det här undantaget hanteras automatiskt av Python och dess syfte är att signalera till koden som anropar iteratorn (t.ex. en `for`-loop) att iterationen nu är över.
 
-Vår bokhylla är nu redo för iteration, till exempel med en `for`-loop: 
+Vår bokhylla är nu redo för iteration, till exempel med en `for`-loop:
 
 ```python
 
@@ -617,7 +617,7 @@ C-värdheter på nätet
 </sample-output>
 
 
-<programming-exercise name='Iteroitava kauppalista' tmcname='osa10-09_iteroitava_kauppalista'>
+<programming-exercise name='Itererbar affärslista' tmcname='osa10-09_itererbar_affarslista'>
 
 I uppgiftsbotten finns klassen `Affarslista` från [övningen i del 8](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
 
@@ -628,14 +628,14 @@ lista.tillsatt("bananer", 5)
 lista.tillsatt("ananas", 1)
 
 for produkt in lista:
-    print(f"{produkt[0]}: {produkt[1]} kpl")
+    print(f"{produkt[0]}: {produkt[1]} st")
 ```
 
 <sample-output>
 
-apelsiner: 10 kpl
-bananer: 5 kpl
-ananas: 1 kpl
+apelsiner: 10 st
+bananer: 5 st
+ananas: 1 st
 
 </sample-output>
 

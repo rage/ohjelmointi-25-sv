@@ -1,5 +1,5 @@
 ---
-path: '/osa-12/2-generaattorit'
+path: '/osa-12/2-generatorer'
 title: 'Generatorer'
 hidden: false
 ---
@@ -98,7 +98,7 @@ Talen tog slut
 
 </sample-output>
 
-Att gå igenom alla objekt i en generator görs enkelt med en `for`-loop:  
+Att gå igenom alla objekt i en generator görs enkelt med en `for`-loop:
 
 ```python
 if __name__ == "__main__":
@@ -122,7 +122,7 @@ Generatorer behöver inte ha ett definierat maxvärde eller en slutpunkt. De kan
 
 Tänk dock på att det bara fungerar att genomkorsa en generator med en `for`-loop om generatorn avslutas vid någon punkt. Om generatorn är uppbyggd på en oändlig loop kommer en enkel `for`-loop att orsaka en oändlig exekvering, precis som en `while`-loop utan slut- eller brytvillkor.
 
-<programming-exercise name='Parilliset luvut' tmcname='osa12-08_parilliset'>
+<programming-exercise name='Jämna tal' tmcname='osa12-08_jamna'>
 
 Skapa generatorfunktionen `jamna(borjan: int, maximum: int)`, som tar två heltal som argument. Funktionen ska producera jämna tal börjandes från `borjan` och slutandes vid, senast, `maximum`.
 
@@ -162,7 +162,7 @@ for tal in talen:
 
 </programming-exercise>
 
-<programming-exercise name='Alkuluvut' tmcname='osa12-09_alkuluvut'>
+<programming-exercise name='Primtal' tmcname='osa12-09_primtal'>
 
 Ett primtal är ett tal som är delbart endast med sig självt och talet 1. Enligt konvention definieras primtal som positiva heltal från talet 2 och uppåt. De sex första primtalen är 2, 3, 5, 7, 11 och 13.
 
@@ -196,7 +196,7 @@ for i in range(8):
 
 ## Generator comprehensions
 
-Du behöver inte nödvändigtvis en funktionsdefinition för att skapa en generator. Vi kan använda en struktur som liknar en list comprehension istället. Den här gången använder vi runda parenteser för att beteckna en generator i stället för en lista eller en ordlista: 
+Du behöver inte nödvändigtvis en funktionsdefinition för att skapa en generator. Vi kan använda en struktur som liknar en list comprehension istället. Den här gången använder vi runda parenteser för att beteckna en generator i stället för en lista eller en ordlista:
 
 ```python
 # Generatorn returnerar kvadraten av heltal
@@ -244,7 +244,7 @@ jkl
 
 </sample-output>
 
-<programming-exercise name='Satunnaiset sanat' tmcname='osa12-10_satunnaiset_sanat'>
+<programming-exercise name='Slumpmässiga ord' tmcname='osa12-10_slumpmassiga_ord'>
 
 Skapa funktionen `ordgenerator(bokstaver: str, langd: int, antal: int)`, som returnerar en ny generator som genererar nya, slumpmässiga ord baserat på de angiva parametrarna.
 

@@ -1,5 +1,5 @@
 ---
-path: '/osa-10/2-nakyvyysmaareet'
+path: '/osa-10/2-atkamstmodifierare'
 title: 'Åtkomstmodifierare'
 hidden: false
 ---
@@ -47,7 +47,7 @@ class AnteckningsbokPro(Anteckningsbok):
     # Detta orsakar ett fel
     def hitta_anteckningar(self, sokord):
         hittade = []
-        # Attributet __anteckningar är privat, den härledda 
+        # Attributet __anteckningar är privat, den härledda
         # klassen kan inte komma åt den direkt
         for anteckning in self.__anteckningar:
             if sokord in anteckning:
@@ -114,7 +114,7 @@ class AnteckningsbokPro(Anteckningsbok):
         super().__init__()
 
     # Nu fungerar metoden, eftersom den skyddadde attributen är
-    # ankomstbar till den härledda klassen 
+    # ankomstbar till den härledda klassen
     def hitta_anteckningar(self, sokord):
         hittade = []
         for anteckning in self._anteckningar:
@@ -133,7 +133,7 @@ Offentlig | `self.namn` | ja | ja
 Skyddad | `self._namn` | nej | ja
 Privat | `self.__namn` | nej | nej
 
-Åtkomstmodifierare fungerar på samma sätt med alla egenskaper. I klassen `Person` nedan har vi till exempel den skyddade metoden `versalisera_initialer` Den kan användas från den härledda klassen `Fotbollsspelare`: 
+Åtkomstmodifierare fungerar på samma sätt med alla egenskaper. I klassen `Person` nedan har vi till exempel den skyddade metoden `versalisera_initialer` Den kan användas från den härledda klassen `Fotbollsspelare`:
 
 ```python
 
@@ -178,7 +178,7 @@ Fotbollsspelare - namn:Peter Pythonson, smeknamn: Putte, position: anfallare
 </sample-output>
 
 
-<programming-exercise name='Superryhmä' tmcname='osa10-05_superryhma'>
+<programming-exercise name='Supergrupp' tmcname='osa10-05_supergrupp'>
 
 I uppgiftsbotten finns färdigt klassdefinitionen för en `Superhjalte`.
 
@@ -206,8 +206,8 @@ revengers.skriv_ut_grupp()
 
 Revengers, Åland
 Medlemmar:
-SuperPerson, specialförmågor:: Supersnabbhet, superstyrka
-Osynliga Olle, specialförmågor:: Osynlighet
+SuperPerson, specialförmågor: Supersnabbhet, superstyrka
+Osynliga Olle, specialförmågor: Osynlighet
 
 </sample-output>
 
@@ -215,11 +215,11 @@ Osynliga Olle, specialförmågor:: Osynlighet
 
 </programming-exercise>
 
-<programming-exercise name='Salainen taikajuoma' tmcname='osa10-06_salainen_taikajuoma'>
+<programming-exercise name='Hemlig trolldryck' tmcname='osa10-06_hemlig_trolldryck'>
 
 Övningsmallen innehåller klassdefinitionen för en `Trolldryck` som gör att du kan spara ett recept på en trolldryck. Klassdefinitionen innehåller en konstruktor tillsammans med metoderna
 
-* `tillsatt_ingrediens(ingrediens: str, mängd: float)` och
+* `tillsatt_ingrediens(ingrediens: str, mangd: float)` och
 * `skriv_ut_recept()`
 
 Definiera en klass med namnet `HemligTrolldryck` som ärver `Trolldryck`-klassen och som gör att du också kan skydda receptet med ett lösenord.
@@ -228,8 +228,8 @@ Den nya klassen ska ha en konstruktor som dessutom tar en lösenordssträng som 
 
 Klassen ska dessutom innehålla följande metoder:
 
-* `tillsatt_ingrediens(ingrediens: str, mängd: float, lösenord: str)` och
-* `skriv_ut_recept(lösenord: str)`
+* `tillsatt_ingrediens(ingrediens: str, mangd: float, losenord: str)` och
+* `skriv_ut_recept(losenord: str)`
 
 Om lösenordsargumentet som ges till någon av dessa metoder är felaktigt ska metoderna ge upphov till ett `ValueError`-undantag.
 
@@ -250,9 +250,9 @@ krympning.skriv_ut_recept("pocushocus") # FEL LÖSENORD
 <sample-output>
 
 Krympning maximus:
-Granrot 1.5 grammaa
-Magisk sand 3.0 grammaa
-Grodyngel 4.0 grammaa
+Granrot 1.5 gram
+Magisk sand 3.0 gram
+Grodyngel 4.0 gram
 Traceback (most recent call last):
   File "hemlig_trolldryck.py", line 98, in <module>
     raise ValueError("Fel lösenord!")

@@ -1,5 +1,5 @@
 ---
-path: '/osa-13/2-animaatio'
+path: '/osa-13/2-animation'
 title: 'Animation'
 hidden: false
 ---
@@ -26,7 +26,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 x = 0
 y = 0
@@ -100,7 +100,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 x = 0
 y = 0
@@ -155,7 +155,7 @@ import math
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 vinkel = 0
 klocka = pygame.time.Clock()
@@ -189,9 +189,9 @@ Rotation i en relativt exakt cirkel uppnås med hjälp av några grundläggande 
 
 Roboten roterar runt en cirkel med radien 100 runt fönstrets mittpunkt. Hypotenusan i detta scenario är cirkelns radie. Cosinusfunktionen anger längden på den angränsande sidan i en rätvinklig triangel i förhållande till hypotenusan, vilket innebär att den ger oss platsens `x`-koordinat. Sinusfunktionen ger längden på den motsatta sidan, dvs. `y`-koordinaten. Platsen justeras sedan för bildens storlek, så att cirkelns mittpunkt ligger i fönstrets mittpunkt.
 
-För varje iteration ökar storleken på `vinkel` med 0,01. Eftersom vi använder radianer är en hel cirkel 2π, vilket motsvarar ca 6,28. Det tar cirka 628 iterationer för roboten att gå en hel cirkel, och med 60 iterationer per sekund tar detta drygt 10 sekunder. 
+För varje iteration ökar storleken på `vinkel` med 0,01. Eftersom vi använder radianer är en hel cirkel 2π, vilket motsvarar ca 6,28. Det tar cirka 628 iterationer för roboten att gå en hel cirkel, och med 60 iterationer per sekund tar detta drygt 10 sekunder.
 
-<programming-exercise name='Pystyliike' tmcname='osa13-05_pystyliike'>
+<programming-exercise name='Vertikal rörelse' tmcname='osa13-05_vertikal_rorelse'>
 
 Skapa en animation där roboten rör sig upp och ner i en ändlös loop. Slutresultatet ska se ut så här:
 
@@ -199,7 +199,7 @@ Skapa en animation där roboten rör sig upp och ner i en ändlös loop. Slutres
 
 </programming-exercise>
 
-<programming-exercise name='Reunan kierto' tmcname='osa13-06_reunan_kierto'>
+<programming-exercise name='Längs med kanten' tmcname='osa13-06_langs_med_kanten'>
 
 Skapa en animation där roboten följer fönstrets omkrets. Slutresultatet ska se ut så här:
 
@@ -207,7 +207,7 @@ Skapa en animation där roboten följer fönstrets omkrets. Slutresultatet ska s
 
 </programming-exercise>
 
-<programming-exercise name='Kaksi robottia' tmcname='osa13-07_kaksi_robottia'>
+<programming-exercise name='Två robotar' tmcname='osa13-07_tva_robotar'>
 
 Skapa en animation där två robotar rör sig fram och tillbaka till vänster och höger. Den nedre roboten ska röra sig med dubbelt så hög hastighet som den övre. Slutresultatet ska se ut så här:
 
@@ -215,7 +215,7 @@ Skapa en animation där två robotar rör sig fram och tillbaka till vänster oc
 
 </programming-exercise>
 
-<programming-exercise name='Piirileikki' tmcname='osa13-08_piirileikki'>
+<programming-exercise name='Ringlek' tmcname='osa13-08_ringlek'>
 
 Skapa en animation där tio robotar går runt i en cirkel. Slutresultatet ska se ut så här:
 
@@ -223,17 +223,17 @@ Skapa en animation där tio robotar går runt i en cirkel. Slutresultatet ska se
 
 </programming-exercise>
 
-<programming-exercise name='Pomppiva pallo' tmcname='osa13-09_pomppiva_pallo'>
+<programming-exercise name='Studsande boll' tmcname='osa13-09_studsande_boll'>
 
 Skapa en animation där en boll studsar från fönstrets kanter. Slutresultatet ska se ut så här:
 
 <img src="pygame_pallo.gif">
 
-Övningsmallen innehåller bilden `pallo.png`.
+Övningsmallen innehåller bilden `boll.png`.
 
 </programming-exercise>
 
-<programming-exercise name='Robotti-invaasio' tmcname='osa13-10_robotti_invaasio'>
+<programming-exercise name='Robot invasion' tmcname='osa13-10_robot_invasion'>
 
 Skapa en animation där robotar faller från himlen slumpmässigt. När en robot når marken börjar den röra sig åt vänster eller höger och försvinner till slut från skärmen. Slutresultatet ska se ut så här:
 

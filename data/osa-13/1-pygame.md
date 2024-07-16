@@ -1,5 +1,5 @@
 ---
-path: '/osa-13/1-pygame-kayttoon'
+path: '/osa-13/1-pygame'
 title: 'Pygame'
 hidden: false
 ---
@@ -127,7 +127,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 fonster.fill((0, 0, 0))
 fonster.blit(robot, (100, 50))
@@ -141,7 +141,7 @@ while True:
 
 Programmet använder denna bild av en robot, som finns lagrad i filen `robot.png`:
 
-<img src="robo.png">
+<img src="robot.png">
 
 Filen `robot.png` måste finnas i samma katalog som källkoden för ditt program, annars kan programmet inte hitta den. I övningsmallarna för denna del väntar bilderna i övningskatalogen.
 
@@ -181,14 +181,14 @@ Metoden `get_width` ger bildens bredd och metoden `get_height` ger dess höjd, b
 
 <text-box variant='hint' name='Pygame-övningar'>
 
-Övningarna i den här delen av kursen har inga automatiserade tester, eftersom resultaten verifieras visuellt. Testerna ger poäng automatiskt när du skickar in din lösning till servern, oavsett hur du har implementerat den. Skicka bara in din lösning när du är redo och din lösning matchar övningsbeskrivningen. Övningarna kanske inte har automatiska tester, men kurspersonalen kommer ändå att se din lösning. Att skicka in en ofullständig lösning till TMC Paste ger också poäng automatiskt, så det bör inte användas när du ber om hjälp med övningarna i den här delen. Du kan använda [Pastebin.com](https://pastebin.com/) eller någon annan pastebin-tjänst på internet när du ber om hjälp i kursens stödkanaler.
+Övningarna i den här modulen av kursen har inga automatiserade tester, eftersom resultaten verifieras visuellt. Testerna ger poäng automatiskt när du skickar in din lösning till servern, oavsett hur du har implementerat den. Skicka bara in din lösning när du är redo och din lösning matchar övningsbeskrivningen. Övningarna kanske inte har automatiska tester, men kurspersonalen kommer ändå att se din lösning. Att skicka in en ofullständig lösning till TMC Paste ger också poäng automatiskt, så det bör inte användas när du ber om hjälp med övningarna i den här modulen. Du kan använda [Pastebin.com](https://pastebin.com/) eller någon annan pastebin-tjänst på internet när du ber om hjälp i kursens stödkanaler.
 
-Om din lösning helt klart inte stämmer överens med övningsbeskrivningen kan du förlora de poäng som du har fått för övningarna i den här delen. 
+Om din lösning helt klart inte stämmer överens med övningsbeskrivningen kan du förlora de poäng som du har fått för övningarna i den här modulen.
 
 </text-box>
 
 
-<programming-exercise name='Neljä robottia' tmcname='osa13-01_nelja_robottia'>
+<programming-exercise name='Fyra robotar' tmcname='osa13-01_fyra_robotar'>
 
 Skriv ett program som ritar en robot i vart och ett av de fyra hörnen av fönstret. Slutresultatet ska se ut så här:
 
@@ -196,7 +196,7 @@ Skriv ett program som ritar en robot i vart och ett av de fyra hörnen av fönst
 
 </programming-exercise>
 
-<programming-exercise name='Robotit rivissä' tmcname='osa13-02_robotit_rivissa'>
+<programming-exercise name='Robotar i rad' tmcname='osa13-02_robotar_i_rad'>
 
 Skriv ett program som ritar tio robotar i rad. Slutresultatet ska se ut så här:
 
@@ -204,7 +204,7 @@ Skriv ett program som ritar tio robotar i rad. Slutresultatet ska se ut så här
 
 </programming-exercise>
 
-<programming-exercise name='Sata robottia' tmcname='osa13-03_sata_robottia'>
+<programming-exercise name='Hundra robotar' tmcname='osa13-03_hundra_robotar'>
 
 Var snäll och skriv ett program som ritar hundra robotar: tio rader med tio robotar i varje rad. Slutresultatet ska se ut så här:
 
@@ -212,7 +212,7 @@ Var snäll och skriv ett program som ritar hundra robotar: tio rader med tio rob
 
 </programming-exercise>
 
-<programming-exercise name='Satunnaiset robotit' tmcname='osa13-04_satunnaiset_robotit'>
+<programming-exercise name='Slumpmässiga robotar' tmcname='osa13-04_slumpmassiga_robotar'>
 
 Skriv ett program som ritar _tusen_ robotar på slumpmässiga platser. Slutresultatet ska se ut så här:
 

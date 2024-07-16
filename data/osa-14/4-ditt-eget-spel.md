@@ -1,5 +1,5 @@
 ---
-path: '/osa-14/4-oma-peli'
+path: '/osa-14/4-ditt-eget-sepl'
 title: 'Ditt eget spel'
 hidden: false
 ---
@@ -79,6 +79,6 @@ Först ber vi dig svara på en snabb enkät om den här delen av kursen.
 
 <quiz id="db980809-c0f7-561a-a843-cb0dfc5cc58f"></quiz>
 
-Vänligen svara också på kursens feedbackformulär. Enkätens svar hjälper oss att förbättra kursen. 
+Vänligen svara också på kursens feedbackformulär. Enkätens svar hjälper oss att förbättra kursen.
 
 <quiz id="de9225f1-9413-50de-85e4-89170e7d4e5c"></quiz>

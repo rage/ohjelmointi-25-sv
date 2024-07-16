@@ -1,5 +1,5 @@
 ---
-path: '/osa-10/1-luokkahierarkiat'
+path: '/osa-10/1-klasshierarkier'
 title: 'Klasshierarkier'
 hidden: false
 ---
@@ -10,7 +10,7 @@ Efter den här delen
 
 - Vet du vad arv betyder i programmeringssammanhang
 - Kommer du att kunna skriva klasser som ärver andra klasser
-- Vet du hur arv påverkar egenskaperna i klasser  
+- Vet du hur arv påverkar egenskaperna i klasser
 
 </text-box>
 
@@ -42,7 +42,7 @@ class Larare:
 
 Även i ett avskalat exempel som ovan har vi redan en hel del upprepningar: båda klasserna innehåller attributen `namn` och `epost`. Det vore en bra idé att ha en enda attributdefinition, så att det räcker med en enda funktion för att redigera båda attributen.
 
-Tänk dig till exempel att skolans e-postadress ändras. Alla adresser skulle behöva uppdateras. Vi skulle kunna skriva två separata versioner av i stort sett samma funktion:  
+Tänk dig till exempel att skolans e-postadress ändras. Alla adresser skulle behöva uppdateras. Vi skulle kunna skriva två separata versioner av i stort sett samma funktion:
 
 ```python
 
@@ -314,7 +314,7 @@ class Platinumkort(Bonuskort):
 
 ```
 
-Bonusen för ett Platinumkort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används: 
+Bonusen för ett Platinumkort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används:
 
 ```python
 if __name__ == "__main__":
@@ -339,7 +339,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-<programming-exercise name='Kannettava tietokone' tmcname='osa10-01_kannettava_tietokone'>
+<programming-exercise name='Bärbar dator' tmcname='osa10-01_barbar_dator'>
 
 I uppgiftsbotten finns en klassdefinition för en `Dator`, som har attributen `modell` och `snabbhet`.
 
@@ -362,7 +362,7 @@ NoteBook Pro15, 1500 MHz, 2 kg
 
 </programming-exercise>
 
-<programming-exercise name='Pelimuseo' tmcname='osa10-02_pelimuseo'>
+<programming-exercise name='Spelmuseum' tmcname='osa10-02_spelmuseum'>
 
 I uppgiftsbotten finns klassdefinitioner för `Datorspel` och `Spelforrad`. Spelforrads-objekt används för att förvara Datorspel-objekt.
 
@@ -392,7 +392,7 @@ Bubble Bobble
 
 </programming-exercise>
 
-<programming-exercise name='Pinta-alat' tmcname='osa10-03_pinta_alat'>
+<programming-exercise name='Arean' tmcname='osa10-03_arean'>
 
 I uppgiftsbotten finns en klassdefinition för `Rektangel` som representerar en [rektangelform](https://sv.wikipedia.org/wiki/Rektangel). Klassen används på följande sätt:
 
@@ -430,7 +430,7 @@ area: 16
 
 </programming-exercise>
 
-<programming-exercise name='Sanapeli' tmcname='osa10-04_sanapeli'>
+<programming-exercise name='Ordspel' tmcname='osa10-04_ordspel'>
 
 Uppgiftsbotten innehåller klassdefinitionen för en `Ordspel`, som erbjuder enkel funktionalitet för att spela olika ordbaserade spel:
 
@@ -445,7 +445,7 @@ class Ordspel():
 
     def rundans_vinnare(self, spelare1_ord: str, spelare2_ord: str):
         # vi lottar ut en vinnare
-        return random.randint(1, 2) 
+        return random.randint(1, 2)
 
     def spela(self):
         print("Ordspel:")

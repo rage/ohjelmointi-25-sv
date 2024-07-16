@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/2-oliot-attribuuttina'
+path: '/osa-9/2-objekt-som-attribut'
 title: 'Objekt som attribut '
 hidden: False
 ---
@@ -127,7 +127,7 @@ from person import Person
 
 är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import` deklarationen för första gången i [del 7](/osa-7/1-moduulit/) av kursmaterialet.
 
-<programming-exercise name='Lemmikit' tmcname='osa09-06_lemmikki'>
+<programming-exercise name='Husdjur' tmcname='osa09-06_husdjur'>
 
 I uppgiftsbotten finns två klasser, `Person` och `Husdjur`. Varje person har ett djur. Ändra `__str__`-metoden i `Person` klassen, så att metoden returnerar en sträng som berättar personens namn plus husdjurets namn och ras enligt exemplet nedan.
 
@@ -200,7 +200,7 @@ Spelarnas målmängd: [10, 22, 1]
 
 </sample-output>
 
-<programming-exercise name='Lahjapakkaus' tmcname='osa09-07_lahjapakkaus'>
+<programming-exercise name='Paketpackning' tmcname='osa09-07_paketpackning'>
 
 I den här övningen får du öva på att slå in presenter. Du kommer att skriva två klasser: `Present` och `Lada`. En present har ett namn och en vikt, och en låda innehåller presenter.
 
@@ -211,8 +211,8 @@ Definiera klassen `Present` som kan användas för att representera olika typer 
 ```python
 bok = Present("ABC bok", 2)
 
-print("Presenens namn:", bok.namn)
-print("Presenens vikt:", bok.vikt)
+print("Presentens namn:", bok.namn)
+print("Presentens vikt:", bok.vikt)
 print("Present:", bok)
 ```
 
@@ -220,8 +220,8 @@ Utskriften borde vara
 
 <sample-output>
 
-Presenens namn: ABC bok
-Presenens vikt: 2
+Presentens namn: ABC bok
+Presentens vikt: 2
 Present: ABC bok (2 kg)
 
 </sample-output>
@@ -327,7 +327,7 @@ AttributeError: 'NoneType' object has no attribute 'mal'
 
 </sample-output>
 
-Det är en god idé att kontrollera om det finns `None` innan du försöker komma åt några attribut eller metoder för returvärden: 
+Det är en god idé att kontrollera om det finns `None` innan du försöker komma åt några attribut eller metoder för returvärden:
 
 ```python
 gumboll = Lag("Gumtäkts boll")
@@ -346,7 +346,7 @@ Johan spelar inte i Gumtäkts boll :(
 
 </sample-output>
 
-<programming-exercise name='Huoneen lyhin' tmcname='osa09-08_huoneen_lyhin'>
+<programming-exercise name='Rummets kortaste' tmcname='osa09-08_rummets_kortaste'>
 
 Övningsmallen innehåller klassen `Person`. En person har ett namn och en höjd. I denna övning kommer du att implementera klassen `Rum`. Du kan lägga till valfritt antal personer i ett rum, och du kan också söka efter och ta bort den kortaste personen i rummet.
 
@@ -441,7 +441,7 @@ rum.skriv_ut_personer()
 
 print()
 
-borttagen = rum.ta_bort_kortast()
+borttagen = rum.ta_bort_kortaste()
 print(f"Borttagen från rummet: {borttagen.namn}")
 
 print()
@@ -476,7 +476,7 @@ class Rum:
     def kortast(self):
         # kod
 
-    def ta_bort_kortast(self):
+    def ta_bort_kortaste(self):
         kortast_person = self.kortast()
         # ...
 ```

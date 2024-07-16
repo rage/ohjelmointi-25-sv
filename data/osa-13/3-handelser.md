@@ -1,5 +1,5 @@
 ---
-path: '/osa-13/3-tapahtumat'
+path: '/osa-13/3-handelser'
 title: 'Händelser'
 hidden: false
 ---
@@ -96,7 +96,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 x = 0
 y = 480-robot.get_height()
 
@@ -130,7 +130,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 x = 0
 y = 480-robot.get_height()
 
@@ -172,7 +172,7 @@ Koden innehåller nu variablerna `hoger` och `vanster`. Dessa innehåller vetska
 
 Klockan används för att tidsbestämma spritens rörelser, så att de potentiellt sker 60 gånger per sekund. Om en piltangent trycks ned förflyttas spriten två pixlar åt höger eller vänster. Detta innebär att spriten rör sig 120 pixlar per sekund om tangenten hålls nedtryckt.
 
-<programming-exercise name='Neljä suuntaa' tmcname='osa13-11_nelja_suuntaa'>
+<programming-exercise name='Fyra riktningar' tmcname='osa13-11_fyra_riktningar'>
 
 Skriv ett program där spelaren kan flytta en robot i fyra riktningar med piltangenterna på tangentbordet. Slutresultatet ska se ut så här:
 
@@ -180,7 +180,7 @@ Skriv ett program där spelaren kan flytta en robot i fyra riktningar med piltan
 
 </programming-exercise>
 
-<programming-exercise name='Neljä seinää' tmcname='osa13-12_nelja_seinaa'>
+<programming-exercise name='Fyra väggar' tmcname='osa13-12_fyra_vaggar'>
 
 Förbättra programmet i den föregående övningen så att roboten inte kan passera utanför fönstret i någon av de fyra riktningarna. Slutresultatet ska se ut så här:
 
@@ -188,7 +188,7 @@ Förbättra programmet i den föregående övningen så att roboten inte kan pas
 
 </programming-exercise>
 
-<programming-exercise name='Kaksi pelaajaa' tmcname='osa13-13_kaksi_pelaajaa'>
+<programming-exercise name='Två spelare' tmcname='osa13-13_tva_spelare'>
 
 Skriv ett program där två spelare styr var sin robot. En av spelarna ska använda piltangenterna medan den andra kan använda t.ex. w-a-s-d-tangenterna. Slutresultatet ska se ut så här:
 
@@ -234,7 +234,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 while True:
     for handelse in pygame.event.get():
@@ -262,7 +262,7 @@ import pygame
 pygame.init()
 fonster = pygame.display.set_mode((640, 480))
 
-robot = pygame.image.load("robo.png")
+robot = pygame.image.load("robot.png")
 
 robot_x = 0
 robot_y = 0
@@ -296,11 +296,11 @@ while True:
     klocka.tick(60)
 ```
 
-Exekveringen av programmet borde se ut så här: 
+Exekveringen av programmet borde se ut så här:
 
 <img src="pygame_hiiri2.gif">
 
-<programming-exercise name='Robotti ja hiiri' tmcname='osa13-14_robotti_ja_hiiri'>
+<programming-exercise name='Roboten och musen' tmcname='osa13-14_roboten_och_musen'>
 
 Skriv ett program där roboten följer muspekaren så att robotens mittpunkt alltid är direkt vid muspekaren. Slutresultatet ska se ut så här:
 
@@ -308,7 +308,7 @@ Skriv ett program där roboten följer muspekaren så att robotens mittpunkt all
 
 </programming-exercise>
 
-<programming-exercise name='Robotin paikka' tmcname='osa13-15_robotin_paikka'>
+<programming-exercise name='Robotens plats' tmcname='osa13-15_robotens_plats'>
 
 Skriv ett program där roboten dyker upp på en slumpmässig plats i fönstret. När spelaren klickar på roboten med musen förflyttar sig roboten till en ny plats. Slutresultatet ska se ut så här:
 

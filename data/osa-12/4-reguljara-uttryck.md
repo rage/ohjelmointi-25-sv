@@ -1,5 +1,5 @@
 ---
-path: '/osa-12/4-saannolliset-lausekkeet'
+path: '/osa-12/4-reguljara-uttryck'
 title: 'Reguljära uttryck'
 hidden: false
 ---
@@ -213,13 +213,13 @@ Hittades inte.
 
 </sample-output>
 
-<programming-exercise name='Säännölliset lausekkeet' tmcname='osa12-14_saannolliset_lausekkeet'>
+<programming-exercise name='Reguljära uttryck' tmcname='osa12-14_reguljara_uttryck'>
 
 Här följer några övningar för att bekanta dig med syntaxen för reguljära uttryck.
 
 ## Del 1: Veckodagar
 
-Använd ett reguljärt uttryck för att skapa en funktion med namnet ar_veckodag(strang: str). Funktionen ska returnera True om strängen som skickas som argument innehåller en förkortning av en veckodag (mån, tis, ons, tors, fre, lör, sön).
+Använd ett reguljärt uttryck för att skapa en funktion med namnet `ar_veckodag(strang: str)`. Funktionen ska returnera `True` om strängen som skickas som argument innehåller en förkortning av en veckodag (mån, tis, ons, tors, fre, lör, sön).
 
 Exempel på hur funktionen ska fungera
 
@@ -239,7 +239,7 @@ False
 
 ## Del 2: Vokalcheck
 
-Skapa en funktion med namnet alla_vokaler(strang: str) som använder ett reguljärt uttryck för att kontrollera om alla tecken i den givna strängen är vokaler.
+Skapa en funktion med namnet `alla_vokaler(strang: str)` som använder ett reguljärt uttryck för att kontrollera om alla tecken i den givna strängen är vokaler.
 
 Exempel på hur funktionen ska fungera:
 
@@ -285,7 +285,7 @@ Som avslutning på denna del av materialet ska vi arbeta lite mer med objekt och
 
 Du kan också ha nytta av de exempel som finns i [del 10](/osa-10/4-lisaa-esimerkkeja).
 
-<programming-exercise name='Tilastot ojennukseen' tmcname='osa12-15_tilastot_ojennukseen'>
+<programming-exercise name='Statistik i ordning' tmcname='osa12-15_statistik_i_ordning'>
 
 I den här övningen kommer du att bygga en applikation för att undersöka hockeyligastatistik från NHL på ett par olika sätt.
 

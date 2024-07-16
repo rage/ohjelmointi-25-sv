@@ -115,7 +115,7 @@ def nodernas_summa(rot: Nod):
 
 Variabeln `summa` initieras till att vara lika med värdet för den aktuella noden. Värdet i variabeln ökas sedan genom rekursiva anrop till nodens summor i det vänstra och högra underordnade trädet (först kontrolleras naturligtvis att de finns). Detta resultat returneras sedan.
 
-<programming-exercise name='Suurin alkio' tmcname='osa11-16_suurin_alkio'>
+<programming-exercise name='Största noden' tmcname='osa11-16_storsta_nod'>
 
 Skapa funktionen `storsta_nod(rot: Nod)`, som tar rotnoden av ett binärt träd som argument.
 
@@ -175,14 +175,14 @@ def sok_nod(rot: Nod, varde):
 
 ```
 
-<programming-exercise name='Pomot ja alaiset' tmcname='osa11-17_pomot_ja_alaiset'>
+<programming-exercise name='Chefer och underordnade' tmcname='osa11-17_chefer_och_underordnade'>
 
 Klassen `Arbetare` modellerar en arbetare på ett företag:
 
 ```python
 class Arbetare:
-    def __init__(self, nimi: str):
-        self.nimi = nimi
+    def __init__(self, namn: str):
+        self.namn = namn
         self.underordnade = []
 
     def tillsatt_underordnad(self, arbetare: 'Arbetare'):
@@ -223,9 +223,9 @@ if __name__ == "__main__":
 
 ## Besök till tiden innan rekursion
 
-Låt oss avsluta denna del av materialet med en lite större övning som koncentrerar sig på objektorienterade programmeringsprinciper. Vi rekommenderar inte att du använder rekursion i denna serie av uppgifter, men tekniker för list comprehension kommer att vara användbara. 
+Låt oss avsluta denna del av materialet med en lite större övning som koncentrerar sig på objektorienterade programmeringsprinciper. Vi rekommenderar inte att du använder rekursion i denna serie av uppgifter, men tekniker för list comprehension kommer att vara användbara.
 
-<programming-exercise name='Tilauskirja' tmcname='osa11-18_tilauskirja'>
+<programming-exercise name='Uppgiftsbok' tmcname='osa11-18_uppgiftsbok'>
 
 I den här övningen kommer du skriva två olika klasser, vilka i sin tur kommer att vara ryggraden för övningen som följer denna, i vilken du kommer att skapa en interaktiv applikation.
 
@@ -389,7 +389,7 @@ Ifall det inte finns någon programmerare med det angivna namnet, ska metoden å
 
 </programming-exercise>
 
-<programming-exercise name='Tilauskirjasovellus' tmcname='osa11-19_tilauskirjasovellus'>
+<programming-exercise name='Uppgiftsboksapplikation' tmcname='osa11-19_uppgiftsboksapplikation'>
 
 I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av del 10](/osa-10/4-lisaa-esimerkkeja) kan också vara till hjälp.
 
@@ -399,7 +399,7 @@ Applikationen ska fungera _exakt_ enligt följande:
 
 <sample-output>
 
-komennot:
+instruktioner:
 0 avsluta
 1 tillsätt beställning
 2 lista färdiga

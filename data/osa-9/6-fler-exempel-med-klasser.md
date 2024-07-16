@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/6-lisaa-esimerkkeja'
+path: '/osa-9/6-fler-exempel-med-klasser'
 title: 'Fler exempel med klasser'
 hidden: false
 ---
@@ -280,7 +280,7 @@ print(studerande2.gjorda_kurser)
 
 Fastän följande övning avslutar den här delen av materialet, så har de tekniker som krävs för att lösa den redan behandlats i avsnittet som heter [Objekt som attribut](/osa-9/2-oliot-attribuuttina). Du behöver inte använda `@property`-dekoratorn eller standardvärden för parametrar i den här övningen. Den här övningen är mycket lik övningarna [en presentask](/osa-9/2-oliot-attribuuttina#programming-exercise-lahjapakkaus) och [den kortaste personen i rummet](/osa-9/2-oliot-attribuuttina#programming-exercise-huoneen-lyhin).
 
-<programming-exercise name='Tavara, Matkalaukku ja Lastiruuma' tmcname='osa09-15_tavara_matkalaukku_lastiruuma'>
+<programming-exercise name='Sak, Resväska och Lastutrymme' tmcname='osa09-15_sak_resvaska_lastutrymme'>
 
 I den här uppgiftsserien kommer du skapa klasserna `Sak`, `Resvaska` och `Lastutrymme`, vilka låter dig öva vidare på att jobba på objekt som innehåller referenser till andra objekt.
 

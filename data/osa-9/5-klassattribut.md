@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/5-staattiset-piirteet'
+path: '/osa-9/5-klassattribut'
 title: 'Klassattribut'
 hidden: false
 ---
@@ -14,7 +14,7 @@ Efter den här delen
 
 </text-box>
 
-Objektens egenskaper är ett centralt begrepp inom objektorienterad programmering. Termen egenskaper (eng. traits) omfattar de metoder och variabler som definieras i klassdefinitionen.  
+Objektens egenskaper är ett centralt begrepp inom objektorienterad programmering. Termen egenskaper (eng. traits) omfattar de metoder och variabler som definieras i klassdefinitionen.
 
 Hittills har vi mest behandlat egenskaper hos objekt. Dessa inkluderar de metoder och attribut som är tillgängliga i alla instanser av en klass. Faktum är att klasser i sig också kan ha egenskaper, som ibland kallas statiska egenskaper, eller mer specifikt klassvariabler och klassmetoder.
 
@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-<programming-exercise name='Postinumerot' tmcname='osa09-13_postinumerot'>
+<programming-exercise name='Postnummer' tmcname='osa09-13_postnummer'>
 
 I uppgiftsbotten finns klassen `Stad` definierad, som modellerar en enskild stad.
 
@@ -305,9 +305,9 @@ Detta är ett giltigt nummer!
 
 </sample-output>
 
-Giltigheten för en registernummer kan kontrolleras även utan att skapa en enda instans av klassen, t.ex. med `Registration.nummer_plat_giltig("xyz-789")`. Samma metod anropas i klassens konstruktor. OBS: även inom konstruktören är denna metod åtkomlig via klassens namn, inte `self`! 
+Giltigheten för en registernummer kan kontrolleras även utan att skapa en enda instans av klassen, t.ex. med `Registration.nummer_plat_giltig("xyz-789")`. Samma metod anropas i klassens konstruktor. OBS: även inom konstruktören är denna metod åtkomlig via klassens namn, inte `self`!
 
-<programming-exercise name='Lista-apuri' tmcname='osa09-14_lista_apuri'>
+<programming-exercise name='List-hjälpare' tmcname='osa09-14_listhjalpare'>
 
 Skapa en klass med namnet `ListHjalpare` som innehåller följande två klassmetoder:
 

@@ -1,6 +1,6 @@
 ---
-path: '/osa-10/4-lisaa-esimerkkeja'
-title: 'Att utveckla en större applikation '
+path: '/osa-10/4-storre-applikation'
+title: 'Att utveckla en större applikation'
 hidden: false
 ---
 
@@ -38,7 +38,7 @@ En annan vanlig metod för att hantera större program är objekt, genom objekto
 
 ## Ett fungerande exempel: telefonkatalog
 
-Hur ska ett program delas in i klasser och objekt? Det här är inte alls en enkel fråga med ett enda godtagbart svar, så vi fortsätter med ett exempel. I del fem genomförde du en [telefonkatalogsapplikation](/osa-5/3-dictionary#programming-exercise-puhelinluettelo-versio-2), och nu ska vi genomföra något liknande med hjälp av objektorienterade programmeringsprinciper.  
+Hur ska ett program delas in i klasser och objekt? Det här är inte alls en enkel fråga med ett enda godtagbart svar, så vi fortsätter med ett exempel. I del fem genomförde du en [telefonkatalogsapplikation](/osa-5/3-dictionary#programming-exercise-puhelinluettelo-versio-2), och nu ska vi genomföra något liknande med hjälp av objektorienterade programmeringsprinciper.
 
 Enligt principen om separation of concerns bör ett program delas upp i sektioner som var och en har sin egen sak att ta hand om. I objektorienterad programmering översätts detta till [principen om ett ansvar](https://en.wikipedia.org/wiki/Single-responsibility_principle). Utan att gå in på detaljerna framgår det grundläggande syftet redan av namnet: en enda klass och de objekt som skapas utifrån den ska ha ett enda ansvar i programmet.
 
@@ -307,12 +307,12 @@ Hantering av filer är helt klart ett eget ansvarsområde, så det förtjänar e
 
 ```python
 class FilHanterare():
-    def __init__(self, filhanterare):
-        self.__filhanterare = filhanterare
+    def __init__(self, fil):
+        self.__fil = fil
 
     def ladda(self):
         namnen = {}
-        with open(self.__filhanterare) as f:
+        with open(self.__fil) as f:
             for rad in f:
                 delar = rad.strip().split(';')
                 namn, *numren = delar
@@ -362,10 +362,10 @@ Eftersom filhanteraren verkar fungera bra kan vi lägga till den i vår applikat
 class TelefonkatalogApplikation:
     def __init__(self):
         self.__katalog = Telefonkatalog()
-        self.__filhanterare = FilHanterare("katalog.txt")
+        self.__fil = FilHanterare("katalog.txt")
 
         # lägg till namn och nummer från filen till telefonkatalogen
-        for namn, numren in self.__filhanterare.ladda().items():
+        for namn, numren in self.__fil.ladda().items():
             for nummer in numren:
                 self.__katalog.tillsatt_nummer(namn, nummer)
 
@@ -396,14 +396,14 @@ Själva sparandet till filen bör hanteras av `FilHanterare`-klassen. Låt oss l
 
 ```python
 class FilHanterare():
-    def __init__(self, filhanterare):
-        self.__filhanterare = filhanterare
+    def __init__(self, fil):
+        self.__fil = fil
 
     def ladda(self):
         # ...
 
     def spara(self, katalog: dict):
-        with open(self.__filhanterare, "w") as f:
+        with open(self.__fil, "w") as f:
             for namn, numren in katalog.items():
                 rad = [namn] + numren
                 f.write(";".join(rad) + "\n")
@@ -418,7 +418,7 @@ class TelefonkatalogApplikation:
 
     # metod som exekveras till programmet avslutas
     def avsluta(self):
-        self.__filhanterare.spara(self.__katalog.alla_uppgifter())
+        self.__fil.spara(self.__katalog.alla_uppgifter())
 
     def exekvera(self):
         self.hjalp()
@@ -437,7 +437,7 @@ class TelefonkatalogApplikation:
                 self.hjalp()
 ```
 
-<programming-exercise name='Puhelinluettelon laajennus, osa 1' tmcname='osa10-10_puhelinluettelo_osa1'>
+<programming-exercise name='Utveckling av telefonkatalogen, del 1' tmcname='osa10-10_telefonkatalog_del1'>
 
 I den här övningen kommer du att skapa en liten utvidgning av telefonkatalogapplikationen. Koden från exemplet ovan finns i övningsmallen. Lägg till ett kommando som låter användaren söka  efter nummer i telefonkatalogen. Efter tillägget ska applikationen fungera på följande sätt:
 
@@ -567,7 +567,7 @@ OBS: Även om objektet här tilldelas en hjälpvariabel, så finns objektet kvar
 
 Om du inte är helt säker på vad som egentligen händer i koden ovan kan du prova med [visualiseringsverktyget](http://www.pythontutor.com/visualize.html#mode=edit).
 
-<programming-exercise name='Puhelinluettelon laajennus, osa 2' tmcname='osa10-11_puhelinluettelo_osa2'>
+<programming-exercise name='Utveckling av telefonkatalogen, del 2' tmcname='osa10-11_telefonkatalog_del2'>
 
 I denna övning kommer du att skapa en annan version av `TelefonkatalogApplikation`. Du kommer att lägga till adresser i datan som kan kopplas till ett namn. För enkelhetens skull har funktionaliteten för att spara till fil tagits bort, och vissa andra metoder har bytt namn för att bättre passa in i förändringen.
 
@@ -624,7 +624,7 @@ Vänligen implementera funktionaliteten för att lägga till en adress till ett 
 
 instruktioner:
 0 avsluta
-1 tillsätt namn
+1 tillsätt nummer
 2 sök
 3 tillsätt adress
 
@@ -686,7 +686,7 @@ Att skriva kod enligt etablerade principer för objektorienterad programmering h
 
 För att avsluta denna del av materialet kommer du att implementera ytterligare en större applikation.
 
-<programming-exercise name='Opintorekisteri' tmcname='osa10-12_opintorekisteri'>
+<programming-exercise name='Studieregister' tmcname='osa10-12_studieregister'>
 
 Skriv en interaktiv applikation för att hålla koll på dina studier. Den interna strukturen är upp till dig, men det här skulle vara ett bra tillfälle att öva på att skapa en liknande struktur som i Telefonkatalog-exemplet ovan.
 
@@ -728,7 +728,7 @@ ItP (5 sp) vitsord 5
 
 instruktion: **2**
 kurs: **Introduktion till Java**
-ei suoritusta
+inga prestationer
 
 instruktion: **1**
 kurs: **Tira**
@@ -778,7 +778,7 @@ För att avsluta den här delen av materialet återvänder vi till användargrä
 class TelefonkatalogApplikation:
     def __init__(self):
         self.__katalog = Telefonkatalog()
-        self.__filhanterare = FilHanterare("katalog.txt")
+        self.__fil = FilHanterare("katalog.txt")
 
     # annan kod
 
@@ -792,9 +792,9 @@ Det skulle vara en bättre idé att skapa ett FilHanterare-objekt någonstans ut
 
 ```python
 class TelefonkatalogApplikation:
-    def __init__(self, filhanterare):
+    def __init__(self, fil):
         self.__katalog = Telefonkatalog()
-        self.__filhanterare = filhanterare
+        self.__fil = fil
 
     # annan kod
 
@@ -810,9 +810,9 @@ Detta tar bort ett onödigt beroende från `TelefonkatalogApplikation`-klassen. 
 
 ```python
 class TelefonkatalogApplikation:
-    def __init__(self, filhanterare):
+    def __init__(self, fil):
         self.__katalog = Telefonkatalog()
-        self.__filhanterare = filhanterare
+        self.__fil = fil
 
     # annan kod
 

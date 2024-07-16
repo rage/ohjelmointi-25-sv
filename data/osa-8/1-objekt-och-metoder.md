@@ -1,5 +1,5 @@
 ---
-path: '/osa-8/1-oliot-ja-metodit'
+path: '/osa-8/1-objekt-och-metoder'
 title: 'Objekt och metoder'
 hidden: false
 ---
@@ -134,7 +134,7 @@ print("Helt annan sträng".find("Per"))
 
 </sample-output>
 
-Strängmetoder returnerar värden, men ändrar inte innehållet av en sträng. Liksom nämnt ovan är strängar i Python oföränderliga. Detta gäller däremot inte alla metoder; Pythonlistor är föränderliga, alltså kan listmetoder ändra innehållet av listan som de kallas på: 
+Strängmetoder returnerar värden, men ändrar inte innehållet av en sträng. Liksom nämnt ovan är strängar i Python oföränderliga. Detta gäller däremot inte alla metoder; Pythonlistor är föränderliga, alltså kan listmetoder ändra innehållet av listan som de kallas på:
 
 ```python
 lista = [1,2,3]
@@ -158,7 +158,7 @@ print(lista)
 
 </sample-output>
 
-<programming-exercise name='Pienin keskiarvo' tmcname='osa08-01_pienin_keskiarvo'>
+<programming-exercise name='Minsta medeltalet' tmcname='osa08-01_minsta_medeltalet'>
 
 Skapa funktionen `minsta_medeltalet(person1: dict, person2: dict, person3: dict)`, som får tre ordlistor som argument.
 
@@ -191,7 +191,7 @@ print(minsta_medeltalet(person1, person2, person3))
 
 </programming-exercise>
 
-<programming-exercise name='Rivien summat' tmcname='osa08-02_rivien_summmat '>
+<programming-exercise name='Radernas summor' tmcname='osa08-02_radernas_summor '>
 
 I Python är varje värde som lagras i en variabel en referens till ett objekt, så varje värde som lagras i en lista är också en referens till ett objekt. Detta gäller även vid modellering av en matrisdatastruktur: varje värde i listan på högsta nivån är en referens till en annan lista, som i sin tur innehåller referenser till de objekt som representerar elementen i matrisen.
 

@@ -1,5 +1,5 @@
 ---
-path: '/osa-8/2-luokat-ja-oliot'
+path: '/osa-8/2-klasser-och-objekt'
 title: 'Klasser och objekt'
 hidden: false
 ---
@@ -209,7 +209,7 @@ TypeError: 'int' object is not callable
 
 </sample-output>
 
-<programming-exercise name='Vuodet listaan' tmcname='osa08-03_vuodet_listaan'>
+<programming-exercise name='Lista år' tmcname='osa08-03_lista_ar'>
 
 Skapa funktionen `lista_ar(datum: list)`, som får en lista med `date`-objekt som argument. Funktionen returnerar en ny lista, som innehåller _åren i den originella listan i kronologisk ordning_, från tidigast till äldst.
 
@@ -233,7 +233,7 @@ print(ar)
 </programming-exercise>
 
 
-<programming-exercise name='Kauppalista' tmcname='osa08-04_kauppalista'>
+<programming-exercise name='Affarslista' tmcname='osa08-04_affarslista'>
 
 I denna övningsbotten finns en färdigt definierad `Affarslista`-klass, som kan användas för att modellera en affärslista.
 

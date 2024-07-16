@@ -1,5 +1,5 @@
 ---
-path: '/osa-14/3-pelin-viimeistely'
+path: '/osa-14/3-fardigstallande-av-spelet'
 title: 'Färdigställande av spelet'
 hidden: false
 ---
@@ -138,4 +138,4 @@ GitHub är en populär plats för många typer av programmeringsprojekt. Det kan
 
 Rutnätet i det här spelet är ganska litet, men spelet är inte så lätt. Den första utmaningen är att helt enkelt klara spelet, men nästa steg är att försöka göra det med så få drag som möjligt. Hur kort är den kortaste vägen till en lösning?
 
-Att leta efter den kortaste möjliga lösningen är inte alls en lätt uppgift, men det finns beräkningslösningar för detta också. Detta är ett av ämnena i kursen Datastrukturer och algoritmer. 
+Att leta efter den kortaste möjliga lösningen är inte alls en lätt uppgift, men det finns beräkningslösningar för detta också. Detta är ett av ämnena i kursen Datastrukturer och algoritmer.

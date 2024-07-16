@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/3-kapselointi'
+path: '/osa-9/3-inkapsling'
 title: 'Inkapsling'
 hidden: false
 ---
@@ -153,7 +153,7 @@ print(kort.hamta_saldo())
 
 Saldot kan inte ändras direkt eftersom attributet är privat, men vi har inkluderat metoderna `tillsatt_pengar` och `ta_ut_pengar` för att ändra värdet. Metoden `returnera_saldo` returnerar det värde som lagrats i saldo. Metoderna innehåller några rudimentära kontroller för att bibehålla objektets integritet: till exempel kan kortet inte överdras.
 
-<programming-exercise name='Auto' tmcname='osa09-09_auto'>
+<programming-exercise name='Bil' tmcname='osa09-09_bil'>
 
 Implementera en klass som heter `Bil` och som har två privata, _inkapslade_ variabler: mängden bensin i tanken (0 till 60 liter) och vägmätarställningen (i kilometer). Bilen förbrukar en liter bensin per kilometer.
 
@@ -292,7 +292,7 @@ ValueError: Mängden får inte vara under 0
 
 OBS: getter-metoden, dvs `@property-dekoratorn`, måste introduceras före sättar-metoden i koden, annars blir det fel när klassen exekveras. Detta beror på att `@property-dekoratorn` definierar namnet på det "attribut" som erbjuds till klienten. Sättar-metoden, som läggs till med `.setter`, lägger helt enkelt till en ny funktionalitet till den.
 
-<programming-exercise name='Äänite' tmcname='osa09-10_aanite'>
+<programming-exercise name='Inspelning' tmcname='osa09-10_inspelning'>
 
 Skapa en klass med namnet `Inspelning` som modellerar en enda inspelning. Klassen ska ha en privat variabel: `__langd` av typen heltal.
 
@@ -378,7 +378,7 @@ Fia Futis
 
 Som avslutning på detta avsnitt ska vi titta på en klass som modellerar en enkel dagbok. Alla attribut är privata, men de hanteras genom olika gränssnitt: dagbokens ägare har getter- och sättar-metoder, men dagboksposterna behandlas med "traditionella" metoder. I det här fallet är det vettigt att neka klienten all tillgång till dagbokens interna datastruktur. Endast de offentliga metoderna är direkt synliga för klienten.
 
-Inkapsling säkerställer också att den interna implementeringen av klassen kan ändras när som helst, förutsatt att det offentliga gränssnittet förblir intakt. Klienten behöver inte veta eller bry sig om huruvida den interna datastrukturen är baserad på listor, ordlistor eller något helt annat. 
+Inkapsling säkerställer också att den interna implementeringen av klassen kan ändras när som helst, förutsatt att det offentliga gränssnittet förblir intakt. Klienten behöver inte veta eller bry sig om huruvida den interna datastrukturen är baserad på listor, ordlistor eller något helt annat.
 
 ```python
 class Dagbok:
@@ -423,7 +423,7 @@ Totalt 3 inlägg
 
 </sample-output>
 
-<programming-exercise name='Säähavaintoasema' tmcname='osa09-11_havaintoasema'>
+<programming-exercise name='Väderstation' tmcname='osa09-11_vaderstation'>
 
 Skapa en klass med namnet Vaderstation som används för att lagra observationer om vädret. Klassen bör ha följande offentliga attribut:
 
@@ -431,7 +431,7 @@ Skapa en klass med namnet Vaderstation som används för att lagra observationer
 * metoden `tillsatt_observation(observation: str)`, som lägger till en observation till slutet av listan
 * metoden `senaste_observation()`, som returnerar den senaste observationen som lagts till i listan. Om det ännu inte finns några observationer bör metoden returnera en _tom sträng_.
 * metoden `observationernas_antal()`, som returnerar det totala antalet observationer
-* metoden `__str__`, som returnertar stationens namn och det totala antalet observationer liksom exemplet nedan. 
+* metoden `__str__`, som returnertar stationens namn och det totala antalet observationer liksom exemplet nedan.
 
 Alla attribut ska vara inkapslade, så att de inte kan nås direkt. Det är upp till dig hur du implementerar klassen, så länge som det allmänna gränssnittet är exakt som beskrivet ovan.
 

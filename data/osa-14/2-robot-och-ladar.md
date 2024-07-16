@@ -1,5 +1,5 @@
 ---
-path: '/osa-14/2-robo-ja-laatikot'
+path: '/osa-14/2-robot-och-ladar'
 title: 'Robot och lådor'
 hidden: false
 ---
@@ -35,8 +35,8 @@ Spelet måste veta var roboten befinner sig för att kunna förflytta den på r�
 
 ```python
     def hitta_robot(self):
-        for y in range(self.korkeus):
-            for x in range(self.leveys):
+        for y in range(self.hojd):
+            for x in range(self.bredd):
                 if self.karta[y][x] in [4, 6]:
                     return (y, x)
 ```

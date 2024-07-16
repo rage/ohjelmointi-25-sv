@@ -1,10 +1,10 @@
 ---
-path: '/osa-14/1-peliprojekti'
+path: '/osa-14/1-spelprojekt'
 title: 'Spelprojekt'
 hidden: false
 ---
 
-I den här delen kommer vi att använda pygame för att skapa ett lite större spel. Det är en variant av det klassiska Sokoban spelet, där spelaren flyttar en robot på ett rutnät och skjuter lådor till rätt platser med så få drag som möjligt.
+I den här modulen kommer vi att använda pygame för att skapa ett lite större spel. Det är en variant av det klassiska Sokoban spelet, där spelaren flyttar en robot på ett rutnät och skjuter lådor till rätt platser med så få drag som möjligt.
 
 Slutresultatet kommer att se ut så här:
 
@@ -38,7 +38,7 @@ class Sokoban:
 
     def ladda_bilder(self):
         self.bilder = []
-        for namn in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
+        for namn in ["golv", "vägg", "mål", "låda", "robot", "färdig", "målrobot"]:
             self.bilder.append(pygame.image.load(namn + ".png"))
 
     def nytt_spel(self):
@@ -110,7 +110,7 @@ Metoden `ladda_bilder` laddar alla bilder som används i spelet:
 ```python
     def ladda_bilder(self):
         self.bilder = []
-        for namn in ["lattia", "seina", "kohde", "laatikko", "robo", "valmis", "kohderobo"]:
+        for namn in ["golv", "vägg", "mål", "låda", "robot", "färdig", "målrobot"]:
             self.bilder.append(pygame.image.load(namn + ".png"))
 ```
 
@@ -120,21 +120,21 @@ Spelet använder följande bilder:
 
 <img src="lattia.png">
 
-* Filnamn: `lattia.png`
+* Filnamn: `golv.png`
 * Position i listan: 0
 
 ### Väggruta
 
 <img src="seina.png">
 
-* Filnamn: `seina.png`
+* Filnamn: `vägg.png`
 * Position i listan: 1
 
 ### Målruta
 
 <img src="kohde.png">
 
-* Filnamn: `kohde.png`
+* Filnamn: `mål.png`
 * Position i listan: 2
 * Roboten ska flytta en låda till den här rutan
 
@@ -142,21 +142,21 @@ Spelet använder följande bilder:
 
 <img src="laatikko.png">
 
-* Filnamn: `laatikko.png`
+* Filnamn: `låda.png`
 * Position i listan: 3
 
 ### Robot
 
 <img src="robo.png">
 
-* Filnamn `robo.png`
+* Filnamn `robot.png`
 * Position i listan: 4
 
 ### Låda på målruta
 
 <img src="valmis.png">
 
-* Filnamn: `valmis.png`
+* Filnamn: `färdig.png`
 * Position i listan: 5
 * Lådan har flyttats till målrutan
 
@@ -164,7 +164,7 @@ Spelet använder följande bilder:
 
 <img src="kohderobo.png">
 
-* Filnamn: `kohderobo.png`
+* Filnamn: `målrobot.png`
 * Position i listan: 6
 * Roboten kan också vara på en tom målruta
 
@@ -214,6 +214,6 @@ Metoden `huvudloop` är ganska kort. Vid varje iteration anropar den två metode
 
 I det här skedet är den enda händelse som faktiskt hanteras av spelet att stänga spelfönstret, t.ex. med exit-knappen. Spelet avslutas sedan genom att anropa Pythons `exit`-funktion.
 
-Varje gång metoden `rita_fonster` anropas korsas hela spelrutnätet igenom och den bild som motsvarar varje ruta i rutnätet ritas på rätt plats. 
+Varje gång metoden `rita_fonster` anropas korsas hela spelrutnätet igenom och den bild som motsvarar varje ruta i rutnätet ritas på rätt plats.
 
 OBS: koordinaterna x och y används på två olika sätt i spelet. När man hanterar index i en tvådimensionell lista är det logiskt att ange y-koordinaten först, eftersom y hänvisar till numret på raden medan x är numret på kolumnen. Å andra sidan, när man använder pygame-metoder, skickas x vanligtvis först, vilket det ganska ofta gör när man arbetar med grafik och även i matematiska sammanhang.

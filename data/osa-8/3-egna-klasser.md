@@ -1,5 +1,5 @@
 ---
-path: '/osa-8/3-omat-luokat'
+path: '/osa-8/3-egna-klasser'
 title: 'Egna klasser'
 hidden: false
 ---
@@ -221,7 +221,7 @@ for nummer in runda1.nummer:
 Som du kan se ovan kan attributerna vara av  vilken sort som helst. Här har varje LotteriDragnings objekt attributer av typerna `list` och `date`.
 
 
-<programming-exercise name='Kirja' tmcname='osa08-06_kirja'>
+<programming-exercise name='Bok' tmcname='osa08-06_bok'>
 
 Skapa klassen `Bok`, som har variablerna `namn`, `forfattare`, `genre` och `ar`, tillsammans med en konstruktor som anger ursprungsvärden åt dessa attribut.
 
@@ -244,7 +244,7 @@ Boken Äkta Äventyrs genre är självbiografi
 
 </programming-exercise>
 
-<programming-exercise name='Kirjoita luokat' tmcname='osa08-07_kirjoita_luokat'>
+<programming-exercise name='Skriv klasser' tmcname='osa08-07_skriv_klasser'>
 
 Skapa de tre klasser som anges nedan. Varje klass ska ha exakt samma namn och typer av attribut som anges i listan.
 
@@ -269,7 +269,7 @@ Inkludera också en konstruktor i varje klass. Konstruktorn ska ta de ursprungli
 
 ## Användning av objekt från egengjorda klasser
 
-Objekt som bildas från dina egna klassdefinitioner skiljer sig inte från andra Python-objekt. De kan skickas som argument och returnera värden precis som alla andra objekt. Vi kan till exempel skriva hjälpfunktioner för att arbeta med bankkonton: 
+Objekt som bildas från dina egna klassdefinitioner skiljer sig inte från andra Python-objekt. De kan skickas som argument och returnera värden precis som alla andra objekt. Vi kan till exempel skriva hjälpfunktioner för att arbeta med bankkonton:
 
 ```python
 # funktionen skapar ett nytt bankkonto-objekt och returnerar det
@@ -296,7 +296,7 @@ print(peters_konto.saldo)
 
 </sample-output>
 
-<programming-exercise name='Muodosta lemmikki' tmcname='osa08-07b_muodosta_lemmikki'>
+<programming-exercise name='Skapa husdjur' tmcname='osa08-07b_skapa_husdjur'>
 
 Definiera klassen `Husdjur`. Klassen har en konstruktor, som tar värden till attributen `namn`, `ras` och `fodelsear` i den ordningen.
 
@@ -321,7 +321,7 @@ hund
 
 </programming-exercise>
 
-<programming-exercise name='Vanhempi kirja' tmcname='osa08-08_vanhempi_kirja'>
+<programming-exercise name='Äldre bok' tmcname='osa08-08_aldre_bok'>
 
 Skapa funktionen `aldre_bok(bok1: bok, bok2: bok)`, som får som argument två objekt av typen `Bok`. Funktionen berättar vilkendera bok som är äldre. Ifall båda böckerna är publicerades samma år ska meddelandet som skrivs ut vara annorlunda.
 
@@ -345,7 +345,7 @@ Fluent Python och Norma publicerades 2015
 
 </programming-exercise>
 
-<programming-exercise name='Genren kirjat' tmcname='osa08-09_genren_kirjat'>
+<programming-exercise name='Genrens böcker' tmcname='osa08-09_genrens_bocker'>
 
 Skapa funktionen `genrens_bocker(bocker: list, genre: str)`, som får som argument en lista med `Bok`-objekt såväl som en sträng som representerar genren.
 

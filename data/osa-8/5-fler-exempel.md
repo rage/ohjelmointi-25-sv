@@ -1,5 +1,5 @@
 ---
-path: '/osa-8/5-lisaa-esimerkkeja'
+path: '/osa-8/5-fler-exempel'
 title: 'Fler exempel'
 hidden: false
 ---
@@ -135,7 +135,7 @@ rektangel (1, 1) ... (4, 3)
 
 Det finns många fler speciella understrukna metoder som kan definieras för klasser. En metod som liknar `__str__`-metoden är `__repr__`-metoden. Dess syfte är att ge en teknisk representation av objektets tillstånd. Vi kommer att stöta på denna metod senare.
 
-<programming-exercise name='Sekuntikello' tmcname='osa08-11a_sekuntikello'>
+<programming-exercise name='Stoppur' tmcname='osa08-11a_stoppur'>
 
 Uppgiftsbotten innehåller följande ram för klassen `Stoppur`:
 
@@ -178,7 +178,7 @@ Metoden `tick` innebär alltså att en sekund läggs till i stoppuret. Det maxim
 
 </programming-exercise>
 
-<programming-exercise name='Kello' tmcname='osa08-12_kello'>
+<programming-exercise name='Klocka' tmcname='osa08-12_klocka'>
 
 Definiera en ny klass `Klocka`, som bygger på Stoppur klassen. Den ska fungera enligt följande:
 
@@ -217,7 +217,7 @@ Konstruktorn tar alltså ursprungliga värden för timmar, minuter och sekunder 
 
 </programming-exercise>
 
-<programming-exercise name='Maksukortti' tmcname='osa08-13_maksukortti'>
+<programming-exercise name='Lunchkort' tmcname='osa08-13_lunchkort'>
 
 På Unicafe, studentkafeterian vid Helsingfors universitet, kan studenterna betala för sin lunch med ett särskilt betalkort.
 
@@ -421,7 +421,7 @@ Metoden `tillagg_uppgift` lägger till en ny uppgift på listan. Varje uppgift h
 
 Inom objektet lagras uppgifterna i en lista. Varje uppgift består av en tupel som innehåller uppgiftens prioritet och dess namn. Prioritetsvärdet lagras först, så att den uppgift som har högst prioritet hamnar sist i listan då den sorteras. Därför kan vi sedan helt enkelt använda `pop`-metoden för att hämta och ta bort det högst prioriterade objektet.
 
-Ta en titt på följande program med uppgiftslistan i handling: 
+Ta en titt på följande program med uppgiftslistan i handling:
 
 ```python
 lista = Uppgiftslista()

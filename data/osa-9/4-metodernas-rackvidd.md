@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/4-metodien-nakyvyys'
+path: '/osa-9/4-metodernas-rackvidd'
 title: 'Metodernas räckvidd'
 hidden: false
 ---
@@ -119,9 +119,9 @@ Eftersom händerna är slumpmässigt genererade, är följande endast ett exempe
 
 </sample-output>
 
-Privata metoder är i allmänhet mindre vanliga än privata attribut. En tumregel är att en metod ska döljas när klienten inte har något behov av att direkt komma åt den. Detta är särskilt fallet när det är möjligt att klienten kan påverka objektets integritet negativt genom att anropa metoden. 
+Privata metoder är i allmänhet mindre vanliga än privata attribut. En tumregel är att en metod ska döljas när klienten inte har något behov av att direkt komma åt den. Detta är särskilt fallet när det är möjligt att klienten kan påverka objektets integritet negativt genom att anropa metoden.
 
-<programming-exercise name='Palvelumaksu' tmcname='osa09-12_palvelumaksu'>
+<programming-exercise name='Service avgift' tmcname='osa09-12_service_avgift'>
 
 Skapa en klass `Bankkonto`, som modellerar ett bankkonto. Klassen ska innehålla
 

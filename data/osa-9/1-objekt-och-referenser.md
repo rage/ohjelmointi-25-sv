@@ -1,5 +1,5 @@
 ---
-path: '/osa-9/1-oliot-ja-viittaukset'
+path: '/osa-9/1-objekt-och-referenser'
 title: 'Objekt och referenser'
 hidden: false
 ---
@@ -18,7 +18,7 @@ Varje värde i Python är ett objekt. Alla objekt som du skapar baserat på en k
 ```python
 from datetime import date
 
-class SlutfördKurs:
+class SlutfordKurs:
 
     def __init__(self, kurs: str, studiepoang: int, slutforsdatum: date):
         self.kurs = kurs
@@ -30,15 +30,15 @@ if __name__ == "__main__":
     # Vi skapar några slutförda kurser och lägger dessa i en lista
     prestationer = []
 
-    mat1 = SlutfördKurs("Matematik 1", 5, date(2020, 3, 11))
-    prg1 = SlutfördKurs("Programmering 1", 6, date(2019, 12, 17))
+    mat1 = SlutfordKurs("Matematik 1", 5, date(2020, 3, 11))
+    prg1 = SlutfordKurs("Programmering 1", 6, date(2019, 12, 17))
 
     prestationer.append(mat1)
     prestationer.append(prg1)
 
     # Vi lägger några till rakt till listan
-    prestationer.append(SlutfördKurs("Fysik 2", 4, date(2019, 11, 10)))
-    prestationer.append(SlutfördKurs("Programmering 2", 5, date(2020, 5, 19)))
+    prestationer.append(SlutfordKurs("Fysik 2", 4, date(2019, 11, 10)))
+    prestationer.append(SlutfordKurs("Programmering 2", 5, date(2020, 5, 19)))
 
     # Vi går igenom alla slutförda kurser, skriver ut deras namn och räknar ihop den totala mängden studiepoäng
     studiepoang = 0
@@ -59,7 +59,7 @@ Studiepoäng totalt: 20
 
 </sample-output>
 
-<programming-exercise name='Nopein auto' tmcname='osa09-01_nopein_auto'>
+<programming-exercise name='Snabbaste bilen' tmcname='osa09-01_snabbaste_bil'>
 
 Uppgiftsbotten har en klass med namnet `Bil` som representerar en bil genom två attribut: `marke (str)` och `topphastighet (int)`.
 
@@ -88,7 +88,7 @@ Ferrari
 
 </programming-exercise>
 
-<programming-exercise name='Hyväksytyt suoritukset' tmcname='osa09-02_hyvaksytyt_suoritukset'>
+<programming-exercise name='Godkända prestationer' tmcname='osa09-02_godkanda_prestationer'>
 
 I uppgiftsbotten hittas klassen `Provprestation`, som, liksom namnet anger, tar modell av en provtagares prestation i ett prov. Den har två attribut, `presterare (str)` och `poang (int)`.
 
@@ -366,7 +366,7 @@ class Ordforrad:
     # ...
 
     def langsta_ord(self):
-        # detta är det korrekta sättet att definiera 
+        # detta är det korrekta sättet att definiera
         # hjälpvariabler för användning i en enda metod
         langsta = ""
         langsta_langd = 0
@@ -514,7 +514,7 @@ Berg_och_dalbana (1 besökare)
 
 </sample-output>
 
-<programming-exercise name='Kasvatuslaitos' tmcname='osa09-03_kasvatuslaitos'>
+<programming-exercise name='Bebiscenter' tmcname='osa09-03_bebiscenter'>
 
 I uppgiftsbotten finns färdigt redan en klass `Person` såväl som en ram för klassen `BebisCenter`. Ett `BebisCenter`-objekt utför olika handlingar såsom mäter eller matar personer. I denna uppgift implementerar du resten av `BebisCenter`-klassen. Koden för klassen `Person` ska inte ändras överhuvudtaget!
 
@@ -621,7 +621,7 @@ Vägningar utförda 6
 
 </programming-exercise>
 
-<programming-exercise name='Maksukortti ja kassapääte' tmcname='osa09-04_maksukortti_ja_kassapaate'>
+<programming-exercise name='Lunchkort och betalterminal' tmcname='osa09-04_lunchkort_och_betalterminal'>
 
 I föregående del fanns en [övning](/osa-8/5-lisaa-esimerkkeja#programming-exercise-maksukortti) där du implementerade klassen `Lunchkort`. Kortet hade separata metoder för att äta en vanlig och en speciell lunch, samt en metod för att sätta in pengar på kortet.
 
@@ -639,16 +639,16 @@ class Lunchkort:
         self.saldo = saldo
 
     def tillsatt_pengar(self, mangd: float):
-        self.saldo += lisays
+        self.saldo += mangd
 
     def subtrahera_saldo(self, mangd: float):
         pass
-        # Metoden ska endast kunna subtrahera från saldot 
+        # Metoden ska endast kunna subtrahera från saldot
         # ifall det finns tillräckligt med pengar på kortet
         # Lyckad betalning returnerar True, icke-lyckad False.
 ```
 
-Testipääohjelma:
+Huvudtestprogram:
 
 ```python
 if __name__ == "__main__":
@@ -679,21 +679,21 @@ I studentkafeterian går det att betala med kontanter eller Lunchkort. En betalt
 Här har vi en ram för en `Betalterminal`-klass. Implementera metoderna enligt beskrivningen i kommentarerna:
 
 ```python
-class Kassapaate:
+class Betalterminal:
     def __init__(self):
         # I kassan finns det ursprungligen 1000 euro i kontanter
         self.pengar = 1000
         self.formanliga = 0
         self.special = 0
 
-    def at_formanligt(self, maksu: float):
+    def at_formanligt(self, betalning: float):
         # En formånlig lunch kostar 2.50 euro
         # Öka värdet på pengarna som finns i terminalen med en förmånlig lunchs pris,
         # öka mängden förmånliga luncher och returnera rätt mängd växel.
         # Ifall betalningen inte är tillräckligt stor säljs ingen lunch och hela summan returneras
 
-    def at_special(self, maksu: float):
-        # En formånlig lunch kostar 4.30 euro
+    def at_special(self, betalning: float):
+        # En special lunch kostar 4.30 euro
         # Öka värdet på pengarna som finns i terminalen med en special lunchs pris,
         # öka mängden special luncher och returnera rätt mängd växel.
         # Ifall betalningen inte är tillräckligt stor säljs ingen lunch och hela summan returneras
@@ -744,7 +744,7 @@ class Betalterminal:
 
 
     def at_special_kort(self, kort: Lunchkort):
-        # En förmånlig lunch kostar 4.30 euro.
+        # En special lunch kostar 4.30 euro.
         # Om kortet har tillräckligt med pengar, subtrahera lunchens pris och returnera True.
         # Annars returnera False
 ```
@@ -927,7 +927,7 @@ class Person:
         return self.fodelsear < annat.fodelsear:
 ```
 
-Liksom det framkommer av kommentarerna i exemplen ovan, så måste typledtråden omslutas av citattecken ifall parametern i en metoddefinition är av samma typ som klassen själv. Om citattecknen utelämnas uppstår ett fel, vilket du kommer att se om du försöker med följande: 
+Liksom det framkommer av kommentarerna i exemplen ovan, så måste typledtråden omslutas av citattecken ifall parametern i en metoddefinition är av samma typ som klassen själv. Om citattecknen utelämnas uppstår ett fel, vilket du kommer att se om du försöker med följande:
 
 ```python
 class Person:
@@ -938,7 +938,7 @@ class Person:
         return self.fodelsear < annat.fodelsear:
 ```
 
-<programming-exercise name='Asuntovertailu' tmcname='osa09-05_asuntovertailu'>
+<programming-exercise name='Bostadsjämförelse' tmcname='osa09-05_bostadsjamforelse'>
 
 Databasen hos en fastighetsmäklare innehåller register över tillgängliga fastigheter med objekt som definieras av följande klass:
 

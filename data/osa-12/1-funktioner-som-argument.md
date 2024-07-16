@@ -1,5 +1,5 @@
 ---
-path: '/osa-12/1-funktio-parametrina'
+path: '/osa-12/1-funktioner-som-argument'
 title: 'Funktioner som argument'
 hidden: false
 ---
@@ -147,7 +147,7 @@ def sortera_enligt_pris(foremalen: list):
     return sorted(foremalen, key=prisordning)
 ```
 
-<programming-exercise name='Järjestys varastosaldon mukaan' tmcname='osa12-01_varastosaldo'>
+<programming-exercise name='Sortering enligt återstående lager' tmcname='osa12-01_aterstaende_lager'>
 
 Skapa en funktion med namnet `sortera_enligt_aterstaende_lager(foremal: list)`. Funktionen tar en lista med tupler som sitt argument. Tuplerna består av namn, pris och återstående lager för en produkt. Funktionen ska returnera en ny lista, där artiklarna är sorterade enligt återstående lager, med det lägsta värdet först. Den ursprungliga listan ska inte ändras.
 
@@ -169,7 +169,7 @@ vattenmelon 22 st
 
 </programming-exercise>
 
-<programming-exercise name='Järjestys tuotantokausien mukaan' tmcname='osa12-02_tuotantokaudet'>
+<programming-exercise name='Sortering enligt produktionssäsonger' tmcname='osa12-02_produktionssasong'>
 
 Skapa en funktion med namnet `sortera_enligt_sasonger(foremal: list)` som tar en lista med ordlistor som sitt argument. Varje ordlista innehåller information om ett enda TV-program. Funktionen ska sortera listan efter antalet säsonger som varje program har, i stigande ordning. Funktionen ska inte ändra den ursprungliga listan, utan istället returnera en ny lista.
 
@@ -190,7 +190,7 @@ Simpsons 32 säsonger
 
 </programming-exercise>
 
-<programming-exercise name='Järjestys pisteiden mukaan' tmcname='osa12-03_pisteiden_mukaan'>
+<programming-exercise name='Sortering enligt poäng' tmcname='osa12-03_enligt_poang'>
 
 Skapa en funktion med namnet `sortera_enligt_betyg(foremal: list)` som tar en lista med ordlistor som sitt argument. Ordlistornas struktur är identisk med den i den föregående övningen. Denna funktion ska sortera ordlistorna i fallande ordning baserat på programmens betyg. Funktionen ska inte ändra den ursprungliga listan, utan returnera en ny lista istället.
 
@@ -268,7 +268,7 @@ Anton (a123), 220 sp.
 
 Som du kan se ovan fungerar sortering efter olika kriterier precis som det är tänkt. Om funktionerna `enligt_id` och `enligt_studiepoang` inte behövs någon annanstans finns det sätt att göra implementeringen enklare. Vi återkommer till detta ämne efter dessa övningar.
 
-<programming-exercise name='Kiipeilyreitti' tmcname='osa12-04_kiipeilyreitti'>
+<programming-exercise name='Klättringsrutt' tmcname='osa12-04_klattringsrutt'>
 
 Uppgiftsbottnet innehåller en klassdefinition för `Klattringsrutt`, som fungerar enligt följande:
 
@@ -359,20 +359,20 @@ print(sorted(lista))
 
 </programming-exercise>
 
-<programming-exercise name='Kiipeilykalliot' tmcname='osa12-05_kiipeilykalliot/'>
+<programming-exercise name='Klättringsområde' tmcname='osa12-05_klattringsomrade/'>
 
-I uppgiftsbotten finns förutom klassen `Klattringsrutt` dessutom klassen `Klättringsomrade`.
+I uppgiftsbotten finns förutom klassen `Klattringsrutt` dessutom klassen `Klattringsomrade`.
 
 ```python
-o1 = Klättringsomrade("Olhava")
+o1 = Klattringsomrade("Olhava")
 o1.tillsatt_rutt(Klattringsrutt("Kantti", 38, "6A+"))
 o1.tillsatt_rutt(Klattringsrutt("Stora snittet", 36, "6B"))
 o1.tillsatt_rutt(Klattringsrutt("Svensk rutt", 42, "5+"))
 
-o2 = Klättringsomrade("Nummi")
+o2 = Klattringsomrade("Nummi")
 o2.tillsatt_rutt(Klattringsrutt("Syncro", 14, "8C+"))
 
-o3 = Klättringsomrade("Nalkkilan släbi")
+o3 = Klattringsomrade("Nalkkilan släbi")
 o3.tillsatt_rutt(Klattringsrutt("Små steg", 12, "6A+"))
 o3.tillsatt_rutt(Klattringsrutt("Smooth operator", 11, "7A"))
 o3.tillsatt_rutt(Klattringsrutt("Grisen gillar inte", 12 , "6B+"))
@@ -556,7 +556,7 @@ U2 (Joshua Tree), 1986. 50 min.
 
 </sample-output>
 
-<programming-exercise name='Palloilijat' tmcname='osa12-06_palloilijat'>
+<programming-exercise name='Bollspelare' tmcname='osa12-06_bollspelare'>
 
 Uppgiftsbotten innehåller en definition för en klass med namnet `Bollspelare`, som har följande offentliga attribut:
 
@@ -677,9 +677,9 @@ if __name__ == "__main__":
     kopiera_rader("första.txt", "andra.txt", lambda rad: rad[-1] != ".")
 ```
 
-Funktionsdefinitionen innehåller ett standardvärde för nyckelordsparametern `kriterie`: `lambda x: True`. Denna anonyma funktion returnerar alltid `True` oavsett indata. Standardbeteendet är alltså att kopiera alla rader. Som vanligt gäller att om ett värde anges för en parameter med ett standardvärde, ersätter det nya värdet standardvärdet. 
+Funktionsdefinitionen innehåller ett standardvärde för nyckelordsparametern `kriterie`: `lambda x: True`. Denna anonyma funktion returnerar alltid `True` oavsett indata. Standardbeteendet är alltså att kopiera alla rader. Som vanligt gäller att om ett värde anges för en parameter med ett standardvärde, ersätter det nya värdet standardvärdet.
 
-<programming-exercise name='Tuotteiden haku' tmcname='osa12-07_tuotteiden_haku'>
+<programming-exercise name='Söking av produkter' tmcname='osa12-07_sokning_av_produkter'>
 
 Den här övningen hanterar produkter som förvaras som tupler. Exemplen antar en variabel med namnet `produkter` som förses med följande värde:
 

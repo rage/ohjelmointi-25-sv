@@ -1,6 +1,6 @@
 ---
-path: '/osa-11/2-lisaa-koosteesta'
-title: 'Fler comprehensions'
+path: '/osa-11/2-mer-om-comprehensions'
+title: 'Mer om comprehensions'
 hidden: false
 ---
 
@@ -15,7 +15,7 @@ Efter den här delen
 </text-box>
 
 
-Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista. 
+Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista.
 
 ```python
 
@@ -130,7 +130,7 @@ print(mening_utan_initialer)
 
 ```
 
-<programming-exercise name='Suodata kielletyt' tmcname='osa11-08_suodata_kielletyt'>
+<programming-exercise name='Filtrera förbjudna' tmcname='osa11-08_filtrera_forbjudna'>
 
 Skapa funktionen `filtrera_forbjudna(strang: str, forbjuden: str)` som tar två strängar som argument. Funktionen ska returnera en ny version av den första strängen. Den ska inte innehålla tecken från den andra strängen.
 
@@ -264,7 +264,7 @@ class Bokhylla:
     # Här bör iterationsvariabeln(variablerna) initialiseras
     def __iter__(self):
         self.n = 0
-        # Metoden returnerar en referens till själva objektet 
+        # Metoden returnerar en referens till själva objektet
         # eftersom iteratorn är implementerad inom samma klassdefinition
         return self
 
@@ -289,9 +289,9 @@ if __name__ == "__main__":
     b3 = Bok("C-värdheter på nätet", "Karl Kodare", 997)
 
     hylla = Bokhylla()
-    hylla.lisaa_bok(b1)
-    hylla.lisaa_bok(b2)
-    hylla.lisaa_bok(b3)
+    hylla.tillsatt_bok(b1)
+    hylla.tillsatt_bok(b2)
+    hylla.tillsatt_bok(b3)
 
     # Skapa en lista innehållandes namnet på alla böcker
     bockernas_namn = [bok.namn for bok in hylla]
@@ -299,7 +299,7 @@ if __name__ == "__main__":
 
 ```
 
-<programming-exercise name='Kauppalistan tuotteet' tmcname='osa11-09_kauppalistan_tuotteet'>
+<programming-exercise name='Affärslistans produkter' tmcname='osa11-09_affarslistans_produkter'>
 
 I del 10 skapade du en [itererbar affärslista](/osa-10/3-olio-ohjelmoinnin-tekniikoita#programming-exercise-iteroitava-kauppalista). Objekt av en itererbar klass kan användas med list comprehensions. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
 
@@ -312,10 +312,10 @@ Funktionen ska fungera enligt följande:
 
 ```python
 lista = Affarslista()
-lista.lisaa("bananer", 10)
-lista.lisaa("äppel", 5)
-lista.lisaa("alkoholfri öl", 24)
-lista.lisaa("ananas", 1)
+lista.tillsatt("bananer", 10)
+lista.tillsatt("äppel", 5)
+lista.tillsatt("alkoholfri öl", 24)
+lista.tillsatt("ananas", 1)
 
 print("Affärslistan har minst 8 av följande:")
 for produkt in affarslistans_produkter(lista, 8):
@@ -332,11 +332,11 @@ alkoholfri öl
 
 </programming-exercise>
 
-<programming-exercise name='Halvempien hintaero' tmcname='osa11-10_halvempien_hintaero'>
+<programming-exercise name='Billigare prisskillnad' tmcname='osa11-10_billigare_prisskillnad'>
 
-Denna övning innehåller en aning modifierad version av klassen[Bostad](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu) från del 9.
+Denna övning innehåller en aning modifierad version av klassen [Bostad](/osa-9/1-oliot-ja-viittaukset#programming-exercise-asuntovertailu) från del 9.
 
-Skapa en funktion med namnet `billigare(egenskaper: list, jamforelse: Bostad)` som tar en lista med egenskaper och ett enda Bostad-objekt som sina argument. Funktionen ska returnera en lista som endast innehåller de bostäder i den ursprungliga listan som är billigare än jämförelsebostaden, tillsammans med prisskillnaden. Föremålen i den returnerade listan bör vara tupler, där det första föremålet är själva bostaden och den andra är prisskillnaden.
+Skapa en funktion med namnet `billigare(bostader: list, jamforelse: Bostad)` som tar en lista med bostäder och ett enda Bostad-objekt som sina argument. Funktionen ska returnera en lista som endast innehåller de bostäder i den ursprungliga listan som är billigare än jämförelsebostaden, tillsammans med prisskillnaden. Föremålen i den returnerade listan bör vara tupler, där det första föremålet är själva bostaden och den andra är prisskillnaden.
 
 Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
@@ -352,11 +352,11 @@ a4 = Bostad(6, 215, 500, "Suomussalmi egnahemshus")
 a5 = Bostad(4, 105, 1700, "Kerava 4r och kök")
 a6 = Bostad(25, 1200, 2500, "Haikon kartano")
 
-asunnot = [a1, a2, a3, a4, a5, a6]
+bostader = [a1, a2, a3, a4, a5, a6]
 
-print(f"billigare alternativ än {a3.kuvaus}:")
-for foremal in billigare(asunnot, a3):
-    print(f"{foremal[0].kuvaus:30} prisskillnad {foremal[1]} euro")
+print(f"billigare alternativ än {a3.beskrivning}:")
+for foremal in billigare(bostader, a3):
+    print(f"{foremal[0].beskrivning:30} prisskillnad {foremal[1]} euro")
 ```
 
 <sample-output>
@@ -398,7 +398,7 @@ Principen för comprehension-satsen är exakt densamma som för listor, men i st
 
 `{<nyckeluttryck> : <värdeuttryck> för <föremål> i <serie>}`
 
-Som avslutning på det här avsnittet tittar vi på faktorialtal igen. Den här gången lagrar vi resultaten i en ordlista. Själva talet är nyckeln, medan värdet är resultatet av faktorn från vår funktion: 
+Som avslutning på det här avsnittet tittar vi på faktorialtal igen. Den här gången lagrar vi resultaten i en ordlista. Själva talet är nyckeln, medan värdet är resultatet av faktorn från vår funktion:
 
 ```python
 
@@ -423,7 +423,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-<programming-exercise name='Merkkijonojen pituudet' tmcname='osa11-11_merkkijonojen_pituudet'>
+<programming-exercise name='Strängarnas längder' tmcname='osa11-11_strangarnas_langder'>
 
 Skapa en funktion med namnet `langder(strangar: list)` som tar en lista med strängar som sitt argument. Funktionen ska returnera en ordlista med strängarna i listan som nycklar och deras längder som värden.
 
@@ -447,7 +447,7 @@ print(sanojen_langder)
 
 </programming-exercise>
 
-<programming-exercise name='Yleisimmät sanat' tmcname='osa11-12_yleisimmat_sanat'>
+<programming-exercise name='Vanligaste orden' tmcname='osa11-12_vanligaste_orden'>
 
 Skapa en funktion med namnet `vanligaste_orden(filnamn: str, nedre_grans: int)` som tar ett filnamn och ett heltalsvärde som en nedre gräns som sina argument. Funktionen ska returnera en ordlista som innehåller antalet förekomster av de ord som förekommer minst det antal gånger som anges i parametern `nedre_grans`.
 

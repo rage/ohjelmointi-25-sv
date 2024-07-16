@@ -1,5 +1,5 @@
 ---
-path: '/osa-13/4-lisaa-tekniikoita'
+path: '/osa-13/4-fler-pygame-tekniker'
 title: 'Fler pygame-tekniker'
 hidden: false
 ---
@@ -81,7 +81,7 @@ OBS: olika system kommer att ha olika teckensnitt tillgängliga. Om det system s
 
 ## Övningar
 
-Här är några mer avancerade övningar för att öva på det du har lärt dig i denna del av kursmaterialet. 
+Här är några mer avancerade övningar för att öva på det du har lärt dig i denna del av kursmaterialet.
 
 <programming-exercise name='Kello' tmcname='osa13-16_kello'>
 
@@ -91,13 +91,13 @@ Skriv ett program som visar en urtavla som visar systemtiden. Slutresultatet ska
 
 </programming-exercise>
 
-<programming-exercise name='Asteroidit' tmcname='osa13-17_asteroidit'>
+<programming-exercise name='Asteroider' tmcname='osa13-17_asteroider'>
 
 Skapa ett spel där asteroider faller från himlen. Spelaren flyttar en robot till höger och vänster och försöker samla upp de fallande stenarna. Spelaren får ett poäng för varje asteroid som samlas in och den totala poängen visas högst upp i fönstret. Spelet tar slut när spelaren missar en asteroid. Slutresultatet bör se ut så här:
 
 <img src="pygame_asteroidit.gif">
 
-I uppgiftsbotten finns bilden `kivi.png` för asteroiden.
+I uppgiftsbotten finns bilden `sten.png` för asteroiden.
 
 </programming-exercise>
 

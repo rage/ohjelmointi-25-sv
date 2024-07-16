@@ -1,5 +1,5 @@
 ---
-path: '/osa-11/3-rekursio'
+path: '/osa-11/3-rekursion'
 title: 'Rekursion'
 hidden: false
 ---
@@ -93,7 +93,7 @@ I princip borde det vara möjligt att lösa alla problem med antingen iterativa 
 
 </text-box>
 
-<programming-exercise name='Suurempia lukuja' tmcname='osa11-13_listaan_lukuja'>
+<programming-exercise name='Större tal' tmcname='osa11-13_tal_till_listan'>
 
 Skapa en _rekursiv funktion_ `tal_till_listan(tal: list)`. Funktionen tar en lista med tal som sitt argument och lägger till nya tal i listan tills längden på listan är delbar med fem. Varje tal som läggs till i listan ska vara ett större tal än det sista talet i listan.
 
@@ -228,7 +228,7 @@ Och så vidare, och så vidare.
 
 Vi kan i varje steg verifiera att funktionen ger rätt resultat, vilket ofta är tillräckligt i grundläggande programmeringsuppgifter. Den formella verifierbarheten av algoritmer är ett ämne för mer avancerade kurser, till exempel Data Structures and Algorithms.
 
-<programming-exercise name='Rekursiivinen summa' tmcname='osa11-14_rekursiivinen_summa'>
+<programming-exercise name='Rekursiv summa' tmcname='osa11-14_rekursiv_summa'>
 
 Skapa en rekursiv funktion med namnet `summa(tal: int)`, som räknar summan `1 + 2 + ... + tal`. Funktionens mall är följande:
 
@@ -261,7 +261,7 @@ print(summa(10))
 
 </programming-exercise>
 
-<programming-exercise name='Sulut tasapainossa' tmcname='osa11-15_sulut_tasapainossa'>
+<programming-exercise name='Balanserade parenteser' tmcname='osa11-15_balanserade_parenteser'>
 
 I uppgiftsbotten finns den färdiga funtkionen `balanserade_parenteser` som tar en sträng som argument. Funktionen kollar ifall _runda_ parenteser inom strängen är balanserade. Med andra ord, för varje öppnande parentes `(` ska det finnas en stängande parentes `)`, och alla parenteser ska vara i matchande ordning, alltså får parentesparen inte korsas.
 
@@ -395,4 +395,4 @@ Funktionen `binar_sokning` tar fyra argument: mållistan, det objekt som söks s
 
 Låt oss jämföra detta med en enkel linjär sökning. Vid en linjär sökning är sökområdet från början och framåt, tills antingen objektet hittas eller sökområdet tar slut. Antalet steg som behövs för att täcka hela sökområdet växer linjärt i samma takt som sökområdets storlek. Varje söksteg täcker endast en sökkandidat från början av sökområdet. Låt oss anta att det sökta objektet inte hittas. Om sökområdet är en miljon objekt långt måste vi ta en miljon söksteg för att försäkra oss om att objektet inte finns i sökområdet.
 
-Vid en binär sökning växer däremot antalet steg som behövs logaritmiskt. Låt oss återigen anta att det sökta objektet inte hittas. Sökområdet halveras för varje steg, eftersom vi vet att objektet antingen är mindre eller större än den aktuella sökkandidaten i mitten. 2 gånger 20 (2^20) är redan långt över 1 miljon, så det tar som mest 20 steg att täcka hela sökområdet med en binär sökning. När vi har att göra med sorterade sökområden, vilket ofta är fallet när vi har att göra med datorer och material som ska bearbetas automatiskt, är en binär sökning alltså mycket effektivare än en linjär sökning. 
+Vid en binär sökning växer däremot antalet steg som behövs logaritmiskt. Låt oss återigen anta att det sökta objektet inte hittas. Sökområdet halveras för varje steg, eftersom vi vet att objektet antingen är mindre eller större än den aktuella sökkandidaten i mitten. 2 gånger 20 (2^20) är redan långt över 1 miljon, så det tar som mest 20 steg att täcka hela sökområdet med en binär sökning. När vi har att göra med sorterade sökområden, vilket ofta är fallet när vi har att göra med datorer och material som ska bearbetas automatiskt, är en binär sökning alltså mycket effektivare än en linjär sökning.

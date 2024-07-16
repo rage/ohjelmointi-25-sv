@@ -1,5 +1,5 @@
 ---
-path: '/osa-12/3-funktionaalista-ohjelmointia'
+path: '/osa-12/3-funktionell-programmering'
 title: 'Funktionell programmering'
 hidden: false
 ---
@@ -226,7 +226,7 @@ På samma sätt samlas saldot för varje Bankkonto in. Lambda-funktionen ser lit
 saldon = map(lambda t: t.hamta_saldo(), konton)
 ```
 
-<programming-exercise name='Suoritukset' tmcname='osa12-11_suoritukset'>
+<programming-exercise name='Prestationer' tmcname='osa12-11_prestationer'>
 
 I uppgiftsbotten finns klassdefinitionen för `Prestation`, som fungerar enligt följande:
 
@@ -421,7 +421,7 @@ fiskar = [f1, f2, f3, f4, f5]
 over_kilot = list(filter(lambda fisk : fisk.vikt >= 1000, fiskar))
 ```
 
-<programming-exercise name='Rajatut suoritukset' tmcname='osa12-12_rajatut_suoritukset'>
+<programming-exercise name='Begränsade prestationer' tmcname='osa12-12_begransade_prestationer'>
 
 I denna övning fortsätter vi med `Prestation`-klassen.
 
@@ -661,11 +661,11 @@ Skulle producera ett fel:
 TypeError: unsupported operand type(s) for +: 'Bankkonto' and 'int'
 ```
 
-I ovanstående fall, när `reduce` försöker utföra funktionen `saldo_summa_hjalpare` för första gången, är de argument som används de två första föremålen i listan, som båda är av typen Bankkonto. Specifikt är det värde som tilldelats parametern `saldo_summa` det första föremålet i listan. Funktionen `saldo_summa_hjalpare` försöker lägga till ett heltalsvärde till den, men att lägga till ett heltal direkt till ett Bankkonto-objekt är inte en åtgärd som stöds. 
+I ovanstående fall, när `reduce` försöker utföra funktionen `saldo_summa_hjalpare` för första gången, är de argument som används de två första föremålen i listan, som båda är av typen Bankkonto. Specifikt är det värde som tilldelats parametern `saldo_summa` det första föremålet i listan. Funktionen `saldo_summa_hjalpare` försöker lägga till ett heltalsvärde till den, men att lägga till ett heltal direkt till ett Bankkonto-objekt är inte en åtgärd som stöds.
 
 </text-box>
 
-<programming-exercise name='Opintopisteet' tmcname='osa12-13_opintopisteet'>
+<programming-exercise name='Studiepoäng' tmcname='osa12-13_studiepoang'>
 
 I denna övning jobbar vi med en aning modifierad version av `Prestation`-klassen. Namnet på studeranden är utelämnat, men antalet studiepoäng är inkluderat. Klassen fungerar enligt följande:
 
