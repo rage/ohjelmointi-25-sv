@@ -1,69 +1,68 @@
 ---
-path: "/virheilmoitukset"
-title: "Yleiset virheilmoitukset"
+path: "/felanmalningar"
+title: "Allmänna felanmälningar"
 hidden: false
 information_page: true
 banner: true
 separator_after: "Ohjelmoinnin perusteet"
 ---
 
-Tällä sivulla kerrotaan yleisistä virheilmoituksista joihin saatat törmätä kurssin aikana.
+På den här sidan berrätas om allänna felanmälningar vilka du kan stöta på under kursen.
 
-### Tehtävä ei mene läpi, vaikka tuloste on identtinen esimerkkitulosteen kanssa
+### Uppgiften går inte igenom, trots att utskriften är identisk med exempelutskriften
 
-Tarkista että ohjelmasi ei tulosta ylimääräisiä välilyöntejä. Huomaa että `print` -funktion sisällä pilkku luo automaattisesti välilyönnin yhdistettävien merkkijonojen välille.
-
-```python
-    print("Hello","World!")    # Tulostuu: Hello World!
-```
-
-### SyntaxError: bad input on line [rivinumero]
-
-Tämä käsittää kaikki sellaiset kirjoitusvirheet koodissasi joita ei voida helposti luokitella. Esimerkiksi ehtolauseen päädystä saattaa puuttua kaksoispiste tai avainsana kuten 'while' on kirjoitettu väärin. Ainoa tapa ratkaista ongelma on tutkia virheilmoituksen antamaa riviä.
+Granska att ditt program inte skriver ut extra mellanslag. Märk att innanför `print` -funktionen skapar ett kommatecken automatiskt ett mellanslag mellan strängar.
 
 ```python
-    luku1 = 1
-    luku1 = 2
-    if luku1 < luku2        # ':' puuttuu
-        print('luku2 on suurempi')
+    print("Hello","World!")    # Skriver ut: Hello World!
 ```
 
-Jos annettu rivi kuitenkin näyttää täysin oikealta, on myös mahdollista että virhe on yhtä riviä alempana tai ylempänä. Tarkista siis myös nuo rivit.
+### SyntaxError: bad input on line [radnummer]
 
-### SyntaxError: unindent does not match any outer indentation level on line [rivinumero]
+Detta behandlar alla sådana skrivfel i koden som inte kan klassifieras enkelt. Till exempel en villkorssats kan sakna ett kolon i slutet eller ett nyckelord såsom 'while' kan vara skrivet fel. Enda sättet att lösa problemet är att undersöka felanmälans angivna rader.
 
-Koodisi on sisennetty hassusti virheilmoituksen antamalla rivillä. Sisennä rivi niin että se on linjassa muiden rivien kanssa.
-Esimerkiksi seuraavanlainen koodi aiheuttaisi tämän virheen.
+```python
+    tal1 = 1
+    tal1 = 2
+    if tal1 < tal2        # ':' saknas
+        print('tal2 är större')
+```
+
+Ifall den angivna raden däremot ser helt rätt ut, kan det även hända att felet är en rad nedanför eller ovanför. Granska alltså även de raderna.
+
+### SyntaxError: unindent does not match any outer indentation level on line [radnummer]
+
+Koden är indenterad konstigt på felanmälans angivna rad. Indentera rad så att den är i nivå med resten av raderna. Till exempel följande kod åstadkommer ett sådant här fel.
 
 ```python
     if True:
-        print('Oikein sisennetty')
-       print('Väärin sisennetty')
+        print('Rätt indenterat')
+       print('Fel indenterat')
 ```
 
-### NameError: name [muuttuja] is not defined on line [rivinumero]
+### NameError: name [variabel] is not defined on line [radnummer]
 
-Koodisi yrittää viitata muuttujaan tai olioon jota ei ole olemassa tai sitä ei 'näy'. Voi olla että muuttujalle on unohdettu antaa arvo tai muuttujaa ei löydy kirjoitusvirheen takia (kts. esimerkki). Voi myös olla muuttuja on alustettu funktion sisällä ja siihen on yritetty viitata funktion ulkopuolella.
+Koden försöker referera till en variabel eller ett objekt som inte finns eller som inte 'syns'. Det kan hända att variabeln har glömts att tilldelas ett värde eller att variabeln inte hittas på grund av ett skrivfel (kolla exempel). Det kan också hända att variabeln är skapad innanför funktionen och försöker refereras till ytterom funktionen.
 
 ```python
-    henkilo = input('Kerro nimesi: ')
-    input('Kerro ikäsi: ')
+    person = input('Skriv ditt namn: ')
+    input('Skriv din ålder: ')
 
-    print("Hei", henklo)             # virhe: henkilo kirjotettu henklo
-    print("Olet", ika, "vuotias")    # virhe: muuttujaa ika ei ole määritelty
+    print("Hej", persn)                   # fel: person skrivet persn
+    print("Du är", alder, "år gammal")    # fel: variabeln alder är inte definierad
 ```
 
-### TypeError: unsupported operand type(s) for Add: 'int' and 'str' on line [rivinumero]
+### TypeError: unsupported operand type(s) for Add: 'int' and 'str' on line [radnummer]
 
-Koodisi yrittää yhteenlaskea kokonaisluvun ja merkkijonon ilman että merkkijonoa on muunnettu kokonaisluvuksi. Muista siis muuntaa merkkijono `int()` -funktiolla. Voi myös olla että yritit yhdistää kokonaisluvun osaksi merkkijonoa. Tällöin sinun tulee muuntaa kokonaisluku merkkijonoksi `str()` -funktiolla.
+Koden försöker räkna ihop ett heltal och en sträng utan att strängen är ändrad till ett heltal. Kom alltså ihåg att ändra strängar med `int()` -funktionen. Det kan också hända att den försökte slå ihop ett heltal till en sträng. För detta måste du ändra heltalet till en sträng med `str()` -metoden.
 
 ```python
-    ika = input("Anna ikä: ")
-    nimi = input("Anna nimi: ")
+    alder = input("Ange ålder: ")
+    namn = input("Ange namn: ")
 
-    print(ika//2)   # virhe: muuttujaa ika ei ole muutettu kokonaisluvuksi
+    print(alder//2)   # fel: variabeln alder är inte ändrat till ett heltal
 ```
 
-### TypeError: cannot concatenate 'str' and 'int' objects on line [rivinumero]
+### TypeError: cannot concatenate 'str' and 'int' objects on line [radnummer]
 
-Katso ylempi kohta.
+Se ovanstående del.

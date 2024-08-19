@@ -1,58 +1,58 @@
 ---
-path: "/usein-kysytyt-kysymykset"
-title: "Usein kysytyt kysymykset"
+path: "/ofta-stallda-fragar"
+title: "Ofta ställda frågor"
 hidden: false
 information_page: true
 ---
 
 <table-of-contents></table-of-contents>
 
-### Löysin virheen materiaalista tai tehtävästä
+### Jag hittade ett fel i materialet eller uppgifterna
 
-Voit ilmoittaa asiasta kurssikanavalla ohjaajalle tai sähköpostitse kurssin ylläpitäjille osoitteeseen ohjelmoinnin-mooc@helsinki.fi. Kiitos!
+Du kan meddela om saken i kurskanalen till handledaren eller per epost till kursens upphållare via adressen ohjelmoinnin-mooc@helsinki.fi. Tack!
 
-### Miksi TMC:ssä ei näy kaikki kurssin osat? Miten saan ladattua kaikkien osien ohjelmointitehtävät?
+### Varför syns inte alla kursens moduler i TMC? Hur får jag alla modulers uppgifter nedladdade?
 
-Seuraava osa tulee automaattisesti TMC:hen ladattavaksi, kun olet saanut 25 % edellisen osan ohjelmointitehtävien pisteistä.
+Följande modul blir automatiskt nedladdbar, då du fått 25 % av föregående dels programmeringsuppgifters poäng.
 
-<notice>Alla olevat kysymykset koskevat enimmäkseen avoimen yliopiston opiskelijoita</notice>
+<notice>Nedanstående frågor berör främst studerande på öppna universitetet</notice>
 
-### En voi aloittaa kurssia, koska en tiedä minne ilmoittautua
+### Jag kan inte påbörka lirsen, eftersom jag inte vet var jag kan anmäla mig
 
-Kurssin aloittamiseen ei tarvitse ilmoittautumista. Saat kurssin jälkeen ohjeet, miten voit saada kurssista suoritusmerkinnän Helsingin yliopiston rekisteriin.
+För att påbörja kursen behövs ingen anmälan. Du får efter kursen instruktioner hur du kan få prestationsbemärkelse till Helsingfors universitets register.
 
-### Saako kursseista virallisen suorituksen?
+### Får jag ett formellt intyg av kursen?
 
-Kurssin päätteeksi voit osallistua Helsingin yliopiston Avoimen yliopiston kokeeseen. Jos läpäiset kokeen hyväksytysti, saat kurssista merkinnän Helsingin yliopiston rekisteriin.
+I slutet av kursen kan du delta i Helsingfors universitets Öppna universitetets prov. Ifall du kommer igenom provet godkänt, får du ett intyg över kursen i Helsingfors universitets register.
 
-### Miten saan hyväksiluvun kurssista oppilaitoksessani?
+### Hur får jag ett godkänt betyg för en kurs på min institution?
 
-Saat kurssista merkinnän Helsingin yliopiston rekisteriin. Se kelpaa todennäköisesti hyväksilukemista varten, mutta kannattaa varmistaa asia vielä oman oppilaitoksen opintovastaavalta.
+Du får ett intyg över kursen från Helsingofrs universitets register. Det räcker sannolikt till, men det lönar sig att kontrollera saken ännu med ditt egna instituts studiehandledare.
 
-### Tarvitsenko Helsingin yliopiston tunnukset?
+### Behövs Helsingfors universitets identifierieng?
 
-Et tarvitse.
+Det behövs inte.
 
-### Miten perun kurssiosallistumiseni?
+### Hur avbryter jag mitt kursdeltagande?
 
-Kurssiosallistumista ei tarvitse erikseen perua. Riittää, että lopettaa kurssin tekemisen.
+Kursdeltagandet kräver ingen skild avbrytning. Det räcker att du slutar utföra kursen.
 
-### Työ- ja elinkeinotoimisto haluaa minulta selvityksen kurssista
+### Arbets- och Näringstjänstbyrån vill ha en förklaring från mig om kursen
 
-Ohjaa TE-toimisto tälle sivulle:
+Navigare AN-byrån till denna sida:
 
-Ohjelmoinnin perusteet on kaikille avoin ja ilmainen verkkokurssi. Kurssin käymistä voi verrata kirjan lainaamiseen kirjastosta. Kirjastosta lainattava kirja saattaa liittyä johonkin yliopisto-opintoihin liittyvään kurssiin. Aivan samalla tavalla kuin kirjastosta lainattava kirja, verkkokurssimme on luettavissa huvin ja itsensä sivistämisen vuoksi tai yliopisto-opintojen edistämiseksi.
+Introduktionskurs till programmering är en till alla öppen och gratis webbkurs. Kursens genomförande kan jämföras med att låna en bok från biblioteket. Den bok som du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
 
-Ohjelmoinnin perusteet vastaa Helsingin yliopiston 5 opintopisteen kurssia. Kurssin suorittajat eivät kuitenkaan automaattisesti ole Helsingin yliopiston opiskelijoita, emmekä pakota ketään suorittamaan kurssia opintopisteisiin johtavassa muodossa. Kurssin suorittamisesta voi kuitenkin halutessaan saada opintopisteitä. Kurssille osallistuminen ei oikeuta opintotukeen.
+Introduktion till programmering motsvarar en Helsingfors universitet 5 studiepoängs kurs. Kursens genomförare är däremot inte automatiskt studenter på Helsingfors universitet, vi tvingar heller inte någon att slutföra kursen i ett studiepoänggivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.
 
-### Saan tukea Työ- ja elinkeinotoimistolta. Voinko silti suorittaa kurssin?
+### Jag får stöd från Arbets- och Näringstjänstbyrån. Kan jag ändå utföra kursen?
 
-Sovi asiasta etukäteen TE-toimistosi kanssa. TE-toimistot eivät valitettavasti käsittele kurssiimme liittyviä asioita yhdenmukaisesti. Jotkut ovat evänneet tukia jo kurssillemme osallistumisesta, vaikkei tavoitteena olisi opintopisteet tai opinnot. Toisaalta toiset TE-toimistot ovat suositelleet kurssia ja jopa ohjanneet ihmisiä kurssille ilman tukien epäämistä.
+Kom överens om saken i förhand med AN-byrån. Tyvärr behandlar AN-byrån inte våra kurser på ett enhetligt sätt. Vissa har redan vägrat att bevilja dig bidrag för deltagande i kursen, fastän syftet inte är studiepoäng eller studier. Däremot har andra AN-byråer rekommenderat kursen och till och med hänvisat personer till kursen utan att vägra stöd.
 
-### Kela haluaa minulta todistuksen opiskelustani
+### Kela vill ha bevis på mina studier från mig
 
-Ohjaa Kela tälle sivulle:
+Vägled Kela till denna sida:
 
-Ohjelmoinnin perusteet on kaikille avoin ja ilmainen verkkokurssi. Kurssin käymistä voi verrata kirjan lainaamiseen kirjastosta. Kirjastosta lainattava kirja saattaa liittyä johonkin yliopisto-opintoihin liittyvään kurssiin. Aivan samalla tavalla kuin kirjastosta lainattava kirja, verkkokurssimme on luettavissa huvin ja itsensä sivistämisen vuoksi tai yliopisto-opintojen edistämiseksi.
+Introduktionskurs till programmering är en till alla öppen och gratis webbkurs. Kursens genomförande kan jämföras med att låna en bok från biblioteket. Den bok som du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
 
-Ohjelmoinnin perusteet vastaa Helsingin yliopiston 5 opintopisteen kurssia. Kurssin suorittajat eivät kuitenkaan automaattisesti ole Helsingin yliopiston opiskelijoita, emmekä pakota ketään suorittamaan kurssia opintopisteisiin johtavassa muodossa. Kurssin suorittamisesta voi kuitenkin halutessaan saada opintopisteitä. Kurssille osallistuminen ei oikeuta opintotukeen.
+Introduktion till programmering motsvarar en Helsingfors universitet 5 studiepoängs kurs. Kursens genomförare är däremot inte automatiskt studenter på Helsingfors universitet, vi tvingar heller inte någon att slutföra kursen i ett studiepoänggivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.

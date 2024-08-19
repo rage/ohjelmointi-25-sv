@@ -1,6 +1,6 @@
 ---
-path: "/kaikki-tehtavat"
-title: "Kaikki tehtävät"
+path: "/alla-uppgifter"
+title: "Alla uppgifter"
 hidden: false
 hide_in_sidebar: false
 sidebar_priority: 3500

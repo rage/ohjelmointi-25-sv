@@ -1,104 +1,105 @@
 ---
-path: "/arvostelu-ja-kokeet"
-title: "Arvostelu ja kokeet"
+path: "/bedomningar-och-prov"
+title: "Bedömning och prov"
 hidden: false
 information_page: true
 sidebar_priority: 4000
 ---
 
-Kurssit suoritetaan ratkomalla tehtäviä ja osallistumalla lopuksi kokeeseen.
+Kursens utförs genom att lösa uppgifter och slutligen delta i ett prov.
 
-### Ohjelmoinnin perusteet koepäivät 2024
+### Introduktion till programmering provdagar 2024
 
-* Lauantai 09.03.2024
-* Lauantai 04.05.2024
-* Lauantai 08.06.2024
-* Lauantai 20.07.2024
-* Lauantai 07.09.2024
-* Lauantai 19.10.2024
-* Lauantai 23.11.2024
+* Lördag 09.03.2024
+* Lördag 04.05.2024
+* Lördag 08.06.2024
+* Lördag 20.07.2024
+* Lördag 07.09.2024
+* Lördag 19.10.2024
+* Lördag 23.11.2024
 
-### Ohjelmoinnin jatkokurssi koepäivät 2024
+### Fortsättningskurs i programmering provdagar 2024
 
-* Lauantai 23.03.2024
-* Lauantai 11.05.2024
-* Lauantai 15.06.2024
-* Lauantai 17.08.2024
-* Lauantai 26.10.2024
-* Lauantai 14.12.2024
+* Lördag 23.03.2024
+* Lördag 11.05.2024
+* Lördag 15.06.2024
+* Lördag 17.08.2024
+* Lördag 26.10.2024
+* Lördag 14.12.2024
 
 
-## Tenttiin osallistuminen
+## Deltagande i tenten
 
-Voit osallistua mihin tahansa kokeeseen, kun olet saanut minimimäärän tehtäviä tehtyä. Käytännössä tämä tarkoittaa, että sinulla tulee olla 25 % kaikista kokeeseen kuuluvien yksittäisten tehtäväkierrosten pisteistä valmiina koepäivän aamuna klo 08.00. Jos teet jatkokurssin tenttiä, kierros 14 pitää olla kokonaan suoritettuna. Jos pisteitä puuttuu, tenttisuoritustasi ei arvioida.
+Du kan delta i vilket som helst prov, då du fått minimimängden uppgifter gjorda. I praktiken betyder detta, att du ska ha 25% av alla poäng som hör till de kapitel som ingår i provet på provdagens morgon klockan 8.00. Ifall du gör fortsättingskursens tent, ska modul 14 vara helt slutförd. Ifall poängen saknas, bedöms inte din tentprestation.
 
-Pisteitä tarkastellaan erikseen peruskurssin (osat 1-7) ja jatkokurssin (osat 8-14) osalta.
+Poängen granskas skilt för intoduktionskursen (del 1-8) och fortsättningskursen (del 8-14).
 
-Kurssilla saa osallistua halutessaan useampaan kokeeseen. Opintorekisteriin jää paras suoritus.
+Under kursen får du delta i flera prov.
+I studieregistret kvarblir den bästa prestationen.
 
-## Tentin järjestelyistä
+## Tentens ordnande
 
-* Tenttiin ei tarvitse ilmoittautua etukäteen.
-* Tentin voi suorittaa koepäivänä **klo 10:00-22:00** välisenä aikana.
-* Tentti päättyy viimeistään klo 22:00. Jos haluat käyttää tenttiin maksimiajan, **aloita se viimeistään klo 18:00**.
-* Aikaa tentin tekemiseen on **neljä tuntia**. Jos sinulla on erikseen annettu tenttiin lisäaikaa, aikaa on viisi tuntia.
-* Tehtävät palautetaan samalla tavalla kuin kurssitehtävät.
+* Till tenten behövs inte anmälas i förhand.
+* Tenten kan utföras på provdagen mellan tiden **kl 10:00-22:00**
+* Tenten avslutas senast klockan 22:00. Ifall du vill använda maximitiden för tenten, **påbörja den senast kl 18:00**.
+* Tiden att utföra tenten är **fyra timmar**. Ifall du har skilt angiven extratid till tenter, är tiden fem timmar.
+* Uppgifterna returneras på samma sätt som kursuppgifterna.
 
-Tarkemmat ohjeet julkaistaan näillä sivuilla ennen koepäivää.
+Noggrannare instruktioner publiceras på dessa sidor innan provdagar.
 
-## 1 + 1 pisteen lisäosiot
+## 1 + 1 poängs tillägsdelar
 
-Jos olet aikaisemmin suorittanut kurssin Java-versiot hyväksytysti, voit suorittaa 1 + 1 opintopisteen lisäosat. Lisäosien suorittaminen edellyttää kurssin hyväksyttyä suoritusta (tehtäväpisteet ja tentti), mutta arviointi tehdään asteikolla hyväksytty / hylätty. Lisäosan voit suorittaa osallistumalla normaalisti kokeeseen ja täyttämällä kokeen alussa olevan lomakkeen. Lisäsosan rekisteröimiseksi vaaditaan *Helsingin yliopiston tai avoimen yliopiston opiskelijanumero*. Jos et tiedä opiskelijanumeroasi, voit tiedustella sitä avoimesta yliopistosta. Tee tämä hyvissä ajoin ennen koepäivää.
+Ifall du tidigare utfört kurssens Java-versioner till godkännelse, kan du utföra 1 + 1 studiepoängs tillägsdelar. Utförande av tillägsdelarna medför godkända kursresultat (uppgiftspoäng och tent), men bedömningen görs med betygsättningen godkänt / icke-godkänt. Tillägsdelen kan du utföra genom att delta som normalt i provet och fylla i formuläret i bottnet av provet. Registering av tillägsdelen kräver ett *Helsingfors universitets eller öppna universitetet studentnummer*. Ifall du inte vet ditt studentnummer, kan du be öppna universitetet om det. Gör detta i god tid innan provdagen.
 
-## Kurssin pisteytys
+## Kursens poängsättning
 
-Jokaisen osan kaikista tehtävistä saa tehtäväpisteitä. Löydät osan kaikki tehtävät valitsemalla kyseisen osan yleisnäkymästä "Lista osan tehtävistä". Näet tehtäväpisteesi kurssimateriaalin oikeassa alakulmassa olevasta pistevisualisaatiosta kohdan "Tehtäväpisteet yhteensä" kohdalta.
+För varje moduls alla uppgifter ges uppgiftspoäng. Du hittar modulens alla uppgifter genom att välja "Lista av modulens uppgifter" i övre kanten av modulens vy. Du ser dina uppgiftspoäng i poängvisualiseraren i kursmaterialets nedre högra hörn i avdelningen "Uppgiftspoäng totalt".
 
-## Kurssin arvostelu
+## Kursens bedömning
 
-### Arvosteluasteikko
+### Vitsordsskala
 
-Kurssi arvostellaan seuraavalla asteikolla:
+Kursen bedöms med följande skala:
 
 <table>
     <thead>
     <tr>
-        <th>Kokonaispisteet</th>
-        <th>Arvosana</th>
+        <th>Totalpoäng</th>
+        <th>Vitsord</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>90 % tai yli</td>
-        <td>5 (erinomainen)</td>
+        <td>90 % eller högre</td>
+        <td>5 (utmärkt)</td>
     </tr>
     <tr>
-        <td>80 % tai yli, alle 90 %</td>
-        <td>4 (kiitettävä)</td>
+        <td>80 % eller högre, under 90 %</td>
+        <td>4 (berömligt)</td>
     </tr>
     <tr>
-        <td>70 % tai yli, alle 80 %</td>
-        <td>3 (hyvä)</td>
+        <td>70 % eller högre, under 80 %</td>
+        <td>3 (god)</td>
     </tr>
     <tr>
-        <td>60 % tai yli, alle 70 %</td>
-        <td>2 (tyydyttävä)</td>
+        <td>60 % eller högre, under 70 %</td>
+        <td>2 (nöjaktig)</td>
     </tr>
     <tr>
-        <td>50 % tai yli, alle 60 %</td>
-        <td>1 (välttävä)</td>
+        <td>50 % eller högre, under 60 %</td>
+        <td>1 (hjälplig)</td>
     </tr>
     <tr>
-        <td>alle 50 %</td>
-        <td>hylätty</td>
+        <td>under 50 %</td>
+        <td>underkänt</td>
     </tr>
     </tbody>
 </table>
 
-Arvostelu perustuu sekä tehtyihin tehtäviin (50 % kokonaispisteistä) että kokeeseen (50 % kokonaispisteistä). Tämä tarkoittaa, että arvosteluasteikon kokonaispisteet saadaan laskemalla tämän sivun pistevisualisaation (sininen pallo oikeassa alakulmassa) kurssipisteet ja saamasi koepisteet yhteen.
+Bedömningen baseras på både gjorda uppgifter (50 % av totalpoängen) och provet (50 % av totalpoängen). Detta betyder, att vitsordsskalans totalpoäng fås genom att räkna den här sidans poängsvisualisations (blå boll i nedre högra hörnet) kurspoäng och poängen du fått i provet ihop.
 
-Kurssin läpipääsyyn vaaditaan vähintään 25% jokaisen osan ohjelmointitehtävien pisteistä.
+För att komma igenom kursen krävs minst 25% av alla modulers programmeringsuppgifters poäng.
 
-#### Koeleikkuri
+#### Provpoängen
 
-Kokeesta tulee saada vähintään puolet pisteistä kurssin läpäisemiseksi.
+I provet ska åtminstone hälften av poängen fås för att komma igenom kursen.

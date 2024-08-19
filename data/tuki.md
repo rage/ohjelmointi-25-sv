@@ -1,17 +1,15 @@
 ---
-path: "/tuki"
-title: "Tukea tehtäviin"
+path: "/stod"
+title: "Stöd till uppgifterna"
 hidden: false
 information_page: true
 ---
 
-### Kevään ohjausajat
+### Sommarens stödtider
 
-2024 kurssilla järjestetään ohjausta sekä Kumpulan kampuksella että Discordissa. Kampuksella ohjaus järjestetään Exactumin BK107-luokassa. Ohjaus järjestetään alla olevan aikataulun mukaisesti
+Under kursen 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i Exactums BK107-klass. Handledningen ordnas enligt nedastående tidtabell
 
-**HUOM!** Pajaohjaus keväälle alkaa keskiviikkona 17.01.2024.
-
-| Aika / Päivä | MA | TI | KE | TO | PE |
+| Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
 | 10-11 | - | Paja | - | - | - |
 | 11-12 | - | Paja | - | - | - |
@@ -22,14 +20,14 @@ information_page: true
 | 16-17 | Paja / Discord | - | - | - | - |
 | 17-18 | Paja / Discord | - | - | - | - |
 
-Taulukossa **Paja** tarkoittaa ohjausta kampuksella, **Discord** pelkkää etäohjausaikaa. Pajaohjauksen aikana saattaa olla apua tarjolla myös Discordissa, jos ohjaajilla on vuorollaan aikaa seurata Discordia.
+I tabell betyder **Paja** handledning på campus, medan **Discord** betyder handledning endast på distans. Under paja-handledningens tider kan även hjälp fås via Discord, ifall handledaren har tid att följa med Discord.
 
-*Aikataulu voi muuttua kurssin edetessä.*
+*Schemat kan ändras under kursens gång*
 
 #### Discord
 
-Discord on viestintäsovellus, josta saat lisätietoa [täältä](https://discord.com/).
+Discord är en meddelandetjänst, som du kan hitta mer info om [här](https://discord.com/).
 
-Löydät kurssin kanavat [täältä](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc).
+Du hittar kursens kanaler [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc).
 
-Ohjausaikana ohjaaja päivystää kurssikanavilla ja vastaa myös yksityisviesteihin. Discordissa käydään keskustelua kurssista myös ohjausaikojen ulkopuolella, joten sinne kannattaa liittyä!
+Under handledingstiden uppdaterar handledaren kurskanalen och svarar också på privatmeddelanden. I Discord diskuteras om kursen även utanför handledningstiderna, alltså lönar det sig att gå med där!

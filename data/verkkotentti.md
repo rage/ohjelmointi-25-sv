@@ -1,89 +1,90 @@
 ---
-path: "/verkkotentti"
-title: "Verkkotentti 4.6."
+path: "/onlinetent"
+title: "Nättentamen 4.6."
 information_page: true
 sidebar_priority: 3000
 hide_in_sidebar: true
 ---
 
-# Ohjelmoinnin jatkokurssi
+# Fortsättningskurs i programmering
 
-* Tenttikysymykset ilmestyvät courses.mooc.fi sivulle tenttipäivänä klo 10:00.
-* Linkit tenttitehtäviin löytyvät tämän sivun kohdasta [Tehtävänannot ja tentin aloittaminen](#tehtavanannot-ja-tentin-aloittaminen)
+* Tentfrågorna uppenbarar sig på courses.mooc.fi sidan på tentdagen kl 10:00.
+* Länkar till tentuppgifterna hittas på denna sidas del "Utgivning av uppgifter och påbörjande av tentamen"
 
-#### Tenttiin osallistuminen
+#### Deltagande i tenten
 
-* Tenttiin ei tarvitse ilmoittautua etukäteen.
-* Kurssisuorituksen saaminen edellyttää tenttiin osallistumista.
+* Till tenten måste man inte anmäla sig i förhand
+* Till kursutförande förutsätts deltagande i tentamen
 
-#### Tentin toteutus
+#### Tentamens utförande
 
-* Tentti suoritetaan kurssitehtävien tapaan vscode-ympäristössä.
-* Kurssin tentin voi suorittaa 4.6.2022 **klo 10:00-22:00** välisenä aikana.
-* Tentti päättyy viimeistään klo 22:00. Jos haluat käyttää tenttiin maksimiajan, **aloita se viimeistään klo 18:00**.
-* Aikaa tentin tekemiseen on **neljä tuntia**. Jos sinulla on erikseen annettu tenttiin lisäaikaa, aikaa on viisi tuntia.
+* Tenten utförs på samma sätt som kursuppgifter i vscode-omgivningen
+* Kursens tent kan 16.12.2023 utföras mellan **kl 10:00-22:00**
+* Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maximaltid, **påbörja den senast klockan 18:00**.
+* Tid att göra tenten är **fyra timmar**. Ifall du har speciallov för extra tid till tenten, är tiden fem timmar.
 
-#### Ennen tenttipäivää
+#### Innan tentdagen
 
-* Lue nämä ohjeet huolellisesti
-* Lataa tehtäväpohjat ja testaa tehtävien palauttamista [alla olevan ohjeen mukaisesti](#tehtavapohjien-hakeminen)
-* Jos sinulla on ongelmia tehtäväpohjien lataamisessa tai palauttamisessa, muita teknisiä ongelmia tai muuta kysyttävää tentin järjestelyistä, voit kysyä apua kurssin [Discordissa](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc)
+* Läs dessa instruktioner noggrant
+* Ladda uppgiftsbotten och testa inlämning av uppgifterna enligt instruktionerna i avdelningen "Hämtning av uppgiftsbotten"
+* Ifall du har problem med att ladda ned uppgiftsbotten eller att returnera den, eller andra tekniska problem eller frågor angående ordnandet av tenten, kan du fråga hjälp i kursens [Discordkanal](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc)
 
-#### Tenttipäivänä
+#### På tentdagen
 
-* Teknisten ongelmien varalta ohjaaja päivystää tenttipäivänä **klo 10:00-14:00** [Discordissa](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc) `ohjelmoinnin_mooc_general` kanavalla.
-* Tenttipäivänä **klo 14:00-22:00** keskustelu kurssin kanavilla on kielletty. Kurssin Discord on lukittu ja kanaville ei voi lähettää viestejä.
+* I händelse av tekniska problem finns handledare på Discord under tentdagen **kl 10:00-14:00** i kanalen `ohjelmoinnin_mooc_general`.
+* Under tentdagen **kl 14:00-22:00** är diskussion på kursens kanaler förbjuden. Kursens Discord är låst och på kanalen kan inte skickas meddelanden.
 
-#### Tehtäväpohjien hakeminen
+#### Hämtning av uppgiftsbotten
 
-**Voit hakea ja testata tehtäväpohjat jo ennen tenttipäivää.**
+**Du kan hämta och testa uppgiftsbotten redan innan tentdagen.**
 
-1. Avaa Visual Studio Code.
-2. Valitse TMC-valikosta `My courses`-näkymä.
-3. Paina `Add new course`-nappulaa.
-4. Valitse organisaatioksi `Helsingin yliopisto`.
-5. Valitse kurssiksi `OHJA Python, kevät 2022, Verkkotentti 2`.
-6. Lataa tehtäväpohjat.
-7. Testaa tehtävien lähettämistä.
-8. Jos saat lähetettyä tehtävät palvelimelle niin olet valmis tekemään tentin, muutoin ole yhteydessä ohjaajaan.
+1. Öppna Visual Studio Code
+2. Välj i TMC-valmenyn `My courses`-vyn.
+3. Tryck på `Add new course`-knappen
+4. Välj organisationen `Helsingfors universitet`
+5. Välj kursen `OHPE Python, syksy 2023, Verkkotentti 2`
+6. Ladda ner uppgiftsbotten
+7. Testa insändningen av uppgifter
+8. Ifall du får uppgifterna skickade till tjänsten är du färdig att göra tenten, var annars i kontakt med handledaren.
 
-#### Tehtävänannot ja tentin aloittaminen
+#### Utgivning av uppgifter och påbörjande av tentamen
 
 <notice>
-Älä kysy kurssin kanavilla tehtävänantoihin liittyviä kysymyksiä ennen tentin päättymistä. Toteuta tehtävät oman parhaan tulkintasi mukaan.
+Fråga inte frågor angående de givna uppgifterna på kurskanalen innan tenten tagit slut. Utför uppgifterna enligt egen bästa tolkning.
 </notice>
 
-* Tenttikysymykset ilmestyvät courses.mooc.fi sivulle tenttipäivänä klo 10:00.
-* Tentti-sivuille kirjaudutaan käyttäen normaaleja mooc.fi-tunnuksia.
-* Tenttikysymykset löytyvät osoitteesta: <a href="https://courses.mooc.fi/org/uh-cs/exams/4898e2d8-4b4d-449c-a945-db254e28cabc">https://courses.mooc.fi/org/uh-cs/exams/4898e2d8-4b4d-449c-a945-db254e28cabc</a>
-* Jos olet oikeutettu lisäaikaan, tenttikysymykset saat auki tästä: <a href="https://courses.mooc.fi/org/uh-cs/exams/f993f60a-f2d8-40c8-9bd0-4ee1ed061bdb">https://courses.mooc.fi/org/uh-cs/exams/f993f60a-f2d8-40c8-9bd0-4ee1ed061bdb</a>
-* Tenttiaika alkaa siitä hetkestä kun painat `Aloita tentti!` -painiketta.
+* Tentfrågorna uppenbarar sig på courses.mooc.fi sidan på tentdagen kl 10:00.
+* Till tent-sidan används med vanliga mooc.fi-koder
+* Tentfrågorna hittas från adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/4898e2d8-4b4d-449c-a945-db254e28cabc">https://courses.mooc.fi/org/uh-cs/exams/4898e2d8-4b4d-449c-a945-db254e28cabc</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna härifrån: <a href="https://courses.mooc.fi/org/uh-cs/exams/f993f60a-f2d8-40c8-9bd0-4ee1ed061bdb">https://courses.mooc.fi/org/uh-cs/exams/f993f60a-f2d8-40c8-9bd0-4ee1ed061bdb</a>
+* Tenttiden börjar från den stunden att du tryckt `Påbörja tenten!` -knappen
 
-#### Tehtävien palauttaminen
 
-* Tehtävät palautetaan samalla tavalla kuin kurssitehtävät.
-* Tenttitehtävissä **ei ole automaattisia testejä**.
-* Tenttiajan päättymisen jälkeen tehdyt palautukset johtavat tenttisuorituksen hylkäämiseen.
+#### Inlämning av uppgifter
 
-#### Tentin lopetus
+* Uppgifterna lämnas in på samma sätt som kursuppgifter
+* I tentuppgifterna **finns inte automatiserade tester**.
+* Inlämningar som gjorts efter att tenttiden tagit slut leder till underkännande
 
-* Ennen lopettamista palauta kaikki tehtävät vielä kertaalleen tenttiajan sisällä.
-* Voit tarkistaa  lähettämiesi tehtävien saapumisen palvelimelle kirjautumalla sivulle [https://tmc.mooc.fi/org/hy/courses/1041](https://tmc.mooc.fi/org/hy/courses/1041). Tehtävän palautus on saapunut palvelimelle, jos näet tehtävän tehtäväpohjan nimen ja kellonajan, jolloin palautit tehtävän.
-* Voit sulkea tenttitehtävä-sivun kun olet valmis. Muita toimenpiteitä ei vaadita.
+#### Avslutning av tenten
 
-#### Tentin tulokset
+* Granska ännu att du kommit ihåg att lämna in uppgifterna till servern innan du avslutar
+* Du kan granska dina uppgiftsinsändningar till tjänsten genom att logga in till sidan [https://tmc.mooc.fi/org/hy/courses/1041](https://tmc.mooc.fi/org/hy/courses/1041). Uppgifterna har anlänt till tjänsten, ifall du ser uppgiftens uppgiftsbottens namn och klockslag då du lämnat in uppgiften.
+* Du kan stänga tentuppgifts-sidan då du är färdig. Andra åtgärder krävs inte
 
-* Tentin tulokset tulevat sähköpostitse kun arvostelu on valmis.
-* Yhden opintopisteen laajuisista suorituksista ei tule erillistä tulosviestiä. Hyväksytty suoritus merkitään suoraan opintorekisteriin.
+#### Tentens resultat
 
-#### Tentin tulokset (avoin yliopisto)
+* Tentens resultat kommer per epost då bedömningen är färdig.
+* Det finns inget separat meddelande för en ett studiepoängs prestation. En godkänd prestation markeraras rakt till studieregistret.
 
-* Tulosviestin yhteydessä on ohjeet kurssisuorituksen rekisteröimiseen.
-* Rekisteröiminen edellyttää ilmoittautumista kurssille avoimen yliopiston kautta.
+#### Tentens resultat (öppna universitetet)
 
-#### Muuta
+* I samband med Resultatmeddelandet finns instruktioner för registrering av kursprestation.
+* Registrering förutsätter anmälaning till kursen via öppna universitetet.
 
-* Tentissä **ei** saa tehdä yhteistyötä eikä kopioida valmiita vastauksia. **Normaaleja tiedonhakukeinoja (esim. Google ja kurssimateriaali) saa käyttää.**
-* Tenttivastaukset tarkistetaan plagoinnintunnistusohjelmalla. Huijaus johtaa aina vähintään tenttisuorituksen hylkäämiseen, mahdollisesti myös kurssilta poistamiseen.
-* Tenttikysymykset muistuttavat kurssimateriaalin tehtäviä - tenttiin valmistautumiseksi kannattaa siis kertailla materiaalia.
-* Kurssin tulokset tulevat kokeen jälkeen sähköpostitse opintopisteohjeiden kera.
+#### Annat
+
+* Under tenten får **inte** göras samarbete eller kopiera färdiga svar. **Normala informationssökning (t.ex. Google och kursmaterialet) får användas.**
+* Tentsvaren granskas med plagieringsigenkänningsprogram. Svindling leder alltid minst till att tentprestationen underkänns, möjligen även till avlägsning ur kursen.
+* Tentfrågor påminner om kursmaterialets uppgifter - som förberedning till tenten lönar det alltså att gå igenom materialet
+* Kursens resultat kommer efter provet till eposten med instruktioner för tillgodoräknande
