@@ -432,7 +432,7 @@ print(e1)
 
 </sample-output>
 
-[Inkapsla](/osa-9/3-kapselointi#kapselointi) implementeringen av de attribut som definieras i klassen så att fusket ovan inte är möjligt. Klassen ska inte ha några offentliga attribut och inga getter- eller sätter-metoder för euro eller cent.
+[Inkapsla](https://rage.github.io/ohjelmointi-24-sv/osa-9/3-inkapsling) implementeringen av de attribut som definieras i klassen så att fusket ovan inte är möjligt. Klassen ska inte ha några offentliga attribut och inga getter- eller sätter-metoder för euro eller cent.
 
 </programming-exercise>
 
@@ -619,7 +619,7 @@ C-värdheter på nätet
 
 <programming-exercise name='Itererbar affärslista' tmcname='osa10-09_itererbar_affarslista'>
 
-I uppgiftsbotten finns klassen `Affarslista` från [övningen i modul 8](/osa-8/2-luokat-ja-oliot#programming-exercise-kauppalista). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
+I uppgiftsbotten finns klassen `Affarslista` från [övningen i modul 8](https://rage.github.io/ohjelmointi-24-sv/osa-8/2-klasser-och-objekt). Ändra klassen så att den är itererbar och därmed kan användas på följande sätt:
 
 ```python
 lista = Affarslista()

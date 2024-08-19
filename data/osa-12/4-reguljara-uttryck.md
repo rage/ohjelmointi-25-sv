@@ -281,9 +281,9 @@ False
 
 ## Den stora finalen
 
-Som avslutning på denna del av materialet ska vi arbeta lite mer med objekt och klasser genom att bygga ett lite mer omfattande program. Denna övning innefattar inte nödvändigtvis reguljära uttryck, men avsnitten om [Funktioner som argument ](/osa-12/1-funktio-parametrina) och [list comprehension](/osa-11/1-koosteet) kommer sannolikt att vara användbara.
+Som avslutning på denna del av materialet ska vi arbeta lite mer med objekt och klasser genom att bygga ett lite mer omfattande program. Denna övning innefattar inte nödvändigtvis reguljära uttryck, men avsnitten om [Funktioner som argument ](https://rage.github.io/ohjelmointi-24-sv/osa-12/1-funktioner-som-argument) och [list comprehension](https://rage.github.io/ohjelmointi-24-sv/osa-11/1-list-comprehension) kommer sannolikt att vara användbara.
 
-Du kan också ha nytta av de exempel som finns i [modul 10](/osa-10/4-lisaa-esimerkkeja).
+Du kan också ha nytta av de exempel som finns i [modul 10](https://rage.github.io/ohjelmointi-24-sv/osa-10/4-storre-applikation).
 
 <programming-exercise name='Statistik i ordning' tmcname='osa12-15_statistik_i_ordning'>
 
@@ -307,7 +307,7 @@ Inlägget för en enskild spelare är i följande format:
 
 Båda filerna innehållar en lista av inlägg enligt ovanstående format.
 
-Ifall du behöver en uppfriskare när det gäller hantering av JOSN-filer, kan du ta en titt på [modul 7 i kursmaterialet](/osa-7/4-datan-kasittely#json-tiedoston-lukeminen).
+Ifall du behöver en uppfriskare när det gäller hantering av JOSN-filer, kan du ta en titt på [modul 7 i kursmaterialet](https://rage.github.io/ohjelmointi-24-sv/osa-7/4-behandla-data).
 
 ## Sök och lista
 
@@ -381,7 +381,7 @@ Den sista raden i exemplet ovan är till för att hjälpa dig att beräkna bredd
 
 Förkortningen för teamet skrivs ut från det 22:a tecknet och framåt. `+`-tecknet är det 30:e tecknet och `=`-tecknet är det 35:e tecknet. Alla fält ska vara justifierade till högerkanten. Alla blanksteg är mellanslagstecken.
 
-F-strängar är förmodligen det enklaste sättet att uppnå den önskade utskriften. Processen är liknande som [denna övning](/osa-6/1-tiedostojen-lukeminen#programming-exercise-kurssin-tulokset-osa-3) från modul 6.
+F-strängar är förmodligen det enklaste sättet att uppnå den önskade utskriften. Processen är liknande som övningen Kursresultat del 3 från [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/1-lasa-filer).
 
 ## Lista spelare enligt poäng
 

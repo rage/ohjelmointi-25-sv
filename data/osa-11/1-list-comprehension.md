@@ -394,7 +394,7 @@ Ofta när vi har en villkorlig sats inkluderar vi också en else-gren. Eftersom 
 
 `<uttryck 1> if <villkor> else <uttryck 2>`
 
-Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [modul 7](https://programming-24.mooc.fi/part-7/6-more-features). Uttrycket ovan utvärderas till antingen `uttryck 1` eller `uttryck 2`, beroende på om villkoret är sant eller falskt.
+Vi stötte på dessa enradiga villkor, eller ternära operatorer, redan i [modul 7](https://rage.github.io/ohjelmointi-24-sv/osa-7/6-funktionaliteter-python). Uttrycket ovan utvärderas till antingen `uttryck 1` eller `uttryck 2`, beroende på om villkoret är sant eller falskt.
 
 Som en uppfräschning av ämnet kan vi säga att om vi behöver skriva ut det större av två tal och vi bara vill använda en enda utskriftssats, kan vi få plats med allt på en enda rad:
 

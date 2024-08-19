@@ -14,7 +14,7 @@ Efter den här delen
 
 </text-box>
 
-Detta är första delen av den Avancerade Kursen inom Programmering. Materialet är designat för att bli använt med Visual Studio Code editeraren, liksom den föregående kursen Introduktion till Programming. Ifall du inte använt Visual Studio Code tidigare, så hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://programming-24.mooc.fi/part-4/1-vscode).
+Detta är första delen av den Avancerade Kursen inom Programmering. Materialet är designat för att bli använt med Visual Studio Code editeraren, liksom den föregående kursen Introduktion till Programming. Ifall du inte använt Visual Studio Code tidigare, så hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://rage.github.io/ohjelmointi-24-sv/osa-4/1-vscode).
 
 I introduktion till Programmering kursen så lade vi märke till att det ofta är logiskt att gruppera relaterad data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tupel eller en ordlista för att organisera datan till en enskild datastruktur.
 
@@ -39,7 +39,7 @@ namn = "Kodningsboken"
 forfattare = "Peter Python"
 ar = 1992
 
-# Yhdistetään yhdeksi sanakirjaksi
+# Slår ihop till en ordlista
 bok = {"namn": namn, "författare": forfattare, "år": ar}
 
 # Vi skriver ut bokens namn

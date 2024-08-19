@@ -211,7 +211,7 @@ Osynliga Olle, specialförmågor: Osynlighet
 
 </sample-output>
 
-[Detta](/osa-9/3-kapselointi#asetus--ja-havainnointimetodit) kapitel kan vara användbart.
+[Detta](https://rage.github.io/ohjelmointi-24-sv/osa-9/3-inkapsling) kapitel kan vara användbart.
 
 </programming-exercise>
 

@@ -623,7 +623,7 @@ Vägningar utförda 6
 
 <programming-exercise name='Lunchkort och betalterminal' tmcname='osa09-04_lunchkort_och_betalterminal'>
 
-I föregående del fanns en [övning](/osa-8/5-lisaa-esimerkkeja#programming-exercise-maksukortti) där du implementerade klassen `Lunchkort`. Kortet hade separata metoder för att äta en vanlig och en speciell lunch, samt en metod för att sätta in pengar på kortet.
+I föregående del fanns en [övning](https://rage.github.io/ohjelmointi-24-sv/osa-8/5-fler-exempel) där du implementerade klassen `Lunchkort`. Kortet hade separata metoder för att äta en vanlig och en speciell lunch, samt en metod för att sätta in pengar på kortet.
 
 Klassen `Lunchkort`, så som du ombads implementera den, har dock vissa problem. Kortet självt hade kunskap om priserna på de olika lunchalternativen och visste att subtrahera rätt mängd pengar från saldot baserat på dessa. Men tänk dig att priserna ändrades eller att nya varor infördes i systemet, men att flera kort redan var registrerade i systemet. Detta skulle innebära att alla befintliga kort skulle behöva ersättas med versioner med kunskap om de nya priserna.
 

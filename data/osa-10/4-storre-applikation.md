@@ -26,7 +26,7 @@ Objekt och klasser är långt ifrån nödvändiga i alla programmeringssammanhan
 
 När programmen blir allt mer komplexa blir mängden detaljer snabbt ohanterlig, såvida inte programmet är organiserat på något systematiskt sätt. Även några av de mer komplicerade övningarna på den här kursen hittills skulle ha haft nytta av de exempel som ges i den här delen av materialet.
 
-I flera decennier har begreppet [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) varit en av de centrala principerna inom programmering och inom datavetenskapen i stort. Citat från Wikipedia:
+I flera decennier har begreppet [Separation of concerns](https://sv.wikipedia.org/wiki/Inkapsling_(Separation_of_Concerns)) varit en av de centrala principerna inom programmering och inom datavetenskapen i stort. Citat från Wikipedia:
 
 _Separation of concerns is a design principle for separating a computer program into distinct sections such that each section addresses a separate concern. A concern is a set of information that affects the code of a computer program_
 
@@ -38,9 +38,9 @@ En annan vanlig metod för att hantera större program är objekt, genom objekto
 
 ## Ett fungerande exempel: telefonkatalog
 
-Hur ska ett program delas in i klasser och objekt? Det här är inte alls en enkel fråga med ett enda godtagbart svar, så vi fortsätter med ett exempel. I del fem genomförde du en [telefonkatalogsapplikation](/osa-5/3-dictionary#programming-exercise-puhelinluettelo-versio-2), och nu ska vi genomföra något liknande med hjälp av objektorienterade programmeringsprinciper.
+Hur ska ett program delas in i klasser och objekt? Det här är inte alls en enkel fråga med ett enda godtagbart svar, så vi fortsätter med ett exempel. I del fem genomförde du en [telefonkatalogsapplikation](https://rage.github.io/ohjelmointi-24-sv/osa-5/3-lexikon), och nu ska vi genomföra något liknande med hjälp av objektorienterade programmeringsprinciper.
 
-Enligt principen om separation of concerns bör ett program delas upp i sektioner som var och en har sin egen sak att ta hand om. I objektorienterad programmering översätts detta till [principen om ett ansvar](https://en.wikipedia.org/wiki/Single-responsibility_principle). Utan att gå in på detaljerna framgår det grundläggande syftet redan av namnet: en enda klass och de objekt som skapas utifrån den ska ha ett enda ansvar i programmet.
+Enligt principen om separation of concerns bör ett program delas upp i sektioner som var och en har sin egen sak att ta hand om. I objektorienterad programmering översätts detta till [principen om ett ansvar](https://sv.wikipedia.org/wiki/Single_responsibility_principle). Utan att gå in på detaljerna framgår det grundläggande syftet redan av namnet: en enda klass och de objekt som skapas utifrån den ska ha ett enda ansvar i programmet.
 
 
 Objektorienterad programmering används ofta som ett sätt att modellera objekt och fenomen i den verkliga världen. Ett enskilt objekt i den verkliga världen modelleras med en enda klass i programkoden. I fallet med en telefonkatalog kan sådana objekt vara
@@ -323,7 +323,7 @@ class FilHanterare():
 
 Konstruktormetoden tar namnet på filen som sitt argument. Metoden `ladda(self)` läser innehållet i filen. Varje rad delas upp i två delar: ett namn och en lista med siffror. Sedan läggs dessa till i en ordbok, med namnet som nyckel och listan som värde.
 
-Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [modul 6](osa-6/1-tiedostojen-lukeminen#csv-tiedoston-lukeminen) att strängmetoden `split` returnerar en lista.
+Metoden använder en smidig Python-funktion: det är möjligt att först välja några objekt från en lista separat och sedan ta resten av objekten i en ny lista. Du kan se ett exempel på detta nedan. Du kanske minns från [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/1-lasa-filer) att strängmetoden `split` returnerar en lista.
 
 ```python
 lista = [1, 2, 3, 4, 5]

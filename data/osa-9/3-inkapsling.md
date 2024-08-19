@@ -321,7 +321,7 @@ print(the_wall.langd)
 Om argumentet för antingen konstruktorn eller sättar-metoden är under noll, bör detta åstadkomma ett `ValueError`.
 
 Ifall du inte minns hur man åstadkommer undantag, kan du kolla in
-[modul 6](/osa-6/3-virheet#poikkeusten-tuottaminen) av materialet.
+[modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) av materialet.
 
 </programming-exercise>
 

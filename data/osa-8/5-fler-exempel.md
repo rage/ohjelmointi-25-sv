@@ -335,7 +335,7 @@ Kortets saldo är 235.0 euro
 
 </sample-output>
 
-Ifall kortet försöker laddas med en negativ mängd ska metoden [åstadkomma ett undantag](/osa-6/3-virheet#poikkeusten-tuottaminen) av typen `ValueError`:
+Ifall kortet försöker laddas med en negativ mängd ska metoden [åstadkomma ett undantag](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) av typen `ValueError`:
 
 ```python
 kort = Lunchkort(10)
@@ -349,7 +349,7 @@ ValueError: Det går inte att lägga till mindre än noll
 
 </sample-output>
 
-**OBS:** metoden ska _åstadkomma_ ett undantag, se [modul 6](/osa-6/3-virheet#poikkeusten-tuottaminen) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
+**OBS:** metoden ska _åstadkomma_ ett undantag, se [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
 
 ### Flera kort
 

@@ -125,7 +125,7 @@ from person import Person
 # kod
 ```
 
-är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import` deklarationen för första gången i [modul 7](/osa-7/1-moduulit/) av kursmaterialet.
+är det sannolikt att du förstått nånting felaktigt. Ifall du behöver en uppfriskare så introducerades `import` deklarationen för första gången i [modul 7](https://rage.github.io/ohjelmointi-24-sv/osa-7/1-moduler) av kursmaterialet.
 
 <programming-exercise name='Husdjur' tmcname='osa09-06_husdjur'>
 
@@ -466,7 +466,7 @@ Alex (186 cm)
 
 </sample-output>
 
-**Tips**: [i modul 4](/osa-4/3-listat#alkioiden-lisaaminen-ja-poistaminen) hittar du instruktioner för att ta bort föremål från en lista
+**Tips**: [i modul 4](https://rage.github.io/ohjelmointi-24-sv/osa-4/3-listor) hittar du instruktioner för att ta bort föremål från en lista
 
 **Tips2**: det är alltid möjligt att kalla en annan metod från samma klass inuti en metod. Följande borde fungera helt bra:
 

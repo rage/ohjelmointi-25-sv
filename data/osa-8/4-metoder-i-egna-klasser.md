@@ -411,7 +411,7 @@ Pythonson
 
 <programming-exercise name='Nummerstatistik' tmcname='osa08-11_nummerstatistik'>
 
-I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](/osa-2/4-yksinkertainen-silmukka#programming-exercise-lukujen-kasittelya) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
+I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](https://rage.github.io/ohjelmointi-24-sv/osa-8/4-metoder-i-egna-klasser) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
 
 ### Mängden nummer
 

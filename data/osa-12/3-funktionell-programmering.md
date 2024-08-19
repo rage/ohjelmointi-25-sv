@@ -746,6 +746,6 @@ print(summa)
 
 Implementera funktionen användandes `reduce`- och `filter`-funktionerna!
 
-När du jobbar på den här övningen kan det vara värt att komma ihåg att [returvärdet av filter är en iterator](/osa-12/3-funktionaalista-ohjelmointia#filter-palauttaa-iteraattorin).
+När du jobbar på den här övningen kan det vara värt att komma ihåg att returvärdet av filter är en iterator.
 
 </programming-exercise>

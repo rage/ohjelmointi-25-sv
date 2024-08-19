@@ -272,7 +272,7 @@ Klarifikationer:
 - uppgiften markeras som färdig genom att anropa på metoden `markera_fardig(self)`
 - uppgifternas id är ett löpande nummer som börjar med 1. Id av första uppgiften är 1, andra uppgiften 2 osv.
 
-**Tips:** id kan implementeras med en [klassvariabel](/osa-9/5-staattiset-piirteet#luokkamuuttujat).
+**Tips:** id kan implementeras med en [klassvariabel](https://rage.github.io/ohjelmointi-24-sv/osa-9/5-klassattribut).
 
 ## Uppgiftsbok
 
@@ -354,7 +354,7 @@ for bestallning in bestallningar.alla_bestallningar():
 
 </sample-output>
 
-Ifall det inte finns någon uppgift med det givna id:t, ska metoden åstadkomma ett `ValueError`-undantag. Ifall du behöver en påminnelse om att åstadkomma undantag kan du kolla in [modul 6](/osa-6/3-virheet#poikkeusten-tuottaminen).
+Ifall det inte finns någon uppgift med det givna id:t, ska metoden åstadkomma ett `ValueError`-undantag. Ifall du behöver en påminnelse om att åstadkomma undantag kan du kolla in [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel).
 
 Metoderna `fardiga_bestallningar(self)` och `ofardiga_bestallningar(self)` fungerar som förväntat: båda returnerar en lista innehållande de relevanta uppgifterna från Uppgiftsboken.
 
@@ -391,7 +391,7 @@ Ifall det inte finns någon programmerare med det angivna namnet, ska metoden å
 
 <programming-exercise name='Uppgiftsboksapplikation' tmcname='osa11-19_uppgiftsboksapplikation'>
 
-I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av modul 10](/osa-10/4-lisaa-esimerkkeja) kan också vara till hjälp.
+I den här övningen ska du skapa en interaktiv applikation för att administrera de uppgifter som beställts från ett programvaruföretag. Implementeringen är helt upp till dig, men du kan använda byggstenarna från föregående övning i din applikation. Exemplen i [det sista avsnittet av modul 10](https://rage.github.io/ohjelmointi-24-sv/osa-10/4-storre-applikation) kan också vara till hjälp.
 
 ## Utan felhantering
 

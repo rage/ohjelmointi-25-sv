@@ -278,7 +278,7 @@ print(studerande2.gjorda_kurser)
 
 ## Den stora finalen
 
-Fastän följande övning avslutar den här delen av materialet, så har de tekniker som krävs för att lösa den redan behandlats i avsnittet som heter [Objekt som attribut](/osa-9/2-oliot-attribuuttina). Du behöver inte använda `@property`-dekoratorn eller standardvärden för parametrar i den här övningen. Den här övningen är mycket lik övningarna [en presentask](/osa-9/2-oliot-attribuuttina#programming-exercise-lahjapakkaus) och [den kortaste personen i rummet](/osa-9/2-oliot-attribuuttina#programming-exercise-huoneen-lyhin).
+Fastän följande övning avslutar den här delen av materialet, så har de tekniker som krävs för att lösa den redan behandlats i avsnittet som heter [Objekt som attribut](https://rage.github.io/ohjelmointi-24-sv/osa-9/2-objekt-som-attribut). Du behöver inte använda `@property`-dekoratorn eller standardvärden för parametrar i den här övningen. Den här övningen är mycket lik övningarna "en presentask" och "den kortaste personen i rummet".
 
 <programming-exercise name='Sak, Resväska och Lastutrymme' tmcname='osa09-15_sak_resvaska_lastutrymme'>
 
