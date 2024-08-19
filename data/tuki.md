@@ -3,6 +3,7 @@ path: "/stod"
 title: "Stöd till uppgifterna"
 hidden: false
 information_page: true
+separator_after: "Ohjelmoinnin perusteet"
 ---
 
 ### Sommarens stödtider

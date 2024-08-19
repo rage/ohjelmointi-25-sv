@@ -4,7 +4,6 @@ title: "Allmänna felanmälningar"
 hidden: false
 information_page: true
 banner: true
-separator_after: "Ohjelmoinnin perusteet"
 ---
 
 På den här sidan berrätas om allänna felanmälningar vilka du kan stöta på under kursen.
