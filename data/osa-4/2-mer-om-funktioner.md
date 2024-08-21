@@ -697,4 +697,4 @@ Det här berättar för användaren att funktionen borde returnera en sträng.
 
 Obs! Typledtrådar är bokstavligen ledtrådar. Det är inte en garanti och kan inte säkerställa att felaktiga datatyper inte ges till eller returneras av en funktion. Om det här sker kommer funktionen ändå att köras, men den fungerar inte nödvändigtvis korrekt.
 
-<quiz id="8e93e885-fda8-5930-8232-80dd3dc01642"></quiz>
+<quiz id="5702d07b-676c-5ec2-ac2e-3d0f3b1b7d4e"></quiz>

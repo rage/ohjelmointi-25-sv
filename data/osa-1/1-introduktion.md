@@ -211,4 +211,4 @@ print("Hej!")
 
 Kertauskysely tämän osan asioihin liittyen:
 
-<quiz id="90b76562-cc2b-5dd4-996b-895d7b5bc69e"></quiz>
+<quiz id="4b736942-71b8-5171-8427-508b57d1776b"></quiz>

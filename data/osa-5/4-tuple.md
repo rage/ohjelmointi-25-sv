@@ -402,8 +402,8 @@ Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i dessa uppgifter, 
 
 </programming-exercise>
 
-<quiz id="8342aecc-48cd-5e26-a8ad-6272ba1df02a"></quiz>
+<quiz id="7317f5ec-99ed-5641-9829-092aa4ef6c04"></quiz>
 
 Vänligen svara på en kort enkät gällande materialet för den här veckan.
 
-<quiz id="7c3732cd-b37b-5524-9747-0fcf49c917bb"></quiz>
+<quiz id="d0fa423f-3772-5385-ae9d-b1f6ad9d2e79"></quiz>

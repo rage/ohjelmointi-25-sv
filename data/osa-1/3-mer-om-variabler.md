@@ -16,7 +16,7 @@ Efter den här delen
 
 Vänligen fyll i den här enkäten före du börjar med den här delen. Du får ett poäng efter att du har fyllt i enkäten.
 
-<quiz id="696ae8ca-e032-58a1-9f55-76f59a01b3a7"></quiz>
+<quiz id="64c34f03-2a59-5f9e-8850-e2112625b111"></quiz>
 
 
 
@@ -430,4 +430,4 @@ print(5 + 8 - 4)
 
 Kertauskysely tämän osan asioihin liittyen:
 
-<quiz id="664b560c-e4cd-585f-beba-401fe45ee11b"></quiz>
+<quiz id="5e01aa77-89a6-5ccd-ba2d-6890180680e2"></quiz>

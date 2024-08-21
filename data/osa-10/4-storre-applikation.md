@@ -842,4 +842,4 @@ Den teknik som beskrivs ovan kallas beroendeinjektion. Som namnet antyder är ta
 
 Svara vänligen på en snabb enkät om denna del av kursen.
 
-<quiz id="a5d5c420-b834-5a04-a8e3-a442912adcfa"></quiz>
+<quiz id="4d7c8be7-105b-5bd2-87dd-7da65ff664e7"></quiz>

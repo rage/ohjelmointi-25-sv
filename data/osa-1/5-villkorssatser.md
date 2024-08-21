@@ -519,8 +519,8 @@ Rötterna är 2.0 och -4.0
 
 Kertauskysely tämän osan asioihin liittyen:
 
-<quiz id="6a20ae0e-38b3-5fb3-93c4-ebd70162fbb6"></quiz>
+<quiz id="cb6eff3b-2fb8-506d-9019-e97de6834d7e"></quiz>
 
 Vänligen svara på en kort enkät om materialet i den här veckans modul. Du får ett poäng när du fyllt i enkäten.
 
-<quiz id="63e241aa-f451-5dd6-b06e-a363703cdc6c"></quiz>
+<quiz id="5f238c10-5e09-5a35-94f5-d9a0b56d9e79"></quiz>

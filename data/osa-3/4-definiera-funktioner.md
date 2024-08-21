@@ -470,8 +470,8 @@ uayba
 
 </in-browser-programming-exercise>
 
-<quiz id="ecfc4b08-6ee4-514c-a830-a2d846364928"></quiz>
+<quiz id="2b3067e7-08e8-500f-985e-4edc7cfd5fd6"></quiz>
 
 Vänligen svara på en kort enkät gällande den här veckans material.
 
-<quiz id="3f7c6a3f-40a6-5e2b-ba4a-5acddee4b9b7"></quiz>
+<quiz id="bb18ac32-1984-5ea8-acb6-a51f695e2542"></quiz>

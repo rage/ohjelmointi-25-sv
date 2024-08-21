@@ -584,8 +584,8 @@ Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
 
 </programming-exercise>
 
-<quiz id="00a23e8f-ecc1-59b7-bd22-a78c4c3e2d4b"></quiz>
+<quiz id="810e59c2-b9f9-51cc-b8e9-e716b3247515"></quiz>
 
 Vänligen svara på en kort enkät om den här veckans material.
 
-<quiz id="a0b1296c-99b2-5bed-accc-2872ad2f59b6"></quiz>
+<quiz id="90c165f5-711a-5b1a-a5e3-8e029a2245fb"></quiz>

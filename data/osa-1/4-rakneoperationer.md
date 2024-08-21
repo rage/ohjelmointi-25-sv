@@ -430,4 +430,4 @@ Tips 2: Om du inte hittar på en lösning kan du bekanta dig med if-satser, som 
 
 Kertauskysely tämän osan asioihin liittyen:
 
-<quiz id="3fd3df29-665e-5280-9fcf-f0e002316918"></quiz>
+<quiz id="7722d5cd-4b10-5b39-80cc-834d09f01ff2"></quiz>

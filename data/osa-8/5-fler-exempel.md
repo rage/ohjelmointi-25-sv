@@ -554,4 +554,4 @@ Observera att ovanstående kod och testerna för denna övning antar att din kla
 
 Vänligen svara på en snabb enkät om veckans material:
 
-<quiz id="05b480cc-49ea-51e4-a971-d03209a54d5b"></quiz>
+<quiz id="a02d084c-8f0c-5918-8740-6282910a2b33"></quiz>

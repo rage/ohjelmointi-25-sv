@@ -508,4 +508,4 @@ Du kan anta att den siffra användaren anger är två eller större.
 
 </in-browser-programming-exercise>
 
-<quiz id="742577d3-7a6c-5249-a0b8-10bbcaeea044"></quiz>
+<quiz id="7a997c9b-0897-524d-9725-07def37b0272"></quiz>

@@ -280,4 +280,4 @@ print(resultat)
 
 Vänligen svara på kursfeedbacksenkäten här nedan. Enkätens resultat hjälper oss att utveckla och förbättra den här kursen.
 
-<quiz id="e5513330-0599-5fa0-bfd0-a2d40a89773e"></quiz>
+<quiz id="21de019f-ba83-56f0-a68b-31c5c62dcf9a"></quiz>

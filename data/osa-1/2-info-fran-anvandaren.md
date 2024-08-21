@@ -248,4 +248,4 @@ Berättelsen ska ändras beroende på de värden användaren anger.
 
 Kertauskysely tämän osan asioihin liittyen:
 
-<quiz id="dd4441a3-c2a3-5553-97d6-30482b1f1126"></quiz>
+<quiz id="96aa989d-0b30-57f6-8bbf-4b7f462e8f14"></quiz>

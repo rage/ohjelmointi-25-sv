@@ -399,4 +399,4 @@ Ge ett tal: **6**
 
 </in-browser-programming-exercise>
 
-<quiz id="c7b69cde-08a4-5de2-9d23-3315903be6ec"></quiz>
+<quiz id="1aadeb85-a3b9-513e-87f5-a12b9d762f0b"></quiz>
