@@ -19,13 +19,15 @@ Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs
 Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **förinspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
 
 ### Kursträffar och handledningstillfällen 
-En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Även campusträffarna streamas via Zoom. Träffarna är inte regelrätta föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
+En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Även campusträffarna streamas via Zoom. Vi använder samma länk genom båda kurserna: **TBA**
+
+Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. Varken träffarna eller handledningstillfällena är obligatoriska. 
 
 **Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-24-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
 
 ## Kursöversikt
 
-Datum          |  Plats  | Modul | URL
+Datum          |  Plats  | Modul | Förinspelad genomgång
 ---------------|---------|-------|----- 
 Ons 4.9.2024   | Exactum |   1   | [Inspelning, 04.09.2023](https://youtu.be/D747XGyM3Ys)
 Ons 11.9.2024  | Exactum |   2   | [Inspelning, 04.09.2023](https://youtu.be/D747XGyM3Ys)
