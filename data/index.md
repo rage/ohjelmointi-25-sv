@@ -9,11 +9,11 @@ sidebar_priority: 5000
 
 **Kursen börjar 2.9.2024**
 
-Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 op) och Fortsättningskurs i programmering (TKT10003, 5 op)! Modul 1-7 utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. 
+Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp) och Fortsättningskurs i programmering (TKT10003, 5 sp)! 
 
 ## Kursens upplägg
 
-Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
+Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Modul 1-7 utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 Allt **kursmaterial** finns på denna sida. Förutom modulerna i menyn till vänster finns förinspelade videogenomgångar för varje modul. Dessa publiceras veckovis. 
 
