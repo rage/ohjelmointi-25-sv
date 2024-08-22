@@ -1,6 +1,6 @@
 ---
 path: "/felanmalningar"
-title: "Allmänna felanmälningar"
+title: "Vanliga felmeddelanden"
 hidden: false
 information_page: true
 banner: true
