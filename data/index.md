@@ -13,9 +13,9 @@ Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp
 
 ## Kursens upplägg
 
-Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Modul 1-7 utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
+Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
-Allt **kursmaterial** finns på denna sida. Förutom modulerna i menyn till vänster finns förinspelade videogenomgångar för varje modul. Dessa publiceras veckovis. 
+Allt **kursmaterial** finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **förinspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
 
 Dessutom ordnar vi gemensamma träffar och handledningstillfällen, både på campus och online. 
 
@@ -25,20 +25,15 @@ Dessutom ordnar vi gemensamma träffar och handledningstillfällen, både på ca
 
 ## 1 + 1 poäng tilläggsprestationer
 
-Ifall du tidigare har utfört motsvarande kurser i Java vid Helsingfors universitet, kan du nu genomföra kurserna i Python och få 1 + 1 studiepoäng i tillägg. Du hittar mer info om detta finns under rubriken [Bedömning och tentamen](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
+Ifall du tidigare har slutfört motsvarande kurser i Java vid Helsingfors universitet, kan du nu genomföra kurserna i Python och få tilläggsstudiepoäng (1 + 1 sp). Du hittar mer info om detta under rubriken [Bedömning och tentamen](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 ## Tidsgräns
 
 Kursen är öppen från september 2024 till mars 2025. Du kan göra uppgifterna i egen takt fram tills dess.
 
-
-är inte att gå igenom exakt det material som finns . Nedan kan du se inspelningar av föreläsningar från hösten 2023 (nedan på finska, finns även inspelningar på engelska).
-
 ## Inspelningar
 
-Inspelningarna från år 2023 är innehållsmässigt motsvariga till denna kurs, men i inspelningarna hittas möjligen anteckningar om tentamensdatum, dvs. anteckningarna _är inte nödvändigtvis korrekta_! Inspelningarna uppdateras enligt det, att liveföreläsningarna hålls.
-
-Del      | Inspelning
+Del      | Förinspelade videogenomgångar
 ---------|---------------
 Modul 1  | [Inspelning, 04.09.2023](https://youtu.be/D747XGyM3Ys)
 Modul 2  | [Inspelning, 11.09.2023](https://youtu.be/CGBUjc_ZbfE)
