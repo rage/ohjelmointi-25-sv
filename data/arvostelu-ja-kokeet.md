@@ -85,6 +85,6 @@ Kursen bedöms enligt följande skala:
 Bedömningen baseras på uppgifterna (utgör 50 % av totalpoängen) och tenten (utgör 50 % av totalpoängen). Detta innebär att vitsordsskalans totalpoäng fås genom att addera ihop poängen från kursuppgifterna (som syns i poängvisualiseraren) och tenten.
 
 
-#### Minimikrav
+### Minimikrav
 
 För att komma igenom kursen krävs minst 25 % av uppgiftspoängen i varje modul och minst 50 % i tenten. 
