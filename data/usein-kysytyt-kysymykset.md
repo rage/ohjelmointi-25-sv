@@ -9,50 +9,51 @@ information_page: true
 
 ### Jag hittade ett fel i materialet eller uppgifterna
 
-Du kan meddela om saken i kurskanalen till handledaren eller per epost till kursens upphållare via adressen ohjelmoinnin-mooc@helsinki.fi. Tack!
+Så bra att du märkte! Meddela gärna handledaren i kurskanalen eller per epost via adressen ohjelmoinnin-mooc@helsinki.fi. Tack!
 
 ### Varför syns inte alla kursens moduler i TMC? Hur får jag alla modulers uppgifter nedladdade?
 
-Följande modul blir automatiskt nedladdbar, då du fått 25 % av föregående dels programmeringsuppgifters poäng.
+Följande modul blir automatiskt nedladdbar, då du fått 25 % av poängen i föregående del.
 
-<notice>Nedanstående frågor berör främst studerande på öppna universitetet</notice>
+<notice>Nedanstående frågor berör främst studerande inom det öppna universitetet.</notice>
 
-### Jag kan inte påbörka lirsen, eftersom jag inte vet var jag kan anmäla mig
+### Jag kan inte påbörja kursen, eftersom jag inte vet var jag kan anmäla mig
 
-För att påbörja kursen behövs ingen anmälan. Du får efter kursen instruktioner hur du kan få prestationsbemärkelse till Helsingfors universitets register.
+Du behöver inte anmäla dig för att påbörja kursen. Efter att du har slutfört kursen får du instruktioner för hur du kan få dina studiepoäng registerade vid Helsingfors universitet.
 
-### Får jag ett formellt intyg av kursen?
+### Får jag ett formellt intyg från kursen?
 
-I slutet av kursen kan du delta i Helsingfors universitets Öppna universitetets prov. Ifall du kommer igenom provet godkänt, får du ett intyg över kursen i Helsingfors universitets register.
+Om du slutför kursen med godkänt resultat kan du välja att få studiepoängen införda i Helsingfors universitets register.
 
-### Hur får jag ett godkänt betyg för en kurs på min institution?
+### Hur får jag kursen tillgodoräknad på mitt eget lärosäte? 
 
-Du får ett intyg över kursen från Helsingofrs universitets register. Det räcker sannolikt till, men det lönar sig att kontrollera saken ännu med ditt egna instituts studiehandledare.
+Du får ett intyg över kursen från Helsingfors universitets register. Det räcker sannolikt, men det lönar sig att kontrollera saken ännu med din studiehandledare.
 
-### Behövs Helsingfors universitets identifierieng?
+### Behöver jag ett användarnamn vid Helsingfors universitet för att avlägga kursen?
 
 Det behövs inte.
 
 ### Hur avbryter jag mitt kursdeltagande?
 
-Kursdeltagandet kräver ingen skild avbrytning. Det räcker att du slutar utföra kursen.
+Du behöver inte meddela att du avbryter kursen. Det räcker att du slutar genomföra den.
 
-### Arbets- och Näringstjänstbyrån vill ha en förklaring från mig om kursen
+### Arbets- och näringsbyrån vill ha en redogörelse om kursen
 
-Navigare AN-byrån till denna sida:
+Du kan ge AN-byrån följande information: 
 
-Introduktionskurs till programmering är en till alla öppen och gratis webbkurs. Kursens genomförande kan jämföras med att låna en bok från biblioteket. Den bok som du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
+Introduktion till programmering är en webbkurs som är gratis och öppen för alla intresserade. Att delta i kursen kan liknas med att låna en bok från ett bibliotek. Den bok du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
 
-Introduktion till programmering motsvarar en Helsingfors universitet 5 studiepoängs kurs. Kursens genomförare är däremot inte automatiskt studenter på Helsingfors universitet, vi tvingar heller inte någon att slutföra kursen i ett studiepoänggivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.
+Introduktion till programmering motsvarar en kurs värd 5 studiepoäng vid Helsingfors universitet. Den som genomför och avlägger kursen är däremot inte automatiskt studerande vid Helsingfors universitet, och vi tvingar inte heller någon att slutföra kursen i ett studiepoängsgivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.
 
-### Jag får stöd från Arbets- och Näringstjänstbyrån. Kan jag ändå utföra kursen?
+### Jag får stöd från Arbets- och näringsbyrån. Kan jag ändå genomföra kursen?
 
-Kom överens om saken i förhand med AN-byrån. Tyvärr behandlar AN-byrån inte våra kurser på ett enhetligt sätt. Vissa har redan vägrat att bevilja dig bidrag för deltagande i kursen, fastän syftet inte är studiepoäng eller studier. Däremot har andra AN-byråer rekommenderat kursen och till och med hänvisat personer till kursen utan att vägra stöd.
+Kom överens om saken på förhand med AN-byrån. Tyvärr behandlar AN-byråerna inte frågor som berör våra kurser på ett enhetligt sätt. Vissa byråer har vägrat att bevilja bidrag bara på grund av att man deltar i kursen, även om deltagarens målsättning varken har varit studiepoäng eller universitetsstudier. Å andra sidan har andra andra AN-byråer rekommenderat och till och med hänvisat personer till kursen utan att neka dem stöd.
 
-### Kela vill ha bevis på mina studier från mig
+### FPA vill ha bevis på mina studier 
 
-Vägled Kela till denna sida:
+Du kan ge FPA följande information:
 
-Introduktionskurs till programmering är en till alla öppen och gratis webbkurs. Kursens genomförande kan jämföras med att låna en bok från biblioteket. Den bok som du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
+Introduktion till programmering är en webbkurs som är gratis och öppen för alla intresserade. Att delta i kursen kan liknas med att låna en bok från ett bibliotek. Den bok du lånar på biblioteket kan vara relaterad till någon kurs som hör till dina universitetsstudier. Precis som en bok som lånas på biblioteket är vår onlinekurs tillgänglig för läsning för nöjes skull och självutbildning eller för att främja dina universitetsstudier.
 
-Introduktion till programmering motsvarar en Helsingfors universitet 5 studiepoängs kurs. Kursens genomförare är däremot inte automatiskt studenter på Helsingfors universitet, vi tvingar heller inte någon att slutföra kursen i ett studiepoänggivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.
+Introduktion till programmering motsvarar en kurs värd 5 studiepoäng vid Helsingfors universitet. Den som genomför och avlägger kursen är däremot inte automatiskt studerande vid Helsingfors universitet, och vi tvingar inte heller någon att slutföra kursen i ett studiepoängsgivande format. Kursens genomförande kan dock vid önskan ge studiepoäng. Deltagande i kursen ger inte rätt till studiestöd.
+
