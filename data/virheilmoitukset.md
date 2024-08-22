@@ -6,11 +6,11 @@ information_page: true
 banner: true
 ---
 
-På den här sidan berrätas om allänna felanmälningar vilka du kan stöta på under kursen.
+På den här sidan informerar vi om allmänna felanmälningar som du kan stöta på under kursen.
 
 ### Uppgiften går inte igenom, trots att utskriften är identisk med exempelutskriften
 
-Granska att ditt program inte skriver ut extra mellanslag. Märk att innanför `print` -funktionen skapar ett kommatecken automatiskt ett mellanslag mellan strängar.
+Granska att ditt program inte skriver ut extra mellanslag. Observera att i `print`-funktionen skapar ett kommatecken automatiskt ett mellanslag mellan strängar.
 
 ```python
     print("Hello","World!")    # Skriver ut: Hello World!
@@ -18,7 +18,7 @@ Granska att ditt program inte skriver ut extra mellanslag. Märk att innanför `
 
 ### SyntaxError: bad input on line [radnummer]
 
-Detta behandlar alla sådana skrivfel i koden som inte kan klassifieras enkelt. Till exempel en villkorssats kan sakna ett kolon i slutet eller ett nyckelord såsom 'while' kan vara skrivet fel. Enda sättet att lösa problemet är att undersöka felanmälans angivna rader.
+Det här felmeddelandet inkluderar alla skrivfel som inte enkelt kan klassificeras. Vanliga exempel är villkorssatser som saknar kolon i slutet på raden, eller felskrivna nyckelord. Det enda sättet att lösa problemet är att undersöka den rad som felmeddelandet pekar på. 
 
 ```python
     tal1 = 1
@@ -27,11 +27,11 @@ Detta behandlar alla sådana skrivfel i koden som inte kan klassifieras enkelt. 
         print('tal2 är större')
 ```
 
-Ifall den angivna raden däremot ser helt rätt ut, kan det även hända att felet är en rad nedanför eller ovanför. Granska alltså även de raderna.
+Ifall den angivna raden däremot ser helt rätt ut, kan det hända att felet finns på en tidigare eller senare rad. Granska särskilt raden som kommer före och den som kommer efter den angivna raden. 
 
 ### SyntaxError: unindent does not match any outer indentation level on line [radnummer]
 
-Koden är indenterad konstigt på felanmälans angivna rad. Indentera rad så att den är i nivå med resten av raderna. Till exempel följande kod åstadkommer ett sådant här fel.
+Som felmeddelandet antyder, har något blivit fel med indenteringen. Kontrollera att instruktionen på den angivna raden är indenterad på rätt sätt, det vills säga i nivå med de övriga instruktionerna. Följande kod skulle till exempel ge upphov till den här typen av fel. 
 
 ```python
     if True:
@@ -41,7 +41,7 @@ Koden är indenterad konstigt på felanmälans angivna rad. Indentera rad så at
 
 ### NameError: name [variabel] is not defined on line [radnummer]
 
-Koden försöker referera till en variabel eller ett objekt som inte finns eller som inte 'syns'. Det kan hända att variabeln har glömts att tilldelas ett värde eller att variabeln inte hittas på grund av ett skrivfel (kolla exempel). Det kan också hända att variabeln är skapad innanför funktionen och försöker refereras till ytterom funktionen.
+Detta fel uppstår när programmet försöker hänvisa till en variabel eller ett objekt som inte finns eller som inte 'syns'. Det kan hända att du har glömt att tilldela variabeln ett värde eller att variabeln inte hittas på grund av ett skrivfel (kolla exempel). Det kan också hända att variabeln är skapad innanför funktionen och därför är lokal – i sådana fall är variabeln inte synlig utanför funktionen. 
 
 ```python
     person = input('Skriv ditt namn: ')
@@ -53,15 +53,15 @@ Koden försöker referera till en variabel eller ett objekt som inte finns eller
 
 ### TypeError: unsupported operand type(s) for Add: 'int' and 'str' on line [radnummer]
 
-Koden försöker räkna ihop ett heltal och en sträng utan att strängen är ändrad till ett heltal. Kom alltså ihåg att ändra strängar med `int()` -funktionen. Det kan också hända att den försökte slå ihop ett heltal till en sträng. För detta måste du ändra heltalet till en sträng med `str()` -metoden.
+Det här felmeddelandet påpekar att programmet försöker addera ett heltal och en sträng, vilket inte är möjligt. För att det ska gå måste vi antingen först 1) omvandla strängen till ett heltal om vi vill utföra aritmetisk addition, eller 2) omvandla heltalet till en sträng om vi vill konkatenera två strängar. Kom alltså ihåg att omvandla värden till rätt typ med motsvarande funktion (t.ex. `str()` eller `int()`).
 
 ```python
     alder = input("Ange ålder: ")
     namn = input("Ange namn: ")
 
-    print(alder//2)   # fel: variabeln alder är inte ändrat till ett heltal
+    print(alder//2)   # fel: input läser in data som strängar, och här har variabeln alder inte omvandlats till ett heltal
 ```
 
 ### TypeError: cannot concatenate 'str' and 'int' objects on line [radnummer]
 
-Se ovanstående del.
+Se ovanstående fel.
