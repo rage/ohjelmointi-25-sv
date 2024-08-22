@@ -17,7 +17,7 @@ jobs:
       - name: Install and Build
         run: |
           npm ci --legacy-peer-deps
-          npm run build-pages
+          npm run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
