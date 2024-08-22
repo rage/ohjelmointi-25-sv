@@ -34,7 +34,7 @@ export function createAccount(data) {
   const body = {
     user: data,
     origin: CourseSettings.name,
-    language: "fi",
+    language: "sv",
   }
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}/users`, {

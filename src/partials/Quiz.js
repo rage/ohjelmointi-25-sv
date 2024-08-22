@@ -25,6 +25,8 @@ class QuizPartial extends React.Component {
     let languageId = "en_US"
     if (CourseSettings.language === "fi") {
       languageId = "fi_FI"
+    } else if (CourseSettings.language === "sv") {
+      languageId = "sv_SE"
     }
     if (!this.context.loggedIn) {
       const loginPrompt = (

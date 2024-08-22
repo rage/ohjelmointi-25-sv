@@ -1,5 +1,5 @@
 const courseSettings = {
-  language: "fi",
+  language: "sv",
   name: "Ohjelmoinnin perusteet ja jatkokurssi 2024",
   siteUrl: "https://ohjelmointi-24.mooc.fi",
   githubUrl: "https://github.com/rage/ohjelmointi-24",

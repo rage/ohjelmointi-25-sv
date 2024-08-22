@@ -7,6 +7,9 @@ import userEN from "./locales/user/en"
 import commonFI from "./locales/common/fi"
 import pointsBalloonFI from "./locales/pointsBalloon/fi"
 import userFI from "./locales/user/fi"
+import commonSV from "./locales/common/sv"
+import pointsBalloonSV from "./locales/pointsBalloon/sv"
+import userSV from "./locales/user/sv"
 
 const resources = {
   en: {
@@ -18,6 +21,11 @@ const resources = {
     common: commonFI,
     "points-balloon": pointsBalloonFI,
     user: userFI,
+  },
+  sv: {
+    common: commonSV,
+    "points-balloon": pointsBalloonSV,
+    user: userSV,
   },
 }
 
