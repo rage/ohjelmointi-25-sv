@@ -21,7 +21,7 @@ Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på
 | 16-17 | Campus / Discord | - | - | - | - |
 | 17-18 | Campus / Discord | - | - | - | - |
 
-I tabell betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning endast på distans. Du kan även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
+I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning endast på distans. Du kan även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
 *Schemat kan ändras under kursens gång*
 
