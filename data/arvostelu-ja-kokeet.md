@@ -10,16 +10,9 @@ sidebar_priority: 4000
 
 Bedömningen baseras på både poäng från gjorda uppgifter och tenten. Poäng ges för alla uppgifter i varje modul. Du hittar modulens alla uppgifter genom att välja "Uppgifter i den här modulen" under respektive modul, och du kan hålla koll på dina egna uppgiftspoäng under rubriken "Uppgiftspoäng totalt" i poängvisualiseraren som finns i kursmaterialets nedre högra hörn (blå cirkel). 
 
-### Introduktion till programmering, tentdatum 2024
+## Tentamen
 
-* TBA
-
-### Fortsättningskurs i programmering, tentdatum 2024
-
-* TBA
-
-
-## Att delta i tenten
+### Att delta i tenten
 
 Du kan delta i vilken tent som helst då du har gjort minimiantalet uppgifter. Det betyder i praktiken att du ska ha samlat minst 25 % av alla poäng som hör till de kapitel som ingår i tenten senast på tentdagens morgon klockan 8.00. Ifall du gör fortsättningskursens tent, ska modul 14 vara helt slutförd. Ifall poängen saknas, bedöms inte din tentprestation.
 
@@ -27,7 +20,7 @@ Poängen granskas skilt för intoduktionskursen (del 1-7) och fortsättningskurs
 
 Om du vill får du delta i flera tenttillfällen. Den bästa prestationen lagras i studieregistret. 
 
-## Tentarrangemang
+### Tentarrangemang
 
 * Du behöver inte anmäla dig till tenten på förhand.
 * Du kan utföra tenten på den valda tentdagen mellan **kl 10:00-22:00**
@@ -36,6 +29,14 @@ Om du vill får du delta i flera tenttillfällen. Den bästa prestationen lagras
 * Uppgifterna returneras på samma sätt som kursuppgifterna.
 
 Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
+
+### Introduktion till programmering, tentdatum 2024
+
+* TBA
+
+### Fortsättningskurs i programmering, tentdatum 2024
+
+* TBA
 
 ## 1 + 1 poängs tillägg
 
