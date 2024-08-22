@@ -1,9 +1,9 @@
 const courseSettings = {
   language: "sv",
-  name: "Ohjelmoinnin perusteet ja jatkokurssi 2024",
+  name: "Grund- och fortsättningskurs i programmering 2024",
   siteUrl: "https://programmering-24.mooc.fi",
   githubUrl: "https://github.com/rage/ohjelmointi-24-sv",
-  subtitle: "Johdatus ohjelmointiin Python-kielellä",
+  subtitle: "Introduktion till programmering med Python",
   slug: "programmering-24",
   organizationName: "MOOC",
   tmcCourse: "programmering-24",
