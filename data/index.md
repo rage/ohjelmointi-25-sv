@@ -25,7 +25,7 @@ Dessutom ordnar vi gemensamma träffar och handledningstillfällen, både på ca
 
 ## 1 + 1 poäng tilläggsprestationer
 
-Ifall du tidigare har utfört motsvarande kurser i Java vid Helsingfors universitet, kan du nu genomföra kurserna i Python och få 1 + 1 studiepoäng i tillägg. Du hittar mer info om detta finns på [bedömning och prov-avdelningen](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
+Ifall du tidigare har utfört motsvarande kurser i Java vid Helsingfors universitet, kan du nu genomföra kurserna i Python och få 1 + 1 studiepoäng i tillägg. Du hittar mer info om detta finns under rubriken [Bedömning och tentamen](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 ## Tidsgräns
 
