@@ -19,7 +19,7 @@ Allt **kursmaterial** finns på denna sida. Förutom modulerna i menyn till vän
 
 Dessutom ordnar vi gemensamma träffar och handledningstillfällen, både på campus och online. 
 
-*En **gemensam träff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Även campusträffarna streamas via Zoom. Träffarna är inte regelrätta föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
+* En **gemensam träff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Även campusträffarna streamas via Zoom. Träffarna är inte regelrätta föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
 
 * **Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-24-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
 
