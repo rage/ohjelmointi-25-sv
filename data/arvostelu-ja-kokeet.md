@@ -10,22 +10,11 @@ Kursens utförs genom att lösa uppgifter och slutligen delta i ett prov.
 
 ### Introduktion till programmering tentdatum 2024
 
-* Lördag 09.03.2024
-* Lördag 04.05.2024
-* Lördag 08.06.2024
-* Lördag 20.07.2024
-* Lördag 07.09.2024
-* Lördag 19.10.2024
-* Lördag 23.11.2024
+* TBA
 
 ### Fortsättningskurs i programmering tentdatum 2024
 
-* Lördag 23.03.2024
-* Lördag 11.05.2024
-* Lördag 15.06.2024
-* Lördag 17.08.2024
-* Lördag 26.10.2024
-* Lördag 14.12.2024
+* TBA
 
 
 ## Att delta i tenten
