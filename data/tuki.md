@@ -1,27 +1,27 @@
 ---
 path: "/stod"
-title: "Stöd till uppgifterna"
+title: "Handledning och stöd"
 hidden: false
 information_page: true
 separator_after: "Ohjelmoinnin perusteet"
 ---
 
-### Sommarens stödtider
+### Höstens stödtider
 
-Under kursen 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i Exactums BK107-klass. Handledningen ordnas enligt nedastående tidtabell
+Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i Exactum **XXX**. Handledningen ordnas enligt tidtabellen nedan: 
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
-| 10-11 | - | Paja | - | - | - |
-| 11-12 | - | Paja | - | - | - |
-| 12-13 | - | - | Paja / Discord | Paja | - |
-| 13-14 | - | - | Paja / Discord | Paja | - |
+| 10-11 | - | Campus | - | - | - |
+| 11-12 | - | Campus | - | - | - |
+| 12-13 | - | - | Campus / Discord | Campus | - |
+| 13-14 | - | - | Campus / Discord | Campus | - |
 | 14-15 | - | - | - | - | - |
 | 15-16 | - | - | - | - | - |
-| 16-17 | Paja / Discord | - | - | - | - |
-| 17-18 | Paja / Discord | - | - | - | - |
+| 16-17 | Campus / Discord | - | - | - | - |
+| 17-18 | Campus / Discord | - | - | - | - |
 
-I tabell betyder **Paja** handledning på campus, medan **Discord** betyder handledning endast på distans. Under paja-handledningens tider kan även hjälp fås via Discord, ifall handledaren har tid att följa med Discord.
+I tabell betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning endast på distans. Du kan även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
 *Schemat kan ändras under kursens gång*
 
@@ -31,4 +31,4 @@ Discord är en meddelandetjänst, som du kan hitta mer info om [här](https://di
 
 Du hittar kursens kanaler [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc).
 
-Under handledingstiden uppdaterar handledaren kurskanalen och svarar också på privatmeddelanden. I Discord diskuteras om kursen även utanför handledningstiderna, alltså lönar det sig att gå med där!
+Under handledningstiden svarar handledaren på frågor i kurskanalen och via privata meddelanden på Discord. Discord används även för diskussioner och information utanför handledningstiderna, så det lönar sig att gå med! 
