@@ -1,26 +1,26 @@
 const courseSettings = {
   language: "sv",
   name: "Ohjelmoinnin perusteet ja jatkokurssi 2024",
-  siteUrl: "https://ohjelmointi-24.mooc.fi",
-  githubUrl: "https://github.com/rage/ohjelmointi-24",
+  siteUrl: "https://programmering-24.mooc.fi",
+  githubUrl: "https://github.com/rage/ohjelmointi-24-sv",
   subtitle: "Johdatus ohjelmointiin Python-kielellä",
-  slug: "ohjelmointi-2024",
+  slug: "programmering-24",
   organizationName: "MOOC",
-  tmcCourse: "ohjelmointi-2024",
-  quizzesId: "b5e48702-a5b9-41e1-b3d9-9b92e8346df4",
+  tmcCourse: "programmering-24",
+  quizzesId: "a5c9ec89-d7b8-4ec0-a91d-fe395b4e14ee",
   tmcOrganization: "mooc",
   bannerPath: "banner.svg",
   showExerciseDescriptionWhenNotLoggedIn: true,
-  courseVariants: [
-    {
-      tmcOrganization: "laurea",
-      tmcCourse: "python-2024-stenberg"
-    },
-    {
-      tmcOrganization: "hellu",
-      tmcCourse: "HelluTTK01"
-    },
-  ],
+  // courseVariants: [
+  //   {
+  //     tmcOrganization: "laurea",
+  //     tmcCourse: "python-2024-stenberg"
+  //   },
+  //   {
+  //     tmcOrganization: "hellu",
+  //     tmcCourse: "HelluTTK01"
+  //   },
+  // ],
 }
 
 module.exports = courseSettings
