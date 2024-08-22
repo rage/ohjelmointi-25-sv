@@ -6,13 +6,15 @@ information_page: true
 sidebar_priority: 4000
 ---
 
-Kursens utförs genom att lösa uppgifter och slutligen delta i ett prov.
+## Grund för bedömningen
 
-### Introduktion till programmering tentdatum 2024
+Bedömningen baseras på både poäng från gjorda uppgifter och tenten. Poäng ges för alla uppgifter i varje modul. Du hittar modulens alla uppgifter genom att välja "Uppgifter i den här modulen" under respektive modul, och du kan hålla koll på dina egna uppgiftspoäng under rubriken "Uppgiftspoäng totalt" i poängvisualiseraren som finns i kursmaterialets nedre högra hörn (blå cirkel). 
+
+### Introduktion till programmering, tentdatum 2024
 
 * TBA
 
-### Fortsättningskurs i programmering tentdatum 2024
+### Fortsättningskurs i programmering, tentdatum 2024
 
 * TBA
 
@@ -35,13 +37,9 @@ Om du vill får du delta i flera tenttillfällen. Den bästa prestationen lagras
 
 Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 
-## 1 + 1 poängs tillägsdelar
+## 1 + 1 poängs tillägg
 
-Ifall du tidigare har slutför kursens Java-versioner med godkänt resultat, kan du geomföra tilläggsdelar värda 1+1 studiepoäng. Detta innebär att du genomför Python-versionerna med godkänt resultat (uppgiftspoäng och tent), men bedömningen sker på skalan godkänt/underkänt. Då du deltar i tenten fyller du först i en särskild blankett som visar att du vill genomföra tilläggsdelen. För att få tilläggsdelarna registrerade behöver du ha ett studentnummer vid *Helsingfors universitet eller öppna universitetet*. Ifall du inte känner till ditt studentnummer, kan du fråga om det via öppna universitetet. Gör detta i god tid före tentdagen.
-
-## Kursens poängsättning
-
-Poäng ges för alla uppgifter i varje modul. Du hittar modulens alla uppgifter genom att välja "Uppgifter i den här modulen" under respektive modul. Du ser dina uppgiftspoäng under rubriken "Uppgiftspoäng totalt" i poängvisualiseraren (blå cirkel) som finns i kursmaterialets nedre högra hörn. 
+Ifall du tidigare har slutfört kursens Java-versioner med godkänt resultat, kan du få tilläggsdelar värda 1+1 studiepoäng. Detta innebär att du genomför Python-versionerna med godkänt resultat (uppgiftspoäng och tent), men bedömningen sker på skalan godkänt/underkänt. Då du deltar i tenten fyller du först i en särskild blankett som visar att du vill genomföra tilläggsdelen. För att få tilläggsdelarna registrerade behöver du ha ett studentnummer vid *Helsingfors universitet eller öppna universitetet*. Ifall du inte känner till ditt studentnummer, kan du fråga om det via öppna universitetet. Gör detta i god tid före tentdagen.
 
 ## Kursens bedömning
 
@@ -84,10 +82,9 @@ Kursen bedöms enligt följande skala:
     </tbody>
 </table>
 
-Bedömningen baseras på både gjorda uppgifter (50 % av totalpoängen) och tenten (50 % av totalpoängen). Detta innebär att vitsordsskalans totalpoäng fås genom att addera ihop poängen från kursuppgifterna (som syns i poängvisualiseraren) och tenten.
+Bedömningen baseras på uppgifterna (utgör 50 % av totalpoängen) och tenten (utgör 50 % av totalpoängen). Detta innebär att vitsordsskalans totalpoäng fås genom att addera ihop poängen från kursuppgifterna (som syns i poängvisualiseraren) och tenten.
 
-För att komma igenom kursen krävs minst 25 % av uppgiftspoängen i varje modul.
 
-#### Tentpoäng
+#### Minimikrav
 
-I tenten krävs minst 50 % poängen för att komma igenom kursen. 
+För att komma igenom kursen krävs minst 25 % av uppgiftspoängen i varje modul och minst 50 % i tenten. 
