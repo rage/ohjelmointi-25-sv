@@ -6,7 +6,7 @@ information_page: true
 banner: true
 ---
 
-På den här sidan informerar vi om allmänna felanmälningar som du kan stöta på under kursen.
+På den här sidan informerar vi om vanliga felmeddelanden som du kan stöta på när du programmerar.
 
 ### Uppgiften går inte igenom, trots att utskriften är identisk med exempelutskriften
 
