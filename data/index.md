@@ -7,7 +7,7 @@ banner: true
 sidebar_priority: 5000
 ---
 
-**Kursen börjar 2.9.2024**
+**Kursen börjar onsdagen den 4.9.2024**
 
 Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp) och Fortsättningskurs i programmering (TKT10003, 5 sp)! 
 
