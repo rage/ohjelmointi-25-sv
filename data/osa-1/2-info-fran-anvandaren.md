@@ -8,15 +8,15 @@ hidden: false
 
 Efter den här delen
 
-* vet du hur man skriver ett program som använder sig av information som användaren ger
-* vet du hur man använder variabler för att lagra indata och skriva ut den
+* vet du hur man skriver ett program som kan läsa in information av användaren
+* vet du hur man använder variabler för att lagra indata och skriva ut motsvarande värden
 * kan du kombinera strängar.
 
 </text-box>
 
-Indata (input) syftar till information som en användare ger till ett program. I Python används instruktionen `input` för att läsa in en rad text skriven av användaren. Instruktionen kan också användas för att skriva ut ett meddelande till användaren för att be om någon specifik information.
+Indata (input) syftar till information som programmet läser in från omvärlden. Det kan handla om allt från indata från tangentbordet eller musklick till sensorer. I Python används `input` för att läsa in en rad text som användaren matar in. `input` kan också användas för att skriva ut ett meddelande till användaren för att be om någon specifik information.
 
-Det här programmet läser in användarens namn med hjälp av `input`-instruktionen. Därefter skriver programmet ut namnet med `print`-instruktionen:
+Det här programmet läser in användarens namn med hjälp av `input`. Därefter skriver programmet ut namnet med `print`:
 
 ```python
 namn = input("Ange ditt namn: ")
@@ -32,7 +32,7 @@ Hej på dig, Pauline Python
 
 </sample-output>
 
-Det programmet skriver ut beror delvis på den information som användaren ger. Därmed kan det också till exempel se ut så här när programmet körs:
+Vad programmet skriver ut beror här på den information som användaren ger. Utskriften kommer alltså att variera beroende på vad användaren matar in:
 
 <sample-output>
 
@@ -41,13 +41,13 @@ Hej på dig, Kira Kodare
 
 </sample-output>
 
-Ordet `namn` i programmet är en variabel. Inom programmering är en variabel ett ställe för att lagra ett värde – till exempel en sträng eller ett nummer. Värdet kan användas senare och det kan också ändras på.
+Ordet `namn` i programmet ovan är en variabel. Inom programmering är en variabel ett ställe för att lagra ett värde – till exempel en sträng eller ett nummer. Värdet kan användas senare och det kan också ändras.
 
 <text-box variant="hint" name="Att namnge variabler">
 
 I princip kan variabler namnges relativt fritt, men Python har några begränsningar som måste tas i beaktande.
 
-Det är ett allmänt tillvägagångssätt att namnge variabler på engelska, men du kan stöta på variabler som namngetts på andra språk – till exempel på programmerarens eget modersmål. Variabelns namn påverkar inte dess värde, så det har inte en direkt påverkan på programmets funktion. Däremot kan variabler namngivna på engelska förtydliga kodens funktion för en läsare – förutsatt att variablerna har logiska namn.
+Det är vanligt att namnge variabler på engelska, men du kan stöta på variabler som namngetts på andra språk – till exempel på programmerarens eget modersmål. Variabelns namn påverkar inte dess värde, så det har inte en direkt påverkan på programmets funktion. Däremot kan variabler namngivna på engelska förtydliga kodens funktion för läsaren – förutsatt att variablerna har logiska namn. Det viktigaste är att använda variabelnamn som gör koden lättläst och förståelig både för dig som programmerar och för andra som till exempel behöver granska koden.
 
 </text-box>
 
@@ -74,7 +74,7 @@ En viss variabel kan hänvisas till flera gånger i ett program:
 ```python
 namn = input("Ange ditt namn: ")
 
-print("Moi, " + namn + "!")
+print("Hej, " + namn + "!")
 print(namn + " är ett ganska fint namn.")
 ```
 
@@ -83,12 +83,12 @@ Om användaren ger namnet `Paulus Python`, skriver programmet ut följande rader
 <sample-output>
 
 Ange ditt namn: **Paulus Python**
-Moi, Paulus Python!
+Hej, Paulus Python!
 Paulus Python är ett ganska fint namn.
 
 </sample-output>
 
-Låt oss undersöka närmare hur `print`-instruktionen används ovan. Mellan parenteserna i instruktionen finns det både text inom citattecken och namn på variabler, som hänvisar till indata från användaren. De har kombinerats med `+`-operatorn, som kombinerar två strängar till en sträng.
+Låt oss undersöka närmare hur `print` används ovan. Mellan parenteserna i instruktionen finns det både text inom citattecken och namn på variabler, som hänvisar till indata från användaren. De har kombinerats med `+`-operatorn, som kombinerar två strängar till en sträng.
 
 
 Strängar och variabler kan kombineras ganska fritt:
@@ -110,7 +110,7 @@ Hej Ellen Exempel! Ditt namn var alltså Ellen Exempel?
 
 <in-browser-programming-exercise name="Namn med utropstecken" tmcname="osa01-07_namn_utropstecken">
 
-Gör ett program som frågar efter användarens förnamn. Programmet ska skriva ut det angivna namnet två gånger på samma rad, så att det finns ett utropstecken mellan namnen och i början och slutet av raden.
+Skriv ett program som frågar efter användarens förnamn. Programmet ska skriva ut det angivna namnet två gånger på samma rad, så att det finns ett utropstecken mellan namnen och i början och slutet av raden.
 
 Så här ska programmet fungera:
 
@@ -125,7 +125,7 @@ Ange ditt namn: **Sandrine**
 
 ## Samla mera data
 
-Ett program kan be användaren att ge data flera gånger. Observera att `input`-instruktionen lagrar varje givet värde i en skild variabel.
+Ett program kan be användaren att mata in data flera gånger. Observera att vi då behöver flera variabler för att lagra de olika värdena som användaren matar in via `input`.
 
 ```python
 namn = input("Ange ditt namn: ")
@@ -246,6 +246,6 @@ Berättelsen ska ändras beroende på de värden användaren anger.
 
 </in-browser-programming-exercise>
 
-Kertauskysely tämän osan asioihin liittyen:
+Du hittar ett repetitionsquiz för denna del här: 
 
 <quiz id="96aa989d-0b30-57f6-8bbf-4b7f462e8f14"></quiz>
