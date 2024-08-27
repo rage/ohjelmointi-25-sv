@@ -26,9 +26,9 @@ I Python skapas variabler på följande sätt:
 
 `variabelns_namn = ...`
 
-`...` ovan syftar till värdet som sparas i variabeln.
+där `...` syftar till värdet som sparas i variabeln.
 
-Till exempel när du använde instruktionen `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
+Till exempel när du använde `input` för att läsa in en sträng från användaren, sparade du strängen i en variabel och använde variabeln senare i ditt program.
 
 ```python
 namn = input("Ange ditt namn: ")
@@ -41,6 +41,8 @@ Ange ditt namn: **Konstantin**
 Hejsan Konstantin
 
 </sample-output>
+
+När man ger en variabel ett värde säger man att man _tilldelar_ den ett värde. I koden ovan tilldelar vi alltså variabeln `namn` det värde som användaren matar in som svar på frågan "Ange ditt namn:". 
 
 Värdet som lagras i variabeln kan också definieras med hjälp av andra variabler:
 
