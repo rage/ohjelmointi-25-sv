@@ -9,14 +9,14 @@ hidden: false
 Efter den här delen
 
 * har du skrivit och kört ditt första Python-program
-* vet du hur man använder print-instruktionen
+* vet du hur man använder print för att få utskrifter på skärmen
 * kan du utföra räkneoperationer genom att programmera.
 
 </text-box>
 
-Datorprogram består av instruktioner eller kommandon. Varje kommando instruerar datorn att göra en viss sak. Datorn utför varje instruktion ett för ett. Instruktionerna kan till exempel användas för att utföra räkneoperationer, jämföra saker i datorns minne, göra ändringar i hur programmet fungerar, förmedla meddelanden eller fråga något av programmets användare.
+Datorprogram består av instruktioner eller kommandon. Varje kommando instruerar datorn att göra en viss sak. Datorn utför varje instruktion en i taget. Instruktionerna kan till exempel användas för att utföra räkneoperationer, jämföra saker i datorns minne, göra ändringar i hur programmet fungerar, förmedla meddelanden eller fråga något av programmets användare.
 
-Låt oss börja programmera genom att bekanta oss med `print`-instruktionen som skriver ut (print) text. I praktiken betyder det att programmet visar någon text på skärmen.
+Låt oss börja programmera genom att bekanta oss med `print` som skriver ut (print) text. I praktiken betyder det att programmet visar text på skärmen.
 
 Det följande programmet skriver ut texten "Hej!":
 
@@ -24,7 +24,7 @@ Det följande programmet skriver ut texten "Hej!":
 print("Hej!")
 ```
 
-När programmet körs, blir resultatet det följande:
+När programmet körs, blir resultatet följande:
 
 <sample-output>
 
@@ -51,30 +51,30 @@ SyntaxError: invalid syntax
 
 </sample-output>
 
-Sammanfattningsvis: För att skriva ut text, måste den vara inom citattecken för att Python ska kunna tolka den korrekt.
+Sammanfattningsvis: För att skriva ut text, måste den vara inom citattecken för att Python ska kunna tolka den korrekt. Vi återkommer nedan till varför det är så här.
 
 <in-browser-programming-exercise name="Leende" tmcname="osa01-01_leende" height="300px">
 
-Gör ett program som skriver ut ett leende: :-)
+Skriv ett program som skriver ut ett leende: :-)
 
 </in-browser-programming-exercise>
 
 ## Ett program med flera instruktioner
 
-Flera instruktioner som skrivs efter varandra körs i ordning från det första till det sista. Till exempel följande program…
+Flera instruktioner som skrivs efter varandra körs i ordning från den första till den sista. Till exempel skriver följande program…
 
 ```python
 print("Välkommen till vår programmeringskurs!")
-print("För att börja ska vi testa på print-instruktionen.")
+print("För att börja ska vi testa print.")
 print("Det här programmet skriver ut tre rader text.")
 ```
 
-…skriver ut dessa textrader på skärmen:
+… ut följande textrader på skärmen:
 
 <sample-output>
 
 Välkommen till vår programmeringskurs!
-För att börja ska vi testa på print-instruktionen.
+För att börja ska vi testa print.
 Det här programmet skriver ut tre rader text.
 
 </sample-output>
@@ -98,7 +98,7 @@ print("Timo")
 
 <in-browser-programming-exercise name="Gubben Noak" tmcname="osa01-02_gubben_noak">
 
-Gör ett program som skriver ut följande textrader (exakt som de står nedan):
+Skriv ett program som skriver ut följande textrader (exakt som de står nedan):
 
 <sample-output>
 
@@ -113,7 +113,7 @@ Gubben Noak, gubben Noak var en hedersman.
 
 ## Räkneoperationer
 
-Du kan också utföra räkneoperationer i `print`-instruktionen. När instruktionen körs, kommer resultatet av operationen att skrivas ut på skärmen. Till exempel detta program…
+Du kan också utföra räkneoperationer som sedan skrivs ut med hjälp av `print`. När instruktionen körs, kommer resultatet av operationen att skrivas ut på skärmen. Till exempel skriver detta program…
 
 ```python
 print(2 + 5)
@@ -121,7 +121,7 @@ print(3 * 3)
 print(2 + 2 * 10)
 ```
 
-…skriver ut följande textrader:
+… ut följande textrader:
 
 <sample-output>
 
@@ -131,7 +131,7 @@ print(2 + 2 * 10)
 
 </sample-output>
 
-Observera att citattecknen fattas från instruktionerna med räkneoperationer. Citattecknen används för att markera strängar. Inom programmering är strängar en serie bestående av tecken. Strängar kan innehålla bokstäver, siffror och alla andra typer av tecken – till exempel skiljetecken. Strängar är inte nödvändigtvis bara ord utan kan vara flera meningar långa. Strängar skrivs vanligtvis ut exakt så som de är skrivna. Därmed ger dessa två instruktioner mycket olika resultat:
+Observera att citattecknen fattas från instruktionerna med räkneoperationer. Citattecknen används för att markera strängar. Inom programmering är strängar en sekvens av tecken. Strängar kan innehålla bokstäver, siffror och alla andra typer av tecken – till exempel skiljetecken. Strängar är inte nödvändigtvis bara enskilda tecken eller ord utan kan vara flera meningar långa. Strängar skrivs vanligtvis ut exakt så som de är skrivna. Därmed ger dessa två instruktioner mycket olika resultat:
 
 ```python
 print(2 + 2 * 10)
@@ -147,7 +147,7 @@ Programmet skriver ut:
 
 </sample-output>
 
-I instruktionen på den andra raden utför Python inte några räkneoperationer utan skriver ut operationen som sådan, en sträng. Strängar skrivs alltså ut som sådana oavsett deras innehåll.
+I instruktionen på den andra raden utför Python inte några räkneoperationer utan skriver ut operationen som sådan, en sträng. En sträng skrivs alltså alltid exakt som den ser ut – det vill säga allt som finns mellan citattecknena. 
 
 ## Kommentarer
 
@@ -179,7 +179,7 @@ print(365*24) # 365 dagar, 24 timmar per dag
 
 <in-browser-programming-exercise name="Minuter i ett år" tmcname="osa01-04_minuter_per_ar">
 
-Gör ett program som skriver ut antalet minuter i ett år. Låt Python utföra räkneoperationen som i exemplet ovan.
+Skriv ett program som skriver ut antalet minuter i ett år. Låt Python utföra räkneoperationen som i exemplet ovan.
 
 </in-browser-programming-exercise>
 
@@ -199,7 +199,7 @@ print('"Kom tillbaka direkt!", vrålade polisen.')
 
 </sample-output>
 
-Skapa ett program som skriver ut det följande:
+Skapa ett program som skriver ut följande:
 
 <sample-output>
 
@@ -209,6 +209,6 @@ print("Hej!")
 
 </in-browser-programming-exercise>
 
-Kertauskysely tämän osan asioihin liittyen:
+Du hittar ett repetitionsquiz för denna del här: 
 
 <quiz id="4b736942-71b8-5171-8427-508b57d1776b"></quiz>
