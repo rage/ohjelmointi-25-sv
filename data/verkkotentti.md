@@ -3,7 +3,7 @@ path: "/onlinetent"
 title: "Nättentamen 4.6."
 information_page: true
 sidebar_priority: 3000
-hide_in_sidebar: true
+hide_in_sidebar: false
 ---
 
 # Fortsättningskurs i programmering
