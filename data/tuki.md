@@ -3,7 +3,6 @@ path: "/stod"
 title: "Handledning och stöd"
 hidden: false
 information_page: true
-separator_after: "Ohjelmoinnin perusteet"
 ---
 
 ### Höstens stödtider
