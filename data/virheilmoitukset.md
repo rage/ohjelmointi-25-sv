@@ -3,7 +3,6 @@ path: "/felanmalningar"
 title: "Vanliga felmeddelanden"
 hidden: false
 information_page: true
-banner: true
 ---
 
 På den här sidan informerar vi om vanliga felmeddelanden som du kan stöta på när du programmerar.
