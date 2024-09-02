@@ -8,18 +8,18 @@ separator_after: "Ohjelmoinnin perusteet"
 
 ### Höstens stödtider
 
-Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i Exactum **XXX**. Handledningen ordnas enligt tidtabellen nedan: 
+Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan: 
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
-| 10-11 | - | Campus (FI) | - | - | - |
-| 11-12 | - | Campus (FI) | - | - | - |
-| 12-13 | - | - | Campus / Discord (FI) | Campus / Discord (SV) | - |
-| 13-14 | - | - | Campus / Discord (FI) | Campus / Discord (SV) | - |
-| 14-15 | - | - | - | - | - |
-| 15-16 | - | - | - | - | - |
-| 16-17 | Campus / Discord (FI) | - | - | - | - |
-| 17-18 | Campus / Discord (FI) | - | - | - | - |
+| 10-11 | - | Campus / Discord (FI) | - | - | - |
+| 11-12 | - | Campus / Discord (FI) | - | - | - |
+| 12-13 | - | - | - | Campus / Discord (SV) | - |
+| 13-14 | - | - | - | Campus / Discord (SV) | - |
+| 14-15 | - | - | - | Campus / Discord (FI) | - |
+| 15-16 | - | - | - | Campus / Discord (FI) | - |
+| 16-17 | - | - | - | - | - |
+| 17-18 | - | - | - | - | - |
 
 I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning endast på distans. Du kan även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
