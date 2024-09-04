@@ -29,20 +29,20 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
-Ons 4.9.2024   | Exactum |   1   | [Kursträff 1](https://youtu.be/D747XGyM3Ys), [Linkki-presentation](https://youtu.be/Owkx_ElzsQk)
+Ons 4.9.2024   | Exactum D122 |   1   | [Kursträff 1](https://youtu.be/D747XGyM3Ys), [Linkki-presentation](https://youtu.be/Owkx_ElzsQk)
 Ons 11.9.2024  | Zoom    |   2   | TBA
 Ons 18.9.2024  | Zoom    |   3   | TBA
-Ons 25.9.2024  | Exactum |   4   | TBA
-Ons 2.10.2024  | Exactum |   5   | TBA
-Ons 9.10.2024  | Exactum |   6   | TBA
-Ons 16.10.2024 | Exactum |   7   | TBA
-Ti 29.10.2024  | Exactum |   8   | TBA
-Ti 5.11.2024   | Exactum |   9   | TBA
+Ons 25.9.2024  | Exactum D122 |   4   | TBA
+Ons 2.10.2024  | Exactum D122 |   5   | TBA
+Ons 9.10.2024  | Exactum D122 |   6   | TBA
+Ons 16.10.2024 | Exactum D122 |   7   | TBA
+Ti 29.10.2024  | Exactum D122 |   8   | TBA
+Ti 5.11.2024   | Exactum D122 |   9   | TBA
 Ti 12.11.2024  | Zoom    |   10  | TBA
 Ti 19.11.2024  | Zoom    |   11  | TBA
-Ti 26.11.2024  | Exactum |   12  | TBA
+Ti 26.11.2024  | Exactum D122 |   12  | TBA
 Ti 3.12.2024   | Zoom    |   13  | TBA
-Ti 10.12.2024  | Exactum |   14  | Ingen genomgång, projektarbete
+Ti 10.12.2024  | Exactum D122 |   14  | Ingen genomgång, projektarbete
 
 **OBS!** Det kan bli ändringar i denna kursöversikt.
 
