@@ -28,6 +28,6 @@ I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord**
 
 Discord är en meddelandetjänst, som du kan hitta mer info om [här](https://discord.com/).
 
-Du hittar kursens kanaler [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc).
+Du hittar kursens kanaler [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). Det finns en egen kanal för den svenskspråkiga kursen (swedish_ohjelmoinnin_mooc).
 
 Under handledningstiden svarar handledaren på frågor i kurskanalen och via privata meddelanden på Discord. Discord används även för diskussioner och information utanför handledningstiderna, så det lönar sig att gå med! 
