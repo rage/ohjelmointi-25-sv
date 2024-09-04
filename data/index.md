@@ -16,10 +16,10 @@ Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp
 Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 ### Kursmaterial
-Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **förinspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
+Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **inspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
 
 ### Kursträffar och handledningstillfällen 
-En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Även campusträffarna streamas via Zoom. Vi använder samma länk genom båda kurserna: **https://helsinki.zoom.us/j/62306374955?pwd=3bW5tXSnFKeYJRQikXFzbPlieZwvg2.1**
+En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Campusträffarna streamas och spelas in. Vi använder samma länk genom båda kurserna: **https://helsinki.zoom.us/j/62306374955?pwd=3bW5tXSnFKeYJRQikXFzbPlieZwvg2.1**
 
 Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. Varken träffarna eller handledningstillfällena är obligatoriska. 
 
@@ -27,9 +27,9 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 ## Kursöversikt
 
-Datum          |  Plats  | Modul | Videogenomgång
+Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
-Ons 4.9.2024   | Exactum |   1   | TBA
+Ons 4.9.2024   | Exactum |   1   | [Kursträff 1](https://youtu.be/D747XGyM3Ys), [Linkki-presentation](https://youtu.be/Owkx_ElzsQk)
 Ons 11.9.2024  | Zoom    |   2   | TBA
 Ons 18.9.2024  | Zoom    |   3   | TBA
 Ons 25.9.2024  | Exactum |   4   | TBA
