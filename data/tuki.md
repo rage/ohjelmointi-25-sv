@@ -7,7 +7,7 @@ information_page: true
 
 ### Höstens stödtider
 
-Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan: 
+Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan: 
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
@@ -15,10 +15,10 @@ Under hösten 2024 ordnas handledning både på Gumtäkts campus såväl som på
 | 11-12 | - | Campus / Discord (FI) | - | - | - |
 | 12-13 | - | - | - | Campus / Discord (SV) | - |
 | 13-14 | - | - | - | Campus / Discord (SV) | - |
-| 14-15 | - | - | - | Campus / Discord (FI) | - |
-| 15-16 | - | - | - | Campus / Discord (FI) | - |
-| 16-17 | - | - | - | - | - |
-| 17-18 | - | - | - | - | - |
+| 14-15 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
+| 15-16 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
+| 16-17 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
+| 17-18 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
 
 I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning på distans. Du kan alltså även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
