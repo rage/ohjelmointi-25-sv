@@ -112,7 +112,7 @@ test!!!
 
 <text-box variant="hint" name="Att välja ett bra namn för en variabel">
 
-* Det är vanligtvis en bra idé att namnge variabler enligt deras funktion. Exempelvis om en variabel innehåller ett ord, så är namnet `ord` ett mycket bättre namn än `a`.
+* Det är vanligtvis en bra idé att namnge variabler enligt deras funktion. Exempelvis om en variabel innehåller ett telefonnummer, så är `telnr` ett mycket bättre namn än `a`.
 * Det finns ingen begränsning på variabelnamnens längd i Python, men det finns en del andra begränsningar. Variabelns namn ska börja med en bokstav och det kan endast innehålla bokstäver, siffror och understreck (\_).
 * Stora och små bokstäver är olika tecken. Variablerna `namn`, `Namn` och `NAMN` är därför enligt Python olika variabler. Den här regeln har några undantag, men vi ignorera dem tills vidare.
 * Det är ett vanligt tillvägagångssätt att i Python endast använda små bokstäver i variabelnamn. Om namnet består av flera ord använder man understreck mellan orden (t.ex. `start_hastighet`, `slut_hastighet`). Även den här regeln har några undantag, men vi ignorerar dem tills vidare.
@@ -178,7 +178,7 @@ Koden skriver ut följande:
 
 För heltal betyder operatorn `+` addition, medan den för strängar innebär kombination av två strängar.
 
-Alla operatorer är inte tillgängliga för alla typer av variabler. Siffror kan divideras med operatorn /, medan vi inte kan dividera strängar. Att försöka göra det ger upphov till ett felmeddelande.
+Alla operatorer är inte tillgängliga för alla typer av variabler. Vi kan dividera tal med operatorn /, men det går inte med strängar. Att försöka göra det ger upphov till ett felmeddelande.
 
 ## Att kombinera värden i samband med utskrift
 
@@ -345,11 +345,11 @@ Flyttal är en term som du ofta kommer att stöta på i programmering. Det hänv
 Följande program beräknar medeltalet av tre flyttal:
 
 ```python
-siffra1 = 2.5
-siffra2 = -1.25
-siffra3 = 3.62
+tal1 = 2.5
+tal2 = -1.25
+tal3 = 3.62
 
-medeltal = (siffra1 + siffra2 + siffra3) / 3
+medeltal = (tal1 + tal2 + tal3) / 3
 print(f"Medelvärde: {medeltal}")
 ```
 
