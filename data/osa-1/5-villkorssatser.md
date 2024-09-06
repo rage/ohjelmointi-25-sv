@@ -8,7 +8,7 @@ hidden: false
 
 Efter den här delen
 
-* kan du använda dig av en enkel if-sats när du programmerar
+* kan du använda dig av en enkel villkorssats (if-sats) när du programmerar
 * vet du vad ett Boolean-värde är
 * kan du uttrycka villkor med hjälp av jämförelseoperatorer.
 
@@ -16,7 +16,7 @@ Efter den här delen
 
 Hittills har vi skapat program där koden körts rad för rad från början till slut. Istället för att köra varje kodrad när programmet är igång är det ofta nyttigt att ha delar i programmet som endast körs i vissa situationer.
 
-Till exempel följande program verifierar att användaren är tillräckligt gammal:
+Till exempel verifierar följande program att användaren är tillräckligt gammal:
 
 ```python
 alder = int(input("Vad är din ålder? "))
@@ -48,27 +48,27 @@ Nästa kund!
 
 </sample-output>
 
-Dessa exempel visar hur ett värde som getts till programmet påverkar vilka delar av koden som körs. Programmet innehåller en if-sats med kod som körs enbart då ett definierat villkor uppfylls.
+Dessa exempel visar hur ett värde som getts till programmet påverkar vilka delar av koden som körs. Programmet innehåller en villkorssats, som vanligen kallas if-sats, som gör det möjligt att ange vilken kod som ska köras i vilka situationer. 
 
 <img src="1_6.png">
 
-I en if-sats följs nyckelordet `if` med ett villkor som till exempel kan vara en jämförelse av två värden. Koden som följer körs endast då villkoret uppfylls.
+I en if-sats följs nyckelordet `if` av ett villkorsuttryck som till exempel kan vara en jämförelse av två värden. Koden som följer körs endast då villkoret uppfylls.
 
 Notera kolontecknet. Om det saknas…
 
 ```python
 alder = 10
 
-# kaksoispiste unohtui seuraavan rivin lopusta
+# kolonet saknas i slutet av raden
 if alder > 17
     print("Du är myndig.")
 ```
 
-…orsakas ett fel när programmet körs:
+…kommer ett felmeddelande att skrivas ut när programmet körs:
 
 <sample-output>
 <pre>
-File "ohjelma.py", line 3
+File "program.py", line 3
   if alder > 17
               ^
 SyntaxError: invalid syntax
@@ -88,22 +88,22 @@ Det är vanligt att man vill jämföra två värden sinsemellan. Här följer en
 | `<`      | Mindre än                | `a < b`  |
 | `<=`     | Mindre än eller lika med | `a <= b` |
 
-Vi tar nu en titt på ett program som skriver ut olika saker baserat på det värde som användaren anger. Här har vi if-satser som kan uppfyllas då värdet är negativt, positivt eller lika med noll:
+Vi tar nu en titt på ett program som ger olika utskrifter baserat på det värde som användaren anger. Här har vi tre if-satser som kan uppfyllas då värdet är negativt, positivt eller lika med noll:
 
 ```python
-siffra = int(input("Ge ett tal: "))
+tal = int(input("Ge ett tal: "))
 
-if siffra < 0:
+if tal < 0:
     print("Talet är negativt.")
 
-if siffra > 0:
+if tal > 0:
     print("Talet är positivt.")
 
-if siffra == 0:
+if tal == 0:
     print("Talet är noll.")
 ```
 
-Här har vi tre exempel med olika indata:
+Så här kan det se ut när vi kör programmet med olika indata:
 
 <sample-output>
 
@@ -128,7 +128,7 @@ Talet är noll.
 
 ## Indentering
 
-Python känner igen att en kodsnutt hör till en if-sats då varje rad är indenterad på samma sätt. Det här betyder att det finns mellanrum i början av varje kodrad som hör till if-satsen. Mellanrummet ska vara det samma för varje rad.
+Python känner igen att en kodsnutt hör till en if-sats på basis av indentering, dvs. instruktioner som dragits in på raden. Alla instruktioner som kommer efter if-raden som indenteras på samma sätt hör till if-satsen. Indenteringen (indragningen, tomrummet) ska vara lika stort för varje rad.
 
 Exempelvis:
 
@@ -143,21 +143,21 @@ if losenord == "katt":
 print("Programmet avslutades. Tack och hej!")
 ````
 
-Du kan använda Tab-tangenten för att lägga till mellanrum där det behövs.
+Du kan använda tab-tangenten för att lägga till mellanrum där det behövs. Om du använder mellanslag är det viktigt att komma ihåg att använda lika många för varje rad. OBS! Använd antingen tab eller mellanslag, blanda inte inom samma if-sats.
 
 <img src="1_6_keyboard.png">
 
-Dessutom kan flera texteditorer automatiskt indentera den följande raden när Enter-tangenten trycks efter ett kolon. Du får bort indenteringen genom att använda Backspace-tangenten i början av en rad.
+Flera texteditorer indenterar automatiskt den följande raden när Enter-tangenten trycks efter ett kolon. Du får bort indenteringen genom att använda Backspace-tangenten i början av en rad.
 
 <img src="1_6_keyboard2.png">
 <small><center>
-Näppäimistökuvien alkuperä:
+Tangentbordsbilden hämtad från:
  <a href="https://pixabay.com/users/Clker-Free-Vector-Images-3736/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=311803">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=311803">Pixabay</a>
 </center></small>
 
 <in-browser-programming-exercise name="Orwell" tmcname="osa01-21_orwell">
 
-Skapa ett program som frågar efter ett heltal från användaren och skriver ut texten "Orwell" om siffran är 1984. Annars skrivs inget ut.
+Skapa ett program som frågar användaren om ett heltal och skriver ut texten "Orwell" om siffran är 1984. Annars skrivs inget ut.
 
 <sample-output>
 
@@ -176,26 +176,26 @@ Orwell
 
 <in-browser-programming-exercise name="Absolutbelopp" tmcname="osa01-22_absolutbelopp">
 
-Skapa ett program som ber efter ett heltal av användaren. Om siffran är mindre än noll, skriver programmet ut siffran multiplicerat med talet -1. I övriga fall skrivs den siffran användaren angett ut. Nedan finns några exempel på hur programmet ska fungera.
+Skapa ett program som ber använder om ett heltal. Om talet är mindre än noll, skriver programmet ut talet multiplicerat med  -1. I övriga fall skriver programmet ut det tal som användaren angett. Nedan finns några exempel på hur programmet ska fungera.
 
 <sample-output>
 
 Ge ett tal: **-7**
-Siffrans absolutbelopp är 7
+Talets absolutbelopp är 7
 
 </sample-output>
 
 <sample-output>
 
 Ge ett tal: **1**
-Siffrans absolutbelopp är 1
+Talets absolutbelopp är 1
 
 </sample-output>
 
 <sample-output>
 
 Ge ett tal: **-99**
-Siffrans absolutbelopp är 99
+Talets absolutbelopp är 99
 
 </sample-output>
 
@@ -229,7 +229,7 @@ Nästa!
 
 <in-browser-programming-exercise name="Storleksklass" tmcname="osa01-24_storleksklass">
 
-Skapa ett program som frågar efter ett heltal från användaren. Programmet ska sedan berätta i vilken storleksklass siffran är, enligt följande exempel:
+Skapa ett program som frågar efter ett heltal av användaren. Programmet ska sedan berätta i vilken storleksklass talet är, enligt följande exempel:
 
 <sample-output>
 
@@ -271,11 +271,11 @@ Tackar!
 
 ## Boolean-värden och -uttryck
 
-Alla villkor i en if-sats resulterar i ett sanningsvärde, det vill säga sant eller falskt. Till exempel villkoret `a < 5` är sant då `a` är mindre än fem och falskt då `a` är fem eller större.
+Alla villkor i en if-sats resulterar i ett sanningsvärde, det vill säga sant eller falskt. Till exempel är villkoret `a < 5` sant då `a` är mindre än fem och falskt då `a` är fem eller större.
 
 Denna typ av värden kallas alltså Boolean-värden (efter matematikern George Boole). I Python representerar datatypen `bool` ett sanningsvärde. Variabler av typen `bool` kan endast ha ett av följande värden: `True` (sant) och `False` (falskt).
 
-En kodsnutt som resulterar i något av de ovan nämnda värdena kallas Boolean-uttryck. Ett villkor i en if-sats är alltid ett Boolean-uttryck och kan i flera situationer användas som synonym för ordet villkor.
+En kodsnutt som resulterar i något av de ovan nämnda värdena kallas Boolean-uttryck. Ett villkor i en if-sats är alltid ett Boolean-uttryck och kan i flera situationer användas som synonym för villkorsuttryck.
 
 Resultatet av ett Boolean-uttryck kan lagras i en variabel på samma sätt som vilken som helst annan numerisk räkneoperation:
 
@@ -299,20 +299,20 @@ Pythons nyckelord `True` och `False` kan också användas direkt som sådana. I 
 ```python
 villkor = True
 if villkor:
-    print("Vi når hit alltid")
+    print("Vi når alltid hit")
 ```
 
 <sample-output>
 
-Vi når hit alltid
+Vi når alltid hit
 
 </sample-output>
 
-Man kan tycka att det inte i ovanstående exempel verkar vara en så nyttig funktion. Senare under kursens lopp ska vi se på situationer där vi kan ha mera nytta av Boolean-variabler.
+Man kan tycka att det i ovanstående exempel inte verkar vara en så nyttig funktion, men senare under kursen kommer vi att se på situationer där vi kan ha mer nytta av Boolean-variabler.
 
 <in-browser-programming-exercise name="Räknare" tmcname="osa01-25_raknare">
 
-Skapa ett program som först ber användaren ange två siffror och därefter ett kommando. Om kommandot är summa, produkt eller differens, ska programmet utföra den nämnda räkneoperationen. I övriga fall skriver inte programmet ut något.
+Skapa ett program som först ber användaren ange två tal och därefter en resultat av en aritmetisk operation. Om användaren matar in summa, produkt eller differens, ska programmet utföra den nämnda räkneoperationen. I övriga fall skriver inte programmet ut något.
 
 Exempel:
 
@@ -359,10 +359,10 @@ Exempel:
 <sample-output>
 
 Ange temperatur (i Fahrenheit): **101**
-101 grader Fahrenheit on 38.333333333333336 grader Celcius
+101 grader Fahrenheit är 38.333333333333336 grader Celcius
 
 Ange temperatur (i Fahrenheit): **21**
-21 grader Fahrenheit on -6.111111111111111 grader Celcius
+21 grader Fahrenheit är -6.111111111111111 grader Celcius
 Kallt!
 
 </sample-output>
@@ -371,13 +371,13 @@ Kallt!
 
 <in-browser-programming-exercise name="Lön" tmcname="osa01-27_lon">
 
-Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndag är timlönen fördubblad.
+Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndagar får man dubbel timlön, dvs. den vanliga timlönen * 2. 
 
 <sample-output>
 
 Timlön: **8.5**
 Arbetstimmar: **3**
-Veckodag: **maanantai**
+Veckodag: **måndag**
 Lön 25.5 euro
 
 </sample-output>
@@ -386,7 +386,7 @@ Lön 25.5 euro
 
 Timlön: **12.5**
 Arbetstimmar: **10**
-Veckodag: **sunnuntai**
+Veckodag: **söndag**
 Lön 250.0 euro
 
 </sample-output>
@@ -410,7 +410,7 @@ Du har nu 60.5 poäng
 
 </sample-output>
 
-Ohjelma toimii kuitenkin jollain syötteillä oudosti:
+Programmet beter sig dock underligt med en del indata:
 
 <sample-output>
 
@@ -497,7 +497,7 @@ Programmet skriver ut:
 
 </sample-output>
 
-Gör ett program som räknar resultatet för andra gradens ekvation ax² + bx + c. Till programmet ges värdena a, b och c, och därefter beräknas lösningen med följande formel:
+Gör ett program som beräknar resultatet för andra gradens ekvation ax² + bx + c. Användaren ska mata in värdena på a, b och c, varefter programmet beräknar lösningen enligt följande formel:
 
 x = (-b ± sqrt(b² - 4ac)) / (2a)
 
@@ -517,7 +517,7 @@ Rötterna är 2.0 och -4.0
 
 </in-browser-programming-exercise>
 
-Kertauskysely tämän osan asioihin liittyen:
+Repetitionsfrågor till denna del:
 
 <quiz id="cb6eff3b-2fb8-506d-9019-e97de6834d7e"></quiz>
 
