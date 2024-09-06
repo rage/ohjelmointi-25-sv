@@ -350,7 +350,7 @@ Kommando: **differens**
 
 <in-browser-programming-exercise name="Temperaturer" tmcname="osa01-26_temperaturer">
 
-Skapa ett program som ber användaren ange en temperatur i Farenheit. Programmet ska skriva ut den här temperaturen i Celcius. Om temperaturen mätt i Celcius är under noll ska programmet också skriva ut texten "Kallt!".
+Skapa ett program som ber användaren ange en temperatur i Fahrenheit. Programmet ska skriva ut den här temperaturen i Celcius. Om temperaturen mätt i Celcius är under noll ska programmet också skriva ut texten "Kallt!".
 
 Du kan söka på nätet efter den korrekta formeln för att konvertera temperaturer i Farenheit till Celcius.
 
@@ -358,11 +358,11 @@ Exempel:
 
 <sample-output>
 
-Ange temperatur (i Farenheit): **101**
-101 grader Farenheit on 38.333333333333336 grader Celcius
+Ange temperatur (i Fahrenheit): **101**
+101 grader Fahrenheit on 38.333333333333336 grader Celcius
 
-Ange temperatur (i Farenheit): **21**
-21 grader Farenheit on -6.111111111111111 grader Celcius
+Ange temperatur (i Fahrenheit): **21**
+21 grader Fahrenheit on -6.111111111111111 grader Celcius
 Kallt!
 
 </sample-output>
