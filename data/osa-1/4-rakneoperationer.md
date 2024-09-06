@@ -370,7 +370,7 @@ Siffra 1: **2**
 Siffra 2: **1**
 Siffra 3: **6**
 Siffra 4: **7**
-Summan av siffrorna är 16 ja medeltalet är 4.0
+Summan av siffrorna är 16 och medeltalet är 4.0
 
 </sample-output>
 
