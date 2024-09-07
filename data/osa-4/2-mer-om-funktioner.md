@@ -9,8 +9,8 @@ hidden: false
 
 Efter den här delen
 
-* vet du mera om argument och parametrar hos funktioner
-* kan du returnera värden från funktioner och använda dessa värden i koden
+* vet du mera om argument och parametrar i samband med funktioner
+* kan du returnera värden från funktioner och använda dessa värden i ditt program
 * kan du ge typledtrådar för parametrar och värden som returneras.
 
 </text-box>
@@ -22,7 +22,7 @@ def meddelande():
     print("Det här kommer från en funktion")
 ```
 
-Funktionen kan anropas i koden på följande sätt:
+För att använda funktionen anropar eller kallar vi på den i programmet:
 
 
 ```python
@@ -41,7 +41,7 @@ Det här kommer från en funktion
 
 En funktion kan motta en eller flera argument. När funktionen anropas tilldelas argumenten till variabler som är definierade i funktionsdefinitionen. Dessa variabler kallas parametrar och de listas inom parenteserna som följer funktionens namn.
 
-I den följande koden har funktionen `halsa` en definierad parameter, medan funktionen `summa` har två:
+I den följande koden har funktionen `halsa` en definierad parameter (namn), medan funktionen `summa` har två (a och b):
 
 ```python
 def halsa(namn):
@@ -65,25 +65,25 @@ Summan av parametrarna är 5
 
 <text-box variant='hint' name='Formell och riktig, parameter och argument'>
 
-Terminologin kring data som ges till en funktion kan kännas förvirrande. För att göra situationen svårare, använder en del källor uttryck som formella och riktiga parametrar eller formella och riktiga argument. Pythons dokumentation nämner endast termerna argument och parameter. Därför använder vi också dessa termer.
+Terminologin kring data som ges till en funktion kan kännas förvirrande. För att göra situationen ännu konstigare, använder en del källor uttryck som formella och aktuella parametrar eller formella och aktuella argument. Pythons dokumentation nämner endast termerna argument och parameter. Därför använder vi också dessa termer.
 
-Vad händer det egentligen när funktionsanropet `halsa("Emilia")` körs?
+Vad händer egentligen när funktionsanropet `halsa("Emilia")` körs?
 
 I funktionsdefinitionen `halsa(namn)` beter sig parametern namn som en normal variabel. Vi kan använda den inom funktionen på samma sätt som vi har använt variabler i huvudfunktionen i flera program hittills.
 
 I funktionsanropet `halsa("Emilia")` är argumentet `"Emilia"` som vilken som helst annan sträng vi stött på tidigare. Vi kan till exempel tilldela den till en variabel.
 
-Alltså, när funktionsanropet körs kommer värdet på argumentet – `"Emilia"` – att tilldelas till variabeln `namn`. Under den här körningen av funktionen kommer `namn = "Emilia"`. När funktionen anropas med ett annat argument kommer värdet på namn att vara olikt.
+När funktionsanropet körs kommer alltså värdet på argumentet – `"Emilia"` – att tilldelas till variabeln `namn`. Under den här körningen av funktionen kommer `namn = "Emilia"`. När funktionen anropas med ett annat argument kommer värdet på namn att vara ett annat.
 
-Terminologin kan kännas överflödig, men datavetenskapen strävar att vara så exakt vetenskap som möjligt. Att använda noga definierad terminologi hjälper.
+Terminologin kan kännas överflödig, men datavetenskapen strävar efter att vara en så exakt vetenskap som möjligt. Att använda noga definierad terminologi hjälper.
 
 </text-box>
 
-## Felmeddelanden som uppstår i testen
+## Felmeddelanden som uppstår i testerna
 
-De flesta uppgifter under den här kursen inkluderar automatiska test. Om programmet inte fungerar på det sätt som förutsätts av uppgiften, kommer testet att visa ett felmeddelande. Det här meddelandet kan vara till nytta – eller sen inte. Det kan vara värt att läsa meddelandet noga.
+De flesta uppgifter under den här kursen inkluderar automatiska tester. Om programmet inte fungerar på det sätt som förutsätts av uppgiften, kommer testet att visa ett felmeddelande. Det här meddelandet kan vara till nytta – eller sen inte. Det är värt att läsa meddelandet noga.
 
-I vissa fall berättar felmeddelandet inte egentligen så mycket. I nästa övning kan du stöta på det här felmeddelandet:
+I vissa fall berättar felmeddelandet inte särskilt mycket. I nästa övning kan du stöta på det här felmeddelandet:
 
 <img src="4_2_0a.png">
 
@@ -93,11 +93,11 @@ Meddelandet berättar att man borde kunna köra funktionen `streck` med de speci
 streck(5, "")
 ```
 
-Det riktiga problemet får vi reda på när vi kör det funktionsanrop som stod i felmeddelandet. Du kan göra det genom att kopiera funktionsanropet till ditt program och klicka på triangeln:
+Det verkliga problemet får vi reda på när vi kör det funktionsanrop som stod i felmeddelandet. Du kan göra det genom att kopiera funktionsanropet till ditt program och klicka på triangeln:
 
 <img src="4_2_0b.png">
 
-De sista raderna som uppstår när programmet körs (markerade i bilden ovan) berättar att rad fyra i koden orsakar felet `IndexError`. I den förra modulen fanns det ett liknande exempel, där vi försökte använda ett index som inte var en del av en sträng. Den här gången orsakas problemet av att vi försöker hämta den första bokstaven hos en tom sträng – dvs. en sträng med längden noll.
+De sista raderna som uppstår när programmet körs (markerade i bilden ovan) berättar att rad fyra i koden orsakar felet `IndexError`. I den förra modulen fanns ett liknande exempel, där vi försökte använda ett index som inte var en del av en sträng. Den här gången orsakas problemet av att vi försöker hämta den första bokstaven hos en tom sträng – dvs. en sträng med längden noll.
 
 <programming-exercise name='Streck' tmcname='osa04-02_streck'>
 
@@ -125,7 +125,7 @@ LLLLLLLLLL
 
 ## Funktionsanrop inom funktionsanrop
 
-Du kan anropa en funktion från en annan funktion. Vi har faktiskt gjort det här flera gånger – vi har anropat `print`-funktionen inom våra egna funktioner i den förra modulen. Våra egna funktioner fungerar på samma sätt. I det följande exemplet anropar funktionen `halsa_flera_ganger` funktionen `halsa` så många gånger som specificerats i argumentet ganger:
+Du kan anropa en funktion från en annan funktion. Vi har faktiskt gjort det redan flera gånger – vi har anropat `print`-funktionen inom våra egna funktioner i den förra modulen. Våra egna funktioner fungerar på samma sätt. I det följande exemplet anropar funktionen `halsa_flera_ganger` funktionen `halsa` så många gånger som specificerats i argumentet ganger:
 
 ```python
 def halsa(namn):
@@ -181,9 +181,9 @@ fyrkant(2)
 
 <programming-exercise name='Kvadrat' tmcname='osa04-02b_kvadrat'>
 
-Skapa funktionen `kvadrat`, som skriver ut en kvadrat med den storlek som angetts som argument.
+Skapa funktionen `kvadrat` som skriver ut en kvadrat med den storlek som angetts som argument.
 
-Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen nedanför. Redigera inte funktionen `streck`!
 
 Exempel:
 
@@ -215,7 +215,7 @@ kvadrat(3)
 
 Skapa funktionen `speciell_kvadrat` som tar emot två argument – storleken samt det tecken som används för att rita kvadraten.
 
-Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen nedanför. Redigera inte funktionen `streck`!
 
 Exempel:
 
@@ -247,7 +247,7 @@ ooo
 
 Skapa funktionen `triangel` som skriver ut en triangel med den höjd/bredd som angetts via argumentet.
 
-Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen nedanför. Redigera inte funktionen `streck`!
 
 Exempel:
 
@@ -280,7 +280,7 @@ triangel(3)
 
 Skapa funktionen `figur` som tar emot fyra argument. Funktionen skapar en figur som består av en triangel och en fyrkant enligt de givna argumenten. Se exemplen.
 
-Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen under. Redigera inte funktionen `streck`!
+Funktionen ska anropa `streck` från den föregående uppgiften. Kopiera alltså funktionen från den föregående uppgiften till den här uppgiften och skriv den nya funktionen nedanför. Redigera inte funktionen `streck`!
 
 Exempel:
 
@@ -318,7 +318,7 @@ oo
 
 </sample-output>
 
-Tips: Försök inte lösa allt på en gång. Fokusera på en sak åt gången – börja t.ex. med att få triangeln utritad på korrekt sätt och fortsätt sedan med fyrkanten. Det här gäller vilket som helst problem inom programmering. Ta små steg och kolla att allt fungerar före du fortsätter.
+Tips: Försök inte lösa allt på en gång. Fokusera på en sak åt gången – börja till exempel med att få triangeln utritad på korrekt sätt och fortsätt sedan med fyrkanten. Det här gäller vilket som helst problem inom programmering. Ta små steg och kolla att allt fungerar före du fortsätter.
 
 </programming-exercise>
 
@@ -362,23 +362,23 @@ Observera att antalet mellanslag till vänster om granen ska vara exakt korrekt.
 
 ## Returvärdet hos en funktion
 
-Funktioner kan också returnera värden. Till exempel Pythons inbyggda funktion `input` returnerar en sträng som användaren angett. Värdet som returneras av en funktion kan lagras i en variabel:
+Funktioner kan också returnera värden. Till exempel returnerar Pythons inbyggda funktion `input` en sträng som användaren angett. Värdet som returneras av en funktion kan lagras i en variabel:
 
 ```python
 ord = input("Ange ett ord: ")
 ```
 
-När du vill ha ett heltalsvärde från användaren måste indatat från användaren konverteras till ett heltal. För det använder vi `int`-funktionen som också returnerar ett värde:
+När du vill få ett heltalsvärde av användaren måste det värde som hen matar in via `input` konverteras till ett heltal. För det använder vi `int`-funktionen som också returnerar ett värde:
 
 ```python
 siffra = int(input("Ange ett heltal: "))
 ```
 
-Funktionen `int` tar den sträng som returneras av `input`-funktionen som argument och returnerar värdet i heltalsform om möjligt.
+Funktionen `int` tar den sträng som returneras av `input`-funktionen som argument och returnerar – om möjligt – värdet i heltalsform.
 
 ## `return`-satsen
 
-Funktioner som du själv definierar kan också returnera värden. För det här ändamålet behöver du `return`-satsen. Till exempel funktionen `summa` nedan returnerar summan av dess parametrar:
+Funktioner som du själv definierar kan också returnera värden. För det här ändamålet behöver du använda `return`-satsen. Till exempel returnerar funktionen `summa` nedan summan av dess parametrar:
 
 ```python
 def summa(a, b):
@@ -395,7 +395,7 @@ Summa: 5
 
 </sample-output>
 
-Här är ett annat exempel på ett returnerat värde. Funktionen ber om användarens namn och returnerar den sträng som användaren anger:
+Här är ett annat exempel på ett returnerat värde. Funktionen ber om användarens namn och returnerar den sträng som användaren matar in:
 
 ```python
 def fraga_namn():
@@ -413,7 +413,7 @@ Hej, Anna
 
 </sample-output>
 
-`return`-satsen avslutar körandet av funktionen genast. Det här är ett sätt att göra en jämförelsefunktion:
+Observera att `return`-satsen avbryter funktionen, och återför programkörningen till huvudfunktionen. Det här är ett sätt att göra en jämförelsefunktion:
 
 ```python
 def minst(a,b):
@@ -425,7 +425,7 @@ print(minst(3, 7))
 print(minst(5, 2))
 ```
 
-Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` och avslutas direkt. Annars fortsätter man till nästa rad som returnerar värdet `b`. En return-sats kan inte köras flera gånger i samma funktion under samma funktionsanrop.
+Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` och avslutas direkt. Annars fortsätter man till nästa rad som returnerar värdet `b`. Vi kan alltså inte köra två return-sats i samma funktion under samma funktionsanrop.
 
 <sample-output>
 
@@ -434,7 +434,7 @@ Idén är att om `a` är mindre än `b` så kommer funktionen att returnera `a` 
 
 </sample-output>
 
-Du kan använda dig av `return`-satsen även om funktionen inte returnerar något värde. Då är dess uppgift helt enkelt att avsluta körandet av funktionen:
+Du kan använda dig av `return`-satsen även om funktionen inte returnerar något värde. Då är dess uppgift helt enkelt att avsluta funktionskörningen:
 
 ```python
 def halsa(namn):
@@ -501,7 +501,7 @@ Svaret är 2
 
 </sample-output>
 
-I det här fallet körs de inre funktionsanropen `summa(5, 2)` och `summa(2, 3)` först. Värdena som returneras (sju och fem) används som argument för det yttre funktionsanropet.
+I det här fallet körs de inre funktionsanropen `summa(5, 2)` och `summa(2, 3)` först. Värdena som returneras (7 och 5) används som argument för det yttre funktionsanropet.
 
 Det yttre funktionsanropet `differens(7, 5)` returnerar värdet 2, som lagras i variabeln `resultat` och skrivs ut.
 
@@ -509,7 +509,7 @@ För att sammanfatta: värden som returneras av funktioner fungerar som alla and
 
 ## Skillnaden mellan `return` och `print`
 
-Ibland kan skillnaden mellan att använda `return` och `print` inom en funktion vara oklara. Vi undersöker två olika sätt att göra en funktion som berättar vilket av två värden är större:
+Ibland är det inte helt klart vad skillnaden mellan att använda `return` och `print` är. Vi undersöker två olika sätt att skapa en funktion som berättar vilket av två värden är större:
 
 ```python
 def max1(a, b):
@@ -556,13 +556,13 @@ Den andra versionen, `max2`, använder sig av `print`-instruktionen inom funktio
 max2(7, 5)
 ```
 
-…och det större värdet kommer att skrivas ut. Det dåliga med den här funktionen är att värdet som funktionen räknar ut inte kan användas av själva programmet. Därför är funktioner som returnerar ett värde ofta ett bättre alternativ.
+…och det större värdet kommer att skrivas ut. Det dåliga med den här funktionen är att värdet som funktionen räknar ut inte lagras någonstans och därmed inte kan användas av själva programmet. Därför är funktioner som returnerar ett värde ofta ett bättre alternativ.
 
 <programming-exercise name='Störst av talen' tmcname='osa04-05_storst'>
 
-Skapa funktionen `storst` som returnerar den största siffran av de tre givna argumenten.
+Skapa funktionen `storst` som returnerar det största talet av de tre givna argumenten.
 
-Käyttöesimerkki
+Exempel:
 
 ```python
 print(storst(3, 4, 1)) # 4
@@ -574,7 +574,7 @@ print(storst(0, 0, 0)) # 0
 
 <programming-exercise name='Lika tecken' tmcname='osa04-06_lika'>
 
-Skapa funktionen `lika` som får som argument en sträng och två heltal som syftar till index. Funktionen ska returnera `True` eller `False` beroende på om tecknen vid dessa index i strängen är lika eller inte. Om något av indexen inte finns i strängen ska funktionen returnera `False`.
+Skapa funktionen `lika` som får som argument en sträng och två heltal som representerar index. Funktionen ska returnera `True` eller `False` beroende på om tecknen vid dessa index i strängen är lika eller inte. Om något av indexen inte finns i strängen ska funktionen returnera `False`.
 
 Några exempel:
 
@@ -593,9 +593,9 @@ print(lika("kodexpert", 0, 20)) # False
 
 <programming-exercise name='Första, andra och sista' tmcname='osa04-07_forsta_andra_sista'>
 
-Skapa tre funktioner: `ord_ett`, `ord_tva` och `sista_ordet`. Alla funktioner får som argument en sträng som består av en mening.
+Skapa tre funktioner: `ord_ett`, `ord_tva` och `sista_ordet`. Alla tre funktioner ska ta en mening (alltså en sträng) som argument. 
 
-Funktionerna returnerar meningens första, andra eller sista ord.
+Funktionerna ska returnera meningens första, andra respektive sista ord.
 
 Du kan anta att strängen alltid innehåller minst två ord och exakt ett mellanslag mellan orden. Det finns inga mellanslag i början eller slutet av strängen.
 
@@ -624,7 +624,7 @@ print(sista_ordet(mening)) # gunilla
 
 </programming-exercise>
 
-## Typen av ett argument
+## Argumentets typ
 
 Här är en kort repetition av de datatyper vi bekantat oss med hittills:
 
@@ -633,7 +633,7 @@ Tyyppi        | I Python | Exempel
 Heltal        | `int`    | `23`
 Flyttal       | `float`  | `-0.45`
 Sträng        | `str`    | `"Petra Python"`
-Sanningsvärde | `bool`   | `True`
+Sanningsvärde (Boolean) | `bool`   | `True`
 
 När du anropar en funktion, kommer den bara att fungera korrekt då argumenten du ger åt den är av korrekt typ. Ta en titt på det här exemplet:
 
@@ -660,7 +660,7 @@ Hejsan
 
 </sample-output>
 
-Om vi däremot ger funktionen ett argument av fel typ så kommer funktionen inte att fungera:
+Om vi däremot ger funktionen ett argument av fel typ så kommer den inte att fungera:
 
 ```python
 skriv_ut_flera_ganger("Hejsan", "Emilia")
@@ -672,9 +672,9 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 </sample-output>
 
-Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0) på den andra raden av funktionsdefinitionen. Det givna argumentet `"Emilia"` är en sträng och inte ett heltal. Strängar och heltal kan inte jämföras så här enkelt – därmed felmeddelandet.
+Problemet här är att den andra parametern `ganger` jämförs med ett heltal (0) på den andra raden av funktionsdefinitionen. Det givna argumentet `"Emilia"` är en sträng och inte ett heltal. Strängar och heltal kan inte jämföras så här enkelt – därav felmeddelandet.
 
-För att undvika problem som dessa kan du inkludera typledtrådar (type hints) när du definierar funktioner. Typledtråden berättar vilken typ av argument funktionen förväntar sig motta:
+För att undvika den här typen av problem kan du inkludera typledtrådar (type hints) när du definierar funktioner. Typledtråden berättar vilken typ av argument funktionen förväntar sig motta:
 
 ```python
 def skriv_ut_flera_ganger(meddelande : str, ganger : int):
@@ -683,9 +683,9 @@ def skriv_ut_flera_ganger(meddelande : str, ganger : int):
         ganger -= 1
 ```
 
-Det här berättar för alla användare av funktionen att argumentet som lagras i `meddelande` ska vara en sträng medan argumentet som lagras i `ganger` ska vara ett heltal.
+Det här berättar för alla användare av funktionen att det första argumentet som skickas till funktionen ska vara en sträng och det andra ett heltal. 
 
-Också typen av returvärdet kan specificeras när funktionen definieras:
+Också returvärdet typ kan specificeras när funktionen definieras:
 
 ```python
 def fraga_namn() -> str:
@@ -693,8 +693,8 @@ def fraga_namn() -> str:
     return namn
  ```
 
-Det här berättar för användaren att funktionen borde returnera en sträng.
+Det här berättar för användaren att funktionen kommer att returnera en sträng.
 
-Obs! Typledtrådar är bokstavligen ledtrådar. Det är inte en garanti och kan inte säkerställa att felaktiga datatyper inte ges till eller returneras av en funktion. Om det här sker kommer funktionen ändå att köras, men den fungerar inte nödvändigtvis korrekt.
+Obs! Typledtrådar är bokstavligen ledtrådar. Det är inte en garanti och kan inte säkerställa att felaktiga datatyper inte ges till eller returneras av en funktion. Om det här sker kommer funktionen ändå att köras, med resultatet att den inte nödvändigtvis fungerar korrekt.
 
 <quiz id="5702d07b-676c-5ec2-ac2e-3d0f3b1b7d4e"></quiz>
