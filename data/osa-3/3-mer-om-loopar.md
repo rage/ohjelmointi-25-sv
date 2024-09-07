@@ -10,15 +10,15 @@ Efter den här delen
 
 * vet du när `break`-instruktionen behövs för att avsluta en loop
 * kan du använda `continue`-instruktionen för att fortsätta till nästa iteration
-* förstår du hur kapslade loopar fungerar.
+* förstår du hur nästlade loopar fungerar.
 
 </text-box>
 
 ## `break`-instruktionen
 
-Du har redan bekantat dig med `break`-instruktionen. Det kan användas för att direkt avsluta en loop. Ett exempel på ett användningsområde för `break`-instruktionen är då man ber användaren om någon information och loopen ska avslutas när ett visst värde ges.
+Du har redan bekantat dig med `break`-instruktionen. Det kan användas för att direkt avsluta en loop. Ett exempel på ett användningsområde är då man ber användaren om någon information och loopen ska avslutas när ett visst värde matats in.
 
-Samma funktionalitet kan skapas utan `break`-instruktionen med ett passligt villkor. De här två programmen ber användaren ge siffor som adderas ihop tills användaren skriver siffran -1.
+Samma funktionalitet kan skapas utan `break`-instruktionen genom att formulera ett lämpligt villkorsuttryck för while-loopen. Följande två program ber användaren mata in tal som adderas ihop tills användaren matar in -1.
 
 ```python
 # version 1 med break-instruktion
@@ -26,10 +26,10 @@ Samma funktionalitet kan skapas utan `break`-instruktionen med ett passligt vill
 summa = 0
 
 while True:
-    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if tal == -1:
         break
-    summa += siffra
+    summa += tal
 
 print (f"Summan är {summa}")
 ```
@@ -38,17 +38,17 @@ print (f"Summan är {summa}")
 # version 2 utan break-instruktion
 
 summa = 0
-siffra = 0
+tal = 0
 
-while siffra != -1:
-    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
-    if siffra != -1:
-        summa += siffra
+while tal != -1:
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if tal != -1:
+        summa += tal
 
 print (f"Summan är {summa}")
 ```
 
-Båda programmen skriver ut samma saker med samma indata, exempelvis:
+Båda programmen ger samma utskrift med samma indata, exempelvis:
 
 <sample-output>
 
@@ -61,9 +61,9 @@ Summan är 14
 
 </sample-output>
 
-Båda programmen är alltså identiska till deras funktion men den första metoden är ofta enklare eftersom villkoret `siffra == 1` endast finns på ett ställe och variabeln `siffra` behöver inte initieras utanför loopen.
+Båda programmen är alltså identiska till sin funktionalitet, men den första metoden är ofta enklare eftersom villkoret `tal == 1` endast finns på ett ställe och variabeln `tal` inte behöver initieras utanför loopen.
 
-`break`-instruktionen kan kombineras med ett passligt villkor. Till exempel följande loop upprepas så länge summan av siffrorna är högst 100, men avslutas också då man ger siffran -1.
+`break`-instruktionen kan kombineras med ett lämpligt villkor. Till exempel körs följande loop så länge som summan av talen är högst 100, men avslutas också då man matar in -1.
 
 Så här kan det se ut när programmet körs:
 
@@ -71,10 +71,10 @@ Så här kan det se ut när programmet körs:
 summa = 0
 
 while summa <= 100:
-    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if tal == -1:
         break
-    summa += siffra
+    summa += tal
 
 print (f"Summan är {summa}")
 ```
@@ -102,18 +102,18 @@ Summan är 106
 
 </sample-output>
 
-I det första exemplet avslutas loopen eftersom användaren ger siffran -1. I det andra exemplet avslutas loopen eftersom summan blir större än 100.
+I det första exemplet avslutas loopen eftersom användaren matar in -1. I det andra exemplet avslutas loopen eftersom summan blir större än 100.
 
-Som alltid inom programmering finns det flera sätt att uppnå samma resultat. Följande program fungerar på identiskt sätt jämfört med de två exemplen ovan:
+Som alltid inom programmering finns det flera sätt att uppnå samma resultat. Följande program fungerar på samma sätt som de två exemplen ovan:
 
 ```python
 summa = 0
 
 while True:
-    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if tal == -1:
         break
-    summa += siffra
+    summa += tal
     if summa > 100:
         break
 
@@ -122,22 +122,22 @@ print (f"Summan är {summa}")
 
 ## `continue`-instruktionen
 
-Ett annat sätt att påverka hur en loop körs är `continue`-instruktionen. Det får loopen att hoppa till början, där villkoret för loopen finns. Loopen fortsätter köra normalt därifrån börjandes från att kolla villkoret:
+Ett annat sätt att påverka hur en loop körs är `continue`-instruktionen. Det får loopen att hoppa till början av kodblocket, det vill säga så att villkoret kollas innan följande iteration körs. Det är alltså ett sätt att avbryta en given runda/iteration av loopen, utan att avbryta hela loopen. 
 
 <img src="3_3.png">
 
-Till exempel följande program adderar siffor som användaren ger, men bara då den givna siffran är mindre än tio. Om siffran är tio eller större, hoppar man till början av loopen utan att addera siffran.
+Till exempel adderar följande program de tal som användaren matar in, men bara då det givna talet är mindre än tio. Om talet är tio eller större, hoppar man till början av loopen utan att lägga till talet.
 
 ```python
 summa = 0
 
 while True:
-    siffra = int(input("Ge ett tal, -1 avslutar programmet: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
+    if tal == -1:
         break
-    if siffra >= 10:
+    if tal >= 10:
         continue
-    summa += siffra
+    summa += tal
 
 print (f"Summan är {summa}")
 ```
@@ -153,18 +153,18 @@ Summan är 16
 
 </sample-output>
 
-## Kapslade loopar
+## Nästlade loopar
 
-Precis som med if-satser kan loopar placeras inom andra loopar. Till exempel följande program använder sig av en loop för att fråga efter en siffra från användaren. Inom den här loopen finns en annan loop som räknar ner från det givna talet till ett:
+Precis som med if-satser kan loopar placeras innanför andra loopar. Till exempel använder sig följande program av en loop för att fråga efter ett tal av användaren. Innanför denna loop finns en annan loop som räknar ner från det givna talet till ett:
 
 ```python
 while True:
-    siffra = int(input("Ge ett tal: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal: "))
+    if tal == -1:
         break
-    while siffra > 0:
-        print(siffra)
-        siffra -= 1
+    while tal > 0:
+        print(tal)
+        tal -= 1
 ```
 
 <sample-output>
@@ -189,21 +189,21 @@ Ge ett tal: **-1**
 
 </Sample-output>
 
-I kapslade loopar är det bra att märka att `break` och `continue` endast påverkar den innersta loopen de är i. Föregående exemplet skulle kunna skrivas så här:
+I nästlade loopar är det bra att märka att `break` och `continue` endast påverkar den innersta loopen de finns i. Det föregående exemplet skulle kunna skrivas så här:
 
 ```python
 while True:
-    siffra = int(input("Ge ett tal: "))
-    if siffra == -1:
+    tal = int(input("Ge ett tal: "))
+    if tal == -1:
         break
     while True:
-        if siffra <= 0:
+        if tal <= 0:
             break
-        print(siffra)
-        siffra -= 1
+        print(tal)
+        tal -= 1
 ```
 
-Här avslutar den andra `break`-instruktionen endast den inre loopen som används för att skriva ut siffrorna.
+Här avslutar den andra `break`-instruktionen endast den inre loopen som används för att skriva ut talen.
 
 ## Hjälpvariabler med loopar
 
@@ -229,17 +229,17 @@ Ge ett tal: **8**
 
 Hjälpvariabeln `i` har tilldelats värdet 0 före loopen, som ökar på talet med två för varje iteration.
 
-När man använder kapslade loopar kan det uppstå ett behov för en ny hjälpvariabel för den inre loopen. Följande program skriver ut en "sifferpyramid" baserat på den siffra som användaren angett:
+När man använder kapslade loopar kan det uppstå ett behov för en ny hjälpvariabel för den inre loopen. Följande program skriver ut en "sifferpyramid" baserat på det tal som användaren angett:
 
 ```python
-siffra = int(input("Ge ett tal: "))
-while siffra > 0:
+tal = int(input("Ge ett tal: "))
+while tal > 0:
     i = 0
-    while i < siffra:
+    while i < tal:
         print(f"{i} ", end="")
         i += 1
     print()
-    siffra -= 1
+    tal -= 1
 ```
 
 <sample-output>
@@ -253,17 +253,17 @@ Ge ett tal: **5**
 
 </sample-output>
 
-I programmet använder den yttre loopen hjälpvariabeln `siffra` som minskar med ett tills det når till noll. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
+I programmet använder den yttre loopen hjälpvariabeln `tal` som minskar med ett tills dess värde blir 0. Hjälpvariabeln `i` tilldelas värdet 0 före man fortsätter till den inre loopen – varje gång den yttre loopen upprepas.
 
-Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `siffra`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-instruktionen i den yttre loopen en ny rad.
+Den inre loopen använder sig av hjälpvariabeln `i` som ökar med talet 1 för varje iteration av den inre loopen. Den inre loopen fortsätter tills `i` är lika med `tal`, och skriver ut varje värde hos `i` med mellanslag emellan. När loopen avslutas skapar `print`-instruktionen i den yttre loopen en ny rad.
 
-I och med att värdet på `siffra` minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
+I och med att värdet på `tal` minskar för varje iteration av den yttre loopen, kommer antalet iterationer hos den inre loopen att minska. Vid varje upprepning blir sifferraden kortare, vilket bildar "pyramiden".
 
-Kapslade loopar kan vara svårtolkade på en första titt, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors [visualiseringsverktyg](https://pythontutor.com/visualize.html) för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden ovan till kodfönstret och följ hur utskriften formar sig och hur hjälpvariablernas värden ändras medan programmet körs.
+Nästlade loopar kan vara svårtolkade vid första anblicken, men det är viktigt att förstå hur de fungerar. Du kan använda dig av Python Tutors [visualiseringsverktyg](https://pythontutor.com/visualize.html) för att bättre förstå hur ovanstående exempel fungerar. Kopiera koden till kodfönstret och följ med hur utskriften formas och hur hjälpvariablernas värden ändras medan programmet körs.
 
 <in-browser-programming-exercise name="Multiplikationstabell" tmcname="osa03-15b_multiplikationstabell">
 
-Skapa ett program som ber om ett positivt heltal från användare. Programmet ska skriva ut multiplikationsoperationer fram till talet, enligt exemplen nedan:
+Skapa ett program som ber om ett positivt heltal av användaren. Programmet ska skriva ut multiplikationsoperationer ända upp till det talet, enligt följande exempel: 
 
 <sample-output>
 
@@ -295,7 +295,7 @@ Ge ett tal: 3
 
 <in-browser-programming-exercise name="Ordens första bokstäver" tmcname="osa03-16_forsta_bokstaverna">
 
-Skapa ett program som ber användaren ange en mening. Programmet skriver därefter ut den första bokstaven i varje ord på sin egen rad.
+Skapa ett program som ber användaren mata in en mening. Programmet skriver därefter ut den första bokstaven i varje ord på sin egen rad.
 
 Exempel:
 
@@ -313,9 +313,9 @@ g
 
 <in-browser-programming-exercise name="Fakulteter" tmcname="osa03-17_fakulteter">
 
-Skapa ett program som ber användaren ange ett heltal. Om talet är negativt eller noll, avslutas programmet. I övriga fall skriver programmet ut talets fakultet.
+Skapa ett program som ber användaren mata in ett heltal. Om talet är negativt eller noll, avslutas programmet. I övriga fall skriver programmet ut talets fakultet.
 
-Fakultet räknas genom att multiplicera talet med sig själv samt alla mindre positiva heltal. Fakulteten för 5 är t.ex. `1 * 2 * 3 * 4 * 5 = 120`.
+Fakulteten beräknas genom att multiplicera talet med sig själv samt alla mindre positiva heltal. Fakulteten för 5 är t.ex. `1 * 2 * 3 * 4 * 5 = 120`.
 
 Exempel:
 
@@ -343,7 +343,7 @@ Tack och hej!
 
 <in-browser-programming-exercise name="Sväng paren" tmcname="osa03-18_svang_paren">
 
-Skapa ett program som skriver ut talen från ett till det tal användaren angett. Talen ska parvis vara omvända.
+Skapa ett program som skriver ut tal från 1 till det tal användaren matat in. Talen ska komma i turvis omvänd ordning som i följande exempel: 
 
 <sample-output>
 
@@ -372,7 +372,7 @@ Ge ett tal: **6**
 
 <in-browser-programming-exercise name="Turvis" tmcname="osa03-19_turvis">
 
-Skapa ett program som ber användaren ange ett tal. Programmet ska skriva ut talen turvis enligt följande exempel:
+Skapa ett program som ber användaren mata in ett tal. Programmet ska skriva ut talen turvis enligt följande exempel:
 
 <sample-output>
 
