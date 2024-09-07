@@ -8,26 +8,28 @@ hidden: false
 
 Efter den här delen
 
-* vet du vad en loop betyder i programmeringssammanhang
+* vet du vad en loop (slinga) betyder i programmeringssammanhang
 * kan du använda dig av en `while True` -loop i dina program
-* kommer du att kunna använda dig av `break`-instruktionen för att avbryta loopen.
+* kommer du att kunna använda dig av `break`-instruktionen för att avbryta en loop.
 
 </text-box>
 
-Vi har nu undersökt if-satser. Ett annat viktigt koncept inom programmering är repetition. De här två koncepten är grundläggande strukturer som varje programmerare väntas kunna. De är kontrollstrukturer – de ger dig möjligheten att påverka vilka kodrader körs och när de körs. Medan if-satser låter dig välja mellan olika delar av kod, finns loopar till för att köra en del av koden på nytt. Programmet går alltså tillbaka till en viss rad i koden ett antal gånger. En iteration är en "runda" av en loop – det vill säga den process då loopens kod körs från början till slutet.
+Vi har nu undersökt if-satser som gör det möjligt för oss att skriva program där olika block körs i olika situationer (alternativ). Ett annat viktigt koncept inom programmering är repetition (eller iteration). Alternativ och repetition är två grundläggande konstruktioner som varje programmerare förväntas kunna. De är kontrollstrukturer – de ger dig möjlighet att påverka vilka kodrader som ska köras och när. Medan if-satser låter dig välja mellan olika delar av kod, används repetition för att köra delar av koden flera gånger. Programmet går alltså tillbaka till en viss rad i koden ett antal gånger. 
 
-I den här delen presenterar vi en enkel while-loop. Dess struktur påminner om if-satsen. I nästa del dyker vi djupare in i det som loopar kan erbjuda oss.
+När man pratar om repetition i programmeringssammanhang använder man ofta det engelska begreppet loop även om det finns ett svenskt begrepp (slinga, silmukka på finska). En iteration är en "runda" i loopen – det vill säga när koden körs från början till slutet en gång. 
 
-Vi tar en titt på ett program som ber användaren att ge en siffra som skrivs upp upphöjt med två. Programmet körs tills användaren ger siffran -1:
+I den här delen presenterar vi en enkel while-loop. Dess struktur påminner om if-satsen. I nästa del dyker vi djupare in i de möjligheter som loopar ger.
+
+Vi tar en titt på ett program som ber användaren att mata in ett tal som sedan skrivs ut upphöjt till två. Programmet körs tills användaren matar in -1:
 
 ```python
 while True:
-    siffra = int(input("Ge en siffra, -1 avslutar programmet: "))
+    tal = int(input("Ge ett tal, -1 avslutar programmet: "))
 
-    if siffra == -1:
+    if tal == -1:
         break
 
-    print(siffra ** 2)
+    print(tal ** 2)
 
 print("Tack och hej!")
 ```
@@ -36,37 +38,37 @@ Så här kan det se ut när programmet körs:
 
 <sample-output>
 
-Ge en siffra, -1 avslutar programmet: **2**
+Ge ett tal, -1 avslutar programmet: **2**
 4
-Ge en siffra, -1 avslutar programmet: **4**
+Ge ett tal, -1 avslutar programmet: **4**
 16
-Ge en siffra, -1 avslutar programmet: **10**
+Ge ett tal, -1 avslutar programmet: **10**
 100
-Ge en siffra, -1 avslutar programmet: **-1**
+Ge ett tal, -1 avslutar programmet: **-1**
 Tack och hej!
 
 </sample-output>
 
-Som du ser ovan, frågar programmet om ett nummer flera gånger. Detta tack vare while-satsen. När användaren anger siffran -1 kommer `break`-instruktionen att köras. Loopen avbryts och programmet fortsätter efter while-blocket.
+Som du ser ovan, frågar programmet om ett tal flera gånger tack vare while-satsen. När användaren anger siffran -1 kommer `break`-instruktionen att köras. Den gör att loopen genast avbryts och programkörningen fortsätter efter while-blocket.
 
-När man arbetar med loopar är det viktigt att loopen avslutas vid något skede. Om man inte tar det här i beaktande kan loopen fortsätta för evigt. Vi ändrar lite på ovanstående exempel för att åstadkomma en sådan här situation:
+En av de viktigaste sakerna att komma ihåg när man jobbar med while-loopar är att man måste se till att loopen avslutas i något skede. Annars kan vi få evighetsmaskiner, där loopen fortsätter för evigt (eller ja, tills vi stänger av programmet). Vi ändrar lite på ovanstående exempel för att åstadkomma en sådan situation:
 
 ```python
-siffra = int(input("Ge en siffra, -1 avslutar programmet: "))
+tal = int(input("Ge ett tal, -1 avslutar programmet: "))
 while True:
-    if siffra == -1:
+    if tal == -1:
         break
 
-    print(siffra ** 2)
+    print(tal ** 2)
 
 print("Tack och hej!")
 ```
 
-I den här versionen frågar programmet användaren efter siffran utanför loopen. Om användaren ger någon annan siffra än -1 kommer loopen aldrig att avslutas. Vi har en oändlig loop vilket i princip betyder att koden körs oavbrutet, för evigt:
+I den här versionen frågar programmet användaren efter talet utanför loopen. Om användaren matar in något annat tal än -1 kommer loopen aldrig att avslutas. Vi har en oändlig loop vilket i princip betyder att koden körs oavbrutet, förevigt:
 
 <sample-output>
 
-Ge en siffra, -1 avslutar programmet: **2**
+Ge ett tal, -1 avslutar programmet: **2**
 4
 4
 4
@@ -104,7 +106,7 @@ Korrekt pin-kod
 
 <in-browser-programming-exercise name="Fortsätter vi?" tmcname="osa02-15_fortsatt">
 
-Skriv enligt föregående exempel ett program som skriver ut texten "hej" och frågar "Fortsätter vi?" tills användaren svarar "nej". Efter det här skriver programmet ut "inte då" och programmet avslutas.
+Skriv enligt föregående exempel ett program som skriver ut texten "hej" och frågar "Fortsätter vi?" tills användaren svarar "nej". Efter det här skriver programmet ut "inte då" varpå programmet avslutas.
 
 Exempel:
 
@@ -126,12 +128,14 @@ inte då
 
 <in-browser-programming-exercise name="Valida värden" tmcname="osa02-16_validering">
 
-Skapa ett program som frågar efter siffror från användaren. Om siffran är negativ, skriver man ut meddelandet "Ogiltigt tal" och ett nytt tal tillfrågas. Om siffran är noll, avslutas loopen.
+Skapa ett program som ber användaren mata in tal. 
 
-Om siffran är positiv, skriver programmet ut siffrans kvadratrot med hjälp av `sqrt`-funktionen som är tillgänglig tack vare `import`-satsen. Exempel på funktionen:
+Om talet är negativt, ska programmet skriva ut meddelandet "Ogiltigt tal" och fråga efter ett nytt tal. 
+Om talet är noll, avslutas loopen.
+Om talet är positivt, skriver programmet ut siffrans kvadratrot med hjälp av `sqrt`-funktionen som vi kan få tillgång till med hjälp av `import`-satsen (vi importerar funktionen ur matematik-modulen, mer om detta senare i kursen). Exempel på funktionen:
 
 ```python
-# det här ska vara i början av programmet för att sqrt ska fungera
+# from... import måste finnas i början av programmet för att sqrt ska fungera
 from math import sqrt
 
 print(sqrt(9))
@@ -198,7 +202,7 @@ Korrigera problemet i koden.
 
 <in-browser-programming-exercise name="Lösenord på nytt" tmcname="osa02-18_losenord">
 
-Skapa ett program som ber användaren att ange ett lösenord och upprepa lösenordet, tills användaren anger det första lösenordet på nytt.
+Skapa ett program som ber användaren att ange ett lösenord och upprepa lösenordet. Så länge som de två inmatade lösenorden inte matchar, ska programmet be användaren upprepa lösenordet. 
 
 <sample-output>
 
@@ -216,9 +220,9 @@ Kontot skapat!
 
 ## Loopar och hjälpvariabler
 
-Vi gör föregående exemplet en aning mer realistiskt. Det här exemplet tillåter användaren endast tre försök att ge korrekt pin-kod.
+Vi gör nu pin-kodsexemplet en aning mer realistiskt. Det här exemplet tillåter användaren endast tre försök i att ge korrekt pin-kod.
 
-Programmet består av två hjälpvariabler: `forsok` håller reda på hur många gånger användaren angett en pin-kod och `lyckades` är antingen `True` eller `False` beroende på om användaren ger den korrekta koden eller inte.
+Programmet består av två hjälpvariabler: `forsok` håller reda på hur många gånger användaren angett en pin-kod och `lyckades` är antingen `True` eller `False` beroende på om användaren har matat in den korrekta koden eller inte.
 
 ```python
 forsok = 0
@@ -235,7 +239,7 @@ while True:
         lyckades = False
         break
 
-    # vi kommer hit om koden är fel OCH tre försök inte ännu gjorts
+    # vi kommer hit om pin-koden är fel OCH tre försök inte ännu gjorts
     print("Fel! Försök igen")
 
 if lyckades:
@@ -264,13 +268,13 @@ För många försök...
 
 </sample-output>
 
-Loopen avslutas antingen om pin-koden är korrekt eller då maxantalet försök har uppnåtts. Efterföljande if-sats kollar variabeln `lyckades` värde och skriver ut ett meddelande baserat på värdet.
+Loopen avslutas antingen då pin-koden är korrekt eller maxantalet försök har uppnåtts. Efterföljande if-sats kollar variabeln `lyckades` värde och skriver ut ett meddelande baserat på det.
 
-## Print-satser för debuggning i loopar
+## print-satser för debuggning i loopar
 
-Att introducera loopar i ett program ökar på möjligheten för buggar. Därför är det viktigt att senast nu utnyttja print-satser i debuggningssyfte – dem såg vi på i den första delen av den pågående modulen.
+Att introducera loopar i ett program ökar risken för buggar. Därför är det viktigt att senast nu börja vänja dig vid att utnyttja print-satser i debuggningssyfte – dem såg vi på i den första delen av denna modul.
 
-Vi kikar på ett nästan identiskt program som i det föregående exemplet. Dock finns det en märkbar skillnad:
+Vi kikar på ett nästan identiskt program som i det föregående exemplet. Det finns dock en märkbar skillnad:
 
 ```python
 forsok = 0
@@ -372,11 +376,11 @@ Från utskriften ovan märker vi att under den tredje iterationen kommer villkor
         break
 ```
 
-Ordningen på if-satser eller grenar inom if-satser är vanliga orsaker till buggar – framför allt inom loopar. Debuggning med hjälp av print-satser hjälper förvånansvärt ofta.
+Ordningen på if-satser eller grenar inom if-satser är vanliga orsaker till buggar – framför allt när man nästlar if-satser innanför loopar. Debuggning med hjälp av print-satser hjälper förvånansvärt ofta.
 
 <in-browser-programming-exercise name="Pin och antal försök" tmcname="osa02-19_pin">
 
-Skapa ett program som frågar användaren om en pin-kod tills hon anger den korrekta pin-koden 4321. Programmet berättar hur många försök som har gjorts:
+Skapa ett program som frågar användaren om en pin-kod tills hen anger den korrekta pin-koden 4321. Programmet berättar hur många försök som har gjorts:
 
 <sample-output>
 
@@ -391,7 +395,7 @@ Korrekt, du gjorde 4 försök
 
 </sample-output>
 
-Utskriften skiljer sig då pin-koden är korrekt på det första försöket:
+Utskriften skiljer sig om användaren ger rätt pin-kod på första försöket: 
 
 <sample-output>
 
@@ -427,7 +431,7 @@ Nästa skottår efter 2020 är 2024
 
 ## Kombinera strängar med `+`-operatorn
 
-Exemplet ovan använde hjälpvariabeln `forsok` för att hålla koll på hur många gånger användaren försökt skriva in en kod:
+Exemplet ovan använde hjälpvariabeln `forsok` för att hålla koll på hur många gånger användaren skrivit in en pin-kod:
 
 ```python
 forsok = 0
@@ -438,9 +442,9 @@ while True:
     # ...
 ```
 
-Variabeln tilldelas värdet noll utanför loopen och varje iteration ökar på siffran med ett.
+Variabeln tilldelas värdet noll utanför loopen och varje iteration ökar dess värde med ett.
 
-Något liknande kan man också göra med strängar. Programmet kan till exempel hålla koll på de pin-koder användaren angett:
+Man kan också göra motsvarande sak med strängar. Programmet kan till exempel hålla koll på de pin-koder användaren angett:
 
 ```python
 koder = ""
@@ -479,7 +483,7 @@ Om användaren anger koderna 1111 2222 1234 kommer värdet på `koder` till slut
 
 ### Del 1
 
-Skapa ett program som ber användaren ange ord. Då användaren anger ordet `slut`, skriver programmet ut en berättelse som bildas av orden, varefter programmet avslutas.
+Skapa ett program som ber användaren mata in ord. Då användaren matar in ordet `slut`, ska programmet skriva ut en berättelse som bildas av orden, varefter programmet avslutas.
 
 <sample-output>
 
@@ -495,7 +499,7 @@ Det var en gång ...
 
 ### Del 2
 
-Redigera på programmet så att programmet slutar fråga efter ord då ordet `slut` anges eller då det föregående ordet upprepas.
+Redigera programmet så att det slutar fråga efter ord då ordet `slut` anges eller då samma ord skrivs in två gånger efter varandra. 
 
 <sample-output>
 
@@ -514,7 +518,7 @@ I början fanns hönan eller ägget
 
 <in-browser-programming-exercise name="Behandling av tal" tmcname="osa02-22_tal">
 
-Skapa ett program som ber användaren ange heltal. Programmet ber efter tal tills talet noll anges.
+Skapa ett program som ber användaren ange heltal. Programmet ber om tal tills användaren matar in 0.
 
 <sample-output>
 
@@ -529,9 +533,9 @@ Tal: **0**
 
 ### Del 1: Antal
 
-Efter att siffrorna har angetts, ska programmet skriva ut antalet siffror. Nollan ska inte tas i beaktande.
+Efter att talen har matats in ska programmet skriva ut antalet tal. Nollan ska inte tas i beaktande.
 
-Du behöver en ny variabel som håller koll på antalet angivna siffror.
+Du behöver en ny variabel som håller koll på antalet inmatade tal.
 
 <sample-output>
 
@@ -542,7 +546,7 @@ Tillsammans 4 tal
 
 ### Del 2: Summa
 
-Utvidga programmet så att det skriver ut summan av de angivna talen. Nollan ska inte tas i beaktande.
+Utvidga programmet så att det skriver ut summan av de inmatade talen. Nollan ska inte tas i beaktande.
 
 Så här ser utskriften ut nu:
 
@@ -556,7 +560,7 @@ Summan av talen är 34
 
 ### Del 3: Medelvärde
 
-Utveckla programmet så att det räknar medelvärdet av de angivna talen. Nollan ska inte tas i beaktande. Du kan anta att användaren ger minst ett tal.
+Utveckla programmet så att det räknar medelvärdet av de inmatade talen. Nollan ska inte tas i beaktande. Du kan anta att användaren matar in minst ett tal.
 
 <sample-output>
 
