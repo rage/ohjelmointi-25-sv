@@ -8,29 +8,29 @@ hidden: false
 
 Efter den här delen
 
-* vet du hur man använder operatorerna `and`, `or` och `not` i villkor
-* kan du skriva kapslade if-satser.
+* vet du hur man använder operatorerna `and`, `or` och `not` i villkorsuttryck
+* kan du skriva nästlade if-satser.
 
 </text-box>
 
 ## Logiska operatorer
 
-Du kan kombinera villkor med de logiska operatorerna `and` och `or`. Operatorn `and` innebär att alla villkor måste vara sanna samtidigt. Operatorn `or` kräver att minst ett av villkoren ska vara sant.
+Du kan kombinera flera villkorsuttryck med de logiska operatorerna `and` och `or`. Operatorn `and` innebär att alla ingående villkorsuttryck måste vara sanna samtidigt. Operatorn `or` kräver att minst ett av villkorsuttrycken är sant.
 
-Till exempel villkoret `nummer >= 5 and nummer <= 8` bestämmer att nummer måste samtidigt vara minst fem och högst åtta – alltså mellan fem och åtta.
+Till exempel villkoret `tal >= 5 and tal <= 8` anger att tal måste samtidigt vara minst fem och högst åtta – alltså mellan fem och åtta.
 
 ```python
-nummer = int(input("Ge en siffra: "))
-if nummer >= 5 and nummer <= 8:
-    print("Siffran är mellan 5 och 8")
+tal = int(input("Ge ett tal: "))
+if tal >= 5 and tal <= 8:
+    print("Talet är mellan 5 och 8")
 ```
 
-Villkoret `nummer < 5 or nummer > 8` bestämmer att nummer måste vara mindre än fem eller större än åtta – alltså inte mellan fem till åtta.
+Villkoret `tal < 5 or tal > 8` anger att talet måste vara mindre än fem eller större än åtta – alltså inte mellan fem till åtta.
 
 ```python
-nummer = int(input("Ge en siffra: "))
-if nummer < 5 or nummer > 8:
-    print("Siffran är inte mellan 5 och 8")
+tal = int(input("Ge ett tal: "))
+if tal < 5 or tal > 8:
+    print("Talet är inte mellan 5 och 8")
 ```
 
 Den här sanningstabellen beskriver hur operatorerna fungerar i olika situationer:
@@ -42,7 +42,7 @@ True  | False | False   | True   |
 False | True  | False   | True   |
 True  | True  | True    | True   |
 
-Ibland kan det vara händigt att veta om något värde inte är sant. Operatorn `not` byter värdet på ett villkor till det motsatta:
+Ibland kan det vara bra att veta om ett villkorsuttryck inte är sant. Operatorn `not` inverterar ett värde, dvs. byter det till det motsatta:
 
 
 a     | not a
@@ -50,7 +50,7 @@ a     | not a
 True  | False
 False | True
 
-Det ovanstående exemplet med talen 5–8 borträknade kan också skrivas så här:
+Det ovanstående exemplet som anger om talet inte är mellan 5-8 kan också skrivas så här:
 
 ```python
 nummer = int(input("Ge en siffra: "))
@@ -58,26 +58,26 @@ if not (nummer >= 5 and nummer <= 8):
     print("Siffran är inte mellan 5 och 8")
 ```
 
-Framför allt inom programmering kallas logiska operatorer Boolean-operatorer.
+Logiska operatorer kallas framför allt inom programmering för Boolean-operatorer.
 
 
 <text-box variant='hint' name='Kombinerade villkor – förenklat'>
 
-Villkoret `x >= a and x <= b` är ett mycket vanligt sätt att bestämma om talet `x` är i intervallet `a` till `b`. Den här strukturen fungerar i flera programmeringsspråk.
+Villkoret `x >= a and x <= b` är ett mycket vanligt sätt att bestämma om talet `x` ligger i intervallet `a` till `b`. Den här strukturen återkommer i flera programmeringsspråk.
 
-Python ger också oss möjligheten att använda oss av ett förenklat uttryckssätt för att kombinera villkor: `a <= x <= b` ger samma resultat som den längre versionen med `and`. Den här notationen är kanske bekant från matematikens värld men den används inte så ofta i Python – kanske för att många andra programmeringsspråk saknar liknande syntax.
+Python ger oss också möjlighet att använda oss av ett förenklat uttryckssätt för att kombinera villkorsuttryck: `a <= x <= b` ger samma resultat som den längre versionen med `and`. Den här notationen är kanske bekant från matematikens värld men den används inte så ofta i Python – kanske för att många andra programmeringsspråk saknar liknande syntax.
 
 </text-box>
 
-## Kombinera och kedja villkor
+## Att kombinera och kedja villkorsuttryck
 
-Det här programmet ber användaren att ge fyra siffror. Sedan kollar programmet vilken siffra som är störst med hjälp av några villkor:
+Det här programmet ber användaren att mata in fyra tal. Sedan kollar programmet vilket tal som är störst med hjälp av några villkor:
 
 ```python
-n1 = int(input("Ge siffra 1: "))
-n2 = int(input("Ge siffra 2: "))
-n3 = int(input("Ge siffra 3: "))
-n4 = int(input("Ge siffra 4: "))
+n1 = int(input("Ge tal 1: "))
+n2 = int(input("Ge tal 2: "))
+n3 = int(input("Ge tal 3: "))
+n4 = int(input("Ge tal 4: "))
 
 if n1 > n2 and n1 > n3 and n1 > n4:
     storst = n1
@@ -93,10 +93,10 @@ print(f" {storst} är det största talet.")
 
 <sample-output>
 
-Ge siffra 1: **2**
-Ge siffra 2: **4**
-Ge siffra 3: **1**
-Ge siffra 4: **1**
+Ge tal 1: **2**
+Ge tal 2: **4**
+Ge tal 3: **1**
+Ge tal 4: **1**
 4 är det största talet.
 
 </sample-output>
@@ -105,7 +105,7 @@ I exemplet ovan är `n1 > n2 and n1 > n3 and n1 > n4` sant endast då alla tre "
 
 <in-browser-programming-exercise name="Kontroll av ålder" tmcname="osa02-08_alderskoll">
 
-Skapa ett program som frågar om användarens ålder. Om åldern är under fem, ska programmet kommentera det här.
+Skapa ett program som ber användern mata in sin ålder och skriva ut ett meddelande beroende på åldern. Om åldern är under fem, eller t.o.m. negativ ska programmet reagera på det. 
 
 Se exemplen nedan:
 
@@ -134,9 +134,11 @@ Du måste ha skrivit fel.
 
 <in-browser-programming-exercise name="Brorsöner" tmcname="osa02-09_brorsoner">
 
-Skapa ett program som frågar efter användarens namn. Om namnet är Knatte, Fnatte eller Tjatte, antar programmet att användaren är Kalle Ankas brorson.
+Skapa ett program som ber användare mata in sitt namn. 
 
-Om namnet är Teddi eller Freddi, antar programmet att användaren är Musse Piggs brorson.
+Om namnet är Knatte, Fnatte eller Tjatte, ska programmet anta att användaren är Kalle Ankas brorson.
+
+Om namnet är Teddi eller Freddi, ska programmet anta att användaren är Musse Piggs brorson.
 
 Exempel:
 
@@ -165,7 +167,7 @@ Jag vet inte vems brorson du är.
 
 <in-browser-programming-exercise name="Vitsord och poäng" tmcname="osa02-10_vitsord_poang">
 
-Följande tabell beskriver hur vitsordet på en kurs räknas. Skapa ett program som meddelar vitsordet på basis av den här tabellen.
+Följande tabell beskriver hur man kommer fram till vitsordet på en kurs. Skapa ett program som meddelar vitsordet på basis av den här tabellen.
 
 Poäng  | Vitsord
 :-----:|:------:
@@ -205,7 +207,7 @@ Vitsord: omöjligt!
 
 <in-browser-programming-exercise name="FizzBuzz" tmcname="osa02-11_fizzbuzz">
 
-Det här programmet ska be användaren att ge en siffra. Om siffran är delbar med tre, skriver man ut Fizz. Om talet är delbart med fem, skriver man ut Buzz. Om talet är delbart med de båda talen, skriver man ut FizzBuzz.
+Det här programmet ska be användaren att mata in ett tal. Om talet är delbart med 3, skriver man ut Fizz. Om talet är delbart med 5, skriver man ut Buzz. Om talet är delbart med både 3 och 5, skriver man ut FizzBuzz.
 
 Exempel:
 
@@ -240,13 +242,13 @@ FizzBuzz
 
 ## Kapslade if-satser
 
-If-satser kan kapslas inom andra if-satser. Till exempel följande program kollar först om en siffra är noll före det kollar om talet är jämnt eller inte.
+if-satser kan nästlas innanför andra if-satser. Till exempel kollar följande program först om talet är noll innan det kollar om talet är jämnt eller inte.
 
 ```python
-nummer = int(input("Ge en siffra: "))
+tal = int(input("Ge ett tal: "))
 
-if nummer > 0:
-    if nummer % 2 == 0:
+if tal > 0:
+    if tal % 2 == 0:
         print("Talet är jämnt")
     else:
         print("Talet är ojämnt")
@@ -258,39 +260,39 @@ Så här kan programmet fungera:
 
 <sample-output>
 
-Ge en siffra: **3**
+Ge ett tal: **3**
 Talet är ojämnt
 
-Ge en siffra: **18**
+Ge ett tal: **18**
 Talet är jämnt
 
-Ge en siffra: **-4**
+Ge ett tal: **-4**
 Talet är negativt
 
 </sample-output>
 
-När man kapslar if-satser är det kritiskt att indenteringen blir rätt. Indenteringen bestämmer vilka grenar som är länkade ihop. Till exempel en if-gren och en else-gren med samma inledande mellanrum tolkas som grenar av en och samma if-sats.
+När man nästlar if-satser är det viktigt att indenteringen blir rätt. Indenteringen bestämmer vilka grenar som hör ihop. Till exempel tolkas en if-gren och en else-gren med samma indenteringsnivå som grenar av en och samma if-sats.
 
-Ofta kan likadana resultat åstadkommas både med logiska operatorer och kapslade if-satser. Det följande exemplet fungerar helt på samma sätt som det tidigare exemplet:
+Ofta kan man åstadkomma samma sak med logiska operatorer och nästlade if-satser. Det följande exemplet fungerar helt på samma sätt som exemplet ovan: 
 
 ```python
-nummer = int(input("Ge en siffra: "))
+tal = int(input("Ge ett tal: "))
 
-if nummer > 0 and nummer % 2 == 0:
+if tal > 0 and tal % 2 == 0:
     print("Talet är jämnt")
-elif nummer > 0 and nummer % 2 != 0:
+elif tal > 0 and tal % 2 != 0:
     print("Talet är ojämnt")
 else:
     print("Talet är negativt")
 ```
 
-Man kan inte på rak arm säga vilkendera lösning är bättre. Situationen bestämmer ofta hur det lönar sig att bygga upp if-satsen på ett logiskt sätt. I det här exemplet tycker flera personer att versionen med kapsling är mera intuitiv.
+Man kan inte på rak arm säga vilkendera lösning som är bättre. Situationen bestämmer ofta hur det lönar sig att bygga upp if-satsen på ett logiskt sätt. I det här exemplet tycker många att versionen med nästling är mer intuitiv.
 
 <in-browser-programming-exercise name="Skottår" tmcname="osa02-12_skottar">
 
-Ett år är ett skottår om det är delbart med fyra. Om ett år är delbart med 100 är det ett skottår bara då det är delbart med 400.
+Ett år är ett skottår om det är delbart med fyra. Om årtalet däremot är delbart med 100 är det ett skottår enbart då det är delbart med 400.
 
-Skapa ett program som frågar användaren om ett årtal. Programmet meddelar om året är ett skottår eller inte.
+Skapa ett program som ber användaren mata in ett årtal. Programmet ska sedan meddela om året är ett skottår eller inte.
 
 <sample-output>
 
@@ -317,7 +319,7 @@ Ange år: **1800**
 
 <in-browser-programming-exercise name="I mitten av alfabetet" tmcname="osa02-13_mellerst_i_alfabetet">
 
-Skapa ett program som frågar användaren efter tre bokstäver. Programmet skriver ut bokstaven som är mellerst i alfabetisk ordning.
+Skapa ett program som ber användaren mata in tre bokstäver. Programmet ska sedan skriva ut den mellersta bokstaven om man ser till den alfabetiska ordningen.
 
 Du kan anta att alla bokstäver är antingen gemener eller versaler (små/STORA).
 
@@ -346,7 +348,7 @@ Den mellersta bokstaven är B
 
 <in-browser-programming-exercise name="Gåvoskatt" tmcname="osa02-14_gavoskatt" height="500px">
 
-[Enligt skattemyndigheten](https://www.vero.fi/sv/privatpersoner/egendom/gava/) är en gåva sådan egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
+[Enligt skattemyndigheten](https://www.vero.fi/sv/privatpersoner/egendom/gava/) är en gåva egendom som överlåts till en annan person utan ersättning. Om en person får gåvor från samma person till ett värde på 5 000 euro eller mera, ska gåvoskatt betalas.
 
 När gåvan kommer från en nära släkting, räknas gåvoskatten [enligt följande tabell](https://www.vero.fi/sv/privatpersoner/egendom/gava/g%C3%A5voskatter%C3%A4knaren/):
 
@@ -360,7 +362,7 @@ Gåvans värde        | Skatt vid nedre gränsen | Skatteprocent för överstiga
 
 Till exempel för en gåva på 6 000 euro ska man betala 180 euro skatt (100 + (6000 - 5000) * 0,08). För en gåva på 75 000 euro betalar man 7 100 euro i beskattningen (4700 + (75000 - 55000) * 0,12).
 
-Skapa ett program som räknar gåvoskatten för en gåva från en nära släkting. Nedan följer några exempel.
+Skapa ett program som beräknar den gåvoskatt man måste betala på en gåva från en nära släkting. Nedan följer några exempel.
 
 <sample-output>
 
