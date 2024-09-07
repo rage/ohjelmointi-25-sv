@@ -13,17 +13,17 @@ Efter den här delen
 
 </text-box>
 
-Hittills har alla övningar i den här kursen gjorts direkt på kurssidorna i de inbäddade kodeditorerna. Att programmera i webbläddraren fungerar bra när man börjar lära sig att programmering. Nu är det ändå dags att börja använda en separat kodeditor som är anpassad just för att redigera kod.
+Hittills har alla övningar i den här kursen gjorts direkt på kurssidorna i de inbäddade kodeditorerna. Att programmera i webbläsaren fungerar bra när man börjar lära sig programmering. Nu är det ändå dags att börja använda en separat kodeditor som är anpassad just för att redigera kod.
 
 Det finns en hel del olika editorer som är skräddarsydda för programmering. På den här kursen kommer vi att använda [Visual Studio Code](https://code.visualstudio.com/) – en editor som under de senaste åren fått allt större fotfäste på marknaden.
 
-Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hända att du också måste installera Python och Python-tillägget (plugin) i Visual Studio Code. Du behöver också TMC-tillägget som tar hand om att köra de tester som finns i samband med övningarna. I TMC:s inställningar ska du välja MOOC som organisation och Python-programmering 2024 som kurs.
+Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hända att du också måste installera Python och Python-tillägget (plugin) i Visual Studio Code. Du behöver också TMC-tillägget som tar hand om att köra de tester som finns i samband med övningarna. I TMC:s inställningar ska du välja MOOC som organisation och Programmering 2024 som kurs.
 
-[Här hittar du en guide](https://www.mooc.fi/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Läs instruktionerna och gör sedan uppgiften nedan:
+[Här hittar du en guide](https://www.mooc.fi/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Kom ihåg att du ska välja den svenska kursen (Programmering 2024). Läs instruktionerna och gör sedan uppgiften nedan:
 
 <programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_vs_code'>
 
-Skapa ett program som frågar vilken kodeditor användaren har. Programmet fortsätter köra tills användaren svarar Visual Studio Code.
+Skapa ett program som frågar användaren om vilken kodeditor hen har. Programmet fortsätter köra tills användaren svarar Visual Studio Code.
 
 Exempel:
 
@@ -55,9 +55,7 @@ perfekt val!
 
 </sample-output>
 
-Kirjainten koon voi jättää huomiotta esim. muuttamalla kirjaimet pieniksi merkkijonojen metodilla `lower`, jota voi käyttää seuraavasti:
-
-Det här kan åstadkomma t.ex. genom att ändra bokstavsstorleken med metoden `lower`, och bara använda gemener:
+Du kan ignorera storleken på bokstäverna, till exempel genom att ändra bokstäverna till gemener med strängmetoden `lower`, som kan användas enligt följande:
 
 ```python
 strang = "Visual Studio CODE"
@@ -65,23 +63,23 @@ if "visual studio code" == strang.lower():
     print("strängen hittades")
 ```
 
-Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i dessa uppgifter, om du inte ombeds göra det.
+Obs! Placera inte någon kod i `if __name__ == "__main__"` -blocket i dessa uppgifter, om du inte ombeds göra det.
 
 </programming-exercise>
 
-## Köra kod
+## Att köra kod
 
-I Visual Studio Code är det enklaste sättet att köra kod att klicka på triangeln uppe i hörnet till höger. Ibland kan det hända att något program blir och köra i bakgrunden – det kanske väntar på att användaren ger någon data eller är fast i en oändlig loop – utan att du märker det. Du märker det eventuellt först när du försöker köra nästa program som helt enkelt inte kommer att köra eftersom det föregående programmet tar upp alla resurser. En snabb lösning på det här är att trycka på tangenterna Control + C samtidigt. Det här avslutar den pågående processen. Nästa program borde nu kunna köra normalt.
+I Visual Studio Code är det enklaste sättet att köra kod att klicka på triangeln ("play"-knappen) uppe i hörnet till höger. Ibland kan det hända att något program blir och köra i bakgrunden – det kanske väntar på att användaren ger någon data eller är fast i en oändlig loop – utan att du märker det. Du märker det eventuellt först när du försöker köra nästa program som helt enkelt inte kommer att köra eftersom det föregående programmet tar upp alla resurser. En snabb lösning på det här är att trycka på tangenterna Control + C samtidigt. Det här avslutar den pågående processen. Nästa program borde nu kunna köra normalt.
 
 ## Den interaktiva Pythontolken
 
 Ett av de viktigaste verktygen för en Python-programmerare är den interaktiva Python-tolken.
 
-Hur du får tolken igång beror eventuellt på den miljö där du kör Python i. På Linux och Mac kan du skriva `python3` i terminalen. På Windows kan kommandot heta `python`. Så här ser tolken ut på Mac:
+Man startar tolken på olika sätt beroende på den miljö som du kör Python i. På Linux och Mac kan du skriva `python3` i terminalen. På Windows kan kommandot heta `python`. Så här ser tolken ut på Mac:
 
 <img src="4_1_1.png">
 
-Det är också möjligt att starta tolken i Visual Studio Code. Kör först ett program genom att klicka på triangeln. Nu borde en "Terminal"-del öppnas på din skärm. Där kan du skriva `python3` (eller `python`):
+Det är också möjligt att starta tolken i Visual Studio Code. Kör först ett program genom att klicka på play-knappen (triangeln). Nu borde en "Terminal"-del öppnas på din skärm. Där kan du skriva `python3` (eller `python`):
 
 <img src="4_1_2.png">
 
@@ -149,7 +147,7 @@ Om det finns en metod som du behöver, och du minns ungefär vad dess namn är, 
 'title', 'translate', 'upper', 'zfill']
 ```
 
-Som du ser ovan, har strängar i Python har en hel del metoder. För tillfället lönar det sig att ignorera metoder som har understreck i sina namn, men andra metoder kan visa sig vara nyttiga. Vissa får du kanske att fungera på egen hand, andra kan du söka mera information om på nätet.
+Som du ser ovan, har strängar i Python en hel del metoder. För tillfället lönar det sig att ignorera metoder som har understreck i sina namn, men andra metoder kan visa sig vara nyttiga. Vissa får du kanske att fungera på egen hand, andra kan du söka mera information om på nätet.
 
 Listor i Python verkar inte ha så många metoder:
 
@@ -179,9 +177,9 @@ Vi testar på några av dem – `reverse` och `clear` verkar lovande:
 
 Som du kan notera, gör dessa metoder just det man skulle kunna anta.
 
-Märk att tolken inte skriver ut någonting när du kör instruktionen `siffror.reverse()`. Detta beror på att tolken endast skriver ut något då kodraden har ett värde. Metoden `reverse()` här returnerar inget värde.
+Märk att tolken inte skriver ut någonting när du kör instruktionen `siffror.reverse()`. Detta beror på att tolken endast skriver ut något då kodraden returnerar ett värde. Metoden `reverse()` returnerar däremot inget värde, utan ändrar på ordningen i listan "in-place". Listan ändras, men det syns inte innan vi skriver ut den eller använder den på annat sätt. 
 
-I det ovanstående exemplet skrev vi ut värdet på listan `siffor` med att skriva namnet på variabeln. I tolken behöver man sällan använda sig av `print`-instruktionen. Det är däremot inte förbjudet att använda dem.
+I det ovanstående exemplet skrev vi ut värdet på listan `siffror` med hjälp av namnet på variabeln. I tolken behöver man sällan använda sig av `print`-instruktionen. Det är däremot inte förbjudet att använda dem.
 
 Kom ihåg att stänga tolken när du är klar. Kommandona `quit()` och `exit()` fungerar bra för det här ändamålet. Även tangentkombinationerna Control + D (Linux/Mac) och Control + Z (Windows) har samma funktion. Speciellt i Visual Studio Code är det här viktigt. Om du nämligen försöker köra ett annat Python-program medan tolken är igång, kommer du att få ett ganska konstigt felmeddelande:
 
@@ -191,9 +189,9 @@ Kom ihåg att stänga tolken när du är klar. Kommandona `quit()` och `exit()` 
 
 Vi har redan övat en hel del på att debugga – främst med hjälp av print-satser. Visual Studio Code erbjuder dig ett ytterligare verktyg för ändamålet: en inbyggd visuell debuggare.
 
-För att börja debugga måste du lägga till en breakpoint – ett ställe där debuggaren stannar körandet av koden. Du kan lägga till en breakpoint genom att klicka på det vänstra hörnet av vilken som helst kodrad i ditt program.
+För att börja debugga måste du lägga till en breakpoint – ett ställe där debuggaren stannar programkörningen. Du kan lägga till en breakpoint genom att klicka på det vänstra hörnet av vilken som helst kodrad i ditt program.
 
-Det följande exemplet innehåller en icke-fungerande lösning på övningen Summan av på varandra följande tal från den förra modulen. På rad fem finns en breakpoint:
+Det följande exemplet innehåller en icke-fungerande lösning på övningen Summan av påvarandra följande tal från den förra modulen. På rad fem finns en breakpoint:
 
 <img src="4_1_5.png">
 
@@ -201,20 +199,20 @@ När breakpointen har skapats ska du välja Start debugging från Run-menyn. Det
 
 <img src="4_1_6.png">
 
-Det här startar debuggaren som kör din kod normalt tills man när breakpointen: här stannar körandet upp. Om koden ber om indata ska du minnas att skriva det in i terminalen:
+Det här startar debuggaren som kör din kod normalt tills vi kommer till breakpointen: här stannar körandet upp. Om koden ber om indata ska du minnas att mata in det i terminalen:
 
 <img src="4_1_7.png">
 
-Till vänster finns nu en Variables-vy som innehåller de nuvarande värdena på alla aktiva variabler i koden. Du kan fortsätta att köra koden rad för rad genom att klicka på pilen som riktar neråt – Step into.
+Till vänster finns nu en Variables-vy som innehåller de nuvarande värdena på alla aktiva variabler i koden. Du kan fortsätta att köra koden rad för rad genom att klicka på den nedåtriktade pilen – Step into.
 
-I den följande bilden har loopen i koden upprepat några gånger:
+I den följande bilden har loopen i koden upprepats några gånger:
 
 <img src="4_1_8.png">
 
-Debuggaren har en Debug console -flik som låter dig köra uttryck med de nuvarande variabelvärdena. Du kan till exempel kolla värdet på Boolean-uttrycket som finns i loopens villkor:
+Debuggaren har en Debug console -flik som låter dig köra uttryck med nuvarande variabelvärden. Du kan till exempel kolla värdet på Boolean-uttrycket som finns i loopens villkor:
 
 <img src="4_1_9.png">
 
-Du kan ha flera breakpoints i din kod. När körandet av koden har stannat upp kan du starta det genom att klicka på den blå triangeln. Körandet fortsätter tills nästa breakpoint nås.
+Du kan ha flera breakpoints i din kod. När programkörningen har stannat kan du starta den igen genom att klicka på den blå triangeln. Körandet fortsätter tills nästa breakpoint nås.
 
 Den inbyggda visuella debuggaren är ett bra alternativ till debuggning med print-satser. Det är upp till dig själv vilken metod du använder dig av i fortsättningen. Alla programmerare har sina egna preferenser, men det är alltid en bra idé att testa på olika alternativ förrän man bestämmer sig för att göra på ett visst sätt.
