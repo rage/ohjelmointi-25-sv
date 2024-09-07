@@ -8,16 +8,16 @@ hidden: false
 
 Efter den här delen
 
-* vet du vad listor är i Python
+* vet du vad listor i Python är
 * vet du hur du kommer åt ett visst element i en lista
-* kan du lägga till och avlägsna ett element från en lista
+* kan du lägga till och ta bort element ur en lista
 * känner du till inbyggda funktioner och metoder för listor.
 
 </text-box>
 
-Tills nu har vi lagrat data med variabler i våra program, så att varje sak har lagrats i sin egen variabel. Det här har sina begränsningar – det kan bli arbetsdrygt att tilldela variabler för allt då det finns mycket data att behandla.
+Hittills har vi lagrat data med hjälp av enkla variabler i våra program, så att varje värde har lagrats i en egen variabel. Det här har sina begränsningar – det kan bli arbetsdrygt att tilldela variabler för allt då det finns mycket data att behandla.
 
-I Python är en lista en samling av värden som finns lagrade under samma variabelnamn. Listans element skrivs mellan hakparenteser. Listans värden kallas element.
+I Python är en lista en samling av värden som finns lagrade under samma variabelnamn. Listans värden kallas element och skrivs innanför hakparenteser. 
 
 Följande instruktion skapar en ny tom lista…
 
@@ -37,7 +37,7 @@ Elementen i en lista är indexerade på samma sätt som tecken i en sträng. Ind
 
 <img src="4_2_1.png" alt="Lista indeksoidaan nollasta alkaen">
 
-Ett specifikt element kan kommas åt på samma sätt som ett specifikt tecken i en sträng, med hakparenteser:
+Vi kommer åt ett givet element i listan på samma sätt som för ett specifikt tecken i en sträng, det vill säga med hakparenteser:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -58,7 +58,7 @@ Summan av de två första: 9
 
 </sample-output>
 
-Hela listans innehåll kan också skrivas ut:
+Vi kan också enkelt skriva ut hela listans innehåll:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -71,7 +71,7 @@ print(lista)
 
 </sample-output>
 
-Till skillnad från strängar är listor föränderliga, vilket betyder att deras innehåll kan ändra. Du kan tilldela ett nytt värde till ett element i en lista på samma sätt som du kan tilldela ett nytt värde till en variabel:
+Till skillnad från strängar är listor föränderliga, vilket betyder att deras innehåll kan ändra. Vi kan inte byta ut ett tecken i en sträng till en annan, men vi kan tilldela ett nytt värde till ett element i en lista. Vi gör det på samma sätt som vi kan tilldela ett nytt värde till en variabel:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -87,7 +87,7 @@ print(lista)
 
 </sample-output>
 
-Funktionen `len` berättar antalet element i en lista:
+Funktionen `len` returnerar antalet element i en lista:
 
 ```python
 lista = [7, 2, 2, 5, 2]
@@ -103,7 +103,7 @@ print(len(lista))
 
 <programming-exercise name='Ändra på elementens värden' tmcname='osa04-07a_andra_varden'>
 
-Skapa ett program som initierar en lista med värdena `[1, 2, 3, 4, 5]`. Programmet ber därefter användaren ange ett index och ett nytt värde som programmet lagrar, och listan skrivs ut på nytt. Programmet avslutas då använder anger -1 som index.
+Skapa ett program som initierar en lista med värdena `[1, 2, 3, 4, 5]`. Programmet ber därefter användaren ange ett index och ett nytt värde som programmet ska lagra på den positionen, varefter listan skrivs ut på nytt. Programmet avslutas då använder anger -1 som index.
 
 Exempel:
 
@@ -179,7 +179,7 @@ Skonummer:
 
 <programming-exercise name='Lägg till element i en lista' tmcname='osa04-07b_nya_element'>
 
-Skapa ett program som ber användaren ge antalet siffror. Därefter ber programmet användaren ange det här antalet siffror, som läggs till i en lista i den givna ordningen.
+Skapa ett program som ber användaren att först mata in ett antal och därefter att mata in så många tal. Talen som matas in ska läggas till i en lista i den givna ordningen.
 
 Listan ska till slut skrivas ut:
 
@@ -199,21 +199,21 @@ Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa u
 
 ## Lägga till ett element på ett specifikt ställe
 
-Om du vill specificera på vilket ställe i en lista ett värde ska läggas till, kan du använda `insert`-metoden. Metoden lägger till ett element vid ett specifikt index. Alla element vid det här eller senare index flyttar ett index framåt, "mot höger":
+Om du vill specificera på vilket ställe i en lista ett värde ska läggas till, kan du använda `insert`-metoden. Metoden lägger till ett element på ett specifikt index. Alla element vid det här eller senare index flyttar ett index framåt, "mot höger":
 
 <img src="4_2_2.png" alt = "Alkion lisäys listaan">
 
-Till exempel det här programmet…
+Till exempel skriver det här programmet…
 
 ```python
-siffror = [1, 2, 3, 4, 5, 6]
-siffror.insert(0, 10)
-print(siffror)
-siffror.insert(2, 20)
-print(siffror)
+tal = [1, 2, 3, 4, 5, 6]
+tal.insert(0, 10)
+print(tal)
+tal.insert(2, 20)
+print(tal)
 ```
 
-…skriver ut följande:
+… ut följande:
 
 <sample-output>
 
@@ -229,7 +229,7 @@ Det finns två sätt för att ta bort ett element från en lista:
 * om man vet indexet för elementet kan man använda `pop`-metoden
 * om man vet innehållet i elementet kan man använda `remove`-metoden.
 
-`pop`-metoden tar indexet för elementet som ska avlägsnas som argument. Följande program tar bort elementen vid indexen 2 och 3 i listan. Märk hur indexen för de resterande elementen ändrar när ett element avlägsnas:
+`pop`-metoden tar indexet för det element som ska avlägsnas som argument. Följande program tar därmed bort elementen på indexen 2 och 3 i listan. När element avlägsnas inifrån en lista ändras naturligt nog indexen för de resterande elementen:
 
 ```python
 lista = [1, 2, 3, 4, 5, 6]
@@ -264,7 +264,7 @@ print(lista)
 
 </sample-output>
 
-`remove`-metoden tar värdet för det element som ska avlägsnas som argument. Till exempel följande program…
+Till skillnad från `pop` tar `remove`-metoden värdet för det element som ska avlägsnas som argument. Till exempel följande program…
 
 ```python
 lista = [1, 2, 3, 4, 5, 6]
@@ -304,9 +304,9 @@ print(lista)
 
 <programming-exercise name='Lägg till, ta bort' tmcname='osa04-07c_lagg_till_ta_bort'>
 
-Skapa ett program som låter användaren lägga till eller avlägsna ett värde. Varje operation görs i slutet av listan. När ett element läggs till är dess värde alltid ett större än det föregående värdet (1 om inga element finns i listan).
+Skapa ett program som låter användaren lägga till eller avlägsna ett element i en lista. Varje tillägg/borttagning görs i slutet av listan. När ett element läggs till är dess värde alltid ett större än det föregående värdet (1 om inga element finns i listan).
 
-Mellan varje operation skrivs listan ut. Här följer ett exempel:
+Listans innehåll skrivs ut mellan varje tillägg eller borttagning. Här följer ett exempel:
 
 <sample-output>
 
@@ -332,7 +332,7 @@ Obs! Placera inte kod i `if __name__ == "__main__"` -blocket i någon av dessa u
 
 </programming-exercise>
 
-Om det givna elementet inte hittas i listan, kommer remove-funktionen att ge ett fel. På samma sätt som med strängar kan vi kolla om ett element finns i en lista med hjälp av `in`-operatorn:
+Om det givna elementet inte hittas i listan, kommer remove-metoden att ge ett fel. På samma sätt som med strängar kan vi kolla om ett element finns i en lista med hjälp av `in`-operatorn:
 
 ```python
 lista = [1, 3, 4]
@@ -352,7 +352,7 @@ Listan innehåller värdet 1
 
 <programming-exercise name='Samma ord två gånger' tmcname='osa04-08_samma_tva_ganger'>
 
-Skapa ett program som ber användaren mata in ord. När användaren anger ett ord som hon gett tidigare, avslutas programmet och antalet ord skrivs ut.
+Skapa ett program som ber användaren mata in ord. När användaren anger ett ord som hen matat in tidigare, avslutas programmet och antalet ord skrivs ut.
 
 <sample-output>
 
@@ -385,7 +385,7 @@ print(lista)
 
 </sample-output>
 
-Notera att den här metoden modifierar själva listan. Alltid vill vi inte ändra på den ursprungliga listan, och då kan vi istället använda funktionen `sorted`. Den returnerar en ordnad lista:
+Notera att den här metoden modifierar själva listan "in-place". Vi vill dock inte alltid ändra på den ursprungliga listan, och då kan vi istället använda funktionen `sorted`. Den returnerar en sorterad lista:
 
 ```python
 lista = [2,5,1,2,4]
@@ -398,7 +398,7 @@ print(sorted(lista))
 
 </sample-output>
 
-Kom ihåg skillnaden mellan dessa: `sort` ändrar på ordningen i den ursprungliga listan medan `sorted` skapar en ny, ordnad kopia av listan. Med `sorted` kan vi behålla den ursprungliga ordningen hos listan:
+Kom ihåg skillnaden mellan dessa: `sort` ändrar på ordningen i den ursprungliga listan medan `sorted` skapar en ny, sorterad kopia av listan. Med `sorted` kan vi därmed behålla den ursprungliga listan med dess ursprungliga ordning:
 
 ```python
 ursprunglig = [2, 5, 1, 2, 4]
@@ -416,7 +416,7 @@ print(ordnad)
 
 <programming-exercise name='En lista, två varianter' tmcname='osa04-08b_en_lista_tva_varianter'>
 
-Skapa ett program som ber användaren ange siffror, som läggs till i en lista. Efter varje tillägg skrivs listan ut på två sätt:
+Skapa ett program som ber användaren mata in tal, som läggs till i en lista. Efter varje tillägg skrivs listan ut på två sätt:
 
 * elementen i den ordning de lagts till
 * elementen i storleksordning från det minsta till det största
@@ -474,7 +474,7 @@ Summa: 15
 
 ## Metoder och funktioner
 
-Det finns två sätt att behandla listor i Python, och det här kan ibland orsaka huvudbry. För det mesta kommer du att använda metoder hos listor – till exempel `append` och `sort`. De används med punktoperatorn hos listvariabeln:
+Det finns två sätt att behandla listor i Python, och det här kan ibland förorsaka huvudbry. Allt som oftast kommer du att använda metoder hos listor – till exempel `append` och `sort`. De används med punktoperatorn:
 
 ```python
 lista = []
@@ -489,7 +489,7 @@ lista.append(2)
 lista.sort()
 ```
 
-En del funktioner kan ta emot listor som argument. De nyss presenterade funktionerna `max`, `min`, `len` och `sorted` är goda exempel:
+En del funktioner kan ta listor som argument, hit hör till exempel de nyss presenterade funktionerna `max`, `min`, `len` och `sorted`:
 
 ```python
 lista = [3, 2, 7, 1]
@@ -497,29 +497,29 @@ lista = [3, 2, 7, 1]
 # funktionsanrop, lista som argument
 storst = max(lista)
 minst = min(lista)
-pituus = len(lista)
+langd = len(lista)
 
 print("Minst:", minst)
 print("Störst:", storst)
-print("Listan pituus:", pituus)
+print("Listans längd:", langd)
 
 # funktionsanrop, lista som argument, ordnad lista returneras
-jarjestyksessa = sorted(lista)
-print(jarjestyksessa)
+sorterad = sorted(lista)
+print(sorterad)
 ```
 
 <sample-output>
 
 Minst: 1
 Störst: 7
-Listan pituus: 4
+Listans längd: 4
 [1, 2, 3, 7]
 
 </sample-output>
 
 ## Lista som argument eller returvärde
 
-Som de inbyggda funktionerna ovan kan också våra egna funktioner ta listor som argument och returnera listor. Den följande funktionen tar reda på det mellersta – median – värdet i en ordnad lista:
+Precis som för de inbyggda funktionerna ovan kan också våra egna funktioner både ta listor som argument och returnera listor som resultat. Följande funktion tar reda på det mellersta – median – värdet i en sorterad lista:
 
 ```python
 def median(lista: list):
@@ -528,7 +528,7 @@ def median(lista: list):
     return ordnad[mellersta]
 ```
 
-Funktionen skapar en ordnad version av listan som gavs som argument och returnerar elementet i mitten. Märk heltalsdivisionsoperatorn `//` som används. Indexet i en lista måste vara ett heltal.
+Funktionen skapar en sorterad version av listan som gavs som argument och returnerar det mittersta elementet. Lägg märke till att vi här använder heltalsdivisionsoperatorn `//`. Indexet i en lista måste vara ett heltal.
 
 Funktionen fungerar på följande sätt:
 
@@ -536,8 +536,8 @@ Funktionen fungerar på följande sätt:
 skonummer = [45, 44, 36, 39, 40]
 print("Skonumrens median är", median(skonummer))
 
-iat = [1, 56, 34, 22, 5, 77, 5]
-print("Medianåldern är", median(iat))
+aldrar = [1, 56, 34, 22, 5, 77, 5]
+print("Medianåldern är", median(aldrar))
 ```
 
 <sample-output>
@@ -547,7 +547,7 @@ Medianåldern är 22
 
 </sample-output>
 
-En funktion kan också returnera en lista. Den följande funktionen ber användaren ge heltal, som sedan returneras som en lista:
+En funktion kan också returnera en lista. Följande funktion ber användaren mata in ett heltal, som sedan returneras som en lista:
 
 ```python
 def las_in_siffror():
@@ -560,7 +560,7 @@ def las_in_siffror():
     return siffror
 ```
 
-Funktionen använder sig av hjälpvariabeln `siffror`, som är en lista. Alla siffror som användaren skriver läggs till i listan. När loopen avslutas returnerar funktionen listan med satsen `return siffror`.
+Funktionen använder sig av hjälpvariabeln `siffror`, som är en lista. Alla siffror som användaren matar in läggs till i listan. När loopen avslutas returnerar funktionen listan (satsen `return siffror`).
 
 När funktionen anropas så här…
 
@@ -586,9 +586,9 @@ Medianvärdet är 4
 
 </sample-output>
 
-Det här lilla exemplet demonstrerar ett av de viktigaste användningsområdena för funktioner: de hjälper dig att dela din kod i mindre helheter som enkelt kan förstås.
+Det här lilla exemplet demonstrerar ett av de viktigaste användningsområdena för funktioner: de hjälper dig att dela upp din kod i mindre helheter som är enkla att förstå. 
 
-Samma funktionalitet kan förstås fås till stånd utan några som helst egna funktioner:
+Samma funktionalitet kan förstås åstadkommas utan några som helst egna funktioner:
 
 ```python
 siffror = []
@@ -606,20 +606,20 @@ print("Största siffran är", max(siffror))
 print("Medianvärdet är", median)
 ```
 
-I den här versionen är det svårare att uppfatta logiken bakom programmet, eftersom det inte mera är enkelt att se vilka instruktioner som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, räkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
+Det kan vara svårare att komma åt logiken i den här versionen av programmet, eftersom det inte är enkelt att se vilka instruktioner som hör till vilken funktionalitet. Koden uppnår samma mål – ta emot data, beräkna medianvärde o.s.v. – men strukturen är mycket mindre tydlig.
 
-Att dela din kod i flera funktioner kommer att förbättra läsbarheten av koden och hjälper att uppfatta logiska helheter. Det här är till nytta när du ska verifiera att programmet fungerar som det ska, eftersom varje funktion kan testas separat.
+Att dela upp din kod i flera funktioner kommer att förbättra läsbarheten och hjälper dig uppfatta logiska helheter. Det här är till nytta när du ska verifiera att programmet fungerar som det ska, eftersom varje funktion kan testas separat.
 
-En annan viktig orsak till att använda funktioner är återanvändbarhet av koden. Om du behöver samma funktionalitet på flera ställen i ditt program är det en bra idé att skapa en funktion och namnge den väl:
+En annan viktig orsak till att använda funktioner är återanvändbarhet. Om du behöver samma funktionalitet på flera ställen i ditt program är det en bra idé att skapa en funktion och namnge den väl:
 
 ```python
 print("Skonummer:")
 skor = las_in_siffror()
 
-print("Painot:")
+print("Vikter:")
 vikter = las_in_siffror()
 
-print("Pituudet:")
+print("Längder:")
 langder = las_in_siffror()
 ```
 
@@ -666,7 +666,7 @@ svar 3.0
 
 <programming-exercise name='Variationsbredd' tmcname='osa04-11_variationsbredd'>
 
-Skapa funktionen `variationsbredd` som returnerar diffrensen av det största och minsta värdet i en lista med heltal som getts som argument till funktionen.
+Skapa funktionen `variationsbredd` som returnerar differensen av det största och minsta värdet i en lista av heltal som getts som argument till funktionen.
 
 ```python
 lista = [1, 2, 3, 4, 5]
