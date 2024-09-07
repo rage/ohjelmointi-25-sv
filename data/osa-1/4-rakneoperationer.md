@@ -151,7 +151,7 @@ Så här ska programmet fungera:
 <sample-output>
 
 Ge ett tal: **3**
-När 3 multipliceras med 5, får vi 15
+3 * 5 = 15
 
 </sample-output>
 
