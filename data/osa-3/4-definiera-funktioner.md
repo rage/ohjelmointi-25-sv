@@ -8,7 +8,7 @@ hidden: false
 
 Efter den här delen
 
-* kan du skriva och kalla på dina egna funktioner
+* kan du skriva och anropa dina egna funktioner
 * förstår du vad ett argument och en parameter hos en funktion är
 * kan du definiera parametrar i dina egna funktioner.
 
@@ -18,7 +18,7 @@ Vi har redan använt funktioner som `len`, `print` och `input` i våra program. 
 
 ## Definiera en funktion
 
-Före en funktion kan användas måste den definieras. Man börjar definieringen av en funktion med nyckelordet `def` (define). Därefter följer namnet på funktionen, följt av parentes och kolon. Efter det här följer funktionens innehåll – indenterat precis som med while- och if-blocken.
+Före en funktion kan användas måste den definieras. Man inleder definitionen med nyckelordet `def` (define). Därefter följer namnet på funktionen, följt av parentes och kolon. Efter det här följer funktionens innehåll – indenterat precis som med while- och if-blocken.
 
 Den här kodsnutten definierar till exempel funktionen `meddelande`:
 
@@ -27,9 +27,9 @@ def meddelande():
     print("Det här är min funktion!")
 ```
 
-Om programmet körs, verkar det som att inget händer. Det beror på att funktionens innehåll endast körs då funktionen anropas.
+Om vi kör den här koden, ser det på ytan ut som om inget skulle hända. Det beror på att vi en så länge endast har definierat funktionen, dvs. sagt att vi har en funktion som heter meddelande och angett vilken kod den innehåller. För att få ett resultat måste vi använda funktionen. Vi säger att vi anropar, eller kallar på, funktionen. 
 
-Man kan anropa en funktion enkelt – genom att nämna dess namn i koden. Så här kan vi utveckla det föregående exemplet:
+Det är lätt att anropa en funktion – vi behöver endast nämna dess namn i koden följt av parenteserna. Så här kan vi utveckla det föregående exemplet:
 
 ```python
 def meddelande():
@@ -46,7 +46,7 @@ Det här är min funktion!
 
 </sample-output>
 
-När en funktion har definierats kan den kallas flera gånger.
+När en funktion har definierats kan den anropas flera gånger.
 
 ```python
 def meddelande():
@@ -69,16 +69,16 @@ Det här är min funktion!
 
 Obs! Från och med nu kommer de flesta av kursens uppgifter förutsätta att du definierar dina egna funktioner.
 
-När ett program består bara av funktioner verkar ingenting hända då programmet körs. Följande kod skriver inte ut någonting, även om den innehåller en `print`-sats:
+När ett program består endast av funktioner verkar ingenting hända då programmet körs. Följande kod skriver inte ut någonting, även om den innehåller en `print`-sats:
 
 ```python
 def halsa():
     print("Hejps!")
 ```
 
-Det här beror på att koden i `halsa`-funktionen endast körs då funktionen anropas.
+Det här beror igen på att koden i `halsa`-funktionen endast körs då funktionen anropas.
 
-"Huvudprogrammet" nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudfunktionen, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
+"Huvudprogrammet" nedan ska innehålla alla funktionsanrop för att kunna testa funktionerna. Python tolkar all kod utanför funktionsdefinitioner som en del av huvudprogrammet, som körs automatiskt när själva filen körs. Låt oss anropa funktionen:
 
 ```python
 def halsa():
@@ -90,7 +90,7 @@ def halsa():
 halsa()
 ```
 
-Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudfunktion är tom. Inga instruktioner bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
+Viktigt! De automatiska testerna i den här kursen kräver att övningsfilernas huvudprogram är tomt. Inga instruktioner bör lämnas i huvudfunktionen i din lösning. All kod som du använder för att testa funktioner ska istället vara innanför ett speciellt if-block:
 
 ```python
 def halsa():
@@ -105,7 +105,7 @@ Kod utanför blocket orsakar ett felmeddelande som detta:
 
 <img src="3_4_1.png">
 
-Det lönar sig också att märka att testen inte kör kod i `if __name__ == "__main__"` -block. Dit ska man inte placera kod som behövs för uppgifterna.
+Det lönar sig också att märka att testen inte kör kod i `if __name__ == "__main__"` -block. Placera alltså ingen kod som behövs för uppgifterna där. 
 
 </text-box>
 
@@ -129,7 +129,7 @@ Tuomas
 
 ## Argument hos funktioner
 
-Funktioner tar ofta emot ett eller fler argument som kan påverka på vad funktionen gör. Till exempel de inbyggda `print`- och `input`-funktionerna i Python tar emot texten som ska visas som argument:
+Funktioner tar ofta emot ett eller fler argument som kan påverka funktionens resultat. Till exempel tar de inbyggda `print`- och `input`-funktionerna emot text som ska visas som argument:
 
 ```python
 print("Hejps!")                      # som parameter strängen "Hejps!"
@@ -137,11 +137,11 @@ namn = input("Berätta ditt namn: ")  # som parameter strängen "Berätta ditt n
 print(namn)                          # som parameter värdet på variabeln namn
 ```
 
-Det har tidigare nämnts att termerna argument och parameter ofta syftar till samma sak. Skillnaden är att argument används för den data som ges till funktionen vid ett anrop, medan dessa inom funktionen tilldelas till variabler som kallas parametrar. Vi ger alltså argument till en funktion då vi anropar den. När vi definierar en funktion talar vi istället om parametrar.
+Termerna argument och parameter är nästan synonymer. Skillnaden är att argument används för den verkliga data som ges till funktionen vid ett anrop, medan dessa inom funktionen tilldelas till variabler som kallas parametrar. Vi ger alltså argument till en funktion då vi anropar den. När vi definierar en funktion talar vi istället om parametrar. Argument kallas också aktuella parametrar, medan parametrar kan kallas formella parametrar. 
 
-Det här kan kännas som en meningslös skillnad, och dessutom följer inte alla källor den här definitionen. Vi strävar att göra den här skillnaden tydlig under den här kursen. Med korrekt terminologi är det lättare att förstå andra material förutom det som den här kursen erbjuder.
+Det här kan kännas som en meningslös skillnad, och dessutom följer inte alla källor samma definition. Vi strävar efter att göra den här skillnaden tydlig under den här kursen. Med korrekt terminologi är det lättare att förstå andra material förutom det som den här kursen erbjuder.
 
-Låt oss definiera några funktioner som tar emot argument. I funktionsdefinitionen följer parametrarna funktionens namn, inom parenteserna:
+Låt oss definiera några funktioner som tar emot argument. När vi definierar funktionen sätter vi parameterns/parametrarnas namn inom parenteserna efter funktionens namn: 
 
 ```python
 def halsa(sak):
@@ -171,16 +171,17 @@ def halsa(sak):
     print("Hej", sak)
 ```
 
-På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till en variabel med namnet `sak`. Inom funktionen använder `print`-instruktionen det värde som finns lagrat i variabeln `sak`.
+På den första raden har vi definierat att funktionen tar emot ett argument och tilldelar det till variabeln `sak`. Inom funktionen använder `print`-instruktionen det värde som finns lagrat i `sak`.
 
-När funktionen anropas får parametern sak det värde som getts som argument i funktionsanropet. Till exempel följande funktionsanrop…
+När funktionen anropas får parametern sak det värde som getts som argument i funktionsanropet. Till exempel resulterar följande funktionsanrop…
 
 ```python
 namn = "Alice"
 halsa(namn)
 ```
 
-…resulterar i att variabeln `sak` får värdet `"Alice"`.
+… i att variabeln `sak` får värdet `"Alice"`. Argumentet är i detta fall namn, medan parametern är sak. 
+
 
 Namnet på en funktion ges enligt samma principer som variabelnamn. De ska vara beskrivande, i regel innehålla små bokstäver och understreck. Undantag finns igen, men vi ignorerar dem tills vidare.
 
@@ -192,7 +193,7 @@ Gör så att funktionen `forsta` i den här uppgiften skriver ut det första tec
 def forsta(strang):
      # skriv kod här
 
-# vi testar på funktionen
+# vi testar funktionen
 if __name__ == "__main__":
     forsta('python')
     forsta('yxa')
@@ -217,11 +218,11 @@ n
 
 <text-box variant='hint' name='Testa funktioner med argument'>
 
-Då du testar på funktioner som tar emot ett eller fler argument, kan det vara till nytta att testa den med olika argument.
+Då du testar funktioner som tar emot ett eller fler argument, kan det vara till nytta att testa den med olika argument.
 
 Håll koll på möjliga "speciella fall". Hur kommer funktionen att fungera om argumentet till exempel är noll eller negativt? Eller ett flyttal istället för ett heltal? Vad händer om argumentet är en tom sträng?
 
-Om en uppgift inte förutsätter att du anropar en funktion kan du ändå göra det. Använd då ett if-block enligt det som beskrevs tidigare. Testen kommer att ignorera koden inom det här blocket.
+Om en uppgift inte förutsätter att du anropar en funktion kan du göra det ändå. Använd då ett if-block enligt det som beskrevs tidigare. Testerna kommer att ignorera koden inom det här blocket.
 
 </text-box>
 
@@ -302,16 +303,16 @@ Summan av 130 och 10 är 140
 
 </sample-output>
 
-I det första funktionsanropet får parametrarna värdena `x = 1` och `y = 2`. I det andra anropet får de värdena `x = 130` och `y = 10`. Det här oavsett att vi i anropet använder variabler med samma namn.
+I det första funktionsanropet får parametrarna värdena `x = 1` och `y = 2`. I det andra anropet får de värdena `x = 130` och `y = 10`. Det här oavsett att vi i huvudprogrammet och anropet använder variabler med samma namn. För att göra koden lättläst är det dock ofta en god idé att använda skilda namn för parametrar och andra variabler.
 
 I nästa modul återkommer vi till funktionsdefinitioner.
 
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat tätä-->
 ## Varning: globala variabler inom funktioner
 
-I exemplen ovan observerade vi att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
+I exemplen ovan observerade vi att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen har också åtkomst till variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
+Att låta funktioner använda globala variabler är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
 
 Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
@@ -363,9 +364,9 @@ skriv_ut_flera_ganger("hej!!", 5)
 
 print()
 
-merkkijono = "Allt började då grannbondens gamla traktor började ryka..."
-kertaa = 3
-skriv_ut_flera_ganger(merkkijono, kertaa)
+strang = "Allt började då grannbondens gamla traktor började ryka..."
+ganger = 3
+skriv_ut_flera_ganger(strang, ganger)
 ```
 
 <sample-output>
