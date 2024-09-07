@@ -9,8 +9,8 @@ Efter den här delen
 
 * känner du till de väsentligaste termerna inom programmering
 * vet du vad skillnaden mellan en sats och ett uttryck är
-* kan du ta reda på datatypen på värdet av ett uttryck
-* har du lärt dig hur du genom att debugga hittar fel i din kod.
+* kan du ta reda på vilken datatyp ett uttrycks värde har
+* har du lärt dig hur du genom att debugga kan hitta fel i din kod.
 
 </text-box>
 
@@ -18,23 +18,23 @@ Under den första modulen fokuserade vi inte så mycket på terminologi. Nu är 
 
 ## Sats
 
-En sats (statement) är en del av ett program som kör någonting. En sats syftar ofta, men inte alltid, till en enstaka instruktion.
+En sats (statement) är en del av ett program som utför något. En sats syftar ofta, men inte alltid, på en enstaka instruktion.
 
-Till exempel `print("Hej")` är en sats som skriver ut en rad text. På samma sätt är `nummer = 2` en sats som lagrar ett värde i en variabel.
+Till exempel `print("Hej")` är en sats som skriver ut en rad text. På samma sätt är `tal = 2` en sats som lagrar ett värde i en variabel.
 
-En sats kan också vara mera invecklad. Den kan till exempel bestå av flera satser. Följande sats består av tre rader:
+En sats kan också vara mera invecklad. Den kan till exempel bestå av flera instruktioner. Följande sats består av tre rader:
 
 ```python
 if namn == "Anna":
     print("Hejsan!")
-    nummer = 2
+    tal = 2
 ```
 
-Ovan finns två satser (print-sats och tilldelningssats) inom en if-sats.
+I detta exempel finns två satser (print-sats och tilldelningssats) inom en if-sats.
 
 ## Block
 
-Ett block är en grupp av efter varandra följande satser som är på samma nivå i programmets struktur. Till exempel if-satsens block innehåller de satser som körs då villkoret är sant.
+Ett block är en sekvens av satser som kommer efter varandra och finns på samma nivå i programmets struktur. Till exempel if-satsens block innehåller de satser som körs då villkoret är sant.
 
 ```python
 if alder > 17:
@@ -47,21 +47,21 @@ if alder > 17:
 print("Det här är i ett annat block.")
 ```
 
-I Python markeras block genom att indentera all kod i blocket med samma antal mellanrum.
+I Python markeras block som vi sett tidigare med hjälp av indentering. Vi lägger alltså in mellanrum i början av raden för alla satser som hör till ett givet block. 
 
-Obs! Pythons huvudblock ska aldrig indenteras, utan ska alltid vara så långt till vänster som möjligt i filen:
+Obs! Huvudprogrammet i Python ska aldrig indenteras, utan ska alltid finnas så långt till vänster som möjligt i filen:
 
 ```python
-# det här programmet fungerar inte eftersom koden inte är indenterad till det vänstra hörnet
+# det här programmet fungerar inte eftersom huvudkoden är indenterad
   print("Hej allihopa")
   print("Det här är ett dåligt program")
 ```
 
 ## Uttryck
 
-Ett uttryck (expression) är en kodsnutt som resulterar i en viss datatyp. När programmet körs, får uttrycket ett värde som kan användas i programmet.
+Ett uttryck (expression) kan utvärderas och ger då ett resultat med en viss datatyp. När programmet körs, får uttrycket ett värde som kan användas i programmet.
 
-Här följder några exempel på uttryck:
+Här följer några exempel på uttryck:
 
 | Uttryck          | Värde     | Datatyp       | Datatyp i Python |
 |------------------|-----------|---------------|------------------|
@@ -70,23 +70,25 @@ Här följder några exempel på uttryck:
 | `11 / 2`         | `5.5`     | flyttal       | `float`          |
 | `2 * 5 > 9`      | `True`    | sanningsvärde | `bool`           |
 
-Eftersom alla uttryck har en datatyp, kan de tilldelas till en variabel:
+Eftersom alla uttryck har en datatyp, kan man tilldela uttryck till en variabel: 
 
 ```python
-# variabeln x får värdet på uttrycket 1 + 2
+# variabeln x får värdet av uttrycket 1 + 2
 x = 1 + 2
 ```
 
-Enkla uttryck kan kombineras för att få ett mera komplicerat uttryck till stånd. Så här kan man till exempel utföra räkneoperationer:
+Enkla uttryck kan kombineras till mer komplicerade uttryck. Så här kan man till exempel utföra räkneoperationer:
 
 ```python
-# variabeln y får värdet på uttrycket "3 gånger x plus x upphöjt till två"
+# variabeln y får värdet av uttrycket "3 gånger x plus x upphöjt till två"
 y = 3 * x + x**2
 ```
 
 ## Funktion
 
-En funktion kör någon slags funktionalitet. Funktioner kan också ta emot en eller flera parametrar, alltså data som funktionen tar emot och behandlar.
+En funktion utför en given uppgift i ett program. Vi har redan sett och använt flera funktioner, t.ex. `print`, `input`, `int`, `float` och så vidare. De är fördefinierade, vilket innebär att den kod som ska köras då vi använder `print`-funktionen finns färdigt i Python. Vi kan också skapa egna funktioner, vilket vi kommer att se senare. 
+
+Funktioner kan också ta emot en eller flera parametrar, alltså data som funktionen utnyttjar för att utföra sin uppgift. Parametern till `print` anger till exempel vad som ska skrivas ut. 
 
 En funktion körs då den anropas – det vill säga då funktionen och dess möjliga parametrar nämns i koden. Följande sats anropar `print`-funktionen med parametern `"det här är en parameter"`:
 
@@ -94,13 +96,13 @@ En funktion körs då den anropas – det vill säga då funktionen och dess mö
 print("det här är en parameter")
 ```
 
-En annan funktion du redan känner till väl är `input`, som används för att ta emot data från användaren. Parametern i funktionen är det meddelande som ska visas till användaren:
+Funktionen `input` används för att ta emot data från användaren, och i den anger parametern det meddelande som ska visas till användaren:
 
 ```python
 namn = input("Berätta ditt namn: ")
 ```
 
-I det här fallet returnerar funktionen också ett värde. När funktionen har körts ersätts den del i koden där funktionen anropades med det värde som funktionen returnerar – det är nu ett uttryck med ett värde. `input`-funktionen returnerar en sträng som innehåller den text som användaren gett programmet. Värdet som en funktion returnerar lagras ofta i en variabel för att programmet ska kunna använda det senare.
+I det här fallet returnerar funktionen också ett värde. När funktionen har körts ersätts den del i koden där funktionen anropades med det värde som funktionen returnerar – det är nu ett uttryck med ett värde. `input`-funktionen returnerar en sträng som innehåller den text som användaren gett programmet. För att kunna använda det värde som en funktion returnerar behöver vi lagra det i en variabel. 
 
 ## Datatyp
 
@@ -111,7 +113,7 @@ namn = "Anna"
 resultat = 100
 ```
 
-Med hjälp av funktionen `type` kan man ta reda på datatypen hos ett uttryck. Så här kan du använda funktionen:
+Med hjälp av funktionen `type` kan man ta reda på vilken datatyp en variabel, värde eller ett uttryck har:
 
 ```python
 print(type("Anna"))
@@ -127,7 +129,7 @@ print(type(100))
 
 ## Syntax
 
-På samma sätt som vanliga språk har regler för hur man skriver har även programmeringsspråk en syntax – det vill säga ett regelverk för hur koden ska skrivas. Den skiljer sig för varje programmeringsspråk.
+På samma sätt som vanliga språk har regler för hur man kan formulera meningar, har även programmeringsspråk en syntax – det vill säga ett regelverk för hur koden ska skrivas. Den skiljer sig för varje programmeringsspråk.
 
 Pythons syntax bestämmer bland annat att första raden i en if-sats ska sluta med ett kolon och att därefter följande block ska indenteras:
 
@@ -146,7 +148,7 @@ if namn == "Anna"
 <sample-output>
 
 <pre>
-  File "testi.py", line 1
+  File "test.py", line 1
     if namn == "Anna"
                     ^
 SyntaxError: invalid syntax
@@ -157,7 +159,7 @@ SyntaxError: invalid syntax
 
 ## Att debugga
 
-När syntaxen i ett program är korrekt men programmet inte ändå fungerar på önskat sätt, finns det en bugg i programmet.
+När syntaxen i ett program är korrekt men programmet inte ändå fungerar på önskat sätt, finns det troligen ett fel i programmet. Programfel kallas ofta buggar.
 
 Buggar dyker upp i olika slags situationer. Vissa kan orsaka felmeddelanden medan programmet körs. Ta det här programmet som exempel:
 
@@ -183,11 +185,11 @@ Det här felet har med matematik att göra – det går inte att dividera med no
 
 Fel som uppstår medan programmet körs är relativt lätta att korrigera. Felmeddelandet berättar på vilken rad i koden det uppstod problem. Det är förstås möjligt att felet ligger på något annat ställe i koden än just den här specifika raden.
 
-Ibland märker man en bugg eftersom det resultat som koden ger är fel. Att observera och hitta en sådan här bugg kan vara svårt. I programmeringsuppgifterna under den här kursen finns det olika tester som ska hjälpa med att hitta sådana här fel. Före en bugg kan korrigeras måste man ta reda på var felet uppstår.
+Ibland kan det finnas fel i programmet, trots att körningen går utan problem. De här buggarna är mycket svårare att märka och korrigera. Ofta handlar det om att man märker att programmet ger fel eller oväntade resultat i vissa situationer. I programmeringsuppgifterna under den här kursen finns det olika tester som ska hjälpa med att hitta sådana här fel. Före en bugg kan korrigeras måste man ta reda på var felet uppstår.
 
-Programmerare använder ofta termen debugga – att söka efter orsaker till fel som uppstår i koden. Det här är ett ytterst viktigt verktyg i en programmerares verktygslåda. I yrkeslivet använder programmerare ofta mera tid till att debugga än för att skriva ny kod.
+Programmerare använder ofta termen debugga – att söka efter orsaker till fel som uppstår i koden. Att lära sig debugga är ett ytterst viktigt verktyg i en programmerares verktygslåda. I yrkeslivet använder programmerare ofta mera tid till att debugga än för att skriva ny kod.
 
-Ett enkelt – men desto nyttigare – sätt att debugga sitt program är att lägga till `print`-satser i sin kod. Att verifiera vad som sker i koden med hjälp av print-instruktioner ger en bekräftelse att programmet gör det som du vill.
+Ett enkelt – men ändå mycket användbart – sätt att debugga sitt program är att lägga till `print`-satser i koden. Att verifiera vad som sker i koden med hjälp av print-instruktioner ger en bekräftelse att programmet gör det som du vill.
 
 Det här är ett exempel på ett försök att lösa en av föregående modulens uppgifter:
 
@@ -210,7 +212,7 @@ Det här programmet fungerar inte helt korrekt. När testen körs får vi följa
 <pre>
 FAIL: PalkkaTest: test_sunnuntai_1
 
-Syötteellä 23.0, 12, söndag oikeaa palkkaa 552.0 ei löydy tulosteestasi Lön 276.0 euro
+Med indata 23.0, 12, söndag är rätt lön 552.0 men detta finns inte i utskriften Lön 276.0 euro
 </pre>
 
 </sample-output>
@@ -223,7 +225,7 @@ Lön 276.0 euro
 
 </sample-output>
 
-Att debugga innebär vanligtvis att vi kör programmet flera gånger. Det kan vara händigt att tillfälligt hårdkoda det problematiska värdet istället för att alltid fråga efter värdet från användaren. Så här kunde det se ut i vårt exempel:
+Att debugga innebär vanligtvis att vi kör programmet flera gånger. Det kan vara bra att tillfälligt hårdkoda det problematiska värdet istället för att alltid fråga efter värdet från användaren. Så här kunde det se ut i vårt exempel:
 
 ```python
 # timlon = float(input("Timlön: "))
@@ -278,7 +280,7 @@ Lön 276.0 euro
 
 </sample-output>
 
-Problemet ligger alltså i if-satsens villkor. Som i flera andra situationer inom programmering har bokstavsstorleken också skillnad när man jämför värden. Observera att "söndagg" i Boolean-uttrycket är skrivet med två g medan det i indatat inte är det. Vi korrigerar felet – både i if-satsen och `print`-instruktionen:
+Problemet ligger alltså i if-satsens villkor. Som du kanske redan märkt vid det här laget är det oerhört viktigt att vara exakt när vi programmerar: små bokstäver tolkas som olika bokstäver än stora och varje tecken spelar roll. I det här exemplet har vi tydligen stavat söndag fel: "söndagg" i Boolean-uttrycket är skrivet med två g medan användaren skrivit rätt. Vi korrigerar felet – både i if-satsen och `print`-instruktionen:
 
 ```python
 # ...
@@ -327,9 +329,9 @@ Lön 552.0 euro
 
 </sample-output>
 
-När programmet fungerar som det ska, är det viktigt att ta bort `print`-satser och annan kod som använts för att debugga.
+När programmet fungerar som det ska, är det viktigt att ta bort alla exyta `print`-satser och annan kod som använts för att debugga.
 
-Det här var ett ganska enkelt exempel och i fall som det här kan man eventuellt hitta buggar genom att läsa igenom koden med omtanke. Att använda `print`-satser för att debugga är ändå ofta ett snabbt sätt att få en ledtråd för var problemet kan ligga. `print`-satser kan också användas för att fastställa vilka delar av koden som fungerar korrekt. Då kan man fokusera på andra ställen där buggar med större sannolikhet gömmer sig.
+Det här var ett ganska enkelt exempel och i fall som det här kan man eventuellt hitta buggar genom att noggrant läsa igenom koden. Att använda `print`-satser för att debugga är ändå ofta ett snabbt sätt att få en ledtråd gällande var problemet kan ligga. `print`-satser kan också användas för att ta reda på vilka delar av koden som fungerar korrekt. Då kan man fokusera på övriga ställen i koden där felen med större sannolikhet gömmer sig.
 
 `print`-satser är bara ett sätt att debugga program. Vi återkommer till det här ämnet senare under kursen. Nu ska du bli van vid att debugga, med hjälp av `print`-instruktioner, för att hitta problematiska delar i din kod. Proffs klarar sig inte utan `print`-satser i debuggningssyfte – det är alltså en viktig resurs redan som nybörjare.
 
@@ -372,7 +374,7 @@ Ha en trevlig fortsättning på dagen!
 
 <in-browser-programming-exercise name="Antalet tecken" tmcname="osa02-02_antalet_tecken">
 
-Med funktionen `len` kan man bland annat räkna längden på en sträng. Funktionen returnerar antalet tecken i strängen.
+Med funktionen `len` kan man bland annat ta reda på längden på en sträng. Funktionen returnerar antalet tecken i strängen.
 
 Exempel:
 
@@ -431,7 +433,7 @@ Tack!
 
 <in-browser-programming-exercise name="Konvertera värden" tmcname="osa02-03_konvertera_varden">
 
-I Python kan man ofta konvertera ett värde från en datatyp till en annan. Ett flyttal kan till exempel konverteras till ett heltal med funktionen `int`:
+Som vi redan sett i samband med `input`-funktionen behöver man ofta konvertera ett värde från en datatyp till en annan. Ett flyttal kan till exempel konverteras till ett heltal med funktionen `int`:
 
 ```python
 temperatur = float(input("Ange temperatur: "))
@@ -449,7 +451,7 @@ Alltså ungefär 5
 
 </sample-output>
 
-Observera att funktionen inte avrundar värdet på det sättet vi kunde anta från matematiken. Siffran avrundas alltid nedåt (golvfunktion):
+Observera att funktionen inte avrundar värdet på det sätt som vi kanske kunde anta från matematiken. Siffran avrundas alltid nedåt (golvfunktion):
 
 <sample-output>
 
