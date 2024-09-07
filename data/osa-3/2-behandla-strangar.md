@@ -32,7 +32,7 @@ exempel
 
 </sample-output>
 
-Operatorn `*` kan också användas med strängar då den andra operanden är ett heltal. Strängoperanden kommer då att upprepas det antal gånger som specificeras av heltalet. Till exempel följande skulle fungera:
+Operatorn `*` kan också användas med strängar då den andra operanden är ett heltal. Strängoperanden kommer då att upprepas det antal gånger som specificeras av heltalet. Till exempel så här:
 
 ```python
 ord = "pegas"
@@ -45,7 +45,7 @@ pegaspegaspegas
 
 </sample-output>
 
-Med hjälp av att kombinera strängoperationer med en loop kan vi skriva ett program som ritar en pyramid:
+Genom att kombinera strängoperationer med en loop kan vi skriva ett program som ritar en pyramid:
 
 ```python
 n = 10 # våningar i pyramiden
@@ -72,11 +72,11 @@ Så här ser utskriften ut:
  *******************
 ```
 
-Instruktionen `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde subtraheras med ett.
+Instruktionen `print` inom loopen skriver ut en rad som börjar med `n` mellanslag följt av värdet som är lagrat i variabeln `rad`. Sedan läggs två stjärnor till i slutet av variabeln `rad` och variabeln `n`:s värde minskas med ett.
 
 <in-browser-programming-exercise name="Flera strängar" tmcname="osa03-05a_flera_strangar">
 
-Skapa ett program som ber användaren ange en sträng samt en siffra. Programmet ska sedan skriva ut strängen så många gången som siffran anger, enligt följande exempel:
+Skapa ett program som ber användaren ange en sträng samt ett antal. Programmet ska sedan skriva ut strängen så många gången som antalet anger, enligt följande exempel:
 
 <sample-output>
 
@@ -90,9 +90,9 @@ origamiorigami
 
 ## Längden på en sträng och dess index
 
-Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exempel `len("hej")` returnerar 3 eftersom det finns tre tecken i strängen `hej`.
+Funktionen `len` returnerar antalet tecken i en sträng som ett heltal. Till exempel returnerar `len("hej")` 3 eftersom det finns tre tecken i strängen `hej`.
 
-Följande program ber användaren att ge en sträng och skriver sedan ut ned med "understrykning". Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
+Följande program ber användaren att mata in en sträng och skriver sedan ut det "understrykt". Programmet skriver alltså ut en andra rad som innehåller så många streck (`-`) som det finns tecken i den givna strängen:
 
 ```python
 strang = input("Ange sträng: ")
@@ -111,11 +111,11 @@ Hejsan svejsan!
 
 </sample-output>
 
-Strängens längd innehåller alla tecken i strängen – också mellanslag. Till exempel längden på strängen `hej igen` är 8.
+Strängens längd innehåller alla tecken i strängen – också mellanslag. Till exempel är längden på strängen `hej igen` 8.
 
 <in-browser-programming-exercise name="Den längre strängen" tmcname="osa03-05b_langre_strangen">
 
-Skapa ett program som ber användaren ange två strängar. Programmet ska skriva ut den längre av de angivna strängarna. Om båda är lika långa skrivs meddelandet "Strängarna är lika långa" ut.
+Skapa ett program som ber användaren mata in två strängar. Programmet ska skriva ut den längre strängen. Om båda är lika långa skrivs meddelandet "Strängarna är lika långa" ut.
 
 Exempel:
 
@@ -145,9 +145,9 @@ Strängarna är lika långa
 
 </in-browser-programming-exercise>
 
-Eftersom strängar i grunden är sekvenser av tecken kan också vilken som helst specifik bokstav i en sträng hämtas. Operatorn `[]` hittar tecknet vid ett specifikt index som ges mellan parenteserna.
+Eftersom strängar i grunden är sekvenser av tecken kan vi också plocka ut enskilda tecken ur en sträng. Vi gör det med hjälp av operatorn `[]` och ett index.
 
-Indexet syftar till ett ställe i strängen och börjar från talet noll. Det första tecknet i en sträng har indexet 0 medan nästa tecken har indexet 1 och så vidare.
+Indexet hänvisar till en given position i strängen, och indexeringen börjar från 0. Det första tecknet i en sträng har alltså indexet 0, medan nästa tecken har indexet 1 och så vidare.
 
 <img src="3_2_1.png">
 
@@ -171,7 +171,7 @@ a
 
 </sample-output>
 
-Eftersom det första tecknet i en sträng har indexet noll, har det sista tecknet indexet längd (`len`) - 1. Följande program skriver ut det första och sista tecknet i en sträng:
+Eftersom det första tecknet i en sträng har indexet noll, har det sista tecknet indexet längd-1. Följande program skriver ut det första och sista tecknet i en sträng:
 
 ```python
 strang = input("Ange sträng: ")
@@ -207,13 +207,13 @@ t
 
 </sample-output>
 
-Man kan också använda negativa index för att komma åt tecknen i en sträng från börjande från det sista tecknet.
+Man kan också använda negativa index för att komma åt tecknen i en sträng i motsatt ordning, dvs. från slutet av strängen. 
 
-Det sista tecknet i en sträng har alltså indexet -1, det näst sista indexet -2 och så vidare. Du kan tänka att `str[-1]` är en genväg för `str[len(str) – 1]`.
+Det sista tecknet i en sträng har då indexet -1, det näst sista indexet -2 och så vidare. Du kan tänka att `str[-1]` är en genväg för `str[len(str) – 1]`.
 
 <img src="3_2_2.png">
 
-Ovanstående exempel kan förenklas med negativ indexering.
+Det föregående exemplet kan därmed förenklas med negativ indexering.
 
 ```python
 strang = input("Ange sträng: ")
@@ -231,7 +231,7 @@ Sista: !
 
 ## IndexError: string index out of range
 
-Om du har testat på exemplen ovan har du kanske stött på felmeddelandet `IndexError`. Det här felet uppstår då du försöker använda ett index som inte finns i en sträng.
+Om du har testat exemplen ovan har du kanske stött på felmeddelandet `IndexError`. Det här felet uppstår då du försöker använda ett index som inte finns i en sträng.
 
 ```python
 strang = input("Ange sträng: ")
@@ -255,7 +255,7 @@ IndexError: string index out of range
 
 </sample-output>
 
-Ibland orsakas indexeringsfel av en bugg i koden. Det är till exempel relativt vanligt att man försöker indexera för långt då man försöker komma åt det sista tecknet i en sträng:
+Ibland orsakas indexeringsfel av en bugg i koden. Det är till exempel relativt vanligt att man försöker komma åt ett index som inte finns när man försöker komma åt det sista tecknet i en sträng:
 
 ```python
 strang = input("Ange sträng: ")
@@ -274,11 +274,11 @@ else:
     print("Strängen är tom, alltså finns det inget första tecken")
 ```
 
-I exemplet ovan skulle en sträng med längden noll ha orsakat problem om programmeraren inte skulle ha lagt till en längdkontroll i koden. En sträng med längden noll är en tom sträng. I det här fallet kan vi orsaka en sådan med att helt enkelt trycka på tangenten Enter utan att skriva något annat.
+I exemplet ovan skulle en sträng med längden noll ha orsakat problem om programmeraren inte skulle ha lagt till en längdkontroll i koden. En sträng med längden noll är en tom sträng. En inmatning blir en tom sträng om användaren inte skriver in något utan direkt trycker Enter. 
 
 <in-browser-programming-exercise name="Omvänt" tmcname="osa03-05c_omvant">
 
-Skapa ett program som ber användaren ange en sträng. Programmet ska skriva ut tecknen i omvänd ordning på varsin rad.
+Skapa ett program som ber användaren mata in en sträng. Programmet ska sedan skriva ut tecknen i omvänd ordning på varsin rad.
 
 Exempel:
 
@@ -298,19 +298,19 @@ g
 
 <in-browser-programming-exercise name="Andra och näst sista" tmcname="osa03-06_andra_nast_sista">
 
-Skapa ett program som ger användaren mata in ett ord. Programmet ska därefter berätta om ordets andra och näst sista bokstäver är de samma.
+Skapa ett program som ber användaren mata in ett ord. Programmet ska därefter berätta om ordets andra och nästsista bokstäver är de samma.
 
 <sample-output>
 
 Ange ett ord: **python**
-Den andra och den näst sista bokstaven skiljer sig från varandra
+Den andra och den nästsista bokstaven skiljer sig från varandra
 
 </sample-output>
 
 <sample-output>
 
 Ange ett ord: **pascal**
-Den andra och den näst sista bokstaven är a
+Den andra och den nästsista bokstaven är a
 
 </sample-output>
 
@@ -318,7 +318,7 @@ Den andra och den näst sista bokstaven är a
 
 <in-browser-programming-exercise name="Speciellt streck" tmcname="osa03-09_speciellt_streck">
 
-Skapa ett program som ritar ut ett streck bestående så många nummertecken (`#`) som användaren anger.
+Skapa ett program som ritar ut ett streck bestående av så många hashtags (`#`) som användaren anger.
 
 <sample-output>
 
@@ -358,7 +358,7 @@ Höjd: **3**
 
 <in-browser-programming-exercise name="Understrykning" tmcname="osa03-11_understrykning">
 
-Skapa ett program som ber användaren om strängar. Programmet skriver ut strängarna med understrykning enligt exemplet. Programmet avslutas då användaren ger en tom sträng, dvs. en sträng med längden noll.
+Skapa ett program som ber användaren mata in strängar. Programmet skriver sedan ut strängarna med understrykning enligt exemplet. Programmet avslutas då användaren ger en tom sträng, dvs. en sträng med längden noll.
 
 <sample-output>
 
@@ -385,7 +385,7 @@ Ange sträng:
 
 <in-browser-programming-exercise name="Högerjusterat" tmcname="osa03-12_hogerjusterat">
 
-Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att utskriften är exakt 20 tecken. Om strängen är kortare ska det finnas ett passligt antal asterisker (`*`) i början av strängen.
+Skapa ett program som ber användaren mata in en sträng. Programmet ska sedan skriva ut strängen så att utskriften är exakt 20 tecken lång. Om strängen är kortare ska det finnas ett passligt antal asterisker (`*`) i början av strängen.
 
 Du kan anta att strängen består av högst 20 tecken.
 
@@ -421,9 +421,9 @@ Ord: **sssuperlångstränggg**
 
 <in-browser-programming-exercise name="Ordlåda" tmcname="osa03-13_ordlada">
 
-Skapa ett program som ber användaren ge ett ord. Programmet ska skriva ut ordet i mitten av en ram som består av asterisker. Bredden av ramen är 30 tecken. Du kan anta att ordet som anges ryms i ramen.
+Skapa ett program som ber användaren mata in ett ord. Programmet ska sedan skriva ut ordet i mitten av en ram som består av asterisker. Bredden av ramen är 30 tecken. Du kan anta att ordet som anges ryms i ramen.
 
-Om ordets längd är ojämnt, kan du skriva ut det på valfritt mittställe.
+Om ordets längd är udda, kan du skriva ut det så att det ligger i mitten.
 
 <sample-output>
 
@@ -452,7 +452,7 @@ Ord: **python**
 
 ## Delsträngar
 
-En delsträng av en sträng är en sekvens av tecken som formar en del av den ursprungliga delen. Till exempel strängen `exempel` innehåller delsträngarna `exem`, `mpe`, `el` med flera. I Python kallas extrahering av delsträngar slicing.
+En delsträng är en sekvens av tecken som utgör en del av den ursprungliga strängen. Till exempel innehåller strängen `exempel`  delsträngarna `exem`, `mpe`, `el` med flera. Att i Python ta ut en delsträng ur en sträng kallas för slicing.
 
 Om du vet vad det inledande och avslutande indexet för en delsträng är, kan du extrahera (slice) delsträngen med notationen `[a:b]`. Då kommer delsträngen att börja vid index `a` och ta slut vid det sista tecknet före indexet `b` – det vill säga inklusive den första bokstaven men exklusive den sista. Du kan tänka att indexen är streck ritade på den vänstra sidan av det indexerade tecknet – som vi illustrerar nedan:
 
@@ -484,17 +484,17 @@ sbil
 
 <text-box variant='hint' name='Halvöppna intervall'>
 
-I Python är intervallet `[a:b]` i halvöppet då vi behandlar strängar. Det här innebär att tecknet i det inledande indexet `a` inkluderas i intervallet medan tecknet i det avslutande indexet `b` lämnas bort. Varför så?
+I Python är intervallet `[a:b]` halvöppet då vi behandlar strängar. Det här innebär att tecknet i det inledande indexet `a` inkluderas i intervallet medan tecknet i det avslutande indexet `b` lämnas bort. Varför det?
 
-Det finns ingen tydlig orsak till detta. Det är helt enkelt en vana som har sitt ursprung i andra programmeringsspråk.
+Det finns ingen tydlig orsak bakom. Det är helt enkelt en konvention som har sitt ursprung i andra programmeringsspråk.
 
-Halvöppna intervall kan kännas jobbiga men i praktiken har de sina nyttiga sidor. Du kan till exempel enkelt räkna längden på en delsträng med `b - a`. Å andra sidan måste du komma ihåg att tecknet i slutet vid indexet `b` inte kommer att inkluderas i delsträngen.
+Halvöppna intervall kan kännas jobbiga men i praktiken har de sina goda sidor. Du kan till exempel enkelt räkna längden på en delsträng med `b - a`. Å andra sidan måste du komma ihåg att tecknet i slutet vid indexet `b` inte kommer att inkluderas i delsträngen.
 
 </text-box>
 
 <in-browser-programming-exercise name="Delsträngar 1" tmcname="osa03-07_delstrangar_1">
 
-Skapa ett program som ber användaren ange en sträng. Därefter skriver programmet ut alla delsträngar börjande med det första tecket, i storleksordning.
+Skapa ett program som ber användaren mata in en sträng. Därefter ska programmet skriva ut alla delsträngar med start från det första tecknet, i storleksordning.
 
 Exempel:
 
@@ -512,7 +512,7 @@ test
 
 <in-browser-programming-exercise name="Delsträngar 2" tmcname="osa03-08_delstrangar_2">
 
-Skapa ett program som ber användaren om en sträng. Därefter skriver man ut alla delsträngar som slutar med det sista tecknet, i storleksordning.
+Skapa ett program som ber användaren mata in en sträng. Därefter ska det skriva ut alla delsträngar som slutar med det sista tecknet, i storleksordning.
 
 Exempel:
 
@@ -530,9 +530,9 @@ test
 
 ## Söka efter delsträngar
 
-Operatorn `in` berättar oss om en sträng innehåller en specifik delsträng. Boolean-uttrycket `a in b` är sant om `b` innehåller delsträngen `a`.
+Operatorn `in` berättar om en sträng innehåller en specifik delsträng. Boolean-uttrycket `a in b` är sant om `b` innehåller delsträngen `a`.
 
-Till exempel den här kodsnutten…
+Till exempel skriver den här kodsnutten…
 
 ```python
 strang = "test"
@@ -543,7 +543,7 @@ print("est" in strang)
 print("ets" in strang)
 ```
 
-…skriver ut följande:
+… ut följande:
 
 <sample-output>
 
@@ -581,7 +581,7 @@ Hittades
 
 <in-browser-programming-exercise name="Hittas vokaler?" tmcname="osa03-13b_vokaler">
 
-Skapa ett program som ber användaren ange en sträng. Programmet ska därefter meddela om vokalerna a, e eller o hittas i strängen.
+Skapa ett program som ber användaren mata in en sträng. Programmet ska därefter meddela om vokalerna a, e eller o hittas i strängen.
 
 Du kan anta att strängen är angiven i gemener.
 
@@ -608,7 +608,7 @@ o hittas
 
 </in-browser-programming-exercise>
 
-Operatorn `in` returnerar ett Boolean-värde. Det berättar oss alltså bara att en delsträng existerar i en sträng, men baserat på den informationen vet vi inte var delsträngen befinner sig. Däremot kan metoden `find` hos strängar användas för det här syftet. Som argument ger man delsträngen som söks efter. Tillbaka får vi ett värde som indikerar det första indexet där delsträngen hittades – eller `-1` om delsträngen inte hittas i strängen.
+Operatorn `in` returnerar ett Boolean-värde. Det berättar alltså bara att en delsträng existerar i en sträng, men baserat på den informationen vet vi inte var delsträngen befinner sig. Däremot kan metoden `find` hos strängar användas för det här syftet. Som argument ger man delsträngen som söks efter. Tillbaka får vi ett värde som anger det första indexet där delsträngen hittades – eller `-1` om delsträngen inte hittas i strängen.
 
 Så här fungerar det:
 
@@ -662,13 +662,13 @@ Hittades på platsen 5
 
 <text-box variant='hint' name='Metoder'>
 
-Vi använde ovan metoden `find` hos strängar. Metoder fungerar ganska lika jämfört med funktioner som vi såg på i den föregående modulen. Skillnaden mellan dem är att metoder alltid är kopplade till det objekt som de kallas på. Objektet är den entitet som namnges före metoden som kallas. I det här fallet är objektet strängen där metoden söker efter delsträngen som ges som argument till metoden.
+Vi använde ovan metoden `find` hos strängar. Metoder fungerar ganska lika jämfört med funktioner som vi såg på i den föregående modulen. Skillnaden mellan dem är att metoder alltid är kopplade till det objekt som de kallas på. Objektet är den entitet som namnges före metoden som man anropar. I det här fallet är objektet den sträng i vilken vi använder metoden för att söka efter delsträngen. Delsträngen ges som parameter till metoden.  
 
 </text-box>
 
 <in-browser-programming-exercise name="Hitta första delsträngen" tmcname="osa03-13c_forsta_delstrangen">
 
-Skapa ett program som ber användaren ange en sträng samt ett tecken. Programmet ska skriva ut den första delsträngen på tre tecken som börjar med det tecknet användaren angett. Du kan anta att strängen består av minst tre tecken.
+Skapa ett program som ber användaren mata in en sträng samt ett tecken. Programmet ska skriva ut den första delsträngen på tre tecken som börjar med det tecknet användaren angett. Du kan anta att strängen består av minst tre tecken.
 
 <sample-output>
 
@@ -704,7 +704,7 @@ Tecken: **n**
 
 <in-browser-programming-exercise name="Hitta alla delsträngar" tmcname="osa03-14_alla_delstrangar">
 
-Utveckla ditt föregående program, så att programmet skriver ut varje delsträng på tre tecken och som börjar med det angivna tecknet. Du kan anta att den angivna strängen består av minst tre tecken.
+Utveckla ditt föregående program, så att programmet skriver ut varje delsträng på tre tecken och som börjar med det angivna tecknet. Du kan anta att den inmatade strängen består av minst tre tecken.
 
 <sample-output>
 
@@ -751,7 +751,7 @@ s
 
 <in-browser-programming-exercise name="Andra förekomsten" tmcname="osa03-15_andra_forekomsten">
 
-Skapa ett program som söker efter det andra av en given delsträng i en sträng. Om delsträngen inte hittas två gånger eller ens en gång, ska programmet meddela om detta.
+Skapa ett program som söker efter den andra förekomsten av en given delsträng i en sträng. Om delsträngen inte hittas två gånger eller ens en gång, ska programmet meddela om detta.
 
 I den här kontexten kan delsträngar inte vara överlappande. I strängen `aaaa` hittas delsträngen `aa` för den andra gången vid index 2.
 
