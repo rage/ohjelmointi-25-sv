@@ -9,7 +9,7 @@ hidden: false
 Efter den här delen
 
 * kan du skapa en loop med ett villkor
-* vet du vad vilka roller initiering, villkoret och att uppdatering av variabler har i en loop
+* vet du vad vilka roller initiering, villkoret och uppdatering av variabler har i en loop
 * kan du skapa loopar med olika typer av villkor.
 
 </text-box>
@@ -29,10 +29,10 @@ En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel 
 
 </text-box>
 
-I den förra delen bekantade vi oss med `while True` -loopen som ett medel att upprepa delar av kod. Så som loopen är uppbyggd är villkoret alltid `True`, alltså sant. Vi måste då avsluta loopen manuellt vid något skede för att undvika en oändlig loop. Exempelvis:
+I den förra delen bekantade vi oss med `while True` -loopen som ett sätt för att upprepa delar av kod. Så som loopen är uppbyggd är villkoret alltid `True`, alltså sant. Vi måste då avsluta loopen manuellt med `break` i något skede för att undvika en oändlig loop. Exempelvis:
 
 ```python
-# skriv ut siffror tills värdet på variabeln a är 5
+# skriv ut tal tills värdet på variabeln a är 5
 a = 1
 while True:
     print(a)
@@ -57,18 +57,18 @@ while <villkor>:
     <block>
 ```
 
-Idén är att koden körs om och om igen – villkoret kollas för varje iteration. Om villkoret vid något skede inte är sant kommer programmet att fortsätta med koden som kommer efter while-blocket.
+Idén är att koden körs om och om igen så länge som villkoret är sant. Villkorets värde kollas inför varje ny iteratione och när det är `False` kommer programmet inte att fortsätta köra loopen, utan i stället fortsätta med koden som kommer efter while-blocket.
 
 <img src="3_1_1.png">
 
-I den följande loopen har vi villkoret `nummer < 10`. Blocket inom loopen kommer bara att köras då variabeln nummer är mindre än tio.
+I den följande loopen har vi villkoret `tal < 10`. Blocket inom loopen kommer bara att köras då variabeln tal är mindre än tio.
 
 ```python
-nummer = int(input("Ge ett tal: "))
+tal = int(input("Ge ett tal: "))
 
-while nummer < 10:
-    print(nummer)
-    nummer += 1
+while tal < 10:
+    print(tal)
+    tal += 1
 
 print("Programmet är klart.")
 ```
@@ -88,7 +88,7 @@ Programmet är klart.
 
 </sample-output>
 
-Med den här strukturen kommer villkoret att kollas före blocket inom loopen körs. Det är möjligt att det här blocket inte kommer att köras en enda gång. Så här till exempel:
+Med den här strukturen kommer villkoret att kollas före blocket inom loopen körs. Det är möjligt att här blocket inte kommer att köras en enda gång. Till exempel så här:
 
 <sample-output>
 
@@ -97,28 +97,32 @@ Programmet är klart.
 
 </sample-output>
 
-Tolv är inte mindre än tio, så programmet skriver inte ut någon siffra.
+Tolv är inte mindre än tio, så programmet skriver inte ut något tal alls.
 
 ## Initialisering, villkor och uppdatering
 
-För att skapa en loop behövs ofta tre olika steg: initialisering, ett villkor och uppdatering av variabler.
+När vi jobbar med while-loopar behöver vi komma ihåg tre steg: initialisering, ett villkor och uppdatering av variabler.
 
-Initialisering syftar till att ge startvärden till de variabler som används i loopens villkor. Det här görs före man kommer till loopen. Villkoret bestämmer hur länge loopen körs. Det skrivs i början av loopen. För varje iteration ska variablerna som används i villkoret uppdateras, så att loopen steg för steg närmar sitt slut. Här presenterar vi stegen i ett exempel:
+* Initialisering innebär att vi tilldelar startvärden till de variabler som används i loopens villkor. Det här behöver man göra före loopen i koden. 
+* Villkoret bestämmer hur länge loopen körs och anges direkt efter while.
+* För att undvika oändliga loopar, måste vi se till att värdet på någon variabel i villkoret uppdateras, så att loopen steg för steg närmar sig sitt slut.
+
+Här presenterar vi stegen i ett exempel:
 
 <img src="3_1_2.png">
 
 Om någon av de här tre komponenterna fattas kommer loopen antagligen inte att fungera korrekt. Ett vanligt misstag är att låta bli att uppdatera variabler:
 
 ```python
-nummer = 1
+tal = 1
 
-while nummer < 10:
-    print(nummer)
+while tal < 10:
+    print(tal)
 
 print("Programmet är klart.")
 ```
 
-Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fast i en oändlig loop. Samma kod upprepas tills användaren avslutar programmet, till exempel med tangentkombinationen Control + C:
+Här kommer värdet på variabeln `tal` aldrig att ändras. Programmet är fast i en oändlig loop. Samma kod upprepas tills användaren avslutar programmet, till exempel med tangentkombinationen Control + C:
 
 <sample-output>
 
@@ -133,9 +137,9 @@ Här kommer värdet på variabeln `nummer` aldrig att ändras. Programmet är fa
 
 <in-browser-programming-exercise name="Skriv ut siffror" tmcname="osa03-00_utskrift_av_siffror">
 
-Skapa ett program som i en loop skriver ut varannat tal från två till trettio. Varje tal skrivs ut på en ny rad.
+Skapa ett program som i en loop skriver ut vartannat tal från två till trettio. Varje tal skrivs ut på en ny rad.
 
-Så här ser utskriften ut:
+Så här ska utskriften se ut:
 
 <sample-output>
 2
@@ -181,14 +185,14 @@ Använd inte en `while True` -loop!
 
 ## Skriva villkor
 
-Alla Boolean-uttryck och kombinationer av dem kan användas som villkor i en loop. Till exempel följande program skriver ut var tredje nummer förutsatt att det är mindre än 100 och inte dividerbart med fem:
+Alla Boolean-uttryck och kombinationer av dem kan användas som villkor i en while-loop. Till exempel skriver följande program ut vart tredje tal förutsatt att det är mindre än 100 och inte delbart med fem:
 
 ```python
-nummer = int(input("Ge ett tal: "))
+tal = int(input("Ge ett tal: "))
 
-while nummer < 100 and nummer % 5 != 0:
-    print(nummer)
-    nummer += 3
+while tal < 100 and tal % 5 != 0:
+    print(tal)
+    tal += 3
 ```
 
 Här följer två exempel på utskriften från programmet:
@@ -211,7 +215,7 @@ Ge ett tal: **96**
 
 </sample-output>
 
-När man ger programmet värdet 28 kommer loopen att avslutas med numret 37, eftersom nästa siffra är 40 – och är dividerbart med fem. När man ger värdet 96 kommer loopen att avsluta med numret 99 eftersom nästa siffra är 102 – som inte är mindre än 100.
+När man ger programmet värdet 28 kommer loopen att avslutas med 37, eftersom nästa tal är 40 – och är dividerbart med fem. När man ger värdet 96 kommer loopen att avsluta med 99 eftersom nästa tal är 102 – som inte är mindre än 100.
 
 När du skriver en loop är det viktigt att se till att loopen alltid kommer att avslutas vid något skede. Det här programmet avslutas – eller inte – beroende på det värde som ges:
 
@@ -234,15 +238,15 @@ Ge ett tal: **4**
 
 </sample-output>
 
-I övriga fall kommer loopen att fortsätta oändligt eftersom det inte då finns något sätt för variabeln att vara lika med tio. Till exempel tre och tolv är värden som skulle förorsaka en oändlig loop.
+I övriga fall kommer loopen att fortsätta oändligt eftersom det inte då finns något sätt för variabeln att bli lika med tio. Till exempel skulle 3 och 12 leda till en oändlig loop.
 
 <in-browser-programming-exercise name="Siffror" tmcname="osa03-02_siffror">
 
-Skapa ett program som skriver ut alla tal under den siffra som användaren angett. Börja från ett.
+Skapa ett program som skriver ut alla tal som är lägre än det tal som användaren matat in. Börja från ett.
 
 <sample-output>
 
-Fram till siffran: **5**
+Fram till talet: **5**
 1
 2
 3
@@ -256,46 +260,46 @@ Använd inte `True` som villkor i while-loopen!
 
 ## Tips för debuggning
 
-Föreställ att du håller på att skapa ett lite mera komplicerat program, som det i den följande uppgiften – _Potenser av två_. Så här skulle man kunna starta:
+Föreställ dig att du håller på att skapa ett aningen mer komplicerat program, som det i den följande uppgiften – _Potenser av två_. Du kunde till exempel börja så här: 
 
 ```python
-stanna = int(input("Fram till siffran"))
-nummer = 1
-while nummer == stanna:
+stanna = int(input("Fram till talet"))
+tal = 1
+while tal == stanna:
    # kod
 ```
 
-Nu börjar programmet med att läsa in den data användaren ger och fortsätter till en loop med ett villkor.
+Programmet börjar med att läsa in det tal som användaren matar in och fortsätter till en while-loop med ett villkor.
 
 Det är sannolikt att koden inte kommer att fungera på önskat sätt från början. Den kan behöva testas tio- eller till och med hundratals gånger före den fungerar korrekt.
 
-Den här kodsnutten frågar alltid efter indata från användaren vilket gör testandet långsamt och arbetsdrygt. Varje gång programmet testas måste ett värde anges.
+Den här kodsnutten ber alltid om indata av användaren, vilket gör testandet långsamt och arbetsdrygt. Varje gång programmet testas måste ett värde anges.
 
 Ett sätt att bli av med problemet är att hårdkoda ett värde i koden medan den testas:
 
 ```python
 # vi hårdkodar värdet här tills vidare
-stanna = 8 # int(input("Fram till siffran"))
-nummer = 1
-while nummer == stanna:
+stanna = 8 # int(input("Fram till talet"))
+tal = 1
+while tal == stanna:
    # kod
 ```
 
-När programmet fungerar med det hårdkodade värdet, kan man enkelt testa med andra hårdkodade värden. När allt fungerar korrekt kan man testa på programmet så att användaren anger värdet.
+När programmet fungerar med det hårdkodade värdet, kan man enkelt testa med andra hårdkodade värden. När allt fungerar korrekt kan man gå tillbaka till att testa programmet så att användaren anger värdet.
 
 Det här tricket fungerar väl med flera av de tester som används i betygsättningen av den här kursens uppgifter. Om testet berättar att något är fel med till exempel värdet 42 så kan värdet tillfälligt hårdkodas i programmet medan du letar efter buggen:
 
 ```python
 # testet meddelade att koden inte fungerade korrekt då indatat är 42
-stanna = 42 # int(input("Fram till siffran"))
-nummer = 1
-while nummer == stanna:
+stanna = 42 # int(input("Fram till talet"))
+tal = 1
+while tal == stanna:
    # kod
 ```
 
-Debuggning med hjälp av `print`-satsen nämndes några gånger under förra modulen i den här kursen. De program som du skapar kommer att bli mer invecklade i och med att kursen framskrider. Då kommer mängden debuggning som du behöver göra också antagligen att öka i samma proportion. Vanliga orsaker till buggar finns ofta i de villkor som avslutar loopar – de fungerar eventuellt korrekt för vissa värden, medan andra värden orsakar problem. Alltid är det inte heller lätt att observera det här.
+Debuggning med hjälp av `print`-satsen nämndes några gånger under den förra kursmodulen. De program som du skapar kommer att bli mer invecklade i och med att vi kommer längre i kursen. Då kommer mängden debuggning som du behöver göra också antagligen att öka i samma proportion. Vanliga orsaker till buggar finns ofta i de villkor som ska avsluta loopar – de fungerar eventuellt korrekt för vissa värden, medan andra värden orsakar problem. Det är inte alltid heller lätt att lägga märke till de här felen. 
 
-Därför är det nu dags att använda dig av `print`-satser för att debugga – om du inte redan har gjort det. Du hittar instruktioner i den första och fjärde delen av den föregående modulen.
+Därför är det nu dags att använda dig av `print`-satser för att debugga – om du inte redan har gjort det. Du hittar instruktioner i den första och fjärde delen av modul 2.
 
 Vid sidan om `print`-satser finns även andra verktyg som kan använda för debuggning. Ett av dem är [visualiseringsverktyget](https://pythontutor.com/visualize.html) på [Python Tutor](https://pythontutor.com/) -webbsidan. Verktyget låter dig köra din kod rad för rad och visar också de värden som är lagrade i variabler vid varje steg.
 
@@ -307,19 +311,19 @@ Den röda pilen visar var programmet körs för tillfället. Verktyget visar vad
 
 Det enda du behöver för att köra visualiseringsverktyget är att kopiera och klistra in din kod i verktygets [kodfönster](https://pythontutor.com/visualize.html). Verktyget har en del begränsningar jämfört med den Python-version som används under den här kursen. Om du stöter på konstiga felmeddelanden kan det löna sig att använda någon annan metod för att debugga.
 
-De som har sysslat med programmering en längre tid använder sällan visualiseringsverktyg men för en nybörjare kan verktyget verkligen vara till hjälp. Det är osannolikt att man av en slump får något program att fungera. Det är nödvändigt att man som programmerare förstår vilka värden ens programkod skapar vid ett visst skede medan programmet körs. Om de värden som lagras i variabler inte är sådana som man förväntar sig, finns det högst sannolikt en bugg i programmet.
+De som har sysslat med programmering en längre tid använder sällan visualiseringsverktyg, men för en nybörjare kan verktyget verkligen vara till hjälp. Det är osannolikt att man får ett program att fungera av en slump. Det är nödvändigt att man som programmerare förstår vilka värden ens programkod skapar vid ett visst skede medan programmet körs. Om de värden som lagras i variabler inte är sådana som man förväntar sig, finns det högst sannolikt en bugg i programmet.
 
 Visualiseringsverktyget och `print`-satser är båda bra sätt för en programmerare att med egna ögon se att programmet gör exakt det som det ska göra.
 
 <in-browser-programming-exercise name="Potenser av två" tmcname="osa03-03_potenser_av_tva">
 
-Skapa ett program som först skriver ut siffran ett och därefter föregående siffra multiplicerat med två.
+Skapa ett program som först skriver ut 1 och därefter alltid det föregående talet multiplicerat med två.
 
-Programmet avslutas då man skrivit ut det tal som är högst lika stort som det värde användaren angett. Man skriver inte alltså ut något tal som är större än det användaren angett!
+Programmet avslutas då man skrivit ut det tal som är högst lika stort som det värde användaren angett. Programmet ska alltså inte skriva ut något tal som är större än det användaren matat in!
 
 <sample-output>
 
-Fram till siffran: **8**
+Fram till talet: **8**
 1
 2
 4
@@ -329,7 +333,7 @@ Fram till siffran: **8**
 
 <sample-output>
 
-Fram till siffran: **20**
+Fram till talet: **20**
 1
 2
 4
@@ -340,7 +344,7 @@ Fram till siffran: **20**
 
 <sample-output>
 
-Fram till siffran: **100**
+Fram till talet: **100**
 1
 2
 4
@@ -363,7 +367,7 @@ Hur räknar man potenser av två? Den första potensen av två är 1. Den nästa
 
 <sample-output>
 
-Fram till siffran: **27**
+Fram till talet: **27**
 Upphöjt till: **3**
 1
 3
@@ -374,7 +378,7 @@ Upphöjt till: **3**
 
 <sample-output>
 
-Fram till siffran: **1234567**
+Fram till talet: **1234567**
 Upphöjt till: **10**
 1
 10
@@ -390,40 +394,40 @@ Använd inte villkoret `True` i while-satsen i den här uppgiften!
 
 </in-browser-programming-exercise>
 
-<in-browser-programming-exercise name="Summa av varandra följande tal, version 1" tmcname="osa03-04a_varandra_foljandes_summa_1">
+<in-browser-programming-exercise name="Summan av påvarandra följande tal, version 1" tmcname="osa03-04a_varandra_foljandes_summa_1">
 
-Skapa ett program som räknar summan av varanda följande tal `1 + 2 + 3 + ...`, tills värdet är minst lika stort som det tal användaren angett.
+Skapa ett program som beräknar summan av påvaranda följande tal `1 + 2 + 3 + ...`, tills summan är minst lika stor som det tal användaren angett.
 
 Så här fungerar programmet:
 
 <sample-output>
 
-Fram till siffran: **2**
+Fram till talet: **2**
 3
 
 </sample-output>
 
 <sample-output>
 
-Fram till siffran: **10**
+Fram till talet: **10**
 10
 
 </sample-output>
 
 <sample-output>
 
-Fram till siffran: **18**
+Fram till talet: **18**
 21
 
 </sample-output>
 
-Du kan anta att det tal anvädaren anger är två eller större.
+Du kan anta att det tal användaren matar in är två eller större.
 
 </in-browser-programming-exercise>
 
 ## Bilda strängar
 
-Under kursens första vecka lärde vi oss att det är möjligt att bilda strängar av kortare strängar med hjälp av `+`-operatorn. Till exempel detta är valid Python-kod:
+Under kursens första vecka lärde vi oss att det är möjligt att kombinera strängar med hjälp av `+`-operatorn. Till exempel är detta helt korrekt Python-kod:
 
 ```python
 ord = "Ris"
@@ -449,7 +453,7 @@ ord += " och Python"
 print(ord)
 ```
 
-Det här gäller också f-strängar som kan vara nyttiga då värden lagrade i strängar behövs som delar av en resulterande sträng. Det här skulle till exempel fungera:
+Det här gäller också f-strängar som kan vara nyttiga då värden lagrade i strängar behövs som delar av en resulterande sträng. Till exempel kan vi skriva så här:
 
 ```python
 kurs = "Introkurs i programmering"
@@ -468,7 +472,7 @@ Du fick vitsordet 4 i kursen Introkurs i programmering
 
 </sample-output>
 
-I det förra exemplet räknade du summan av varandra påföljande siffror genom att alltid öka på värdet i loopen.
+I det förra exemplet beräknade du summan av på varandra följande tal genom att alltid öka värdet inne i loopen.
 
 Samma fungerar också för strängar – du kan lägga till nya delar i en sträng inom en loop. Den här tekniken kan vara till nytta i följande uppgift.
 
@@ -478,26 +482,26 @@ Skapa en mer avancerad version av det föregående programmet. Nu ska programmet
 
 <sample-output>
 
-Fram till siffran: **2**
+Fram till talet: **2**
 Räknade 1 + 2 = 3
 
 </sample-output>
 
 <sample-output>
 
-Fram till siffran: **10**
+Fram till talet: **10**
 Räknade 1 + 2 + 3 + 4 = 10
 
 </sample-output>
 
 <sample-output>
 
-Fram till siffran: **18**
+Fram till talet: **18**
 Räknade 1 + 2 + 3 + 4 + 5 + 6 = 21
 
 </sample-output>
 
-Du kan anta att den siffra användaren anger är två eller större.
+Du kan anta att det tal användaren matar in är två eller större.
 
 </in-browser-programming-exercise>
 
