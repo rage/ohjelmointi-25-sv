@@ -350,8 +350,8 @@ Så här ska programmet fungera:
 
 Tal 1: **3**
 Tal 2: **7**
-Talens summa 10
-Produkten av talen 21
+Siffrornas summa 10
+Produkten av siffrorna 21
 
 </sample-output>
 
