@@ -10,23 +10,23 @@ Efter den här delen
 
 * känner du till datatypen tuple
 * kan du skapa tupler av olika typer av värden
-* vet du vad skillnaden mellan en lista och tuple är
+* känner du till skillnaderna mellan listor och tupler
 * kan du nämna några vanliga användningsområden för tupler.
 
 </text-box>
 
-En tuple är en datastruktur som på flera sätt påminner listan. De största skillnaderna mellan dessa två är:
+En tupel (eng. tuple) är en datastruktur som på flera sätt påminner listan. De största skillnaderna mellan dessa två är:
 
-* tupler är inom parenteser `()` medan listor är inom hakparenteser `[]`
+* tupler anges inom parenteser `()` medan listor anges inom hakparenteser `[]`
 * tupler är oföränderliga, medan innehållet i en lista kan ändra.
 
-Den följande kodsnutten skapar en tuple som innehåller koordinaterna för en punkt:
+Den följande koden skapar en tupel som innehåller koordinaterna för en punkt:
 
 ```python
 punkt = (10, 20)
 ```
 
-Elementen lagrade i tupler kan kommas åt med index, på samma sätt som med listor:
+Vi kan komma åt element som är lagrade i tupler med index, på samma sätt som med listor:
 
 ```python
 punkt = (10, 20)
@@ -41,7 +41,7 @@ y-koordinat: 20
 
 </sample-output>
 
-Värden som lagrats i en tuple kan inte ändras efter att en tuple har skapats. Det följande kommer inte att fungera:
+Värden som lagrats i en tupel kan inte ändras efter att tupeln har skapats. Det följande kommer därför inte att fungera:
 
 ```python
 punkt = (10, 20)
@@ -58,9 +58,9 @@ TypeError: 'tuple' object does not support item assignment
 
 Skapa funktionen `skapa_tuple(x: int, y: int, z: int)` som skapar och returnerar en tuple enligt dessa regler:
 
-* tuplens första element är det minsta av de givna argumenten
-* tuplens andra element är det största av de givna argumenten
-* tuplens tredje element är de givna argumentens summa
+* tupelns första element är det minsta av de givna argumenten
+* tupelns andra element är det största av de givna argumenten
+* tupelns tredje element är de givna argumentens summa
 
 Exempel:
 
@@ -80,9 +80,9 @@ if __name__ == "__main__":
 
 <programming-exercise name='Äldst' tmcname='osa05-18_aldst'>
 
-Skapa funktionen `aldst(personer: list)` som får som argument en lista med tupler som innehåller information om personer. Funktionen ska hitta den äldsta personen och returnera hennes namn.
+Skapa funktionen `aldst(personer: list)` som får en lista med tupler som innehåller personuppgifter som argument. Funktionen ska hitta den äldsta personen och returnera hens namn.
 
-Varje tuple består av ett namn (element 1) och ett födelseår (element 2).
+Varje tupel består av ett namn (element 1) och ett födelseår (element 2).
 
 Exempel:
 
@@ -131,9 +131,9 @@ print(aldre_personer)
 
 </programming-exercise>
 
-## Vad behöver man tupler för?
+## Vad behöver man tupler till?
 
-Tupler är nyttiga i situationer där det finns en samling av värden som är på något sätt sammankopplade. Till exempel då man behandlar x- och y-koordinaterna hos en punkt, är tuplen ett naturligt val eftersom koordinater alltid består av två värden:
+Tupler är nyttiga i situationer där det finns en samling av värden som är sammankopplade på något sätt. Till exempel då man behandlar x- och y-koordinaterna hos en punkt, är tupeln ett naturligt val eftersom koordinater alltid består av två värden:
 
 ```python
 punkt = (10, 20)
@@ -145,7 +145,7 @@ Det är tekniskt möjligt att använda en lista för att lagra dessa:
 punkt = [10, 20]
 ```
 
-En lista är en samling av element i en viss ordning. Listans storlek kan också ändra. Eftersom vi lagrar koordinaterna för en punkt, vill vi lagra x- och y-koordinaterna specifikt – inte en godtycklig lista med dessa värden.
+En lista är en samling av element i en viss ordning. Listans storlek kan också ändra. När vi arbetar med koordinater vill vi lagra en x-koordinat och en y-koordinat – inte en godtycklig lista med dessa värden.
 
 Eftersom tupler är oföränderliga – till skillnad från listor – kan de användas som nycklar i lexikon. Det följande kodexemplet skapar ett lexikon där koordinater används som nycklar:
 
@@ -179,7 +179,7 @@ TypeError: unhashable type: 'list'
 
 ## Tupler utan parenteser
 
-Parenteser är inte obligatoriska då man skapar tupler. Följande variabeltilldelningar ger likadana resultat:
+Parenteser är inte obligatoriska då man skapar tupler. Följande variabeltilldelningar ger samma resultat:
 
 ```python
 siffror = (1, 2, 3)
@@ -207,13 +207,13 @@ Minsta talet är 5 och största är 312
 
 </sample-output>
 
-Funktionen returnerar två värden i en tuple. Returvärdet kan tilldelas till två variabler samtidigt:
+Funktionen returnerar två värden i en tupel. Returvärdet kan då tilldelas till två variabler samtidigt:
 
 ```python
 minst, storst = minmax(lista)
 ```
 
-Att använda parenteser kan göra notationen tydligare. Till vänster av tilldelningssatsen har vi också en tuple som består av två variabelnamn. Värdena som finns i tuplen som funktionen returnerar tilldelas till dessa två variabler.
+Att använda parenteser kan göra notationen tydligare. Till vänster av tilldelningssatsen har vi också en tupel som består av två variabelnamn. Värdena som finns i tupeln som funktionen returnerar tilldelas till dessa två variabler.
 
 ```python
 (minst, storst) = minmax(lista)
@@ -233,9 +233,9 @@ for nyckel, varde in lexikon.items():
     print("värde:", varde)
 ```
 
-Tupler finns i bakgrunden här också. Metoden `lexikon.items()` returnerar varje nyckel-värdepar som en tuple, där det första elementet innehåller nyckeln och det andra värdet.
+Tupler finns i bakgrunden här också. Metoden `lexikon.items()` returnerar varje nyckel-värdepar som en tupel, där det första elementet innehåller nyckeln och det andra värdet.
 
-Ett annat användningsområde för tupler är att byta värden sinsemellan två variabler:
+Ett annat användningsområde för tupler är att byta värden sinsemellan på två variabler:
 
 ```python
 tal1, tal2 = tal2, tal1
@@ -284,7 +284,7 @@ hittade ingen med namnet Siri
 
 #### Lägga till prestationer
 
-Skapa funktionen `ny_prestation`, som lägger till en prestation för en studerande. Prestationen är en tuple som består av kursens namn och ett vitsord:
+Skapa funktionen `ny_prestation`, som lägger till en prestation för en studerande. Prestationen är en tupel som består av kursens namn och ett vitsord:
 
 ```python
 studerande = {}
@@ -308,9 +308,9 @@ Robert:
 
 </sample-output>
 
-#### Höja på vitsord
+#### Höja vitsord
 
-När man lägger till en prestation ska kurser med vitsordet noll ignorera och tidigare vitsord ska inte sänkas:
+När man lägger till en prestation ska kurser med vitsordet noll ignoreras och tidigare vitsord ska inte sänkas:
 
 ```python
 studerande = {}
@@ -366,7 +366,7 @@ bästa medeltal 4.5 Lilou
 
 <programming-exercise name="Bokstavsruta" tmcname="osa05-21_bokstavsruta">
 
-Den här delen når nu sitt kulmen med en relativt svår uppgift som kräver problemlösningsförmåga. Uppgiften kan lösas på flera sätt. Även om vi nyss har behandlat tupler så lönar det sig dock antagligen inte att använda dem i den här uppgiften.
+Vi avslutar nu den här delen med en relativt svår uppgift som kräver problemlösningsförmåga. Uppgiften kan lösas på flera sätt. Även om vi nyss har behandlat tupler så lönar det sig antagligen inte att använda dem i den här uppgiften.
 
 Skapa ett program som skriver ut en bokstavsruta enligt följande exempel. Du kan anta att det finns högst 26 våningar.
 
