@@ -11,19 +11,19 @@ Efter den här delen
 * vet du vad som menas med en referens till en variabel
 * vet du att det kan finnas flera referenser till ett och samma objekt
 * kan du använda listor som parameter i funktioner
-* förstår du vad som menas med sidoeffekt hos en funktion.
+* förstår du vad som menas med en funktions sidoeffekter.
 
 </text-box>
 
-Hittills har vi tänkt att en variabel är en slags "låda" som innehåller variabelns värde. Från teknisk synvinkel stämmer detta inte i Python – variabler innehåller inte ett värde, utan en referens till ett objekt, som en siffra, sträng eller en lista.
+Hittills har vi tänkt att en variabel är en slags "låda" som innehåller variabelns värde. Från teknisk synvinkel stämmer detta inte i Python – variabler innehåller inte ett värde, utan en referens till ett objekt, såsom en siffra, sträng eller en lista.
 
-I praktiken innebär det att man inte lagrar ett värde i en variabel, utan ett ställe varifrån variabelns värde hittas från.
+I praktiken innebär det att man inte lagrar ett värde i en variabel, utan däremot en minnesposition där man kan hitta variabelns värde.
 
 En referens kan beskrivas som en pil från variabeln till dess riktiga värde:
 
 <img src="5_2_1.png">
 
-Referensen berättar alltså var det riktiga värdet finns. Funktionen `id` berättar vart en variabel refererar:
+Referensen berättar alltså var det riktiga värdet finns. Funktionen `id` berättar vad en variabel refererar till:
 
 ```python
 a = [1, 2, 3]
@@ -39,39 +39,39 @@ print(id(b))
 
 </sample-output>
 
-Referensen, alltså variabelns id är ett heltal. Man kan tänka att talet är adressen för variabelns värde i datorns minne. Observera att om du kör koden ovan på din dator, kommer resultatet sannolikt vara olikt eftersom variablerna har olika referenser.
+Referensen, alltså variabelns id är ett heltal. Man kan tänka att talet är adressen för variabelns värde i datorns minne. Observera att om du kör koden ovan på din dator, kommer resultatet sannolikt vara ett annat eftersom variablerna knappast har lagrats på exakt samma adress i din dators minne. 
 
-Som vi redan såg i förra delens exempel, visar Python Tutors visualiseringsverktyg referenser som "pilar" till det riktiga innehållet. Verktyget "lurar" ändå när det kommer till strängar, och visar dem som att strängens innehåll skulle vara lagrat i själva variabeln:
+Som vi redan såg i förra delens exempel, visar Python Tutors visualiseringsverktyg referenser som "pilar" till det egentliga innehållet. Verktyget "lurar" ändå när det kommer till strängar, och visar dem som att strängens innehåll skulle vara lagrat i själva variabeln:
 
 <img src="5_2_1a.png">
 
-Så är det ändå inte i verkligheten – strängar behandlas också internt av Python på samma sätt som listor.
+Så är det inte i verkligheten – strängar behandlas också internt av Python på samma sätt som listor.
 
 Flera av Pythons inbyggda datatyper – som `str` – är oföränderliga. Det betyder att värdet på objektet aldrig kan ändras. Däremot kan ett värde ersättas med ett nytt värde.
 
 <img src="5_2_2.png">
 
-I Python finns också datatyper som är föränderliga. Till exempel innehållet på en lista kan förändras utan att man behöver skapa en ny lista:
+I Python finns också datatyper som är föränderliga. Till exempel kan innehållet i en lista förändras utan att man behöver skapa en ny lista:
 
 <img src="5_2_3.png">
 
-Något förvånande är att också grundläggande datatyper för lagring av siffor och sanningsvärden, `int`, `float` och `bool`, är oföränderliga. Låt oss använda följande kod som exempel:
+Något förvånande är att också grundläggande datatyper för lagring av tal och sanningsvärden, `int`, `float` och `bool`, är oföränderliga. Låt oss använda följande kod som exempel:
 
 ```python
-siffra = 1
-siffra = 2
-siffra += 10
+tal = 1
+tal = 2
+tal += 10
 ```
 
-Det verkar som att koden ändrar på siffran, men från teknisk synvinkel är det inte så. Istället skapar varje instruktion en ny siffra.
+Det verkar som att koden ändrar på talet, men från teknisk synvinkel är det inte så. Istället skapar varje instruktion ett nytt tal.
 
 Utskriften från det här programmet är intressant:
 
 ```python
-siffra = 1
-print(id(siffra))
-siffra += 10
-print(id(siffra))
+tal = 1
+print(id(tal))
+tal += 10
+print(id(tal))
 a = 1
 print(id(a))
 ```
@@ -84,15 +84,15 @@ print(id(a))
 
 </sample-output>
 
-I början refererar variabeln `siffra` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `siffra` när dess värde var `1`.
+I början refererar variabeln `tal` till adressen `4535856912` och när variabelns värde förändras refererar variabeln till adressen `4535856944`. När variabeln `a` definieras och får värdet `1`, kommer variabeln att referera till samma ställe som variabeln `tal` när dess värde var `1`.
 
-Det verkar som att Python har lagrat siffran 1 till adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i "datorns minne".
+Det verkar som att Python har lagrat siffran 1 i adressen `4535856912` och alltid då en variabels värde är `1`, refererar variabeln till det här specifika stället i "datorns minne".
 
-Även om de grundläggande datatyperna `int`, `float` och `bool` är referenser behöver man som programmerare inte egentligen fundera på det.
+Även om de grundläggande datatyperna `int`, `float` och `bool` är referenser behöver man som programmerare egentligen inte fundera på det.
 
 ## Flera referenser till en och samma lista
 
-Vi undersöker som ett exempel att kopiera värdet på en variabel med en lista:
+Vi undersöker vad som händer om vi försöker kopiera en lista:
 
 ```python
 a = [1, 2, 3]
@@ -126,7 +126,7 @@ print(lista2)
 
 </sample-output>
 
-Om en och samma lista har flera referenser kan den behandlas på samma sätt med vilken som helst av referenserna. Däremot återspeglas en förändring via en referens också till alla andra referenser.
+Om flera variabler refererar till samma lista, kan vi använda vilken som helst av variablerna för att komma åt listan. Det innebär dock också att ändringar som görs via en referens också kommer att påverka alla andra referenser. 
 
 Visualiseringsverktyget klargör igen vad som sker i programmet:
 
@@ -134,7 +134,7 @@ Visualiseringsverktyget klargör igen vad som sker i programmet:
 
 ## Att kopiera en lista
 
-Om du vill skapa en verklig kopia av en lista kan du skapa en ny lista och lägga till alla element från den ursprungliga listan till den nya listan:
+Om du vill skapa en verklig kopia av en lista kan du skapa en ny lista och lägga till alla element från den ursprungliga listan i den nya listan:
 
 ```python
 lista = [1, 2, 3, 3, 5]
@@ -156,7 +156,7 @@ kopia [10, 2, 3, 3, 5, 6]
 
 </sample-output>
 
-Så ser det ut från visualiseringsverktyget:
+Så här ser det ut i visualiseringsverktyget:
 
 <img src="5_2_4b.png">
 
@@ -184,9 +184,9 @@ print(kopia)
 
 ## En lista som parameter i en funktion
 
-När en lista ges som parameter till en funktion, förmedlas referensen till listan. Det här innebär att funktionen kan ändra på listan som getts som parameter.
+När vi ger en lista som argument till en funktion, får funktionen tillgång till referensen till listan. Det här innebär att funktionen kan ändra på listan. 
 
-Till exempel följande funktion lägger till ett nytt element i en lista som getts som funktionens parameter:
+Till exempel lägger följande funktion till ett nytt element i den lista som getts som argument:
 
 ```python
 def lagg_till_element(lista: list):
@@ -204,13 +204,13 @@ print(lista)
 [1, 2, 3, 10]
 </sample-output>
 
-Märk att funktionen `lagg_till_element` inte returnerar något, utan ändrar på den lista som getts som funktionens parameter. Visualiseringsverktyget presenterar situationen så här:
+Märk att funktionen `lagg_till_element` inte returnerar något, utan ändringen sker direkt i den lista som getts som argument. Visualiseringsverktyget presenterar situationen så här:
 
 <img src="5_2_4c.png">
 
-Global frame syftar på huvudprogrammets variabler, och den blå lådan `lagg_till_element` på funktionens parametrar och variabler. Som visualiseringen visar, refererar funktionen till samma lista som huvudprogrammet, vilket betyder att ändringar som görs i listan inom funktionen också syns i huvudprogrammet.
+Global frame syftar till huvudprogrammets variabler, och den blå lådan `lagg_till_element` på funktionens parametrar och variabler. Som visualiseringen visar, refererar funktionen till samma lista som huvudprogrammet, vilket betyder att ändringar som görs i listan inom funktionen också syns i huvudprogrammet.
 
-Ett annat sätt är att skapa en ny lista och returnera den:
+Om man vill undvika detta kan man inne i funktionen först skapa en ny kopia av argumentlistan, göra ändringar i den och slutligen returnera den:
 
 ```python
 def lagg_till_element(lista: list) -> list:
@@ -237,7 +237,7 @@ Om du inte är helt säker på vad som händer i en kodsnutt, kan det löna sig 
 
 ## Ändra på en lista som getts som argument
 
-Det följande är ett försök på att skapa en funktion som ökar på varje element med tio:
+Vi försöker skapa en funktion som ökar på varje element i en lista med tio:
 
 ```python
 def oka_pa_alla(lista: list):
@@ -246,10 +246,10 @@ def oka_pa_alla(lista: list):
         ny_lista.append(element + 10)
     lista = ny_lista
 
-siffror = [1, 2, 3]
-print("start:",siffror)
-oka_pa_alla(siffror)
-print("efter funktionen:", siffror)
+tal = [1, 2, 3]
+print("start:",tal)
+oka_pa_alla(tal)
+print("efter funktionen:", tal)
 ```
 
 <sample-output>
@@ -260,15 +260,15 @@ efter funktionen: [1, 2, 3]
 </sample-output>
 
 
-Av någon orsak fungerar funktionen inte. Varför så?
+Av någon orsak fungerar funktionen inte. Varför det?
 
-Funktionen tar emot en referens till en lista som argument. Det här är lagrat i variabeln `min_lista`. Tilldelningen `min_lista = ny_lista` tilldelar ett nytt värde till den samma variabeln. Variabeln `min_lista` hänvisar nu till den nya listan som skapades i funktionen, vilket betyder att referensen till den ursprungliga listan inte mera är tillgänglig inom funktionen. Tilldelningen har inte dock någon påverkan utanför funktionen.
+Funktionen tar en referens till en lista som argument. Det här är lagrat i variabeln `min_lista`. Tilldelningen `min_lista = ny_lista` tilldelar ett nytt värde till den samma variabeln. Variabeln `min_lista` hänvisar nu till den nya listan som skapades i funktionen, vilket betyder att referensen till den ursprungliga listan inte längre är tillgänglig inom funktionen. Tilldelningen har dock inte någon påverkan utanför funktionen.
 
 <img src="5_2_6.png" width="400">
 
-Dessutom innehåller variabeln `ny_lista` nu de nya värdena, men de är inte tillgängliga utanför funktionen. Variabeln försvinner alltså när funktionen körts och programmet fortsätter tillbaka till huvudfunktionen. Variabeln siffror i huvudfunktionen hänvisar alltid till den ursprungliga listan.
+Dessutom innehåller variabeln `ny_lista` nu de nya värdena, men de är inte tillgängliga utanför funktionen. Variabeln försvinner alltså när funktionen körts och programmet fortsätter tillbaka till huvudfunktionen. Variabeln `tal` i huvudfunktionen hänvisar alltid till den ursprungliga listan.
 
-Visualiseringsverktyget hjälper igen. När du går igenom stegen utförligt märker du att den ursprungliga listan inte påverkas på något sätt av funktionen:
+Visualiseringsverktyget hjälper igen. När du går igenom stegen utförligt märker du att den ursprungliga listan inte påverkas av funktionen på något sätt alls:
 
 <img src="5_2_4d.png">
 
@@ -294,9 +294,9 @@ Eller lite enklare tack vare Python:
 [1, 10, 20, 4]
 ```
 
-I exemplet ovan ersätts en del av en lista med värden från en annan samling.
+I exemplet ovan ersätts en del av listan med värden från en annan lista.
 
-Som vi vet, kan vi också göra detta för en hel samling:
+Vi kan naturligtvis också göra detta för en hel lista:
 
 ```python
 >>> lista = [1, 2, 3, 4]
@@ -316,7 +316,7 @@ def oka_pa_alla(lista: list):
     lista[:] = ny_lista
 ```
 
-Egentligen finns det ingen orsak att skapa en ny lista inom funktionen. Vi kan helt enkelt tilldela värdena direkt till den ursprungliga listan:
+Egentligen finns det ingen orsak till att skapa en ny lista inom funktionen. Vi kan helt enkelt tilldela värdena direkt till den ursprungliga listan:
 
 ```python
 def oka_pa_alla(lista: list):
@@ -327,17 +327,17 @@ def oka_pa_alla(lista: list):
 
 <programming-exercise name='Elementen fördubblade' tmcname='osa05-06a_elementen_x2'>
 
-Skapa funktionen `elementen_fordubblade(siffror: list)` som får som argument en lista med siffror.
+Skapa funktionen `elementen_fordubblade(tal: list)` som får som argument en lista med tal.
 
-Funktionen ska returnera en ny lista där alla siffror är multiplicerade med två. Funktionen får inte ändra på den ursprungliga listan.
+Funktionen ska returnera en ny lista där alla tal är multiplicerade med två. Funktionen får inte ändra på den ursprungliga listan.
 
 Exempel:
 
 ```python
 if __name__ == "__main__":
-    siffror = [2, 4, 5, 3, 11, -4]
-    fordubblade = elementen_fordubblade(siffror)
-    print("ursprunglig:", siffror)
+    tal = [2, 4, 5, 3, 11, -4]
+    fordubblade = elementen_fordubblade(tal)
+    print("ursprunglig:", tal)
     print("fördubblade:", fordubblade)
 ```
 
@@ -353,9 +353,9 @@ fördubblade: [4, 8, 10, 6, 22, -8]
 
 <programming-exercise name='Bort med minsta' tmcname='osa05-06b_minsta_bort'>
 
-Skapa funktionen `avlagsna_minsta(siffror: list)` som får som argument en lista med siffror.
+Skapa funktionen `avlagsna_minsta(tal: list)` som tar en lista med tal som argument.
 
-Funktionen ska ta bort den minsta siffran från listan. Du kan anta att den minsta siffran endast förekommer en gång.
+Funktionen ska ta bort det minsta talet ur listan. Du kan anta att det minsta talet endast förekommer en gång.
 
 Funktionen ska inte returnera något, den ska endast ändra på listan som getts som argument!
 
@@ -363,9 +363,9 @@ Exempel:
 
 ```python
 if __name__ == "__main__":
-    siffror = [2, 4, 6, 1, 3, 5]
-    avlagsna_minsta(siffror)
-    print(siffror)
+    tal = [2, 4, 6, 1, 3, 5]
+    avlagsna_minsta(tal)
+    print(tal)
 ```
 
 <sample-output>
@@ -377,7 +377,7 @@ if __name__ == "__main__":
 </programming-exercise>
 
 
-<programming-exercise name='Sudoku: Utskrift och att lägga till en siffra' tmcname='osa05-07_sudoku_utskrift_ny_siffra'>
+<programming-exercise name='Sudoku: Utskrift och att lägga till ett tal' tmcname='osa05-07_sudoku_utskrift_ny_siffra'>
 
 I den här uppgiften skapar vi ännu två funktioner för ett sudoku: `skriv_ut` och `lagg_till`.
 
@@ -441,7 +441,7 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-Tips: Du kan dra nytta av att `print`-instruktionen kan användas så att radbyten inte görs:
+Tips: Du kan dra nytta av att `print`-funktionen kan användas så att radbyten inte görs:
 
 ```python
 print("tecken ", end="")
@@ -466,7 +466,13 @@ print()
 
 I den här uppgiften skapar vi en lite annorlunda version av funktionen som lägger till nya tal i ett sudoku.
 
-Funktionen `kopiera_och_lagg_till(sudoku: list, radnummer: int, kolumnnummer: int, siffra: int)` får som argument en matris, två siffror som indikerar en position samt en siffra (1-9) som ska lagras. Funktionen ska returnera en kopia av matrisen som gavs som argument, med den angivna siffran lagrad på korrekt ställe. Funktionen får inte ändra på matrisen som getts som argument.
+Funktionen `kopiera_och_lagg_till(sudoku: list, radnummer: int, kolumnnummer: int, siffra: int)` får som argument 
+
+* en matris,
+* två siffror som anger en position i sodukot, samt
+* en siffra (1-9) som ska lagras.
+
+Funktionen ska returnera en kopia av matrisen som gavs som argument, med den angivna siffran lagrad på korrekt ställe. Funktionen får inte ändra på matrisen som getts som argument.
 
 Här utnyttjar vi funktionen `skriv_ut` från den föregående uppgiften:
 
@@ -524,25 +530,25 @@ _ _ _  _ _ _  _ _ _
 
 </sample-output>
 
-Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopieras och vart man slutligen lagrar värdet som getts till funktionen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) kan hjälpa. P.g.a. storleken av sudokut kan vyn dock vara mer råddig än vanligtvis.
+Tips: I den här uppgiften måste man vara noga med vad allt som behöver kopieras och vart man slutligen lagrar värdet som getts till funktionen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) kan hjälpa. På grund av sudokuts storlek kan vyn dock vara aningen otydlig. 
 
 </programming-exercise>
 
 <programming-exercise name='Tre i rad' tmcname='osa05-09_tre_i_rad'>
 
-Tre i rad spelas med ett 3 x 3 -rutnät, där spelarna turvis markerar ett kryss eller en ring. Spelaren som får tre markeringar i rad, vågrätt, lodrätt eller diagonalt, vinner. Om ingendera av spelarna får det, är spelet oavgjort.
+Tre i rad spelas med ett 3 x 3 -rutnät, där spelarna turvis markerar ett kryss eller en ring. Den spelare som först får tre markeringar i rad, vågrätt, lodrätt eller diagonalt, vinner. Om ingendera av spelarna får det, är spelet oavgjort.
 
 Skapa funktionen `tur(brade: list, x: int, y: int, markering: str)` där den givna markeringen görs på stället som indikeras av koordinaterna (0-2).
 
 Observera att `x` indikerar kolumn och `y` rad.
 
-Spelbrädet består av följande strängar:
+Spelbrädan består av följande strängar:
 
 * `""`: tom ruta
-* `"X"`: markeing, spelare 1
-* `"O"`: markeing, spelare 2
+* `"X"`: markering, spelare 1
+* `"O"`: markering, spelare 2
 
-Funktionen returnerar `True` om markeringen lyckades (stället var tomt på brädet), och `False` om stället var reserverat eller koordinaterna inte var i intervallet 0-2.
+Funktionen returnerar `True` om markeringen lyckades (stället var tomt på brädan), och `False` om stället var reserverat eller koordinaterna inte låg i intervallet 0-2.
 
 Exempel:
 
@@ -563,7 +569,7 @@ True
 
 <programming-exercise name='Transponera' tmcname='osa05-10_transponera'>
 
-Skapa funktionen `transponera(matris: lista)` som får som argument en matris. Funktionen ska transponera matrisen, alltså byta om rader till kolumner och tvärtom.
+Skapa funktionen `transponera(matris: lista)` som får som argument en matris. Funktionen ska transponera matrisen, alltså byta plats på rader och kolumner.
 
 Du kan anta att matrisen har lika många rader och kolumner.
 
@@ -587,21 +593,21 @@ Funktionen ska inte returnera något. Den ska ändra på matrisen som den fått 
 
 </programming-exercise>
 
-## Sidoeffekter hos funktioner
+## Funktioners sidoeffekter 
 
-Om en funktion tar emot en referens till en lista som argument, kan funktionen ändra på listan. Om programmeraren inte har tagit i beaktande att listan kan ändras på direkt, kan ändringar i listan förorsaka problem på andra håll i programmet.
+Som vi sett ovan, kan en funktion som tar emot en referens till en lista som argument ändra på listan. Om programmeraren inte har tagit i beaktande att listan kan komma att ändras inne i funktionen, kan detta förorsaka problem på andra håll i programmet.
 
-Låt oss ta en titt på en funktion som borde hitta det näst minsta värdet i en lista:
+Låt oss ta en titt på en funktion som borde hitta det nästminsta värdet i en lista:
 
 ```python
 def nast_minst(lista: list) -> int:
-    # i en ordnad lista finns det näst minsta elementet vid index 1
+    # i en sorterad lista finns det nästminsta elementet på index 1
     lista.sort()
     return lista[1]
 
-siffror = [1, 4, 2, 5, 3, 6, 4, 7]
-print(nast_minst(siffror))
-print(siffror)
+tal = [1, 4, 2, 5, 3, 6, 4, 7]
+print(nast_minst(tal))
+print(tal)
 ```
 
 <sample-output>
@@ -609,7 +615,7 @@ print(siffror)
 [1, 2, 3, 4, 4, 5, 6, 7]
 </sample-output>
 
-Funktionen hittar det näst minsta värdet, men dessutom ordnar funktionen listan. Om ordningen av elementen har betydelse på andra håll i programmet kommer det här funktionsanropet eventuellt att orsaka fel. Oplanerade modifikationer som görs hos objekt som ges som referens till en funktion kallas sidoeffekt.
+Funktionen hittar det nästminsta värdet, men sorterar dessutom listan. Om elementens ordning har betydelse på andra håll i programmet kommer det här funktionsanropet eventuellt att orsaka fel. Oplanerade modifikationer som görs hos objekt som ges som referens till en funktion kallas sidoeffekter.
 
 Vi kan förhindra den här sidoeffekten genom att göra en liten ändring i funktionen:
 
@@ -618,9 +624,9 @@ def nast_minst(lista: list) -> int:
     kopia = sorted(lista)
     return kopia[1]
 
-siffror = [1, 4, 2, 5, 3, 6, 4, 7]
-print(nast_minst(siffror))
-print(siffror)
+tal = [1, 4, 2, 5, 3, 6, 4, 7]
+print(nast_minst(tal))
+print(tal)
 ```
 
 <sample-output>
@@ -630,10 +636,10 @@ print(siffror)
 
 </sample-output>
 
-Funktionen `sorted` returnerar en ny ordnad kopia av listan, så vi behöver inte mera "sabotera" den ursprungliga listan när vi söker efter det näst minsta värdet.
+Funktionen `sorted` returnerar en ny sorterad kopia av listan, så vi behöver inte mera "sabotera" den ursprungliga listan när vi söker efter det näst minsta värdet.
 
-Det är en bra vana att undvika sidoeffekter i funktioner. Sidoeffekter kan göra det svårare att säkerställa att programmet fungerar som det ska i alla situationer.
+Det är en god vana att försöka undvika sidoeffekter i funktioner. Sidoeffekter kan göra det svårare att säkerställa att programmet fungerar som det ska i alla situationer.
 
-Funktioner som saknar sidoeffekter kallas rena funktioner. Då man arbetar med funktionell programmering är rena funktioner speciellt viktiga. Vi dyker djupare i det här under fortsättningskursen i programmering.
+Funktioner som saknar sidoeffekter kallas rena funktioner. Då man arbetar med funktionell programmering är rena funktioner speciellt viktiga. Vi kommer se närmare på det under fortsättningskursen i programmering.
 
 <quiz id="21ff9f90-0aed-591d-8ff0-60e790724739"></quiz>
