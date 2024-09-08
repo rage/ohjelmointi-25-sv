@@ -101,7 +101,7 @@ De sista raderna som uppstår när programmet körs (markerade i bilden ovan) be
 
 <programming-exercise name='Streck' tmcname='osa04-02_streck'>
 
-Skapa funktionen `streck` som får två argument (bredd, sträng). Funktionen skapar ett steck genom att skriva ut det första tecknet i den angivna strängen så många gånger som angetts i den första parametern. Om den andra parametern är tom, används asterisker.
+Skapa funktionen `streck` som tar två argument (bredd, sträng). Funktionen ska sedan skapa ett streck genom att skriva ut det första tecknet i den angivna strängen så många gånger som angetts i den första parametern. Om den andra parametern är tom, används asterisker.
 
 Exempel:
 
