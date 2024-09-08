@@ -14,7 +14,7 @@ Efter den här delen
 
 </text-box>
 
-Du är redan bekant med syntaxen `[]` för att ta fram en delsträng:
+Du är redan bekant med syntaxen `[]` för att plocka ut/slica en delsträng:
 
 ```python
 strang = "exempel"
@@ -42,7 +42,7 @@ print(lista[3:7])
 
 ## Mera extrahering
 
-Syntaxen `[]` fungerar faktiskt mycket lika som `range`-funktionen, vilket innebär att vi också kan ge den ett steg:
+Syntaxen `[]` fungerar faktiskt mycket lika som `range`-funktionen, vilket innebär att vi också kan ge den steg-information:
 
 ```python
 strang = "exempel"
@@ -58,26 +58,26 @@ eepl
 
 </sample-output>
 
-Om vi lämnar bort något av indexen kommer operatorn att inkludera alla element. Tack vare detta kan vi till exempel skriva ett mycket kort program som vänder om en sträng:
+Om vi lämnar bort något av indexen kommer operatorn att inkludera alla element. Vi kan därför till exempel skriva ett mycket kort program som svänger på en sträng:
 
 ```python
-strang = input("Ange en sträng: ")
+strang = input("Mata in en sträng: ")
 print(strang[::-1])
 ```
 
 <sample-output>
 
-Ange en sträng: **exempel**
+Mata in en sträng: **exempel**
 lepmexe
 
 </sample-output>
 
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat-->
-## Varning: globala variabler inom funktioner
+## Varning: globala variabler inne i funktioner
 
-Vi har observerat att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
+Vi har sett att det går att tilldela nya variabler inne i funktionsdefinitioner. Funktionen har också åtkomst till de variabler som finns utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
+Att använda globala variabler inifrån funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel buggar som är svåra att spåra.
 
 Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
@@ -137,7 +137,7 @@ TMC-testen körs alltid så att koden inom dessa if-block inte körs. Därför f
 
 <programming-exercise name='Allt omvänt' tmcname='osa04-21_allt_omvant'>
 
-Skapa funktionen `allt_omvant` som får som argument en lista med strängar. Funktionen ska skapa och returnera en ny lista där alla strängar i den ursprungliga listan är omvända. Elementen ska också komma i omvänd ordning i listan.
+Skapa funktionen `allt_omvant` som får en lista med strängar som argument. Funktionen ska skapa och returnera en ny lista där alla strängar i den ursprungliga listan är omsvängda. Elementen ska också komma i motsatt ordning i listan.
 
 Exempel:
 
@@ -164,7 +164,7 @@ strang = "exempel"
 strang[0] = "a"
 ```
 
-Strängar kan inte ändras på, så det här programmet kommer att ge ett felmeddelande:
+Vi kan inte byta ut tecken i en sträng, så det här programmet kommer att ge ett felmeddelande:
 
 <sample-output>
 
@@ -172,7 +172,7 @@ TypeError: 'str' object does not support item assignment
 
 </sample-output>
 
-Ett liknande fel uppstår om du försöker ordna en sträng med `sort`-metoden.
+Ett liknande fel uppstår om du försöker sortera en sträng med `sort`-metoden.
 
 Strängar är oföränderliga, men variablerna som lagrar dem är inte det. En sträng kan ersättas med en annan sträng.
 
@@ -192,11 +192,11 @@ strang = strang + "!"
 
 <img src="4_4_2.png">
 
-Det första exemplet ändrar på innehållet i den lista som man hänvisar till. I det andra exemplet ersätts hänvisningen till den ursprungliga strängen med en hänvisning till en ny sträng. Den ursprungliga strängen finns fortfarande någonstans i datorns minne, men det saknas en referens till strängen så den kan inte längre användas i programmet.
+Det första exemplet ändrar på innehållet i den lista som man hänvisar till. I det andra exemplet ersätts referensen till den ursprungliga strängen med en referens till en ny sträng. Den ursprungliga strängen finns fortfarande någonstans i datorns minne, men vi har inte längre någon variabel som är kopplad till strängen, och den kan därför inte längre användas i programmet.
 
-Vi återkommer till det här ämnet senare. Då utforskar vi hänvisningar till listor närmare.
+Vi återkommer till det här senare, i samband med listreferenser. 
 
-## Mera metoder hos listor och strängar
+## Fler metoder för listor och strängar
 
 Metoden `count` räknar antalet gånger ett element eller en delsträng finns i en lista eller sträng:
 
@@ -215,14 +215,14 @@ print(lista.count(1))
 
 </sample-output>
 
-Metoden räknar inte överlappande förekomster. Till exempel i strängen `aaaa` räknar metoden upp till två förekomster av delsträngen `aa`, även om det finns tre stycken om överlappande förekomster skulle tillåtas.
+Metoden räknar inte överlappande förekomster. Till exempel i strängen `aaaa` räknar metoden upp till två förekomster av delsträngen `aa`, även om det finns tre stycken om överlappande förekomster skulle tillåtas ("aa**" "*aa*". "**aa").
 
 Metoden `replace` skapar en ny sträng där en specifik delsträng har ersatts med en annan sträng:
 
 ```python
 strang = "Hej alla"
-uusi = strang.replace("Hej", "God eftermiddag")
-print(uusi)
+ny = strang.replace("Hej", "God eftermiddag")
+print(ny)
 ```
 
 <sample-output>
@@ -234,8 +234,8 @@ God eftermiddag alla
 Metoden påverkar alla delsträngar som hittas:
 
 ```python
-lause = "de åtta potatissemlorna förvandlades till en stor potatisplåt i ugnen – läraren, ja hon suckade i sitt hörn av klassen"
-print(lause.replace("en", "EN"))
+mening = "de åtta potatissemlorna förvandlades till en stor potatisplåt i ugnen – läraren, ja hon suckade i sitt hörn av klassen"
+print(mening.replace("en", "EN"))
 ```
 
 <sample-output>
@@ -278,7 +278,7 @@ Jag gillar Java
 
 <programming-exercise name='Vanligaste bokstaven' tmcname='osa04-22_vanligaste_bokstaven'>
 
-Skapa funktionen `vanligaste_bokstaven` som får som argument en sträng. Funktionen ska returnera den bokstav som förekommer mest i strängen. Om det finns flera kandidater ska man returnera den bokstav som förekommer först.
+Skapa funktionen `vanligaste_bokstaven` som tar en sträng som argument. Funktionen ska returnera den oftast förekommande bokstaven i strängen. Om det finns flera kandidater ska programmet returnera den bokstav som finns först.
 
 Exempel:
 
@@ -302,7 +302,7 @@ s
 
 <programming-exercise name='Utan vokaler' tmcname='osa04-23_utan_vokaler'>
 
-Skapa funktionen `utan_vokaler` som får som argument en sträng. Funktionen ska returnera en ny sträng där vokalerna i den ursprungliga strängen fattas.
+Skapa funktionen `utan_vokaler` som tar en sträng som argument. Funktionen ska returnera en ny sträng där vokalerna i den ursprungliga strängen saknas.
 
 Du kan anta att strängen består av gemener i intervallet `a-ö`.
 
@@ -310,7 +310,7 @@ Exempel:
 
 ```python
 strang = "det här är ett exempel"
-print(ilman_vokaaleja(strang))
+print(utan_vokaler(strang))
 ```
 
 <sample-output>
@@ -362,7 +362,7 @@ print(filtrerad_lista)
 
 <programming-exercise name='Grannar i en lista' tmcname='osa04-25_grannar'>
 
-Vi definierar att två element i en lista är grannar då skillnaden mellan deras värden är ett. Dvs. t.ex. elementen `1` och `2` samt `56` och `55`.
+Vi definierar att två element i en lista är grannar då skillnaden mellan deras värden är ett. Dvs. exempelvis elementen `1` och `2` samt `56` och `55`.
 
 Skapa funktionen `langsta_grannstrackan` som letar efter den längsta dellistan bestående av bredvidliggande grannar. Listans längd ska returneras.
 
@@ -387,14 +387,14 @@ print(langsta_grannstrackan(lista))
 
 Den här fjärde modulen avslutas med ett lite större programmeringsprojekt där du får utnyttja det du lärt dig hittills.
 
-Den viktigaste regeln när man börjar med ett programmeringsprojekt är att man inte ska försöka lösa alla problem samtidigt. Programmet ska bestå av mindre delar, till exempel hjälpfunktioner. Du ska testa att varje del fungerar före du fortsätter framåt. Om du försöker göra för mycket samtidigt kommer du högst antagligen hamna i en situation som präglas av kaos och mera kaos.
+Den viktigaste regeln när man börjar med ett programmeringsprojekt är att man inte ska försöka lösa alla problem samtidigt. Programmet ska bestå av mindre delar, till exempel hjälpfunktioner. Du ska testa att varje del fungerar innan du går vidare. Om du försöker göra för mycket samtidigt kommer du högst antagligen hamna i en situation som präglas av kaos och mera kaos.
 
-Du kommer att behöva ett sätt att testa dina funktioner utanför huvudfunktionen. Du kan uppnå det här genom att definiera en skild huvudfunktion som du anropar utanför alla andra funktioner i programmet. Det är enkelt att tillfälligt kommentera bort ett funktionsanrop när man testar programmet. De första stegen i utförandet av programmeringsprojektet skulle kunna se ut så här:
+Du kommer att behöva ett sätt att testa dina funktioner utanför huvudfunktionen. Du kan göra det genom att definiera en skild huvudfunktion som du anropar utanför alla andra funktioner i programmet. Det är enkelt att tillfälligt kommentera bort ett funktionsanrop när man testar programmet. De första stegen i ditt programmeringsprojektet skulle kunna se ut så här:
 
 ```python
 def main():
     poang = []
-    # programmets kod hit
+    # programkod
 
 main()
 ```
@@ -402,15 +402,15 @@ main()
 Nu kan hjälpfunktionerna köras utan att huvudfunktionen körs:
 
 ```python
-# hjälpfunktion som räknar vitsord baserat på givet poängantal
+# hjälpfunktion som beräknar vitsord baserat på givet poängantal
 def vitsord(poang):
-    # koo
+    # funktionens kod
 
 def main():
     poang = []
-    # programmets kod hit
+    # programmets kod
 
-# kommenterar huvudprogrammet bort
+# kommenterar bort huvudprogrammet
 #main()
 
 # testar hjälpfunktionen
@@ -421,29 +421,29 @@ print(resultat)
 
 ## Skicka data från en funktion till en annan
 
-När ett program innehåller flera funktioner uppstår en fråga: hur skickar jag data från en funktion till en annan?
+När ett program innehåller flera funktioner uppstår frågan: hur skickar jag data från en funktion till en annan?
 
-I följande exempel frågar man efter några heltal från användaren. Programmet skriver sedan ut dessa värden och utför en "analys" på dem. Programmet är uppdelat i tre skilda funktioner:
+I följande exempel ber programmet användare mata in några heltal. Programmet skriver sedan ut dessa värden och utför en "analys" på dem. Programmet är uppdelat i tre skilda funktioner:
 
 ```python
 def las_fran_anvandare(antal: int):
     print(f"Ange {antal} tal:")
-    siffror = []
+    tal = []
 
     for i in range(antal):
-        siffra = int(input("Ange tal: "))
-        siffror.append(siffra)
+        t = int(input("Ange tal: "))
+        tal.append(t)
 
-    return siffror
+    return tal
 
-def skriv_ut(siffror: list):
+def skriv_ut(tal: list):
     print("Talen är: ")
-    for siffra in siffror:
-        print(siffra)
+    for t in tal:
+        print(t)
 
-def analysera(siffror: list):
-    medeltal = sum(siffror) / len(siffror)
-    return f"Siffror tillsammans {len(siffror)}, medeltal {medeltal}, minsta {min(siffror)} och största {max(siffror)}"
+def analysera(tal: list):
+    medeltal = sum(tal) / len(tal)
+    return f"Antalet tal {len(tal)}, medeltal {medeltal}, minsta {min(tal)} och största {max(tal)}"
 
 # "huvudprogram" som använder funktionerna
 indata = las_fran_anvandare(5)
@@ -468,19 +468,19 @@ Talen är:
 -32
 99
 -53
-Siffror tillsammans 5, medeltal 11.6, minsta -53 och största 99
+Antalet tal 5, medeltal 11.6, minsta -53 och största 99
 
 </sample-output>
 
-Idén är att huvudfunktionen "lagrar" all data som behandlas av programmet. I det här fallet är det enda som vi behöver de värden som användaren gett, i variabeln `siffror`.
+Idén är att huvudfunktionen "lagrar" all data som behandlas av programmet. I det här fallet är det enda vi behöver de värden som användaren matat in, i variabeln `tal`.
 
-Om det här behövs i en funktion ges det som ett argument. Det här sker med funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen resulterar i data som behövs på annat håll i programmet, returnerar funktionen det. Det här sparas i en variabel i huvudfunktionen. Det här sker med funktionerna `indata_fran_anvandare` och `analysera`.
+Om dessa värden behövs i en funktion skickar vi den motsvarande listvariabeln som ett argument. Det här sker i funktionerna `skriv_ut_resultat` och `analysera`. Om funktionen resulterar i data som behövs på annat håll i programmet, returnerar funktionen det. Det här sparas i en variabel i huvudfunktionen. Det här sker med funktionerna `indata_fran_anvandare` och `analysera`.
 
-Du kunde använda den globala variabeln `siffror` från huvudfunktionen direkt i hjälpfunktionerna. Vi har redan gått igenom varför det är en [dålig idé](https://softwareengineering.stackexchange.com/q/148108), men här följer ännu en annan förklaring. Om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
+Du kunde också använda den globala variabeln `tal` från huvudfunktionen direkt i hjälpfunktionerna, men vi har redan gått igenom varför det är en [dålig idé](https://softwareengineering.stackexchange.com/q/148108). Här följer ännu en annan förklaring: om funktionerna kan ändra på den globala variabeln kan oförutsedda saker börja hända i programmet, framför allt då antalet funktioner ökar.
 
 Att skicka data ut och in från funktioner gör man alltså helst med hjälp av argument och returvärden.
 
-Du kunde också göra huvudfunktionen till sin egen funktion. Då skulle variabeln siffor inte längre vara en global variabel, utan en lokal variabel i `main`-funktionen:
+Du kunde också göra huvudfunktionen till en egen funktion. Då skulle variabeln tal inte längre vara en global variabel, utan en lokal variabel i `main`-funktionen:
 
 ```python
 # funktion som representerar huvudfunktionen
@@ -499,11 +499,11 @@ main()
 
 I den här uppgiften skapar vi ett program vars uppgift är att skriva ut vitsordsstatistik för en kurs.
 
-Till programmet ger man rader med information om en studerandes provpoäng samt antalet gjorda uppgifter under kursen. Programmet skriver ut statistik på basis av dessa uppgifter.
+Användaren matar in rader med information om en studerandes provpoäng samt antalet gjorda uppgifter under kursen. Programmet skriver sedan ut statistik på basis av dessa uppgifter.
 
-Provpoängen är heltal mellan noll och 20. Antalet gjorda uppgifter under kursen är ett heltal mellan noll och 100.
+Provpoängen är heltal 0-20. Antalet gjorda uppgifter under kursen är ett heltal 0-100.
 
-Programmet ber om indata från användaren, tills hon matar in en tom rad. Du kan anta att alla rader är korrekt inmatade – de innehåller alltså antingen två heltal eller är tomma.
+Programmet ber om indata av användaren ända tills hen matar in en tom rad. Du kan anta att alla rader är korrekt inmatade – de innehåller alltså antingen två heltal eller är tomma.
 
 Så här anger man provpoängen och antalet gjorda uppgifter under kursen:
 
@@ -518,13 +518,10 @@ Statistik:
 
 </sample-output>
 
-När användaren matat in en tom rad ska programmet skriva ut statistik.
+När användaren matat in en tom rad ska programmet skriva ut statistik enligt följande.
 
-Statistiken består av de följande:
-
-Uppgiftspoäng: Ett poäng för 10 % gjorda uppgifter. Detta går ända upp till 100 % (100 uppgifter) --> 10 poäng. Uppgiftspoängen är ett heltal.
-
-Kursvitsord: Räknas på basis av prov- och uppgiftspoängens summa, se följande tabell.
+* Uppgiftspoäng: Ett poäng för 10 % gjorda uppgifter. Detta går ända upp till 100 % (100 uppgifter) --> 10 poäng. Uppgiftspoängen är ett heltal.
+* Kursvitsord: Beräknas på basis av prov- och uppgiftspoängens summa, se följande tabell.
 
 Provpoäng + uppgiftspoäng | Vitsord
 :------------------------:|:-------:
@@ -560,7 +557,7 @@ Decimaltal ska skrivas ut med en decimal.
 
 Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det. Om programmets funktionalitet t.ex. finns i funktionen `main`, ska funktionen anropas utanför det nämnda if-blocket.
 
-Tips: Indatan ges som rader som består av två siffror i följande format.
+Tips: Användaren matar in data i form av två siffror i följande format.
 
 <sample-output>
 
@@ -568,7 +565,7 @@ Provpoäng samt antalet gjorda uppgifter under kursen: **15 87**
 
 </sample-output>
 
-Raden som matas in ska först delas i två, varefter delarna ska konverteras till heltal med `int`-funktionen. Du kan dela en rad på samma sätt som i den här uppgiften. Du kan också använda strängmetoden `split`. Du kan söka efter `python string split` på nätet för mera information.
+Programmet behöver alltså först dela upp den inmatade strängen i två delar, varefter delarna ska konverteras till heltal med `int`-funktionen. Du kan dela en sträng på samma sätt som i den här uppgiften. Du kan också använda strängmetoden `split`. Du kan söka efter `python string split` på nätet för mera information.
 
 <!-- **Huomaa** että tällä hetkellä Windowsissa on ongelmia joidenkin tehtävien testien suorittamisessa. Jos törmäät seuraavaan virheilmoitukseen
 
