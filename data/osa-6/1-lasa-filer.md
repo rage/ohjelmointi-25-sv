@@ -8,7 +8,7 @@ hidden: false
 
 Efter den här delen
 
-* kan du läsa en fil med Python
+* kan du läsa in en fil med Python
 * vet du vad en textfil och en CSV-fil är
 * kan du behandla innehållet i en CSV-fil i dina program.
 
@@ -27,13 +27,13 @@ En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel 
 
 </text-box>
 
-När man programmerar kan det uppstå ett behov att behandla data som finns lagrad i filer. Datorprogram kan läsa data från filer och skriva data till filer. Också stora mängder data i filer kan enkelt behandlas automatiskt.
+När man programmerar kan man ibland behöva hantera data som finns lagrad i filer. Datorprogram kan läsa data från filer och skriva data till filer. Också stora mängder data i filer kan enkelt behandlas automatiskt.
 
-Under den här kursen kommer vi endast att arbeta med textfiler. De här filerna består av rader med text. Till exempel kodeditorn Visual Studio Code är kompatibel med textfiler. Obs! Även om ordbehandlingsprogram som Microsoft Word ofta används med filer som innehåller text, är Word-dokument inte textfiler. Dokumenten innehåller också annan information om till exempel textformat, vilket gör det mer komplicerat att behandla filerna i ett program.
+Under den här kursen kommer vi endast att arbeta med textfiler. De här filerna består av rader med text. Till exempel är kodeditorn Visual Studio Code kompatibel med textfiler. Obs! Även om ordbehandlingsprogram som Microsoft Word ofta används med filer som innehåller text, är Word-dokument inte textfiler. Dokumenten innehåller också annan information om till exempel textformat, vilket gör det mer komplicerat att behandla filerna i Python-program.
 
 ## Att läsa data från en fil
 
-Vi börjar att arbeta med filen `exempel.txt` som innehållet det följande:
+Vi börjar arbeta med textfilen `exempel.txt` som innehållet följande:
 
 <sample-data>
 
@@ -43,9 +43,9 @@ Det här är den sista raden.
 
 </sample-data>
 
-Ett enkelt sätt att använda filer i Python är med `with`-satsen. Den inledande raden öppnar filen och blocket där vi kan komma åt filen följer. Efter blocket stängs filen automatiskt och då kan den inte mera behandlas.
+Ett enkelt sätt att använda filer i Python är med `with`-satsen. Den inledande raden öppnar filen följt av blocket där vi kan komma åt filen. Efter blocket stängs filen automatiskt och då kan den inte mera användas i programmet innan man öppnar den igen.
 
-Den här koden öppnar alltså filen, läser dess innehåll och skriver det ut, och till slut stängs filen:
+Den här koden öppnar alltså filen, läser dess innehåll och skriver ut det. Därefter stängs filen:
 
 ```python
 with open("exempel.txt") as fil:
@@ -61,19 +61,21 @@ Det här är den sista raden.
 
 </sample-output>
 
-Variabeln `fil` är en file handle ("filhandtag"). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en hel sträng. I det här fallet skulle strängen se ut så här:
+Variabeln `fil` är en så kallad file handle ("filhandtag"). Via variabeln kan vi komma åt filen så länge den är öppen. Här använde vi metoden `read` som returnerar filens innehåll som en enda sträng. I det här fallet skulle strängen se ut så här:
 
 ```
 "Hej alla!\nVår exempelfil består av tre rader.\nDet här är den sista raden."
 ```
 
+`\n` motsvarar radbrytningarna i texten.
+
 ## Gå igenom innehållet i en fil
 
-Metoden `read` fungerar väl för att skriva ut hela innehållet i en fil, men ofta vill vi gå igenom innehållet rad för rad.
+Metoden `read` fungerar bra för att skriva ut hela innehållet i en fil, men ofta vill vi gå igenom innehållet rad för rad.
 
-Man kan tänka att textfiler är som listor med strängar, där varje sträng finns på sin egen rad i filen. Vi kan gå igenom listan med en for-loop.
+Man kan tänka att en textfil är en lista av strängar, där varje sträng finns på sin egen rad i filen. Vi kan som vanligt gå igenom denna lista med en for-loop.
 
-Följande exempel läser in vår exempelfil med hjälp av en for-loop, tar bort radbrytningarna, räknar antalet rader och skriver ut varje rad med sitt radnummer. Programmet håller också koll på radernas längder:
+Följande exempel läser in vår exempelfil med hjälp av en for-loop, tar bort radbrytningarna, räknar antalet rader och skriver ut varje rad tillsammans med sitt radnummer. Programmet håller också koll på radernas längder:
 
 ```python
 with open("exempel.txt") as fil:
@@ -119,20 +121,20 @@ Skapa funktionen `storst` som ska läsa filen och returnera den största siffran
 
 Observera att filnamnet alltid är `siffror.txt` och att funktionen inte har några parametrar.
 
-Obs! Om Visual Studio Code inte hitta din fil även om namnet är korrekt skrivet ska du följa instruktionerna nedan.
+Obs! Om Visual Studio Code inte hittar din fil även om namnet är korrekt skrivet ska du följa instruktionerna nedan.
 
 </programming-exercise>
 
 ## Om Visual Studio Code inte hittar min fil?
 
-När du kör din kod är det möjligt att Visual Studio Code meddelar att filen – även efter att du kollat att filen finns och att namnet är korrekt skrivet. Att ändra på följande inställning kan lösa problemet:
+När du kör din kod är det möjligt att Visual Studio Code meddelar att filen inte finns – även efter att du kollat att filen finns och att namnet är korrekt skrivet. Att ändra på följande inställning kan lösa problemet:
 
 * öppna inställningarna från menyraden: File -> Preferences -> Settings
 * sök efter den inställning som ska ändras med sökordet "executeinfile"
 * välj fliken Workspace
 * bocka i valet under Python -> Terminal -> Execute in file dir.
 
-Inställningsfönstret borde ungefär se ut så här:
+Inställningsfönstret borde se ut ungefär så här:
 
 <img src="6_1_1.png">
 
@@ -152,7 +154,7 @@ När man använder Visual Studio Codes debuggare med program som behandlar filer
 
 Orsaken är att debuggaren alltid söker efter filer i roten av uppgiftsmappen. Inställningen Execute in file dir som nämndes ovan har ingen påverkan här. Den enklaste lösningen är att kopiera filen till rotmappen.
 
-Du behöver kanske också starta om Visual Studio Code efter att du har kopierat alla filer som behövs.
+Du kan också behöva starta om Visual Studio Code efter att du har kopierat alla filer som behövs.
 
 ## Läsa CSV-filer
 
@@ -160,9 +162,9 @@ En CSV-fil (kommaseparerade värden) är en textfil som innehåller data som sep
 
 CSV-filer är ett vanligt sätt att lagra olika typer av data. Flera databaser och kalkylprogram – exempelvis Excel – kan importera och exportera data i CSV-format. Det här möjliggör enkel dataöverföring mellan olika system.
 
-Vi har redan bekantat oss med hur man kan gå igenom rader i en fil med en for-loop, men hur kan vi separera fält på en och samma rad? Python har en strängmetod `split`, som kan användas för detta. Metoden tar separatortecknet eller -tecknen som ett strängargument och returnerar innehållet i den ursprungliga strängen som en lista av strängar – separerade vid separatortecknen.
+Vi har redan bekantat oss med hur man kan gå igenom rader i en fil med en for-loop, men hur kan vi separera fält på en och samma rad? I Python kan vi använda strängmetoden `split` för detta. Metoden tar separatortecknet eller -tecknen som ett strängargument och returnerar innehållet i den ursprungliga strängen som en lista av strängar – separerade vid separatortecknen.
 
-Här finns ett exempel för att tydliggöra det här:
+Följande exempel visar hur det fungerar:
 
 ```python
 text = "apa,banan,cembalo"
@@ -179,7 +181,7 @@ cembalo
 
 </sample-output>
 
-Låt oss säga att vi har filen `vitsord.csv`, som innehåller namn på elever samt vitsord de fått av olika kurser. Varje rad har data som tillhör en studerande och data separeras med semikolon.
+Låt oss säga att vi har filen `vitsord.csv`, som innehåller namn på elever samt vitsord de fått i olika kurser. Varje rad har data som tillhör en studerande och olika data separeras med semikolon.
 
 <sample-data>
 
@@ -189,7 +191,7 @@ Pia;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
-Följande program går igenom filen rad för rad, delar upp raderna i delar och skriver ut namnen på eleverna samt deras vitsord:
+Följande program går igenom filen rad för rad, delar upp raderna i delar och skriver ut elevernas namn och vitsord:
 
 ```python
 with open("vitsord.csv") as fil:
@@ -226,11 +228,11 @@ o.s.v. ...
 
 Skapa funktionen `las_frukter` som ska läsa filen och skapa ett lexikon där nyckeln är fruktens namn och värdet fruktens pris. Priset ska vara av typen `float`.
 
-Observera att filnamnet alltid är `frukter.csv` och funktionen har inga parametrar.
+Observera att filnamnet alltid är `frukter.csv` och att funktionen inga har några parametrar.
 
 Funktionen ska till slut returnera lexikonet.
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, följ instruktionerna ovan.
 
 </programming-exercise>
 
@@ -246,20 +248,20 @@ o.s.v. ...
 
 Skapa funktionerna `summa` och `maximum` som returnerar summan av elementen i matrisen respektive det största elementet.
 
-Skapa också funktionen `radsummor` som returnerar som en lista summorna av matrisens rader. Till exempel för matrisen...
+Skapa också funktionen `radsummor` som returnerar summorna av matrisens rader i form av en lista . Till exempel ska funktionen för matrisen...
 
 ```sh
 1,2,3
 2,3,4
 ```
 
-...returnerar funktionen `[6, 9]`.
+...returnera `[6, 9]`.
 
 Tips: Du kan också implementera andra funktioner i programmet. Fundera vilka gemensamma funktioner de ovan nämnda funktionerna kan behöva.
 
-Observera att filen alltid heter `matris.txt` och funktionerna inte har parametrar. Ytterligare funktioner du eventuellt skapar kan ha parametrar.
+Observera att filen alltid heter `matris.txt` och att funktionerna inte ska ha några parametrar. Ytterligare funktioner du eventuellt skapar kan ha parametrar.
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna ovan.
 
 </programming-exercise>
 
@@ -302,9 +304,9 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 'aldst' referenced before assignment
 ```
 
-Orsaken till at det här sker är att den andra for-loopen aldrig körs. Detta eftersom filen endast kan behandlas en gång. När den sista raden har lästs stannar file handlen i slutet av filen och data i filen kan inte längre kommas åt.
+Orsaken till felet är att den andra for-loopen aldrig körs, eftersom filen endast kan behandlas en gång. När den sista raden har lästs stannar file handlen i slutet av filen, filen stängs och vi kan inte längre komma åt filens innehåll. 
 
-Om vi vill komma åt innehållet i filen i den andra for-loopen, måste vi öppna filen på nytt:
+Om vi vill komma åt innehållet även i den andra for-loopen, måste vi öppna filen på nytt:
 
 ```python
 with open("personer.csv") as fil:
@@ -326,7 +328,7 @@ with open("personer.csv") as fil:
     print("Den äldsta är", aldst)
 ```
 
-Även om den ovanstående koden fungerar, innehåller den onödig upprepning. Det lönar sig vanligtvis att läsa filen bara en gång, och spara dess innehåll i ett passligt format för fortsatt behandling:
+Även om den ovanstående koden fungerar, innehåller den onödig upprepning. Det lönar sig vanligtvis att läsa filen bara en gång, och spara dess innehåll i ett lämpligt format för fortsatt behandling:
 
 ```python
 personer = []
@@ -353,7 +355,7 @@ print("Den äldsta är", aldst)
 
 ## Mera om att behandla CSV-filer
 
-Vi fortsätter behandla filen `vitsord.csv`, som innehåller det följande:
+Vi fortsätter behandla filen `vitsord.csv`, som innehåller följande data:
 
 <sample-data>
 
@@ -363,7 +365,7 @@ Pia;4;5;5;4;5;5;4;5;4;4
 
 </sample-data>
 
-Följande program skapar lexikonet `vitsord` baserat på innehållet i filen. Nycklarna är elevernas namn och värdet som är kopplat till nycklarna innehåller elevens vitsord. Programmet konverterar vitsorden till heltal så att de kan behandlas enklare.
+Följande program skapar lexikonet `vitsord` baserat på innehållet i filen. Nycklarna är elevernas namn och värdena innehåller elevernas respektive vitsord. Programmet konverterar vitsorden till heltal så att de kan hanteras enklare.
 
 ```python
 vitsord = {}
@@ -402,11 +404,11 @@ Pia: bästa vitsordet 5, medeltal 4.50
 
 </sample-output>
 
-Ta en titt på programmet i exemplet ovan. Det kan verka något komplicerat på en första titt, men tekniken kan användas med flera olika typer av data.
+Ta en titt på programmet i exemplet ovan. Det kan kanske verka aningen komplicerat vid den första anblicken, men tekniken kan användas med flera olika typer av data.
 
 ## Ta bort överflödiga rader, mellanslag och radbrytningar
 
-Låt oss säga att vi har en CSV-fil med namn, exporterat från Excel:
+Låt oss säga att vi har en CSV-fil med namn, exporterar från Excel:
 
 ```sh
 förnamn; efternamn
@@ -440,9 +442,9 @@ När koden körs får vi den här utskriften:
 
 </sample-output>
 
-De två första elementen har ett radbrytningstecken i slutet och alla tre element har ett mellanslag i början. Vi har redan använt `replace`-metoden för att ta bort onödigt mellanrum, men ett bättre sätt är `strip`-metoden hos strängar. Den här metoden tar bort mellanrum från början och slutet av en sträng. Metoden tar bort mellanrum, radbrytningar, samt tabb- och andra tecken som normalt inte skulle skrivas ut.
+De två första elementen har ett radbrytningstecken i slutet och alla tre element har ett mellanslag i början. Vi har redan använt `replace`-metoden för att ta bort onödigt mellanrum, men ett bättre sätt är `strip`-metoden hos strängar. Den här metoden tar bort tomrum från början och slutet av en sträng. Till tomrum räknas blanktecken, radbrytningar, samt tabb- och andra tecken som normalt inte skulle skrivas ut.
 
-Vi kan testa på metoden i Python-terminalen:
+Vi kan testa metoden i Python-terminalen:
 
 ```python
 >>> " prov ".strip()
@@ -465,7 +467,7 @@ with open("personer.csv") as fil:
 print(efternamn)
 ```
 
-Nu har får vi den önskade utskriften:
+Nu får vi den önskade utskriften:
 
 <sample-output>
 
@@ -473,7 +475,7 @@ Nu har får vi den önskade utskriften:
 
 </sample-output>
 
-Strängmetoderna `lstrip` och `rstrip` fungerar lika som metoden `strip`, men gör det då bara för antingen vänstra (l) eller högra (r) kanten av strängen:
+Strängmetoderna `lstrip` och `rstrip` fungerar på motsvarande sätt som `strip`, men gör det då bara för antingen vänstra (l) eller högra (r) sidan av strängen:
 
 ```python
 >>> " teststräng  ".rstrip()
@@ -484,7 +486,7 @@ Strängmetoderna `lstrip` och `rstrip` fungerar lika som metoden `strip`, men g�
 
 ## Kombinera data från olika filer
 
-Det är mycket vanligt att data som behandlas av ett program finns utspritt i flera filer. Vi tar en titt på ett exempel där personalens information i ett företag finns i filen `personal.csv`:
+Det är mycket vanligt att data som behöver hanteras av ett program finns lagrade i flera filer. Vi tar en titt på ett exempel där personalens information i ett företag finns i filen `personal.csv`:
 
 ```csv
 personnr;namn;adress;adressort
@@ -494,7 +496,7 @@ personnr;namn;adress;adressort
 010499-345K;Leevi Hellas;Tapiolavägen 9;02100 ESBO
 ```
 
-Löneuppgifterna finns i en skild fil, `lon.csv`:
+Löneuppgifterna finns i en separat fil, `lon.csv`:
 
 ```csv
 personnr;lön;bonus
@@ -503,7 +505,7 @@ personnr;lön;bonus
 010479-007Z;1300;1200
 ```
 
-Alla rader i båda filerna innehåller en personlig id-kod (pic) som identifierar vems data vi arbetar med. När vi använder det här id:t som gemensam faktor, är det lätt att koppla en arbetstagares namn med hennes lön. Vi kan till exempel skriva ut en lista över de månatliga inkomsterna:
+Alla rader i båda filerna innehåller en personlig id-kod (pic) som identifierar vems data vi arbetar med. När vi använder det här id:t som gemensam faktor, är det lätt att koppla en arbetstagares namn till hens lön. Vi kan då till exempel skriva ut en lista över de månatliga inkomsterna:
 
 <sample-output>
 
@@ -516,7 +518,7 @@ Arto Vihavainen  2500 euro
 
 </sample-output>
 
-Programmet använder två lexikon som hjälpdatastrukturer: `namn` och `loner`. Båda använder pic som nyckel:
+Programmet använder två lexikon som hjälpdatastrukturer: `namn` och `loner`. Båda använder personnr som nyckel:
 
 ```python
 namn = {}
@@ -564,15 +566,15 @@ Först skapar programmet lexikonen `namn` och `loner`. De har dessa innehåll:
 }
 ```
 
-For-loopen i slutet av programmet kombinerar namnen på arbetstagarna med deras löner.
+´for´-loopen i slutet av programmet kombinerar arbetstagarnas namn med deras respektive löner. 
 
-Programmet kan också ta i beaktande situationer där pic saknas för en arbetstagare.
+Programmet kan också beakta situationer där personnumret saknas för en arbetstagare.
 
-Kom ihåg att ordningen som elementen är lagrade i lexikon inte har någon skillnad, eftersom nycklarna behandlas med hjälp av hashvärden.
+Kom ihåg att elementens ordning i lexikonet inte spelar någon roll, eftersom nycklarna behandlas med hjälp av hashvärden.
 
 <programming-exercise name='Kursresultat, del 1' tmcname='osa06-04_resultat_1'>
 
-Programmet behandlar två CSV-filen. I den ena finns information om studerande:
+Programmet hanterar två CSV-filer. I den ena finns information om studerande:
 
 ```csv
 studerandenr;förnamn;efternamn
@@ -581,7 +583,7 @@ studerandenr;förnamn;efternamn
 12345699;liisa;virtanen
 ```
 
-Och i den andra antalet gjorda uppgifter på veckonivå:
+Och i den andra antalet gjorda uppgifter på veckobasis:
 
 ```csv
 studerandenr;v1;v2;v3;v4;v5;v6;v7
@@ -590,9 +592,9 @@ studerandenr;v1;v2;v3;v4;v5;v6;v7
 12345699;10;2;2;7;10;2;2
 ```
 
-I de båda CSV-filerna innehåller den första rade rubriker.
+I de båda CSV-filerna innehåller den första raden rubriker.
 
-Skapa ett program som frågar efter filnamnen och skriver därefter ut antalet gjorda uppgifter för varje studerande. Exempel:
+Skapa ett program som frågar efter filnamnen och därefter skriver ut antalet gjorda uppgifter för varje studerande. Exempel:
 
 <sample-output>
 
@@ -635,13 +637,13 @@ När koden är i skick kan if-satsen tas bort.
 
 Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna ovan.
 
 </programming-exercise>
 
 <programming-exercise name='Kursresultat, del 2' tmcname='osa06-05_resultat_2'>
 
-Vi utvidgar nu föregående uppgift så att de studerandes provpoäng också läses från en CSV-fil. Filens struktur är den följande:
+Vi utvidgar nu föregående uppgift så att de studerandes provpoäng också läses in från en CSV-fil. Filens struktur är följande:
 
 ```csv
 studerandenr;u1;u2;u3
@@ -650,9 +652,9 @@ studerandenr;u1;u2;u3
 12345699;10;2;2
 ```
 
-Till exempel studerande `12345678` har fått 4 + 1 + 4, alltså nio poäng.
+Till exempel har studerande `12345678` fått 4 + 1 + 4, alltså nio poäng.
 
-Programmet ska fråga efter filnamnen och skriva ut vitsordet för varje studerande:
+Programmet ska be användaren mata in filnamnen och sedan skriva ut vitsordet för varje studerande:
 
 <sample-output>
 
@@ -665,9 +667,9 @@ liisa virtanen 3
 
 </sample-output>
 
-Av gjorda uppgifter får man poäng så att 10 % gjorda uppgifter ger ett poäng ända till 100 % (40 uppgifter), som ger tio poäng. Poängen är ett heltal.
+Av gjorda uppgifter får man poäng så att 10 % gjorda uppgifter ger ett poäng, ända upp till 100 % (40 uppgifter) som ger tio poäng. Poängen hanteras som heltal.
 
-Vitsordet för kursen bildas på basis av prov- och uppgiftspoängsumman:
+Vitsordet för kursen fås på basis av prov- och uppgiftspoängsumman:
 
 prov- och uppgiftspoäng tillsammans | vitsord
 :----------------------------------:|:-------:
@@ -700,11 +702,11 @@ liisa virtanen                35        8         14        22        3
 
 </sample-output>
 
-På varje rad skrivs alltså ut den studerandes uppgiftsantal, uppgiftspoäng, provpoäng, totalpoäng samt vitsord. Det här görs "prydligt" så att namnkolumnen är 30 tecken bred och de övriga kolumnerna 10.
+På varje rad ska alltså en studerandes namn, antal gjorda uppgifter, uppgiftspoäng, provpoäng, totalpoäng samt vitsord skrivas ut. Det här görs "prydligt" så att namnkolumnen är 30 tecken bred och de övriga kolumnernas bredd är 10.
 
 Det lönar sig att utnyttja f-strängar (modul fyra).
 
-Märk att utskrift av strängar och siffror fungerar med lite olik logik i f-strängar:
+Lägg märke till att utskriften av strängar och tal fungerar med lite olik logik i f-strängar:
 
 ```python
 ord = "python"
@@ -723,12 +725,12 @@ python    fortsätter
 
 I vanliga fall är strängar vänsterjusterade, men med tecknet `>` kan man justera strängen till höger.
 
-När siffror skrivs ut är logiken motsatt:
+När tal skrivs ut är logiken den motsatta:
 
 ```python
-siffra = 42
-print(f"{siffra:10}fortsätter")
-print(f"{siffra:<10}fortsätter")
+tal = 42
+print(f"{tal:10}fortsätter")
+print(f"{tal:<10}fortsätter")
 ```
 
 <sample-output>
@@ -740,7 +742,7 @@ print(f"{siffra:<10}fortsätter")
 
 </sample-output>
 
-Siffror är normalt högerjusterade men med tecknet `<` kan vi justera siffran till vänster.
+Tal är alltså normalt högerjusterade men med tecknet `<` kan vi justera talet till vänster.
 
 Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
@@ -748,7 +750,7 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 <programming-exercise name='Spell checker' tmcname='osa06-07_spellcheck'>
 
-Skapa ett program som ber användaren ange text på engelska. Programmet ska utföra en språkkontroll och skriva ut texten så att felstavade ord är markerade med asterisker. Exempel:
+Skapa ett program som ber användaren mata in text på engelska. Programmet ska utföra en språkkontroll och skriva ut texten så att felstavade ord är markerade med asterisker. Exempel:
 
 <sample-output>
 
@@ -774,15 +776,15 @@ Programmet använder sig av filen `wordlist.txt` för att känna igen om orden �
 
 Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna ovan.
 
 </programming-exercise>
 
 <programming-exercise name='Receptsök' tmcname='osa06-08_receptsok'>
 
-I den här uppgiften skapar vi ett program som låter användaren söka efter ett recept på basis av dess namn, tillagningstid eller ingrediens. Programmets recept finns lagrade i en fil.
+I den här uppgiften skapar vi ett program som låter användaren söka efter ett recept på basis av dess namn, tillagningstid eller ingrediens. Programmet har tillgång till en samling recept som finns lagrade i en fil.
 
-Varje recept består av tre eller fler rader i receptfilen. Den första raden innehåller receptets namn, den andra tillagningstiden (heltal) och tredje raden framåt ingredienser. Ingredienslistan avsluts med en tom rad (exkl. det sista receptet). Filen kan inntehålla flera recept. Se exemplet nedan:
+Varje recept består av tre eller fler rader i receptfilen. Den första raden innehåller receptets namn, den andra tillagningstiden (heltal) och tredje raden framåt ingredienser. Ingredienslistan avslutas med en tom rad (exkl. det sista receptet). Filen kan innehålla flera recept. Se exemplet nedan:
 
 ```sh
 Plättdeg
@@ -821,11 +823,11 @@ kardemumma
 smör
 ```
 
-Tips: I den här uppgiften lönar det sig kanske att läsa in filens rader i en lista och sedan behandla den här listan enligt den här uppgiftens specifikationer.
+Tips: I den här uppgiften kan det löna sig att läsa in filens rader i en lista och sedan hantera listan enligt den här uppgiftens specifikationer.
 
 #### Sökning med receptnamn
 
-Skapa funktionen `namnsok(fil: str, ord: str)` som söker efter recept vars namn innehåller den givna strängen. Funktionen ska returnera en lista med namnen på de matchande recepten.
+Skapa funktionen `namnsok(fil: str, ord: str)` som söker efter recept vars namn innehåller den sträng som ges som andra argument. Funktionen ska returnera en lista med namnen på de matchande recepten.
 
 Exempel:
 
@@ -845,7 +847,7 @@ Bulldeg
 
 Märk att bokstavsstorleken inte har någon skillnad. Med ordet `bull` hittar vi också `Bulldeg`.
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna ovan.
 
 #### Sökning med tillagningstid
 
@@ -868,11 +870,11 @@ Plättdeg, tillagningstid 15 min
 
 #### Sökning med ingrediens
 
-Varning!! Den här delen är mycket svårare än de tidigare delarna. Om du har svårigheter, lönar det sig att göra de andra delarna först och sedan återkomma hit. Märk att du också kan skicka enskilda delar till servern.
+Varning!! Den här delen är mycket svårare än de tidigare delarna. Om du har svårigheter, lönar det sig att göra de övriga delarna först och sedan återkomma hit. Märk att du också kan skicka enskilda delar till servern.
 
 Skapa funktionen `ingredienssok(fil: str, ingrediens: str)` som ska hitta recepten med den givna ingrediensen.
 
-Matchande recept returneras som en lista. Exempel:
+Matchande recept ska returneras som en lista. Exempel:
 
 ```python
 hittade = ingredienssok("recept1.txt", "mjölk")
@@ -921,11 +923,11 @@ Skapa funktionen `stationsinfo(fil: str)` som läser in stationsinfon och return
 
 </sample-output>
 
-Som nyckel kommer alltså stationens namn och som värde en tuple som består av longituden (1) och latituden (2).
+Som nyckel används alltså stationens namn, medan longituden (1) och latituden (2) lagras som värden i form av en tupel.
 
 Skapa nu funktionen `avstand(stationer: dict, station1: str, station2: str)` som returnerar avståndet mellan de två givna stationerna.
 
-Följande formel används för att räkna avståndet:
+Följande formel används för att beräkna avståndet:
 
 ```python
 # det här behövs för att funktionen sqrt ska fungera
@@ -953,11 +955,11 @@ print(e)
 
 </sample-output>
 
-Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna här.
+Obs! Om Visual Studio Code inte hittar filen även om namnet är korrekt skrivet, ska du följa instruktionerna ovan.
 
 #### Längsta avstånd
 
-Skapa funktionen `langsta_avstand(stationer: dict)` som ska ta reda på vilka stationer som är längst ifrån varandra. Funktionen ska returnera en tuple vars två första värden syftar till stationernas namn och det tredje värdet är avståndet i fråga.
+Skapa funktionen `langsta_avstand(stationer: dict)` som ska ta reda på vilka stationer som är längst ifrån varandra. Funktionen ska returnera en tupel vars två första värden innehåller stationernas namn och det tredje värdet det aktuella avståndet. 
 
 ```python
 stationer = stationsinfo('stations1.csv')
