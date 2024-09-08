@@ -11,7 +11,7 @@ Efter den här delen
 
 * kan du skapa listor med element av olika typer
 * vet du hur man kan använda listor för att organisera data
-* kan du lagra en matris som en tvådimensionell lista.
+* kan du skapa en matris som en tvådimensionell lista.
 
 </text-box>
 
@@ -30,7 +30,7 @@ En uppgift som känns för svår just nu kommer sannolikt att vara ganska enkel 
 
 ## Listor med olika typer av data
 
-I den förra modulen fokuserade vi främst på listor med element av heltalstyp, men listor kan innehålla vilka typer av data som helst. En lista bestående av strängar kunde exempelvis kunna se ut så här:
+I den förra modulen fokuserade vi främst på listor med element av heltalstyp, men listor kan innehålla vilka typer av data som helst. En lista bestående av strängar kunde exempelvis se ut så här:
 
 ```python
 namn = ["Maja", "Lotta", "Pontus"]
@@ -86,9 +86,9 @@ Medelvärde: 10.15
 <!--vastaava varoitusteksti löytyy osioista 3-4, 4-6 ja 5-1, tsekkaa kaikki jos muokkaat tätä-->
 ## Varning: globala variabler inom funktioner
 
-Vi har observerat att det är möjligt att tilldela nya variabler i funktionsdefinitioner. Funktionen kan också se variabler utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
+Vi har sett att det går att tilldela nya variabler inne i funktionsdefinitioner. Funktionen kan också komma åt variabler som finns utanför funktionen, i huvudfunktionen. Dessa variabler kallas globala variabler.
 
-Att använda globala variabler från funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel orsaka buggar som är svåra att spåra.
+Att använda globala variabler inifrån funktioner är oftast en dålig idé. Det kan orsaka en hel del problem, till exempel buggar som är svåra att spåra.
 
 Här är ett exempel på en funktion som använder en global variabel "av misstag":
 
@@ -144,47 +144,47 @@ if __name__ == "__main__":
 
 Nu definieras också den globala variabeln i if-blocket.
 
-TMC-testen körs alltid så att koden inom dessa if-block inte körs. Därför fungerar funktionen inte ens i teorin eftersom variabeln `namnlista` inte finns då testen körs.
+TMC-testerna körs alltid så att det som finns i detta if-block inte körs. Därför fungerar funktionen inte ens i teorin eftersom variabeln `namnlista` inte finns då testerna körs.
 
 ## Varning: att skriva över en parameter och returnera för tidigt
 
-Det finns ett par nya källor till buggar som vi borde ta en titt på före vi börjar med övningarna i den här modulen. Låt oss kika på en funktion som berättar om ett heltal hittas i en lista. Båda är definierade som parametrar i funktionen:
+Ju mer vi lär oss, desto fler potentiella orsaker till buggar får vi. Låt oss titta på en funktion som meddelar om ett heltal hittas i en lista. Både listan och talet är definierade som parametrar i funktionen:
 
 ```python
-def siffra_i_listan(siffror: list, siffra: int):
-    for siffra in siffror:
-        if siffra == siffra:
+def tal_i_listan(tal: list, t: int):
+    for t in tal:
+        if t == t:
             return True
         else:
             return False
 ```
 
-Den här funktionen verkar alltid returnera värdet `True`. Orsaken till det är att for-loopen skriver över värdet som är lagrat i parametern `siffra`. Därför är villkoret i if-satsen alltid sant.
+Den här funktionen verkar alltid returnera värdet `True`. Orsaken till det är att for-loopen skriver över värdet som är lagrat i parametern `t` (det som gavs in som argument skrivs i for-loopen över av det första värdet i listan tal). Därför är villkoret i if-satsen alltid sant.
 
 Att ändra på parameterns namn löser problemet:
 
 ```python
-def siffra_i_listan(siffror: list, siffra_som_soks: int):
-    for siffra in siffror:
-        if siffra == siffra_som_soks:
+def tal_i_listan(tal: list, tal_som_soks: int):
+    for t in tal:
+        if t == tal_som_soks:
             return True
         else:
             return False
 ```
 
-Nu verkar villkoret i if-satsen vara i bättre skick. Men det finns ett nytt problem, eftersom funktionen inte ännu heller fungerar som den ska. Om vi testar följande, märker vi en bugg:
+Nu är villkoret i if-satsen i sin ordning. I stället har vi nu ett nytt problem, eftersom funktionen inte ännu heller fungerar som den ska. Om vi testar följande, märker vi en bugg:
 
 ```python
-resultat = siffra_i_listan([1, 2, 3, 4], 3)
+resultat = tal_i_listan([1, 2, 3, 4], 3)
 print(resultat) # False
 ```
 
-Problemet här är att funktionen returnerar ett värde för tidigt, utan att kolla igenom alla siffror i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att en siffra inte finns i listan förrän vi har gått igenom hela listan. Instruktionen `return False` måste alltså placeras utanför for-loopen:
+Problemet här är att funktionen returnerar resultatet för tidigt, utan att gå igenom alla tal i listan. Funktionen kollar faktiskt endast det första värdet i listan och returnerar `True` eller `False` beroende på dess värde. Vi kan inte veta att ett tal inte finns i listan förrän vi har gått igenom hela listan. Instruktionen `return False` måste alltså placeras utanför for-loopen:
 
 ```python
-def siffra_i_listan(siffror: list, siffra_som_soks: int):
-    for siffra in siffror:
-        if siffra == siffra_som_soks:
+def tal_i_listan(tal: list, tal_som_soks: int):
+    for t in tal:
+        if t == tal_som_soks:
             return True
 
     return False
@@ -193,38 +193,38 @@ def siffra_i_listan(siffror: list, siffra_som_soks: int):
 Låt oss ta en titt på en annan funktion som inte fungerar korrekt:
 
 ```python
-def siffrorna_olika(siffror: list):
+def tal_olika(tal: list):
     # hjälpvariabel där vi lagrar de värden som kollats
-    siffror = []
-    for siffra in siffror:
-        # har siffran redan förekommit?
-        if siffra in siffror:
+    tal = []
+    for t in tal:
+        # har talet redan förekommit?
+        if t in tal:
             return False
-        siffror.append(siffra)
+        tal.append(t)
 
     return True
 
-resultat = siffrorna_olika([1, 2, 2])
+resultat = tal_olika([1, 2, 2])
 print(resultat) # True
 ```
 
-Funktionen borde kolla om alla siffor i en lista är olika, men värdet som returneras är alltid `True`.
+Funktionen borde kolla om alla tal i en lista är olika, men kommer alltid att returnera `True`. Varför det?
 
-I det här fallet skriver funktionen igen över värdet som är lagrat i dess parameter. Funktionen försöker använda variabeln `siffra` för att lagra de siffror som redan har kontrollerats, men det här skriver över det ursprungliga argumentet. Att namnge hjälpvariabeln på nytt löser vårt problem:
+I det här fallet skriver funktionen igen över värdet som är lagrat i dess parameter. Funktionen försöker använda variabeln `tal` för att lagra de siffror som redan har kontrollerats, men det här skriver över det ursprungliga argumentet. Att namnge hjälpvariabeln på nytt löser vårt problem:
 
 ```python
-def siffrorna_olika(siffror: list):
-    # hjälpvariabel där de siffror som kollats lagras
-    sedda_siffror = []
-    for siffra in siffror:
-        # har siffran redan förekommit?
-        if siffra in sedda_siffror:
+def tal_olika(tal: list):
+    # hjälpvariabel där de tal som kollats lagras
+    sedda_tal = []
+    for t in tal:
+        # har talet redan förekommit?
+        if t in sedda_tal:
             return False
-        sedda_siffror.append(siffra)
+        sedda_tal.append(t)
 
     return True
 
-resultat = siffrorna_olika([1, 2, 2])
+resultat = tal_olika([1, 2, 2])
 print(resultat) # False
 ```
 
@@ -232,9 +232,9 @@ Problem som dessa kan hittas och korrigeras med hjälp av debuggaren eller [visu
 
 <programming-exercise name='Längsta strängen' tmcname='osa05-01a_langsta_strangen'>
 
-**HUOM:** tämä ja seuraava tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
+**OBS:** Denna och följande uppgift kommer i fel ordning i sidobalken i VS Code. 
 
-Skapa funktionen `langst(strangar: list)` som får som argument en lista med strängar. Funktionen ska hitta och returnera den längsta strängen. Du kan anta att det bara finns en längsta sträng.
+Skapa funktionen `langst(strangar: list)` som får en lista med strängar som argument. Funktionen ska hitta och returnera den längsta strängen. Du kan anta att det bara finns en längsta sträng.
 
 Exempel:
 
@@ -254,7 +254,7 @@ tjolahoppsan
 
 ## Listor inom listor
 
-Ett element i en lista kan vara en lista:
+Elementen i en lista kan i sin tur vara listor:
 
 ```python
 lista = [[5, 2, 3], [4, 1], [2, 2, 5, 1]]
@@ -271,18 +271,18 @@ print(lista[1][0])
 
 </sample-output>
 
-I hurdana fall skulle det här kunna vara nyttigt?
+När skulle det här kunna vara nyttigt?
 
-Kom ihåg att listor kan innehålla element av olika typer. Du kan till exempel lagra information om en person i en lista. Det första elementet kan till exempel vara personens namn, det andra dess ålder och det tredje dess höjd:
+Kom ihåg att listor kan innehålla element av olika typer. Du kan till exempel lagra information om en person i en lista. Det första elementet kan då exempelvis vara personens namn, det andra hens ålder och det tredje hens skostorlek:
 
 ```python
-["Nelly", 10, 26]
+["Nelly", 10, 32]
 ```
 
-En databas bestående av flera personer skulle då kunna vara en lista, vars element skulle vara listor som innehåller information om en person:
+Vi kunde då skapa en databas med information om flera personer i form av en lista, vars element i sin tur också vore listor som innehåller information om en enskild person:
 
 ```python
-personer = [["Nelly", 10, 26], ["PO", 7, 22], ["Emilia", 32, 37], ["August", 39, 44]]
+personer = [["Nelly", 10, 32], ["PO", 7, 26], ["Emilia", 32, 37], ["August", 39, 44]]
 
 for person in personer:
   namn = person[0]
@@ -293,32 +293,32 @@ for person in personer:
 
 <sample-output>
 
-Nelly: 10 år, skostorlek 26
-PO: 7 år, skostorlek 22
+Nelly: 10 år, skostorlek 32
+PO: 7 år, skostorlek 26
 Emilia: 32 år, skostorlek 37
 August: 39 år, skostorlek 44
 
 </sample-output>
 
-For-loopen går igenom elementen i den yttre listan en för en. Varje lista som innehåller info om en person tilldelas en för en till variabeln `person`.
+For-loopen går igenom elementen i den yttre listan ett i taget. Variabeln `person` tildelas då ett element ur listan, som i sin tur utgör en lista med information om en person.
 
-Listor är inte alltid det bästa sättet att presentera data som information om en person. Vi kommer snart att se på lexikon (dictionary) i Python. Den är bättre anpassad för situationer som den ovan nämnda.
+Listor är inte alltid det bästa sättet att presentera data som exempelvis information om en person. Vi kommer snart att se på ordlistor/lexikon (dictionary) i Python. Den är bättre anpassad för situationer som den ovannämnda.
 
 ## Matriser
 
 En tvådimensionell tabell – matris – är ett annat användningsområde för listor inom listor.
 
-Till exempel följande matris…
+Till exempel kan följande matris…
 
 <img src="5_1_0.png">
 
-…kan presenteras som en tvådimensionell lista i Python på följande sätt:
+… presenteras som en tvådimensionell lista i Python på följande sätt:
 
 ```python
 matris = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
 ```
 
-Eftersom en matris är en lista som innehåller listor kan enskilda element inom matrisen kommas åt med hjälp av varandra påföljande hakparenteser. Det första indexet hänvisar till raden, medan den andra hänvisar till kolumnen. Indexeringen startar från noll så `matris[0][1]` hänvisar till det andra elementet på den första raden.
+Eftersom en matris är en lista som innehåller listor kan vi komma åt enskilda element inom matrisen med två index. Det första indexet hänvisar till raden, medan den andra hänvisar till kolumnen. Indexeringen startar från noll så `matris[0][1]` hänvisar till det andra elementet på den första raden.
 
 ```python
 matris = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
@@ -352,7 +352,7 @@ for rad in matris:
 
 </sample-output>
 
-På samma sätt kan kapslade loopar användas för att komma åt enskilda element inom matrisen. Följande kodsnutten skriver ut varje element i matrisen på en skild rad med hjälp av två for-loopar:
+På samma sätt kan vi använda nästlade loopar för att komma åt enskilda element inom matrisen. Följande kod skriver ut varje element i matrisen på en skild rad med hjälp av två for-loopar:
 
 ```python
 matris = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -382,19 +382,19 @@ ny rad
 
 ## Visualisering av kod som innehåller listor inom listor
 
-Program som består av listor inom listor kan vara svåra att greppa om i början. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) av Python Tutor är ett bra sätt att bekanta sig med hur de fungerar. Det följande är en visualisering av exemplet ovan:
+Program som består av listor inom listor kan till först vara svåra att greppa. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) av Python Tutor är ett bra sätt att bekanta sig med hur de fungerar. Det följande är en visualisering av exemplet ovan:
 
 <img src="5_1_0a.png">
 
 Bilden ovan avslöjar att en 3 x 3 -matris tekniskt sett består av fyra listor. Den första listan representerar hela matrisen. De tre resterande listorna är element i den första listan, och de representerar rader i matrisen.
 
-Eftersom multidimensionella listor kan gås igenom med kapslade loopar skulle man kunna tänka sig att listorna är inuti varandra, men som bilden visar är detta inte sant. Istället hänvisar den "stora listan" som representerar matrisen till skilda listor som alla representerar en rad i matrisen. Det här är en referens – något vi kommer att se mera på i följande del.
+Eftersom flerdimensionella listor kan gås igenom med nästlade loopar skulle man kunna tänka sig att listorna finns inuti varandra, men som bilden visar är detta inte fallet. Istället hänvisar den "stora listan" som representerar matrisen till skilda listor som alla representerar en rad i matrisen. Det här är en referens – något vi kommer att se mera på i nästa del.
 
-I bilden ovan har programmet hunnit till den andra raden i matrisen och det är den listan som variabeln `rad` hänvisar till för tillfället. Variabeln `element` innehåller det element där programmet är vid för tillfället. Värdet i den variabeln är det mellersta värdet i listan, dvs. 5.
+I bilden ovan har programmet hunnit till den andra raden i matrisen och det är den listan som variabeln `rad` hänvisar till för tillfället. Variabeln `element` innehåller det element som programmet hanterar för tillfället, dvs. listans mellersta värde 5.
 
 ## Komma åt element i en matris
 
-Att komma åt en viss rad i en matris är enkelt. Det är bara att välja den raden. Följande funktion räknar summan av elementen på en viss rad:
+Att komma åt en viss rad i en matris är enkelt. Det är bara att välja den raden. Följande funktion beräknar summan av elementen på en viss rad:
 
 ```python
 def summan_av_radens_element(matris, radnummer: int):
@@ -412,11 +412,11 @@ summa = summan_av_radens_element(m, 1)
 print(summa) # 33 (dvs. 9 + 1 + 12 + 11)
 ```
 
-Att arbeta med kolumner i en matris är lite mera komplicerat eftersom matrisen är lagrad som rader:
+Att arbeta med kolumner i en matris är aningen mer komplicerat eftersom matrisen är lagrad som rader:
 
 ```python
 def summan_av_kolumnens_element(matris, kolumnnummer: int):
-    # till summan adderas för varje rad elementet på det önskade stället
+    # till summan adderas för varje rad elementet på den önskade positionen
     summa = 0
     for rad in matris:
         summa += rad[kolumnnummer]
@@ -429,11 +429,11 @@ summa = summan_av_kolumnens_element(m, 2)
 print(summa) # 39 (dvs. 3 + 12 + 9 + 15)
 ```
 
-Kolumnen som söks här består av elementen vid index 2 på varje rad.
+Den kolumn som vi vill komma åt består av elementen på index 2 för varje rad.
 
-[Visualiseringsverktyget](https://pythontutor.com/visualize.html) rekommenderas varmt för att bättre förstå hur de här funktionerna fungerar.
+[Visualiseringsverktyget](https://pythontutor.com/visualize.html) rekommenderas varmt för att bättre förstå hur det här fungerar.
 
-Att ändra på ett värde hos ett specifikt element inom en matris är enkelt. Välj en rad i matrisen och sedan en kolumn inom raden:
+Att ändra på ett värde hos ett specifikt element inom en matris är enkelt – du väljer helt enkelt den rad och kolumn där elementet finns lagrat.
 
 ```python
 def byt_varde(matris, radnummer: int, kolumnnummer: int, varde: int):
@@ -456,9 +456,9 @@ print(m)
 
 </sample-output>
 
-Observera att vi ovan använde indexen för raden och kolumnen för att komma åt det element vi ville ändra på. Om vi vill ändra på innehållet i en matris måste vi komma åt elementen md hjälp av deras index. Vi kan inte bara använda oss av en `for element in lista` -loop för att gå igenom matrisen då vi vill ändra på innehållet i en matris.
+Observera att vi ovan använde indexen för raden och kolumnen för att komma åt det element vi ville ändra på. Om vi vill ändra på innehållet i en matris måste vi komma åt elementen md hjälp av deras index. Vi kan inte bara använda oss av en `for element in lista` -loop för att gå igenom matrisen då vi vill ändra på innehållet.
 
-Istället behöver vi hålla reda på indexen hos elementen: till exempel med en while-loop eller en for-loop med `range`-funktionen. Följande kod ökar på värdet hos varje element i en matris med ett:
+Istället behöver vi hålla reda på indexen hos elementen: till exempel med en while-loop eller en for-loop och `range`-funktionen. Följande kod ökar värdet på varje element i en matris med ett:
 
 
 ```python
@@ -482,7 +482,7 @@ Den yttre loopen går igenom indexen från noll till matrisens längd, alltså a
 
 <programming-exercise name='Antalet element' tmcname='osa05-01_antalet_element'>
 
-**HUOM:** tämä ja edellinen tehtävä ovat väärässä järjestyksessä VS Coden sivupalkissa
+**OBS:** Denna och följande uppgift kommer i fel ordning i sidobalken i VS Code. 
 
 Skapa funktionen `rakna_element(matris: list, element: int)` som tar emot en matris samt ett heltal som argument. Funktionen ska returnera antalet gånger det valda elementet hittas i matrisen.
 
@@ -503,11 +503,11 @@ print(rakna_element(m, 1))
 
 ## En tvådimensionell tabell som datastruktur i ett spel
 
-En matris kan fungera väl som datastruktur i flera olika spel. Till exempel rutorna i ett sudokuspel…
+En matris kan fungera som datastruktur i olika typer av spel. Till exempel kan rutorna i ett sudokuspel…
 
 <img src="5_1_1.png">
 
-…kan representeras i en matris på följande sätt:
+… representeras med en matris på följande sätt:
 
 ```python
 sudoku = [
@@ -554,27 +554,27 @@ Utskriften borde se ut så här:
  3 _ _ _ _ _ _ _ 2
 ```
 
-Flera andra spel kan också representeras på liknande sätt: till exempel schack, minröj, sänka skepp och Mastermind. I sudoku fungerar siffor väl för att representera spelets läge, medan för andra spel kan andra metoder vara bättre.
+Flera andra spel kan också representeras på liknande sätt: till exempel schack, minröjning, sänka skepp och Mastermind. I sudoku fungerar tal väl för att representera spelets läge, medan för andra spel kan andra metoder vara bättre.
 
 <programming-exercise name='Go' tmcname='osa05-02_go'>
 
-I spelet Go plaerar man turvis svarta och vita stenar på spelbrädet. Den spelare som har flera stenar på brädet vinner spelet.
+I spelet Go plaerar man turvis svarta och vita stenar på spelbrädan. Den spelare som har flera stenar på brädan vinner spelet.
 
-Skapa funktionen `vem_vann(brade: list)` som får som argument en matris som representerar spelbrädet. Matrisen består av heltalsvärden:
+Skapa funktionen `vem_vann(brade: list)` som tar en matris som representerar spelbrädan som argument. Matrisen består av heltalsvärden:
 
 * 0: tom ruta
 * 1: sten, spelare 1
 * 2: sten, spelare 2
 
-Spelbrädet kan vara av vilken storlek som helst.
+Spelbrädan kan vara av vilken storlek som helst.
 
-Funktionen ska returnera `1` om spelare ett har vunnit, `2` om spelare två har vunnit och `0` om båda spelarna har lika många stenar på brädet.
+Funktionen ska returnera `1` om spelare ett har vunnit, `2` om spelare två har vunnit och `0` om båda spelarna har lika många stenar på brädan.
 
 </programming-exercise>
 
 <programming-exercise name='Sudoku: Rader korrekt' tmcname='osa05-03_sudoku_rader'>
 
-Skapa funktionen `rad_korrekt(sudoku: list, radnummer: int)` som får som argument en matris samt ett heltal. Radnumreringen börjar med noll. Funktionen ska returnera ett värde som beskriver om raden är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
+Skapa funktionen `rad_korrekt(sudoku: list, radnummer: int)` som får som argument en matris samt ett heltal. Radnumreringen börjar med noll. Funktionen ska returnera ett värde som beskriver om raden har fyllts i korrekt, dvs. vart och ett av talen 1-9 förekommer högst en gång.
 
 ```python
 sudoku = [
@@ -604,7 +604,7 @@ False
 
 <programming-exercise name='Sudoku: Kolumner korrekt' tmcname='osa05-04_sudoku_kolumner'>
 
-Skapa funktionen `kolumn_korrekt(sudoku: list, kolumnnummer: int)` som får som argument en matris samt ett heltal. Funktionen ska returnera ett värde som beskriver om kolumnen är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
+Skapa funktionen `kolumn_korrekt(sudoku: list, kolumnnummer: int)` som får en matris och ett heltal som argument. Funktionen ska returnera ett värde som beskriver om kolumnen har fyllts i korrekt, dvs. innehåller vart och ett av talen 1-9 högst en gång.
 
 
 ```python
@@ -637,9 +637,9 @@ True
 
 Skapa funktionen `kvadrat_korrekt(sudoku: list, radnummer: int, kolumnnummer: int)` som får som argument en matris samt två heltal.
 
-Funktionen ska berätta om 3 x 3 -kvadraten vid positionen (radnummer, kolumnnummer) är korrekt ifylld, dvs. talen 1-9 förekommer högst en gång.
+Funktionen ska berätta om 3 x 3 -kvadraten vid positionen (radnummer, kolumnnummer) har fyllts i korrekt, dvs. så att vart och ett av talen 1-9 förekommer högst en gång.
 
-Det är värt att notera att i man vanligtvis i sudoku enbart ser på kvadraterna vid positionerna (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) och (6, 6). Den här funktionen kommer dock inte att beakta det här.
+Det är värt att notera att man i sudoku vanligtvis enbart ser på kvadraterna vid positionerna (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) och (6, 6). Din funktion behöver dock inte beakta det.
 
 ```python
 sudoku = [
@@ -681,13 +681,13 @@ Kvadraten vid (1, 2) i det andra funktionsanropet:
 4 0 0
 </pre>
 
-I ett riktigt sudokuspel skulle den här kvadraten inte alltså kollas.
+I ett riktigt sudokuspel skulle den här kvadraten alltså inte kollas.
 
 </programming-exercise>
 
 <programming-exercise name='Sudoku: Korrekt?' tmcname='osa05-06_sudoku_korrekt'>
 
-Skapa funktionen `sudoku_korrekt(sudoku: list)` som får som argument en matris. Den här funktionen ska använda sig av de tre föregående uppgifternas funktioner (kopiera dem) för att säkerställa att varje rad, kolumn och 3 x 3 -kvadrat innehåller högst en av siffrorna 1-9.
+Skapa funktionen `sudoku_korrekt(sudoku: list)` som får en matris som argument. Funktionen ska använda sig av de tre föregående uppgifternas funktioner (kopiera dem) för att säkerställa att varje rad, kolumn och 3 x 3 -kvadrat innehåller högst en av siffrorna 1-9.
 
 De 3 x 3 -kvadrater som ska kontrolleras nämndes ovan. De är alltså vid positionerna (0, 0), (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3) och (6, 6).
 
