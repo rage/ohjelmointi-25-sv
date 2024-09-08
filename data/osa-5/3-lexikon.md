@@ -9,7 +9,7 @@ hidden: false
 
 Efter den här delen
 
-* känner du till datatypen lexikon
+* känner du till datatypen lexikon (eller ordlistor)
 * kan du använda lexikon med olika typer av nycklar och värden
 * vet du hur man går igenom värden i ett lexikon
 * har du koll på olika användningsområden för lexikon.
@@ -18,11 +18,11 @@ Efter den här delen
 
 Listor kan vara händiga i flera situationer, men deras svaga punkt är att elementen hämtas med hjälp av index (0, 1, 2 o.s.v.). Om du vill hitta ett element i en lista måste du alltså veta dess index, eller alternativt gå igenom hela listan.
 
-En ytterligare central datastruktur i Python är lexikon, som vi nu ska se på. I lexikon är elementen indexerade enligt nycklar. Varje nyckel har ett värde. Värden som lagrats i ett lexikon kan hämtas och ändras med hjälp av dess nyckel.
+En ytterligare central datastruktur i Python är lexikon, eller ordlistor (eng. dictionary). I lexikon är elementen indexerade med hjälp av nycklar, där varje nyckel har ett värde. Värden som lagrats i ett lexikon kan hämtas och ändras med hjälp av dess nyckel.
 
 ## Att använda lexikon
 
-Det följande visar hur datastrukturen hos lexikon fungerar. Här är ett enkelt lexikon som innehåller översättningar från finska till svenska:
+Det följande visar hur datastrukturen fungerar. Här är ett enkelt lexikon som innehåller översättningar från finska till svenska:
 
 ```python
 lexikon = {}
@@ -44,7 +44,7 @@ apa
 
 </sample-output>
 
-Notationen `{}` skapar ett tomt lexikon dit vi kan lägga till element. Tre stycken nyckel-värdepar skapas: `"apina"` är knutet till `"apa"`, `"banaani"` till `"banan"` och `"cembalo`" till `"cembalo"`. Till slut skriver vi ut antalet nyckel-värdepar i lexikonet, lexikonets innehåll samt det värde som tillhör nyckeln `"apina"`.
+Notationen `{}` skapar ett tomt lexikon där vi kan lägga till element. Tre nyckel-värdepar skapas: `"apina"` är knutet till `"apa"`, `"banaani"` till `"banan"` och `"cembalo`" till `"cembalo"`. Till slut skriver vi ut antalet nyckel-värdepar i lexikonet, lexikonets innehåll samt det värde som tillhör nyckeln `"apina"`.
 
 Efter att vi har skapat ett lexikon kan vi också använda det med indata från användaren:
 
@@ -56,7 +56,7 @@ else:
     print("Ordet hittades inte")
 ```
 
-Märk hur vi använder `in`-operatorn ovan. När vi använder operatorn för variabler med typen lexikon, kollar operatorn om den första operanden finns bland nycklarna i lexikonet. Så här kan det se ut när programmet körs:
+Lägg märke till hur vi använder `in`-operatorn ovan. När vi använder operatorn för variabler med typen lexikon, kollar operatorn om den första operanden finns bland lexikonets _nycklar_. Så här kan det se ut när programmet körs:
 
 <sample-output>
 
@@ -108,7 +108,7 @@ stor
 
 </sample-output>
 
-Alla nycklar i ett lexikon måste vara oföränderliga. Det betyder att en lista inte kan vara en nyckel, eftersom listor kan ändras på. Den här koden ger till exempel ett fel:
+Alla nycklar i ett lexikon måste vara oföränderliga. Det betyder att en lista inte kan vara en nyckel, eftersom vi kan ändra på en lista. Den här koden ger till exempel ett fel:
 
 ```python
 lexikon[[1, 2, 3]] = 5
@@ -122,19 +122,19 @@ TypeError: unhashable type: 'list'
 
 <text-box variant="hint" name="Hashtabell">
 
-Märk ordet "unhashable" i felmeddelandet ovan. Det här är en hänvisning till de inte strukturerna i ett lexikon. Python lagrar innehållet i ett lexikon i en hashtabell. Varje nyckel har ett hashvärde som indikerar var nyckeln finns lagrad i minnet. Felmeddelandet ovan indikerar att en lista inte kan förvandlas till ett hashvärde, och kan därmed inte användas som en nyckel i lexikonet.
+Märk ordet "unhashable" i felmeddelandet ovan. Det här är en hänvisning till de inre strukturerna i ett lexikon. Python lagrar innehållet i ett lexikon i en hashtabell. Varje nyckel har ett hashvärde som indikerar var nyckeln finns lagrad i minnet. Felmeddelandet ovan indikerar att en lista inte kan förvandlas till ett hashvärde, och kan därmed inte användas som en nyckel i lexikonet.
 
-Kursen Datastrukturer och algoritmer ger en större insikt i hashtabeller.
+Kursen Datastrukturer och algoritmer ger mer insyn i hashtabeller.
 
 </text-box>
 
-Till skillnad från nycklar, kan värden i ett lexikon ändra och därmed kan vilken som helst typ av data lagras som ett värde. Ett och samma värde kan också vara kopplat till flera nycklar i samma lexikon.
+Till skillnad från nycklar, kan värdena i ett lexikon ändra. Därmed kan vilken som helst typ av data lagras som värden. Ett och samma värde kan också vara kopplat till flera nycklar i samma lexikon.
 
 <programming-exercise name='Gånger tio' tmcname='osa05-10b_x10'>
 
 Skapa funktionen `ganger_tio(start: int, slut: int)` som skapar och returnerar ett lexikon. Lexikonet ska ha nycklarna i intervallet `start-slut`.
 
-Värdet för varje nyckel ska vara nyckeln multiplicerat med tio.
+Värdet för varje nyckel ska vara nyckeln multiplicerad med tio.
 
 Exempel:
 
@@ -155,7 +155,7 @@ print(d)
 
 Skapa funktionen `fakulteter(n: int)` som returnerar fakulteterna för talen i intervallet `1-n` i ett lexikon så att nyckeln är `n` och värdet `n`:s fakultet.
 
-Som en påminnelse: Talet `n`:s fakultet (`n!`) räknas genom att multiplicera talet med alla föregående positiva heltal. T.ex. `4! = 4 * 3 * 2 * 1 = 24`.
+Som en påminnelse: Talet `n`:s fakultet (`n!`) beräknas genom att multiplicera talet med alla föregående positiva heltal. T.ex. `4! = 4 * 3 * 2 * 1 = 24`.
 
 Exempel:
 
@@ -178,7 +178,7 @@ print(k[5])
 
 ## Gå igenom ett lexikon
 
-Den bekanta `for element in samling` -loopen kan också användas för att gå igenom ett lexikon. När det används direkt hos ett lexikon kommer loopen att en för en gå igenom nycklarna i lexikonet. I följande exempel skrivs varje nyckel och respektive värde:
+Den bekanta `for element in samling` -loopen kan också användas för att gå igenom ett lexikon. Som standard går loopen då igenom lexikonets nycklar. I följande exempel skrivs varje nyckel och respektive värde:
 
 ```python
 lexikon = {}
@@ -203,7 +203,7 @@ värde: cembalo
 
 </sample-output>
 
-Ibland behöver du gå igenom allt innehåll i ett lexikon. Då kan du använda metoden `items` som returnerar alla nycklar och värden, ett par i sänder:
+Ibland behöver du i stället gå igenom lexikonets innehåll, inte endast nycklarna. Då kan du använda metoden `items` som returnerar alla nycklar och värden, ett par i sänder:
 
 ```python
 for nyckel, varde in lexikon.items():
@@ -211,11 +211,11 @@ for nyckel, varde in lexikon.items():
     print("värde:", varde)
 ```
 
-I exemplen ovan märkte du kanske att nycklar behandlas i den ordning som de lagts till i lexikonet. Eftersom nycklarna behandlas enligt deras hashvärden, borde ordningen inte ha någon skillnad i programmen. I flera äldre versioner av Python är det dessutom inte garanterat att ordningen är den samma som nycklarna lagts till.
+I exemplen ovan märkte du kanske att nycklar behandlas i den ordning som de lagts till i lexikonet. Eftersom nycklarna behandlas enligt sina hashvärden, borde ordningen inte ha någon skillnad i programmen. I flera äldre versioner av Python är det dessutom inte garanterat att ordningen är den samma som nycklarna lagts till.
 
 ## Några mer avancerade sätt att använda lexikon
 
-Låt oss kika på en lista med ord:
+Låt oss se på en lista med ord:
 
 ```python
 ordlista = [
@@ -227,7 +227,7 @@ ordlista = [
 
 Vi skulle vilja analysera den här ordlistan på olika sätt. Vi är till exempel intresserade av hur många gånger de olika orden förekommer i listan.
 
-Ett lexikon fungera väl för att hålla reda på sådan här information. I exemplet nedan går vi igenom orden i listan. Vi använder sedan orden som nycklar i ett lexikon som vi skapat, så att värdet som är kopplat till varje nyckel indikerar hur många gånger det specifika ordet har förekommit:
+Ett lexikon fungerar bra för att hålla reda på den typen av information. I exemplet nedan går vi igenom orden i listan. Vi använder sedan orden som nycklar i ett nytt lexikon, så att värdet som är kopplat till varje nyckel indikerar hur många gånger det specifika ordet har förekommit:
 
 ```python
 def antal(lista):
@@ -252,14 +252,14 @@ Programmet skriver ut det följande:
 
 </sample-output>
 
-Om vi då skulle vela ordna orden enligt den första bokstaven i varje ord? Här kunde vi också kunna använda lexikon:
+Hur skulle vi kunna sortera orden enligt den första bokstaven i varje ord? Även för det kan vi använda ett lexikon: 
 
 ```python
 def enligt_forsta_bokstaven(lista):
     grupper = {}
     for ord in lista:
         forsta_bokstaven = ord[0]
-        # skapa lista då bokstaven förekommer för den första gången
+        # skapa en lista då bokstaven förekommer för den första gången
         if forsta_bokstaven not in grupper:
             grupper[forsta_bokstaven] = []
         # lägg till ordet under den korrekta bokstaven
@@ -274,7 +274,7 @@ for nyckel, varde in grupper.items():
         print(ord)
 ```
 
-Funktionens struktur liknar mycket den som finns i det tidigare exemplet, men den här gången är värden lagrade i form av listor. Programmet skriver ut det följande:
+Funktionens struktur påminner om det tidigare exemplet, men den här gången är värden lagrade i form av listor. Programmet ger följande utskrift: 
 
 <sample-output>
 
@@ -311,7 +311,7 @@ ord som börjar med s:
 
 <programming-exercise name='Histogram' tmcname='osa05-12_histogram'>
 
-Skapa funktionen `histogram` som får som argument en sträng. Funktionen ska skriva ut ett histogram som beskriver förekomsten av olika bokstäver.
+Skapa funktionen `histogram` som tar en sträng som argument. Funktionen ska skriva ut ett histogram som beskriver förekomsten av olika bokstäver.
 
 Exempelvis för anropet `histogram("abba")` ska utskriften vara:
 
@@ -374,7 +374,7 @@ avslutar...
 
 </sample-output>
 
-Observera att varje namn endast kan vara förknippat till ett nummer. Om ett nytt nummer ges för en person kommer det tidigare numret att ersättas.
+Observera att varje namn endast kan vara förknippat med ett nummer. Om ett nytt nummer ges in för ett namn som redan matats in kommer det tidigare numret att ersättas.
 
 Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -blocket, om du inte ombeds göra det.
 
@@ -382,7 +382,7 @@ Obs! I dessa uppgifter ska du inte placera kod i `if __name__ == "__main__"` -bl
 
 <programming-exercise name='Telefonkatalog, version 2' tmcname='osa05-14_katalog_2'>
 
-Skapa nu en förbättrad version av telefonkatalogen. Samma person ska nu kunna ha flera nummer. I övrigt fungerar programmet som den tidigare versionen.
+Skapa en förbättrad version av telefonkatalogsprogrammet. Samma person ska nu kunna ha flera telefonnummer. I övrigt fungerar programmet som den tidigare versionen.
 
 <sample-output>
 
@@ -415,7 +415,7 @@ avslutar...
 
 ## Att ta bort nycklar och värden från ett lexikon
 
-Det är naturligtvis möjligt att ta bort nyckel-värdepar från ett lexikon. Det finns två sätt att göra det här. Det första sättet är att använda instruktionen `del`:
+Man kan ta bort nyckel-värdepar ur ett lexikon på två sätt. Det första är att använda instruktionen `del`:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
@@ -458,7 +458,7 @@ else:
   print("Hittade inte personen som skulle avlägsnas")
 ```
 
-Ett annat sätt att ta bort element från listan är att använda metoden `pop`:
+Ett annat sätt för att ta bort element från listan är att använda metoden `pop`:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
@@ -476,7 +476,7 @@ Avlägsnade lektor
 
 Metoden `pop` returnerar också värdet på elementet som togs bort.
 
-Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som ett andra argument ge till funktionen ett returvärde som funktionen kan returnera då en nyckel saknas. Värdet `None` kan till exempel användas här:
+Metoden `pop` kommer också i vanliga fall att ge ett fel om nyckeln som man försöker ta bort saknas i lexikonet. Det här kan man dock undvika genom att som andra argument till metoden ge ett standardväde som ska returneras i de fall där nyckeln saknas. Värdet `None` kan till exempel användas här:
 
 ```python
 personal = {"Antti": "lektor", "Emilia": "professor", "Arto": "lektor"}
@@ -509,9 +509,9 @@ RuntimeError: dictionary changed size during iteration
 
 </sample-output>
 
-När man går igenom en samling med en for-loop, kan man inte ändra på samlingens innehåll så länge for-loopen är igång.
+Som vi nämnt tidigare kan vi inte göra ändringar i en samling i samband med att vi går igenom den med en `for`-loop. 
 
-Lyckligtvis har lexikon en inbyggd metod som kan användas istället:
+Lexikon har dock en inbyggd metod som kan användas istället:
 
 ```python
 personal.clear()
@@ -519,7 +519,7 @@ personal.clear()
 
 <programming-exercise name='Att vända ett lexikon' tmcname='osa05-15_vanda_lexikon'>
 
-Skapa funktionen `vand(lexikon: dict)` som får som argument ett lexikon. Funktionen ska vända på nycklarna och värdena enligt exemplet nedan.
+Skapa funktionen `vand(lexikon: dict)` som tar ett lexikon som argument. Funktionen ska vända på nycklarna och värdena enligt exemplet nedan.
 
 ```python
 s = {1: "första", 2: "andra", 3: "tredje", 4: "fjärde"}
@@ -562,11 +562,11 @@ noll
 
 </sample-output>
 
-Obs! Bilda inte varje ord skilt för sig utan fundera hur du kan använda loopar och lexikon till nytta i din lösning.
+Obs! Bilda inte varje ord skilt för sig utan fundera hur du kan använda loopar och lexikon till nytta i din lösning för att generera textmotsvarigheten för talen.
 
 </programming-exercise>
 
-## Använda lexikon för strukturerade data
+## Använda lexikon för att strukturera data
 
 Lexikon fungerar bra för att strukturera data. Följande kodsnutt skapar ett lexikon som innehåller information om en person:
 
@@ -584,13 +584,13 @@ vikt = 61
 alder = 44
 ```
 
-Fördelen med lexikon är att det är en samling. Det samlar relaterade data under en variabel och det är enkelt att komma åt den information man är ute efter. Samma funktionalitet erbjuds också av listor:
+Fördelen med lexikon är att det är en samling och kan samla relaterade data under en och samma variabel. Det är dessutom enkelt att komma åt den information man är ute efter. Samma funktionalitet erbjuds också av listor:
 
 ```python
 person = ["Peppa Python", 153, 61, 44]
 ```
 
-Men med listor måste programmeraren minnas vilket index används för vilken information. Det finns inget som indikerar att `person[2]` innehåller vikten och `person[3]` åldern hos en person. När man använder lexikon, undviker man det här problemet eftersom all information finns lagrad under namngivna nycklar.
+Nackdelen med listor är att programmeraren måste komma ihåg eller hålla på vilket index som används för vilken information. Det finns inget som indikerar att `person[2]` innehåller vikten och `person[3]` åldern. När man använder lexikon, undviker man det här problemet eftersom all information finns lagrad under namngivna nycklar.
 
 Om vi antar att det finns flera personer som definierats i samma format, kan vi komma åt deras information på följande sätt:
 
@@ -624,7 +624,7 @@ Medellängden är 173.0
 
 Skapa funktionen `ny_film(register: list, namn: str, regissor: str, ar: int, langd: int)`. Funktionen ska lägga till en ny film i ett register.
 
-Registret är en lista och varje element är ett lexikon med dessa nycklar:
+Registret är en lista där varje element är ett lexikon med följande nycklar:
 
 * namn
 * regissör
