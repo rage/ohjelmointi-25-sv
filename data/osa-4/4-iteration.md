@@ -35,22 +35,22 @@ while plats < len(lista):
 
 </sample-output>
 
-Det här fungerar helt bra, men det är ett komplicerat sätt att gå igenom en lista eftersom att det krävs en hjälpvariabel, `index`, för att minnas vid vilket element man är vid. Till all lycka erbjuder Python ett enklare sätt att gå igenom listor, strängar och liknande strukturer.
+Det här fungerar som avsett, men är onödigt komplicerat eftersom vi behöver använda en hjälpvariabel, den som i exemplet ovan kallas `plats`, för att hålla koll på det aktuella elementet. Om vi glömmer att uppdatera hjälpvariabelns värde, riskerar vi att hamna i en oändlig loop. Python erbjuder ett enklare sätt för att gå igenom listor, strängar och andra liknande strukturer. 
 
 ## `for`-loopen
 
-När du vill gå igenom en färdig samling av element i Python, kan du använda dig av en `for`-loop. Loopen kan till exempel gå igenom alla element i en lista – från det första till det sista.
+När du vill gå igenom en sekvens eller samling av element i Python, kan du använda dig av `for`-loopen. Loopen kan till exempel gå igenom alla element i en lista – från det första till det sista.
 
-När man använder en while-loop, vet programmet inte på förhand hur många iterationer ("varv") loopen kommer att gå igenom. Loopen kommer att fortsätta tills villkoret inte längre är sant eller loopen avslutas på ett annat sätt. I en `for`-loop vet man antalet iterationer på förhand.
+När man använder en while-loop, vet programmet inte på förhand hur många gånger loopen kommer att köras, dvs. hur många iterationer ("varv") den kommer att gå igenom. Loopen kommer att fortsätta tills villkoret inte längre är sant eller loopen avslutas på ett annat sätt. I en `for`-loop vet man antalet iterationer på förhand.
 
-Idén är att `for`-loopen går igenom elementen i samlingen ett för ett och utför samma sak för varje element. Programmeraren behöver inte fundera på vilket element som behandlas och när det görs. Syntaxen för `for`-loopen är den följande:
+Idén är att `for`-loopen går igenom elementen i samlingen ett för ett och kör samma kod för varje element. Programmeraren behöver inte fundera på vilket element som behandlas och när. Syntaxen för `for`-loopen ser ut så här:
 
 ```python
 for <variabel> in <samling>:
     <block>
 ```
 
-`for`-loopen tar ett element i samlingen, tilldelar det till en variabel, kör kodblocket och fortsätter till nästa element. När alla element har behandlats kommer programmet att fortsätta köras från och med kodraden som följer loopen.
+`for`-loopen tar det första elementet i samlingen, tilldelar det till en variabel, kör kodblocket. Därefter tilldelas variabeln värdet på det följande elementet i samlingen, varpå kodblocket körs igen. Det här upprepas tills samlingens alla element har gåtts igenom. Efter det fortsätter programmet att köras från den kodrad som kommer efter loopen.
 
 <img src="4_3_1.png" alt="Listan iterointi">
 
@@ -78,7 +78,7 @@ Jämfört med exemplet i början av den här delen är strukturen mycket enklare
 Samma princip gäller också för strängar:
 
 ```python
-namn = input("Ange ditt namn: ")
+namn = input("Ge mig ditt namn: ")
 
 for tecken in namn:
     print(tecken)
@@ -86,7 +86,7 @@ for tecken in namn:
 
 <sample-output>
 
-Ange ditt namn: **Peter**
+Ge mig ditt namn: **Peter**
 P
 e
 t
@@ -97,7 +97,7 @@ r
 
 <programming-exercise name='Utskrift med asterisker' tmcname='osa04-11a_utskrift_asterisker'>
 
-Skapa ett program som ber användaren ange en sträng. Programmet ska sedan skriva ut strängen så att dess tecken kommer under varandra.
+Skapa ett program som ber användaren mata in en sträng. Programmet ska sedan skriva ut strängen så att dess tecken kommer under varandra.
 
 Efter varje tecken skriver man också ut en asterisk på en ny rad.
 
@@ -127,9 +127,9 @@ Obs! I de här uppgifterna ska du inte placera kod i `if __name__ == "__main__"`
 
 ## Funktionen `range`
 
-Man vet ofta hur många gånger man vill upprepa en viss kodsnutt. Det kan till exempel hända att du vill gå igenom siffrorna ett till hundra. Funktionen `range` kan användas i samband med en `for`-loop för att uppnå detta.
+Man vet ofta hur många gånger man vill upprepa en viss kodsnutt. Det kan till exempel hända att du vill gå igenom talen ett till 100 med en `for`-loop. I stället för att t.ex. manuellt skapa en lista med alla talen i ([1,2,3,4,5,....,100]), kan vi använda funktionen `range` som skapar en följd av heltal.
 
-Det finns några olika sätt att använda `range`-funktionen. Det enklaste sättet är att använda ett argument, som då hänvisar till slutpunkten. Själva slutpunkten inkluderas inte, likt extrahering av delsträngar (slice). Det betyder alltså att anropet `range(n)` ger oss en loop som går igenom siffrorna `0` till `n - 1`:
+`range`-funktionen har olika funktionalitet beroende på antalet argument man ger. Det enklaste sättet är att använda ett argument, som då representar antalet element man vill ha i sitt intervall. När man använder ett argument är det första talet alltid 0, vilket innebär att anropet `range(n)` returnerar talföljden `0 ... n - 1`. Vi kan därefter använda det värdet i en `for`-loop: 
 
 ```python
 for i in range(5):
@@ -146,7 +146,7 @@ for i in range(5):
 
 </sample-output>
 
-Med två argument kommer funktionen att returnera ett intervall mellan två siffror. Funktionen `range(a, b)` kommer att ge ett intervall som startar med `a` och slutar med `b - 1`.
+Med två heltalsargument kommer funktionen att returnera ett intervall mellan de två talen. Funktionen `range(a, b)` kommer att ge en följd som startar med `a` och slutar med `b - 1`. Precis som med slicing är intervallet halvöppet – b kommer inte med.
 
 ```python
 for i in range(3, 7):
@@ -162,7 +162,7 @@ for i in range(3, 7):
 
 </sample-output>
 
-Till sist: vi kan ge ett tredje argument som specificerar avståndet mellan värdena. Anropet `range(a, b, c)` kommer att ge ett intervall som börjar med `a` och slutar vid `b - 1`, och ökar med `c` för varje steg.
+Vi kan ännu också ge ett tredje argument som specificerar avståndet mellan talen i intervallet. Anropet `range(a, b, c)` kommer att returnera en följd som börjar med `a` och slutar vid `b - 1`, där värdena ökar med `c` för varje steg.
 
 ```python
 for i in range(1, 9, 2):
@@ -178,7 +178,7 @@ for i in range(1, 9, 2):
 
 </sample-output>
 
-Avståndet eller steget kan också vara negativt. Då kommer intervallet att vara ordnat i fallande ordning. Observera att de två första argumenten har bytt plats här:
+Avståndet eller steget kan också vara negativt. Då kommer intervallet att vara ordnat i fallande ordning. Observera att vi då behöver byta plats på de två första argumenten:
 
 ```python
 for i in range(6, 2, -1):
@@ -196,7 +196,7 @@ for i in range(6, 2, -1):
 
 <programming-exercise name='Från negativ till positiv' tmcname='osa04-11b_negativ_till_positiv'>
 
-Skapa ett program som ber användaren ge ett positivt heltal `n`. Programmet ska därefter skriva ut siffrorna i intervallet `-n ... n`, exklusive noll. Varje siffra skrivs ut på en skild rad.
+Skapa ett program som ber användaren mata in ett positivt heltal `n`. Programmet ska därefter skriva ut talen i intervallet `-n ... n`, exklusive noll. Varje tal skrivs ut på en skild rad.
 
 Exempel:
 
@@ -223,8 +223,8 @@ Obs! I de här uppgifterna ska du inte placera kod i `if __name__ == "__main__"`
 Funktionen `range` returnerar ett `range`-objekt som på flera sätt fungerar som en lista, men i verkligheten inte är det. Om du försöker skriva ut värdet som funktionen returnerar kommer du bara att se en beskrivning av `range`-objektet:
 
 ```python
-siffror = range(2, 7)
-print(siffror)
+tal = range(2, 7)
+print(tal)
 ```
 
 <sample-output>
@@ -233,11 +233,11 @@ range(2, 7)
 
 </sample-output>
 
-Funktionen `list` konverterar ett intervall till en lista. Listan kommer att innehålla de värden som finns i intervallet. I fortsättningskursen i Python som följer den här kursen kommer vi att gå djupare in på det här.
+Funktionen `list` konverterar ett intervall till en lista. Den nya listan kommer att innehålla de värden som finns i intervallet. Vi kommer att bekanta oss närmare med detta i fortsättningskursen som kommer efter den här kursen.
 
 ```python
-siffror = list(range(2, 7))
-print(siffror)
+tal = list(range(2, 7))
+print(tal)
 ```
 
 <sample-output>
@@ -246,7 +246,7 @@ print(siffror)
 
 </sample-output>
 
-## En påminnelse om de automatiska testen
+## En påminnelse om de automatiska testerna
 
 Tills nu har de övningar som krävt att du skriver en funktion haft färdiga mallar som sett ut på följande sätt:
 
@@ -262,13 +262,13 @@ if __name__ == "__main__":
     print(sista_ordet(mening))
 ```
 
-Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == "__main__"` -blocket. De automatiska testen kommer fortsättningsvis ändå att kräva att de används, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
+Från och med nu kommer det inte längre att finnas påminnelser om att använda `if __name__ == "__main__"` -blocket. De automatiska testerna kommer fortsättningsvis ändå att kräva dem, så du måste själv lägga till blocket i din kod när du testar dina funktioner inom programmets huvudfunktion.
 
-Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktionen du gjort. Den här koden bör inte läggas i `if __name__ == "__main__"` -blocket. De automatiska testen kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
+Obs! Vissa övningar, som Palindrom i den här delen, förutsätter att du skriver kod som använder sig av den funktion du skapat. Den här koden bör inte läggas i `if __name__ == "__main__"` -blocket. De automatiska testerna kör ingen kod inom dessa block, så din lösning kommer inte att vara fullständig om du placerar dina funktionsanrop där.
 
 <programming-exercise name='Asterisker' tmcname='osa04-12_asterisker'>
 
-Skapa funktionen `lista_som_asterisker` som får som argument en lista med heltal. Funktionen ska skriva ut rader med asterisker så att siffrorna i listan indikerar antalet asterisker på en rad.
+Skapa funktionen `lista_som_asterisker` som tar en lista med heltal som argument. Funktionen ska skriva ut rader med asterisker så att talen i listan indikerar antalet asterisker på en rad.
 
 T.ex. med anropet `lista_som_asterisker([3, 7, 1, 1, 2])` ska resultatet vara:
 
@@ -284,23 +284,23 @@ T.ex. med anropet `lista_som_asterisker([3, 7, 1, 1, 2])` ska resultatet vara:
 
 </sample-output>
 
-<!-- **Huomaa** että tällä hetkellä Windowsissa on ongelmia joidenkin tehtävien testien suorittamisessa. Jos törmäät seuraavaan virheilmoitukseen
+<!-- **OBS!** En del av testerna kan för tillfället vålla problem i Windows-miljö. Om du får följande felmeddelande: 
 
 <img src="4_3_2.png" alt="Listan iterointi">
 
-voit suorittaa testit lähettämällä ne palvelimelle valitsemalla testien suoritusnapin oikealla puolella olevasta symbolista avautuvasta TMC-valikosta _Submit solutions_.
+kan du utföra testerna genom att skicka dem till servern manuellt med _Submit solutions_ som du kommer åt via TMC-menyn som öppnas via symbolen till höger om testknappen. 
 
-Ongelman saa korjattua menemällä laajennuksen asennusvalikkoon ja muuttamalla "TMC Data" -kohdassa tehtävien sijainnin johonkin toiseen sijaintiin, jonka tiedostopolku on lyhempi, allaolevassa kuvassa nappi _change path_. Siirrossa saattaa kestää hetken, joten odotathan operaation päättymistä.
+Du kan åtgärda felet genom att gå till pluginens inställningsmeny och byta uppgifternas plats under "TMC Data" till en annan plats med en kortare sökväg. Se bilden nedan och knappen _change path_. Det kan ta en stund att sköta överföringen så vänta tills operationen har avslutats. 
 
 <img src="4_3_3.png" alt="Listan iterointi">
 
-Ongelmaan pyritään saamaan parempi ratkaisu lähipäivinä. -->
+Vi försöker hitta en bättre lösning inom de närmaste dagarna. -->
 
 </programming-exercise>
 
 <programming-exercise name='Anagram' tmcname='osa04-13_anagram'>
 
-Skapa funktionen `anagram` som får två strängar som argument. Funktionen ska returnera `True` om strängarna är anagram – dvs. de bildas av exakt samma bokstäver.
+Skapa funktionen `anagram` som får två strängar som argument. Funktionen ska returnera `True` om strängarna är anagram – dvs. om de innehåller exakt samma bokstäver.
 
 Exempel:
 
@@ -320,7 +320,7 @@ Tips: Funktionen `sorted` fungerar även för strängar.
 
 Skapa funktionen `palindrom` som får en sträng som argument. Funktionen ska returnera `True` om strängen är ett palindrom – dvs. den är den samma oberoende om man börjar läsa från vänster eller höger.
 
-Skapa ett huvudprogram som ber användaren ange ord tills ett palindrom ges:
+Skapa ett huvudprogram som ber användaren ange ord tills ett palindrom matas in:
 
 <sample-output>
 
@@ -363,7 +363,7 @@ I dessa uppgifter kommer vi att använda listor som argument och returvärden. D
 
 <programming-exercise name='Jämna' tmcname='osa04-16_jamna'>
 
-Skapa funktionen `jamna` som får som argument en lista med heltal.
+Skapa funktionen `jamna` som får en lista med heltal som argument .
 
 Funktionen ska returnera en ny lista som innehåller de jämna talen som förekommer i den ursprungliga listan.
 
@@ -385,9 +385,9 @@ ny [2, 4]
 
 <programming-exercise name='Summalista' tmcname='osa04-17_summalista'>
 
-Skapa funktionen `summa` som får två listor som argument. Båda listorna har samma antal element, som består av heltal.
+Skapa funktionen `summa` som får två heltalslistor som argument. Båda listorna innehåller lika många heltal.
 
-Funktionen ska returnera en ny lista vars element består av summorna av elementen i de urpsrungliga listorna.
+Funktionen ska returnera en ny lista vars element består av summorna av elementen i de två ursprungliga listorna.
 
 Exempel:
 
@@ -401,9 +401,9 @@ print(summa(a, b)) # [8, 10, 12]
 
 <programming-exercise name='Unika' tmcname='osa04-18_unika'>
 
-Skapa funktionen `unika` som får som argument en lista med heltal.
+Skapa funktionen `unika` som får en lista med heltal som argument.
 
-Funktionen ska returnera en lista som innehåller den ursprungliga listans siffror i storleksordning. Varje siffra ska förekomma bara en gång.
+Funktionen ska returnera en lista som innehåller talen i den ursprungliga listan i storleksordning. Varje tal ska förekomma bara en gång.
 
 ```python
 lista = [3, 2, 2, 1, 3, 3, 1]
@@ -414,12 +414,12 @@ print(unika(lista)) # [1, 2, 3]
 
 ## Hitta det bästa eller sämsta värdet i en lista
 
-En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i en lista enligt något visst kriterium. En enkel lösning är att använda en hjälpvariabel för att komma ihåg vilket av elementen tills vidare är det mest "optimala". Det här mest "optimala" jämförs med varje element och när loopen är klar kommer hjälpvariabeln att innehålla det värdet man söker efter.
+En vanlig programmeringsuppgift är att hitta det bästa eller sämsta värdet i en lista enligt något visst kriterium. En enkel lösning är att använda en hjälpvariabel för att komma ihåg vilket av elementen som tillsvidare är det mest "optimala". Det mest "optimala" elementet jämförs i varje runda med följande element, varvid det "optimala" antingen hålls oförändrat eller uppdateras till det senaste elementet. När loopen avslutas kommer hjälpvariabeln att innehålla det värde man söker efter.
 
 Här är ett utkast som inte ännu fungerar:
 
 ```python
-bast = start # det passliga startvärdet beror på situationen
+bast = start # startvärdet beror på situationen
 for element in lista:
     if element bättre än bast:
         bast = element
@@ -427,13 +427,13 @@ for element in lista:
 # vi vet nu det bästa värdet
 ```
 
-Detaljerna kring den slutliga koden beror på typen av elementen i listan och kriteriet för väljandet av det bästa (eller sämsta) elementet. Ibland kan du behöva fler än en hjälpvariabel.
+Detaljerna kring den slutliga koden beror på typen av element i listan och vad kriteriet är för att välja ut det bästa (eller sämsta) elementet. Ibland kan du behöva fler än en hjälpvariabel.
 
 Låt oss öva på den här metoden.
 
 <programming-exercise name='Längden av den längsta' tmcname='osa04-18a_langsta_langden'>
 
-Skapa funktionen `langsta_langden` som får som argument en lista med strängar. Funktionen ska returnera längden på den längsta strängen i listan.
+Skapa funktionen `langsta_langden` som får en lista med strängar som argument. Funktionen ska returnera längden på den längsta strängen i listan.
 
 ```python
 lista = ["första", "andra", "tredje", "sjuttionde"]
@@ -460,7 +460,7 @@ print(resultat)
 
 <programming-exercise name='Listans kortaste' tmcname='osa04-18b_listans_kortaste'>
 
-Skapa funktionen `kortast` som får som argument en lista med strängar. Funktionen ska returnera listans kortaste sträng. Om det finns flera strängar med samma längd kan man returnera vilken som helst av dessa. Man kan anta at det inte finns tomma strängar (längd noll) i listan.
+Skapa funktionen `kortast` som tar en lista med strängar som argument. Funktionen ska returnera den kortaste strängen i listan. Om det finns flera strängar med samma längd kan man returnera vilken som helst av dessa. Du kan anta att det inte finns några tomma strängar (längd noll) i listan.
 
 
 ```python
@@ -488,7 +488,7 @@ eva
 
 <programming-exercise name='Listans längsta' tmcname='osa04-19_listans_langsta'>
 
-Skapa funktionen `langsta` som får som argument en lista med strängar. Funktionen ska returnera en lista som innehåller den längsta strängen i listan. Om de finns flera strängar med samma längd skrivs de alla ut i listan, i den ordning som de förekommer i den ursprungliga listan.
+Skapa funktionen `langsta` som tar en lista med strängar som argument. Funktionen ska returnera en lista som innehåller den längsta strängen i listan. Om det finns flera strängar med samma längd läggs de alla till i listan, i den ordning som de förekommer i den ursprungliga listan.
 
 ```python
 lista = ["första", "andra", "tredje", "sjuttionde"]
