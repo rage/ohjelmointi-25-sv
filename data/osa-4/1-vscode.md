@@ -19,7 +19,7 @@ Det finns en hel del olika editorer som är skräddarsydda för programmering. P
 
 Din uppgift är att nu installera Visual Studio Code på din dator. Det kan hända att du också måste installera Python och Python-tillägget (plugin) i Visual Studio Code. Du behöver också TMC-tillägget som tar hand om att köra de tester som finns i samband med övningarna. I TMC:s inställningar ska du välja MOOC som organisation och Programmering 2024 som kurs.
 
-[Här hittar du en guide](https://www.mooc.fi/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Kom ihåg att du ska välja den svenska kursen (Programmering 2024). Läs instruktionerna och gör sedan uppgiften nedan:
+[Här hittar du en guide](https://www.mooc.fi/en/installation/vscode/) som berättar hur du kan installera allt som nämnts ovan. Kom ihåg att du ska välja den svenska kursen (Programmering 2024). Läs instruktionerna och gör sedan uppgiften nedan:
 
 <programming-exercise name='Hello Visual Studio Code' tmcname='osa04-01_vs_code'>
 
