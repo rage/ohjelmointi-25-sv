@@ -113,7 +113,7 @@ Din ålder i slutet av 2020: 25
 
 </sample-output>
 
-Vanligen behöver man inte skapa två separata variabler (som ovan) för att läsa en siffra från användaren. Istället kan användarens text läsas in och konverteras till heltal samtidigt:
+Vanligen behöver man inte skapa två separata variabler (som ovan) för att läsa in ett tal från användaren. Istället kan användarens text läsas in och konverteras till heltal samtidigt:
 
 ```python
 ar = int(input("Vilket är ditt födelseår? "))
@@ -350,8 +350,8 @@ Så här ska programmet fungera:
 
 Tal 1: **3**
 Tal 2: **7**
-Siffrornas summa 10
-Produkten av siffrorna 21
+Talens summa 10
+Produkten av talen 21
 
 </sample-output>
 
