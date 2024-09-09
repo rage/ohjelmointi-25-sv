@@ -48,7 +48,7 @@ Nästa kund!
 
 </sample-output>
 
-Dessa exempel visar hur ett värde som getts till programmet påverkar vilka delar av koden som körs. Programmet innehåller en villkorssats, som vanligen kallas if-sats, som gör det möjligt att ange vilken kod som ska köras i vilka situationer. 
+Dessa exempel visar hur ett värde som getts till programmet påverkar vilka delar av koden som körs. Programmet innehåller en villkorssats, som vanligen kallas if-sats, som gör det möjligt att ange vilken kod som ska köras i vilka situationer.
 
 <img src="1_6.png">
 
@@ -352,7 +352,7 @@ Kommando: **differens**
 
 Skapa ett program som ber användaren ange en temperatur i Fahrenheit. Programmet ska skriva ut den här temperaturen i Celcius. Om temperaturen mätt i Celcius är under noll ska programmet också skriva ut texten "Kallt!".
 
-Du kan söka på nätet efter den korrekta formeln för att konvertera temperaturer i Farenheit till Celcius.
+Du kan söka på nätet efter den korrekta formeln för att konvertera temperaturer i Fahrenheit till Celcius.
 
 Exempel:
 
@@ -371,7 +371,7 @@ Kallt!
 
 <in-browser-programming-exercise name="Lön" tmcname="osa01-27_lon">
 
-Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndagar får man dubbel timlön, dvs. den vanliga timlönen * 2. 
+Skapa ett program som frågar efter timlön, antal arbetstimmar samt veckodag. Programmet skriver ut lönen som räknas med formeln timlön * arbetstimmar. På söndagar får man dubbel timlön, dvs. den vanliga timlönen * 2.
 
 <sample-output>
 
