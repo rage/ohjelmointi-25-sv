@@ -30,7 +30,7 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
 Ons 4.9.2024   | Exactum D122 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4), [Linkki-presentation](https://youtu.be/Owkx_ElzsQk)
-Ons 11.9.2024  | Zoom    |   2   | TBA
+Ons 11.9.2024  | Zoom    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)
 Ons 18.9.2024  | Zoom    |   3   | TBA
 Ons 25.9.2024  | Exactum D122 |   4   | TBA
 Ons 2.10.2024  | Exactum D122 |   5   | TBA
