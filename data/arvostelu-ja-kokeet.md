@@ -34,12 +34,14 @@ Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 
 * Lördag 19.10.2024
 * Lördag 23.11.2024
-* Lördag 18.1.2025
+* Lördag 11.1.2025
 
 ### Fortsättningskurs i programmering, tentdatum 2024
 
 * Lördag 14.12.2024
-* Följande tentdatum: TBA
+* Lördag 18.1.2025
+* Lördag 15.2.2025
+
 
 ## 1 + 1 poängs tillägg
 
