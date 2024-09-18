@@ -16,37 +16,37 @@ Efter den här delen
 
 ## Lite mera om debuggande
 
-Vi har redan bekantat oss med en hel del olika debuggningsmetoder under den här kursen. [Visualiseringsverktyget](https://pythontutor.com/visualize.html) och `print`-satser för debuggning är redan bekanta för dig. Du har kanske också testat på det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från den förra modulen.
+Vi har redan bekantat oss med flera olika debuggningsmetoder under kursen. Till exempel borde [visualiseringsverktyget](https://pythontutor.com/visualize.html) och användningen av `print`-satser för debuggning vara bekanta. Du har kanske också testat det inbyggda debuggningsverktyget i Visual Studio Code. Om du har problem med att debuggaren inte hittar dina filer, kan du bekanta dig med några tips från förra veckan.
 
-Sedan versionen 3.7 av Python finns ett ytterligare sätt att debugga program: instruktionen [`breakpoint()`](https://docs.python.org/3/library/functions.html#breakpoint).
+Från och med version 3.7 erbjuder Python också ett ytterligare sätt för att debugga program, nämligen instruktionen [`breakpoint()`](https://docs.python.org/3/library/functions.html#breakpoint).
 
-Du kan lägga till den här instruktionen på valfritt ställe i din kod (kom dock ihåg att följa reglerna som gäller syntax). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-instruktionen finns. Här är ett exempel där vi debuggar en uppgiftslösning från den förra modulen:
+Du kan lägga till den här instruktionen på valfritt ställe i din kod (kom dock ihåg att följa syntaxreglerna). När programmet körs, kommer programmet att stanna på det ställe där `breakpoint`-instruktionen finns. Här är ett exempel där vi debuggar en uppgiftslösning från förra veckan:
 
 <img src="7_1_1.png">
 
-När programmet stannar upp vid en `breakpoint`-instruktion kommer ett interaktivt terminalfönster att öppnas. Här kan du skriva kod på samma sätt som i en normal Pythonterminal. Du ser hur koden fungerar exakt vid den här punkten i ditt program.
+När programmet stannar vid en `breakpoint`-instruktion kommer ett interaktivt terminalfönster att öppnas. Här kan du skriva kod på samma sätt som i en normal Pythonterminal. Du ser hur koden fungerar exakt vid den här punkten i ditt program.
 
-Instruktionen `breakpoint` är speciellt nyttig då du vet att någon kodrad orsakar ett fel, men du är osäker på orsaken till det. Lägg till en breakpoint just före den problematiska kodraden och kör ditt program. Nu kan du testa på olika saker i den interaktiva terminalen och lista ut vad som måste ändras på i ditt program.
+Instruktionen `breakpoint` är speciellt nyttig då du vet att någon kodrad orsakar ett fel, men du är osäker på varför. Lägg till en breakpoint just före den problematiska kodraden och kör ditt program. Då kan du göra ändringar och köra koden i den interaktiva terminalen för att lista ut vad som behöver ändras i programmet. 
 
-Det är också möjligt att fortsätta körandet av programmet där det stannat upp. Kommandot `continue` (kort `c`) i terminalen får programmet att fortsätta tills nästa breakpoint nås. Den här bilden illustrerar en situation där en loop har upprepat några gånger:
+Det är också möjligt att fortsätta att köra programmet efter att det stannat. Med `continue` (kort `c`) i terminalen får vi programmet att fortsätta fram till följande eventuella breakpoint. Den här bilden illustrerar en situation där en loop har upprepat några gånger:
 
 <img src="7_1_2.png">
 
-Det finns också några andra kommandon tillgängliga i debuggningsterminalen. Du kan hitta dem [här](https://docs.python.org/3/library/pdb.html#debugger-commands) eller så kan du skriva `help` i debuggningsterminalen:
+Vi kan också använda andra nyckelord i debuggningsterminalen. Du kan hitta dem [här](https://docs.python.org/3/library/pdb.html#debugger-commands) eller så kan du skriva `help` i terminalen:
 
 <img src="7_1_3.png">
 
-Kommandot `exit` avslutar programmet.
+För att avsluta använder vi `exit`.
 
-När du är klar med debuggandet ska du minnas att ta bort `breakpoint`-instruktionerna från din kod!
+Kom ihåg att ta bort alla `breakpoint` ur koden då du har debuggat klart!
 
 ## Använda moduler
 
-Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar längden på en sträng eller en lista) och `sum` (returnerar summan av element i en datastruktur). Dessa hjälper dock dig som programmerare bara till en viss del. Pythons standardbibliotek är en samling av standardiserade funktioner och objekt som kan utöka Pythons "uttryckskraft". Vi har redan använt en del av funktionerna i Pythons standardbibliotek i de tidigare övningarna – till exempel då vi räknade med kvadratrötter.
+Python i sig innehåller redan en del nyttiga funktioner som `len` (returnerar längden på en sträng eller en lista) och `sum` (returnerar summan av element i en datastruktur). Dessa hjälper dig som programmerare till viss del. Pythons standardbibliotek är en samling standardiserade funktioner och objekt som utökar vår programmeringsverktygslåda. Vi har redan använt en del av funktionerna i Pythons standardbibliotek i de tidigare övningarna – till exempel då vi räknade med kvadratrötter.
 
 Standardbiblioteket består av moduler. De innehåller funktioner och klasser som är grupperade kring olika teman och funktionaliteter. I den här modulen kommer vi att bekanta oss med några nyttiga Python-moduler. Vi lär oss också att skapa egna moduler.
 
-Instruktionen `import` gör innehållet i en given modul tillgängligt i ett program. Vi tar en närmare titt på hur vi kan använda modulen `math`. Den innehåller matematiska funktioner som `sqrt` för kvadratrot och `log` för logaritm.
+Instruktionen `import` gör allt innehåll i en given modul tillgängligt i ett program. Vi tar en närmare titt på hur vi kan använda modulen `math`. Den innehåller matematiska funktioner som `sqrt` för kvadratrot och `log` för logaritm.
 
 ```python
 import math
@@ -64,11 +64,11 @@ print(math.log(8, 2))
 
 </sample-output>
 
-Funktionerna är definierade i modulen `math`, så de måste hänvisas till med notationerna `math.sqrt` och `math.log` i koden.
+Funktionerna är definierade i modulen `math`, och vi behöver ange detta då vi vill använda dem. Det gör vi med punktnotation (modulnamn.funktionsnamn), dvs. `math.sqrt` och `math.log`.
 
 ## Välja specifika delar från en modul
 
-Ett annat sätt att använda moduler är att välja specifika delar av modulen med `from`-instruktionen. Om vi endast vill använda funktionerna `sqrt` och `log` från modulen `math`, kan vi göra på följande sätt:
+Ett annat sätt att använda moduler är att välja ut specifika delar med `from`-instruktionen. Om vi endast vill använda funktionerna `sqrt` och `log` från modulen `math`, behöver vi inte importera hela modulen. I stället kan vi göra så här: 
 
 ```python
 from math import sqrt, log
@@ -77,9 +77,9 @@ print(sqrt(5))
 print(log(5,2))
 ```
 
-Som du ser ovan, behöver vi inte `math`-prefixet då vi importerar och använder funktioner på det här sättet.
+Då vi importerar och använder delar ur en modul med from...import, behöver vi inte ange vilken modul funktionerna finns i. 
 
-Vid behov kan man använda sig av en asterisk för att importera allt innehåll i en modul:
+Vid behov kan man använda sig av en asterisk för att importera allt innehåll i en modul så att vi inte behöver ange modulens namn:
 
 ```python
 from math import *
@@ -88,13 +88,13 @@ print(sqrt(5))
 print(log(5,2))
 ```
 
-Det här sättet att importera moduler kan vara nyttigt då man testar på något eller arbetar med ett mindre projekt. Det kan däremot orsaka problem, vilket vi kommer att se lite senare.
+Att importera modulers innehåll direkt med hjälp av from...import  kan vara nyttigt då man prövar olika funktioner eller arbetar med mindre projekt. Det kan däremot också ställa till med problem, vilket vi kommer att se lite senare.
 
 <programming-exercise name='Hypotenusa' tmcname='osa07-01_hypotenusa'>
 
-Skapa funktionen `hypotenusa(katet1: float, katet2: float)` som får som argument kateternas längder i en rätvinklig triangel. Funktionen ska returnera hypotenusans längd.
+Skapa funktionen `hypotenusa(katet1: float, katet2: float)` som tar kateternas längder i en rätvinklig triangel som argument. Funktionen ska returnera hypotenusans längd.
 
-Använd [Pythagoras sats](https://sv.wikipedia.org/wiki/Pythagoras_sats). Kvadratroten kan du räkna med den relevanta funktionen i `math`-modulen.
+Använd [Pythagoras sats](https://sv.wikipedia.org/wiki/Pythagoras_sats). Kvadratroten kan du beräkna med motsvarande funktion i `math`-modulen.
 
 Exempel:
 
@@ -108,7 +108,7 @@ print(hypotenusa(1,1)) # 1.4142135623730951
 
 ## Innehållet i en modul
 
-Pythons dokumentation inkluderar mycket information om alla moduler som är tillgängliga i standardbiblioteket. Dokumentationen berättar om funktioner och metoder som är definierade i en modul, och därtill får man veta hur modulen kan användas. Som ett exempel följer en länk till `math`-modulens dokumentation:
+Pythons dokumentation inkluderar mycket information om alla moduler som är tillgängliga i standardbiblioteket. Dokumentationen berättar om funktioner och metoder som är definierade i en modul, och därtill får man veta hur modulen kan användas. Som ett exempel hittar du här en länk till `math`-modulens dokumentation:
 
 * https://docs.python.org/3/library/math.html
 
@@ -120,7 +120,7 @@ import math
 print(dir(math))
 ```
 
-Den här funktionen returnerar en lista av namn definierade av modulen. Det kan vara namn på klasser, fixerade värden eller funktioner:
+Den här funktionen returnerar en lista på namn som finns definierade i modulen. Det kan vara namn på klasser, konstanta värden eller funktioner:
 
 <sample-output>
 
@@ -130,11 +130,11 @@ Den här funktionen returnerar en lista av namn definierade av modulen. Det kan 
 
 <programming-exercise name='Specialtecken' tmcname='osa07-02_specialtecken'>
 
-I [modulen `string`](https://docs.python.org/3/library/string.html) finns strängkonstanter som definiar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som får som argument en sträng som ska returneras uppdelad i tre delar:
+I [modulen `string`](https://docs.python.org/3/library/string.html) finns strängkonstanter som definierar specifika teckengrupper (t.ex. gemener och skiljetecken). Bekanta dig med dessa konstanter och skapa funktionen `dela_upp(strang: str)` som tar som argument en sträng som ska returneras uppdelad i tre delar:
 
 1. en sträng med alla gemener och versaler (enligt engelska alfabetet), konstanten `ascii_letters`
-1. en sträng med tecknen som definieras i konstanten `punctuation`
-1. en sträng med de resterade tecknen (t.ex. mellanslag)
+1. en sträng med de tecken som definieras i konstanten `punctuation`
+1. en sträng med resterande tecken (t.ex. mellanslag och skandinaviska tecken)
 
 Tecknen ska förekomma i samma ordning som i den ursprungliga strängen.
 
@@ -159,7 +159,7 @@ Dethrretttestfungerardet
 
 <programming-exercise name='Bråk' tmcname='osa07-03_brak'>
 
-Bekanta dig med Pythonmodulen `fractions` och implementera funktionen `delar(antal: int)` som får som argument ett antal delar. Funktionen ska dela upp talet ett i så här många delar och returnera delarna i en lista.
+Bekanta dig med Pythonmodulen `fractions` och implementera funktionen `delar(antal: int)` som får ett antal som argument. Funktionen ska dela upp talet ett i så många delar som argumentet antal anger, och sedan returnera delarna i en lista.
 
 Exempel:
 
