@@ -13,25 +13,25 @@ Efter den här delen
 
 </text-box>
 
-I den här delen ser vi på [modulen `random`](https://docs.python.org/3/library/random.html) i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet med ett slumpmässigt element.
+I den här delen ser vi på [modulen `random`](https://docs.python.org/3/library/random.html) i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet som innehåller någon typ av slumpmässighet. 
 
-Delarna i den här modulen innehåller flera länkar till [standardbibliotekets dokumentation](https://docs.python.org/3/library/). Vi rekommenderar att du följer länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
+Delarna i den här modulen innehåller flera länkar till [standardbibliotekets dokumentation](https://docs.python.org/3/library/). Kolla gärna upp länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
 
 ## Skapa ett slumpmässigt tal
 
-Funktionen [`randint(a, b)`](https://docs.python.org/3/library/random.html#random.randint) returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Till exempel det här programmet fungerar som en normal tärning:
+Funktionen [`randint(a, b)`](https://docs.python.org/3/library/random.html#random.randint) returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Det här programmet fungerar till exempel som en normal tärning:
 
 ```python
 from random import randint
 
-print("Tärningen ger:", randint(1, 6))
+print("Tärningen visar:", randint(1, 6))
 ```
 
 Så här kan utskriften se ut:
 
 <sample-output>
 
-Tärningen ger: 4
+Tärningen visar: 4
 
 </sample-output>
 
@@ -41,31 +41,31 @@ Det här programmet kastar en tärning tio gånger:
 from random import randint
 
 for i in range(10):
-    print("Tärningen ger:", randint(1, 6))
+    print("Tärningen visar:", randint(1, 6))
 ```
 
 Utskriften skulle kunna se ut så här:
 
 <sample-output>
 
-Tärningen ger: 5
-Tärningen ger: 4
-Tärningen ger: 3
-Tärningen ger: 2
-Tärningen ger: 3
-Tärningen ger: 4
-Tärningen ger: 6
-Tärningen ger: 4
-Tärningen ger: 4
-Tärningen ger: 3
+Tärningen visar: 5
+Tärningen visar: 4
+Tärningen visar: 3
+Tärningen visar: 2
+Tärningen visar: 3
+Tärningen visar: 4
+Tärningen visar: 6
+Tärningen visar: 4
+Tärningen visar: 4
+Tärningen visar: 3
 
 </sample-output>
 
-Obs! Det är värt att notera att funktionen `randint` fungerar lite olikt än till exempel extrahering (slicing) eller `range`-funktionen. Funktionsanropet `randint(1, 6)` resulterar i ett nummer mellan 1 och 6, medan anropet `range(1, 6)` resulterar i ett intervall från 1 till 5.
+Obs! Det är värt att notera att funktionen `randint` fungerar lite olikt än till exempel extrahering (slicing) eller `range`-funktionen. Funktionsanropet `randint(1, 6)` resulterar i ett tal mellan 1 och 6, medan anropet `range(1, 6)` resulterar i ett intervall som innehåller värdena 1 till 5.
 
-## Flera slumpmässighetsfunktioner
+## Fler funktioner relaterade till slumpmässighet
 
-Funktionen [`shuffle`](https://docs.python.org/3/library/random.html#random.shuffle) blandar elementen i den datastruktur som ges som argument. Till exempel följande program blandar en lista med ord:
+Funktionen [`shuffle`](https://docs.python.org/3/library/random.html#random.shuffle) blandar elementen i den datastruktur som ges som argument. Till exempel blandar följande program ordningen i en lista med ord:
 
 ```python
 from random import shuffle
@@ -81,7 +81,7 @@ print(ord)
 
 </sample-output>
 
-Funktionen `choice` returnerar ett slumpmässigt valt element från en datastruktur:
+Funktionen `choice` returnerar ett slumpmässigt valt element ur en datastruktur:
 
 ```python
 from random import choice
@@ -109,7 +109,7 @@ for i in range(7):
     print(randint(1, 40))
 ```
 
-Det här skulle inte fungera i det långa loppet eftersom ett och samma nummer kan dyka upp flera gånger på samma lottorad. Vi måste se till att alla nummer är unika.
+Det här skulle inte fungera i det långa loppet eftersom ett och samma nummer kan dyka upp flera gånger på samma lottorad. Vi måste se till att alla nummer som dras är unika.
 
 Ett sätt är att lagra de lottade siffrorna i en lista. Då lägger vi bara till en ny siffra om siffran inte redan finns i listan. Vi använder oss av en loop som fortsätter tills listans längd är sju:
 
@@ -136,9 +136,9 @@ rad = alla[0:7]
 print(rad)
 ```
 
-Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Listan blandas sedan, varefter de första sju siffrorna utgör veckans vinnande rad. Nu behöver vi ingen loop.
+Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Efter att listan blandats utgör de första sju siffrorna veckans vinnande rad. Nu behövs alltså ingen loop, utan vi kan direkt plocka ut de sju första talen ur den blandade listan.
 
-Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen [`sample`](https://docs.python.org/3/library/random.html#random.sample). Den returnerar ett slumpmässigt val av en specifik storlek från en given datastruktur:
+Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen [`sample`](https://docs.python.org/3/library/random.html#random.sample). Den returnerar ett slumpmässigt val av en specifik storlek ur en given datastruktur:
 
 ```python
 from random import sample
@@ -150,7 +150,7 @@ print(rad)
 
 <programming-exercise name='Lottorader' tmcname='osa07-04_lottorader'>
 
-Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en ordnad lista (börjandes med det minsta talet).
+Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en sorterad lista (börjandes med det minsta talet).
 
 Samma siffra får inte förekomma flera gånger.
 
@@ -179,17 +179,17 @@ for siffra in lottorad(7, 1, 40):
 
 Funktionaliteten i [`random`-modulen](https://docs.python.org/3/library/random.html) är baserad på en algoritm som skapar slumpmässiga siffror på basis av ett specifikt startvärde och några matematiska operationer. Startvärdet kallas ofta seed value.
 
-Vi kan själva ge ett sådant värde med [`seed`](https://docs.python.org/3/library/random.html#random.seed)-funktionen:
+Vi kan själva ange startvärdet med [`seed`](https://docs.python.org/3/library/random.html#random.seed)-funktionen:
 
 ```python
 from random import randint, seed
 
 seed(1337)
-# det här genererar alltid samma tal
+# följande instruktion genererar nu alltid samma tal
 print(randint(1, 100))
 ```
 
-Om vi har funktioner som baserar sig på slumpmässighet och har valt ett seed-värde, kommer funktionen att ge samma resultat varje gång den körs. Resultatet kan skilja sig mellan olika Python-versioner, men i grunden kommer slumpmässigheten att försvinna då vi definierar seed-värdet. Funktionaliteten kan dock vara nyttig då vi exempelvis testar på vårt program.
+Om vi har funktioner som baserar sig på slumpmässighet och har valt ett seed-värde, kommer funktionen att ge samma resultat varje gång den körs. Resultatet kan skilja sig mellan olika Python-versioner, men i grunden kommer slumpmässigheten att försvinna då vi definierar seed-värdet. Funktionaliteten kan dock vara nyttig då vi exempelvis testar program.
 
 <text-box variant="info" name="Sann slumpmässighet">
 
