@@ -1,6 +1,6 @@
 ---
 path: '/osa-7/2-slumpmassighet'
-title: 'Slumpmässighet'
+title: 'Slump'
 hidden: false
 ---
 
@@ -9,17 +9,17 @@ hidden: false
 Efter den här delen
 
 * känner du till några av funktionerna i `random`-modulen
-* kan du använda dig av slumpmässiga tal i dina program.
+* kan du använda dig av slumptal i dina program.
 
 </text-box>
 
-I den här delen ser vi på [modulen `random`](https://docs.python.org/3/library/random.html) i Pythons standardbibliotek. Den här modulen innehåller verktyg för att skapa slumpmässiga tal och för annan funktionalitet som innehåller någon typ av slumpmässighet. 
+I den här delen ser vi på [modulen `random`](https://docs.python.org/3/library/random.html) som finns i Pythons standardbibliotek. Den här modulen innehåller funktioner som gör det möjligt att arbeta med slump i program, till exempel för att skapa slumptal, blanda ordningen på elementen i en datastruktur eller plocka ut slumpmässigt valda element. 
 
 Delarna i den här modulen innehåller flera länkar till [standardbibliotekets dokumentation](https://docs.python.org/3/library/). Kolla gärna upp länkarna så att du kan bekanta dig med hur dokumentationen ser ut.
 
-## Skapa ett slumpmässigt tal
+## Skapa slumptal
 
-Funktionen [`randint(a, b)`](https://docs.python.org/3/library/random.html#random.randint) returnerar ett slumpmässigt heltal mellan `a` och `b` (inklusive start- och slutpunkten). Det här programmet fungerar till exempel som en normal tärning:
+Funktionen [`randint(a, b)`](https://docs.python.org/3/library/random.html#random.randint) returnerar ett slumptal mellan `a` och `b` (inklusive start- och slutpunkten). Det här programmet fungerar till exempel som en normal tärning:
 
 ```python
 from random import randint
@@ -100,7 +100,7 @@ print(choice(ord))
 
 Ett vanligt sätt att undersöka slumpmässighet är att se på lottorader. Låt oss lotta ut en vinnande rad. I Finland består lottoraden av sju siffror mellan 1 och 40.
 
-Så här kunde det se ut när vi försöker lotta ut en rad:
+Så här skulle det kunna se ut om vi försöker lotta ut en rad:
 
 ```python
 from random import randint
@@ -111,7 +111,7 @@ for i in range(7):
 
 Det här skulle inte fungera i det långa loppet eftersom ett och samma nummer kan dyka upp flera gånger på samma lottorad. Vi måste se till att alla nummer som dras är unika.
 
-Ett sätt är att lagra de lottade siffrorna i en lista. Då lägger vi bara till en ny siffra om siffran inte redan finns i listan. Vi använder oss av en loop som fortsätter tills listans längd är sju:
+Ett sätt är att lagra de dragna siffrorna i en lista. Då lägger vi bara till ett draget nummer om det inte redan finns i listan. Vi använder oss av en loop som fortsätter tills listans längd är sju, dvs. vi har dragit sju unika lottonummer:
 
 ```python
 from random import randint
@@ -136,9 +136,9 @@ rad = alla[0:7]
 print(rad)
 ```
 
-Idén här är att vi skapar en lista med siffrorna 1 till 40, lite som att vi skulle ha 40 bollar i en lotterimaskin. Efter att listan blandats utgör de första sju siffrorna veckans vinnande rad. Nu behövs alltså ingen loop, utan vi kan direkt plocka ut de sju första talen ur den blandade listan.
+Hur fungerar det här? Idén är att vi skapar en lista med talen 1 till 40, på samma sätt som vi har 40 bollar i en lottomaskin. Efter att listan har blandats kan de första sju siffrorna utgöra veckans vinnande rad, på samma sätt som de första sju bollarna som plockas ur maskinen. Nu behövs alltså ingen loop, utan vi kan direkt plocka ut de sju första talen ur den blandade listan.
 
-Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen [`sample`](https://docs.python.org/3/library/random.html#random.sample). Den returnerar ett slumpmässigt val av en specifik storlek ur en given datastruktur:
+Modulen `random` innehåller faktiskt ett ännu enklare sätt att skapa vår lottorad: funktionen [`sample`](https://docs.python.org/3/library/random.html#random.sample). Den returnerar ett givet antal slumpmässigt valda element ur en given datastruktur, i det här fallet sju tal ur en lista med talen 1-40:
 
 ```python
 from random import sample
@@ -150,7 +150,7 @@ print(rad)
 
 <programming-exercise name='Lottorader' tmcname='osa07-04_lottorader'>
 
-Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en sorterad lista (börjandes med det minsta talet).
+Skapa funktionen `lottorad(siffror: int, nedre: int, ovre: int)` som lottar ut det givna antalet siffror i intervallet `nedre-ovre` och returnerar dessa i en sorterad lista (med start från det minsta talet).
 
 Samma siffra får inte förekomma flera gånger.
 
@@ -175,11 +175,11 @@ for siffra in lottorad(7, 1, 40):
 
 </programming-exercise>
 
-## Varifrån kommer dessa slumpmässiga siffror ifrån?
+## Varifrån kommer slumptalen?
 
-Funktionaliteten i [`random`-modulen](https://docs.python.org/3/library/random.html) är baserad på en algoritm som skapar slumpmässiga siffror på basis av ett specifikt startvärde och några matematiska operationer. Startvärdet kallas ofta seed value.
+Datorer skapar slumptal med hjälp av en matematisk formel. För att resultatet inte ska bli samma varje gång används ett så kallat frö (engelska: seed) som startvärde. Frövärdet tas ofta från systemtiden, dvs. vad datorns interna klocka visar när slumpgeneratorn körs.
 
-Vi kan själva ange startvärdet med [`seed`](https://docs.python.org/3/library/random.html#random.seed)-funktionen:
+Funktionaliteten i [`random`-modulen](https://docs.python.org/3/library/random.html) är baserad på denna typ av algoritm. Vi kan också själva ange startvärdet med [`seed`](https://docs.python.org/3/library/random.html#random.seed)-funktionen:
 
 ```python
 from random import randint, seed
@@ -189,11 +189,11 @@ seed(1337)
 print(randint(1, 100))
 ```
 
-Om vi har funktioner som baserar sig på slumpmässighet och har valt ett seed-värde, kommer funktionen att ge samma resultat varje gång den körs. Resultatet kan skilja sig mellan olika Python-versioner, men i grunden kommer slumpmässigheten att försvinna då vi definierar seed-värdet. Funktionaliteten kan dock vara nyttig då vi exempelvis testar program.
+Då vi själva anger `seed`-värdet kommer funktionen att ge samma resultat varje gång den körs. Resultatet kan skilja sig mellan olika Python-versioner, men i grunden kommer slumpmässigheten att försvinna då vi definierar seed-värdet. Funktionaliteten kan dock vara nyttig då vi exempelvis testar program.
 
 <text-box variant="info" name="Sann slumpmässighet">
 
-För att vara korrekt, är de siffor som `random`-modulen ger inte i verkligheten slumpmässiga. Istället är de skenbart slumpmässiga (pseudorandom). Datorers funktionalitet är förutsebar och i en ideal situation kan man exakt bestämma hur de fungerar. Därmed är det mycket svårt att skapa sant slumpmässiga tal med en dator. I flera situationer räcket skenbart slumpmässiga tal. När sant slumpmässiga tal behövs skapas seed-värdet på basis av någon yttre källa som radioaktiv bakgrundsstrålning, ljudnivå eller lavalampor.
+Egentligen är de siffor som `random`-modulen ger inte slumpmässiga "på riktigt". Matematiskt uträknade slumptal kallas i stället pseudoslumptal. Datorers funktionalitet är förutsebar och i en ideal situation kan man exakt bestämma hur de fungerar. Därför är det mycket svårt att skapa äkta slumptal med en dator. I de flesta situationer räcker det dock bra med pseudoslumptal. När äkta slumptal behövs skapas seed-värdet på basis av någon yttre källa som radioaktiv bakgrundsstrålning, ljudnivå eller lavalampor.
 
 För ytterligare information om slumpmässighet, se [random.org](https://www.random.org/randomness/).
 
@@ -229,12 +229,12 @@ rjkoacib
 
 <programming-exercise name='Lösenordsgenerator, del 2' tmcname='osa07-06_losenord_2'>
 
-Förbättra förra uppgiftens funktion. Nu tar den emot tre argument:
+Förbättra förra uppgiftens funktion. Nu tar den emot två ytterligare argument:
 
-2. om värdet är `True` ska lösenordet innehålla minst en siffra
-2. om värdet är `True` ska lösenordet innehålla minst ett av tecknen `!?=+-()#`
+2. om värdet på det andra argumentet är `True` ska lösenordet innehålla minst en siffra
+2. om värdet på det tredje argumentet är `True` ska lösenordet innehålla minst ett av tecknen `!?=+-()#`
 
-Lösenordet ska alltid innehålla minst en bokstav. Du kan anta att funktionen anropas med argument som möjliggör skapandet av önskat lösenord.
+Lösenordet ska alltid innehålla minst en bokstav. Du kan anta att funktionen anropas med argument som gör det möjligt att skapa det önskade lösenordet. 
 
 Exempel:
 
@@ -297,7 +297,7 @@ for i in range(20):
 
 </sample-output>
 
-Skapa ännu funktionen `spela(tarning1: str, tarning2: str, ganger: int)` som kastar de valda tärningarna angivna antalet gånger. Funktionen ska returnera en tuple som berättar antalet vinster med tärning ett respektive två samt antalet oavgjoda rundor.
+Skapa ännu funktionen `spela(tarning1: str, tarning2: str, ganger: int)` som kastar de valda tärningarna det angivna antalet gånger. Funktionen ska returnera en tupel som berättar antalet vinster med tärning ett respektive två samt antalet oavgjorda rundor.
 
 ```python
 resultat = spela("A", "C", 1000)
@@ -319,7 +319,7 @@ print(resultat)
 
 I den här uppgiften har du filen `ord.txt` till ditt förfogande. Filen innehåller engelska ord, ett ord på varsin rad.
 
-Skapa funktionen `ord(n: int, borjar: str)` som returnerar `n` slumpmässigt valda ord som börjar med den valda strängen.
+Skapa funktionen `ord(n: int, borjar: str)` som returnerar `n` slumpmässigt valda ord som börjar med den valda strängen. Orden ska returneras i en lista.
 
 Om funktionen anropas med argumenten `ord(3, "ca")` kan t.ex. orden cat, car och carbon returneras i listan. Samma ord får inte förekomma flera gånger.
 
