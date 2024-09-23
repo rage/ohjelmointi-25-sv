@@ -7,14 +7,14 @@ information_page: true
 
 ### Höstens stödtider
 
-Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan: 
+Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan:
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
 | 10-11 | - | Campus / Discord (FI) | - | - | - |
 | 11-12 | - | Campus / Discord (FI) | - | - | - |
-| 12-13 | - | - | - | Campus / Discord (SV) | - |
-| 13-14 | - | - | - | Campus / Discord (SV) | - |
+| 12-13 | - | Campus / Discord (SV, 24/9) | - | Campus / Discord (SV, inte 26/9) | - |
+| 13-14 | - | Campus / Discord (SV, 24/9) | - | Campus / Discord (SV, inte 26/9) | - |
 | 14-15 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
 | 15-16 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
 | 16-17 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
@@ -30,4 +30,4 @@ Discord är en meddelandetjänst, som du kan hitta mer info om [här](https://di
 
 Du hittar kursens kanaler [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). Det finns en egen kanal för den svenskspråkiga kursen (swedish_ohjelmoinnin_mooc).
 
-Under handledningstiden svarar handledaren på frågor i kurskanalen och via privata meddelanden på Discord. Discord används även för diskussioner och information utanför handledningstiderna, så det lönar sig att gå med! 
+Under handledningstiden svarar handledaren på frågor i kurskanalen och via privata meddelanden på Discord. Discord används även för diskussioner och information utanför handledningstiderna, så det lönar sig att gå med!
