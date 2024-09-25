@@ -32,8 +32,8 @@ Datum          |  Plats  | Modul | Inspelning
 Ons 4.9.2024   | Exactum D122 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4), [Linkki-presentation](https://youtu.be/Owkx_ElzsQk)
 Ons 11.9.2024  | Zoom    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)
 Ons 18.9.2024  | Zoom    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)
-Ons 25.9.2024  | Exactum D122 |   4   | TBA
-Ons 2.10.2024  | Exactum D122 |   5   | TBA
+Ons 25.9.2024  | Zoom |   4   | TBA
+Ons 2.10.2024  | Zoom |   5   | TBA
 Ons 9.10.2024  | Exactum D122 |   6   | TBA
 Ons 16.10.2024 | Exactum D122 |   7   | TBA
 Ti 29.10.2024  | Exactum D122 |   8   | TBA
