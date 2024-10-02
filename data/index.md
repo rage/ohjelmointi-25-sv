@@ -37,10 +37,10 @@ Ons 2.10.2024  | Zoom |   5   | TBA
 Ons 9.10.2024  | Exactum D122 |   6   | TBA
 Ons 16.10.2024 | Exactum D122 |   7   | TBA
 Ti 29.10.2024  | Exactum D122 |   8   | TBA
-Ti 5.11.2024   | Exactum D122 |   9   | TBA
+Ti 5.11.2024   | Zoom |   9   | TBA
 Ti 12.11.2024  | Zoom    |   10  | TBA
 Ti 19.11.2024  | Zoom    |   11  | TBA
-Ti 26.11.2024  | Exactum D122 |   12  | TBA
+Ti 26.11.2024  | Zoom |   12  | TBA
 Ti 3.12.2024   | Zoom    |   13  | TBA
 Ti 10.12.2024  | Exactum D122 |   14  | Ingen genomgång, projektarbete
 
