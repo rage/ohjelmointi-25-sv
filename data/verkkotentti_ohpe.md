@@ -1,6 +1,6 @@
 ---
 path: "/onlinetent-ohpe"
-title: "Grundkurs i programmerings onlinetent 19.10"
+title: "ProgGK onlinetent 19.10"
 information_page: true
 sidebar_priority: 2900
 hide_in_sidebar: false
