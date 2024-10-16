@@ -1,6 +1,6 @@
 ---
 path: "/onlinetent-ohpe"
-title: "Grundkurs i programmerings onlinetent 16.10"
+title: "Grundkurs i programmerings onlinetent 19.10"
 information_page: true
 sidebar_priority: 2900
 hide_in_sidebar: false
@@ -70,7 +70,7 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 #### Avslutning av tenten
 
 * Granska att du har kommit ihåg att skicka in uppgifterna till servern innan du avslutar
-* Du kan säkerställa att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1360](https://tmc.mooc.fi/org/hy/courses/1360). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
+* Du kan säkerställa att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1460](https://tmc.mooc.fi/org/hy/courses/1460). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
 * Du kan stänga tentuppgiftssidan då du är färdig. Inga andra åtgärder behövs. 
 
 #### Tentresultatet
