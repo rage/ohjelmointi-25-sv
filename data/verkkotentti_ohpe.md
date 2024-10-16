@@ -56,8 +56,8 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 
 * Tentfrågorna publiceras på courses.mooc.fi på tentdagen kl 10:00.
 * Du loggar in på tentsidan med samma vanliga mooc.fi-login som du använder på kursen 
-* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/dc2c1eb9-6a9d-4746-be8e-2521bb9b1b74">https://courses.mooc.fi/org/uh-cs/exams/dc2c1eb9-6a9d-4746-be8e-2521bb9b1b74</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/824c7ba4-3fd4-4bc0-b756-4568982c3058">https://courses.mooc.fi/org/uh-cs/exams/824c7ba4-3fd4-4bc0-b756-4568982c3058</a>
+* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/b5468159-12c1-4f84-bd50-0368f5dd907f">https://courses.mooc.fi/org/uh-cs/exams/b5468159-12c1-4f84-bd50-0368f5dd907f</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/549ffff9-1d06-4fce-bc1c-38996d223511">https://courses.mooc.fi/org/uh-cs/exams/549ffff9-1d06-4fce-bc1c-38996d223511</a>
 * Tenttiden börjar då du trycker på `Påbörja tenten!`
 
 
