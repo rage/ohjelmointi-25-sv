@@ -11,18 +11,18 @@ Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
-| 10-11 | - | Campus / Discord (FI) | - | - | - |
-| 11-12 | - | Campus / Discord (FI) | - | - | - |
-| 12-13 | - | - | - | Campus / Discord (SV, ej 24/10) | - |
-| 13-14 | - | - | - | Campus / Discord (SV, ej 24/10) | - |
-| 14-15 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
-| 15-16 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
+| 10-11 | - | Campus / Discord (FI, SV från och med 5/11) | - | - | - |
+| 11-12 | - | Campus / Discord (FI, SV från och med 5/11) | - | - | - |
+| 12-13 | - | - | - | - | - |
+| 13-14 | - | - | - | - | - |
+| 14-15 | - | Campus (FI) | - | Campus (FI, SV 31/10) | Campus (FI) |
+| 15-16 | - | Campus (FI) | - | Campus (FI, SV 31/10) | Campus (FI) |
 | 16-17 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
 | 17-18 | - | Campus (FI) | - | Campus (FI) | Campus (FI) |
 
 I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning på distans. Du kan alltså även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
-*Schemat kan ändras under kursens gång*
+*Schemat kan ändras under kursens gång.*
 
 #### Discord
 
