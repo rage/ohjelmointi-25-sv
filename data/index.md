@@ -36,13 +36,13 @@ Ons 25.9.2024  | Zoom |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)
 Ons 2.10.2024  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)
 Ons 9.10.2024  | Zoom |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)
 Ons 16.10.2024 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)
-Ti 29.10.2024  | Exactum D122 |   8   | TBA
+Ti 29.10.2024  | Exactum C222 |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)
 Ti 5.11.2024   | Zoom |   9   | TBA
 Ti 12.11.2024  | Zoom    |   10  | TBA
 Ti 19.11.2024  | Zoom    |   11  | TBA
 Ti 26.11.2024  | Zoom |   12  | TBA
 Ti 3.12.2024   | Zoom    |   13  | TBA
-Ti 10.12.2024  | Exactum D122 |   14  | Ingen genomgång, projektarbete
+Ti 10.12.2024  | Exactum C222 |   14  | Ingen genomgång, projektarbete
 
 **OBS!** Det kan bli ändringar i denna kursöversikt.
 
