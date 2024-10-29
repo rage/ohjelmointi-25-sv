@@ -9,7 +9,7 @@ hidden: false
 Efter den här delen
 
 - Kommer du veta vad ett objekt är i programmering
-- Kommer du förstå vad som menas med oberoende hos individuella objekt
+- Kommer du förstå vad som menas med att individuella objekt är oberoende eller självständiga
 - Kommer du kunna skapa och komma åt objekt
 
 </text-box>
@@ -46,7 +46,7 @@ bok = {"namn": namn, "författare": forfattare, "år": ar}
 print(bok["namn"])
 ```
 
-I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen en specifik betydelse: ett objekt är en oberoende helhet, som i detta fall innehåller data som på något vis är relaterade. Att vara oberoende betyder att ändringar i ett objekt inte påverkar andra objekt.
+I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen en specifik betydelse: ett objekt är en självständig (eller oberoende) helhet, som i detta fall innehåller data som på något vis är relaterade. Att ett objekt är oberoende eller självständigt betyder att ändringar som görs i ett objekt inte påverkar andra objekt.
 
 Ifall vi skulle skapa två strukturellt identiska representationer av böcker med hjälp av ordlistor och identiska nycklar, skulle ändringar som görs i den ena inte påverka den andra:
 
