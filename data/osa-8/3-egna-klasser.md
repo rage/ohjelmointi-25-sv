@@ -27,21 +27,21 @@ Klasser namnges vanligtvis med kamelnotation. Detta innebär att alla ord i klas
 
 * `Veckodag`
 * `Bankkonto`
-* `BibliotekDatabas`
+* `BiblioteksDatabas`
 * `PythonKursBetyg`
 
 En enskild klassdefinition bör representera en enskild helhet, vars innehåll bör vara sammanlänkat på något sätt. I mer komplicerade program kan klasser innehålla medlemmar av andra klasser. Till exempel kan klassen `Kurs` innehålla objekt av klasserna `Lektion`, `ÖvningsTillfälle` osv.
 
-Låt oss ta en titt på en ram av en klassdefinition. Funktionerna saknas fortfarande vid denna tidpunkt.
+Låt oss ta en titt på strukturen för en klassdefinition. 
 
 ```python
 class Bankkonto:
     pass
 ```
 
-Kodstycket ovan talar om för Python att vi här definierar en klass med namnet `Bankkonto`. Klassen innehåller ingen funktionalitet ännu, men vi kan fortfarande skapa ett objekt baserat på klassen.
+Koden ovan talar om för Python att vi här definierar en klass med namnet `Bankkonto`. Klassen innehåller ingen funktionalitet ännu, men vi kan redan skapa ett objekt baserat på klassen.
 
-Låt oss titta på ett program där två variabler läggs till ett `Bankkonto`-objekt: `saldo` och `ägare`. Alla variabler som är kopplade till ett objekt kallas dess attribut, eller mer specifikt, dataattribut, eller ibland instansvariabler.
+Låt oss titta på ett program där två variabler läggs till ett `Bankkonto`-objekt: `saldo` och `ägare`. Alla variabler som är kopplade till ett objekt kallas dess _attribut_, eller mer specifikt, _dataattribut_, eller ibland _instansvariabler_.
 
 De attribut som är kopplade till ett objekt kan nås via objektet:
 
@@ -96,11 +96,11 @@ print(peters_konto.saldo)
 print(pernillas_konto.saldo) # DETTA ORSAKAR ETT FEL
 ```
 
-Så istället för att deklarera attribut efter att varje instans av klassen har skapats, är det oftast en bättre idé att initialisera attributens värden när klasskonstruktorn anropas. Eftersom klassdefinitionen Bankkonto för närvarande bara är en ram, antas konstruktormetoden implicit av Python-tolkaren, men det är möjligt att definiera egna konstruktormetoder, och det är precis vad vi kommer att göra nu.
+Istället för att deklarera attribut efter att varje instans av klassen har skapats, är det därför oftast en bättre idé att initialisera attributens värden när konstruktorn anropas. Eftersom klassdefinitionen Bankkonto för närvarande bara är en ram, antas konstruktormetoden implicit av Python-tolkaren, men det är möjligt att definiera egna konstruktormetoder, och det är precis vad vi kommer att göra nu.
 
 En konstruktormetod är en metoddeklaration med det speciella namnet `__init__`, som vanligtvis inkluderas i början av en klassdefinition.
 
-Låt oss ta en titt på en `Bankkonto`-klass med en konstruktormetod tillagd:
+Låt oss ta en titt på en `Bankkonto`-klass där vi nu även definierat en konstruktor:
 
 ```python
 class Bankkonto:
@@ -111,19 +111,19 @@ class Bankkonto:
         self.agare = agare
 ```
 
-Namnet på konstruktorsmetoden är alltid `__init__`. Lägg märke till de två understrecken på båda sidorna av ordet `init`.
+Namnet på konstruktorn är alltid `__init__`. Lägg märke till de två understrecken på båda sidorna av ordet `init`.
 
 Den första parametern i en konstruktorsdefinition heter alltid `self`. Detta refererar till själva objektet och är nödvändigt för att deklarera alla attribut som är knutna till objektet. Tilldelningen
 
 `self.saldo = saldo`
 
-tilldelar objektets saldoattribut den balans som mottagits som argument. Det är vanligt att använda samma variabelnamn för parametrarna och dataattributen som definieras i en konstruktor, men variabelnamnen `self.saldo` och `saldo` ovan hänvisar till två olika variabler:
+tilldelar objektets saldoattribut det sald som tagits emot som argument. Det är vanligt att använda samma variabelnamn för parametrarna och dataattributen som definieras i en konstruktor, men variabelnamnen `self.saldo` och `saldo` ovan hänvisar till två olika variabler:
 
 * Variabeln `self.saldo` är ett attribut för objektet. Varje Bankkonto-objekt har sitt eget saldo.
 
-* Variabeln `saldo` är en parameter i konstruktorsmetoden `__init__`. Dess värde sätts till det värde som skickas som argument till metoden när konstruktorn kallas (dvs. när en ny insctance av klassen skapas).
+* Variabeln `saldo` är en parameter i konstruktorsmetoden `__init__`. Dess värde sätts till det värde som skickas som argument när konstruktorn anropas (dvs. när en ny instans av klassen skapas).
 
-Nu när vi har definierat parametrarna för konstruktorsmetoden kan vi skicka de önskade initiala värdena för dataattributen som argument när ett nytt objekt skapas:
+När vi har definierat parametrarna för konstruktorsmetoden kan vi skicka de önskade initiala värdena för dataattributen som argument när ett nytt objekt skapas:
 
 ```python
 class Bankkonto:
@@ -180,7 +180,7 @@ print(peters_konto.saldo)
 
 </sample-output>
 
-Låt oss titta på ett annat exempel på klasser och objekt. Vi ska skriva en klass som modellerar en enstaka dragning av lotterinummer:
+Låt oss titta på ett annat exempel på klasser och objekt. Vi ska skriva en klass som modellerar lotteridragning:
 
 ```python
 from datetime import date
@@ -218,14 +218,14 @@ for nummer in runda1.nummer:
 
 </sample-output>
 
-Som du kan se ovan kan attributerna vara av  vilken sort som helst. Här har varje LotteriDragnings objekt attributer av typerna `list` och `date`.
+Som du kan se ovan kan attributen vara av vilken typ som helst. Här har varje LotteriDragning-objekt attribut av typerna `list` och `date`.
 
 
 <programming-exercise name='Bok' tmcname='osa08-06_bok'>
 
 Skapa klassen `Bok`, som har variablerna `namn`, `forfattare`, `genre` och `ar`, tillsammans med en konstruktor som anger ursprungsvärden åt dessa attribut.
 
-Klassen ska fungera englit följande:
+Klassen ska fungera enligt följande:
 
 ```python
 python = Bok("Fluent Python", "Luciano Ramalho", "programmering", 2015)
@@ -246,7 +246,7 @@ Boken Äkta Äventyrs genre är självbiografi
 
 <programming-exercise name='Skriv klasser' tmcname='osa08-07_skriv_klasser'>
 
-Skapa de tre klasser som anges nedan. Varje klass ska ha exakt samma namn och typer av attribut som anges i listan.
+Skapa de tre klasserna som anges nedan. Varje klass ska ha exakt samma namn och typer av attribut som anges i listan.
 
 Inkludera också en konstruktor i varje klass. Konstruktorn ska ta de ursprungliga värdena för attributen som sina argument, i den ordning som anges nedan.
 
@@ -278,13 +278,13 @@ def oppna_konto(namn: str):
     return nytt_konto
 
 # denna funktion lägger till det belopp som anges som argument till saldot som anges som argument
-def tillagg_pengar_pa_kontot(konto: Bankkonto, summa: int):
+def lagg_in_pengar_pa_kontot(konto: Bankkonto, summa: int):
     konto.saldo += summa
 
 peters_konto = oppna_konto("Peter Python")
 print(peters_konto.saldo)
 
-tillagg_pengar_pa_kontot(peters_konto, 500)
+lagg_in_pengar_pa_kontot(peters_konto, 500)
 
 print(peters_konto.saldo)
 ```
