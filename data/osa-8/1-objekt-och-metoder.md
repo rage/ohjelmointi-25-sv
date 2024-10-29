@@ -32,7 +32,7 @@ bok = (namn, författare, ar)
 print(bok[0])
 ```
 
-I ett fall som detta är fördelen med att använda en ordlista att vi kan använda strängar istället för indexar som nycklar. Alltså, kan vi ge deskriptiva namn till sakerna som förvaras datastrukturen:
+I ett fall som detta är fördelen med att använda en ordlista att vi kan använda strängar istället för indexar som nycklar. Vi kan alltså ge beskrivande namn till de saker som lagras i datastrukturen:
 
 ```python
 namn = "Kodningsboken"
@@ -46,9 +46,9 @@ bok = {"namn": namn, "författare": forfattare, "år": ar}
 print(bok["namn"])
 ```
 
-I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen specifikt betydelsen av en oberoende helhet, i detta fall innehållande några bitar av data som på något vis är relaterade. Att vara oberoende betyder att ändringar till ett objekt inte påverkar andra objekt.
+I båda fallen så skapar vi ett nytt _objekt_. Inom programmering har termen en specifik betydelse: ett objekt är en oberoende helhet, som i detta fall innehåller data som på något vis är relaterade. Att vara oberoende betyder att ändringar i ett objekt inte påverkar andra objekt.
 
-Ifall vi skulle skapa två strukturellt identiska representationer av böcker, användandes ordlistor och identiska nycklar, skulle ändringar som görs till en av dem inte påverka den andra:
+Ifall vi skulle skapa två strukturellt identiska representationer av böcker med hjälp av ordlistor och identiska nycklar, skulle ändringar som görs i den ena inte påverka den andra:
 
 ```python
 bok1 = {"namn": "Den gamle och Python", "författare": "Ernest Pythonson", "år": 1952}
@@ -77,23 +77,23 @@ Sju Python
 <text-box variant="info" name="Python objekt">
 
 
-Du kanske kommer ihåg från introduktion till programmering kursen att vilket som helst värde i Python internt är behandlat som ett objekt. Detta betyder att värdet lagrat i en variabel är en _referens till ett objekt_. Själva datan är lagrad inuti ett objekt i datorns minne. Ifall du ger ett värde till en ny variable med kommandot `a = 3`, är värdet som lagras i variabeln _inte_ 3, utan en _referens till ett objekt som innehåller värdet 3_.
+Du kanske kommer ihåg från grundkursen i programmering att vilket som helst värde i Python internt behandlas som ett objekt. Det betyder att värdet som lagrats i en variabel är en _referens till ett objekt_. Själva data är lagrad inuti ett objekt i datorns minne. Ifall du ger ett värde till en ny variabel med tilldelningen `a = 3`, är värdet som lagras i variabeln _inte_ 3, utan en _referens till ett objekt som innehåller värdet 3_.
 
-De flesta andra programmeringsspråk (i varje fall de som stöder objekt-orienterad programmering) inkluderar vissa särskilt definierade _primitiva datatyper_. Dessa inkluderar ofta åtminstone [integer] nummer, flyttals nummer och boleska sanningsvärden. Primitiver är processerade direkt, vilket betyder att de är lagrade direkt i variabler, inte som referenser. Python har inga sådana primitiver, men att jobba med de grundläggade datatyperna i Python är i praktiken väldigt liknande. Objekt av dessa grundläggande datatyper (såsom nummer, boleska värden och strängar) är _oföränderliga_, vilket betyder att de inte kan ändras i minnet. Ifall värdet som lagras i en variabel med en grundläggande datatyp måste ändras så byts hela referensen ut, men själva objektet kvarstår i minnet.
+De flesta andra programmeringsspråk (i varje fall de som stöder objektorienterad programmering) inkluderar vissa särskilt definierade _primitiva datatyper_. Dessa inkluderar ofta åtminstone [integer] heltal, flyttal och booleska sanningsvärden. Primitiver processeras direkt, vilket betyder att de är lagrade direkt i variabler, inte som referenser. Python har inga sådana primitiver, men att jobba med de grundläggade datatyperna i Python fungerar i praktiken på liknande sätt. Objekt av dessa grundläggande datatyper (såsom tal, booleska värden och strängar) är _oföränderliga_, vilket betyder att de inte kan ändras i minnet. Om värdet som lagras i en variabel med en grundläggande datatyp ändras, dvs. variabeln tilldelas ett nytt värde, så byts hela referensen ut. Det ursprungliga objektet finns dock kvar i minnet. 
 
 
 </text-box>
 
 ## Objekt och metoder
 
-Datan som lagras i ett objekt kan kommas åt genom olika _metoder_. En metod är en funktion som opererar på ett specifikt objekt som den är kopplad till. Sättet att åtskilja mellan metoder och andra funktioner ligger i hur de är kallade: först skriver man namnet på objektet som avses, sedan en punkt och till sist metodens namn, åtföljt av argument ifall sådana finns. Till exempel returnerar metoden `values` alla värden som är lagrade i ett objekt av typen ordlista eller `dict`:
+Man kan komma åt data som lagras i ett objekt genom olika _metoder_. En metod är en funktion som opererar på ett specifikt objekt som den är kopplad till. Vi kan skilja på metoder och "vanliga" funktioner genom att se på hur de anropas, eftersom metoder används med punktnotation: först skriver man namnet på det objekt som avses, sedan en punkt och till sist metodens namn, åtföljt av argument ifall sådana finns. Till exempel returnerar metoden `values` alla värden som är lagrade i ett objekt av typen ordlista eller `dict`:
 
 ```python
 # detta skapar ett objekt av typen ordlista med namnet bok
 bok = {"namn": "Den gamle och Python", "författare": "Ernest Pythonson", "år": 1952}
 
 # Vi skriver ut alla värden
-# Metodkallelsen values() skrivs efter namnet på variabeln
+# Metodanropet values() skrivs efter namnet på variabeln
 # Kom ihåg punktnotation!
 for varde in bok.values():
     print(varde)
@@ -101,13 +101,13 @@ for varde in bok.values():
 
 <sample-output>
 
-Den gamel och Python
+Den gamle och Python
 Ernest Pythonson
 1952
 
 </sample-output>
 
-På samma sätt opererar en strängmetod på det strängobjekt som den kallas på. Några exempel av strängmetoder är `count` och `find`:
+På samma sätt opererar en strängmetod på det strängobjekt som den kallas på. Några exempel på strängmetoder är `count` och `find`:
 
 ```python
 namn = "Påhittige Per"
@@ -134,7 +134,7 @@ print("Helt annan sträng".find("Per"))
 
 </sample-output>
 
-Strängmetoder returnerar värden, men ändrar inte innehållet av en sträng. Liksom nämnt ovan är strängar i Python oföränderliga. Detta gäller däremot inte alla metoder; Pythonlistor är föränderliga, alltså kan listmetoder ändra innehållet av listan som de kallas på:
+Strängmetoder returnerar värden, men ändrar inte innehållet i en sträng eftersom strängar i Python är oföränderliga. Detta gäller däremot inte alla objekt och metoder. Listor i Python är föränderliga, alltså kan listmetoder ändra innehållet i den lista som den kallas på utan att skapa en ny referens eller ett nytt objekt.
 
 ```python
 lista = [1,2,3]
@@ -164,14 +164,14 @@ Skapa funktionen `minsta_medeltalet(person1: dict, person2: dict, person3: dict)
 
 Varje ordlistsobjekt innehåller värden som refererar till följande nycklar:
 
-* `"namn"`: tävlarens namn
-* `"resultat1"`: tävlarens första resultat (heltal mellan 1...10)
-* `"resultat2"`: tävlarens andra resultat (liksom ovan)
-* `"resultat3"`: tävlarens tredje resultat (liksom ovan)
+* `"namn"`: deltagarens namn
+* `"resultat1"`: deltagarens första resultat (heltal mellan 1...10)
+* `"resultat2"`: deltagarens andra resultat (liksom ovan)
+* `"resultat3"`: deltagarens tredje resultat (liksom ovan)
 
-Funktionen ska beräkna genomsnittet av de tre resultaten för varje tävlande och sedan returnera den tävlande vars genomsnittliga resultat var det minsta. Returvärdet bör vara hela ordlistsobjektet som innehåller information om deltagaren.
+Funktionen ska beräkna genomsnittet av de tre resultaten för varje deltagare och sedan returnera den deltagare vars genomsnittliga resultat är minst. Returvärdet bör vara hela det ordlistsobjekt som innehåller information om deltagaren.
 
-Du kan anta att endast en tävlare har det minsta medeltalet.
+Du kan anta att endast en deltagare har det minsta medeltalet.
 
 Ett exempel på funktionen:
 
