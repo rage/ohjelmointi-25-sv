@@ -14,9 +14,9 @@ Efter den här delen
 
 </text-box>
 
-Detta är första delen av den Avancerade Kursen inom Programmering. Materialet är designat för att bli använt med Visual Studio Code editeraren, liksom den föregående kursen Introduktion till Programming. Ifall du inte använt Visual Studio Code tidigare, så hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://rage.github.io/ohjelmointi-24-sv/osa-4/1-vscode).
+Detta är första delen av fortsättningskursen i programmering. Materialet är designat för att användas med programmeringsmiljön Visual Studio Code, precis som i den föregående kursen (Grundkurs i porgrammering). Ifall du inte använt Visual Studio Code tidigare, hittar du installeringsinstruktionerna [här](https://www.mooc.fi/fi/installation/vscode) och en introduktion till programmeringsomgivningen från förra kursen [här](https://rage.github.io/ohjelmointi-24-sv/osa-4/1-vscode).
 
-I introduktion till Programmering kursen så lade vi märke till att det ofta är logiskt att gruppera relaterad data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tupel eller en ordlista för att organisera datan till en enskild datastruktur.
+I grundkursen i programmering lade vi märke till att det ofta är logiskt att gruppera relaterade data tillsammans i våra program. Ifall vi till exemepl skulle förvara information om en bok skulle det vara logiskt att använda oss av en tupel eller en ordlista för att organisera datan till en enskild datastruktur.
 
 Lösningen kunde se ut så här när man använder en tupel:
 
