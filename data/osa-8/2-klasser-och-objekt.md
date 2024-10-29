@@ -14,7 +14,7 @@ Efter detta avsnitt
 
 </text-box>
 
-I föregående avsnitt arbetade vi med listor, tuplar, ordlistor och strängar. Dessa är alla ganska speciella fall i Python-programmering. Pythons syntax har en unik, fördefinierad metod för att deklarera ett objekt som tillhör var och en av dessa typer:
+I föregående avsnitt arbetade vi med listor, tupler, ordlistor och strängar. Dessa är alla ganska speciella fall i Python-programmering. Pythons syntax har en unik, fördefinierad metod för att skapa ett objekt som tillhör var och en av dessa typer:
 
 ```python
 # Listor deklareras med hakparenteser
@@ -30,7 +30,7 @@ ordlista = {"ett": 1, "två:": 2}
 tupel = (1,2,3)
 ```
 
-När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk genom Fraction-klassen.
+När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk genom `Fraction`-klassen.
 
 ```python
 # vi använder klassen Fraction från modulen fractions
@@ -43,12 +43,12 @@ tredjedel = Fraction(1,3)
 
 tredje = Fraction(3,11)
 
-# Tulostetaan
+# vi skriver ut
 print(halv)
 print(tredjedel)
 print(tredje)
 
-# Murtoluvuilla voi myös laskea
+# vi kan också räkna med bråk
 print(halv + tredjedel)
 ```
 
@@ -61,18 +61,18 @@ print(halv + tredjedel)
 
 </sample-output>
 
-Som du kan se ovan, ser metodkallningar för konstruktorer lite annorlunda ut än de normala metodkallningar som vi har stött på tidigare. För det första är de inte kopplade till något objekt med punktnotationen (eftersom konstruktoranropet behövs för att skapa ett objekt i första hand). Konstruktorsmetoden skrivs också med stor bokstav: `[half = Fraction(1,2)]`. Låt oss titta närmare på hur objekt konstrueras genom att bekanta oss med begreppet klass.
+Som du kan se ser metodanrop för konstruktorer lite annorlunda ut än de vanliga metodanrop som vi har stött på tidigare. För det första är de inte kopplade till något objekt med punktnotation (eftersom konstruktoranropet behövs för att skapa ett objekt i första hand). Konstruktorsmetoden skrivs också med stor bokstav: `[half = Fraction(1,2)]`. Låt oss titta närmare på hur objekt konstrueras genom att bekanta oss med begreppet klass.
 
-## En klass är ritningen till ett objekt
+## En klass är ritningen på ett objekt
 
 Vi har redan använt termen klass i materialet många gånger. I exemplet ovan importerade vi t.ex. klassen `Fraction` från modulen `fractions`. Nya bråktalsobjekt skapades genom att kalla på konstruktorsmetoden för klassen `Fraction`.
 
-En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den. Därför kallas klasser ibland till objektens ritningar. En klassdefinition berättar alltså till oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser och objekt som skapas baserat på dessa.
+En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den givna klassen. Därför kallas klasser ibland för objektens ritningar. En klassdefinition berättar alltså för oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser och objekt som skapas baserat på dessa.
 
-En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs till ett objekt påverkar i allmänhet inte de andra objekten som är samma klass. Varje objekt har sin egen unika uppsättning dataattribut. Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
+En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs i ett objekt påverkar i allmänhet inte de andra objekten som hör till samma klass. Varje objekt har sin egen unika uppsättning av attribut. Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
 
 * En klass definierar variablerna
-* när ett objekt skapas tilldelas dessa variabler värden
+* När ett objekt skapas tilldelas dessa variabler värden
 
 Vi kan alltså använda ett objekt av typen `Fraction` för att komma åt täljaren och nämnaren i ett bråktal:
 
@@ -117,11 +117,11 @@ print(midsommar.month)
 
 </sample-output>
 
-Definitionen av klassen `date` innehåller deklarationer av variablerna `year`, `month` och `day`. När ett nytt datumobjekt skapas baserat på klassen tilldelas dessa variabler värden. Varje objekt har sina egna unika värden som tilldelas dessa variabler.
+Definitionen av klassen `date` innehåller deklarationer av variablerna `year`, `month` och `day`. När ett nytt datumobjekt skapas baserat på klassen tilldelas dessa variabler värden. Varje objekt har sina egna unika värden utgående från de tilldelade värdena.
 
 ## Funktioner som arbetar med objekt
 
-Att passera ett objekt som ett argument till en funktion borde vara bekant för dig vid det här laget eftersom vi har gjort det redan många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som passeras som argument infaller på en helg:
+Att skicka ett objekt som ett argument till en funktion borde vara bekant vid det här laget eftersom vi har gjort det redan många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som skickas som argument infaller på en helg:
 
 ```python
 def redan_veckoslut(dag: date):
@@ -129,7 +129,7 @@ def redan_veckoslut(dag: date):
     return veckodag == 6 or veckodag == 7
 ```
 
-Denna funktion använder metoden [isoweekday](https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday), som definieras i klassdefinitionen för klassen date, och returnerar ett heltalsvärde på det sättet att om det angivna datumet är en måndag returnerar den 1, och om det är en tisdag returnerar den 2, och så vidare.
+Denna funktion använder metoden [isoweekday](https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday), som definieras i klassdefinitionen för klassen `date`, och returnerar ett heltalsvärde enligt följande: om det angivna datumet är en måndag returnerar den 1, och om det är en tisdag returnerar den 2, och så vidare.
 
 ```python
 jul = date(2020, 12, 24)
@@ -148,12 +148,12 @@ True
 
 ## Metoder vs variabler
 
-När du arbetar med ett objekt av typen `date` kanske du märker att det finns en liten skillnad mellan hur variablerna i objektet åtkoms jämfört med hur metoderna som är kopplade till objekten åtkoms:
+När du arbetar med ett objekt av typen `date` kanske du märker att det finns en liten skillnad mellan hur man kommer åt variablerna i objektet jämfört med hur man anropar objektets metoder: 
 
 ```python
 dag = date(2020, 12, 24)
 
-# vi kallar metoden
+# vi anropar metoden
 veckodag = dag.isoweekday()
 
 # vi använder en variabel
@@ -170,13 +170,13 @@ Månad: 12
 
 </sample-output>
 
-Veckodagen som datumet infaller på är tillgänglig via metoden isoweekday:
+Veckodagen som datumet infaller på är tillgänglig via metoden `isoweekday`:
 
 ```python
 veckodag = dag.isoweekday()
 ```
 
-Detta är en metodkallelse, alltså finns det parenteser efter namnet på metoden. Om du lämnar bort parenteserna uppstår det inte något fel, men resultatet blir konstigt:
+Detta är ett metodanrop, alltså finns det parenteser efter namnet på metoden. Om du lämnar bort parenteserna uppstår inget fel, men resultatet blir konstigt:
 
 ```python
 veckodag =  dag.isoweekday
@@ -189,13 +189,13 @@ Veckodag: <built-in method isoweekday of datetime.date object at 0x10ed66450>
 
 </sample-output>
 
-Månaden av ett date-objekt är en variabel, alltså kan det tillgivna värdet kommas åt med en referens.
+Månaden för ett date-objekt är en variabel, alltså kan man komma åt det tilldelade värdet med en referens.
 
 ```python
 manad = dag.month
 ```
 
-Lägg märke till att det inte finns parenteser här. Att sätta in parenteser skulle orsaka ett fel:
+Lägg märke till att det inte finns parenteser här. Att sätta in parenteser skulle orsaka ett fel, eftersom det inte är frågan om en metod:
 
 ```python
 manad = dag.month()
@@ -213,7 +213,7 @@ TypeError: 'int' object is not callable
 
 Skapa funktionen `lista_ar(datum: list)`, som får en lista med `date`-objekt som argument. Funktionen returnerar en ny lista, som innehåller _åren i den originella listan i kronologisk ordning_, från tidigast till äldst.
 
-Ett exempel av funktionen:
+Ett exempel:
 
 ```python
 dag1 = date(2019, 2, 3)
@@ -237,7 +237,7 @@ print(ar)
 
 I denna övningsbotten finns en färdigt definierad `Affarslista`-klass, som kan användas för att modellera en affärslista.
 
-Antagandes att vi har ett `Affarslista`-objekt som refereras till i en variabel med namnet affarslista, kan objektet hanteras med följande metoder:
+Anta nu att vi har ett `Affarslista`-objekt som refereras till i en variabel med namnet affarslista. Då kan vi hantera objektet med följande metoder:
 
 ```python
 
