@@ -116,7 +116,7 @@ class Bankkonto:
         self.arsranta = arsranta
 
     # Metoden tillsätter den årliga räntat till saldot av kontot
-    def tillsatt_ranta(self):
+    def lagg_till_ranta(self):
         self.saldo += self.saldo * self.arsranta
 
     # Den här metoden "tar ut" pengar från kontot
@@ -355,14 +355,14 @@ class Bonuskort:
         self.namn = namn
         self.saldo = saldo
 
-    def tillsatt_bonus(self):
+    def lagg_till_bonus(self):
         # Nu är variabeln bonus en lokal variabel, inte ett
         # data attribut till objektet
         # Den kan inte nås genom ett objekt
         bonus = self.saldo * 0.25
         self.saldo += bonus
 
-    def tillsatt_superbonus(self):
+    def lagg_till_superbonus(self):
         # Variabeln superbonus är också en lokal variabel.
         # Vanligtvis är hjälpvariabler lokala variabler eftersom
         # det inte finns något behov av att komma åt dem från andra
@@ -413,14 +413,14 @@ Pythonson
 
 I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](https://rage.github.io/ohjelmointi-24-sv/osa-8/4-metoder-i-egna-klasser) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
 
-### Mängden nummer
+### Antalet nummer
 
 Skapa en klass med namnet `Nummerstatistik`, med följande metoder:
 
-- metoden `tillsatt_nummer` lägger till ett nytt nummer till statistiken
-- metoden `mangden_nummer` returnerar mängden nummer som har tillsatts
+- metoden `lagg_till_nummer` lägger till ett nytt nummer till statistiken
+- metoden `antalet_nummer` returnerar antalet nummer som har tillsatts
 
-I det här skedet finns det inget behov av att lagra själva siffrorna i någon datastruktur. Det räcker att bara komma ihåg hur många som har lagts till. Metoden `tillsatt_nummer` tar emot ett argument, men det finns inget behov av att bearbeta det faktiska värdet på något sätt ännu.
+I det här skedet finns det inget behov av att lagra själva siffrorna i någon datastruktur. Det räcker att bara komma ihåg hur många som har lagts till. Metoden `lagg_till_nummer` tar emot ett argument, men det finns inget behov av att bearbeta det faktiska värdet på något sätt ännu.
 
 Funktionen borde ha följande struktur:
 
@@ -429,25 +429,25 @@ class  NummerStatistik:
     def __init__(self):
         self.nummer = 0
 
-    def tillsatt_nummer(self, nummer:int):
+    def lagg_till_nummer(self, nummer:int):
         pass
 
-    def mangden_nummer(self):
+    def antalet_nummer(self):
         pass
 ```
 
 ```python
 statistik = NummerStatistik()
-statistik.tillsatt_nummer(3)
-statistik.tillsatt_nummer(5)
-statistik.tillsatt_nummer(1)
-statistik.tillsatt_nummer(2)
-print("Mängden nummer:", statistik.mangden_nummer())
+statistik.lagg_till_nummer(3)
+statistik.lagg_till_nummer(5)
+statistik.lagg_till_nummer(1)
+statistik.lagg_till_nummer(2)
+print("Antalet nummer:", statistik.antalet_nummer())
 ```
 
 <sample-output>
 
-Mängden nummer: 4
+Antalet nummer: 4
 
 </sample-output>
 
@@ -460,18 +460,18 @@ Tillsätt följande metoder till klassdefinitionen:
 
 ```python
 statistik = NummerStatistik()
-statistik.tillsatt_nummer(3)
-statistik.tillsatt_nummer(5)
-statistik.tillsatt_nummer(1)
-statistik.tillsatt_nummer(2)
-print("Mängden nummer:", statistik.mangden_nummer())
+statistik.lagg_till_nummer(3)
+statistik.lagg_till_nummer(5)
+statistik.lagg_till_nummer(1)
+statistik.lagg_till_nummer(2)
+print("Antalet nummer:", statistik.antalet_nummer())
 print("Summa:", statistik.summa())
 print("Medeltal:", statistik.medeltal())
 ```
 
 <sample-output>
 
-Mängd: 4
+Antalet nummer: 4
 Summa: 11
 Medeltal: 2.75
 
