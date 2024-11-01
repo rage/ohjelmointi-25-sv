@@ -17,7 +17,7 @@ Efter den här delen:
 Klasser som endast innehåller dataattribut skiljer sig inte så mycket från ordlistor. Nedan kan du se två sätt att modellera ett bankkonto, först med en klassdefinition och sedan med hjälp av en ordlista.
 
 ```python
-# Exempel 1: bankkoto med klassdefinition
+# Exempel 1: bankkonto med klassdefinition
 class Bankkonto:
 
     def __init__(self, kontonummer: str, agare: str, saldo: float, arsranta: float):
@@ -54,12 +54,12 @@ class Bankkonto:
         self.arsranta = arsranta
 
     # Metoden lägger till den årliga räntat till saldot
-    def tillsatt_ranta(self):
+    def lagg_till_ranta(self):
         self.saldo += self.saldo * self.arsranta
 
 
 peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
-peters_konto.tillsatt_ranta()
+peters_konto.lagg_till_ranta()
 print(peters_konto.saldo)
 ```
 
@@ -69,7 +69,7 @@ print(peters_konto.saldo)
 
 </sample-output>
 
-Metoden `tillsatt_ranta` multiplicerar saldot på kontot med den årliga ränteprocenten och lägger sedan till resultatet till det aktuella saldot. Metoden verkar bara på det objekt som den anropas på.
+Metoden `lagg_till_ranta` multiplicerar saldot på kontot med den årliga ränteprocenten och lägger sedan till resultatet till det aktuella saldot. Metoden verkar bara på det objekt som den anropas på.
 
 Låt oss se hur detta fungerar när vi har skapat flera instanser av klassen:
 
@@ -81,8 +81,8 @@ pernillas_konto = Bankkonto("99999-999", "Pernilla Pythonson", 1500.0, 0.05)
 pers_konto = Bankkonto("1111-222", "Per Persson", 1500.0, 0.001)
 
 # Vi tillsätter ränta till Peters och Pernillas konton, men inte Pers
-peters_konto.tillsatt_ranta()
-pernillas_konto.tillsatt_ranta()
+peters_konto.lagg_till_ranta()
+pernillas_konto.lagg_till_ranta()
 
 # Vi skriver ut alla
 print(peters_konto.saldo)
@@ -98,11 +98,11 @@ print(pers_konto.saldo)
 
 </sample-output>
 
-Som du kan se ovan läggs den årliga räntan endast till på de konton som metoden anropas på. Eftersom den årliga räntan är olika för Peters och Paulas konton, blir resultatet olika för dessa två konton. Saldot på Pernillas konto ändras inte, eftersom metoden `tillsatt_ranta` inte anropas på objektet `pernillas_konto`.
+Som du kan se ovan läggs den årliga räntan endast till på de konton som metoden anropas på. Eftersom den årliga räntan är olika för Peters och Paulas konton, blir resultatet olika för dessa två konton. Saldot på Pernillas konto ändras inte, eftersom metoden `lagg_till_ranta` inte anropas på objektet `pernillas_konto`.
 
 ## Inkapsling
 
-Inom objektorienterad programmering dyker ordet klient upp då och då. Det används för att hänvisa till ett kodavsnitt som skapar ett objekt och använder den tjänst som tillges av dess metoder. När data som finns i ett objekt endast används genom de metoder som det tillges, garanteras objektets interna integritet. I praktiken innebär detta att t.ex. en `Bankkonto`-klass erbjuder metoder för att hantera `saldo`-attributet, så att saldot aldrig nås direkt av klienten. Dessa metoder kan sedan verifiera att saldot till exempel inte tillåts gå under noll.
+Inom objektorienterad programmering dyker ordet klient upp då och då. Det används för att hänvisa till ett kodavsnitt som skapar ett objekt och använder dem med hjälp av de metoder som motsvarande klass ger möjlighet till. När data som finns i ett objekt endast används genom de metoder som definierats i klassen, garanteras objektets interna integritet. I praktiken innebär detta att t.ex. en `Bankkonto`-klass erbjuder metoder för att hantera `saldo`-attributet, så att saldot aldrig nås direkt av klienten. Dessa metoder kan sedan verifiera att saldot till exempel inte tillåts gå under noll.
 
 Ett exempel på hur detta skulle fungera:
 
