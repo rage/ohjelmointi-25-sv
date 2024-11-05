@@ -11,12 +11,12 @@ Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
-| 10-11 | - | Campus / Discord (FI, SV från och med 5/11) | - | - | - |
-| 11-12 | - | Campus / Discord (FI, SV från och med 5/11) | - | - | - |
+| 10-11 | - | Campus / Discord (FI, SV) | - | - | - |
+| 11-12 | - | Campus / Discord (FI, SV) | - | - | - |
 | 12-13 | - | - | Campus / Discord (FI) | - | - |
 | 13-14 | - | - | Campus / Discord (FI) | - | - |
-| 14-15 | - | Campus (FI) | - | Campus (FI, SV 31/10) | - |
-| 15-16 | - | Campus (FI) | - | Campus (FI, SV 31/10) | - |
+| 14-15 | - | Campus (FI) | - | Campus (FI) | - |
+| 15-16 | - | Campus (FI) | - | Campus (FI) | - |
 | 16-17 | - | Campus (FI) | - | Campus (FI) | - |
 | 17-18 | - | Campus (FI) | - | Campus (FI) | - |
 
