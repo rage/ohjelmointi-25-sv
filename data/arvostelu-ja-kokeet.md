@@ -53,7 +53,7 @@ Ifall du tidigare har slutfört kursens Java-versioner med godkänt resultat, ka
 ## Kursens bedömning
 
 ### Vitsordsskalan förändras för grundkursen våren 2025
-Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025.
+Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att **avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025**. Därtill behöver du **anmäla dig till kursen senast den 1.3.2025 **för att få den registrerad enligt den numeriska vitsordsskalan. 
 
 ### Numerisk vitsordsskala
 
