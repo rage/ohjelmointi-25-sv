@@ -10,6 +10,9 @@ sidebar_priority: 4000
 
 Bedömningen baseras på både poäng från gjorda uppgifter och tenten. Poäng ges för alla uppgifter i varje modul. Du hittar modulens alla uppgifter genom att välja "Uppgifter i den här modulen" under respektive modul, och du kan hålla koll på dina egna uppgiftspoäng under rubriken "Uppgiftspoäng totalt" i poängvisualiseraren som finns i kursmaterialets nedre högra hörn (blå cirkel). 
 
+### OBS! Bedömningsskalan ändrar för grundkursen våren 2025
+Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att **avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025**. Därtill behöver du **anmäla dig till kursen senast den 1.3.2025 **för att få den registrerad enligt den numeriska vitsordsskalan. 
+
 ## Tentamen
 
 ### Att delta i tenten
@@ -52,12 +55,9 @@ Ifall du tidigare har slutfört kursens Java-versioner med godkänt resultat, ka
 
 ## Kursens bedömning
 
-### Vitsordsskalan förändras för grundkursen våren 2025
-Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att **avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025**. Därtill behöver du **anmäla dig till kursen senast den 1.3.2025 **för att få den registrerad enligt den numeriska vitsordsskalan. 
-
 ### Numerisk vitsordsskala
 
-Följande skala används för bedömningen. Observera att skalan ändras till godkänt/underkänt för grundkursens del 2025. 
+Följande skala används för bedömningen. Observera att skalan ändras till godkänt/underkänt för grundkursens del 2025 (se ovan). 
 
 <table>
     <thead>
