@@ -33,8 +33,11 @@ Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 ### Introduktion till programmering, tentdatum 2024
 
 * Lördag 19.10.2024
+* Torsdag 24.10.2024 (extra tent, kl. 10-16)
 * Lördag 23.11.2024
 * Lördag 11.1.2025
+
+OBS! Om du deltar i den extra tenten den 19.10 ska du inte delta den 24.10. 
 
 ### Fortsättningskurs i programmering, tentdatum 2024
 
@@ -49,9 +52,12 @@ Ifall du tidigare har slutfört kursens Java-versioner med godkänt resultat, ka
 
 ## Kursens bedömning
 
-### Vitsordsskala
+### Vitsordsskalan förändras för grundkursen våren 2025
+Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025.
 
-Kursen bedöms enligt följande skala:
+### Numerisk vitsordsskala
+
+Följande skala används för bedömningen. Observera att skalan ändras till godkänt/underkänt för grundkursens del 2025. 
 
 <table>
     <thead>
