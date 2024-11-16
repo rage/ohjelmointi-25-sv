@@ -273,7 +273,7 @@ Peter Python
 
 </sample-output>
 
-Även om en härledd klass överstyr en metod i sin basklass kan den härledda klassen fortfarande anropa den åsidosatta metoden i basklassen. I följande exempel har vi ett grundläggande `Bonuskort` och ett särskilt `Platinumkort` för särskilt lojala kunder. Metoden `rakna_bonus` är åsidosatt i den härledda klassen, men den åsidosatta metoden anropar basmetoden:
+Även om en härledd klass överskuggar en metod i sin basklass kan den härledda klassen fortfarande anropa den åsidosatta metoden i basklassen. I följande exempel har vi ett grundläggande `Bonuskort` och ett särskilt `Platinumkort` för särskilt lojala kunder. Metoden `rakna_bonus` är åsidosatt i den härledda klassen, men den åsidosatta metoden anropar basmetoden:
 
 ```python
 
@@ -314,7 +314,7 @@ class Platinumkort(Bonuskort):
 
 ```
 
-Bonusen för ett Platinumkort beräknas alltså genom att anropa den överstyrda metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används:
+Bonusen för ett Platinumkort beräknas alltså genom att anropa den överskuggade metoden i basklassen och sedan lägga till 5 procent extra till basresultatet. Ett exempel på hur dessa klasser används:
 
 ```python
 if __name__ == "__main__":
@@ -368,7 +368,7 @@ I uppgiftsbotten finns klassdefinitioner för `Datorspel` och `Spelforrad`. Spel
 
 Bekanta dig med dessa klasser. Definiera sedan klassen `Spelmuseum`, som ärver klassen `Spelforrad`.
 
-Spelmuseum-klassen ska _överstyra_ metoden `lista_spel()`, så att den returnerar en lista av endast de spel som är gjorda innan år 1990.
+Spelmuseum-klassen ska _överskugga_ metoden `lista_spel()`, så att den returnerar en lista av endast de spel som är gjorda innan år 1990.
 
 Dessutom ska den nya klassen ha en konstruktor som _anropar konstruktorn från överklassen Spelforrad_. Konstruktorn tar inga argument.
 
@@ -504,7 +504,7 @@ I denna ”grundläggande” version av spelet avgörs vinnaren slumpmässigt. S
 
 Definiera en klass som heter `LangstaOrdet`. Det är en version av spelet där den som skriver in det längsta ordet i varje omgång vinner.
 
-Den nya versionen av spelet implementeras genom att ärva `Ordspel`-klassen. Metoden `rundans_vinnare` bör också överstyras på lämpligt sätt. Den nya klassen är uppbyggd på följande sätt:
+Den nya versionen av spelet implementeras genom att ärva `Ordspel`-klassen. Metoden `rundans_vinnare` bör också överskuggas på lämpligt sätt. Den nya klassen är uppbyggd på följande sätt:
 
 ```python
 class LangstaOrdet(Ordspel):
