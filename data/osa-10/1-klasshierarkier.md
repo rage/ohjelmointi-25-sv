@@ -155,7 +155,7 @@ class Bokhylla(BokLada):
 
  ```
 
- Klassen `Bokhylla` innehåller metoden `tillsatt_bok`. En metod med samma namn finns definierad i basklassen `BokLada`. Detta kallas överstyrning (eng. overriding): om en härledd klass har en metod med samma namn som basklassen, överstyr den härledda versionen originalet i instanser av den härledda klassen.
+ Klassen `Bokhylla` innehåller metoden `tillsatt_bok`. En metod med samma namn finns definierad i basklassen `BokLada`. Detta kallas överskuggning (eng. overriding): om en härledd klass har en metod med samma namn som basklassen, överskuggar den härledda versionen originalet i instanser av den härledda klassen.
 
  Tanken i exemplet ovan är att en ny bok som läggs till i en Bok låda alltid hamnar högst upp, men med en Bokhylla kan du själv ange platsen. Metoden `lista_bocker` fungerar likadant för båda klasserna, eftersom det inte finns någon överordnad metod i den härledda klassen.
 
