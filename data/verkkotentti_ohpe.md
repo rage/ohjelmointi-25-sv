@@ -18,7 +18,7 @@ hide_in_sidebar: false
 
 #### Att utföra tenten
 
-* Tenten utförs på samma sätt som kursuppgifter i vscode-omgivningen.
+* Tenten utförs på samma sätt som kursuppgifter i VScode-omgivningen.
 * Tenten kan utföras lördagen den 23.11.2024 mellan **kl 10:00-22:00** 
 * Du har **fyra timmar** på dig för att besvara tenten. Ifall du har fått rätt till extratid i tenter, har du fem timmar på dig. 
 * Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 18:00**.
@@ -56,8 +56,9 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 * Tentfrågorna publiceras på courses.mooc.fi på tentdagen kl 10:00.
 * Du loggar in på tentsidan med samma vanliga mooc.fi-login som du använder på kursen. 
 * Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/b5468159-12c1-4f84-bd50-0368f5dd907f">https://courses.mooc.fi/org/uh-cs/exams/b5468159-12c1-4f84-bd50-0368f5dd907f</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/549ffff9-1d06-4fce-bc1c-38996d223511">https://courses.mooc.fi/org/uh-cs/exams/549ffff9-1d06-4fce-bc1c-38996d223511</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/549ffff9-1d06-4fce-bc1c-38996d223511">https://courses.mooc.fi/org/uh-cs/exams/dee9d313-14f3-40da-92f1-fe259f2092ce</a>
 * Tenttiden börjar då du trycker på `Påbörja tenten!`
+
 
 
 #### Inlämning av uppgifter
