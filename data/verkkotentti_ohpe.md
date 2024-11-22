@@ -1,6 +1,6 @@
 ---
 path: "/onlinetent-ohpe"
-title: "ProgGK onlinetent 24.10 (extra tent)"
+title: "ProgGK onlinetent 23.11"
 information_page: true
 sidebar_priority: 2900
 hide_in_sidebar: false
@@ -19,14 +19,9 @@ hide_in_sidebar: false
 #### Att utföra tenten
 
 * Tenten utförs på samma sätt som kursuppgifter i vscode-omgivningen
-* Tenten kan utföras mellan **kl 10:00-16:00** torsdagen den 24.10
+* Tenten kan utföras mellan **kl 10:00-22:00** lördagen den 23.11
 * Tiden att göra tenten är **fyra timmar**. Ifall du har fått rätt till extratid i tenter, har du fem timmar på dig. 
-* Tenten avslutas senast klockan 16:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 12:00**.
-
-#### Om du deltog i tenten lördagen den 19.10.2024
-
-* Detta är en alternativ tent till tenten som ordnades lördagen den 19.10.
-* **Delta inte i båda tenterna**. Om du gör det registreras det **sämre resultatet**.
+* Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 18:00**.
 
 #### Före tentdagen
 
@@ -37,7 +32,7 @@ hide_in_sidebar: false
 #### På tentdagen
 
 * I händelse av tekniska problem finns handledare tillgängliga via Discord under tentdagen **kl 10:00-12:00**.
-* Under tentdagen **kl 12:00-16:00** är all diskussion på kursens kanaler förbjuden. Kursens Discord är låst och det går inte att skicka meddelanden.
+* Under tentdagen **kl 12:00-22:00** är all diskussion på kursens kanaler förbjuden. Kursens Discord är låst och det går inte att skicka meddelanden.
 
 #### Uppgiftsbottnarna
 
