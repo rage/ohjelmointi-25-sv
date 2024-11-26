@@ -40,7 +40,7 @@ Ti 29.10.2024  | Exactum C222 |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL
 Ti 5.11.2024   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)
 Ti 12.11.2024  | Zoom    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)
 Ti 19.11.2024  | Zoom    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)
-Ti 26.11.2024  | Zoom |   12  | TBA
+Ti 26.11.2024  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)
 Ti 3.12.2024   | Zoom    |   13  | TBA
 Ti 10.12.2024  | Exactum C222 |   14  | Ingen genomgång, projektarbete
 
