@@ -39,9 +39,9 @@ class Bankkonto:
     pass
 ```
 
-Koden ovan talar om för Python att vi här definierar en klass med namnet `Bankkonto`. Klassen innehåller ingen funktionalitet ännu, men vi kan redan skapa ett objekt baserat på klassen.
+Koden ovan talar om för Python att vi här definierar en klass med namnet `Bankkonto`. Klassen innehåller ännu ingen funktionalitet, men vi kan redan skapa ett objekt baserat på klassen.
 
-Låt oss titta på ett program där två variabler läggs till ett `Bankkonto`-objekt: `saldo` och `ägare`. Alla variabler som är kopplade till ett objekt kallas dess _attribut_, eller mer specifikt, _dataattribut_, eller ibland _instansvariabler_.
+Låt oss titta på ett program där två variabler läggs till ett `Bankkonto`-objekt: `saldo` och `ägare`. Alla variabler som är kopplade till ett objekt kallas dess _attribut_, eller mer specifikt, _dataattribut_, eller ibland _instansvariabler_. Ett objekt kallas också ibland en _instans_ av den klass den skapats från.
 
 De attribut som är kopplade till ett objekt kan nås via objektet:
 
@@ -76,7 +76,7 @@ print(saldo) # DETTA ORSAKAR ETT FEL, eftersom det inte finns någon sådan ober
 
 ## Att lägga till en konstruktor
 
-I exemplet ovan såg vi att en ny instans av en klass kan skapas genom att anropa klassens konstruktormetod på följande sätt: `KlassensNamn()`. Ovan kopplade vi sedan dataattribut till objektet separat, men det är ofta bekvämare att skicka dessa initiala värden för attribut direkt när objektet skapas. I exemplet ovan hade vi först ett Bankkonto-objekt utan dessa attribut, och attributen existerade först efter att de uttryckligen hade deklarerats.
+I exemplet ovan såg vi att en ny instans av en klass kan skapas genom att anropa klassens konstruktormetod på följande sätt: `KlassensNamn()`. Ovan kopplade vi sedan dataattribut till objektet separat, men det är ofta bekvämare att skicka med startvärden för attributen som argumen samtidigt som objektet skapas. I exemplet ovan hade vi först ett Bankkonto-objekt utan dessa attribut, och attributen existerade först efter att de uttryckligen hade deklarerats.
 
 
 Att deklarera attribut utanför konstruktorn leder till en situation där olika instanser av samma klass kan ha olika attribut. Följande kod ger ett fel eftersom vi nu har ett annat `Bankkonto-objekt`, `pernillas_konto`, som inte innehåller samma attribut:
@@ -96,7 +96,7 @@ print(peters_konto.saldo)
 print(pernillas_konto.saldo) # DETTA ORSAKAR ETT FEL
 ```
 
-Istället för att deklarera attribut efter att varje instans av klassen har skapats, är det därför oftast en bättre idé att initialisera attributens värden när konstruktorn anropas. Eftersom klassdefinitionen Bankkonto för närvarande bara är en ram, antas konstruktormetoden implicit av Python-tolkaren, men det är möjligt att definiera egna konstruktormetoder, och det är precis vad vi kommer att göra nu.
+Istället för att deklarera attribut efter att varje instans av klassen har skapats, är det därför oftast en bättre idé att initialisera attributens värden när konstruktorn anropas. Eftersom klassdefinitionen Bankkonto för närvarande bara är en ram, antas konstruktormetoden implicit av Python-tolkaren. Det är också möjligt (och ofta nödvändigt) att definiera egna konstruktormetoder, och det är precis vad vi kommer att göra nu.
 
 En konstruktormetod är en metoddeklaration med det speciella namnet `__init__`, som vanligtvis inkluderas i början av en klassdefinition.
 
@@ -117,11 +117,11 @@ Den första parametern i en konstruktorsdefinition heter alltid `self`. Detta re
 
 `self.saldo = saldo`
 
-tilldelar objektets saldoattribut det sald som tagits emot som argument. Det är vanligt att använda samma variabelnamn för parametrarna och dataattributen som definieras i en konstruktor, men variabelnamnen `self.saldo` och `saldo` ovan hänvisar till två olika variabler:
+tilldelar objektets saldoattribut det saldo som tagits emot som argument. Det är vanligt att använda samma variabelnamn för parametrarna och dataattributen som definieras i en konstruktor, men variabelnamnen `self.saldo` och `saldo` ovan hänvisar till två olika variabler:
 
 * Variabeln `self.saldo` är ett attribut för objektet. Varje Bankkonto-objekt har sitt eget saldo.
 
-* Variabeln `saldo` är en parameter i konstruktorsmetoden `__init__`. Dess värde sätts till det värde som skickas som argument när konstruktorn anropas (dvs. när en ny instans av klassen skapas).
+* Variabeln `saldo` är en parameter i konstruktorsmetoden `__init__`. Den tilldelas det värde som skickas som argument när konstruktorn anropas (dvs. när en ny instans av klassen skapas).
 
 När vi har definierat parametrarna för konstruktorsmetoden kan vi skicka de önskade initiala värdena för dataattributen som argument när ett nytt objekt skapas:
 
@@ -349,7 +349,7 @@ Fluent Python och Norma publicerades 2015
 
 Skapa funktionen `genrens_bocker(bocker: list, genre: str)`, som får som argument en lista med `Bok`-objekt såväl som en sträng som representerar genren.
 
-Funktionen returnerar _en ny_ lista, som innehåller böckerna med den specifierade genren från den originella listan.
+Funktionen returnerar _en ny_ lista, som innehåller de böcker som hör till den givna genren i den originella listan.
 
 Funktionen fungerar på följande sätt:
 
