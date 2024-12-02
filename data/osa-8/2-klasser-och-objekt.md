@@ -69,7 +69,7 @@ Vi har redan använt termen klass i materialet många gånger. I exemplet ovan i
 
 En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den givna klassen. Därför kallas klasser ibland för objektens ritningar. En klassdefinition berättar alltså för oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser, och de objekt som skapas utgående från de olika klasserna. 
 
-En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs i ett objekt påverkar i allmänhet inte de andra objekten som hör till samma klass. Varje objekt har sin egen unika uppsättning av attribut (variabler). Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
+En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs i ett objekt påverkar i allmänhet inte de andra objekten som hör till samma klass. Varje objekt har sin egen unika uppsättning av variabler. Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
 
 * En klass definierar variablerna
 * När ett objekt skapas tilldelas dessa variabler värden
