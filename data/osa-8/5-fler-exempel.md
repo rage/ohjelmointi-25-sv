@@ -16,7 +16,7 @@ Efter den här delen
 
 ## Exempel 1: klassen Rektangel
 
-Låt oss ta en titt på en klass som modellerar en rektangel i ett tvådimensionellt rum:
+Låt oss ta en titt på en klass som modellerar en rektangel:
 
 ```python
 class Rektangel:
@@ -39,7 +39,7 @@ class Rektangel:
         self.hoger_nedre = (horn[0]+x_andring, horn[1]+y_andring)
 ```
 
-En ny `Rektangel` skapas med två tuplar som argument. Dessa tuplar innehåller x- och y-koordinaterna för det övre vänstra hörnet och det nedre högra hörnet. Konstruktören beräknar rektangelns höjd och bredd baserat på dessa värden.
+En ny `Rektangel` skapas med två tuplar som argument. Dessa tuplar innehåller x- och y-koordinaterna för det övre vänstra hörnet och det nedre högra hörnet. Konstruktorn beräknar rektangelns höjd och bredd baserat på dessa värden.
 
 Metoderna `area` och `omkrets` beräknar rektangelns area och omkrets baserat på höjd och bredd. Metoden `flytta` flyttar rektangeln med de x- och y-värden som anges som argument.
 
@@ -76,14 +76,14 @@ print(rektangel.hoger_nedre)
 
 ## Skriva ut ett objekt
 
-När du har ett objekt som skapats från en klass som du själv definierat, är standardreaktionen på att anropa instruktionen `print` med objektet som argument inte särskilt informativt:
+När du har ett objekt som skapats från en klass som du själv definierat, är din första tanke kanske att anropa instruktionen `print` med objektet som argument för att se vad som skrivs ut. Det är inte särskilt informativt:
 
 ```python
 rektangel = Rektangel((1, 1), (4, 3))
 print(rektangel)
 ```
 
-Utskriften borde se ut någorlunda så här:
+Utskriften ser troligen ut ungefär så här: 
 
 <sample-output>
 
@@ -91,21 +91,21 @@ Utskriften borde se ut någorlunda så här:
 
 </sample-output>
 
-Vi vill självklart ha mer kontroll över vad som skrivs ut. Det enklaste sättet att göra detta är att lägga till en speciell `__str__`-metod i klassdefinitionen. Dess syfte är att returnera en ögonblicksbild av objektets tillstånd i strängformat. Om klassdefinitionen innehåller en `__str__`-metod är det värde som returneras av metoden, det som skrivs ut när instruktionen `print` körs.
+Vi vill självklart ha mer kontroll över vad som skrivs ut. Det enklaste sättet att göra detta är att lägga till en speciell `__str__`-metod i klassdefinitionen. Dess syfte är att returnera en ögonblicksbild av objektets tillstånd i strängformat. Genom att definiera en `__str__`-metod i klassen kan vi bestämma vad som ska skrivas ut genom att forma metodens returvärde. Detta returvärde är det som skrivs ut när instruktionen `print` körs.
 
-Så låt oss lägga till en `__str__`-metoddefinition i vår `Rektangel`-klass:
+Vi lägger alltså till en `__str__`-metoddefinition i vår `Rektangel`-klass:
 
 ```python
 class Rektangel:
 
-    # Resten av klassen kommer här såsom ovan
+    # Resten av klassen kommer här precis som ovan
 
     # Metoden returnerar objektets tillstånd i strängformat
     def __str__(self):
         return f"rektangel {self.vanster_ovre} ... {self.hoger_nedre}"
 ```
 
-Nu borde `print` instruktionen producera nånting mer användarvänligt:
+Nu borde `print` instruktionen producera något mer användarvänligt:
 
 ```python
 rektangel = Rektangel((1, 1), (4, 3))
@@ -118,7 +118,7 @@ rektangel (1, 1) ... (4, 3)
 
 </sample-output>
 
-Metoden `__str__` används kanske oftare för att formulera en strängrepresentation av objektet med `str`-funktionen, som i följande program:
+Metoden `__str__` används oftare för att formulera en strängrepresentation av objektet med `str`-funktionen, som i följande program:
 
 ```python
 rektangel = Rektangel((1, 1), (4, 3))
@@ -146,7 +146,7 @@ class Stoppur:
         self.minuter = 0
 ```
 
-Bygg ut på klassdefinitionen så att den fungerar enligt följande:
+Utveckla klassdefinitionen så att den fungerar enligt följande:
 
 ```python
 klocka = Stoppur()
@@ -174,13 +174,13 @@ for i in range(3600):
 
 Metoden `tick` innebär alltså att en sekund läggs till i stoppuret. Det maximala värdet för både sekunder och minuter är 59. Din klassdefinition bör också innehålla en `__str__`-metod, som returnerar en strängrepresentation av stoppurets tillstånd, som visas i exemplet ovan.
 
-**Tips:** Det kan göra det lättare att testa `tick`-metoden om du tillfälligt ställer in startvärdena för sekunder och minuter till något värde närmare 59 i konstruktorn. Om du ändrar de ursprungliga värdena, kom ihåg att ändra tillbaka dem innan du skickar in.
+**Tips:** Det kan vara lättare att testa `tick`-metoden om du tillfälligt ställer in startvärdena för sekunder och minuter till något värde närmare 59 i konstruktorn. Om du ändrar de ursprungliga värdena, kom ihåg att ändra tillbaka dem innan du lämnar in uppgiften.
 
 </programming-exercise>
 
 <programming-exercise name='Klocka' tmcname='osa08-12_klocka'>
 
-Definiera en ny klass `Klocka`, som bygger på Stoppur klassen. Den ska fungera enligt följande:
+Definiera en ny klass `Klocka`, som bygger på Stoppur-klassen. Den ska fungera enligt följande:
 
 ```python
 klocka = Klocka(23, 59, 55)
@@ -221,7 +221,7 @@ Konstruktorn tar alltså ursprungliga värden för timmar, minuter och sekunder 
 
 På Unicafe, studentkafeterian vid Helsingfors universitet, kan studenterna betala för sin lunch med ett särskilt betalkort.
 
-I den här övningen kommer du att skriva en klass som heter Lunchkort, med syftet att emulera de funktioner som tillhandahålls av Unicafes betalkort.
+I den här övningen kommer du att skriva en klass som heter Lunchkort, med syftet att simulera de funktioner som tillhandahålls av Unicafes betalkort.
 
 ### Strukturen av klassen
 
@@ -257,7 +257,7 @@ Kortets saldo är 50.0 euro
 
 ### Betalning av lunch
 
-Implementera följande metoder till din Lunchkort klass:
+Implementera följande metoder i din Lunchkort-klass:
 
 - `at_formanligt` som minskar saldot med 2.60 euro
 - `at_special` som minskar saldot med 4.60 euro
@@ -335,7 +335,7 @@ Kortets saldo är 235.0 euro
 
 </sample-output>
 
-Ifall kortet försöker laddas med en negativ mängd ska metoden [åstadkomma ett undantag](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) av typen `ValueError`:
+Ifall kortet försöker laddas med en negativ mängd ska metoden [kasta ett undantag](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) av typen `ValueError`:
 
 ```python
 kort = Lunchkort(10)
@@ -349,7 +349,7 @@ ValueError: Det går inte att lägga till mindre än noll
 
 </sample-output>
 
-**OBS:** metoden ska _åstadkomma_ ett undantag, se [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
+**OBS:** metoden ska _kasta_ ett undantag, se [modul 6](https://rage.github.io/ohjelmointi-24-sv/osa-6/3-fel) i materialet hur man gör. Metoden får under inga omständigheter själv skriva ut nånting!
 
 ### Flera kort
 
@@ -472,9 +472,9 @@ inga betygsättningar
 
 </sample-output>
 
-Konstruktorn ska ta titeln, antalet säsonger och en lista med genrer för serien som sina argument.
+Konstruktorn ska ta titeln, antalet säsonger och en lista med genrer som sina argument.
 
-**Tips:** när du behöver en sträng från en lista med strängar, där du vill separera med en karaktär av ditt val, kan du använda `join` metoden på följande sätt:
+**Tips:** när du behöver skapa en sträng utifrån en lista med strängar, där du själv vill ange det tecken som ska komma mellan de olika strängarna, kan du använda `join`-metoden på följande sätt:
 
 ```python
 lista = ["Crime", "Drama", "Mystery", "Thriller"]
@@ -490,7 +490,7 @@ Crime, Drama, Mystery, Thriller
 
 ### Betygsättningar
 
-Skapa en metod `betygsatt(betyg: int)`, med vilken man kan ge ett betyg mellan heltalen 0 och 5. Också metoden `__str__` ska ändras som så, att ifall det finns några betyg ska metoden skriva ut mängden betyg och deras medeltal med en decimals noggranhet.
+Skapa en metod `betygsatt(betyg: int)`, med vilken man kan ge ett betyg mellan heltalen 0 och 5. Också metoden `__str__` ska ändras så att den om det det finns några betyg också returnerar ut antalet betyg och deras medeltal med en decimals noggranhet.
 
 ```python
 dexter = Serie("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
@@ -504,15 +504,15 @@ print(dexter)
 
 <sample-output>
 
-Dexter (8 esityskautta)
-genret: Crime, Drama, Mystery, Thriller
+Dexter (8 säsonger)
+Genre: Crime, Drama, Mystery, Thriller
 Betyg 5, medeltal 3.4 poäng
 
 </sample-output>
 
 ### Sökning av serier
 
-Skapa två funktioner `betyg_minst(betyg: float, serier: list)` och `innehallar_genren(genre: str, serier: list)`, med vilka det är möjligt att hitta serier på listan.
+Skapa två funktioner `betyg_minst(betyg: float, serier: list)` och `innehaller_genren(genre: str, serier: list)`, med vilka det är möjligt att hitta serier på listan.
 
 Metoderna fungerar på följande sätt:
 
@@ -533,7 +533,7 @@ for serie in betyg_minst(4.5, serier):
     print(serie.namn)
 
 print("genre Comedy:")
-for serie in innehallar_genren("Comedy", serier):
+for serie in innehaller_genren("Comedy", serier):
     print(serie.namn)
 ```
 
