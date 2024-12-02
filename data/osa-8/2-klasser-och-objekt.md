@@ -30,7 +30,7 @@ ordlista = {"ett": 1, "två:": 2}
 tupel = (1,2,3)
 ```
 
-När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk genom `Fraction`-klassen.
+När någon annan typ av objekt deklareras måste vi anropa en speciell initialiseringsfunktion som kallas konstruktor. Låt oss ta en titt på hur man arbetar med bråk med hjälp av `Fraction`-klassen.
 
 ```python
 # vi använder klassen Fraction från modulen fractions
@@ -61,15 +61,15 @@ print(halv + tredjedel)
 
 </sample-output>
 
-Som du kan se ser metodanrop för konstruktorer lite annorlunda ut än de vanliga metodanrop som vi har stött på tidigare. För det första är de inte kopplade till något objekt med punktnotation (eftersom konstruktoranropet behövs för att skapa ett objekt i första hand). Konstruktorsmetoden skrivs också med stor bokstav: `[half = Fraction(1,2)]`. Låt oss titta närmare på hur objekt konstrueras genom att bekanta oss med begreppet klass.
+Metodanrop för konstruktorer ser alltså lite annorlunda ut än de vanliga metodanrop som vi har stött på tidigare. För det första är de inte kopplade till något objekt med punktnotation (eftersom konstruktoranropet behövs för att skapa ett objekt i första hand). Dessutom skrivs konstruktorsmetoden med stor bokstav: `[half = Fraction(1,2)]`. Låt oss titta närmare på hur objekt konstrueras genom att bekanta oss med begreppet klass.
 
 ## En klass är ritningen på ett objekt
 
-Vi har redan använt termen klass i materialet många gånger. I exemplet ovan importerade vi t.ex. klassen `Fraction` från modulen `fractions`. Nya bråktalsobjekt skapades genom att kalla på konstruktorsmetoden för klassen `Fraction`.
+Vi har redan använt termen klass i materialet många gånger. I exemplet ovan importerade vi t.ex. klassen `Fraction` från modulen `fractions`. Vi skapade nya bråktalsobjekt genom att anropa konstruktorsmetoden för klassen `Fraction`.
 
-En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den givna klassen. Därför kallas klasser ibland för objektens ritningar. En klassdefinition berättar alltså för oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser och objekt som skapas baserat på dessa.
+En klassdefinition innehåller strukturen och funktionaliteterna för alla objekt som representerar den givna klassen. Därför kallas klasser ibland för objektens ritningar. En klassdefinition berättar alltså för oss vilken typ av data ett objekt innehåller och definierar de metoder som kan användas på objektet. Objektorienterad programmering är ett programmeringsparadigm där programmets funktionalitet är knuten till användningen av klasser, och de objekt som skapas utgående från de olika klasserna. 
 
-En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs i ett objekt påverkar i allmänhet inte de andra objekten som hör till samma klass. Varje objekt har sin egen unika uppsättning av attribut. Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
+En klassdefinition kan användas för att skapa flera objekt. Som tidigare nämnts är objekt oberoende av varandra. Ändringar som görs i ett objekt påverkar i allmänhet inte de andra objekten som hör till samma klass. Varje objekt har sin egen unika uppsättning av attribut (variabler). Det kan vara bra att tänka på denna förenkling av förhållandet mellan klass och objekt:
 
 * En klass definierar variablerna
 * När ett objekt skapas tilldelas dessa variabler värden
@@ -95,7 +95,7 @@ print(tal.denominator)
 
 </sample-output>
 
-Klassdefinitionen för `Fraction` innehåller deklarationer för variablerna `numerator` och `denominator`. Varje objekt som skapas baserat på klassen har sina egna specifika värden som tilldelas dessa variabler.
+Klassdefinitionen för `Fraction` innehåller deklarationer för variablerna `numerator` och `denominator`. Varje objekt som skapas baserat på klassen kommer att ha sina egna specifika värden på dessa variabler.
 
 På samma sätt innehåller objekt som skapats baserat på klassen `date` sina egna unika värden för datumets år, månad och dag:
 
@@ -121,7 +121,7 @@ Definitionen av klassen `date` innehåller deklarationer av variablerna `year`, 
 
 ## Funktioner som arbetar med objekt
 
-Att skicka ett objekt som ett argument till en funktion borde vara bekant vid det här laget eftersom vi har gjort det redan många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som skickas som argument infaller på en helg:
+Att skicka ett objekt som ett argument till en funktion borde vara bekant vid det här laget eftersom vi redan har gjort det många gånger i den här kursen. Låt oss ta en titt på följande exempel. Här har vi en funktion som kontrollerar om `date`-objektet som skickas som argument infaller på en helg:
 
 ```python
 def redan_veckoslut(dag: date):
