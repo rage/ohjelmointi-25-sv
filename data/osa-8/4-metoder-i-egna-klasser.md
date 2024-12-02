@@ -34,9 +34,9 @@ peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
 peters_konto = {"kontonummer": "12345-678", "agare": "Peter Python", "saldo": 1500.0, "arsranta": 0.0}
 ```
 
-Med en ordlista är implementeringen mycket kortare och enklare. Med en klass är strukturen däremot mer "hårt bunden", så vi kan förvänta oss att alla `Bankkonto`-objekt är strukturellt lika. Dessutom är en klass också namngiven. Klassen `Bankkonto` refereras till när ett nytt bankkonto skapas, och objektets typ är `Bankkonto`, inte dict.
+Med en ordlista är implementeringen mycket kortare och enklare. Med en klass är strukturen däremot hårdare bunden, vilket innebär att vi kan förvänta oss att alla `Bankkonto`-objekt är strukturellt lika. Dessutom är en klass också namngiven. Klassen `Bankkonto` refereras till när ett nytt bankkonto skapas, och objektets typ är `Bankkonto`, inte `dict`.
 
-En annan stor fördel med klasser är att de förutom data även kan innehålla funktionalitet. En av de vägledande principerna för objektorienterad programmering är att ett objekt används för att komma åt både den data som är kopplad till ett objekt och funktionaliteten för att bearbeta denna data.
+En annan stor fördel med klasser är att de förutom data även kan innehålla funktionalitet. En av de vägledande principerna för objektorienterad programmering är att ett objekt används för att komma åt både de data som är kopplad till objektet och funktionalitet för att bearbeta dessa data.
 
 ## Metoder i klasser
 
@@ -102,9 +102,9 @@ Som du kan se ovan läggs den årliga räntan endast till på de konton som meto
 
 ## Inkapsling
 
-Inom objektorienterad programmering dyker ordet klient upp då och då. Det används för att hänvisa till ett kodavsnitt som skapar ett objekt och använder dem med hjälp av de metoder som motsvarande klass ger möjlighet till. När data som finns i ett objekt endast används genom de metoder som definierats i klassen, garanteras objektets interna integritet. I praktiken innebär detta att t.ex. en `Bankkonto`-klass erbjuder metoder för att hantera `saldo`-attributet, så att saldot aldrig nås direkt av klienten. Dessa metoder kan sedan verifiera att saldot till exempel inte tillåts gå under noll.
+Inom objektorienterad programmering dyker ordet klient upp då och då. En klient innebär i detta sammanhang inte en person eller mänsklig kund, utan extern kod. Klient används för att hänvisa till det kodavsnitt som skapar ett objekt och använder det med hjälp av de metoder som motsvarande klass ger möjlighet till. När data som finns i ett objekt endast används genom de metoder som definierats i klassen, garanteras objektets interna integritet. I praktiken innebär detta att t.ex. en `Bankkonto`-klass erbjuder metoder för att hantera `saldo`-attributet, så att saldot aldrig nås direkt av klienten. Dessa metoder kan sedan verifiera att saldot till exempel inte tillåts gå under noll.
 
-Ett exempel på hur detta skulle fungera:
+Ett exempel på hur detta kunde fungera:
 
 ```python
 class Bankkonto:
@@ -115,12 +115,12 @@ class Bankkonto:
         self.saldo = saldo
         self.arsranta = arsranta
 
-    # Metoden tillsätter den årliga räntat till saldot av kontot
+    # Metoden lägger till den årliga räntan till kontots saldo
     def lagg_till_ranta(self):
         self.saldo += self.saldo * self.arsranta
 
     # Den här metoden "tar ut" pengar från kontot
-    # Metoden returnerar True ifall det lyckades, och False ifall det misslyckades
+    # Metoden returnerar True ifall det lyckas, och False ifall det misslyckas
     def uttag(self, uttagssumma: float):
         if uttagssumma <= self.saldo:
             self.saldo -= uttagssumma
@@ -149,9 +149,9 @@ Uttaget lyckades inte, saldot var otillräckligt
 
 </sample-output>
 
-Att bibehålla objektets interna integritet och erbjuda lämpliga metoder för att säkerställa detta kallas inkapsling. Tanken är att objektets inre arbete är dolt för klienten, men objektet erbjuder metoder som kan användas för att komma åt den data som lagras i objektet.
+Att bibehålla objektets interna integritet och erbjuda lämpliga metoder för att säkerställa detta kallas _inkapsling_. Tanken är att objektets interna struktur och funktionalitet hålls dolt för klienten, medan objektet erbjuder metoder som klienten kan använda för att komma åt och arbeta med de data som lagras i objektet.
 
-Att lägga till en metod innebär inte att attributet automatiskt döljs. Även om klassdefinitionen `Bankkonto` innehåller metoden `uttag` för att ta ut pengar, kan klientkoden fortfarande komma åt och ändra attributet `saldo` direkt:
+Att lägga till en metod innebär inte att attributet automatiskt döljs. Även om klassdefinitionen `Bankkonto` innehåller metoden `uttag` för att ta ut pengar, kan klienten fortfarande komma åt och ändra attributet `saldo` direkt:
 
 ```python
 peters_konto = Bankkonto("12345-678", "Peter Python", 1500.0, 0.015)
@@ -168,7 +168,7 @@ else:
 print("Saldot är nu:", peters_konto.saldo)
 ```
 
-Det är möjligt att dölja dataattributen från klientkoden, vilket kan bidra till att lösa detta problem. Vi återkommer till detta ämne i nästa del.
+Det är möjligt att dölja dataattributen från klientkoden, vilket kan bidra till att lösa detta problem. Vi återkommer till detta i nästa modul.
 
 <programming-exercise name='Minskande räknare' tmcname='osa08-10_minskande_raknare'>
 
@@ -280,7 +280,7 @@ värde: 55
 
 </programming-exercise>
 
-Som avslutning på detta avsnitt tittar vi på en klass som modellerar en spelares personliga bästa. Klassdefinitionen innehåller separata valideringsmetoder som kontrollerar att de argument som skickas är giltiga. Metoderna anropas redan i konstruktorn. Detta säkerställer att det skapade objektet är sunt internt.
+Som avslutning på detta avsnitt tittar vi på en klass som modellerar en spelares personliga bästa. Klassdefinitionen innehåller separata valideringsmetoder som kontrollerar att de argument som skickas är giltiga. Metoderna anropas redan i konstruktorn. Detta säkerställer att det skapade objektet har den struktur som förväntas av objekt av denna typ.
 
 ```python
 from datetime import date
@@ -302,7 +302,7 @@ class PersonligtRekord:
         if self.poang_ok(poang):
             self.poang = poang
 
-    # Hjälparmetoder som kollar att argumenten är giltiga
+    # Hjälpmetoder som kollar att argumenten är giltiga
     def namn_ok(self, namn: str):
         return len(namn) >= 2 # Namnet ska vara minst två tecken
 
@@ -341,11 +341,11 @@ Pernilla
 
 </sample-output>
 
-I exemplet ovan anropades även hjälpmetoderna via parameternamnet `self` när de användes i konstruktorn. Det är också möjligt att inkludera /statiska/ metoddefinitioner i klassdefinitioner. Dessa är metoder som kan anropas utan att det någonsin skapas en instans av klassen. Vi återkommer till detta i nästa del.
+I exemplet ovan anropades även hjälpmetoderna via parameternamnet `self` när de användes i konstruktorn. Det är också möjligt att inkludera /statiska/ metoddefinitioner i klassdefinitioner. Dessa är metoder som kan anropas utan att det någonsin skapas en instans av klassen. Vi återkommer till detta i nästa modul.
 
 Parameternamnet `self` används endast när man hänvisar till /objektets egenskaper som en instans av klassen/. Det gäller både dataattributen och de metoder som är knutna till ett objekt. För att göra terminologin mer förvirrande kallas dataattributen och metoderna tillsammans ibland helt enkelt för objektets attribut, vilket är anledningen till att vi i detta material ofta har angett dataattribut när vi menar de variabler som definieras inom klassen. Det är här terminologin hos vissa Python-programmerare skiljer sig något från den terminologi som mer allmänt används inom objektorienterad programmering, där attribut vanligtvis bara hänvisar till dataattributen hos ett objekt.
 
-Det är också möjligt att skapa lokala variabler inom metoddefinitioner utan att hänvisa till `self`. Detta bör du göra om det inte finns något behov av att komma åt variablerna utanför metoden. Lokala variabler inom metoder har inga speciella nyckelord; de används precis som alla vanliga variabler som du har stött på hittills. .
+Det är också möjligt att skapa lokala variabler inom metoddefinitioner utan att hänvisa till `self`. Detta bör du göra om det inte finns något behov av att komma åt variablerna utanför metoden. Lokala variabler inom metoder har inga speciella nyckelord; de används precis som alla vanliga variabler som du har stött på hittills.
 
 Så här skulle det till exempel fungera:
 
@@ -411,16 +411,16 @@ Pythonson
 
 <programming-exercise name='Nummerstatistik' tmcname='osa08-11_nummerstatistik'>
 
-I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](https://rage.github.io/ohjelmointi-24-sv/osa-8/4-metoder-i-egna-klasser) i kursen Introduktion till Programmering. Den här gången ska du definiera en klass för ändamålet.
+I den här övningen ska du skapa ett program för att arbeta med siffror, på samma sätt som i [slutet av modul 2](https://rage.github.io/ohjelmointi-24-sv/osa-8/4-metoder-i-egna-klasser) i grundkursen. Den här gången ska du definiera en klass för ändamålet.
 
 ### Antalet nummer
 
 Skapa en klass med namnet `Nummerstatistik`, med följande metoder:
 
 - metoden `lagg_till_nummer` lägger till ett nytt nummer till statistiken
-- metoden `antalet_nummer` returnerar antalet nummer som har tillsatts
+- metoden `antalet_nummer` returnerar antalet nummer som har lagts till
 
-I det här skedet finns det inget behov av att lagra själva siffrorna i någon datastruktur. Det räcker att bara komma ihåg hur många som har lagts till. Metoden `lagg_till_nummer` tar emot ett argument, men det finns inget behov av att bearbeta det faktiska värdet på något sätt ännu.
+I det här skedet finns det inget behov av att lagra själva talen i någon datastruktur. Det räcker att bara komma ihåg hur många som har lagts till. Metoden `lagg_till_nummer` tar emot ett argument, men det finns inget behov av att bearbeta det faktiska värdet på något sätt ännu.
 
 Funktionen borde ha följande struktur:
 
@@ -453,10 +453,10 @@ Antalet nummer: 4
 
 ### Summa och medeltal
 
-Tillsätt följande metoder till klassdefinitionen:
+Lägg till följande metoder i klassdefinitionen:
 
-- metoden `summa` returnerar summan av talen som satts till (en tom statistik returnerar 0)
-- metoden `medeltat` returnerar medeltalet av numren (en tom statistiks medeltal är 0)
+- metoden `summa` returnerar summan av de tal som har satts till (en tom statistik returnerar 0)
+- metoden `medeltal` returnerar medeltalet av talen (medeltalet för en tom statistik är 0)
 
 ```python
 statistik = NummerStatistik()
@@ -481,11 +481,11 @@ Medeltal: 2.75
 
 Skriv ett huvudprogram som fortsätter att fråga användaren om heltal tills användaren skriver in -1. Programmet ska sedan skriva ut summan och medelvärdet av de inmatade talen.
 
-Ditt program ska använda `NummerStatistik`-objekt för att hålla koll på numren som läggs till.
+Ditt program ska använda `NummerStatistik`-objekt för att hålla koll på de tal som läggs till.
 
-OBS: Du behöver inte ändra `NummerStatistik`-klassen, i denna del, använd en instans av klassen för att slutföra denna del.
+OBS: Du behöver inte ändra `NummerStatistik`-klassen, använd en instans av klassen för att slutföra denna del av uppgiften.
 
-OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block, annars fungerar inte testen.
+OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block. Om du lägger till det kommer testerna inte att fungera. 
 
 <sample-output>
 
@@ -502,11 +502,11 @@ Medeltal: 3.25
 
 ### Flera summor
 
-Bygg på ditt huvudprogram så att det också separat räknar summan av de jämna och udda tal som läggs till.
+Bygg på ditt huvudprogram så att det också separat beräknar summan av de jämna och udda tal som läggs till.
 
-OBS: Ändra inte din `NummerStatistik`-klassdefinition i denna del av övningen heller. Definiera i stället tre `NummerStatistik`-objekt. Ett av dem ska hålla reda på alla siffror, ett annat ska hålla reda på de jämna siffrorna och det tredje ska hålla reda på de udda siffror som skrivs in.
+OBS: Ändra inte din `NummerStatistik`-klassdefinition i denna del av övningen heller. Definiera i stället tre `NummerStatistik`-objekt. Ett av dem ska hålla reda på alla tal, ett annat ska hålla reda på de jämna talen och det tredje ska hålla reda på de udda tal som skrivs in.
 
-OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block, annars fungerar inte testen.
+OBS2: Ditt huvudprogram ska inte vara inuti ett `if __name__ == "__main__"`-block.
 
 Programmet ska fungera så här:
 
