@@ -57,8 +57,8 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 
 * Tentfrågorna publiceras på courses.mooc.fi på tentdagen kl 10:00.
 * Du loggar in på tentsidan med samma vanliga mooc.fi-login som du använder på kursen. 
-* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/1f3ffdee-c2ff-40fc-a3ad-93e081ccfd85">https://courses.mooc.fi/org/uh-cs/exams/1f3ffdee-c2ff-40fc-a3ad-93e081ccfd85</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/dee9d313-14f3-40da-92f1-fe259f2092ce">https://courses.mooc.fi/org/uh-cs/exams/dee9d313-14f3-40da-92f1-fe259f2092ce</a>
+* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/defdb635-5f5f-4466-9ad5-a0454854375b">https://courses.mooc.fi/org/uh-cs/exams/defdb635-5f5f-4466-9ad5-a0454854375b</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/f5f111b3-aab8-4313-bc56-7b31d57b4262">https://courses.mooc.fi/org/uh-cs/exams/f5f111b3-aab8-4313-bc56-7b31d57b4262</a>
 * Tenttiden börjar då du trycker på `Påbörja tenten!`
 
 
@@ -71,7 +71,7 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 #### Avslutning av tenten
 
 * Innan du avslutar tenten, kom ihåg att granska att du har kommit ihåg att skicka in uppgifterna till servern
-* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1466](https://tmc.mooc.fi/org/hy/courses/1466). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
+* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1491](https://tmc.mooc.fi/org/hy/courses/1491). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
 * Du kan stänga tentuppgiftssidan då du är färdig. Inga andra åtgärder behövs. 
 
 #### Tentresultatet
