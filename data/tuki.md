@@ -7,6 +7,8 @@ information_page: true
 
 ### Höstens stödtider
 
+**OBS!!** Handledarna har julledigt från och med vecka 51. På tisdagen 17/12 -24 får man dock handledning mellan 14 och 18 enligt tabellen nedan.
+
 Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan:
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
