@@ -168,7 +168,7 @@ def fakultet(n: int):
 fakultet(5)
 ```
 
-Ta en titt på hur[visualiseringsverktyget](http://www.pythontutor.com/visualize.html#code=def%20kertoma%28n%3A%20int%29%3A%0A%20%20%20%20if%20n%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20edellisen_luvun_kertoma%20%3D%20kertoma%28n%20-%201%29%0A%20%20%20%20luvun_n_kertoma%20%3D%20n%20*%20edellisen_luvun_kertoma%0A%20%20%20%20return%20luvun_n_kertoma%0A%20%20%20%20%0Akertoma%285%29&cumulative=false&curInstr=5&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false) visar hur rekursionen fortskrider.
+Ta en titt på hur [visualiseringsverktyget](http://www.pythontutor.com/visualize.html#code=def%20kertoma%28n%3A%20int%29%3A%0A%20%20%20%20if%20n%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20edellisen_luvun_kertoma%20%3D%20kertoma%28n%20-%201%29%0A%20%20%20%20luvun_n_kertoma%20%3D%20n%20*%20edellisen_luvun_kertoma%0A%20%20%20%20return%20luvun_n_kertoma%0A%20%20%20%20%0Akertoma%285%29&cumulative=false&curInstr=5&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false) visar hur rekursionen fortskrider.
 
 Visualiseringsverktyget har en liten finess i hur det hanterar anropsstacken, eftersom den verkar "växa" nedåt. Vanligtvis avbildas anropsstaplar som just staplar, där de nya anropen placeras överst. I visualiseringsverktyget är det aktiva funktionsanropet det skuggade blocket längst ner, som har sina egna kopior av de variabler som syns.
 
