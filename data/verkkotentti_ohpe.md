@@ -1,6 +1,6 @@
 ---
 path: "/onlinetent-ohpe"
-title: "ProgGK onlinetent 1.1.2025"
+title: "ProgGK onlinetent 11.1.2025"
 information_page: true
 sidebar_priority: 2900
 hide_in_sidebar: false
