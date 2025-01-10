@@ -1,6 +1,6 @@
 ---
 path: '/osa-11/1-list-comprehension'
-title: 'List comprehension'
+title: 'Listbyggare'
 hidden: false
 ---
 
@@ -8,8 +8,8 @@ hidden: false
 
 Efter den här delen
 
-- Vet du vad list comprehension är
-- Kommer du att kunna använda list comprehensions för att skapa nya listor
+- Vet du vad en listbyggare (list comprehension) är
+- Kommer du att kunna använda listbyggare för att skapa nya listor
 
 </text-box>
 
@@ -25,30 +25,30 @@ for tal in talen:
     strangar.append(str(tal))
 ```
 
-## List comprehension
+## Listbyggare
 
-Det finns också ett mer "pythoniskt" sätt att generera listor från befintliga listor. Dessa kallas list comprehensions.
+Det finns också ett mer "pythonskt" sätt att generera listor från befintliga listor. Dessa kallas listbyggare.
 
 Tanken är att på en enda rad få plats med både beskrivningen av vad som ska göras med varje objekt i listan och tilldelningen av resultatet till en ny lista.
 
-I exemplet ovan var operationen som utfördes på varje objekt i listan mycket enkel: varje heltal omvandlades till en sträng. Låt oss se hur detta skulle se ut implementerat med en list comprehension:
+I exemplet ovan var operationen som utfördes på varje objekt i listan mycket enkel: varje heltal omvandlades till en sträng. Låt oss se hur detta skulle se ut implementerat med en listbyggare:
 
 ```python
 talen = [1, 2, 3, 6, 5, 4, 7]
 strangar = [str(tal) for tal in talen]
 ```
 
-Den andra raden ovan innehåller många av samma element som den mer traditionella iterativa metoden, men syntaxen är annorlunda. Ett sätt att generalisera en list comprehension skulle kunna vara
+Den andra raden ovan innehåller många av samma element som den mer traditionella iterativa metoden, men syntaxen är annorlunda. Ett sätt att generalisera en listbyggare skulle kunna vara
 
 `[<uttryck> for <föremål> in <serie>]`
 
-Hakparenteserna runt list comprehensionsatsen signalerar till Python att resultatet ska vara en ny lista. En efter en bearbetas varje objekt i den ursprungliga listan och resultatet lagras i den nya listan, precis som i det iterativa tillvägagångssättet ovan. Som resultat har vi en ny lista med exakt lika många objekt som i originalet, och alla objekt har behandlats på ett identiskt sätt.
+Hakparenteserna runt listbyggaren signalerar till Python att resultatet ska vara en ny lista. En efter en bearbetas varje objekt i den ursprungliga listan och resultatet lagras i den nya listan, precis som i det iterativa tillvägagångssättet ovan. Som resultat har vi en ny lista med exakt lika många objekt som i originalet, och alla objekt har behandlats på ett identiskt sätt.
 
 (OBS: originalen till bilderna i denna del saknas tillfälligt, vilket är anledningen till att det finns en del finskt vokabulär i illustrationerna i denna del. Vi arbetar på att åtgärda detta).
 
 <img src="11_1_2.png">
 
-List comprehensions kan också hantera mycket mer komplicerade operationer. Vi kan utföra beräkningar, till exempel multiplicera de ursprungliga objekten med tio:
+Listbyggare kan också hantera mycket mer komplicerade operationer. Vi kan utföra beräkningar, till exempel multiplicera de ursprungliga objekten med tio:
 
 ```python
 talen = list(range(1,10))
@@ -65,7 +65,7 @@ print(talen_multiplicerade)
 
 </sample-output>
 
-Faktum är att uttrycket i list comprehension-satsen kan vara vilket Python-uttryck som helst. Du kan till och med anropa funktioner som du själv har definierat:
+Faktum är att uttrycket i listbyggaren kan vara vilket Python-uttryck som helst. Du kan till och med anropa funktioner som du själv har definierat:
 
 ```python
 def fakultet(n: int):
@@ -109,9 +109,9 @@ if __name__ == "__main__":
 
 ```
 
-List Comprehensions gör att vi kan uttrycka samma funktionalitet på ett mer konsekvent sätt, vanligtvis utan att förlora något av läsbarheten.
+Med hjälp av listbyggare kan vi uttrycka samma funktionalitet på ett mer konsekvent sätt, vanligtvis utan att förlora något av läsbarheten.
 
-Vi kan också returnera en list comprehension-sats direkt från en funktion. Om vi behövde en funktion för att producera fakultettal för listor med tal, skulle vi kunna göra det på ett mycket kortfattat sätt:
+Vi kan också returnera en listbyggare direkt från en funktion. Om vi behövde en funktion för att producera fakultettal för listor med tal, skulle vi kunna göra det på ett mycket kortfattat sätt:
 
 ```python
 def fakulteter(talen: list):
@@ -124,7 +124,7 @@ Skriv en funktion med namnet `kvadratrot(nummer: list)` som tar en lista med hel
 
 Modulen [math](https://docs.python.org/3/library/math.html) från Pythons standardbibliotek innehåller en lämplig funktion för att räkna ut kvadratrötter.
 
-Funktionen bör använda en list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
+Funktionen bör använda en listbyggare. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
 Funktionen ska fungera enligt följande:
 
@@ -147,7 +147,7 @@ for rad in rader:
 
 <programming-exercise name='Stjärnrader' tmcname='osa11-02_stjarnrader'>
 
-Skapa funktionen `stjarnrader(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller rader med stjärnor. Längden på varje rad ska motsvara heltalet på samma index i den ursprungliga listan. Funktionen bör använda en list comprehension för att uppnå detta.
+Skapa funktionen `stjarnrader(nummer: list)` som tar en lista med heltal som sitt argument. Funktionen ska returnera en ny lista som innehåller rader med stjärnor. Längden på varje rad ska motsvara heltalet på samma index i den ursprungliga listan. Funktionen bör använda en listbyggare för att uppnå detta.
 
 Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
@@ -195,7 +195,7 @@ I uppgiftsbotten finns färdigt en klassdefinition för `Provresultat`, som har 
 
 Skapa en funktion med namnet `bast_resultat(resultat: list)` som tar en lista med Provresultat-objekt som sitt argument.
 
-Funktionen ska returnera en ny lista som endast innehåller det bästa resultatet från varje Provresultat-objekt. Funktionen bör använda en list comprehension för att uppnå detta.
+Funktionen ska returnera en ny lista som endast innehåller det bästa resultatet från varje Provresultat-objekt. Funktionen bör använda en listbyggare för att uppnå detta.
 
 Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
@@ -221,7 +221,7 @@ print(bast_resultat(prestationer))
 
 Skapa en funktion med namnet `langder(listor: list)` som tar en lista innehållande listor med heltal som argument. Funktionen ska returnera en ny lista som innehåller längderna på listorna i argumentlistan.
 
-Funktionen bör använda en list comprehension för att uppnå detta.
+Funktionen bör använda en listbyggare för att uppnå detta.
 
 Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
@@ -243,9 +243,9 @@ print(langder(listat))
 
 ## Att filtrera föremål
 
-I exemplen ovan var alla våra listor lika långa före och efter en list comprehension-operation. I varje fall användes alla föremål i den ursprungliga listan som grund för den nya listan. Men ibland behöver vi bara några av de ursprungliga föremålen. Hur kan detta åstadkommas?
+I exemplen ovan var alla våra listor lika långa före och efter en listbyggaroperation. I varje fall användes alla föremål i den ursprungliga listan som grund för den nya listan. Men ibland behöver vi bara några av de ursprungliga föremålen. Hur kan detta åstadkommas?
 
-En list comprehension-sats kan också innehålla ett villkor, så att vi kan kontrollera objekten mot villkoret och bara välja ut dem som matchar. Den allmänna syntaxen är enligt följande:
+En listbyggare kan också innehålla ett villkor, så att vi kan kontrollera objekten mot villkoret och bara välja ut dem som matchar. Den allmänna syntaxen är enligt följande:
 
 `[<uttryck> for <föremål> in <serie> if <boolskt uttryck>]`
 
@@ -266,7 +266,7 @@ print(jamna)
 
 </sample-output>
 
-Uttrycket i list comprehension-satsen ovan är bara ett enkelt `foremal`, vilket innebär att inga operationer ska utföras på föremålen i listan. Uttrycket kan vara vilket Python-uttryck som helst, precis som i de tidigare exemplen. Följande list comprehension-sats tar till exempel alla jämna föremål i en lista, multiplicerar varje föremål med tio och lagrar resultatet i en ny lista:
+Uttrycket i listbyggaren ovan är bara ett enkelt `foremal`, vilket innebär att inga operationer ska utföras på föremålen i listan. Uttrycket kan vara vilket Python-uttryck som helst, precis som i de tidigare exemplen. Följande listbyggare tar till exempel alla jämna föremål i en lista, multiplicerar varje föremål med tio och lagrar resultatet i en ny lista:
 
 ```python
 lista = [1, 1, 2, 3, 4, 6, 4, 5, 7, 10, 12, 3]
@@ -281,7 +281,7 @@ print(jamna)
 
 </sample-output>
 
-När du stöter på mer och mer komplicerade list comprehensions kan det vara bra att försöka läsa villkoret först. Föremålen bearbetas ändå bara om de klarar testet, så det är ofta vettigt att först ta reda på vilka objekt som klarar filtreringssteget. Ibland skulle uttrycket i en list comprehension-sats inte ens vara möjligt för alla föremål i den ursprungliga listan.
+När du stöter på mer och mer komplicerade listbyggare kan det vara bra att försöka läsa villkoret först. Föremålen bearbetas ändå bara om de klarar testet, så det är ofta vettigt att först ta reda på vilka objekt som klarar filtreringssteget. Ibland skulle uttrycket i en listbyggare inte ens vara möjligt för alla föremål i den ursprungliga listan.
 
 Till exempel är fakultettal bara definierat för icke-negativa heltal. Om vi inte kan vara säkra på att en lista bara innehåller värden på noll eller högre, måste innehållet filtreras innan det skickas vidare till den fakultetfunktion som vi skapade tidigare:
 
@@ -306,7 +306,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Som vi såg i vårt allra första exempel på list comprehension, där heltal omvandlades till strängar, behöver föremålen i den nya listan inte vara av samma typ som föremålen i den ursprungliga listan. Om vi fortsätter från fakultetexemplet ovan kan vi skapa en tupel från varje originella föremål och dess bearbetade motsvarighet och lagra dessa i en lista, vilket kombinerar allt vi har lärt oss hittills i en enda list comprehension-sats:
+Som vi såg i vårt allra första exempel på list comprehension, där heltal omvandlades till strängar, behöver föremålen i den nya listan inte vara av samma typ som föremålen i den ursprungliga listan. Om vi fortsätter från fakultetexemplet ovan kan vi skapa en tupel från varje originella föremål och dess bearbetade motsvarighet och lagra dessa i en lista, vilket kombinerar allt vi har lärt oss hittills i en enda listbyggare:
 
 ```python
 
@@ -390,7 +390,7 @@ appelsin
 
 ## Alternativ exekvering med list comprehension
 
-Ofta när vi har en villkorlig sats inkluderar vi också en else-gren. Eftersom vi kan använda villkor i list comprehensions är else-grenen också tillgänglig med list comprehension. Den allmänna syntaxen för villkoret som används med list comprehension ser ut så här:
+Ofta när vi har en villkorlig sats inkluderar vi också en else-gren. Eftersom vi kan använda villkor i listbyggare är else-grenen också tillgänglig med listbyggare. Den allmänna syntaxen för villkoret som används med listbyggare ser ut så här:
 
 `<uttryck 1> if <villkor> else <uttryck 2>`
 
@@ -404,11 +404,11 @@ tal2 = int(input("Ange tal 2:"))
 print (tal1 if tal1 > tal2 else tal2)
 ```
 
-Genom att kombinera den ternära operatorssyntaxen med en list comprehension-sats får man följande allmänna struktur:
+Genom att kombinera den ternära operatorssyntaxen med en listbyggare får man följande allmänna struktur:
 
 `[<uttryck 1> if <villkor> else <uttryck 2> for <föremål> in <serie>]`
 
-Det här kan se lite förvirrande ut, eftersom den villkorliga strukturen nu kommer före den faktiska list comprehensionen. Det är bara så här syntaxen har definierats, åtminstone för tillfället. Om det också finns en `else`-gren kommer villkoret först. Om det bara finns ett `if`, kommer det sist. Du kan prova att byta ut dem och se vad som händer.
+Det här kan se lite förvirrande ut, eftersom den villkorliga strukturen nu kommer före den faktiska listbyggaren. Det är bara så här syntaxen har definierats, åtminstone för tillfället. Om det också finns en `else`-gren kommer villkoret först. Om det bara finns ett `if`, kommer det sist. Du kan prova att byta ut dem och se vad som händer.
 
 Att inkludera en else-operator innebär att vi återigen kommer att bearbeta varje objekt från den ursprungliga listan. Beroende på om villkoret är sant eller falskt utförs antingen `uttryck 1` eller `uttryck 2` på varje objekt i listan.
 
@@ -460,7 +460,7 @@ Skapa en klass med namnet `LotteriNummer` som tar veckonumret (ett heltalsvärde
 
 Skapa också en metod med namnet `antalet_traffar(nummer: list)` som tar en lista med heltal som sitt argument. Metoden returnerar antalet korrekta inlägg i parameterlistan.
 
-Metoden bör använda en list comprehension för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
+Metoden bör använda en listbyggare för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
 Funktionen ska fungera på följande sätt:
 
@@ -481,7 +481,7 @@ print(ratta.antalet_traffar(egen_rad))
 
 Skapa en metod med namnet `traffar_pa_plats(nummer)` som tar en lista med sju heltal som sitt argument och returnerar en ny lista med sju heltal. Den nya listan innehåller endast de inlägg från den ursprungliga listan som matchar veckans korrekta nummer. Dessa måste ligga kvar på samma index som de gjorde i den ursprungliga listan. Resten av indexen bör fyllas med värdena `-1`.
 
-Funktionen bör använda en list comprehension för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
+Funktionen bör använda en listbyggare för att uppnå detta. Funktionen får maximalt omfatta två rader kod, inklusive den rubrikrad som börjar med nyckelordet `def`.
 
 Funktionen ska fungera på följande sätt:
 
