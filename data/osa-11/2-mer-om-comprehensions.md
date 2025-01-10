@@ -1,6 +1,6 @@
 ---
 path: '/osa-11/2-mer-om-comprehensions'
-title: 'Mer om comprehensions'
+title: 'Mer om listbyggare'
 hidden: false
 ---
 
@@ -8,14 +8,14 @@ hidden: false
 
 Efter den här delen
 
-- Kommer du att kunna använda comprehensions med strängar
-- Vet du hur du använder comprehensions med dina egna klasser
-- Kommer du att kunna skapa ordlistscomprehensions
+- Kommer du att kunna använda listbyggare med strängar
+- Vet du hur du använder listbyggare med dina egna klasser
+- Kommer du att kunna skapa ordlissbyggare
 
 </text-box>
 
 
-Listor är kanske det vanligaste målet för comprehensions, men comprehensions fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en list comprehension utförs på en sträng, plockas föremålen (dvs. tecknen) i strängen en efter en, bearbetas enligt det givna uttrycket och lagras i en lista.
+Listor är kanske det vanligaste föremålet för byggare, men de fungerar på alla serier av föremål, inklusive strängar. Liksom listexemplen i föregående avsnitt, ifall en byggare används på en sträng, plockas elementen (dvs. tecknen) i strängen ett i taget, bearbetas enligt det givna uttrycket och lagras sedan i en lista.
 
 ```python
 
@@ -32,7 +32,7 @@ print(stora_bokstaver)
 
 </sample-output>
 
-Resultatet är en lista, vilket dikteras av parentesnotationen runt comprehension-satsen. Om vi ville ha en sträng istället skulle vi kunna använda strängmetoden `join`  för att tolka listan till en sträng. Kom ihåg att metoden anropas på den sträng som vi vill använda som "lim" mellan tecknen. Låt oss ta en titt på några exempel:
+Resultatet är en lista, vilket avgörs av hakklamrarna runt byggaren. Om vi i stället vill ha en sträng skulle vi kunna använda strängmetoden `join`  för att presentera listan som en sträng. Kom ihåg att metoden anropas på den sträng som vi vill använda som "lim" mellan tecknen. Låt oss ta en titt på några exempel:
 
 ```python
 
@@ -57,7 +57,7 @@ P och e och t och e och r
 
 </sample-output>
 
-List comprehensions och `join`-metoden gör det enkelt att skapa nya strängar baserade på andra strängar. Vi kan t.ex. skapa en sträng som bara innehåller vokalerna från en annan sträng:
+Listbyggare och `join`-metoden gör det enkelt att skapa nya strängar baserade på andra strängar. Vi kan t.ex. skapa en sträng som bara innehåller vokalerna från en annan sträng:
 
 ```python
 
@@ -76,7 +76,7 @@ aoaioaeääee
 
 </sample-output>
 
-I exemplet ovan står list comprehension och `join`-metoden på separata rader, men de kan kombineras till ett enda uttryck:
+I exemplet ovan står listbyggaren och `join`-metoden på separata rader, men de kan kombineras till ett enda uttryck:
 
 ```python
 
@@ -134,7 +134,7 @@ print(mening_utan_initialer)
 
 Skapa funktionen `filtrera_forbjudna(strang: str, forbjuden: str)` som tar två strängar som argument. Funktionen ska returnera en ny version av den första strängen. Den ska inte innehålla tecken från den andra strängen.
 
-Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst tre rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
+Funktionen bör implementeras med hjälp av listbyggare. Funktionen får vara högst tre rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
 Funktionen ska fungera på följande sätt:
 
@@ -152,11 +152,11 @@ Det var en gång en python
 
 </programming-exercise>
 
-## Egna klasser och comprehensions
+## Egna klasser och listbyggare
 
-Comprehensions kan vara ett användbart verktyg för att bearbeta eller formulera instanser av dina egna klasser, vilket vi kommer att se i följande exempel.
+Listbyggare kan vara ett användbart verktyg för att bearbeta eller formulera instanser av dina egna klasser, vilket vi kommer att se i följande exempel.
 
-Låt oss först ta en titt på klassen `Land` som är en enkel modell för ett enda land, med attribut för namn och befolkning. I huvudfunktionen nedan skapar vi först några Land-objekt och använder sedan en list comprehension för att bara välja dem vars befolkning är större än fem miljoner.
+Låt oss först ta en titt på klassen `Land` som är en enkel modell för ett enda land, med attribut för namn och befolkning. I huvudfunktionen nedan skapar vi först några Land-objekt och använder sedan en listbyggare för att bara välja dem vars befolkning är större än fem miljoner.
 
 ```python
 
@@ -188,7 +188,7 @@ Sverige
 
 </sample-output>
 
-I list comprehension ovan valde vi bara namnattributet från Land-objekten, så innehållet i listan kunde skrivas ut direkt. Vi skulle också kunna skapa en ny lista med länderna och komma åt namnattributet i `for`-loopen. Detta skulle vara användbart om samma lista med länder skulle användas senare i programmet, eller om vi behövde befolkningsattributet i `for`-loopen också:
+I listbyggaren ovan valde vi bara namnattributet från Land-objekten, varvid innehållet i listan kunde skrivas ut direkt. Vi skulle också kunna skapa en ny lista med länderna och komma åt namnattributet i `for`-loopen. Detta vore användbart om samma lista med länder skulle användas senare i programmet, eller om vi också behövde befolkningsattributet i `for`-loopen:
 
 ```python
 
@@ -205,9 +205,9 @@ if __name__ == "__main__":
         print(land.namn)
 ```
 
-I nästa exempel har vi en klass som heter `Fotlopp` som modellerar ett enskilt lopp med attribut för loppets längd och namn. Vi kommer att använda list comprehension för att skapa `Fotlopp`-objekt baserat på en lista med tävlingslängder.
+I nästa exempel har vi en klass som heter `Fotlopp` som modellerar ett enskilt lopp med attribut för loppets längd och namn. Vi kommer att använda listbyggrare för att skapa `Fotlopp`-objekt utifrån en lista med tävlingslängder.
 
-Parametern `namn` har ett standardvärde i konstruktorn för `Fotlopp`-klassen, vilket är varför vi inte behöver skicka namnet som ett argument.
+Parametern `namn` har ett standardvärde i konstruktorn för `Fotlopp`-klassen, och därför behöver vi inte skicka namnet som argument.
 
 ```python
 
@@ -243,7 +243,7 @@ if __name__ == "__main__":
 
 </sample-output>
 
-Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehendible”). I föregående del lärde vi oss hur vi kan göra våra egna klasser itererbara. Det är exakt samma funktion som också möjliggör list comprehension. Om din egen klass är itererbar kan den användas som grund för en list comprehension. Följande klassdefinitioner är kopierade direkt från [modul 10](https://rage.github.io/ohjelmointi-24-sv/osa-10/3-objektorienterade-programmeringstekniker):
+Låt oss nu ta reda på vad som gör en serie objekt "begripliga" (“comprehendible”). I föregående del lärde vi oss hur vi kan göra våra egna klasser itererbara. Det är exakt samma funktion som också möjliggör listbyggare. Om din egen klass är itererbar kan den användas som grund för en listbyggare. Följande klassdefinitioner är kopierade direkt från [modul 10](https://rage.github.io/ohjelmointi-24-sv/osa-10/3-objektorienterade-programmeringstekniker):
 
 ```python
 
@@ -301,11 +301,11 @@ if __name__ == "__main__":
 
 <programming-exercise name='Affärslistans produkter' tmcname='osa11-09_affarslistans_produkter'>
 
-I modul 10 skapade du en [itererbar affärslista](https://rage.github.io/ohjelmointi-24-sv/osa-10/3-objektorienterade-programmeringstekniker). Objekt av en itererbar klass kan användas med list comprehensions. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
+I modul 10 skapade du en [itererbar affärslista](https://rage.github.io/ohjelmointi-24-sv/osa-10/3-objektorienterade-programmeringstekniker). Objekt av en itererbar klass kan användas med listbyggare. Uppgiftsmallen innehåller en avskalad version av `Affarslista` med knappt tillräckligt funktion för denna övning.
 
 Skapa en funktion med namnet `affarslistans_produkter(affarslista, antal: int)` som tar som argument ett affarslista-objekt och ett heltalsvärde. Funktionen returnerar en lista av produktnamn. Listan borde inkludera endast produkter som har åtminstone ett lika stort antal som parametern `antal`.
 
-Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`. Klassdefinitionen för `Affarslista` bör _inte_ modifieras.
+Funktionen bör implementeras med hjälp av listbyggare. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`. Klassdefinitionen för `Affarslista` bör _inte_ modifieras.
 
 
 Funktionen ska fungera enligt följande:
@@ -338,7 +338,7 @@ Denna övning innehåller en aning modifierad version av klassen [Bostad](https:
 
 Skapa en funktion med namnet `billigare(bostader: list, jamforelse: Bostad)` som tar en lista med bostäder och ett enda Bostad-objekt som sina argument. Funktionen ska returnera en lista som endast innehåller de bostäder i den ursprungliga listan som är billigare än jämförelsebostaden, tillsammans med prisskillnaden. Föremålen i den returnerade listan bör vara tupler, där det första föremålet är själva bostaden och den andra är prisskillnaden.
 
-Funktionen bör implementeras med hjälp av list comprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
+Funktionen bör implementeras med hjälp av listbyggare. Funktionen får vara högst två rader lång, inklusive rubrikraden som börjar med nyckelordet `def`.
 
 Koden för Bostad-klassen ingår i övningsmallen och ska inte ändras.
 
@@ -371,11 +371,11 @@ Kerava 4r och kök           prisskillnad 16500 euro
 
 </programming-exercise>
 
-## Comprehensions och ordlistor
+## Byggare och ordlistor
 
-Det finns inget i sig "list-aktigt" med comprehensions. Resultatet är en lista eftersom comprehension-satsen är inkapslad i hakparenteser, som indikerar en Python-lista. Förståelser fungerar lika bra med Python-ordlistor om du använder rundparenteser istället. Kom dock ihåg att ordlistor kräver nyckel-värde-par. Båda måste anges när en ordlista skapas, även när det gäller comprehensions.
+Det finns inget i sig "listaktigt" med byggarna. Resultatet är en lista eftersom byggaren är inkapslad i hakparenteser, som indikerar en Python-lista. Förståelser fungerar lika bra med Python-ordlistor om du använder rundparenteser istället. Kom dock ihåg att ordlistor kräver nyckel-värde-par. Båda måste anges när en ordlista skapas, även när det gäller byggare.
 
-Grunden för en comprehension kan vara vilken itererbar serie som helst, vare sig det är en lista, en sträng, en tupel, en ordlista, någon av dina egna itererbara klasser och så vidare.
+Grunden för en byggare kan vara vilken itererbar serie som helst, vare sig det är en lista, en sträng, en tupel, en ordlista, någon av dina egna itererbara klasser och så vidare.
 
 I följande exempel använder vi en sträng som bas för en ordlista. Ordlistan innehåller alla unika tecken i strängen, tillsammans med antalet gånger de förekommer:
 
@@ -394,7 +394,7 @@ print(tecken_antal)
 
 </sample-output>
 
-Principen för comprehension-satsen är exakt densamma som för listor, men i stället för ett enda värde består uttrycket nu av en nyckel och ett värde. Den allmänna syntaxen ser ut så här:
+Principen för byggaren är exakt densamma som för listor, men i stället för ett enda värde består uttrycket nu av en nyckel och ett värde. Den allmänna syntaxen ser ut så här:
 
 `{<nyckeluttryck> : <värdeuttryck> för <föremål> i <serie>}`
 
@@ -427,7 +427,7 @@ if __name__ == "__main__":
 
 Skapa en funktion med namnet `langder(strangar: list)` som tar en lista med strängar som sitt argument. Funktionen ska returnera en ordlista med strängarna i listan som nycklar och deras längder som värden.
 
-Funktionen bör implementeras med en ordlistscomprehension. Funktionen får vara högst två rader lång, inklusive rubrikraden som inleds med nyckelordet `def`.
+Funktionen bör implementeras med en ordlistbyggare. Funktionen får vara högst två rader lång, inklusive rubrikraden som inleds med nyckelordet `def`.
 
 Funktionen ska fungera på följande sätt:
 
@@ -451,7 +451,7 @@ print(sanojen_langder)
 
 Skapa en funktion med namnet `vanligaste_orden(filnamn: str, nedre_grans: int)` som tar ett filnamn och ett heltalsvärde som en nedre gräns som sina argument. Funktionen ska returnera en ordlista som innehåller antalet förekomster av de ord som förekommer minst det antal gånger som anges i parametern `nedre_grans`.
 
-Anta t.ex. att funktionen används för att bearbeta en fil med namnet comprehensions.txt med följande innehåll:
+Anta t.ex. att funktionen används för att bearbeta en fil med namnet byggare.txt med följande innehåll:
 
 ```txt
 List comprehension is an elegant way to define and create lists based on existing lists.
@@ -460,16 +460,16 @@ However, we should avoid writing very long list comprehensions in one line to en
 Remember, every list comprehension can be rewritten in for loop, but every for loop can’t be rewritten in the form of list comprehension.
 ```
 
-När funktionen anropas med argumenten `vanligaste_orden("comprehensions.txt", 3)` ska den returnera
+När funktionen anropas med argumenten `vanligaste_orden("byggare.txt", 3)` ska den returnera
 
 <sample-output>
 
-{'comprehension': 4, 'is': 3, 'and': 3, 'for': 3, 'list': 4, 'in': 3}
+{'byggare': 4, 'is': 3, 'and': 3, 'for': 3, 'list': 4, 'in': 3}
 
 </sample-output>
 
 Observera att bokstävernas versaler påverkar resultatet och att alla böjda former är unika ord i den här övningen. Det vill säga att orden `List`, `lists` och `list` är separata ord här, och endast `list` har tillräckligt många förekomster för att komma med i den returnerade listan. Alla skiljetecken ska tas bort innan du räknar upp förekomsterna.
 
-Det är upp till dig att bestämma hur detta ska implementeras. Det enklaste sättet skulle troligen vara att använda list- och ordlistsscomprehension.
+Det är upp till dig att bestämma hur detta ska implementeras. Det enklaste sättet skulle troligen vara att använda list- och ordlistsbyggare.
 
 </programming-exercise>
