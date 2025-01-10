@@ -3,7 +3,7 @@ path: "/onlinetent-ohja"
 title: "Fortsättningskurs i programmerings nättentamen 16.12."
 information_page: true
 sidebar_priority: 2800
-hide_in_sidebar: false
+hide_in_sidebar: true
 ---
 
 <!--# Ohjelmoinnin jatkokurssi-->
