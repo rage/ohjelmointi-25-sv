@@ -71,7 +71,7 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 #### Avslutning av tenten
 
 * Innan du avslutar tenten, kom ihåg att granska att du har kommit ihåg att skicka in uppgifterna till servern
-* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1508](https://tmc.mooc.fi/org/hy/courses/1508). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
+* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1511](https://tmc.mooc.fi/org/hy/courses/1511). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
 * Du kan stänga tentuppgiftssidan då du är färdig. Inga andra åtgärder behövs. 
 
 #### Tentresultatet
