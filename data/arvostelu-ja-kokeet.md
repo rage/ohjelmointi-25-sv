@@ -39,6 +39,7 @@ Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 * Torsdag 24.10.2024 (extra tent, kl. 10-16)
 * Lördag 23.11.2024
 * Lördag 11.1.2025
+* Lördag 8.3.2025
 
 OBS! Om du deltar i den extra tenten den 19.10 ska du inte delta den 24.10. 
 
@@ -47,6 +48,7 @@ OBS! Om du deltar i den extra tenten den 19.10 ska du inte delta den 24.10.
 * Lördag 14.12.2024
 * Lördag 18.1.2025
 * Lördag 15.2.2025
+* Lördag 15.3.2025
 
 
 ## 1 + 1 poängs tillägg
