@@ -13,7 +13,7 @@ Bedömningen baseras på både poäng från gjorda uppgifter och tenten. Poäng 
 ### OBS! Bedömningsskalan ändrar för grundkursen våren 2025
 Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att **avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025**. Därtill behöver du **anmäla dig till kursen senast den 1.3.2025** för att få den registrerad enligt den numeriska vitsordsskalan. 
 
-[Fusk och plagiat](https://studies.helsinki.fi/instruktioner/artikel/vad-ar-fusk-och-plagiat) är inte tillåtet. Under den första föreläsningen går vi igenom användningen av språkmodeller och vad som är okej och inte okej på den här kursen. Bekanta dig med den informationen (se föreläsningen) och Helsingfors universitetets [allmänna riktlinjer](https://studies.helsinki.fi/instruktioner/artikel/anvandning-av-ai-som-stod-inlarning#degree_students). 
+[Fusk och plagiat](https://studies.helsinki.fi/instruktioner/artikel/vad-ar-fusk-och-plagiat) är inte tillåtet. Under den första föreläsningen går vi igenom användningen av språkmodeller – bekanta dig med den informationen (se föreläsningen) och Helsingfors universitetets [allmänna riktlinjer](https://studies.helsinki.fi/instruktioner/artikel/anvandning-av-ai-som-stod-inlarning#degree_students) så att du vet vad som är tillåtet.
 
 ## Tentamen
 
