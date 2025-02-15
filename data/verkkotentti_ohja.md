@@ -68,6 +68,15 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 * I tentuppgifterna **körs inga automatiska tester**.
 * Inlämningar som gjorts efter att tenttiden tagit slut leder till underkännande.
 
+<notice>
+  Inloggningstjänsten har för närvarande vissa problem.
+</notice>
+
+**OBS!** Om du inte kan logga in på examsidan ovan, kan du också se tentamensfrågorna här: <a href="https://github.com/Gudkat/Exam15022025_AdvancedCourseInProgramming/blob/main/SwedishExam.md">https://github.com/Gudkat/Exam15022025_AdvancedCourseInProgramming/blob/main/SwedishExam.md</a>
+
+
+
+
 #### Avslutning av tenten
 
 * Innan du avslutar tenten, kom ihåg att granska att du har kommit ihåg att skicka in uppgifterna till servern
