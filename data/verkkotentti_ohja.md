@@ -1,9 +1,9 @@
 ---
 path: "/onlinetent-ohja"
-title: "ProgFK onlinetent 15.2.2025"
+title: "ProgFK onlinetent 15.3.2025"
 information_page: true
 sidebar_priority: 2800
-hide_in_sidebar: false
+hide_in_sidebar: true
 ---
 
 <!--# Ohjelmoinnin jatkokurssi-->
