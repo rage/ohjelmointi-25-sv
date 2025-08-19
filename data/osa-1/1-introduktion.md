@@ -211,4 +211,4 @@ print("Hej!")
 
 Du hittar ett repetitionsquiz för denna del här: 
 
-<quiz id="4b736942-71b8-5171-8427-508b57d1776b"></quiz>
+<quiz id="192c5e5e-160b-53e3-96b6-af1a5c7a43af"></quiz>

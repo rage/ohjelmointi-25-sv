@@ -591,4 +591,4 @@ Obs! I dessa uppgifter ska kod inte placeras i `if __name__ == "__main__"` -bloc
 
 </programming-exercise>
 
-<quiz id="33ad7375-10df-5850-9744-813bb01ac2b4"></quiz>
+<quiz id="600984ef-da68-503f-bd4d-ba4f63712e02"></quiz>

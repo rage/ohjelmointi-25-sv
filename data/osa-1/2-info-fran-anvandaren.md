@@ -248,4 +248,4 @@ Berättelsen ska ändras beroende på de värden användaren anger.
 
 Du hittar ett repetitionsquiz för denna del här: 
 
-<quiz id="96aa989d-0b30-57f6-8bbf-4b7f462e8f14"></quiz>
+<quiz id="c22a95c7-7ce7-59be-beff-7a67423fbf49"></quiz>

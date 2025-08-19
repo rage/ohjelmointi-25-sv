@@ -387,4 +387,4 @@ Gåvoskatt: 1950.0 euro
 
 </in-browser-programming-exercise>
 
-<quiz id="8a61b73e-243e-518f-8409-e209dbdd05ba"></quiz>
+<quiz id="3e75ce86-d29f-5589-a058-47e1fa91d317"></quiz>

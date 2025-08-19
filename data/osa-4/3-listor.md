@@ -687,4 +687,4 @@ svar 4
 
 Det finns flera sätt till att använda listor i Python. Om du vill läsa mera är [Pythons dokumentation](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) ett bra ställe att börja med.
 
-<quiz id="28b681c8-dcad-56bd-a01d-21e0c947134d"></quiz>
+<quiz id="f0940a15-fbc4-57b4-b11b-49c63501c92a"></quiz>

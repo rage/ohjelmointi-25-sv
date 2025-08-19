@@ -783,4 +783,4 @@ Delsträngen förekommer inte två gånger.
 
 </in-browser-programming-exercise>
 
-<quiz id="90c17193-9a86-56c4-a51c-1ae816a05a12"></quiz>
+<quiz id="fc241d0e-7fb9-5c58-90a2-e4d3e2f524b6"></quiz>

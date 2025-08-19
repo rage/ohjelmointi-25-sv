@@ -307,4 +307,4 @@ Du gav samma ord två gånger.
 
 </in-browser-programming-exercise>
 
-<quiz id="908fdd39-c6bc-5365-9731-442a7877a47d"></quiz>
+<quiz id="d8dd961d-50fa-563d-b515-43975fea5fc6"></quiz>

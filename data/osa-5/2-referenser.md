@@ -642,4 +642,4 @@ Det är en god vana att försöka undvika sidoeffekter i funktioner. Sidoeffekte
 
 Funktioner som saknar sidoeffekter kallas rena funktioner. Då man arbetar med funktionell programmering är rena funktioner speciellt viktiga. Vi kommer se närmare på det under fortsättningskursen i programmering.
 
-<quiz id="21ff9f90-0aed-591d-8ff0-60e790724739"></quiz>
+<quiz id="63f11402-1cff-570f-b6cb-4db6eaa766fc"></quiz>

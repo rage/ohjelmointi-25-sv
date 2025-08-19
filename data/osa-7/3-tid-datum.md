@@ -301,4 +301,4 @@ Minuter i genomsnitt: 156.0
 
 </programming-exercise>
 
-<quiz id="802c4053-2c0b-5efb-9502-75c09c5f3a39"></quiz>
+<quiz id="51626ec7-01c2-546b-a7bb-cc4119eae7d1"></quiz>

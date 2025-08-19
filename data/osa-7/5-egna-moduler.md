@@ -220,8 +220,8 @@ Det här är ett test men hur går det00
 
 </programming-exercise>
 
-<quiz id="dcddffa9-9c51-5831-85f3-990d16b717d5"></quiz>
+<quiz id="5a231622-a8d3-5e6f-815f-6b236ad42c7d"></quiz>
 
 Vänligen svara på en kort enkät om materialet för den här veckan.
 
-<quiz id="b0d3884e-afb8-57a5-a50e-39f5e0c5d73c"></quiz>
+<quiz id="da6c2ba7-46b5-5401-ad64-6e57e1c80b02"></quiz>

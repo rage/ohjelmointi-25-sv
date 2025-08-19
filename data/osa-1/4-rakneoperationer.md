@@ -430,4 +430,4 @@ Tips 2: Om du inte hittar på en lösning kan du bekanta dig med villkorssatser 
 
 Repetitionsfrågor till denna del: 
 
-<quiz id="7722d5cd-4b10-5b39-80cc-834d09f01ff2"></quiz>
+<quiz id="1b70702d-08e8-56ab-8fe1-f01bfadabda2"></quiz>

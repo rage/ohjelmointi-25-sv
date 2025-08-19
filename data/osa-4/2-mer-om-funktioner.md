@@ -703,4 +703,4 @@ Det här berättar för användaren att funktionen kommer att returnera en strä
 
 Obs! Typledtrådar är bokstavligen ledtrådar. Det är inte en garanti och kan inte säkerställa att felaktiga datatyper inte ges till eller returneras av en funktion. Om det här sker kommer funktionen ändå att köras, med resultatet att den inte nödvändigtvis fungerar korrekt.
 
-<quiz id="5702d07b-676c-5ec2-ac2e-3d0f3b1b7d4e"></quiz>
+<quiz id="3ae890ee-bdd0-5c16-b447-a02f591bd914"></quiz>

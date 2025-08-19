@@ -519,8 +519,8 @@ Rötterna är 2.0 och -4.0
 
 Repetitionsfrågor till denna del:
 
-<quiz id="cb6eff3b-2fb8-506d-9019-e97de6834d7e"></quiz>
+<quiz id="a444fdc9-4a6a-53d3-a46e-cf4461106fbb"></quiz>
 
 Vänligen svara på en kort enkät om materialet i den här veckans modul. Du får ett poäng när du fyllt i enkäten.
 
-<quiz id="5f238c10-5e09-5a35-94f5-d9a0b56d9e79"></quiz>
+<quiz id="d5f24148-6ee8-5651-99b4-ef851983db96"></quiz>
