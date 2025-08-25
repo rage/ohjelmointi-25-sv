@@ -27,7 +27,7 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 ## Kursöversikt
 
-I listan finns inspelningrna från kursen hösten 2024. Länkarna uppdateras under hösten vartefter att vi går igenom kursmaterialet.
+I listan finns inspelningarna från kursen hösten 2024. Länkarna uppdateras under hösten vartefter att vi går igenom kursmaterialet.
 
 Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
