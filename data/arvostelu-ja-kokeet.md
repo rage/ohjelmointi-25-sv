@@ -10,8 +10,8 @@ sidebar_priority: 4000
 
 Bedömningen baseras på både poäng från gjorda uppgifter och tenten. Poäng ges för alla uppgifter i varje modul. Du hittar modulens alla uppgifter genom att välja "Uppgifter i den här modulen" under respektive modul, och du kan hålla koll på dina egna uppgiftspoäng under rubriken "Uppgiftspoäng totalt" i poängvisualiseraren som finns i kursmaterialets nedre högra hörn (blå cirkel). 
 
-### OBS! Bedömningsskalan ändrar för grundkursen våren 2025
-Vitsordsskalan för grundkursen i programmering ändras 2025. I stället för ett numeriskt vitsord bedöms kursen då enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). För att **avlägga grundkursen med vitsordet 0-5 är sista tentmöjligheten den 11.1.2025**. Därtill behöver du **anmäla dig till kursen senast den 1.3.2025** för att få den registrerad enligt den numeriska vitsordsskalan. 
+### Bedömningsskalan för introduktionskursen under 2025
+I stället för ett numeriskt vitsord bedöms introduktionskursen år 2025 enligt godkänt/underkänt. Förändringen gäller inte fortsättningskursen (dvs. modulerna 8-14). 
 
 [Fusk och plagiat](https://studies.helsinki.fi/instruktioner/artikel/vad-ar-fusk-och-plagiat) är inte tillåtet. Under den första föreläsningen går vi igenom användningen av språkmodeller – bekanta dig med den informationen (se föreläsningen) och Helsingfors universitetets [allmänna riktlinjer](https://studies.helsinki.fi/instruktioner/artikel/anvandning-av-ai-som-stod-inlarning#degree_students) så att du vet vad som är tillåtet.
 
@@ -35,22 +35,17 @@ Om du vill får du delta i flera tenttillfällen. Den bästa prestationen lagras
 
 Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 
-### Introduktion till programmering, tentdatum 2024
+### Introduktion till programmering, tentdatum
 
-* Lördag 19.10.2024
-* Torsdag 24.10.2024 (extra tent, kl. 10-16)
-* Lördag 23.11.2024
-* Lördag 11.1.2025
-* Lördag 8.3.2025
+* Tisdag 21.10.2025
+* Lördag 22.11.2026
+* Lördag 17.1.2026
 
-OBS! Om du deltar i den extra tenten den 19.10 ska du inte delta den 24.10. 
+### Fortsättningskurs i programmering, tentdatum
 
-### Fortsättningskurs i programmering, tentdatum 2024
-
-* Lördag 14.12.2024
-* Lördag 18.1.2025
-* Lördag 15.2.2025
-* Lördag 15.3.2025
+* Tisdag 16.12.2025
+* Lördag 24.1.2026
+* Lördag 28.2.2026
 
 
 ## 1 + 1 poängs tillägg
