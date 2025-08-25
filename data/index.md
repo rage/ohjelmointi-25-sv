@@ -19,9 +19,9 @@ Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs
 Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **inspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
 
 ### Kursträffar och handledningstillfällen 
-En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller via Zoom (se listan nedan). Campusträffarna streamas och spelas in. Vi använder samma länk genom båda kurserna: **https://helsinki.zoom.us/j/62306374955?pwd=3bW5tXSnFKeYJRQikXFzbPlieZwvg2.1**
+En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Campusträffarna streamas och spelas in. Vi använder samma Zoom-länk under båda kurserna. 
 
-Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. Varken träffarna eller handledningstillfällena är obligatoriska. 
+Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
 
 **Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-25-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
 
