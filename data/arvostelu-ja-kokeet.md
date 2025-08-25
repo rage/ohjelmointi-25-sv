@@ -54,9 +54,11 @@ Ifall du tidigare har slutfört kursens Java-versioner med godkänt resultat, ka
 
 ## Kursens bedömning
 
-### Numerisk vitsordsskala
+### Bedömningsskala
 
-Följande skala används för bedömningen. Observera att skalan ändras till godkänt/underkänt för grundkursens del 2025 (se ovan). 
+*Introduktionskursen* bedöms med vitsordet godkänt/underkänt. Du får godkänt genom att göra minst 50 % av alla kursuppgifter och bli godkänd i tenten. Dessutom behövs minst 25 % av totalpoängen i varje enskild uppgiftsomgång (1-7). För att bli godkänd i tenten krävs minst hälften av totalantalet poäng. 
+
+*Fortsättningskursen* bedöms enligt följande numeriska skala:
 
 <table>
     <thead>
