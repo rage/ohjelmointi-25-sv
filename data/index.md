@@ -7,7 +7,7 @@ banner: true
 sidebar_priority: 5000
 ---
 
-**Grundkursen börjar onsdagen den 4.9.2024, fortsättningskursen tisdagen den 29.10**
+**Grundkursen börjar onsdagen den 5.9.2025, fortsättningskursen onsdagen den 29.10.2025**
 
 Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp) och Fortsättningskurs i programmering (TKT10003, 5 sp)! 
 
@@ -23,9 +23,11 @@ En **kursträff** hålls varje vecka antingen på plats i Exactum (D122) eller v
 
 Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. Varken träffarna eller handledningstillfällena är obligatoriska. 
 
-**Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-24-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
+**Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-25-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
 
 ## Kursöversikt
+
+I listan finns inspelningrna från kursen hösten 2024. Länkarna uppdateras under hösten vartefter att vi går igenom kursmaterialet.
 
 Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
@@ -52,6 +54,6 @@ Ifall du tidigare har slutfört motsvarande kurser i Java vid Helsingfors univer
 
 ## Tidsgräns
 
-Kursen är öppen från september 2024 till mars 2025. Du kan göra uppgifterna i egen takt fram tills dess.
+Kursen är öppen från september 2025 till mars 2026. Du kan göra uppgifterna i egen takt fram tills dess.
 
 
