@@ -31,20 +31,20 @@ OBS! I listan nedan finns inspelningarna från kursen hösten 2024. Länkarna up
 
 Datum          |  Plats  | Modul | Inspelning
 ---------------|---------|-------|----- 
-Ons 3.9.2024   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4)
-Ons 10.9.2024  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)
-Ons 17.9.2024  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)
-Ons 24.9.2024  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)
-Ons 1.10.2024  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)
-Ons 8.10.2024  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)
-Ons 15.10.2024 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)
-Ons 29.10.2024  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)
-Ons 5.11.2024   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)
-Ons 12.11.2024  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)
-Ons 19.11.2024  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)
-Ons 26.11.2024  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)
-Ons 3.12.2024   | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)
-Ons 10.12.2024  | Exactum B121 |   14  | Ingen genomgång, projektarbete
+Ons 3.9.2025   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4)
+Ons 10.9.2025  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)
+Ons 17.9.2025  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)
+Ons 24.9.2025  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)
+Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)
+Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)
+Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)
+Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)
+Ons 5.11.2025   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)
+Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)
+Ons 19.11.2025  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)
+Ons 26.11.2025  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)
+Ons 3.12.2025   | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)
+Ons 10.12.2025  | Exactum B121 |   14  | Ingen genomgång, projektarbete
 
 **OBS!** Det kan bli ändringar i denna kursöversikt.
 
