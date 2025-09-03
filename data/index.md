@@ -16,14 +16,14 @@ Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp
 Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 ### Kursmaterial
-Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Förutom modulerna finns **inspelade videogenomgångar** för varje modul. Dessa publiceras kontinuerligt på denna sida. 
+Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Det finns även **inspelade videogenomgångar** för varje modul och de uppdateras kontinuerligt under kursens gång i listan nedan.
 
 ### Kursträffar och handledningstillfällen 
 En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Campusträffarna streamas och spelas in. Vi använder samma Zoom-länk under båda kurserna. 
 
 Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
 
-**Handledning** ordnas likaså varje vecka både på campus och på distans via Discord. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-25-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kanalen kan du diskutera både med andra studerande och kursens handledare. Använd i första hand Discords meddelandefunktion. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
+**Handledning** ordnas varje vecka. Under september 2025 ordnas svenskspråkig handledning enbart via Discord, men efter det även på campus. Du hittar tidtabellen för handledningstillfällena [här](https://rage.github.io/ohjelmointi-25-sv/stod). Du kommer till kursens Discord-kanal [här](https://study.cs.helsinki.fi/discord/join/ohjelmoinnin_mooc). På kursens kanaler kan du diskutera både med andra studerande samt kursens lärare och handledare. Använd den svenska kanalen #ohjelmoinnin_mooc_swedish för att nå oss. Du når också kursens lärare direkt per epost på ohjelmoinnin-mooc@helsinki.fi.
 
 ## Kursöversikt
 
