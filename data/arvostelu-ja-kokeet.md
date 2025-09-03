@@ -38,7 +38,7 @@ Noggrannare instruktioner publiceras på dessa sidor före tentdagen.
 ### Introduktion till programmering, tentdatum
 
 * Tisdag 21.10.2025
-* Lördag 22.11.2026
+* Lördag 22.11.2025
 * Lördag 17.1.2026
 
 ### Fortsättningskurs i programmering, tentdatum
