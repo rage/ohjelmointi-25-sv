@@ -7,20 +7,20 @@ information_page: true
 
 ### Höstens stödtider
 
-**OBS!!** Handledarna har julledigt från och med vecka 51. På tisdagen 17/12 -24 får man dock handledning mellan 14 och 18 enligt tabellen nedan.
+Under september ordnas handledning på svenska flexibelt via Discord. Från och med oktober ordnas även handledningstillfällen på campus i **Exactum BK107**. 
 
-Under hösten 2024 ordnas handledning både på Gumtäkts campus och via Discord. På campus ordnas stödtillfällen i **Exactum BK107**. Handledningen ordnas enligt tidtabellen nedan:
+**OBS!** Tiderna för campus-handledningen uppdateras under september månad. 
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
-| 10-11 | - | Campus / Discord (FI, SV) | - | - | - |
-| 11-12 | - | Campus / Discord (FI, SV) | - | - | - |
-| 12-13 | - | - | Campus / Discord (FI) | - | - |
-| 13-14 | - | - | Campus / Discord (FI) | - | - |
-| 14-15 | - | Campus (FI) | - | Campus (FI) | - |
-| 15-16 | - | Campus (FI) | - | Campus (FI) | - |
-| 16-17 | - | Campus (FI) | - | Campus (FI) | - |
-| 17-18 | - | Campus (FI) | - | Campus (FI) | - |
+| 10-11 | - | - | - | - | - |
+| 11-12 | - | - | - | - | - |
+| 12-13 | - | - | - | - | - |
+| 13-14 | - | - | - | - | - |
+| 14-15 | - | - | - | - | - |
+| 15-16 | - | - | - | - | - |
+| 16-17 | - | - | - | - | - |
+| 17-18 | - | - | - | - | - |
 
 I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning på distans. Du kan alltså även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
