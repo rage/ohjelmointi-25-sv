@@ -54,6 +54,6 @@ Ifall du tidigare har slutfört motsvarande kurser i Java vid Helsingfors univer
 
 ## Tidsgräns
 
-Kursen är öppen från september 2025 till mars 2026. Du kan göra uppgifterna i egen takt fram tills dess.
+Du kan göra kursens uppgifter fram till 31.12.2025.
 
 
