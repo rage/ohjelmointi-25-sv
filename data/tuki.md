@@ -7,22 +7,21 @@ information_page: true
 
 ### Höstens stödtider
 
-Under september ordnas handledning på svenska flexibelt via Discord. Från och med oktober ordnas även handledningstillfällen på campus i **Exactum BK107**. 
-
-**OBS!** Tiderna för campus-handledningen uppdateras under september månad. 
+* **Under september** ordnas handledning på svenska flexibelt via Discord – skriv i kanalen eller kontakta Anton via direktmeddelande.
+* **Från och med oktober** ordnas även handledningstillfällen på svenska på campus i **Exactum BK107**. Tiderna för den svenska handledningen uppdateras i tabellen nedan under september. Kryssen i tabellen avser nu finska campushandledningstillfällen, och du är varmt välkommen att även delta i dem.
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
 | 10-11 | - | - | - | - | - |
 | 11-12 | - | - | - | - | - |
-| 12-13 | - | - | - | - | - |
-| 13-14 | - | - | - | - | - |
-| 14-15 | - | - | - | - | - |
-| 15-16 | - | - | - | - | - |
-| 16-17 | - | - | - | - | - |
-| 17-18 | - | - | - | - | - |
+| 12-13 | - | X | - | X | - |
+| 13-14 | - | X | - | X | - |
+| 14-15 | - | X | X | X | - |
+| 15-16 | - | X | X | X | - |
+| 16-17 | - | - | X | - | - |
+| 17-18 | - | - | X | - | - |
 
-I tabellen betyder **Campus** handledning på plats i Exactum, medan **Discord** betyder handledning på distans. Du kan alltså även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
+Du kan även få hjälp via Discord under Campus-handledningens tider, ifall handledaren har tid att följa med Discord.
 
 *Schemat kan ändras under kursens gång.*
 
