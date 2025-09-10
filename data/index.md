@@ -19,7 +19,7 @@ Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs
 Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Det finns även **inspelade videogenomgångar** för varje modul och de uppdateras kontinuerligt under kursens gång i listan nedan.
 
 ### Kursträffar och handledningstillfällen 
-En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Campusträffarna streamas och spelas in. Vi använder samma Zoom-länk under båda kurserna. 
+En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Campusträffarna streamas. Vi använder samma Zoom-länk under båda kurserna. 
 
 Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
 
@@ -29,22 +29,22 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 OBS! I listan nedan finns inspelningarna från kursen hösten 2024. Länkarna uppdateras under hösten vartefter att vi går igenom kursmaterialet.
 
-Datum          |  Plats  | Modul | Inspelning
----------------|---------|-------|----- 
-Ons 3.9.2025   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4)
-Ons 10.9.2025  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)
-Ons 17.9.2025  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)
-Ons 24.9.2025  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)
-Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)
-Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)
-Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)
-Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)
-Ons 5.11.2025   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)
-Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)
-Ons 19.11.2025  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)
-Ons 26.11.2025  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)
-Ons 3.12.2025   | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)
-Ons 10.12.2025  | Exactum B121 |   14  | Ingen genomgång, projektarbete
+Datum          |  Plats  | Modul | Inspelning (2024) | Slides (2025)
+---------------|---------|-------|----- |----- 
+Ons 3.9.2025   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4)|[Kursträff 1](https://docs.google.com/presentation/d/1Ypv-DqgOb00sjmdTaOwmnDBaVJvyqNAVT3TdkmhYZqo/edit?usp=sharing)
+Ons 10.9.2025  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)|----- 
+Ons 17.9.2025  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)|----- 
+Ons 24.9.2025  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)|----- 
+Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
+Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)|----- 
+Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)|----- 
+Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|----- 
+Ons 5.11.2025   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|----- 
+Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|----- 
+Ons 19.11.2025  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)|----- 
+Ons 26.11.2025  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)|----- 
+Ons 3.12.2025   | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)|----- 
+Ons 10.12.2025  | Exactum B121 |   14  | Ingen genomgång, projektarbete|----- 
 
 **OBS!** Det kan bli ändringar i denna kursöversikt.
 
