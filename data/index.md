@@ -19,7 +19,7 @@ Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs
 Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Det finns även **inspelade videogenomgångar** för varje modul och de uppdateras kontinuerligt under kursens gång i listan nedan.
 
 ### Kursträffar och handledningstillfällen 
-En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Campusträffarna streamas. Vi använder samma Zoom-länk under båda kurserna. 
+En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Även campusträffarna streamas via Zoom. Vi använder samma Zoom-länk under båda kurserna. 
 
 Träffarna är inte föreläsningar där vi går exakt igenom det material som finns på kurssidan, utan fokuserar på andra exempel, problemlösning och felsökning. 
 
@@ -27,7 +27,7 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 ## Kursöversikt
 
-OBS! I listan nedan finns inspelningarna från kursen hösten 2024. Länkarna uppdateras under hösten vartefter att vi går igenom kursmaterialet.
+I listan nedan finns inspelningar från hösten 2024 samt aktuella slides från kurserna år 2025. För viktig information gällande datum etc. kolla de aktuella presenatationerna, eftersom inspelningarna innehåller datum för 2024 :)
 
 Datum          |  Plats  | Modul | Inspelning (2024) | Slides (2025)
 ---------------|---------|-------|----- |----- 
@@ -37,7 +37,7 @@ Ons 17.9.2025  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCs
 Ons 24.9.2025  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)|----- 
 Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
 Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)|----- 
-Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0), [Tentinfo](https://youtu.be/AbGIXHJ_YhM)|----- 
+Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0)----- 
 Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|----- 
 Ons 5.11.2025   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|----- 
 Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|----- 
