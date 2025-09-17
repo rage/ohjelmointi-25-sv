@@ -33,7 +33,7 @@ Datum          |  Plats  | Modul | Inspelning (2024) | Slides (2025)
 ---------------|---------|-------|----- |----- 
 Ons 3.9.2025   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBMfe4)|[Kursträff 1](https://docs.google.com/presentation/d/1Ypv-DqgOb00sjmdTaOwmnDBaVJvyqNAVT3TdkmhYZqo/present)
 Ons 10.9.2025  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)|[Kursträff 2](https://docs.google.com/presentation/d/152sk-Idj-QVTEuvS6r1JQ8CBOKFsqP5eQYRhairEzok/present)
-Ons 17.9.2025  | Exactum B121    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)|----- 
+Ons 17.9.2025  | Zoom    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)|----- 
 Ons 24.9.2025  | Exactum B121 |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)|----- 
 Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
 Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)|----- 
