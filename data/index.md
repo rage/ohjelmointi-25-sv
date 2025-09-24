@@ -27,7 +27,7 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 ## Kursöversikt
 
-I listan nedan finns inspelningar från hösten 2024 samt aktuella slides från kurserna år 2025. För viktig information gällande datum etc. kolla de aktuella presentationerna, eftersom inspelningarna innehåller datum för 2024 :)
+I listan nedan finns inspelningar från hösten 2024 samt aktuella slides från kurserna år 2025. För viktig information gällande datum etc. kolla de aktuella presentationerna, eftersom inspelningarna innehåller datum för 2024 :) Observera att några träffar har avvikande tider, de är markerade med **OBS!** i listan.
 
 Datum          |  Plats  | Modul | Inspelning (2024) | Slides (2025)
 ---------------|---------|-------|----- |----- 
@@ -38,8 +38,8 @@ Ons 24.9.2025  | Zoom |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)|[Ku
 **OBS!** To 2.10.2025 kl. 13.15-14.45 | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
 Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)|----- 
 Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0)|----- 
-Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|----- 
-Ons 5.11.2025   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|----- 
+**OBS!** Fre 31.10.2025 kl. 10.15-11.45  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|----- 
+**OBS!** Ons 5.11.2025 kl. 12.15-13.45   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|----- 
 Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|----- 
 Ons 19.11.2025  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)|----- 
 Ons 26.11.2025  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)|----- 
