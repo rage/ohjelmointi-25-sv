@@ -16,7 +16,7 @@ Välkommen till kurssidorna för Introduktion till programmering (TKT10002, 5 sp
 Du genomför kurserna genom att göra **uppgifter** och i slutet av vardera kurs delta i en **obligatorisk tentamen**. Mer information om bedömningen finns [här](https://rage.github.io/ohjelmointi-24-sv/bedomningar-och-prov).
 
 ### Kursmaterial
-Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering och modul 8-14 utgör Fortsättningskurs i programmering. Det finns även **inspelade videogenomgångar** för varje modul och de uppdateras kontinuerligt under kursens gång i listan nedan.
+Allt kursmaterial finns på denna sida. Modul 1-7 (se menyn till vänster) utgör Introduktion till programmering (ProgGK) och modul 8-14 utgör Fortsättningskurs i programmering (ProgFK). Det finns även **inspelade videogenomgångar** för varje modul.
 
 ### Kursträffar och handledningstillfällen 
 En **kursträff** hålls varje vecka antingen på plats i Exactum (B121) eller via [Zoom](https://helsinki.zoom.us/j/66662957651?pwd=ehGUCBaMuaiCm4PyRabd3Ajs4lDOhV.1) (se listan nedan). Även campusträffarna streamas via Zoom. Vi använder samma Zoom-länk under båda kurserna. 
@@ -27,7 +27,7 @@ Träffarna är inte föreläsningar där vi går exakt igenom det material som f
 
 ## Kursöversikt
 
-I listan nedan finns inspelningar från hösten 2024 samt aktuella slides från kurserna år 2025. För viktig information gällande datum etc. kolla de aktuella presenatationerna, eftersom inspelningarna innehåller datum för 2024 :)
+I listan nedan finns inspelningar från hösten 2024 samt aktuella slides från kurserna år 2025. För viktig information gällande datum etc. kolla de aktuella presentationerna, eftersom inspelningarna innehåller datum för 2024 :)
 
 Datum          |  Plats  | Modul | Inspelning (2024) | Slides (2025)
 ---------------|---------|-------|----- |----- 
