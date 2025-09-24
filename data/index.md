@@ -35,7 +35,7 @@ Ons 3.9.2025   | Exactum B121 |   1   | [Kursträff 1](https://youtu.be/WLqv5CBM
 Ons 10.9.2025  | Exactum B121    |   2   | [Kursträff 2](https://youtu.be/cvfuAPBqMnE)|[Kursträff 2](https://docs.google.com/presentation/d/152sk-Idj-QVTEuvS6r1JQ8CBOKFsqP5eQYRhairEzok/present)
 Ons 17.9.2025  | Zoom    |   3   | [Kursträff 3](https://youtu.be/tZMCsoPVNIk)|[Kursträff 3](https://docs.google.com/presentation/d/16Rz-jIpwXITHl3zQoYt6M7XG6KQuHtH2y3klufg8nqk/present)
 Ons 24.9.2025  | Zoom |   4   | [Kursträff 4](https://youtu.be/XN97GBcsEiM)|[Kursträff 4](https://docs.google.com/presentation/d/1qXNpMAOzkJVOFB059QBvporS52YqhQYpbjjDPg7dmks/present)
-Ons 1.10.2025  | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
+Ons 2.10.2025 kl. 13.15-14.45 | Zoom |   5   | [Kursträff 5](https://youtu.be/6EBVU6I30_4)|----- 
 Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAhzME)|----- 
 Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0)|----- 
 Ons 29.10.2025  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|----- 
