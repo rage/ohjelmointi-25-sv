@@ -8,7 +8,7 @@ information_page: true
 ### Höstens stödtider
 
 * **Under september** ordnas handledning på svenska flexibelt via Discord – skriv i kanalen eller kontakta Anton via direktmeddelande.
-* **Från och med oktober** ordnas även handledningstillfällen på svenska på campus i **Exactum BK107**. Tiderna för den svenska handledningen uppdateras i tabellen nedan under september. Kryssen i tabellen avser nu finska campushandledningstillfällen, och du är varmt välkommen att även delta i dem.
+* **Från och med oktober** ordnas även handledningstillfällen på svenska på campus i **Exactum BK107** tisdagar kl. 14-16. Kryssen i tabellen avser finska campushandledningstillfällen, och du är varmt välkommen att även delta i dem.
 
 | Tid / Dag | MÅ | TI | ON | TO | FR |
 |-----|----|----|----|----|----|
@@ -16,8 +16,8 @@ information_page: true
 | 11-12 | - | - | - | - | - |
 | 12-13 | - | X | - | X | - |
 | 13-14 | - | X | - | X | - |
-| 14-15 | - | X | X | X | - |
-| 15-16 | - | X | X | X | - |
+| 14-15 | - | SV | X | X | - |
+| 15-16 | - | SV | X | X | - |
 | 16-17 | - | - | X | - | - |
 | 17-18 | - | - | X | - | - |
 
