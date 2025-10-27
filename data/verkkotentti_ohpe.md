@@ -19,7 +19,7 @@ hide_in_sidebar: false
 #### Att utföra tenten
 
 * Tenten utförs på samma sätt som kursuppgifter i VScode-omgivningen.
-* Tenten kan utföras lördagen den 28.10.2025 mellan **kl 10:00-22:00** 
+* Tenten kan utföras tisdagen den 28.10.2025 mellan **kl 10:00-22:00** 
 * Du har **fyra timmar** på dig för att besvara tenten. Ifall du har fått rätt till extratid i tenter, har du fem timmar på dig. 
 * Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 18:00**.
 
