@@ -40,7 +40,7 @@ Ons 8.10.2025  | Exactum B121 |   6   | [Kursträff 6](https://youtu.be/69ak0TAh
 Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0)|[Kursträff 7 och tentinfo](https://docs.google.com/presentation/d/1tBuwayZiKn6XbWCfrIdVqRmhyPbwEF7m_1jLS4YIjQU/present)
 **OBS!** Fre 31.10.2025 kl. 12.15-13.45  | Zoom |   8   |[Kursträff 1](https://youtu.be/OSn1ylXxL3g)|[Kursträff 1](https://docs.google.com/presentation/d/1NSdBFuHSwtpIm32-KmVy9SCXtL045vuYJYK4fuaK11w/present)
 **OBS!** Ons 5.11.2025 kl. 12.15-13.45   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|[Kursträff 2](https://docs.google.com/presentation/d/1H2mbeRwtaNcEQcI0CwAJhKKTby-UgqR2nBT1e3ChgAk/present)
-Ons 12.11.2025  | Exactum B121    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|----- 
+Ons 12.11.2025  | Zoom    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|[Kursträff 3](https://docs.google.com/presentation/d/1RzgRaK9HG1s6m1YQzILwljHps0LMaH5Q9SGF7K3wFm4/present)
 Ons 19.11.2025  | Exactum B121    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)|----- 
 Ons 26.11.2025  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)|----- 
 Ons 3.12.2025   | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)|----- 
