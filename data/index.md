@@ -42,7 +42,7 @@ Ons 15.10.2025 | Zoom |   7   | [Kursträff 7](https://youtu.be/GuoPdRdtVX0)|[Ku
 **OBS!** Ons 5.11.2025 kl. 12.15-13.45   | Zoom |   9   | [Kursträff 2](https://youtu.be/PhMOP2G5MjY)|[Kursträff 2](https://docs.google.com/presentation/d/1H2mbeRwtaNcEQcI0CwAJhKKTby-UgqR2nBT1e3ChgAk/present)
 Ons 12.11.2025  | Zoom    |   10  | [Kursträff 3](https://youtu.be/klfXuoXwoMw)|[Kursträff 3](https://docs.google.com/presentation/d/1RzgRaK9HG1s6m1YQzILwljHps0LMaH5Q9SGF7K3wFm4/present)
 Ons 19.11.2025  | Zoom    |   11  | [Kursträff 4](https://youtu.be/E-VZxC-NkE4)|[Kursträff 4](https://docs.google.com/presentation/d/1MhXDvDgPM7qwV29KfZ4pSmLdV66SEhyjhGh5IPaO7BQ/present)
-**OBS!** Fre 28.11.2025 kl. 11.15-12.45  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)|----- 
+**OBS!** Fre 28.11.2025 kl. 11.15-12.45  | Zoom |   12  | [Kursträff 5](https://youtu.be/pZ6XCqszFm8)|[Kursträff 5](https://docs.google.com/presentation/d/1IWx0I9ulsjowEJC74Gi5FACB4WUzkeaAAAsmUfr0XEM/present)
 **OBS!** To 4.12.2025 kl. 13.15-14.45  | Zoom    |   13  | [Kursträff 6](https://youtu.be/8WohpV_pNi8)|----- 
 Ons 10.12.2025  | Zoom |   14  | Ingen genomgång, projektarbete|----- 
 
