@@ -1,9 +1,9 @@
 ---
 path: "/onlinetent-ohja"
-title: "ProgFK onlinetent 15.3.2025"
+title: "ProgFK onlinetent 16.12.2025"
 information_page: true
 sidebar_priority: 2800
-hide_in_sidebar: true
+hide_in_sidebar: false
 ---
 
 <!--# Ohjelmoinnin jatkokurssi-->
@@ -19,11 +19,11 @@ hide_in_sidebar: true
 #### Att utföra tenten
 
 * Tenten utförs på samma sätt som kursuppgifter i VScode-omgivningen.
-* Tenten kan utföras lördagen den 15.3.2025 mellan **kl 10:00-22:00** 
+* Tenten kan utföras lördagen den 16.12.2025 mellan **kl 10:00-22:00** 
 * Du har **fyra timmar** på dig för att besvara tenten. Ifall du har fått rätt till extratid i tenter, har du fem timmar på dig. 
 * Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 18:00**.
 
-#### Före tentdagen
+#### Före/på tentdagen
 
 * Läs igenom dessa instruktioner noggrant.
 * Ladda ner uppgiftsbottnarna och testa att lämna inte uppgifterna enligt instruktionerna nedan ("Uppgiftsbottnarna").
@@ -44,7 +44,7 @@ hide_in_sidebar: true
 2. Välj `My courses`-vyn i TMC-menyn.
 3. Klicka på `Add new course`
 4. Välj `Helsingin yliopisto` som organisation.
-5. Välj kursen `ProgFK Python, hösten 2024, onlinetent 3`
+5. Välj kursen `ProgFK Python, hösten 2025, onlinetent 1`
 6. Ladda ner uppgiftsbottnarna.
 7. Testa att skicka in en uppgift så att du vet att det fungerar.
 8. Om du lyckas skicka uppgifter till servern är du redo att göra tenten. Om inte, ta kontakt med kursens personal via Discord.
