@@ -44,7 +44,7 @@ hide_in_sidebar: false
 2. Välj `My courses`-vyn i TMC-menyn.
 3. Klicka på `Add new course`
 4. Välj `Helsingin yliopisto` som organisation.
-5. Välj kursen `ProgFK Python, hösten 2025, onlinetent 1`
+5. Välj kursen `Fortsättningskurs i programmering, hösten 2025, onlinetent 1`
 6. Ladda ner uppgiftsbottnarna.
 7. Testa att skicka in en uppgift så att du vet att det fungerar.
 8. Om du lyckas skicka uppgifter till servern är du redo att göra tenten. Om inte, ta kontakt med kursens personal via Discord.
