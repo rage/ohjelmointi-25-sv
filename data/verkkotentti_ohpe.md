@@ -1,9 +1,9 @@
 ---
 path: "/onlinetent-ohpe"
-title: "ProgGK onlinetent 22.11.2025"
+title: "ProgGK onlinetent 17.1.2026"
 information_page: true
 sidebar_priority: 2900
-hide_in_sidebar: true
+hide_in_sidebar: false
 ---
 
 <!--# Ohjelmoinnin perusteet-->
@@ -19,7 +19,7 @@ hide_in_sidebar: true
 #### Att utföra tenten
 
 * Tenten utförs på samma sätt som kursuppgifter i VScode-omgivningen.
-* Tenten kan utföras tisdagen den 22.11.2025 mellan **kl 10:00-22:00** 
+* Tenten kan utföras tisdagen den 17.1.2026 mellan **kl 10:00-22:00** 
 * Du har **fyra timmar** på dig för att besvara tenten. Ifall du har fått rätt till extratid i tenter, har du fem timmar på dig. 
 * Tenten avslutas senast klockan 22:00. Ifall du vill använda tentens maxtid (4h), **påbörja den senast klockan 18:00**.
 
@@ -42,7 +42,7 @@ hide_in_sidebar: true
 2. Välj `My courses`-vyn i TMC-menyn.
 3. Klicka på `Add new course`
 4. Välj `Helsingin yliopisto` som organisation.
-5. Välj kursen `ProgGK Python, hösten 2025, onlinetent 2`
+5. Välj kursen `ProgGK Python, hösten 2025, onlinetent 3`
 6. Ladda ner uppgiftsbottnarna.
 7. Testa att skicka in en uppgift så att du vet att det fungerar.
 8. Om du lyckas skicka uppgifter till servern är du redo att göra tenten. Om inte, ta kontakt med kursens personal via Discord.
@@ -57,17 +57,10 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 * Du loggar in på tentsidan med samma vanliga mooc.fi-login som du använder på kursen.
 * Tenttiden börjar då du trycker på `Påbörja tenten!`
 
-## Finska frågor
+## Tentfrågorna
 
-* Du hittar tentfrågorna på **finska** på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/c1e82ea4-7802-4e04-952c-ac19f1a9cd4c">https://courses.mooc.fi/org/uh-cs/exams/c1e82ea4-7802-4e04-952c-ac19f1a9cd4c</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen (på finska): <a href="https://courses.mooc.fi/org/uh-cs/exams/6c7ff1d3-8fc2-46c5-8059-7f52c8dab3b7">https://courses.mooc.fi/org/uh-cs/exams/6c7ff1d3-8fc2-46c5-8059-7f52c8dab3b7</a>
-
-## Engelska frågor
-
-* Du hittar tentfrågorna på **engelska** på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/2b0cc73e-c681-476d-8c85-4f7cb6d9821e">https://courses.mooc.fi/org/uh-cs/exams/2b0cc73e-c681-476d-8c85-4f7cb6d9821e</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen (på engelska): <a href="https://courses.mooc.fi/org/uh-cs/exams/2a4de14d-9a98-476b-8b29-2bf529f60f9e">https://courses.mooc.fi/org/uh-cs/exams/2a4de14d-9a98-476b-8b29-2bf529f60f9e</a>
-
-
+* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/38b352bf-f2fb-4193-9f2e-55547bbb88ea">https://courses.mooc.fi/org/uh-cs/exams/38b352bf-f2fb-4193-9f2e-55547bbb88ea</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen (på finska): <a href="https://courses.mooc.fi/org/uh-cs/exams/0dc684a2-7bea-4eeb-bd0f-5630ac0e8c0e">https://courses.mooc.fi/org/uh-cs/exams/0dc684a2-7bea-4eeb-bd0f-5630ac0e8c0e</a>
 
 #### Inlämning av uppgifter
 
@@ -78,7 +71,7 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 #### Avslutning av tenten
 
 * Innan du avslutar tenten, kom ihåg att granska att du har kommit ihåg att skicka in uppgifterna till servern
-* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1632](https://tmc.mooc.fi/org/hy/courses/1632). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
+* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1653](https://tmc.mooc.fi/org/hy/courses/1653). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
 * Du kan stänga tentuppgiftssidan då du är färdig. Inga andra åtgärder behövs. 
 
 #### Tentresultatet
