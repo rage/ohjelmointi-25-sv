@@ -3,7 +3,7 @@ path: "/onlinetent-ohja"
 title: "ProgFK onlinetent 16.12.2025"
 information_page: true
 sidebar_priority: 2800
-hide_in_sidebar: true
+hide_in_sidebar: false
 ---
 
 <!--# Ohjelmoinnin jatkokurssi-->
@@ -57,8 +57,8 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 
 * Tentfrågorna publiceras på courses.mooc.fi på tentdagen kl 10:00.
 * Du loggar in på tentsidan med samma vanliga mooc.fi-login som du använder på kursen. 
-* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/bad9717e-e679-4b5c-aea6-d52a83307248">https://courses.mooc.fi/org/uh-cs/exams/bad9717e-e679-4b5c-aea6-d52a83307248</a>
-* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/8e89bc0e-899e-4b09-b980-05e3cfc32c5f">https://courses.mooc.fi/org/uh-cs/exams/8e89bc0e-899e-4b09-b980-05e3cfc32c5f</a>
+* Du hittar tentfrågorna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/2dc25ecb-c012-42b0-a824-bec8a8871b6f">https://courses.mooc.fi/org/uh-cs/exams/2dc25ecb-c012-42b0-a824-bec8a8871b6f</a>
+* Ifall du har rätt till tilläggstid, får du upp tentuppgifterna på adressen: <a href="https://courses.mooc.fi/org/uh-cs/exams/6334bf49-6845-4e36-bdde-78f3cb9a5028">https://courses.mooc.fi/org/uh-cs/exams/6334bf49-6845-4e36-bdde-78f3cb9a5028</a>
 * Tenttiden börjar då du trycker på `Påbörja tenten!`
 
 
@@ -72,7 +72,7 @@ Ställ inga frågor om de givna uppgifterna i kurskanalen före tenten tagit slu
 #### Avslutning av tenten
 
 * Innan du avslutar tenten, kom ihåg att granska att du har kommit ihåg att skicka in uppgifterna till servern
-* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1635](https://tmc.mooc.fi/org/hy/courses/1635). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
+* Du kan granska att dina svar har registrerats på servern genom att logga in på [https://tmc.mooc.fi/org/hy/courses/1654](https://tmc.mooc.fi/org/hy/courses/1654). Uppgifterna har registrerats om du ser uppgiftsbottnarnas namn och klockslag då du lämnat in respektive uppgift.
 * Du kan stänga tentuppgiftssidan då du är färdig. Inga andra åtgärder behövs. 
 
 #### Tentresultatet
